@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace", "MarketPlace\MarketPlace.csproj", "{8C099D07-604B-471C-A810-C7581EB78373}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifood", "Ifood\Ifood.csproj", "{72EE52A9-3A7A-43A6-B8E6-B8A10B05F05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C099D07-604B-471C-A810-C7581EB78373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C099D07-604B-471C-A810-C7581EB78373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C099D07-604B-471C-A810-C7581EB78373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C099D07-604B-471C-A810-C7581EB78373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72EE52A9-3A7A-43A6-B8E6-B8A10B05F05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72EE52A9-3A7A-43A6-B8E6-B8A10B05F05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72EE52A9-3A7A-43A6-B8E6-B8A10B05F05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72EE52A9-3A7A-43A6-B8E6-B8A10B05F05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B54B1CF-2439-4194-99E8-06694A7CC667}
+	EndGlobalSection
+EndGlobal
