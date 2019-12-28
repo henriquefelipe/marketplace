@@ -1,4 +1,5 @@
 ﻿using Ifood.Domain;
+using Ifood.Enum;
 using Ifood.Service;
 using Newtonsoft.Json;
 using System;
@@ -17,8 +18,9 @@ namespace Example
 {
     public partial class Form1 : Form
     {
-        public string ifoodToken { get; set; }
-        public List<order> ifoodOrders { get; set; }
+        private string _ifoodToken { get; set; }
+        private List<order> _ifoodOrders { get; set; }
+        private string _ifoodReferenceSelected { get; set; }
 
         public Form1()
         {
@@ -48,8 +50,8 @@ namespace Example
                 }
             }
 
-            ifoodOrders = new List<order>();
-            gridIfood.DataSource = ifoodOrders.ToList();
+            _ifoodOrders = new List<order>();
+            gridIfood.DataSource = _ifoodOrders.ToList();
             gridIfood.Refresh();
         }
 
@@ -118,7 +120,7 @@ namespace Example
                         var oathTokenResult = ifoodService.OathToken(txtIfoodClient_ID.Text, txtIfoodClient_Secret.Text, txtIfoodUsuario.Text, txtIfoodSenha.Text);
                         if (oathTokenResult.Success)
                         {
-                            ifoodToken = oathTokenResult.Result.access_token;
+                            _ifoodToken = oathTokenResult.Result.access_token;
                         }
                         else
                         {
@@ -127,9 +129,9 @@ namespace Example
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(ifoodToken))
+                    if (!string.IsNullOrEmpty(_ifoodToken))
                     {
-                        var eventPollingResult = ifoodService.EventPolling(ifoodToken);
+                        var eventPollingResult = ifoodService.EventPolling(_ifoodToken);
 
                         if (eventPollingResult.Success)
                         {
@@ -139,16 +141,16 @@ namespace Example
                             {
                                 if (poolingEvent.code == PoolingEventStatusCode.PLACED)
                                 {
-                                    var orderResult = ifoodService.Orders(ifoodToken, poolingEvent.correlationId);
+                                    var orderResult = ifoodService.Orders(_ifoodToken, poolingEvent.correlationId);
                                     if (orderResult.Success)
                                     {
-                                        var order = ifoodOrders.FirstOrDefault(f => f.id == orderResult.Result.id);
+                                        var order = _ifoodOrders.FirstOrDefault(f => f.id == orderResult.Result.id);
                                         if (order == null)
                                         {
-                                            ifoodOrders.Add(orderResult.Result);
+                                            _ifoodOrders.Add(orderResult.Result);
                                         }
 
-                                        WriteGridIfoodConsole();
+                                        WriteGridIfood();
                                     }
                                     else
                                     {
@@ -160,7 +162,7 @@ namespace Example
                                 eventsIds.Add(new eventAcknowledgment { id = poolingEvent.id });
                             }
 
-                            var eventAcknowledgmentResult = ifoodService.EventAcknowledgment(ifoodToken, eventsIds);
+                            var eventAcknowledgmentResult = ifoodService.EventAcknowledgment(_ifoodToken, eventsIds);
                             if (!eventAcknowledgmentResult.Success)
                             {
                                 MessageBox.Show(eventAcknowledgmentResult.Message);
@@ -221,7 +223,22 @@ namespace Example
                 return;
             }
 
+            if(string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
             var ifoodService = new IfoodService();
+            var result = ifoodService.OrdersIntegration(_ifoodToken, _ifoodReferenceSelected);
+            if(result.Success)
+            {
+                MessageBox.Show("Integrado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnIfoodConfirmado_Click(object sender, EventArgs e)
@@ -230,6 +247,23 @@ namespace Example
             {
                 MessageBox.Show("Inicia o aplicativo");
                 return;
+            }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.OrdersConfirmation(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Confirmado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -240,6 +274,23 @@ namespace Example
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.OrdersDispatch(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Saiu para entrega com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnIfoodRejeitado_Click(object sender, EventArgs e)
@@ -248,6 +299,23 @@ namespace Example
             {
                 MessageBox.Show("Inicia o aplicativo");
                 return;
+            }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.OrdersRejection(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido rejeitado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -258,6 +326,25 @@ namespace Example
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var codeCancelament = (short)CancelamentCode.Outro_descricao_obrigatoria;
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.CancellationRequested(_ifoodToken, _ifoodReferenceSelected, codeCancelament, "Cancelando..");
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnIfoodCancelamentoAceita_Click(object sender, EventArgs e)
@@ -266,6 +353,23 @@ namespace Example
             {
                 MessageBox.Show("Inicia o aplicativo");
                 return;
+            }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.CancellationAccepted(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -276,20 +380,45 @@ namespace Example
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new IfoodService();
+            var result = ifoodService.CancellationDenied(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private delegate void WritelstGridIfoodDelegate();
-        private void WriteGridIfoodConsole()
+        private void WriteGridIfood()
         {
             if (gridIfood.InvokeRequired)
             {
-                var d = new WritelstGridIfoodDelegate(WriteGridIfoodConsole);
+                var d = new WritelstGridIfoodDelegate(WriteGridIfood);
                 Invoke(d, new object[] { });
             }
             else
             {
-                gridIfood.DataSource = ifoodOrders.ToList();
+                gridIfood.DataSource = _ifoodOrders.ToList();
                 gridIfood.Refresh();
+            }
+        }
+
+        private void gridIfood_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridIfood.Rows.Count)
+            {
+                _ifoodReferenceSelected = gridIfood.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
         }
 

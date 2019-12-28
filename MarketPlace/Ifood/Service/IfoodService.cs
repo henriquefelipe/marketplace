@@ -3,11 +3,7 @@ using Ifood.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ifood.Service
 {
@@ -55,6 +51,8 @@ namespace Ifood.Service
             return result;
         }
 
+        #region Eventos
+
         /// <summary>
         /// Obtém todos os eventos ainda não recebidos.
         /// </summary>
@@ -64,7 +62,7 @@ namespace Ifood.Service
         {
             var result = new GenericResult<List<poolingEvent>>();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION1, Constants.URL_EVENT_POOLING);
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_POOLING);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -100,13 +98,13 @@ namespace Ifood.Service
         {
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION2, Constants.URL_EVENT_ACNOWLEDGMENT);
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION_2, Constants.URL_EVENT_ACNOWLEDGMENT);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(events); 
+            request.AddBody(events);
             //request.AddParameter("data", events, ParameterType.RequestBody);            
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -121,6 +119,10 @@ namespace Ifood.Service
             return result;
         }
 
+        #endregion
+
+        #region Pedido
+
         /// <summary>
         /// Geralmente, após o e-PDV receber um evento com o código 'PLACED', é necessário obter os detalhes do pedido.
         /// Neste cenário, o campo correlationId do evento refere-se à referência do pedido e deve ser fornecido a este endpoint.
@@ -132,7 +134,7 @@ namespace Ifood.Service
         {
             var result = new GenericResult<order>();
 
-            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference);
+            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -159,12 +161,15 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericSimpleResult OrdersIntegration(string token, string reference)
         {
+            var data = new { };
+
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -186,12 +191,14 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericSimpleResult OrdersConfirmation(string token, string reference)
         {
+            var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRMATION);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRMATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -213,12 +220,14 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericSimpleResult OrdersDispatch(string token, string reference)
         {
+            var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_DISPATCH);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_DISPATCH);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -240,12 +249,14 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericSimpleResult OrdersRejection(string token, string reference)
         {
+            var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_REJECTION);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_REJECTION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -259,6 +270,9 @@ namespace Ifood.Service
             return result;
         }
 
+        #endregion
+
+        #region Cancelamento
 
         /// <summary>
         /// Solicita o Cancelamento do Pedido
@@ -268,21 +282,21 @@ namespace Ifood.Service
         /// <param name="code"></param>
         /// <param name="detail"></param>
         /// <returns></returns>
-        public GenericSimpleResult CancellationRequested(string token, string reference, string code, string detail)
+        public GenericSimpleResult CancellationRequested(string token, string reference, short code, string detail)
         {
             var data = new
             {
-                cancellationCode = code,
-	            details = detail
+                cancellationCode = code.ToString(),
+                details = detail
             };
 
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION3, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_3, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddParameter("application/x-www-form-urlencoded", data, ParameterType.RequestBody);
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -303,13 +317,15 @@ namespace Ifood.Service
         /// <param name="reference"></param>
         /// <returns></returns>
         public GenericSimpleResult CancellationAccepted(string token, string reference)
-        {            
+        {
+            var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));            
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -331,12 +347,14 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericSimpleResult CancellationDenied(string token, string reference)
         {
+            var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
+            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
@@ -349,5 +367,7 @@ namespace Ifood.Service
 
             return result;
         }
-    }
+
+        #endregion
+    }   
 }

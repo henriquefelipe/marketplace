@@ -30,7 +30,19 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnIfoodCancelamentoRejeita = new System.Windows.Forms.Button();
+            this.btnIfoodCancelamentoAceita = new System.Windows.Forms.Button();
+            this.btnIfoodCancelamento = new System.Windows.Forms.Button();
+            this.btnIfoodRejeitado = new System.Windows.Forms.Button();
+            this.btnIfoodSaiuParaSerEntregue = new System.Windows.Forms.Button();
+            this.btnIfoodConfirmado = new System.Windows.Forms.Button();
+            this.btnIfoodIntegrado = new System.Windows.Forms.Button();
+            this.gridIfood = new System.Windows.Forms.DataGridView();
+            this.btnIfoodParar = new System.Windows.Forms.Button();
+            this.btnIfoodIniciar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIfoodSenha = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtIfoodUsuario = new System.Windows.Forms.TextBox();
             this.txtIfoodMerchantId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,23 +53,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtIfoodSenha = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnIfoodIniciar = new System.Windows.Forms.Button();
-            this.btnIfoodParar = new System.Windows.Forms.Button();
-            this.gridIfood = new System.Windows.Forms.DataGridView();
-            this.btnIfoodIntegrado = new System.Windows.Forms.Button();
-            this.btnIfoodConfirmado = new System.Windows.Forms.Button();
-            this.btnIfoodSaiuParaSerEntregue = new System.Windows.Forms.Button();
-            this.btnIfoodRejeitado = new System.Windows.Forms.Button();
-            this.btnIfoodCancelamento = new System.Windows.Forms.Button();
-            this.btnIfoodCancelamentoAceita = new System.Windows.Forms.Button();
-            this.btnIfoodCancelamentoRejeita = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -93,6 +93,114 @@
             this.tabPage1.Text = "Ifood";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnIfoodCancelamentoRejeita
+            // 
+            this.btnIfoodCancelamentoRejeita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodCancelamentoRejeita.Location = new System.Drawing.Point(998, 139);
+            this.btnIfoodCancelamentoRejeita.Name = "btnIfoodCancelamentoRejeita";
+            this.btnIfoodCancelamentoRejeita.Size = new System.Drawing.Size(175, 33);
+            this.btnIfoodCancelamentoRejeita.TabIndex = 11;
+            this.btnIfoodCancelamentoRejeita.Text = "Rejeita Cancelamento";
+            this.btnIfoodCancelamentoRejeita.UseVisualStyleBackColor = true;
+            this.btnIfoodCancelamentoRejeita.Click += new System.EventHandler(this.btnIfoodCancelamentoRejeita_Click);
+            // 
+            // btnIfoodCancelamentoAceita
+            // 
+            this.btnIfoodCancelamentoAceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodCancelamentoAceita.Location = new System.Drawing.Point(817, 139);
+            this.btnIfoodCancelamentoAceita.Name = "btnIfoodCancelamentoAceita";
+            this.btnIfoodCancelamentoAceita.Size = new System.Drawing.Size(175, 33);
+            this.btnIfoodCancelamentoAceita.TabIndex = 10;
+            this.btnIfoodCancelamentoAceita.Text = "Aceita Cancelamento";
+            this.btnIfoodCancelamentoAceita.UseVisualStyleBackColor = true;
+            this.btnIfoodCancelamentoAceita.Click += new System.EventHandler(this.btnIfoodCancelamentoAceita_Click);
+            // 
+            // btnIfoodCancelamento
+            // 
+            this.btnIfoodCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodCancelamento.Location = new System.Drawing.Point(666, 139);
+            this.btnIfoodCancelamento.Name = "btnIfoodCancelamento";
+            this.btnIfoodCancelamento.Size = new System.Drawing.Size(145, 33);
+            this.btnIfoodCancelamento.TabIndex = 9;
+            this.btnIfoodCancelamento.Text = "Cancelamento";
+            this.btnIfoodCancelamento.UseVisualStyleBackColor = true;
+            this.btnIfoodCancelamento.Click += new System.EventHandler(this.btnIfoodCancelamento_Click);
+            // 
+            // btnIfoodRejeitado
+            // 
+            this.btnIfoodRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodRejeitado.Location = new System.Drawing.Point(515, 139);
+            this.btnIfoodRejeitado.Name = "btnIfoodRejeitado";
+            this.btnIfoodRejeitado.Size = new System.Drawing.Size(145, 33);
+            this.btnIfoodRejeitado.TabIndex = 8;
+            this.btnIfoodRejeitado.Text = "Rejeitado";
+            this.btnIfoodRejeitado.UseVisualStyleBackColor = true;
+            this.btnIfoodRejeitado.Click += new System.EventHandler(this.btnIfoodRejeitado_Click);
+            // 
+            // btnIfoodSaiuParaSerEntregue
+            // 
+            this.btnIfoodSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodSaiuParaSerEntregue.Location = new System.Drawing.Point(310, 139);
+            this.btnIfoodSaiuParaSerEntregue.Name = "btnIfoodSaiuParaSerEntregue";
+            this.btnIfoodSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
+            this.btnIfoodSaiuParaSerEntregue.TabIndex = 7;
+            this.btnIfoodSaiuParaSerEntregue.Text = "Saiu para ser entregue";
+            this.btnIfoodSaiuParaSerEntregue.UseVisualStyleBackColor = true;
+            this.btnIfoodSaiuParaSerEntregue.Click += new System.EventHandler(this.btnIfoodSaiuParaSerEntregue_Click);
+            // 
+            // btnIfoodConfirmado
+            // 
+            this.btnIfoodConfirmado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodConfirmado.Location = new System.Drawing.Point(159, 139);
+            this.btnIfoodConfirmado.Name = "btnIfoodConfirmado";
+            this.btnIfoodConfirmado.Size = new System.Drawing.Size(145, 33);
+            this.btnIfoodConfirmado.TabIndex = 6;
+            this.btnIfoodConfirmado.Text = "Confirmado";
+            this.btnIfoodConfirmado.UseVisualStyleBackColor = true;
+            this.btnIfoodConfirmado.Click += new System.EventHandler(this.btnIfoodConfirmado_Click);
+            // 
+            // btnIfoodIntegrado
+            // 
+            this.btnIfoodIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodIntegrado.Location = new System.Drawing.Point(8, 139);
+            this.btnIfoodIntegrado.Name = "btnIfoodIntegrado";
+            this.btnIfoodIntegrado.Size = new System.Drawing.Size(145, 33);
+            this.btnIfoodIntegrado.TabIndex = 5;
+            this.btnIfoodIntegrado.Text = "Integrado";
+            this.btnIfoodIntegrado.UseVisualStyleBackColor = true;
+            this.btnIfoodIntegrado.Click += new System.EventHandler(this.btnIfoodIntegrado_Click);
+            // 
+            // gridIfood
+            // 
+            this.gridIfood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridIfood.Location = new System.Drawing.Point(8, 178);
+            this.gridIfood.Name = "gridIfood";
+            this.gridIfood.Size = new System.Drawing.Size(1213, 487);
+            this.gridIfood.TabIndex = 4;
+            this.gridIfood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIfood_CellClick);
+            // 
+            // btnIfoodParar
+            // 
+            this.btnIfoodParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodParar.Location = new System.Drawing.Point(1050, 67);
+            this.btnIfoodParar.Name = "btnIfoodParar";
+            this.btnIfoodParar.Size = new System.Drawing.Size(171, 39);
+            this.btnIfoodParar.TabIndex = 3;
+            this.btnIfoodParar.Text = "Parar";
+            this.btnIfoodParar.UseVisualStyleBackColor = true;
+            this.btnIfoodParar.Click += new System.EventHandler(this.btnIfoodParar_Click);
+            // 
+            // btnIfoodIniciar
+            // 
+            this.btnIfoodIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodIniciar.Location = new System.Drawing.Point(1050, 16);
+            this.btnIfoodIniciar.Name = "btnIfoodIniciar";
+            this.btnIfoodIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnIfoodIniciar.TabIndex = 2;
+            this.btnIfoodIniciar.Text = "Iniciar";
+            this.btnIfoodIniciar.UseVisualStyleBackColor = true;
+            this.btnIfoodIniciar.Click += new System.EventHandler(this.btnIfoodIniciar_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtIfoodSenha);
@@ -107,6 +215,24 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Restaurante";
+            // 
+            // txtIfoodSenha
+            // 
+            this.txtIfoodSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIfoodSenha.Location = new System.Drawing.Point(452, 55);
+            this.txtIfoodSenha.Name = "txtIfoodSenha";
+            this.txtIfoodSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtIfoodSenha.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(359, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Senha";
             // 
             // txtIfoodUsuario
             // 
@@ -203,131 +329,6 @@
             this.tabPage2.Text = "Outros";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // txtIfoodSenha
-            // 
-            this.txtIfoodSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIfoodSenha.Location = new System.Drawing.Point(452, 55);
-            this.txtIfoodSenha.Name = "txtIfoodSenha";
-            this.txtIfoodSenha.Size = new System.Drawing.Size(187, 26);
-            this.txtIfoodSenha.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(359, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Senha";
-            // 
-            // btnIfoodIniciar
-            // 
-            this.btnIfoodIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodIniciar.Location = new System.Drawing.Point(1050, 16);
-            this.btnIfoodIniciar.Name = "btnIfoodIniciar";
-            this.btnIfoodIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnIfoodIniciar.TabIndex = 2;
-            this.btnIfoodIniciar.Text = "Iniciar";
-            this.btnIfoodIniciar.UseVisualStyleBackColor = true;
-            this.btnIfoodIniciar.Click += new System.EventHandler(this.btnIfoodIniciar_Click);
-            // 
-            // btnIfoodParar
-            // 
-            this.btnIfoodParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodParar.Location = new System.Drawing.Point(1050, 67);
-            this.btnIfoodParar.Name = "btnIfoodParar";
-            this.btnIfoodParar.Size = new System.Drawing.Size(171, 39);
-            this.btnIfoodParar.TabIndex = 3;
-            this.btnIfoodParar.Text = "Parar";
-            this.btnIfoodParar.UseVisualStyleBackColor = true;
-            this.btnIfoodParar.Click += new System.EventHandler(this.btnIfoodParar_Click);
-            // 
-            // gridIfood
-            // 
-            this.gridIfood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridIfood.Location = new System.Drawing.Point(8, 178);
-            this.gridIfood.Name = "gridIfood";
-            this.gridIfood.Size = new System.Drawing.Size(1213, 487);
-            this.gridIfood.TabIndex = 4;
-            // 
-            // btnIfoodIntegrado
-            // 
-            this.btnIfoodIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodIntegrado.Location = new System.Drawing.Point(8, 139);
-            this.btnIfoodIntegrado.Name = "btnIfoodIntegrado";
-            this.btnIfoodIntegrado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodIntegrado.TabIndex = 5;
-            this.btnIfoodIntegrado.Text = "Integrado";
-            this.btnIfoodIntegrado.UseVisualStyleBackColor = true;
-            this.btnIfoodIntegrado.Click += new System.EventHandler(this.btnIfoodIntegrado_Click);
-            // 
-            // btnIfoodConfirmado
-            // 
-            this.btnIfoodConfirmado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodConfirmado.Location = new System.Drawing.Point(159, 139);
-            this.btnIfoodConfirmado.Name = "btnIfoodConfirmado";
-            this.btnIfoodConfirmado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodConfirmado.TabIndex = 6;
-            this.btnIfoodConfirmado.Text = "Confirmado";
-            this.btnIfoodConfirmado.UseVisualStyleBackColor = true;
-            this.btnIfoodConfirmado.Click += new System.EventHandler(this.btnIfoodConfirmado_Click);
-            // 
-            // btnIfoodSaiuParaSerEntregue
-            // 
-            this.btnIfoodSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodSaiuParaSerEntregue.Location = new System.Drawing.Point(310, 139);
-            this.btnIfoodSaiuParaSerEntregue.Name = "btnIfoodSaiuParaSerEntregue";
-            this.btnIfoodSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
-            this.btnIfoodSaiuParaSerEntregue.TabIndex = 7;
-            this.btnIfoodSaiuParaSerEntregue.Text = "Saiu para ser entregue";
-            this.btnIfoodSaiuParaSerEntregue.UseVisualStyleBackColor = true;
-            this.btnIfoodSaiuParaSerEntregue.Click += new System.EventHandler(this.btnIfoodSaiuParaSerEntregue_Click);
-            // 
-            // btnIfoodRejeitado
-            // 
-            this.btnIfoodRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodRejeitado.Location = new System.Drawing.Point(515, 139);
-            this.btnIfoodRejeitado.Name = "btnIfoodRejeitado";
-            this.btnIfoodRejeitado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodRejeitado.TabIndex = 8;
-            this.btnIfoodRejeitado.Text = "Rejeitado";
-            this.btnIfoodRejeitado.UseVisualStyleBackColor = true;
-            this.btnIfoodRejeitado.Click += new System.EventHandler(this.btnIfoodRejeitado_Click);
-            // 
-            // btnIfoodCancelamento
-            // 
-            this.btnIfoodCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamento.Location = new System.Drawing.Point(666, 139);
-            this.btnIfoodCancelamento.Name = "btnIfoodCancelamento";
-            this.btnIfoodCancelamento.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodCancelamento.TabIndex = 9;
-            this.btnIfoodCancelamento.Text = "Cancelamento";
-            this.btnIfoodCancelamento.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamento.Click += new System.EventHandler(this.btnIfoodCancelamento_Click);
-            // 
-            // btnIfoodCancelamentoAceita
-            // 
-            this.btnIfoodCancelamentoAceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamentoAceita.Location = new System.Drawing.Point(817, 139);
-            this.btnIfoodCancelamentoAceita.Name = "btnIfoodCancelamentoAceita";
-            this.btnIfoodCancelamentoAceita.Size = new System.Drawing.Size(175, 33);
-            this.btnIfoodCancelamentoAceita.TabIndex = 10;
-            this.btnIfoodCancelamentoAceita.Text = "Aceita Cancelamento";
-            this.btnIfoodCancelamentoAceita.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamentoAceita.Click += new System.EventHandler(this.btnIfoodCancelamentoAceita_Click);
-            // 
-            // btnIfoodCancelamentoRejeita
-            // 
-            this.btnIfoodCancelamentoRejeita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamentoRejeita.Location = new System.Drawing.Point(998, 139);
-            this.btnIfoodCancelamentoRejeita.Name = "btnIfoodCancelamentoRejeita";
-            this.btnIfoodCancelamentoRejeita.Size = new System.Drawing.Size(175, 33);
-            this.btnIfoodCancelamentoRejeita.TabIndex = 11;
-            this.btnIfoodCancelamentoRejeita.Text = "Rejeita Cancelamento";
-            this.btnIfoodCancelamentoRejeita.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamentoRejeita.Click += new System.EventHandler(this.btnIfoodCancelamentoRejeita_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,11 +342,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).EndInit();
             this.ResumeLayout(false);
 
         }

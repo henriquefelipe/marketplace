@@ -9,9 +9,9 @@ namespace Ifood.Utils
     public static class Constants
     {
         public const string URL_BASE = "https://pos-api.ifood.com.br/";       
-        public const string VERSION1 = "v1.0";
-        public const string VERSION2 = "v2.0";
-        public const string VERSION3 = "v3.0";
+        public const string VERSION_1 = "v1.0";
+        public const string VERSION_2 = "v2.0";
+        public const string VERSION_3 = "v3.0";
 
         public const string URL_TOKEN = "oauth/token";
         public const string URL_EVENT_POOLING = "events%3Apolling";
