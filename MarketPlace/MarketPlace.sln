@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifood", "Ifood\Ifood.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloriaFood", "GloriaFood\GloriaFood.csproj", "{572C537E-0DFB-4B13-9B0D-6918D191C4BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1328E65C-3A09-48FF-BBAA-9277B57FAEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{572C537E-0DFB-4B13-9B0D-6918D191C4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{572C537E-0DFB-4B13-9B0D-6918D191C4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{572C537E-0DFB-4B13-9B0D-6918D191C4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{572C537E-0DFB-4B13-9B0D-6918D191C4BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
