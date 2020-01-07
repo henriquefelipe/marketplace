@@ -1,4 +1,5 @@
-﻿using Ifood.Domain;
+﻿using GloriaFood.Service;
+using Ifood.Domain;
 using Ifood.Enum;
 using Ifood.Service;
 using Newtonsoft.Json;
@@ -21,6 +22,8 @@ namespace Example
         private string _ifoodToken { get; set; }
         private List<order> _ifoodOrders { get; set; }
         private string _ifoodReferenceSelected { get; set; }
+        private string _gloriaToken { get; set; }
+        private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
 
         public Form1()
         {
@@ -46,6 +49,11 @@ namespace Example
                             txtIfoodUsuario.Text = marketPlace.Ifood.Usuario;
                             txtIfoodSenha.Text = marketPlace.Ifood.Senha;
                         }
+
+                        if (marketPlace.Gloria != null)
+                        {
+                            txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
+                        }
                     }
                 }
             }
@@ -53,6 +61,10 @@ namespace Example
             _ifoodOrders = new List<order>();
             gridIfood.DataSource = _ifoodOrders.ToList();
             gridIfood.Refresh();
+
+            _gloriaOrders = new List<GloriaFood.Domain.order>();
+            gridGloriaGood.DataSource = _gloriaOrders.ToList();
+            gridGloriaGood.Refresh();
         }
 
         #region Ifood
@@ -102,7 +114,7 @@ namespace Example
             btnIfoodIniciar.Enabled = false;
             btnIfoodParar.Enabled = true;
 
-            await Task.Run(() => ifood());                        
+            await Task.Run(() => ifood());
         }
 
         private void ifood()
@@ -124,7 +136,7 @@ namespace Example
                         }
                         else
                         {
-                            MessageBox.Show(oathTokenResult.Message);                            
+                            MessageBox.Show(oathTokenResult.Message);
                             return;
                         }
                     }
@@ -194,7 +206,7 @@ namespace Example
                 if (ex.InnerException != null)
                     message = ex.InnerException.Message;
 
-                MessageBox.Show(message);                
+                MessageBox.Show(message);
             }
         }
 
@@ -217,13 +229,13 @@ namespace Example
 
         private void btnIfoodIntegrado_Click(object sender, EventArgs e)
         {
-            if(btnIfoodIniciar.Enabled)
+            if (btnIfoodIniciar.Enabled)
             {
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
 
-            if(string.IsNullOrEmpty(_ifoodReferenceSelected))
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
             {
                 MessageBox.Show("Selecione um registro");
                 return;
@@ -231,7 +243,7 @@ namespace Example
 
             var ifoodService = new IfoodService();
             var result = ifoodService.OrdersIntegration(_ifoodToken, _ifoodReferenceSelected);
-            if(result.Success)
+            if (result.Success)
             {
                 MessageBox.Show("Integrado com sucesso");
             }
@@ -424,5 +436,92 @@ namespace Example
 
         #endregion
 
+        #region Gloria Food
+
+        private void btnGloriaFoodIniciar_Click(object sender, EventArgs e)
+        {
+            gloriaIniciar();
+        }
+
+        public async void gloriaIniciar()
+        {
+            if (string.IsNullOrEmpty(txtGloriaFoodToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtGloriaFoodToken.Enabled = false;
+
+            btnGloriaFoodIniciar.Enabled = false;
+            btnGloriaFoodParar.Enabled = true;
+
+            await Task.Run(() => gloria());
+        }
+
+        private void btnGloriaFoodParar_Click(object sender, EventArgs e)
+        {
+            gloriaParar();
+        }
+
+        void gloriaParar()
+        {
+            txtGloriaFoodToken.Enabled = true;
+
+            btnGloriaFoodIniciar.Enabled = true;
+            btnGloriaFoodParar.Enabled = false;
+        }
+
+        private void gloria()
+        {
+            var gloriaService = new GloriaFoodService();
+
+            try
+            {
+                while (btnGloriaFoodParar.Enabled)
+                {
+                    var orderResult = gloriaService.Polling(_gloriaToken);
+                    if (orderResult.Success)
+                    {
+                        _gloriaOrders.Add(orderResult.Result);
+                        
+                        WriteGridGloria();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    // O gloria food solicita que a requisição do pooling seja feito a cada 10 segundos
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridGloriaDelegate();
+        private void WriteGridGloria()
+        {
+            if (gridIfood.InvokeRequired)
+            {
+                var d = new WritelstGridGloriaDelegate(WriteGridGloria);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridGloriaGood.DataSource = _gloriaOrders.ToList();
+                gridGloriaGood.Refresh();
+            }
+        }
+
+        #endregion
     }
 }

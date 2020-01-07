@@ -4,6 +4,7 @@ namespace Example
     public class MarketPlace
     {
         public Ifood Ifood { get; set; }
+        public Gloria Gloria { get; set; }
     }
 
     public class Ifood
@@ -16,5 +17,10 @@ namespace Example
         public string Usuario { get; set; }
 
         public string Senha { get; set; }
+    }
+
+    public class Gloria
+    {
+        public string Token { get; set; }       
     }
 }
