@@ -21,9 +21,9 @@ namespace GloriaFood.Service
             _urlBase = urlBase;
         }
 
-        public GenericResult<order> Polling(string token)
+        public GenericResult<IEnumerable<order>> Polling(string token)
         {            
-            var result = new GenericResult<order>();
+            var result = new GenericResult<IEnumerable<order>>();
 
             var url = string.Format("{0}{1}", _urlBase, Constants.POOL_LOCAL_SYSTEM);
             var client = new RestClient(url);
@@ -33,7 +33,8 @@ namespace GloriaFood.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                result.Result = JsonConvert.DeserializeObject<order>(response.Content);
+                var pollings = JsonConvert.DeserializeObject<polling>(response.Content);
+                result.Result = pollings.orders;
                 result.Success = true;
             }
             else

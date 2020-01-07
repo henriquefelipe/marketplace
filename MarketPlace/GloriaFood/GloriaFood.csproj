@@ -51,6 +51,7 @@
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\orderitem.cs" />
+    <Compile Include="Domain\polling.cs" />
     <Compile Include="Domain\taxlist.cs" />
     <Compile Include="Enum\AggregatedType.cs" />
     <Compile Include="Enum\ClientAddressParts.cs" />

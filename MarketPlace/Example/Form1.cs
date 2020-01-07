@@ -437,7 +437,6 @@ namespace Example
         #endregion
 
         #region Gloria Food
-
         private void btnGloriaFoodIniciar_Click(object sender, EventArgs e)
         {
             gloriaIniciar();
@@ -455,7 +454,7 @@ namespace Example
 
             btnGloriaFoodIniciar.Enabled = false;
             btnGloriaFoodParar.Enabled = true;
-
+            _gloriaToken = txtGloriaFoodToken.Text;
             await Task.Run(() => gloria());
         }
 
@@ -483,7 +482,7 @@ namespace Example
                     var orderResult = gloriaService.Polling(_gloriaToken);
                     if (orderResult.Success)
                     {
-                        _gloriaOrders.Add(orderResult.Result);
+                        _gloriaOrders.AddRange(orderResult.Result);
                         
                         WriteGridGloria();
                     }

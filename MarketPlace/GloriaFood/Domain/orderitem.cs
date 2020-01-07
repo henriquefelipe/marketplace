@@ -13,7 +13,7 @@ namespace GloriaFood.Domain
         public string instructions { get; set; }
         public string type { get; set; }
         public int type_id { get; set; }
-        public int parent_id { get; set; }
+        public int? parent_id { get; set; }
         public decimal total_item_price { get; set; }       
         public decimal price { get; set; }
         public int quantity { get; set; }
