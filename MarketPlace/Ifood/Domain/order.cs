@@ -8,6 +8,11 @@ namespace Ifood.Domain
 {
     public class order
     {
+        public order()
+        {
+            items = new List<item>();
+        }
+
         public string id { get; set; }
         public string reference { get; set; }
         public string shortReference { get; set; }
@@ -23,5 +28,6 @@ namespace Ifood.Domain
         public deliveryAddress deliveryAddress { get; set; }
         public DateTime deliveryDateTime { get; set; }
         public int preparationTimeInSeconds { get; set; }
+        public bool scheduled { get; set; }
     }
 }

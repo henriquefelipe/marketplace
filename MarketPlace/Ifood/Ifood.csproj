@@ -57,6 +57,7 @@
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\poolingEvent.cs" />
+    <Compile Include="Domain\subItem.cs" />
     <Compile Include="Domain\token.cs" />
     <Compile Include="Enum\CancelamentCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

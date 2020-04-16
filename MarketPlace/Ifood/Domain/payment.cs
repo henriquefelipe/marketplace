@@ -11,7 +11,8 @@ namespace Ifood.Domain
         public string name { get; set; }
         public string code { get; set; }
         public decimal value { get; set; }
-        public bool prepaid { get; set; }
+        public bool prepaid { get; set; }  // Se foi pago
         public string issuer { get; set; }
+        public decimal changeFor { get; set; }
     }
 }

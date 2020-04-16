@@ -36,6 +36,7 @@ namespace GloriaFood.Service
                 var pollings = JsonConvert.DeserializeObject<polling>(response.Content);
                 result.Result = pollings.orders;
                 result.Success = true;
+                result.Json = response.Content;
             }
             else
             {

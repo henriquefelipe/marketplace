@@ -71,6 +71,7 @@ namespace Ifood.Service
             {
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
+                result.Json = response.Content;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -143,6 +144,7 @@ namespace Ifood.Service
             {
                 result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                 result.Success = true;
+                result.Json = response.Content;
             }
             else
             {

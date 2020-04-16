@@ -42,12 +42,12 @@ namespace GloriaFood.Domain
         public string client_email { get; set; }
         public string client_phone { get; set; }
         public string client_address { get; set; }
-        public object client_address_parts { get; set; }
+        public client_address_parts client_address_parts { get; set; }
         public bool pin_skipped { get; set; }
         public string latitude { get; set; }
         public string longitude { get; set; }
         public decimal total_price { get; set; }
-        public string sub_total_price { get; set; }
+        public decimal sub_total_price { get; set; }
         public string tax_type { get; set; }
         public decimal tax_value { get; set; }
         public string tax_name { get; set; }

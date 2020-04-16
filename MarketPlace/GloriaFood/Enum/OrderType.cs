@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GloriaFood.Enum
 {
-    public enum OrderType
+    public class OrderType
     {
-        pickup,
-        delivery,
-        table_reservation,
-        order_ahead
+        public const string PICKUP = "pickup";
+        public const string DELIVERY = "delivery";
+        public const string TABLE_RESERVATION = "table_reservation";
+        public const string ORDER_AHEAD = "order_ahead";
     }
 }

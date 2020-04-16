@@ -10,7 +10,7 @@ namespace Ifood.Domain
     {
         public string id { get; set; }
         public string name { get; set; }
-        public string taxPayerIdentificationNumber { get; set; }
+        public string taxPayerIdentificationNumber { get; set; } //CPF do cliente
         public string phone { get; set; }
         public string email { get; set; }
     }
