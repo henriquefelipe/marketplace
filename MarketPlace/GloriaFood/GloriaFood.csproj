@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="Domain\client_address_parts.cs" />
     <Compile Include="Domain\item.cs" />
+    <Compile Include="Domain\menu.cs" />
+    <Compile Include="Domain\menu_categories.cs" />
+    <Compile Include="Domain\menu_item.cs" />
+    <Compile Include="Domain\menu_item_group.cs" />
+    <Compile Include="Domain\menu_item_group_option.cs" />
+    <Compile Include="Domain\menu_item_size.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\orderitem.cs" />
     <Compile Include="Domain\polling.cs" />

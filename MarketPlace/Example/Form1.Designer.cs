@@ -53,11 +53,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnGloriaFoodParar = new System.Windows.Forms.Button();
-            this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.gridGloriaGood = new System.Windows.Forms.DataGridView();
             this.txtGloriaFoodToken = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.gridGloriaGood = new System.Windows.Forms.DataGridView();
+            this.btnGloriaFoodParar = new System.Windows.Forms.Button();
+            this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.btnGloriaFoodMenu = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
@@ -329,6 +330,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnGloriaFoodMenu);
             this.tabPage2.Controls.Add(this.gridGloriaGood);
             this.tabPage2.Controls.Add(this.txtGloriaFoodToken);
             this.tabPage2.Controls.Add(this.label6);
@@ -341,6 +343,32 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gloria Food";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // gridGloriaGood
+            // 
+            this.gridGloriaGood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridGloriaGood.Location = new System.Drawing.Point(12, 113);
+            this.gridGloriaGood.Name = "gridGloriaGood";
+            this.gridGloriaGood.Size = new System.Drawing.Size(1209, 551);
+            this.gridGloriaGood.TabIndex = 8;
+            // 
+            // txtGloriaFoodToken
+            // 
+            this.txtGloriaFoodToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGloriaFoodToken.Location = new System.Drawing.Point(128, 22);
+            this.txtGloriaFoodToken.Name = "txtGloriaFoodToken";
+            this.txtGloriaFoodToken.Size = new System.Drawing.Size(291, 26);
+            this.txtGloriaFoodToken.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(8, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "TOKEN";
             // 
             // btnGloriaFoodParar
             // 
@@ -365,31 +393,16 @@
             this.btnGloriaFoodIniciar.UseVisualStyleBackColor = true;
             this.btnGloriaFoodIniciar.Click += new System.EventHandler(this.btnGloriaFoodIniciar_Click);
             // 
-            // txtGloriaFoodToken
+            // btnGloriaFoodMenu
             // 
-            this.txtGloriaFoodToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGloriaFoodToken.Location = new System.Drawing.Point(128, 22);
-            this.txtGloriaFoodToken.Name = "txtGloriaFoodToken";
-            this.txtGloriaFoodToken.Size = new System.Drawing.Size(291, 26);
-            this.txtGloriaFoodToken.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "TOKEN";
-            // 
-            // gridGloriaGood
-            // 
-            this.gridGloriaGood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridGloriaGood.Location = new System.Drawing.Point(12, 113);
-            this.gridGloriaGood.Name = "gridGloriaGood";
-            this.gridGloriaGood.Size = new System.Drawing.Size(1209, 551);
-            this.gridGloriaGood.TabIndex = 8;
+            this.btnGloriaFoodMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGloriaFoodMenu.Location = new System.Drawing.Point(12, 68);
+            this.btnGloriaFoodMenu.Name = "btnGloriaFoodMenu";
+            this.btnGloriaFoodMenu.Size = new System.Drawing.Size(171, 39);
+            this.btnGloriaFoodMenu.TabIndex = 9;
+            this.btnGloriaFoodMenu.Text = "Buscar Menu";
+            this.btnGloriaFoodMenu.UseVisualStyleBackColor = true;
+            this.btnGloriaFoodMenu.Click += new System.EventHandler(this.btnGloriaFoodMenu_Click);
             // 
             // Form1
             // 
@@ -448,6 +461,7 @@
         private System.Windows.Forms.Button btnGloriaFoodParar;
         private System.Windows.Forms.Button btnGloriaFoodIniciar;
         private System.Windows.Forms.DataGridView gridGloriaGood;
+        private System.Windows.Forms.Button btnGloriaFoodMenu;
     }
 }
 

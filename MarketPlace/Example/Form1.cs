@@ -521,6 +521,30 @@ namespace Example
             }
         }
 
+        private void btnGloriaFoodMenu_Click(object sender, EventArgs e)
+        {
+            if(btnGloriaFoodIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia primeiro o gloria food");
+                return;
+            }
+
+            var gloriaService = new GloriaFoodService();
+            var menu = gloriaService.Menu(_gloriaToken);
+            if (menu.Success)
+            {
+                gridGloriaGood.DataSource = menu.Result.categories.ToList();
+                gridGloriaGood.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(menu.Message);
+                return;
+            }
+        }
+
         #endregion
+
+
     }
 }

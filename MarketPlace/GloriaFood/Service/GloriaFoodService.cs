@@ -45,5 +45,29 @@ namespace GloriaFood.Service
 
             return result;
         }
+
+        public GenericResult<menu> Menu(string token)
+        {
+            var result = new GenericResult<menu>();
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.MENU);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", token);
+            request.AddHeader("Accept", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {                
+                result.Result = JsonConvert.DeserializeObject<menu>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
     }
 }

@@ -15,5 +15,11 @@ namespace GloriaFood.Utils
         /// https://github.com/GlobalFood/integration_docs/blob/master/accepted_orders/version_1/ORDER.md
         /// </summary>
         public const string POOL_LOCAL_SYSTEM = "order/pop";
+
+        /// <summary>
+        /// Utilizado para buscar o cardápio
+        /// https://github.com/GlobalFood/integration_docs/blob/master/fetch_menu/README.md
+        /// </summary>
+        public const string MENU = "menu";
     }
 }
