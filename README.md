@@ -4,6 +4,7 @@ Integrações feitas até o momento.
 
   - Gloria Food
   - Ifood
+  - Super Menu
 
 # Gloria Food
 
@@ -41,3 +42,17 @@ Para fazer a integração com ifood é preciso de algumas informações, criei u
 }
 ```
 
+# Super Menu
+
+Links importantes:
+  - https://supermenu.gitbook.io/api-supermenu/  
+
+Para fazer a integração com o super menu é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	SuperMenu: {
+		Token: "Coloca aqui o token"
+	}
+}
+```

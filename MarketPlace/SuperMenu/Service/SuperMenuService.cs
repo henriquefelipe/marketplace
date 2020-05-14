@@ -16,7 +16,41 @@ namespace SuperMenu.Service
         {
             _urlBase = urlBase;
         }
-     
+
+        /// <summary>
+        /// Serve para buscar os dados de um pedido individualmente.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public GenericResult<order> Order(string token, string id)
+        {
+            var result = new GenericResult<order>();
+            result.Result = new order();
+
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", token);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<order>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {               
+                result.Message = "Pedido não encontrado";
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Busca por todos os pedidos de um estabelecimento que ainda não tenham sido integrados com o PDV
         /// </summary>
@@ -29,7 +63,7 @@ namespace SuperMenu.Service
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_EVENTS_POLLING);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", token);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -64,13 +98,12 @@ namespace SuperMenu.Service
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_EVENTS_ACKNOWLEDGMENT);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", token);
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(events);
-            //request.AddParameter("data", events, ParameterType.RequestBody);            
+            request.AddBody(events);                      
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == System.Net.HttpStatusCode.Created)
             {
                 result.Success = true;
             }
@@ -96,8 +129,8 @@ namespace SuperMenu.Service
 
             var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.URL_ORDERS, id, Constants.URL_ORDERS_STATUSES, codeStatus);
             var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            var request = new RestRequest(Method.PATCH);
+            request.AddHeader("Authorization", token);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -114,3 +147,4 @@ namespace SuperMenu.Service
         }
     }   
 }
+

@@ -55,7 +55,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarketPlace.cs" />
+    <Compile Include="MarketPlaceConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -97,6 +97,10 @@
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
       <Name>MarketPlace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperMenu\SuperMenu.csproj">
+      <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
+      <Name>SuperMenu</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
