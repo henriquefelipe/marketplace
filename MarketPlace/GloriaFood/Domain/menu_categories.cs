@@ -11,6 +11,7 @@ namespace GloriaFood.Domain
         public menu_categories()
         {
             items = new List<menu_item>();
+            groups = new List<menu_item_group>();
         }
 
         public int id { get; set; }
@@ -25,5 +26,6 @@ namespace GloriaFood.Domain
         public int? picture_id { get; set; }
         public string hidden_until { get; set; }
         public List<menu_item> items { get; set; }
+        public List<menu_item_group> groups { get; set; }
     }
 }
