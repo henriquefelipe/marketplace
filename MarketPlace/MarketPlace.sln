@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloriaFood", "GloriaFood\Gl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMenu", "SuperMenu\SuperMenu.csproj", "{99E71D2D-C46A-475E-ACA6-DC7B07E82A65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logaroo", "Logaroo\Logaroo.csproj", "{30012C62-CD02-4F82-8FAE-8125778F786D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{99E71D2D-C46A-475E-ACA6-DC7B07E82A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99E71D2D-C46A-475E-ACA6-DC7B07E82A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99E71D2D-C46A-475E-ACA6-DC7B07E82A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30012C62-CD02-4F82-8FAE-8125778F786D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30012C62-CD02-4F82-8FAE-8125778F786D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30012C62-CD02-4F82-8FAE-8125778F786D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30012C62-CD02-4F82-8FAE-8125778F786D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

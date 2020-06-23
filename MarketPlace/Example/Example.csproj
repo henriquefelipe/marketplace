@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Example</RootNamespace>
     <AssemblyName>Example</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,6 +71,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -93,6 +95,10 @@
     <ProjectReference Include="..\Ifood\Ifood.csproj">
       <Project>{72ee52a9-3a7a-43a6-b8e6-b8a10b05f05e}</Project>
       <Name>Ifood</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logaroo\Logaroo.csproj">
+      <Project>{30012c62-cd02-4f82-8fae-8125778f786d}</Project>
+      <Name>Logaroo</Name>
     </ProjectReference>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>

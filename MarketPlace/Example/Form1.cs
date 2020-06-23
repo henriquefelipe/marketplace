@@ -51,6 +51,13 @@ namespace Example
                             txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
                         }
 
+                        if (marketPlace.Logaroo != null)
+                        {
+                            txtLogarooMerchantId.Text = marketPlace.Logaroo.MerchantId;
+                            txtLogarooEmail.Text = marketPlace.Logaroo.Usuario;
+                            txtLogarooSenha.Text = marketPlace.Logaroo.Senha;
+                        }
+
                         if (marketPlace.SuperMenu != null)
                         {
                             txtSuperMenuToken.Text = marketPlace.SuperMenu.Token;
@@ -550,6 +557,197 @@ namespace Example
 
         #endregion
 
+        #region Logaroo
+
+        private string _urlLogarooDesenvolvimento = "https://api.dev.logaroo.com.br/v1/";
+        private void btnLogarooLogin_Click(object sender, EventArgs e)
+        {
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Login(txtLogarooEmail.Text, txtLogarooSenha.Text);
+            if(result.Success)
+            {
+                txtLogarooToken.Text = result.Result.data.token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooBuscarFormaPagamentos_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Payments(txtLogarooToken.Text);
+            if (result.Success)
+            {
+                gridLogaroo.DataSource = result.Result.data.items;
+                gridLogaroo.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooListarPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Orders(txtLogarooToken.Text);
+            if (result.Success)
+            {
+                gridLogaroo.DataSource = result.Result.data.items;
+                gridLogaroo.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooCriarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLogarooMerchantId.Text))
+            {
+                MessageBox.Show("Digite o MerchantId");
+                return;
+            }
+
+            Random randNum = new Random();
+            var reference_id = randNum.Next();
+            
+            var pedido = new Logaroo.Domain.order();
+            pedido.birth = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            pedido.city = "Fortaleza";
+            pedido.customer_email = "sa@bo.lc";
+            pedido.customer_id_number = "9221";
+            pedido.customer_name = "Marcos Tertuliano Saraiva Martins";
+            pedido.customer_phone = "+5585981972243";
+
+            var itens = new List<Logaroo.Domain.orderitem>();
+            var item1 = new Logaroo.Domain.orderitem();
+            item1.name = "teste1";
+            item1.quantity = 1;
+            item1.code = "1";
+            item1.seq = 1;
+            item1.observation = "com gelo";
+            itens.Add(item1);
+
+            var item2 = new Logaroo.Domain.orderitem();
+            item2.name = "teste2";
+            item2.quantity = 2;
+            item2.code = "2";
+            item2.seq = 2;
+            item2.observation = "";
+            itens.Add(item2);
+
+            pedido.addItems(itens);
+
+            pedido.lat = "-3.82660311645193";
+            pedido.lng = "-38.49187777079774";
+            pedido.merchant_id = txtLogarooMerchantId.Text;
+            pedido.neighborhood = "Aldeota";
+            pedido.number = "9862";
+            pedido.origin = "iPOS";
+            pedido.payment_code = "2";
+            pedido.reference_id = reference_id.ToString();
+            pedido.reference_name = "iPOS";
+            pedido.state = "CE";
+            pedido.street = "test";
+            pedido.sub_total = 8.01m;
+            pedido.total_price = 8.01m;
+            pedido.zipcode = "60000000";
+            pedido.status = Logaroo.Enum.OrderStatus.PedidoEmProducao;
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Order(txtLogarooToken.Text, pedido);
+            if (result.Success)
+            {
+                txtLogarooNumeroPedido.Text = reference_id.ToString();
+                MessageBox.Show("Criado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooPedidoProntoParaColeta_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLogarooNumeroPedido.Text))
+            {
+                MessageBox.Show("Digite o Nº do pedido");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.OrderStatus(txtLogarooToken.Text, txtLogarooNumeroPedido.Text, Logaroo.Enum.OrderStatus.PedidoProntoParaColeta);
+            if (result.Success)
+            {               
+                MessageBox.Show("Alterado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogarooRecebido_Click(object sender, EventArgs e)
+        {
+
+        }                        
+
+        private void btnLogarooLogout_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }          
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Logout(txtLogarooToken.Text);
+            if (result.Success)
+            {
+                txtLogarooToken.Text = "";
+                MessageBox.Show("Saiu com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
         #region Super Menu
         private void btnSuperMenuIniciar_Click(object sender, EventArgs e)
         {
@@ -782,6 +980,12 @@ namespace Example
 
         #endregion
 
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            var json = @"{'count':1,'orders':[{'instructions':null,'coupons':[],'tax_list':[],'missed_reason':null,'id':114412588,'total_price':59,'sub_total_price':50,'tax_value':0,'persons':0,'latitude':0,'longitude':0,'client_first_name':'Paulo','client_last_name':'Roberto','client_email':'raffaella_lidiany@outlook.com','client_phone':'+5584987460755','restaurant_name':'Divino Camarão','currency':'BRL','type':'delivery','status':'accepted','source':'mobile_web','pin_skipped':true,'accepted_at':'2020-06-05T21:17:02.000Z','tax_type':'NET','tax_name':'Sales Tax','fulfill_at':'2020-06-05T22:12:02.000Z','reference':null,'restaurant_id':120883,'client_id':7876195,'updated_at':'2020-06-05T21:17:02.000Z','restaurant_phone':'+55 84 2030 7074','restaurant_timezone':'America/Fortaleza','company_account_id':692661,'pos_system_id':13381,'restaurant_key':'bdJYkIErqujJ9qmV3J','restaurant_country':'Brazil','restaurant_city':'Natal','restaurant_state':'Rio Grande do Norte','restaurant_zipcode':'59066-035','restaurant_street':'Av. da Integração, 3491- Candelária','restaurant_latitude':'-5.842292073108915','restaurant_longitude':'-35.22011252883607','restaurant_token':'','gateway_transaction_id':null,'gateway_type':null,'api_version':2,'payment':'CARD','for_later':false,'client_address':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09, Terminal de ônibus da Conceição , 59074-330, Felipe camarão ','client_address_parts':{'street':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09','city':'Felipe camarão ','zipcode':'59074-330','more_address':'Terminal de ônibus da Conceição '},'items':[{'id':144328153,'name':'DELIVERY_FEE','total_item_price':9,'price':9,'quantity':1,'instructions':null,'type':'delivery_fee','type_id':243971,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]},{'id':144329357,'name':'Promoção Sexta/ Camarão internacional','total_item_price':50,'price':50,'quantity':1,'instructions':'','type':'item','type_id':4098465,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]}]}]}";
+            var t = JsonConvert.DeserializeObject<GloriaFood.Domain.polling>(json);
+        }
 
+        
     }
 }

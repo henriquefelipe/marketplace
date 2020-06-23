@@ -53,22 +53,43 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnTeste = new System.Windows.Forms.Button();
             this.btnGloriaFoodMenu = new System.Windows.Forms.Button();
             this.gridGloriaGood = new System.Windows.Forms.DataGridView();
             this.txtGloriaFoodToken = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.gridLogaroo = new System.Windows.Forms.DataGridView();
+            this.btnLogarooRecebido = new System.Windows.Forms.Button();
+            this.btnLogarooPedidoProntoParaColeta = new System.Windows.Forms.Button();
+            this.btnLogarooCriarPedido = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtLogarooNumeroPedido = new System.Windows.Forms.TextBox();
+            this.btnLogarooListarPedidos = new System.Windows.Forms.Button();
+            this.btnLogarooBuscarFormaPagamentos = new System.Windows.Forms.Button();
+            this.btnLogarooLogin = new System.Windows.Forms.Button();
+            this.txtLogarooToken = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtLogarooSenha = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLogarooEmail = new System.Windows.Forms.TextBox();
+            this.txtLogarooMerchantId = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
+            this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
+            this.btnSuperMenuSaiuParaSerEntregue = new System.Windows.Forms.Button();
+            this.btnSuperMenuConfirmar = new System.Windows.Forms.Button();
             this.gridSuperMenu = new System.Windows.Forms.DataGridView();
             this.txtSuperMenuToken = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
-            this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
-            this.btnSuperMenuSaiuParaSerEntregue = new System.Windows.Forms.Button();
-            this.btnSuperMenuConfirmar = new System.Windows.Forms.Button();
+            this.btnLogarooSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnLogarooLogout = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
@@ -76,6 +97,8 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +107,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -343,6 +367,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnTeste);
             this.tabPage2.Controls.Add(this.btnGloriaFoodMenu);
             this.tabPage2.Controls.Add(this.gridGloriaGood);
             this.tabPage2.Controls.Add(this.txtGloriaFoodToken);
@@ -356,6 +381,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gloria Food";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnTeste
+            // 
+            this.btnTeste.Location = new System.Drawing.Point(636, 73);
+            this.btnTeste.Name = "btnTeste";
+            this.btnTeste.Size = new System.Drawing.Size(149, 23);
+            this.btnTeste.TabIndex = 10;
+            this.btnTeste.Text = "Teste";
+            this.btnTeste.UseVisualStyleBackColor = true;
+            this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
             // 
             // btnGloriaFoodMenu
             // 
@@ -417,6 +452,199 @@
             this.btnGloriaFoodIniciar.UseVisualStyleBackColor = true;
             this.btnGloriaFoodIniciar.Click += new System.EventHandler(this.btnGloriaFoodIniciar_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btnLogarooLogout);
+            this.tabPage4.Controls.Add(this.btnLogarooSaiuParaEntrega);
+            this.tabPage4.Controls.Add(this.gridLogaroo);
+            this.tabPage4.Controls.Add(this.btnLogarooRecebido);
+            this.tabPage4.Controls.Add(this.btnLogarooPedidoProntoParaColeta);
+            this.tabPage4.Controls.Add(this.btnLogarooCriarPedido);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.txtLogarooNumeroPedido);
+            this.tabPage4.Controls.Add(this.btnLogarooListarPedidos);
+            this.tabPage4.Controls.Add(this.btnLogarooBuscarFormaPagamentos);
+            this.tabPage4.Controls.Add(this.btnLogarooLogin);
+            this.tabPage4.Controls.Add(this.txtLogarooToken);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.txtLogarooSenha);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.txtLogarooEmail);
+            this.tabPage4.Controls.Add(this.txtLogarooMerchantId);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Logaroo";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // gridLogaroo
+            // 
+            this.gridLogaroo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridLogaroo.Location = new System.Drawing.Point(8, 273);
+            this.gridLogaroo.Name = "gridLogaroo";
+            this.gridLogaroo.Size = new System.Drawing.Size(1209, 404);
+            this.gridLogaroo.TabIndex = 26;
+            // 
+            // btnLogarooRecebido
+            // 
+            this.btnLogarooRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooRecebido.Location = new System.Drawing.Point(815, 209);
+            this.btnLogarooRecebido.Name = "btnLogarooRecebido";
+            this.btnLogarooRecebido.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooRecebido.TabIndex = 25;
+            this.btnLogarooRecebido.Text = "Recebido";
+            this.btnLogarooRecebido.UseVisualStyleBackColor = true;
+            this.btnLogarooRecebido.Click += new System.EventHandler(this.btnLogarooRecebido_Click);
+            // 
+            // btnLogarooPedidoProntoParaColeta
+            // 
+            this.btnLogarooPedidoProntoParaColeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooPedidoProntoParaColeta.Location = new System.Drawing.Point(373, 209);
+            this.btnLogarooPedidoProntoParaColeta.Name = "btnLogarooPedidoProntoParaColeta";
+            this.btnLogarooPedidoProntoParaColeta.Size = new System.Drawing.Size(251, 33);
+            this.btnLogarooPedidoProntoParaColeta.TabIndex = 24;
+            this.btnLogarooPedidoProntoParaColeta.Text = "Pedido pronto para coleta";
+            this.btnLogarooPedidoProntoParaColeta.UseVisualStyleBackColor = true;
+            this.btnLogarooPedidoProntoParaColeta.Click += new System.EventHandler(this.btnLogarooPedidoProntoParaColeta_Click);
+            // 
+            // btnLogarooCriarPedido
+            // 
+            this.btnLogarooCriarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooCriarPedido.Location = new System.Drawing.Point(815, 167);
+            this.btnLogarooCriarPedido.Name = "btnLogarooCriarPedido";
+            this.btnLogarooCriarPedido.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooCriarPedido.TabIndex = 23;
+            this.btnLogarooCriarPedido.Text = "Criar Pedido";
+            this.btnLogarooCriarPedido.UseVisualStyleBackColor = true;
+            this.btnLogarooCriarPedido.Click += new System.EventHandler(this.btnLogarooCriarPedido_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(19, 219);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 20);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Nº Pedido";
+            // 
+            // txtLogarooNumeroPedido
+            // 
+            this.txtLogarooNumeroPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogarooNumeroPedido.Location = new System.Drawing.Point(153, 216);
+            this.txtLogarooNumeroPedido.Name = "txtLogarooNumeroPedido";
+            this.txtLogarooNumeroPedido.Size = new System.Drawing.Size(187, 26);
+            this.txtLogarooNumeroPedido.TabIndex = 21;
+            // 
+            // btnLogarooListarPedidos
+            // 
+            this.btnLogarooListarPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooListarPedidos.Location = new System.Drawing.Point(631, 167);
+            this.btnLogarooListarPedidos.Name = "btnLogarooListarPedidos";
+            this.btnLogarooListarPedidos.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooListarPedidos.TabIndex = 20;
+            this.btnLogarooListarPedidos.Text = "Listar Pedidos";
+            this.btnLogarooListarPedidos.UseVisualStyleBackColor = true;
+            this.btnLogarooListarPedidos.Click += new System.EventHandler(this.btnLogarooListarPedidos_Click);
+            // 
+            // btnLogarooBuscarFormaPagamentos
+            // 
+            this.btnLogarooBuscarFormaPagamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooBuscarFormaPagamentos.Location = new System.Drawing.Point(372, 167);
+            this.btnLogarooBuscarFormaPagamentos.Name = "btnLogarooBuscarFormaPagamentos";
+            this.btnLogarooBuscarFormaPagamentos.Size = new System.Drawing.Size(253, 33);
+            this.btnLogarooBuscarFormaPagamentos.TabIndex = 19;
+            this.btnLogarooBuscarFormaPagamentos.Text = "Buscar Forma de Pagamentos";
+            this.btnLogarooBuscarFormaPagamentos.UseVisualStyleBackColor = true;
+            this.btnLogarooBuscarFormaPagamentos.Click += new System.EventHandler(this.btnLogarooBuscarFormaPagamentos_Click);
+            // 
+            // btnLogarooLogin
+            // 
+            this.btnLogarooLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooLogin.Location = new System.Drawing.Point(12, 167);
+            this.btnLogarooLogin.Name = "btnLogarooLogin";
+            this.btnLogarooLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnLogarooLogin.TabIndex = 18;
+            this.btnLogarooLogin.Text = "Login";
+            this.btnLogarooLogin.UseVisualStyleBackColor = true;
+            this.btnLogarooLogin.Click += new System.EventHandler(this.btnLogarooLogin_Click);
+            // 
+            // txtLogarooToken
+            // 
+            this.txtLogarooToken.Enabled = false;
+            this.txtLogarooToken.Location = new System.Drawing.Point(768, 19);
+            this.txtLogarooToken.Multiline = true;
+            this.txtLogarooToken.Name = "txtLogarooToken";
+            this.txtLogarooToken.Size = new System.Drawing.Size(438, 102);
+            this.txtLogarooToken.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(697, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 20);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Token";
+            // 
+            // txtLogarooSenha
+            // 
+            this.txtLogarooSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogarooSenha.Location = new System.Drawing.Point(153, 95);
+            this.txtLogarooSenha.Name = "txtLogarooSenha";
+            this.txtLogarooSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtLogarooSenha.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(8, 101);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Senha";
+            // 
+            // txtLogarooEmail
+            // 
+            this.txtLogarooEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogarooEmail.Location = new System.Drawing.Point(153, 56);
+            this.txtLogarooEmail.Name = "txtLogarooEmail";
+            this.txtLogarooEmail.Size = new System.Drawing.Size(187, 26);
+            this.txtLogarooEmail.TabIndex = 13;
+            // 
+            // txtLogarooMerchantId
+            // 
+            this.txtLogarooMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogarooMerchantId.Location = new System.Drawing.Point(153, 16);
+            this.txtLogarooMerchantId.Name = "txtLogarooMerchantId";
+            this.txtLogarooMerchantId.Size = new System.Drawing.Size(187, 26);
+            this.txtLogarooMerchantId.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 20);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "MerchantId";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(8, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 20);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Email";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.btnSuperMenuCancelar);
@@ -434,6 +662,50 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Super Menu";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnSuperMenuCancelar
+            // 
+            this.btnSuperMenuCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuCancelar.Location = new System.Drawing.Point(519, 81);
+            this.btnSuperMenuCancelar.Name = "btnSuperMenuCancelar";
+            this.btnSuperMenuCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuCancelar.TabIndex = 18;
+            this.btnSuperMenuCancelar.Text = "Cancelar";
+            this.btnSuperMenuCancelar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuCancelar.Click += new System.EventHandler(this.btnSuperMenuCancelar_Click);
+            // 
+            // btnSuperMenuRejeitar
+            // 
+            this.btnSuperMenuRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuRejeitar.Location = new System.Drawing.Point(368, 81);
+            this.btnSuperMenuRejeitar.Name = "btnSuperMenuRejeitar";
+            this.btnSuperMenuRejeitar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuRejeitar.TabIndex = 17;
+            this.btnSuperMenuRejeitar.Text = "Rejeitar";
+            this.btnSuperMenuRejeitar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuRejeitar.Click += new System.EventHandler(this.btnSuperMenuRejeitar_Click);
+            // 
+            // btnSuperMenuSaiuParaSerEntregue
+            // 
+            this.btnSuperMenuSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuSaiuParaSerEntregue.Location = new System.Drawing.Point(163, 81);
+            this.btnSuperMenuSaiuParaSerEntregue.Name = "btnSuperMenuSaiuParaSerEntregue";
+            this.btnSuperMenuSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
+            this.btnSuperMenuSaiuParaSerEntregue.TabIndex = 16;
+            this.btnSuperMenuSaiuParaSerEntregue.Text = "Saiu para ser entregue";
+            this.btnSuperMenuSaiuParaSerEntregue.UseVisualStyleBackColor = true;
+            this.btnSuperMenuSaiuParaSerEntregue.Click += new System.EventHandler(this.btnSuperMenuSaiuParaSerEntregue_Click);
+            // 
+            // btnSuperMenuConfirmar
+            // 
+            this.btnSuperMenuConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuConfirmar.Location = new System.Drawing.Point(12, 81);
+            this.btnSuperMenuConfirmar.Name = "btnSuperMenuConfirmar";
+            this.btnSuperMenuConfirmar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuConfirmar.TabIndex = 15;
+            this.btnSuperMenuConfirmar.Text = "Confirmar";
+            this.btnSuperMenuConfirmar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuConfirmar.Click += new System.EventHandler(this.btnSuperMenuConfirmar_Click);
             // 
             // gridSuperMenu
             // 
@@ -485,49 +757,27 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // btnSuperMenuCancelar
+            // btnLogarooSaiuParaEntrega
             // 
-            this.btnSuperMenuCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuCancelar.Location = new System.Drawing.Point(519, 81);
-            this.btnSuperMenuCancelar.Name = "btnSuperMenuCancelar";
-            this.btnSuperMenuCancelar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuCancelar.TabIndex = 18;
-            this.btnSuperMenuCancelar.Text = "Cancelar";
-            this.btnSuperMenuCancelar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuCancelar.Click += new System.EventHandler(this.btnSuperMenuCancelar_Click);
+            this.btnLogarooSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooSaiuParaEntrega.Location = new System.Drawing.Point(631, 209);
+            this.btnLogarooSaiuParaEntrega.Name = "btnLogarooSaiuParaEntrega";
+            this.btnLogarooSaiuParaEntrega.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooSaiuParaEntrega.TabIndex = 27;
+            this.btnLogarooSaiuParaEntrega.Text = "Saiu para entrega";
+            this.btnLogarooSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnLogarooSaiuParaEntrega.Click += new System.EventHandler(this.btnLogarooSaiuParaEntrega_Click);
             // 
-            // btnSuperMenuRejeitar
+            // btnLogarooLogout
             // 
-            this.btnSuperMenuRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuRejeitar.Location = new System.Drawing.Point(368, 81);
-            this.btnSuperMenuRejeitar.Name = "btnSuperMenuRejeitar";
-            this.btnSuperMenuRejeitar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuRejeitar.TabIndex = 17;
-            this.btnSuperMenuRejeitar.Text = "Rejeitar";
-            this.btnSuperMenuRejeitar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuRejeitar.Click += new System.EventHandler(this.btnSuperMenuRejeitar_Click);
-            // 
-            // btnSuperMenuSaiuParaSerEntregue
-            // 
-            this.btnSuperMenuSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuSaiuParaSerEntregue.Location = new System.Drawing.Point(163, 81);
-            this.btnSuperMenuSaiuParaSerEntregue.Name = "btnSuperMenuSaiuParaSerEntregue";
-            this.btnSuperMenuSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
-            this.btnSuperMenuSaiuParaSerEntregue.TabIndex = 16;
-            this.btnSuperMenuSaiuParaSerEntregue.Text = "Saiu para ser entregue";
-            this.btnSuperMenuSaiuParaSerEntregue.UseVisualStyleBackColor = true;
-            this.btnSuperMenuSaiuParaSerEntregue.Click += new System.EventHandler(this.btnSuperMenuSaiuParaSerEntregue_Click);
-            // 
-            // btnSuperMenuConfirmar
-            // 
-            this.btnSuperMenuConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuConfirmar.Location = new System.Drawing.Point(12, 81);
-            this.btnSuperMenuConfirmar.Name = "btnSuperMenuConfirmar";
-            this.btnSuperMenuConfirmar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuConfirmar.TabIndex = 15;
-            this.btnSuperMenuConfirmar.Text = "Confirmar";
-            this.btnSuperMenuConfirmar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuConfirmar.Click += new System.EventHandler(this.btnSuperMenuConfirmar_Click);
+            this.btnLogarooLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooLogout.Location = new System.Drawing.Point(195, 167);
+            this.btnLogarooLogout.Name = "btnLogarooLogout";
+            this.btnLogarooLogout.Size = new System.Drawing.Size(145, 33);
+            this.btnLogarooLogout.TabIndex = 28;
+            this.btnLogarooLogout.Text = "Sair";
+            this.btnLogarooLogout.UseVisualStyleBackColor = true;
+            this.btnLogarooLogout.Click += new System.EventHandler(this.btnLogarooLogout_Click);
             // 
             // Form1
             // 
@@ -550,6 +800,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
@@ -600,6 +853,27 @@
         private System.Windows.Forms.Button btnSuperMenuRejeitar;
         private System.Windows.Forms.Button btnSuperMenuSaiuParaSerEntregue;
         private System.Windows.Forms.Button btnSuperMenuConfirmar;
+        private System.Windows.Forms.Button btnTeste;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox txtLogarooSenha;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtLogarooEmail;
+        private System.Windows.Forms.TextBox txtLogarooMerchantId;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtLogarooToken;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnLogarooListarPedidos;
+        private System.Windows.Forms.Button btnLogarooBuscarFormaPagamentos;
+        private System.Windows.Forms.Button btnLogarooLogin;
+        private System.Windows.Forms.Button btnLogarooRecebido;
+        private System.Windows.Forms.Button btnLogarooPedidoProntoParaColeta;
+        private System.Windows.Forms.Button btnLogarooCriarPedido;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtLogarooNumeroPedido;
+        private System.Windows.Forms.DataGridView gridLogaroo;
+        private System.Windows.Forms.Button btnLogarooLogout;
+        private System.Windows.Forms.Button btnLogarooSaiuParaEntrega;
     }
 }
 

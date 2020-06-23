@@ -9,13 +9,16 @@ namespace Ifood.Enum
 {
     public enum CancelamentCode
     {
+        [Description("Problema de Sistema")]
+        Problema_de_Sistema = 501,
+
         [Description("Pedido em duplicidade")]
         Pedido_em_duplicidade = 502,
 
         [Description("Item indisponível")]
         Item_indisponível = 503,
 
-        [Description("")]
+        [Description("Restaurante sem Motoboy")]
         Restaurante_sem_motoboy = 504,
 
         [Description("Cardápio desatualizado")]
@@ -41,11 +44,11 @@ namespace Ifood.Enum
 
         [Description("Restaurante fechou mais cedo")]
         Restaurante_fechou_mais_cedo = 513,
-
-        [Description("Outro (descrição obrigatória)")]
+        
+        [Description("Problema de sistema")]
         Outro_descricao_obrigatoria = 801,
 
-        [Description("Menu não disponível")]
+        [Description("Item Indisponivel")]
         Menu_nao_disponivel = 803,
 
         //[Description("Restaurante sem motoboy")]

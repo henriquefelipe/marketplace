@@ -17,7 +17,7 @@ namespace SuperMenu.Domain
         public string createdAt { get; set; }
         public string type { get; set; }
         public merchant merchant { get; set; }
-        public List<payment> payments { get; set; }
+        public payment payment { get; set; }
         public customer customer { get; set; }
         public List<item> items { get; set; }
         public decimal subTotal { get; set; }

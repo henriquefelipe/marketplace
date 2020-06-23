@@ -10,7 +10,7 @@ namespace SuperMenu.Domain
     {
         public string kind { get; set; }
         public string label { get; set; }
-        public decimal legend { get; set; }        
+        public string legend { get; set; }        
         public string cvv { get; set; }       
     }
 }

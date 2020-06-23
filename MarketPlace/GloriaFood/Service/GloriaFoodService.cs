@@ -22,51 +22,62 @@ namespace GloriaFood.Service
         }
 
         public GenericResult<IEnumerable<order>> Polling(string token)
-        {            
+        {
             var result = new GenericResult<IEnumerable<order>>();
-
-            var url = string.Format("{0}{1}", _urlBase, Constants.POOL_LOCAL_SYSTEM);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization",  token);
-            request.AddHeader("Accept", "application/json");
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                var pollings = JsonConvert.DeserializeObject<polling>(response.Content);
-                result.Result = pollings.orders;
-                result.Success = true;
-                result.Json = response.Content;
+                var url = string.Format("{0}{1}", _urlBase, Constants.POOL_LOCAL_SYSTEM);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", token);
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var pollings = JsonConvert.DeserializeObject<polling>(response.Content);
+                    result.Result = pollings.orders;
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                result.Message = response.StatusDescription;
+                result.Message = ex.Message;
             }
-
             return result;
         }
 
         public GenericResult<menu> Menu(string token)
         {
             var result = new GenericResult<menu>();
-
-            var url = string.Format("{0}{1}", _urlBase, Constants.MENU);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", token);
-            request.AddHeader("Accept", "application/json");
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {                
-                result.Result = JsonConvert.DeserializeObject<menu>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
-            }
-            else
-            {
-                result.Message = response.StatusDescription;
-            }
+                var url = string.Format("{0}{1}", _urlBase, Constants.MENU);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", token);
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<menu>(response.Content);
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription;
+                }
 
+            }
+            catch (Exception ex)
+            {
+                result.Message = MarketPlace.Util.InnerException(ex);
+            }
             return result;
         }
     }

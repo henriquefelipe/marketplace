@@ -11,6 +11,7 @@ namespace Ifood.Domain
         public order()
         {
             items = new List<item>();
+            benefits = new List<benefits>();
         }
 
         public string id { get; set; }
@@ -29,5 +30,6 @@ namespace Ifood.Domain
         public DateTime deliveryDateTime { get; set; }
         public int preparationTimeInSeconds { get; set; }
         public bool scheduled { get; set; }
+        public List<benefits> benefits { get; set; }
     }
 }

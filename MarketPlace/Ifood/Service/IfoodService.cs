@@ -35,7 +35,7 @@ namespace Ifood.Service
             request.AddParameter("client_secret", client_secret);
             request.AddParameter("grant_type", "password");
             request.AddParameter("username", username);
-            request.AddParameter("password", password);
+            request.AddParameter("password", password);           
             IRestResponse responseToken = client.Execute(request);
 
             if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
@@ -231,7 +231,7 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 result.Success = true;
             }
@@ -260,7 +260,7 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 result.Success = true;
             }
@@ -300,7 +300,7 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 result.Success = true;
             }
@@ -329,7 +329,7 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 result.Success = true;
             }
@@ -358,7 +358,7 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 result.Success = true;
             }
