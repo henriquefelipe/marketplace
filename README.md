@@ -42,6 +42,25 @@ Para fazer a integração com ifood é preciso de algumas informações, criei u
 }
 ```
 
+# Logaroo
+
+Links importantes:
+  - https://logaroo.com.br/
+  - https://api.dev.logaroo.com.br/
+
+Para fazer a integração com logaroo é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler.  
+
+```sh
+{
+	Logaroo: {		
+		MerchantId: "coloca aqui o MerchantId do restaurante",
+		Usuario: "coloca aqui o Usuario do restaurante",
+		Senha: "coloca aqui o Senha do restaurante"
+	}
+}
+```
+
+
 # Super Menu
 
 Links importantes:
