@@ -604,7 +604,7 @@ namespace Example
             }
 
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
-            var result = logarooService.Orders(txtLogarooToken.Text);
+            var result = logarooService.Orders(txtLogarooToken.Text, new Logaroo.Domain.orderfilter());
             if (result.Success)
             {
                 gridLogaroo.DataSource = result.Result.data.items;
@@ -674,13 +674,13 @@ namespace Example
             pedido.sub_total = 8.01m;
             pedido.total_price = 8.01m;
             pedido.zipcode = "60000000";
-            pedido.status = Logaroo.Enum.OrderStatus.PedidoEmProducao;
+            pedido.status = Logaroo.Enum.OrderStatus.PedidoFoiCapturado;
 
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
             var result = logarooService.Order(txtLogarooToken.Text, pedido);
             if (result.Success)
             {
-                txtLogarooNumeroPedido.Text = reference_id.ToString();
+                txtLogarooNumeroPedido.Text = result.Result.data.id.ToString();
                 MessageBox.Show("Criado com sucesso");
             }
             else
@@ -713,17 +713,64 @@ namespace Example
             {
                 MessageBox.Show(result.Message);
             }
+        }        
+
+        private void btnLogarooEmProducao_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLogarooNumeroPedido.Text))
+            {
+                MessageBox.Show("Digite o Nº do pedido");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.OrderStatus(txtLogarooToken.Text, txtLogarooNumeroPedido.Text, Logaroo.Enum.OrderStatus.PedidoSaiuParaEntrega);
+            if (result.Success)
+            {
+                MessageBox.Show("Alterado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
-        private void btnLogarooSaiuParaEntrega_Click(object sender, EventArgs e)
+        private void btnLogarooBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(txtLogarooNumeroPedido.Text))
+            {
+                MessageBox.Show("Digite o Nº do pedido");
+                return;
+            }
+
+            var filter = new Logaroo.Domain.orderfilter();
+            filter.reference_id = txtLogarooNumeroPedido.Text;
+            filter.merchant_id = txtLogarooMerchantId.Text;
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.Orders(txtLogarooToken.Text, filter);
+            if (result.Success)
+            {
+                gridLogaroo.DataSource = result.Result.data.items;
+                gridLogaroo.Refresh();
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
-
-        private void btnLogarooRecebido_Click(object sender, EventArgs e)
-        {
-
-        }                        
 
         private void btnLogarooLogout_Click(object sender, EventArgs e)
         {
@@ -738,7 +785,7 @@ namespace Example
             if (result.Success)
             {
                 txtLogarooToken.Text = "";
-                MessageBox.Show("Saiu com sucesso");
+                MessageBox.Show("Logout com sucesso");
             }
             else
             {

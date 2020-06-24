@@ -61,8 +61,9 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnLogarooLogout = new System.Windows.Forms.Button();
+            this.btnLogarooBuscarPedido = new System.Windows.Forms.Button();
             this.gridLogaroo = new System.Windows.Forms.DataGridView();
-            this.btnLogarooRecebido = new System.Windows.Forms.Button();
             this.btnLogarooPedidoProntoParaColeta = new System.Windows.Forms.Button();
             this.btnLogarooCriarPedido = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -88,8 +89,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.btnLogarooSaiuParaEntrega = new System.Windows.Forms.Button();
-            this.btnLogarooLogout = new System.Windows.Forms.Button();
+            this.btnLogarooEmProducao = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
@@ -454,10 +454,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnLogarooEmProducao);
             this.tabPage4.Controls.Add(this.btnLogarooLogout);
-            this.tabPage4.Controls.Add(this.btnLogarooSaiuParaEntrega);
+            this.tabPage4.Controls.Add(this.btnLogarooBuscarPedido);
             this.tabPage4.Controls.Add(this.gridLogaroo);
-            this.tabPage4.Controls.Add(this.btnLogarooRecebido);
             this.tabPage4.Controls.Add(this.btnLogarooPedidoProntoParaColeta);
             this.tabPage4.Controls.Add(this.btnLogarooCriarPedido);
             this.tabPage4.Controls.Add(this.label12);
@@ -480,6 +480,28 @@
             this.tabPage4.Text = "Logaroo";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnLogarooLogout
+            // 
+            this.btnLogarooLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooLogout.Location = new System.Drawing.Point(195, 167);
+            this.btnLogarooLogout.Name = "btnLogarooLogout";
+            this.btnLogarooLogout.Size = new System.Drawing.Size(145, 33);
+            this.btnLogarooLogout.TabIndex = 28;
+            this.btnLogarooLogout.Text = "Logout";
+            this.btnLogarooLogout.UseVisualStyleBackColor = true;
+            this.btnLogarooLogout.Click += new System.EventHandler(this.btnLogarooLogout_Click);
+            // 
+            // btnLogarooBuscarPedido
+            // 
+            this.btnLogarooBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooBuscarPedido.Location = new System.Drawing.Point(815, 209);
+            this.btnLogarooBuscarPedido.Name = "btnLogarooBuscarPedido";
+            this.btnLogarooBuscarPedido.Size = new System.Drawing.Size(249, 33);
+            this.btnLogarooBuscarPedido.TabIndex = 27;
+            this.btnLogarooBuscarPedido.Text = " Buscar pedido pela referencia";
+            this.btnLogarooBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnLogarooBuscarPedido.Click += new System.EventHandler(this.btnLogarooBuscarPedido_Click);
+            // 
             // gridLogaroo
             // 
             this.gridLogaroo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -488,21 +510,10 @@
             this.gridLogaroo.Size = new System.Drawing.Size(1209, 404);
             this.gridLogaroo.TabIndex = 26;
             // 
-            // btnLogarooRecebido
-            // 
-            this.btnLogarooRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogarooRecebido.Location = new System.Drawing.Point(815, 209);
-            this.btnLogarooRecebido.Name = "btnLogarooRecebido";
-            this.btnLogarooRecebido.Size = new System.Drawing.Size(168, 33);
-            this.btnLogarooRecebido.TabIndex = 25;
-            this.btnLogarooRecebido.Text = "Recebido";
-            this.btnLogarooRecebido.UseVisualStyleBackColor = true;
-            this.btnLogarooRecebido.Click += new System.EventHandler(this.btnLogarooRecebido_Click);
-            // 
             // btnLogarooPedidoProntoParaColeta
             // 
             this.btnLogarooPedidoProntoParaColeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogarooPedidoProntoParaColeta.Location = new System.Drawing.Point(373, 209);
+            this.btnLogarooPedidoProntoParaColeta.Location = new System.Drawing.Point(548, 206);
             this.btnLogarooPedidoProntoParaColeta.Name = "btnLogarooPedidoProntoParaColeta";
             this.btnLogarooPedidoProntoParaColeta.Size = new System.Drawing.Size(251, 33);
             this.btnLogarooPedidoProntoParaColeta.TabIndex = 24;
@@ -527,9 +538,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(19, 219);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 20);
+            this.label12.Size = new System.Drawing.Size(74, 20);
             this.label12.TabIndex = 22;
-            this.label12.Text = "Nº Pedido";
+            this.label12.Text = "id Pedido";
             // 
             // txtLogarooNumeroPedido
             // 
@@ -757,27 +768,16 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // btnLogarooSaiuParaEntrega
+            // btnLogarooEmProducao
             // 
-            this.btnLogarooSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogarooSaiuParaEntrega.Location = new System.Drawing.Point(631, 209);
-            this.btnLogarooSaiuParaEntrega.Name = "btnLogarooSaiuParaEntrega";
-            this.btnLogarooSaiuParaEntrega.Size = new System.Drawing.Size(168, 33);
-            this.btnLogarooSaiuParaEntrega.TabIndex = 27;
-            this.btnLogarooSaiuParaEntrega.Text = "Saiu para entrega";
-            this.btnLogarooSaiuParaEntrega.UseVisualStyleBackColor = true;
-            this.btnLogarooSaiuParaEntrega.Click += new System.EventHandler(this.btnLogarooSaiuParaEntrega_Click);
-            // 
-            // btnLogarooLogout
-            // 
-            this.btnLogarooLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogarooLogout.Location = new System.Drawing.Point(195, 167);
-            this.btnLogarooLogout.Name = "btnLogarooLogout";
-            this.btnLogarooLogout.Size = new System.Drawing.Size(145, 33);
-            this.btnLogarooLogout.TabIndex = 28;
-            this.btnLogarooLogout.Text = "Sair";
-            this.btnLogarooLogout.UseVisualStyleBackColor = true;
-            this.btnLogarooLogout.Click += new System.EventHandler(this.btnLogarooLogout_Click);
+            this.btnLogarooEmProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooEmProducao.Location = new System.Drawing.Point(372, 206);
+            this.btnLogarooEmProducao.Name = "btnLogarooEmProducao";
+            this.btnLogarooEmProducao.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooEmProducao.TabIndex = 29;
+            this.btnLogarooEmProducao.Text = "Em Produção";
+            this.btnLogarooEmProducao.UseVisualStyleBackColor = true;
+            this.btnLogarooEmProducao.Click += new System.EventHandler(this.btnLogarooEmProducao_Click);
             // 
             // Form1
             // 
@@ -866,14 +866,14 @@
         private System.Windows.Forms.Button btnLogarooListarPedidos;
         private System.Windows.Forms.Button btnLogarooBuscarFormaPagamentos;
         private System.Windows.Forms.Button btnLogarooLogin;
-        private System.Windows.Forms.Button btnLogarooRecebido;
         private System.Windows.Forms.Button btnLogarooPedidoProntoParaColeta;
         private System.Windows.Forms.Button btnLogarooCriarPedido;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtLogarooNumeroPedido;
         private System.Windows.Forms.DataGridView gridLogaroo;
         private System.Windows.Forms.Button btnLogarooLogout;
-        private System.Windows.Forms.Button btnLogarooSaiuParaEntrega;
+        private System.Windows.Forms.Button btnLogarooBuscarPedido;
+        private System.Windows.Forms.Button btnLogarooEmProducao;
     }
 }
 

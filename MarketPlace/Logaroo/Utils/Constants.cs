@@ -8,6 +8,7 @@
         public const string URL_LOGOUT = "painel/logout";
         public const string URL_ORDERS = "painel/dm-orders";
         public const string URL_ORDER = "painel/order/import";
+        public const string URL_ORDER_STATUS = "painel/dm-order";
         public const string URL_PAYMENTS = "painel/payments";               
     }
 }

@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\orderfilter.cs" />
+    <Compile Include="Domain\orderstatusresult.cs" />
+    <Compile Include="Domain\ordercreateresult.cs" />
     <Compile Include="Domain\orders.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\payments.cs" />

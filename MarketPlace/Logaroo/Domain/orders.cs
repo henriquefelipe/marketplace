@@ -30,16 +30,15 @@ namespace Logaroo.Domain
         public ordersItemsMerchant merchant { get; set; }
 
         public string reference_id { get; set; }
-        public string reference_name { get; set; }
-        //"routes": [],
+        public string reference_name { get; set; }       
         public string status { get; set; }
-        public decimal store_delivery_rate { get; set; }
-        public decimal store_delivery_dynamic_rate { get; set; }
-        public decimal store_delivery_pick { get; set; }
-        public decimal store_delivery_total { get; set; }
-        public decimal agent_dynamic_rate { get; set; }
-        public decimal agent_pick { get; set; }
-        public decimal agent_total { get; set; }
+        public decimal? store_delivery_rate { get; set; }
+        public decimal? store_delivery_dynamic_rate { get; set; }
+        public decimal? store_delivery_pick { get; set; }
+        public decimal? store_delivery_total { get; set; }
+        public decimal? agent_dynamic_rate { get; set; }
+        public decimal? agent_pick { get; set; }
+        public decimal? agent_total { get; set; }
         public decimal subtotal { get; set; }
         public decimal total_price { get; set; }
         public string birth { get; set; }

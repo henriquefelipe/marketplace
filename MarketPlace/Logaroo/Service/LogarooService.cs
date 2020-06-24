@@ -60,7 +60,7 @@ namespace Logaroo.Service
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {               
                 result.Success = true;                
             }
@@ -114,14 +114,24 @@ namespace Logaroo.Service
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        public GenericResult<orders> Orders(string token)
+        public GenericResult<orders> Orders(string token, orderfilter filter)
         {
-            var result = new GenericResult<orders>();
+            var result = new GenericResult<orders>();            
 
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDERS);
+            if(!string.IsNullOrEmpty(filter.reference_id))
+            {
+                url += "?reference_id=" + filter.reference_id;
+            }
+
+            if (!string.IsNullOrEmpty(filter.merchant_id))
+            {
+                url += "&merchant_id=" + filter.merchant_id;
+            }
+
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));                        
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -148,9 +158,9 @@ namespace Logaroo.Service
         /// <param name="token"></param>        
         /// <param name="order"></param>  
         /// <returns></returns>
-        public GenericSimpleResult Order(string token, order order)
+        public GenericResult<ordercreateresult> Order(string token, order order)
         {
-            var result = new GenericSimpleResult();
+            var result = new GenericResult<ordercreateresult>();
 
             var data = JsonConvert.SerializeObject(order);
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDER);
@@ -163,6 +173,7 @@ namespace Logaroo.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
+                result.Result = JsonConvert.DeserializeObject<ordercreateresult>(response.Content);
                 result.Success = true;
             }
             else
@@ -178,17 +189,16 @@ namespace Logaroo.Service
         /// </summary>
         /// <param name="token"></param>        
         /// <returns></returns>
-        public GenericSimpleResult OrderStatus(string token, string reference_id, string status)
+        public GenericSimpleResult OrderStatus(string token, string id, string status)
         {
             var result = new GenericSimpleResult();
 
             var data = new
-            {
-                reference_id,
+            {                
                 status
             };
             
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER, reference_id);
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER_STATUS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
