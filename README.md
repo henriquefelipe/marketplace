@@ -4,6 +4,7 @@ Integrações feitas até o momento.
 
   - Gloria Food
   - Ifood
+  - Logaroo
   - Super Menu
 
 # Gloria Food
