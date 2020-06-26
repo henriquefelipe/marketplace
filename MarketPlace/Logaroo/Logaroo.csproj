@@ -56,6 +56,7 @@
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\payments.cs" />
     <Compile Include="Domain\login.cs" />
+    <Compile Include="Enum\PaymentCode.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\LogarooService.cs" />
