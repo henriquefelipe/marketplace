@@ -1,5 +1,7 @@
 ﻿using GloriaFood.Service;
 using Newtonsoft.Json;
+using PedZap.Enum;
+using PedZap.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +22,10 @@ namespace Example
         private string _superMenuToken { get; set; }
         private List<SuperMenu.Domain.order> _superMenuOrders { get; set; }
         private string _superMenuReferenceSelected { get; set; }
+
+        private string _pedzap { get; set; }
+        private List<PedZap.Domain.pedido> _pedzapPedidos { get; set; }
+        private int _pedzapReferenceSelected { get; set; }
 
         public Form1()
         {
@@ -77,6 +83,8 @@ namespace Example
             _superMenuOrders = new List<SuperMenu.Domain.order>();
             gridSuperMenu.DataSource = _superMenuOrders.ToList();
             gridSuperMenu.Refresh();
+
+            _pedzapPedidos = new List<PedZap.Domain.pedido>();
         }
 
         #region Ifood
@@ -1033,6 +1041,257 @@ namespace Example
             var t = JsonConvert.DeserializeObject<GloriaFood.Domain.polling>(json);
         }
 
-        
+        #region PedZap
+
+        public async void pedZaoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtPedZapToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtPedZapToken.Enabled = false;
+
+            btnPedZapIniciar.Enabled = false;
+            btnPedZapParar.Enabled = true;
+            _pedzap = txtPedZapToken.Text;
+            await Task.Run(() => pedzap());
+        }
+
+        void pedZapParar()
+        {
+            txtPedZapToken.Enabled = true;
+
+            btnPedZapIniciar.Enabled = true;
+            btnPedZapParar.Enabled = false;
+        }
+
+        private void pedzap()
+        {
+            var pedZapService = new PedZapService();
+
+            try
+            {
+                while (btnPedZapParar.Enabled)
+                {
+                    var orderResult = pedZapService.Pedidos(_pedzap, PedidoStatus.PENDENTE, 0);
+                    if (orderResult.Success)
+                    {
+                        _pedzapPedidos.AddRange(orderResult.Result);
+
+                        WritePedZap();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+                    
+                    Thread.Sleep(100000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridPedZapDelegate();
+        private void WritePedZap()
+        {
+            if (gridPedZap.InvokeRequired)
+            {
+                var d = new WritelstGridPedZapDelegate(WritePedZap);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridPedZap.DataSource = _pedzapPedidos.ToList();
+                gridPedZap.Refresh();
+            }
+        }
+
+        private void gridPedZap_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridPedZap.Rows.Count)
+            {
+                _pedzapReferenceSelected = Convert.ToInt32(gridPedZap.Rows[e.RowIndex].Cells[0].Value.ToString());
+            }
+        }
+
+        private void btnPedZapIniciar_Click(object sender, EventArgs e)
+        {
+            pedZaoIniciar();
+        }
+
+        private void btnPedZapParar_Click(object sender, EventArgs e)
+        {
+            pedZapParar();
+        }
+
+        private void btnPedZapBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido(_pedzap, _pedzapReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido buscado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedZapAceito_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.ACEITO, 1);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido aceito com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedZapRejeitado_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.REJEITADO, 1);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido rejeitado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedZapPreparado_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.PREPARADO, 1);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido preparado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedZapEntregue_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.ENTREGUE, 1);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido entregue com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedZapDesistencia_Click(object sender, EventArgs e)
+        {
+            if (btnPedZapIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_pedzapReferenceSelected == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var pedzapService = new PedZap.Service.PedZapService();
+            var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.DESISTENCIA, 1);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido desistido com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+
     }
 }

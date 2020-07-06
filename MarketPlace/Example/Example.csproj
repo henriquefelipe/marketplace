@@ -103,6 +103,10 @@
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
       <Name>MarketPlace</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PedZap\PedZap.csproj">
+      <Project>{9a45d340-8699-4fc2-9264-d5514b6d511d}</Project>
+      <Name>PedZap</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SuperMenu\SuperMenu.csproj">
       <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
       <Name>SuperMenu</Name>

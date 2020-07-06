@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMenu", "SuperMenu\Supe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logaroo", "Logaroo\Logaroo.csproj", "{30012C62-CD02-4F82-8FAE-8125778F786D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedZap", "PedZap\PedZap.csproj", "{9A45D340-8699-4FC2-9264-D5514B6D511D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{30012C62-CD02-4F82-8FAE-8125778F786D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30012C62-CD02-4F82-8FAE-8125778F786D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30012C62-CD02-4F82-8FAE-8125778F786D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
