@@ -49,10 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\erro_result.cs" />
+    <Compile Include="Domain\cliente.cs" />
     <Compile Include="Domain\pedido.cs" />
     <Compile Include="Domain\pedido_item.cs" />
     <Compile Include="Domain\pedido_item_pergunta.cs" />
     <Compile Include="Domain\pedido_item_resposta.cs" />
+    <Compile Include="Enum\FormaPagamentoTipo.cs" />
     <Compile Include="Enum\PerguntaFormato.cs" />
     <Compile Include="Enum\PedidoOrigem.cs" />
     <Compile Include="Enum\PedidoTipo.cs" />

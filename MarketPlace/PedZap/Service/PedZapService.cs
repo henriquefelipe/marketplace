@@ -46,7 +46,18 @@ namespace PedZap.Service
             }
             else
             {
-                result.Message = response.Content;
+                if (!string.IsNullOrEmpty(response.Content))
+                {
+                    if (response.Content.Contains("Nenhum registro foi encontrado."))
+                    {
+                        result.Result = new List<pedido>();
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = response.Content;
+                    }
+                }
             }
 
             return result;
@@ -66,6 +77,17 @@ namespace PedZap.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var pedido = JsonConvert.DeserializeObject<pedido>(response.Content);
+                var clienteResult = Cliente(token, pedido.cli_id);
+                if(!clienteResult.Success)
+                {
+                    result.Message = "Erro ao buscar cliente: " + clienteResult.Message;
+                    return result;
+                }
+
+                pedido.cli_datacadastral = clienteResult.Result.cli_datacadastral;
+                pedido.cli_nome = clienteResult.Result.cli_nome;
+                pedido.cli_telefone = clienteResult.Result.cli_telefone;
+
                 if (pedido.pedidos_itens)
                 {
                     var resultItens = Pedidos_Itens(token, id);
@@ -90,8 +112,15 @@ namespace PedZap.Service
             }
             else
             {
-                var erro = JsonConvert.DeserializeObject<erro_result>(response.Content);
-                result.Message = erro.descricao;
+                if (!string.IsNullOrEmpty(response.Content))
+                {
+                    var erro = JsonConvert.DeserializeObject<erro_result>(response.Content);
+                    result.Message = erro.descricao;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription;
+                }
             }
 
             return result;
@@ -224,7 +253,7 @@ namespace PedZap.Service
             return result;
         }
 
-        public GenericSimpleResult Pedido_Status(string token, int pedidoid, string status, int entregadorid)
+        public GenericSimpleResult Pedido_Status(string token, int pedidoid, string status, int? entregadorid = null)
         {
             var result = new GenericSimpleResult();
 
@@ -243,8 +272,53 @@ namespace PedZap.Service
             request.RequestFormat = DataFormat.Json;
             request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent || response.StatusCode == 0)
             {
+                result.Success = true;
+            }
+            else
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(response.Content))
+                    {
+                        var erro = JsonConvert.DeserializeObject<erro_result>(response.Content);
+                        result.Message = erro.descricao;
+                    }
+                    else
+                    {
+                        result.Message = response.ErrorMessage;
+                    }
+                }
+                catch
+                {
+                    result.Message = response.Content;
+                }
+            }
+
+            return result;
+        }
+
+        public GenericResult<cliente> Cliente(string token, int id)
+        {
+            var result = new GenericResult<cliente>();
+
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_CLIENTE, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Auth-Token", token);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<cliente>(response.Content);                
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                result.Result = new cliente();
                 result.Success = true;
             }
             else

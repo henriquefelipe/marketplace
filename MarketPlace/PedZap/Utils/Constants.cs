@@ -15,6 +15,7 @@ namespace PedZap.Utils
         public const string URL_PEDIDOS_ITENS = "pedidos_itens";
         public const string URL_PEDIDOS_ITENS_PERGUNTAS = "pedidos_itens_perguntas";
         public const string URL_PEDIDOS_ITENS_RESPOSTAS = "pedidos_itens_respostas";
-        public const string URL_PEDIDOS_STATUS = "pedidos_status";        
+        public const string URL_PEDIDOS_STATUS = "pedidos_status";
+        public const string URL_CLIENTE = "cliente";
     }
 }

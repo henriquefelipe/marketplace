@@ -114,7 +114,7 @@ namespace Ifood.Service
             }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.Content;
             }
 
             return result;
