@@ -43,6 +43,13 @@ Para fazer a integração com ifood é preciso de algumas informações, criei u
 }
 ```
 
+# PedZap
+
+Links importantes:
+  - https://www.pedzap.com.br/
+  - https://pedzap.docs.apiary.io/#introduction/autenticacao
+
+
 # Logaroo
 
 Links importantes:
