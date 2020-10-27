@@ -121,13 +121,13 @@ namespace Logaroo.Service
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDERS);
             if(!string.IsNullOrEmpty(filter.reference_id))
             {
-                url += "?reference_id=" + filter.reference_id;
+                url += "/" + filter.reference_id;
             }
 
-            if (!string.IsNullOrEmpty(filter.merchant_id))
-            {
-                url += "&merchant_id=" + filter.merchant_id;
-            }
+            //if (!string.IsNullOrEmpty(filter.merchant_id))
+            //{
+            //    url += "&merchant_id=" + filter.merchant_id;
+            //}
 
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
@@ -146,7 +146,7 @@ namespace Logaroo.Service
             }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + " " + response.Content;
             }
 
             return result;
@@ -163,7 +163,7 @@ namespace Logaroo.Service
             var result = new GenericResult<ordercreateresult>();
 
             var data = JsonConvert.SerializeObject(order);
-            var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDER);
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDER_IMPORT);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -217,6 +217,41 @@ namespace Logaroo.Service
 
             return result;
         }
-    }   
+
+        /// <summary>
+        /// Obtém todos os pedidos
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public GenericResult<orderresult> GetOrder(string token, string reference_id)
+        {
+            var result = new GenericResult<orderresult>();
+
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER, reference_id);            
+
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<orderresult>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                result.Result = new orderresult();
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.StatusDescription + " " + response.Content;
+            }
+
+            return result;
+        }
+
+    }
 }
 

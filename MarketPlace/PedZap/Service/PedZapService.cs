@@ -55,11 +55,15 @@ namespace PedZap.Service
                     }
                     else
                     {
-                        result.Message = response.Content;
+                        result.Message = response.Content + " " + response.ErrorMessage + " " + response.StatusDescription;
                     }
                 }
+                else
+                {
+                    result.Message = (int)response.StatusCode + " " + response.ErrorMessage + " " + response.StatusDescription;
+                }
             }
-
+            
             return result;
         }
 

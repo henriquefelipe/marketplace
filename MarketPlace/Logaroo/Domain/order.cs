@@ -4,10 +4,15 @@ using System.Collections.Generic;
 namespace Logaroo.Domain
 {
     public class order
-    {        
-        public string reference_id { get; set; }
+    {  
+        public order()
+        {
+            items = new List<orderitem>();
+        }
+
+        public string reference_id { get; set; }        
         public string birth { get; set; }
-        public string reference_name { get; set; }
+        public int sale_channel { get; set; }
         public string origin { get; set; }
         public string merchant_id { get; set; }
         public string city { get; set; }
@@ -26,18 +31,21 @@ namespace Logaroo.Domain
         public decimal total_price { get; set; }
         public string zipcode { get; set; }
         public string status { get; set; }
-        public string items { get; set; }
+        public List<orderitem> items { get; set; }
 
-        public void addItems(List<orderitem> items)
-        {
-            this.items = JsonConvert.SerializeObject(items);
-        }
+        /// <summary>
+        /// Data de agendamento do pedido: pedidos agendados devem ser enviados com status coletado (1)
+        /// </summary>
+        public string delivery_forecast { get; set; }
+
+        public string observation { get; set; }        
+        
     }
    
     public class orderitem
     {
         public int seq { get; set; }
-        public string code { get; set; }
+        public string cod { get; set; }
         public string name { get; set; }
         public string observation { get; set; }
         public decimal quantity { get; set; }

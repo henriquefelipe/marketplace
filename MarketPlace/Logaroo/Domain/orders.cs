@@ -8,6 +8,11 @@ namespace Logaroo.Domain
         public ordersData data { get; set; }
     }
 
+    public class orderresult
+    {
+        public ordersItems data { get; set; }
+    }
+
     public class ordersData
     {        
         public List<ordersItems> items { get; set; }
@@ -21,11 +26,12 @@ namespace Logaroo.Domain
         public int id { get; set; }
         public ordersItemsAddress address { get; set; }
         public ordersItemsCustomer customer { get; set; }
+        public ordersBiker biker { get; set; }
         public string start_delivery { get; set; }
         public string delivery_time { get; set; }
         public List<ordersItemsItems> items { get; set; }
         public string observation { get; set; }
-        public string justifications { get; set; }
+        //public string justifications { get; set; }
         public ordersItemsPayment payment { get; set; }
         public ordersItemsMerchant merchant { get; set; }
 
@@ -44,7 +50,7 @@ namespace Logaroo.Domain
         public string birth { get; set; }
         public string created_at { get; set; }
         public string delivered_at { get; set; }
-        public string updated_at { get; set; }
+        public string updated_at { get; set; }        
     }
 
     public class ordersItemsAddress
@@ -99,6 +105,19 @@ namespace Logaroo.Domain
         public int id { get; set; }
         public string name { get; set; }
         public string slug { get; set; }
+    }
+
+    public class ordersBiker
+    {
+        public int id { get; set; }
+        public string android { get; set; }
+        public string app { get; set; }
+        public int battery { get; set; }
+        public string first_name { get; set; }
+        public bool has_route { get; set; }
+        public string last_name { get; set; }
+        public long lat { get; set; }
+        public long lng { get; set; }
     }
 }
 

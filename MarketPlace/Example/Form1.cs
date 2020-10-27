@@ -1,4 +1,5 @@
 ﻿using GloriaFood.Service;
+using Logaroo.Enum;
 using Newtonsoft.Json;
 using PedZap.Enum;
 using PedZap.Service;
@@ -641,32 +642,30 @@ namespace Example
             Random randNum = new Random();
             var reference_id = randNum.Next();
             
-            var pedido = new Logaroo.Domain.order();
+            var pedido = new Logaroo.Domain.order();            
             pedido.birth = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            pedido.delivery_forecast = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss");
             pedido.city = "Fortaleza";
             pedido.customer_email = "sa@bo.lc";
             pedido.customer_id_number = "9221";
-            pedido.customer_name = "Marcos Tertuliano Saraiva Martins";
+            pedido.customer_name = "IzzyWay Tecnologia";
             pedido.customer_phone = "+5585981972243";
-
-            var itens = new List<Logaroo.Domain.orderitem>();
+            
             var item1 = new Logaroo.Domain.orderitem();
             item1.name = "teste1";
             item1.quantity = 1;
-            item1.code = "1";
+            item1.cod = "1";
             item1.seq = 1;
             item1.observation = "com gelo";
-            itens.Add(item1);
+            pedido.items.Add(item1);
 
             var item2 = new Logaroo.Domain.orderitem();
             item2.name = "teste2";
             item2.quantity = 2;
-            item2.code = "2";
+            item2.cod = "2";
             item2.seq = 2;
             item2.observation = "";
-            itens.Add(item2);
-
-            pedido.addItems(itens);
+            pedido.items.Add(item2);            
 
             pedido.lat = "-3.82660311645193";
             pedido.lng = "-38.49187777079774";
@@ -676,7 +675,7 @@ namespace Example
             pedido.origin = "iPOS";
             pedido.payment_code = "2";
             pedido.reference_id = reference_id.ToString();
-            pedido.reference_name = "iPOS";
+            pedido.sale_channel = OrderReferenceName.CALL_CENTER;
             pedido.state = "CE";
             pedido.street = "test";
             pedido.sub_total = 8.01m;
@@ -763,15 +762,11 @@ namespace Example
                 return;
             }
 
-            var filter = new Logaroo.Domain.orderfilter();
-            filter.reference_id = txtLogarooNumeroPedido.Text;
-            filter.merchant_id = txtLogarooMerchantId.Text;
-
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
-            var result = logarooService.Orders(txtLogarooToken.Text, filter);
+            var result = logarooService.GetOrder(txtLogarooToken.Text, txtLogarooNumeroPedido.Text);
             if (result.Success)
             {
-                gridLogaroo.DataSource = result.Result.data.items;
+                gridLogaroo.DataSource = result.Result.data;
                 gridLogaroo.Refresh();
             }
             else
@@ -794,6 +789,40 @@ namespace Example
             {
                 txtLogarooToken.Text = "";
                 MessageBox.Show("Logout com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnLogarooPedidoEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLogarooNumeroPedido.Text))
+            {
+                MessageBox.Show("Digite o Nº do pedido");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.GetOrder(txtLogarooToken.Text, txtLogarooNumeroPedido.Text);
+            if (result.Success)
+            {
+                if(result.Result.data.status == OrderStatus.PedidoEntregueAoCliente ||
+                    result.Result.data.status == OrderStatus.PedidoComprovanteDePagamentoEntregueAoLojista)
+                {
+                    MessageBox.Show("Pedido entregue");
+                }
+                else
+                {
+                    MessageBox.Show(result.Result.data.status);
+                }
             }
             else
             {
@@ -1290,8 +1319,9 @@ namespace Example
             }
         }
 
+
         #endregion
 
-
+        
     }
 }
