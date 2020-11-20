@@ -48,6 +48,8 @@ namespace PedZap.Domain
         public string cli_datacadastral { get; set; }
         public int? ent_id { get; set; }
         public bool pedidos_itens { get; set; }
+        public decimal ped_desconto { get; set; }
+        public string ped_desconto_cupom { get; set; }
 
         public List<pedido_item> pedido_Items { get; set; }
     }
