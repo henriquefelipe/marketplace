@@ -1,4 +1,5 @@
-﻿using GloriaFood.Service;
+﻿using DeliveryApp.Service;
+using GloriaFood.Service;
 using Logaroo.Enum;
 using Newtonsoft.Json;
 using PedZap.Enum;
@@ -15,6 +16,8 @@ namespace Example
 {
     public partial class Form1 : Form
     {
+        private string _deliveryAppToken { get; set; }
+        private List<DeliveryApp.Domain.order> _deliveryAppOrders { get; set; }
         private string _ifoodToken { get; set; }
         private List<Ifood.Domain.order> _ifoodOrders { get; set; }
         private string _ifoodReferenceSelected { get; set; }
@@ -44,6 +47,11 @@ namespace Example
                     var marketPlace = JsonConvert.DeserializeObject<MarketPlaceConfig>(fileJson);
                     if (marketPlace != null)
                     {
+                        if (marketPlace.DeliveryApp != null)
+                        {
+                            txtDeliveryAppToken.Text = marketPlace.DeliveryApp.Token;
+                        }
+
                         if (marketPlace.Ifood != null)
                         {
                             txtIfoodClient_ID.Text = marketPlace.Ifood.Client_ID;
@@ -72,6 +80,10 @@ namespace Example
                     }
                 }
             }
+
+            _deliveryAppOrders = new List<DeliveryApp.Domain.order>();
+            gridDeliveryApp.DataSource = _deliveryAppOrders.ToList();
+            gridDeliveryApp.Refresh();
 
             _ifoodOrders = new List<Ifood.Domain.order>();
             gridIfood.DataSource = _ifoodOrders.ToList();
@@ -1320,8 +1332,93 @@ namespace Example
         }
 
 
+
         #endregion
 
-        
+        #region DeliveryApp
+        private void btnDeliveryAppIniciar_Click(object sender, EventArgs e)
+        {
+            deliveryAppIniciar();
+        }
+
+        private void btnDeliveryAppParar_Click(object sender, EventArgs e)
+        {
+            deliveryAppParar();
+        }
+
+        public async void deliveryAppIniciar()
+        {
+            if (string.IsNullOrEmpty(txtDeliveryAppToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtDeliveryAppToken.Enabled = false;
+
+            btnDeliveryAppIniciar.Enabled = false;
+            btnDeliveryAppParar.Enabled = true;
+            _deliveryAppToken = txtDeliveryAppToken.Text;
+            await Task.Run(() => deliveryApp());
+        }
+
+        private void deliveryApp()
+        {
+            var deliveryAppService = new DeliveryAppService();
+
+            try
+            {
+                while (btnDeliveryAppParar.Enabled)
+                {
+                    var orderResult = deliveryAppService.Order(_deliveryAppToken);
+                    if (orderResult.Success)
+                    {
+                        _deliveryAppOrders.AddRange(orderResult.Result);
+
+                        WriteGridDeliveryApp();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+                    
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridDeliveryAppDelegate();
+        private void WriteGridDeliveryApp()
+        {
+            if (gridDeliveryApp.InvokeRequired)
+            {
+                var d = new WritelstGridDeliveryAppDelegate(WriteGridDeliveryApp);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridDeliveryApp.DataSource = _deliveryAppOrders.ToList();
+                gridDeliveryApp.Refresh();
+            }
+        }
+
+        void deliveryAppParar()
+        {
+            txtDeliveryAppToken.Enabled = true;
+
+            btnDeliveryAppIniciar.Enabled = true;
+            btnDeliveryAppParar.Enabled = false;
+        }
+
+        #endregion
     }
 }

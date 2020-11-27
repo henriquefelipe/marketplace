@@ -61,6 +61,7 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnLogarooPedidoEntregue = new System.Windows.Forms.Button();
             this.btnLogarooEmProducao = new System.Windows.Forms.Button();
             this.btnLogarooLogout = new System.Windows.Forms.Button();
             this.btnLogarooBuscarPedido = new System.Windows.Forms.Button();
@@ -102,7 +103,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.btnLogarooPedidoEntregue = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.txtDeliveryAppToken = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnDeliveryAppParar = new System.Windows.Forms.Button();
+            this.btnDeliveryAppIniciar = new System.Windows.Forms.Button();
+            this.gridDeliveryApp = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
@@ -116,12 +123,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -496,6 +507,17 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Logaroo";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnLogarooPedidoEntregue
+            // 
+            this.btnLogarooPedidoEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogarooPedidoEntregue.Location = new System.Drawing.Point(1000, 167);
+            this.btnLogarooPedidoEntregue.Name = "btnLogarooPedidoEntregue";
+            this.btnLogarooPedidoEntregue.Size = new System.Drawing.Size(168, 33);
+            this.btnLogarooPedidoEntregue.TabIndex = 30;
+            this.btnLogarooPedidoEntregue.Text = "Pedido Entregue?";
+            this.btnLogarooPedidoEntregue.UseVisualStyleBackColor = true;
+            this.btnLogarooPedidoEntregue.Click += new System.EventHandler(this.btnLogarooPedidoEntregue_Click);
             // 
             // btnLogarooEmProducao
             // 
@@ -933,16 +955,77 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // btnLogarooPedidoEntregue
+            // tabPage6
             // 
-            this.btnLogarooPedidoEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogarooPedidoEntregue.Location = new System.Drawing.Point(1000, 167);
-            this.btnLogarooPedidoEntregue.Name = "btnLogarooPedidoEntregue";
-            this.btnLogarooPedidoEntregue.Size = new System.Drawing.Size(168, 33);
-            this.btnLogarooPedidoEntregue.TabIndex = 30;
-            this.btnLogarooPedidoEntregue.Text = "Pedido Entregue?";
-            this.btnLogarooPedidoEntregue.UseVisualStyleBackColor = true;
-            this.btnLogarooPedidoEntregue.Click += new System.EventHandler(this.btnLogarooPedidoEntregue_Click);
+            this.tabPage6.Controls.Add(this.gridDeliveryApp);
+            this.tabPage6.Controls.Add(this.txtDeliveryAppToken);
+            this.tabPage6.Controls.Add(this.label14);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppParar);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppIniciar);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Delivery App";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Meu Pedido Ai";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // txtDeliveryAppToken
+            // 
+            this.txtDeliveryAppToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryAppToken.Location = new System.Drawing.Point(130, 29);
+            this.txtDeliveryAppToken.Name = "txtDeliveryAppToken";
+            this.txtDeliveryAppToken.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryAppToken.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(10, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 20);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "TOKEN";
+            // 
+            // btnDeliveryAppParar
+            // 
+            this.btnDeliveryAppParar.Enabled = false;
+            this.btnDeliveryAppParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppParar.Location = new System.Drawing.Point(1052, 64);
+            this.btnDeliveryAppParar.Name = "btnDeliveryAppParar";
+            this.btnDeliveryAppParar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppParar.TabIndex = 9;
+            this.btnDeliveryAppParar.Text = "Parar";
+            this.btnDeliveryAppParar.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppParar.Click += new System.EventHandler(this.btnDeliveryAppParar_Click);
+            // 
+            // btnDeliveryAppIniciar
+            // 
+            this.btnDeliveryAppIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppIniciar.Location = new System.Drawing.Point(1052, 13);
+            this.btnDeliveryAppIniciar.Name = "btnDeliveryAppIniciar";
+            this.btnDeliveryAppIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppIniciar.TabIndex = 8;
+            this.btnDeliveryAppIniciar.Text = "Iniciar";
+            this.btnDeliveryAppIniciar.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppIniciar.Click += new System.EventHandler(this.btnDeliveryAppIniciar_Click);
+            // 
+            // gridDeliveryApp
+            // 
+            this.gridDeliveryApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDeliveryApp.Location = new System.Drawing.Point(14, 109);
+            this.gridDeliveryApp.Name = "gridDeliveryApp";
+            this.gridDeliveryApp.Size = new System.Drawing.Size(1209, 551);
+            this.gridDeliveryApp.TabIndex = 12;
             // 
             // Form1
             // 
@@ -974,6 +1057,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1055,6 +1141,13 @@
         private System.Windows.Forms.Button btnPedZapBuscarPedido;
         private System.Windows.Forms.Button btnPedZapDesistencia;
         private System.Windows.Forms.Button btnLogarooPedidoEntregue;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView gridDeliveryApp;
+        private System.Windows.Forms.TextBox txtDeliveryAppToken;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnDeliveryAppParar;
+        private System.Windows.Forms.Button btnDeliveryAppIniciar;
+        private System.Windows.Forms.TabPage tabPage7;
     }
 }
 

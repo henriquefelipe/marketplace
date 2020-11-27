@@ -87,6 +87,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DeliveryApp\DeliveryApp.csproj">
+      <Project>{b95f22fb-e688-4a01-946a-5daf2d5c1457}</Project>
+      <Name>DeliveryApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GloriaFood\GloriaFood.csproj">
       <Project>{572c537e-0dfb-4b13-9b0d-6918d191c4bc}</Project>
       <Name>GloriaFood</Name>

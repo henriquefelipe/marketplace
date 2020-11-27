@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logaroo", "Logaroo\Logaroo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedZap", "PedZap\PedZap.csproj", "{9A45D340-8699-4FC2-9264-D5514B6D511D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryApp", "DeliveryApp\DeliveryApp.csproj", "{B95F22FB-E688-4A01-946A-5DAF2D5C1457}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A45D340-8699-4FC2-9264-D5514B6D511D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95F22FB-E688-4A01-946A-5DAF2D5C1457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95F22FB-E688-4A01-946A-5DAF2D5C1457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95F22FB-E688-4A01-946A-5DAF2D5C1457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95F22FB-E688-4A01-946A-5DAF2D5C1457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
