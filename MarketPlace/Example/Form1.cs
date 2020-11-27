@@ -1,6 +1,7 @@
 ﻿using DeliveryApp.Service;
 using GloriaFood.Service;
 using Logaroo.Enum;
+using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using PedZap.Enum;
 using PedZap.Service;
@@ -16,6 +17,7 @@ namespace Example
 {
     public partial class Form1 : Form
     {
+        #region Variaveis
         private string _deliveryAppToken { get; set; }
         private List<DeliveryApp.Domain.order> _deliveryAppOrders { get; set; }
         private string _ifoodToken { get; set; }
@@ -23,6 +25,9 @@ namespace Example
         private string _ifoodReferenceSelected { get; set; }
         private string _gloriaToken { get; set; }
         private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
+        private string _meuCardapioAiToken { get; set; }
+        private string _meuCardapioAiSelected { get; set; }
+        private List<MeuCardapioAi.Domain.order> _meuCardapioAiOrders { get; set; }
         private string _superMenuToken { get; set; }
         private List<SuperMenu.Domain.order> _superMenuOrders { get; set; }
         private string _superMenuReferenceSelected { get; set; }
@@ -30,6 +35,8 @@ namespace Example
         private string _pedzap { get; set; }
         private List<PedZap.Domain.pedido> _pedzapPedidos { get; set; }
         private int _pedzapReferenceSelected { get; set; }
+
+        #endregion
 
         public Form1()
         {
@@ -66,6 +73,13 @@ namespace Example
                             txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
                         }
 
+                        if (marketPlace.MeuCardapioAi != null)
+                        {
+                            txtMeuCardapioAiClient_ID.Text = marketPlace.MeuCardapioAi.Client_ID;
+                            txtMeuCardapioAiClient_SECRET.Text = marketPlace.MeuCardapioAi.Client_SECRET;
+                            txtMeuCardapioAiURL.Text = marketPlace.MeuCardapioAi.Url;
+                        }
+
                         if (marketPlace.Logaroo != null)
                         {
                             txtLogarooMerchantId.Text = marketPlace.Logaroo.MerchantId;
@@ -92,6 +106,10 @@ namespace Example
             _gloriaOrders = new List<GloriaFood.Domain.order>();
             gridGloriaGood.DataSource = _gloriaOrders.ToList();
             gridGloriaGood.Refresh();
+
+            _meuCardapioAiOrders = new List<MeuCardapioAi.Domain.order>();
+            gridMeuCardapioAi.DataSource = _gloriaOrders.ToList();
+            gridMeuCardapioAi.Refresh();
 
             _superMenuOrders = new List<SuperMenu.Domain.order>();
             gridSuperMenu.DataSource = _superMenuOrders.ToList();
@@ -1420,5 +1438,160 @@ namespace Example
         }
 
         #endregion
+
+        #region Meu Cardápio Ai
+
+        private void btnMeuCardapioAiToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMeuCardapioAiClient_ID.Text))
+            {
+                MessageBox.Show("Campo Client ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtMeuCardapioAiClient_SECRET.Text))
+            {
+                MessageBox.Show("Campo Client SECRET Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtMeuCardapioAiURL.Text))
+            {
+                MessageBox.Show("Campo URl Obrigatório");
+                return;
+            }
+
+            var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
+            var result = meuCardapioAiService.Token(txtMeuCardapioAiClient_ID.Text, txtMeuCardapioAiClient_SECRET.Text);
+            if(result.Success)
+            {
+                txtMeuCardapioAiToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnMeuCardapioAiIniciar_Click(object sender, EventArgs e)
+        {
+            meuCardapioAiIniciar();
+        }
+
+        private void btnMeuCardapioAiParar_Click(object sender, EventArgs e)
+        {
+            meuCardapioAiParar();
+        }
+
+        public async void meuCardapioAiIniciar()
+        {
+            if (string.IsNullOrEmpty(txtMeuCardapioAiToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtMeuCardapioAiClient_ID.Enabled = false;
+            txtMeuCardapioAiClient_SECRET.Enabled = false;
+            txtMeuCardapioAiURL.Enabled = false;
+
+            btnMeuCardapioAiIniciar.Enabled = false;
+            btnMeuCardapioAiParar.Enabled = true;
+            _meuCardapioAiToken = txtMeuCardapioAiToken.Text;
+            await Task.Run(() => meuCardapioAi());
+        }
+
+        private void meuCardapioAi()
+        {
+            var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
+
+            try
+            {
+                while (btnMeuCardapioAiParar.Enabled)
+                {
+                    var orderResult = meuCardapioAiService.Orders(_meuCardapioAiToken, "1");
+                    if (orderResult.Success)
+                    {                        
+                        _meuCardapioAiOrders.AddRange(orderResult.Result.data.pedidos);
+
+                        WriteGridMeuCardapioAi();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridMeuCardapioAiDelegate();
+        private void WriteGridMeuCardapioAi()
+        {
+            if (gridMeuCardapioAi.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridMeuCardapioAiDelegate(WriteGridMeuCardapioAi);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridMeuCardapioAi.DataSource = _meuCardapioAiOrders.ToList();
+                gridMeuCardapioAi.Refresh();
+            }
+        }
+
+        void meuCardapioAiParar()
+        {            
+            btnMeuCardapioAiIniciar.Enabled = true;
+            btnMeuCardapioAiParar.Enabled = false;
+        }
+
+        private void gridMeuCardapioAi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridMeuCardapioAi.Rows.Count)
+            {
+                _meuCardapioAiSelected = gridMeuCardapioAi.Rows[e.RowIndex].Cells[3].Value.ToString();
+            }
+        }
+
+        private void btnMeuCardapioAiBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (btnMeuCardapioAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_meuCardapioAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
+            var result = meuCardapioAiService.Order(_meuCardapioAiToken, _meuCardapioAiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+
     }
 }

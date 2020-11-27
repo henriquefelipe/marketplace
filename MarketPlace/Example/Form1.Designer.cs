@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.gridDeliveryApp = new System.Windows.Forms.DataGridView();
+            this.txtDeliveryAppToken = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnDeliveryAppParar = new System.Windows.Forms.Button();
+            this.btnDeliveryAppIniciar = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnIfoodCancelamentoRejeita = new System.Windows.Forms.Button();
             this.btnIfoodCancelamentoAceita = new System.Windows.Forms.Button();
@@ -60,6 +66,21 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.txtMeuCardapioAiUltimoPedido = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnMeuCardapioAiToken = new System.Windows.Forms.Button();
+            this.txtMeuCardapioAiToken = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.gridMeuCardapioAi = new System.Windows.Forms.DataGridView();
+            this.txtMeuCardapioAiURL = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtMeuCardapioAiClient_SECRET = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtMeuCardapioAiClient_ID = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnMeuCardapioAiParar = new System.Windows.Forms.Button();
+            this.btnMeuCardapioAiIniciar = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnLogarooPedidoEntregue = new System.Windows.Forms.Button();
             this.btnLogarooEmProducao = new System.Windows.Forms.Button();
@@ -103,28 +124,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.txtDeliveryAppToken = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btnDeliveryAppParar = new System.Windows.Forms.Button();
-            this.btnDeliveryAppIniciar = new System.Windows.Forms.Button();
-            this.gridDeliveryApp = new System.Windows.Forms.DataGridView();
+            this.btnMeuCardapioAiBuscarPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMeuCardapioAi)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
-            this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -142,6 +159,69 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1237, 711);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.gridDeliveryApp);
+            this.tabPage6.Controls.Add(this.txtDeliveryAppToken);
+            this.tabPage6.Controls.Add(this.label14);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppParar);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppIniciar);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Delivery App";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // gridDeliveryApp
+            // 
+            this.gridDeliveryApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDeliveryApp.Location = new System.Drawing.Point(14, 109);
+            this.gridDeliveryApp.Name = "gridDeliveryApp";
+            this.gridDeliveryApp.Size = new System.Drawing.Size(1209, 551);
+            this.gridDeliveryApp.TabIndex = 12;
+            // 
+            // txtDeliveryAppToken
+            // 
+            this.txtDeliveryAppToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryAppToken.Location = new System.Drawing.Point(130, 29);
+            this.txtDeliveryAppToken.Name = "txtDeliveryAppToken";
+            this.txtDeliveryAppToken.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryAppToken.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(10, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 20);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "TOKEN";
+            // 
+            // btnDeliveryAppParar
+            // 
+            this.btnDeliveryAppParar.Enabled = false;
+            this.btnDeliveryAppParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppParar.Location = new System.Drawing.Point(1052, 64);
+            this.btnDeliveryAppParar.Name = "btnDeliveryAppParar";
+            this.btnDeliveryAppParar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppParar.TabIndex = 9;
+            this.btnDeliveryAppParar.Text = "Parar";
+            this.btnDeliveryAppParar.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppParar.Click += new System.EventHandler(this.btnDeliveryAppParar_Click);
+            // 
+            // btnDeliveryAppIniciar
+            // 
+            this.btnDeliveryAppIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppIniciar.Location = new System.Drawing.Point(1052, 13);
+            this.btnDeliveryAppIniciar.Name = "btnDeliveryAppIniciar";
+            this.btnDeliveryAppIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppIniciar.TabIndex = 8;
+            this.btnDeliveryAppIniciar.Text = "Iniciar";
+            this.btnDeliveryAppIniciar.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppIniciar.Click += new System.EventHandler(this.btnDeliveryAppIniciar_Click);
             // 
             // tabPage1
             // 
@@ -478,6 +558,165 @@
             this.btnGloriaFoodIniciar.Text = "Iniciar";
             this.btnGloriaFoodIniciar.UseVisualStyleBackColor = true;
             this.btnGloriaFoodIniciar.Click += new System.EventHandler(this.btnGloriaFoodIniciar_Click);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.btnMeuCardapioAiBuscarPedido);
+            this.tabPage7.Controls.Add(this.txtMeuCardapioAiUltimoPedido);
+            this.tabPage7.Controls.Add(this.label19);
+            this.tabPage7.Controls.Add(this.btnMeuCardapioAiToken);
+            this.tabPage7.Controls.Add(this.txtMeuCardapioAiToken);
+            this.tabPage7.Controls.Add(this.label18);
+            this.tabPage7.Controls.Add(this.gridMeuCardapioAi);
+            this.tabPage7.Controls.Add(this.txtMeuCardapioAiURL);
+            this.tabPage7.Controls.Add(this.label17);
+            this.tabPage7.Controls.Add(this.txtMeuCardapioAiClient_SECRET);
+            this.tabPage7.Controls.Add(this.label16);
+            this.tabPage7.Controls.Add(this.txtMeuCardapioAiClient_ID);
+            this.tabPage7.Controls.Add(this.label15);
+            this.tabPage7.Controls.Add(this.btnMeuCardapioAiParar);
+            this.tabPage7.Controls.Add(this.btnMeuCardapioAiIniciar);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Meu Cardário Ai";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // txtMeuCardapioAiUltimoPedido
+            // 
+            this.txtMeuCardapioAiUltimoPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeuCardapioAiUltimoPedido.Location = new System.Drawing.Point(621, 119);
+            this.txtMeuCardapioAiUltimoPedido.Name = "txtMeuCardapioAiUltimoPedido";
+            this.txtMeuCardapioAiUltimoPedido.Size = new System.Drawing.Size(291, 26);
+            this.txtMeuCardapioAiUltimoPedido.TabIndex = 25;
+            this.txtMeuCardapioAiUltimoPedido.Text = "1";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(501, 119);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(107, 20);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "Último Pedido";
+            // 
+            // btnMeuCardapioAiToken
+            // 
+            this.btnMeuCardapioAiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiToken.Location = new System.Drawing.Point(1054, 7);
+            this.btnMeuCardapioAiToken.Name = "btnMeuCardapioAiToken";
+            this.btnMeuCardapioAiToken.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiToken.TabIndex = 23;
+            this.btnMeuCardapioAiToken.Text = "Token";
+            this.btnMeuCardapioAiToken.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiToken.Click += new System.EventHandler(this.btnMeuCardapioAiToken_Click);
+            // 
+            // txtMeuCardapioAiToken
+            // 
+            this.txtMeuCardapioAiToken.Enabled = false;
+            this.txtMeuCardapioAiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeuCardapioAiToken.Location = new System.Drawing.Point(621, 33);
+            this.txtMeuCardapioAiToken.Name = "txtMeuCardapioAiToken";
+            this.txtMeuCardapioAiToken.Size = new System.Drawing.Size(291, 26);
+            this.txtMeuCardapioAiToken.TabIndex = 22;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(501, 36);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(62, 20);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "TOKEN";
+            // 
+            // gridMeuCardapioAi
+            // 
+            this.gridMeuCardapioAi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMeuCardapioAi.Location = new System.Drawing.Point(16, 206);
+            this.gridMeuCardapioAi.Name = "gridMeuCardapioAi";
+            this.gridMeuCardapioAi.Size = new System.Drawing.Size(1209, 458);
+            this.gridMeuCardapioAi.TabIndex = 20;
+            this.gridMeuCardapioAi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMeuCardapioAi_CellClick);
+            // 
+            // txtMeuCardapioAiURL
+            // 
+            this.txtMeuCardapioAiURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeuCardapioAiURL.Location = new System.Drawing.Point(621, 77);
+            this.txtMeuCardapioAiURL.Name = "txtMeuCardapioAiURL";
+            this.txtMeuCardapioAiURL.Size = new System.Drawing.Size(291, 26);
+            this.txtMeuCardapioAiURL.TabIndex = 19;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(501, 80);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 20);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "URL";
+            // 
+            // txtMeuCardapioAiClient_SECRET
+            // 
+            this.txtMeuCardapioAiClient_SECRET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeuCardapioAiClient_SECRET.Location = new System.Drawing.Point(132, 74);
+            this.txtMeuCardapioAiClient_SECRET.Name = "txtMeuCardapioAiClient_SECRET";
+            this.txtMeuCardapioAiClient_SECRET.Size = new System.Drawing.Size(291, 26);
+            this.txtMeuCardapioAiClient_SECRET.TabIndex = 17;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(12, 77);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(123, 20);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "Client_SECRET";
+            // 
+            // txtMeuCardapioAiClient_ID
+            // 
+            this.txtMeuCardapioAiClient_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeuCardapioAiClient_ID.Location = new System.Drawing.Point(132, 33);
+            this.txtMeuCardapioAiClient_ID.Name = "txtMeuCardapioAiClient_ID";
+            this.txtMeuCardapioAiClient_ID.Size = new System.Drawing.Size(291, 26);
+            this.txtMeuCardapioAiClient_ID.TabIndex = 15;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(12, 36);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(75, 20);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Client_ID";
+            // 
+            // btnMeuCardapioAiParar
+            // 
+            this.btnMeuCardapioAiParar.Enabled = false;
+            this.btnMeuCardapioAiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiParar.Location = new System.Drawing.Point(1054, 103);
+            this.btnMeuCardapioAiParar.Name = "btnMeuCardapioAiParar";
+            this.btnMeuCardapioAiParar.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiParar.TabIndex = 13;
+            this.btnMeuCardapioAiParar.Text = "Parar";
+            this.btnMeuCardapioAiParar.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiParar.Click += new System.EventHandler(this.btnMeuCardapioAiParar_Click);
+            // 
+            // btnMeuCardapioAiIniciar
+            // 
+            this.btnMeuCardapioAiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiIniciar.Location = new System.Drawing.Point(1054, 52);
+            this.btnMeuCardapioAiIniciar.Name = "btnMeuCardapioAiIniciar";
+            this.btnMeuCardapioAiIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiIniciar.TabIndex = 12;
+            this.btnMeuCardapioAiIniciar.Text = "Iniciar";
+            this.btnMeuCardapioAiIniciar.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiIniciar.Click += new System.EventHandler(this.btnMeuCardapioAiIniciar_Click);
             // 
             // tabPage4
             // 
@@ -955,77 +1194,16 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // tabPage6
+            // btnMeuCardapioAiBuscarPedido
             // 
-            this.tabPage6.Controls.Add(this.gridDeliveryApp);
-            this.tabPage6.Controls.Add(this.txtDeliveryAppToken);
-            this.tabPage6.Controls.Add(this.label14);
-            this.tabPage6.Controls.Add(this.btnDeliveryAppParar);
-            this.tabPage6.Controls.Add(this.btnDeliveryAppIniciar);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Delivery App";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Meu Pedido Ai";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // txtDeliveryAppToken
-            // 
-            this.txtDeliveryAppToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryAppToken.Location = new System.Drawing.Point(130, 29);
-            this.txtDeliveryAppToken.Name = "txtDeliveryAppToken";
-            this.txtDeliveryAppToken.Size = new System.Drawing.Size(291, 26);
-            this.txtDeliveryAppToken.TabIndex = 11;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(10, 32);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 20);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "TOKEN";
-            // 
-            // btnDeliveryAppParar
-            // 
-            this.btnDeliveryAppParar.Enabled = false;
-            this.btnDeliveryAppParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryAppParar.Location = new System.Drawing.Point(1052, 64);
-            this.btnDeliveryAppParar.Name = "btnDeliveryAppParar";
-            this.btnDeliveryAppParar.Size = new System.Drawing.Size(171, 39);
-            this.btnDeliveryAppParar.TabIndex = 9;
-            this.btnDeliveryAppParar.Text = "Parar";
-            this.btnDeliveryAppParar.UseVisualStyleBackColor = true;
-            this.btnDeliveryAppParar.Click += new System.EventHandler(this.btnDeliveryAppParar_Click);
-            // 
-            // btnDeliveryAppIniciar
-            // 
-            this.btnDeliveryAppIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryAppIniciar.Location = new System.Drawing.Point(1052, 13);
-            this.btnDeliveryAppIniciar.Name = "btnDeliveryAppIniciar";
-            this.btnDeliveryAppIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnDeliveryAppIniciar.TabIndex = 8;
-            this.btnDeliveryAppIniciar.Text = "Iniciar";
-            this.btnDeliveryAppIniciar.UseVisualStyleBackColor = true;
-            this.btnDeliveryAppIniciar.Click += new System.EventHandler(this.btnDeliveryAppIniciar_Click);
-            // 
-            // gridDeliveryApp
-            // 
-            this.gridDeliveryApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDeliveryApp.Location = new System.Drawing.Point(14, 109);
-            this.gridDeliveryApp.Name = "gridDeliveryApp";
-            this.gridDeliveryApp.Size = new System.Drawing.Size(1209, 551);
-            this.gridDeliveryApp.TabIndex = 12;
+            this.btnMeuCardapioAiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiBuscarPedido.Location = new System.Drawing.Point(16, 161);
+            this.btnMeuCardapioAiBuscarPedido.Name = "btnMeuCardapioAiBuscarPedido";
+            this.btnMeuCardapioAiBuscarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiBuscarPedido.TabIndex = 26;
+            this.btnMeuCardapioAiBuscarPedido.Text = "Buscar Pedido";
+            this.btnMeuCardapioAiBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiBuscarPedido.Click += new System.EventHandler(this.btnMeuCardapioAiBuscarPedido_Click);
             // 
             // Form1
             // 
@@ -1039,6 +1217,9 @@
             this.Text = "MarketPlace";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -1048,6 +1229,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMeuCardapioAi)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).EndInit();
@@ -1057,9 +1241,6 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1148,6 +1329,21 @@
         private System.Windows.Forms.Button btnDeliveryAppParar;
         private System.Windows.Forms.Button btnDeliveryAppIniciar;
         private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.DataGridView gridMeuCardapioAi;
+        private System.Windows.Forms.TextBox txtMeuCardapioAiURL;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtMeuCardapioAiClient_SECRET;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtMeuCardapioAiClient_ID;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnMeuCardapioAiParar;
+        private System.Windows.Forms.Button btnMeuCardapioAiIniciar;
+        private System.Windows.Forms.Button btnMeuCardapioAiToken;
+        private System.Windows.Forms.TextBox txtMeuCardapioAiToken;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtMeuCardapioAiUltimoPedido;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnMeuCardapioAiBuscarPedido;
     }
 }
 

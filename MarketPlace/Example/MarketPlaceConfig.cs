@@ -6,7 +6,7 @@ namespace Example
         public MarketPlaceConfigDeliveryApp DeliveryApp { get; set; }
         public MarketPlaceConfigIfood Ifood { get; set; }
         public MarketPlaceConfigGloriaFood Gloria { get; set; }
-        public MarketPlaceConfigMeuPedidoAi MeuPedidoAi { get; set; }
+        public MarketPlaceConfigMeuCardapioAi MeuCardapioAi { get; set; }
         public MarketPlaceConfigLogaroo Logaroo { get; set; }
         public MarketPlaceConfigSuperMenu SuperMenu { get; set; }
     }
@@ -33,10 +33,11 @@ namespace Example
         public string Token { get; set; }       
     }
 
-    public class MarketPlaceConfigMeuPedidoAi
+    public class MarketPlaceConfigMeuCardapioAi
     {
         public string Client_ID { get; set; }
         public string Client_SECRET { get; set; }
+        public string Url { get; set; }
     }
 
     public class MarketPlaceConfigLogaroo

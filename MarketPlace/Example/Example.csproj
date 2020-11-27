@@ -107,6 +107,10 @@
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
       <Name>MarketPlace</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MeuCardapioAi\MeuCardapioAi.csproj">
+      <Project>{494a0d9c-e42d-495b-9881-35e09fc454ba}</Project>
+      <Name>MeuCardapioAi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PedZap\PedZap.csproj">
       <Project>{9a45d340-8699-4fc2-9264-d5514b6d511d}</Project>
       <Name>PedZap</Name>
