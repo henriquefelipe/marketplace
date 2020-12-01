@@ -2,11 +2,29 @@
 
 Integrações feitas até o momento.
 
+  - Anota Ai
   - Gloria Food
   - Ifood
+  - Meu Cardápio Ai
   - Logaroo
   - PedZap
   - Super Menu
+  
+# Anota AI
+
+Links importantes:
+  - https://anota.ai/home/
+  - https://documenter.getpostman.com/view/9867946/SzKTwKH2?version=latest#5960fd00-79d7-373c-99ee-0d92b3676410
+
+Para fazer a integração com o anota ai é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	AnotaAi: {
+		Token: "Coloca aqui o token"
+	}
+}
+```
 
 # Gloria Food
 
@@ -40,6 +58,22 @@ Para fazer a integração com ifood é preciso de algumas informações, criei u
 		MerchantId: "coloca aqui o MerchantId do restaurante",
 		Usuario: "coloca aqui o Usuario do restaurante",
 		Senha: "coloca aqui o Senha do restaurante"
+	}
+}
+```
+
+# Meu Cardápio Ai
+
+Links importantes:
+  - https://meucardapio.ai/
+  - https://documenter.getpostman.com/view/3494108/TVKA3JfR
+
+Para fazer a integração com o meu cardápio ai é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	MeuCardapioAi: {
+		Token: "Coloca aqui o token"
 	}
 }
 ```
