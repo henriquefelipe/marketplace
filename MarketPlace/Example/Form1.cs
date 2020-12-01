@@ -1,4 +1,5 @@
-﻿using DeliveryApp.Service;
+﻿using AnotaAi.Service;
+using DeliveryApp.Service;
 using GloriaFood.Service;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
@@ -18,6 +19,10 @@ namespace Example
     public partial class Form1 : Form
     {
         #region Variaveis
+
+        private string _anotaAiSelected { get; set; }
+        private string _anotaAiToken { get; set; }
+        private List<AnotaAi.Domain.order> _anotaAiOrders { get; set; }
         private string _deliveryAppToken { get; set; }
         private List<DeliveryApp.Domain.order> _deliveryAppOrders { get; set; }
         private string _ifoodToken { get; set; }
@@ -54,6 +59,11 @@ namespace Example
                     var marketPlace = JsonConvert.DeserializeObject<MarketPlaceConfig>(fileJson);
                     if (marketPlace != null)
                     {
+                        if (marketPlace.AnotaAi != null)
+                        {
+                            txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
+                        }
+
                         if (marketPlace.DeliveryApp != null)
                         {
                             txtDeliveryAppToken.Text = marketPlace.DeliveryApp.Token;
@@ -94,6 +104,10 @@ namespace Example
                     }
                 }
             }
+
+            _anotaAiOrders = new List<AnotaAi.Domain.order>();
+            gridAnotaAi.DataSource = _anotaAiOrders.ToList();
+            gridAnotaAi.Refresh();
 
             _deliveryAppOrders = new List<DeliveryApp.Domain.order>();
             gridDeliveryApp.DataSource = _deliveryAppOrders.ToList();
@@ -1583,6 +1597,237 @@ namespace Example
             if (result.Success)
             {
                 MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        #endregion
+
+        #region Anota Ai
+        private void btnAnotaAiIniciar_Click(object sender, EventArgs e)
+        {
+            anotaAiIniciar();
+        }
+
+        private void btnAnotaAiParar_Click(object sender, EventArgs e)
+        {
+            anotaAiParar();
+        }
+
+        public async void anotaAiIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAnotaAiToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtAnotaAiToken.Enabled = false;
+
+            btnAnotaAiIniciar.Enabled = false;
+            btnAnotaAiParar.Enabled = true;
+            _anotaAiToken = txtAnotaAiToken.Text;
+            await Task.Run(() => anotaAi());
+        }
+
+        private void anotaAi()
+        {
+            var anotaAiService = new AnotaAiService();
+
+            try
+            {
+                while (btnAnotaAiParar.Enabled)
+                {
+                    var orderResult = anotaAiService.Orders(_anotaAiToken);
+                    if (orderResult.Success)
+                    {
+                        foreach (var item in orderResult.Result.info.docs)
+                        {
+                            _anotaAiOrders.Add(new AnotaAi.Domain.order { 
+                                id = item._id,
+                                check = item.check
+                            });
+                        }
+
+                        WriteGridAnotaAi();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(30000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridAnotaAiDelegate();
+        private void WriteGridAnotaAi()
+        {
+            if (gridAnotaAi.InvokeRequired)
+            {
+                var d = new WritelstGridAnotaAiDelegate(WriteGridAnotaAi);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAnotaAi.DataSource = _anotaAiOrders.ToList();
+                gridAnotaAi.Refresh();
+            }
+        }
+
+        void anotaAiParar()
+        {
+            txtAnotaAiToken.Enabled = true;
+
+            btnAnotaAiIniciar.Enabled = true;
+            btnAnotaAiParar.Enabled = false;
+        }
+
+        private void gridAnotaAi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAnotaAi.Rows.Count)
+            {
+                _anotaAiSelected = gridAnotaAi.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+        }
+
+        private void btnAnotaAiBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (btnAnotaAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_anotaAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var anotaAiService = new AnotaAiService();
+            var result = anotaAiService.Order(_anotaAiToken, _anotaAiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Buscando pedido com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAnotaAiAceitar_Click(object sender, EventArgs e)
+        {
+            if (btnAnotaAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_anotaAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var anotaAiService = new AnotaAiService();
+            var result = anotaAiService.Accept(_anotaAiToken, _anotaAiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Aceito com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAnotaAiPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (btnAnotaAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_anotaAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var anotaAiService = new AnotaAiService();
+            var result = anotaAiService.Ready(_anotaAiToken, _anotaAiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido pronto com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAnotaAiSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (btnAnotaAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_anotaAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var anotaAiService = new AnotaAiService();
+            var result = anotaAiService.Finalize(_anotaAiToken, _anotaAiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Finalizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAnotaAiCancelar_Click(object sender, EventArgs e)
+        {
+            if (btnAnotaAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_anotaAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var anotaAiService = new AnotaAiService();
+            var result = anotaAiService.Cancel(_anotaAiToken, _anotaAiSelected, "Teste de Api");
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
             }
             else
             {

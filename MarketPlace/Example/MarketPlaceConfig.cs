@@ -3,12 +3,18 @@ namespace Example
 {
     public class MarketPlaceConfig
     {
+        public MarketPlaceConfigAnotaAi AnotaAi { get; set; }
         public MarketPlaceConfigDeliveryApp DeliveryApp { get; set; }
         public MarketPlaceConfigIfood Ifood { get; set; }
         public MarketPlaceConfigGloriaFood Gloria { get; set; }
         public MarketPlaceConfigMeuCardapioAi MeuCardapioAi { get; set; }
         public MarketPlaceConfigLogaroo Logaroo { get; set; }
         public MarketPlaceConfigSuperMenu SuperMenu { get; set; }
+    }
+
+    public class MarketPlaceConfigAnotaAi
+    {
+        public string Token { get; set; }
     }
 
     public class MarketPlaceConfigDeliveryApp
