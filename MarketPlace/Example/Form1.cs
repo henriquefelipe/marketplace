@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace Example
 {
     public partial class Form1 : Form
     {
+        string _configFile;
+
         #region Variaveis
 
         private string _anotaAiSelected { get; set; }
@@ -46,12 +49,25 @@ namespace Example
         public Form1()
         {
             InitializeComponent();
+            _configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"MarketPlace.json");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Verifica se existe o arquivo de configuração
-            using (StreamReader sr = new StreamReader(@"C:\MarketPlace.json"))
+            try
+            {
+                if (!File.Exists(_configFile))
+                {
+                    MarketPlaceConfig newconfig = new MarketPlaceConfig();
+                    File.WriteAllText(_configFile, JsonConvert.SerializeObject(newconfig));
+                }
+            } catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            using (StreamReader sr = new StreamReader(_configFile))
             {
                 string fileJson = sr.ReadToEnd();
                 if (!string.IsNullOrEmpty(fileJson))

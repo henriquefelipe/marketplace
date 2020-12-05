@@ -3,6 +3,16 @@ namespace Example
 {
     public class MarketPlaceConfig
     {
+        public MarketPlaceConfig()
+        {
+            this.AnotaAi = new MarketPlaceConfigAnotaAi();
+            this.DeliveryApp = new MarketPlaceConfigDeliveryApp();
+            this.Ifood = new MarketPlaceConfigIfood();
+            this.Gloria = new MarketPlaceConfigGloriaFood();
+            this.MeuCardapioAi = new MarketPlaceConfigMeuCardapioAi();
+            this.Logaroo = new MarketPlaceConfigLogaroo();
+            this.SuperMenu = new MarketPlaceConfigSuperMenu();
+        }
         public MarketPlaceConfigAnotaAi AnotaAi { get; set; }
         public MarketPlaceConfigDeliveryApp DeliveryApp { get; set; }
         public MarketPlaceConfigIfood Ifood { get; set; }
