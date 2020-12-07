@@ -10,6 +10,7 @@ namespace Example
         public MarketPlaceConfigMeuCardapioAi MeuCardapioAi { get; set; }
         public MarketPlaceConfigLogaroo Logaroo { get; set; }
         public MarketPlaceConfigSuperMenu SuperMenu { get; set; }
+        public MarketPlaceConfigRappi Rappi { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -61,5 +62,12 @@ namespace Example
     public class MarketPlaceConfigSuperMenu
     {
         public string Token { get; set; }
+    }
+
+    public class MarketPlaceConfigRappi
+    {
+        public string Client_ID { get; set; }
+        public string Client_SECRET { get; set; }
+        public string Url { get; set; }
     }
 }

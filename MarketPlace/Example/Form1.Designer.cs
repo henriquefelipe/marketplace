@@ -29,6 +29,17 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnAnotaAiCancelar = new System.Windows.Forms.Button();
+            this.btnAnotaAiSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnAnotaAiPedidoPronto = new System.Windows.Forms.Button();
+            this.btnAnotaAiBuscarPedido = new System.Windows.Forms.Button();
+            this.btnAnotaAiAceitar = new System.Windows.Forms.Button();
+            this.gridAnotaAi = new System.Windows.Forms.DataGridView();
+            this.txtAnotaAiToken = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnAnotaAiParar = new System.Windows.Forms.Button();
+            this.btnAnotaAiIniciar = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.gridDeliveryApp = new System.Windows.Forms.DataGridView();
             this.txtDeliveryAppToken = new System.Windows.Forms.TextBox();
@@ -125,18 +136,25 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.gridAnotaAi = new System.Windows.Forms.DataGridView();
-            this.txtAnotaAiToken = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.btnAnotaAiParar = new System.Windows.Forms.Button();
-            this.btnAnotaAiIniciar = new System.Windows.Forms.Button();
-            this.btnAnotaAiAceitar = new System.Windows.Forms.Button();
-            this.btnAnotaAiBuscarPedido = new System.Windows.Forms.Button();
-            this.btnAnotaAiPedidoPronto = new System.Windows.Forms.Button();
-            this.btnAnotaAiSaiuParaEntrega = new System.Windows.Forms.Button();
-            this.btnAnotaAiCancelar = new System.Windows.Forms.Button();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnRappiToken = new System.Windows.Forms.Button();
+            this.txtRappiToken = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.gridRappi = new System.Windows.Forms.DataGridView();
+            this.txtRappiURL = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtRappiSECRET = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtRappiClientID = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnRappiParar = new System.Windows.Forms.Button();
+            this.btnRappiIniciar = new System.Windows.Forms.Button();
+            this.btnRappiAceitarPedido = new System.Windows.Forms.Button();
+            this.btnRappiPedidoPronto = new System.Windows.Forms.Button();
+            this.btnRappiRejeitado = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -153,8 +171,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
-            this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
+            this.tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -166,6 +184,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -173,6 +192,130 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1237, 711);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.btnAnotaAiCancelar);
+            this.tabPage8.Controls.Add(this.btnAnotaAiSaiuParaEntrega);
+            this.tabPage8.Controls.Add(this.btnAnotaAiPedidoPronto);
+            this.tabPage8.Controls.Add(this.btnAnotaAiBuscarPedido);
+            this.tabPage8.Controls.Add(this.btnAnotaAiAceitar);
+            this.tabPage8.Controls.Add(this.gridAnotaAi);
+            this.tabPage8.Controls.Add(this.txtAnotaAiToken);
+            this.tabPage8.Controls.Add(this.label20);
+            this.tabPage8.Controls.Add(this.btnAnotaAiParar);
+            this.tabPage8.Controls.Add(this.btnAnotaAiIniciar);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Anota Ai";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnAnotaAiCancelar
+            // 
+            this.btnAnotaAiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiCancelar.Location = new System.Drawing.Point(616, 76);
+            this.btnAnotaAiCancelar.Name = "btnAnotaAiCancelar";
+            this.btnAnotaAiCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnAnotaAiCancelar.TabIndex = 22;
+            this.btnAnotaAiCancelar.Text = "Cancelar";
+            this.btnAnotaAiCancelar.UseVisualStyleBackColor = true;
+            this.btnAnotaAiCancelar.Click += new System.EventHandler(this.btnAnotaAiCancelar_Click);
+            // 
+            // btnAnotaAiSaiuParaEntrega
+            // 
+            this.btnAnotaAiSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiSaiuParaEntrega.Location = new System.Drawing.Point(465, 76);
+            this.btnAnotaAiSaiuParaEntrega.Name = "btnAnotaAiSaiuParaEntrega";
+            this.btnAnotaAiSaiuParaEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnAnotaAiSaiuParaEntrega.TabIndex = 21;
+            this.btnAnotaAiSaiuParaEntrega.Text = "Saiu para entrega";
+            this.btnAnotaAiSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnAnotaAiSaiuParaEntrega.Click += new System.EventHandler(this.btnAnotaAiSaiuParaEntrega_Click);
+            // 
+            // btnAnotaAiPedidoPronto
+            // 
+            this.btnAnotaAiPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiPedidoPronto.Location = new System.Drawing.Point(314, 76);
+            this.btnAnotaAiPedidoPronto.Name = "btnAnotaAiPedidoPronto";
+            this.btnAnotaAiPedidoPronto.Size = new System.Drawing.Size(145, 33);
+            this.btnAnotaAiPedidoPronto.TabIndex = 20;
+            this.btnAnotaAiPedidoPronto.Text = "Pedido Pronto";
+            this.btnAnotaAiPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnAnotaAiPedidoPronto.Click += new System.EventHandler(this.btnAnotaAiPedidoPronto_Click);
+            // 
+            // btnAnotaAiBuscarPedido
+            // 
+            this.btnAnotaAiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiBuscarPedido.Location = new System.Drawing.Point(12, 76);
+            this.btnAnotaAiBuscarPedido.Name = "btnAnotaAiBuscarPedido";
+            this.btnAnotaAiBuscarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnAnotaAiBuscarPedido.TabIndex = 19;
+            this.btnAnotaAiBuscarPedido.Text = "Buscar Pedido";
+            this.btnAnotaAiBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnAnotaAiBuscarPedido.Click += new System.EventHandler(this.btnAnotaAiBuscarPedido_Click);
+            // 
+            // btnAnotaAiAceitar
+            // 
+            this.btnAnotaAiAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiAceitar.Location = new System.Drawing.Point(163, 76);
+            this.btnAnotaAiAceitar.Name = "btnAnotaAiAceitar";
+            this.btnAnotaAiAceitar.Size = new System.Drawing.Size(145, 33);
+            this.btnAnotaAiAceitar.TabIndex = 18;
+            this.btnAnotaAiAceitar.Text = "Aceitar";
+            this.btnAnotaAiAceitar.UseVisualStyleBackColor = true;
+            this.btnAnotaAiAceitar.Click += new System.EventHandler(this.btnAnotaAiAceitar_Click);
+            // 
+            // gridAnotaAi
+            // 
+            this.gridAnotaAi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAnotaAi.Location = new System.Drawing.Point(12, 115);
+            this.gridAnotaAi.Name = "gridAnotaAi";
+            this.gridAnotaAi.Size = new System.Drawing.Size(1209, 551);
+            this.gridAnotaAi.TabIndex = 17;
+            this.gridAnotaAi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAnotaAi_CellClick);
+            // 
+            // txtAnotaAiToken
+            // 
+            this.txtAnotaAiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnotaAiToken.Location = new System.Drawing.Point(128, 35);
+            this.txtAnotaAiToken.Name = "txtAnotaAiToken";
+            this.txtAnotaAiToken.Size = new System.Drawing.Size(291, 26);
+            this.txtAnotaAiToken.TabIndex = 16;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(8, 38);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(62, 20);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "TOKEN";
+            // 
+            // btnAnotaAiParar
+            // 
+            this.btnAnotaAiParar.Enabled = false;
+            this.btnAnotaAiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiParar.Location = new System.Drawing.Point(1050, 70);
+            this.btnAnotaAiParar.Name = "btnAnotaAiParar";
+            this.btnAnotaAiParar.Size = new System.Drawing.Size(171, 39);
+            this.btnAnotaAiParar.TabIndex = 14;
+            this.btnAnotaAiParar.Text = "Parar";
+            this.btnAnotaAiParar.UseVisualStyleBackColor = true;
+            this.btnAnotaAiParar.Click += new System.EventHandler(this.btnAnotaAiParar_Click);
+            // 
+            // btnAnotaAiIniciar
+            // 
+            this.btnAnotaAiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnotaAiIniciar.Location = new System.Drawing.Point(1050, 19);
+            this.btnAnotaAiIniciar.Name = "btnAnotaAiIniciar";
+            this.btnAnotaAiIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnAnotaAiIniciar.TabIndex = 13;
+            this.btnAnotaAiIniciar.Text = "Iniciar";
+            this.btnAnotaAiIniciar.UseVisualStyleBackColor = true;
+            this.btnAnotaAiIniciar.Click += new System.EventHandler(this.btnAnotaAiIniciar_Click);
             // 
             // tabPage6
             // 
@@ -1219,129 +1362,178 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // tabPage8
+            // tabPage9
             // 
-            this.tabPage8.Controls.Add(this.btnAnotaAiCancelar);
-            this.tabPage8.Controls.Add(this.btnAnotaAiSaiuParaEntrega);
-            this.tabPage8.Controls.Add(this.btnAnotaAiPedidoPronto);
-            this.tabPage8.Controls.Add(this.btnAnotaAiBuscarPedido);
-            this.tabPage8.Controls.Add(this.btnAnotaAiAceitar);
-            this.tabPage8.Controls.Add(this.gridAnotaAi);
-            this.tabPage8.Controls.Add(this.txtAnotaAiToken);
-            this.tabPage8.Controls.Add(this.label20);
-            this.tabPage8.Controls.Add(this.btnAnotaAiParar);
-            this.tabPage8.Controls.Add(this.btnAnotaAiIniciar);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "Anota Ai";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage9.Controls.Add(this.btnRappiRejeitado);
+            this.tabPage9.Controls.Add(this.btnRappiPedidoPronto);
+            this.tabPage9.Controls.Add(this.btnRappiAceitarPedido);
+            this.tabPage9.Controls.Add(this.btnRappiToken);
+            this.tabPage9.Controls.Add(this.txtRappiToken);
+            this.tabPage9.Controls.Add(this.label21);
+            this.tabPage9.Controls.Add(this.gridRappi);
+            this.tabPage9.Controls.Add(this.txtRappiURL);
+            this.tabPage9.Controls.Add(this.label22);
+            this.tabPage9.Controls.Add(this.txtRappiSECRET);
+            this.tabPage9.Controls.Add(this.label23);
+            this.tabPage9.Controls.Add(this.txtRappiClientID);
+            this.tabPage9.Controls.Add(this.label24);
+            this.tabPage9.Controls.Add(this.btnRappiParar);
+            this.tabPage9.Controls.Add(this.btnRappiIniciar);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Rappi";
+            this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // gridAnotaAi
+            // btnRappiToken
             // 
-            this.gridAnotaAi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridAnotaAi.Location = new System.Drawing.Point(12, 115);
-            this.gridAnotaAi.Name = "gridAnotaAi";
-            this.gridAnotaAi.Size = new System.Drawing.Size(1209, 551);
-            this.gridAnotaAi.TabIndex = 17;
-            this.gridAnotaAi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAnotaAi_CellClick);
+            this.btnRappiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiToken.Location = new System.Drawing.Point(1050, 14);
+            this.btnRappiToken.Name = "btnRappiToken";
+            this.btnRappiToken.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiToken.TabIndex = 35;
+            this.btnRappiToken.Text = "Token";
+            this.btnRappiToken.UseVisualStyleBackColor = true;
+            this.btnRappiToken.Click += new System.EventHandler(this.btnRappiToken_Click);
             // 
-            // txtAnotaAiToken
+            // txtRappiToken
             // 
-            this.txtAnotaAiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnotaAiToken.Location = new System.Drawing.Point(128, 35);
-            this.txtAnotaAiToken.Name = "txtAnotaAiToken";
-            this.txtAnotaAiToken.Size = new System.Drawing.Size(291, 26);
-            this.txtAnotaAiToken.TabIndex = 16;
+            this.txtRappiToken.Enabled = false;
+            this.txtRappiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRappiToken.Location = new System.Drawing.Point(617, 40);
+            this.txtRappiToken.Name = "txtRappiToken";
+            this.txtRappiToken.Size = new System.Drawing.Size(291, 26);
+            this.txtRappiToken.TabIndex = 34;
             // 
-            // label20
+            // label21
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(8, 38);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(62, 20);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "TOKEN";
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(497, 43);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(62, 20);
+            this.label21.TabIndex = 33;
+            this.label21.Text = "TOKEN";
             // 
-            // btnAnotaAiParar
+            // gridRappi
             // 
-            this.btnAnotaAiParar.Enabled = false;
-            this.btnAnotaAiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiParar.Location = new System.Drawing.Point(1050, 70);
-            this.btnAnotaAiParar.Name = "btnAnotaAiParar";
-            this.btnAnotaAiParar.Size = new System.Drawing.Size(171, 39);
-            this.btnAnotaAiParar.TabIndex = 14;
-            this.btnAnotaAiParar.Text = "Parar";
-            this.btnAnotaAiParar.UseVisualStyleBackColor = true;
-            this.btnAnotaAiParar.Click += new System.EventHandler(this.btnAnotaAiParar_Click);
+            this.gridRappi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRappi.Location = new System.Drawing.Point(12, 213);
+            this.gridRappi.Name = "gridRappi";
+            this.gridRappi.Size = new System.Drawing.Size(1209, 458);
+            this.gridRappi.TabIndex = 32;
+            this.gridRappi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRappi_CellClick);
             // 
-            // btnAnotaAiIniciar
+            // txtRappiURL
             // 
-            this.btnAnotaAiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiIniciar.Location = new System.Drawing.Point(1050, 19);
-            this.btnAnotaAiIniciar.Name = "btnAnotaAiIniciar";
-            this.btnAnotaAiIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnAnotaAiIniciar.TabIndex = 13;
-            this.btnAnotaAiIniciar.Text = "Iniciar";
-            this.btnAnotaAiIniciar.UseVisualStyleBackColor = true;
-            this.btnAnotaAiIniciar.Click += new System.EventHandler(this.btnAnotaAiIniciar_Click);
+            this.txtRappiURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRappiURL.Location = new System.Drawing.Point(617, 84);
+            this.txtRappiURL.Name = "txtRappiURL";
+            this.txtRappiURL.Size = new System.Drawing.Size(291, 26);
+            this.txtRappiURL.TabIndex = 31;
             // 
-            // btnAnotaAiAceitar
+            // label22
             // 
-            this.btnAnotaAiAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiAceitar.Location = new System.Drawing.Point(163, 76);
-            this.btnAnotaAiAceitar.Name = "btnAnotaAiAceitar";
-            this.btnAnotaAiAceitar.Size = new System.Drawing.Size(145, 33);
-            this.btnAnotaAiAceitar.TabIndex = 18;
-            this.btnAnotaAiAceitar.Text = "Aceitar";
-            this.btnAnotaAiAceitar.UseVisualStyleBackColor = true;
-            this.btnAnotaAiAceitar.Click += new System.EventHandler(this.btnAnotaAiAceitar_Click);
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(497, 87);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(42, 20);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "URL";
             // 
-            // btnAnotaAiBuscarPedido
+            // txtRappiSECRET
             // 
-            this.btnAnotaAiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiBuscarPedido.Location = new System.Drawing.Point(12, 76);
-            this.btnAnotaAiBuscarPedido.Name = "btnAnotaAiBuscarPedido";
-            this.btnAnotaAiBuscarPedido.Size = new System.Drawing.Size(145, 33);
-            this.btnAnotaAiBuscarPedido.TabIndex = 19;
-            this.btnAnotaAiBuscarPedido.Text = "Buscar Pedido";
-            this.btnAnotaAiBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnAnotaAiBuscarPedido.Click += new System.EventHandler(this.btnAnotaAiBuscarPedido_Click);
+            this.txtRappiSECRET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRappiSECRET.Location = new System.Drawing.Point(128, 81);
+            this.txtRappiSECRET.Name = "txtRappiSECRET";
+            this.txtRappiSECRET.Size = new System.Drawing.Size(291, 26);
+            this.txtRappiSECRET.TabIndex = 29;
             // 
-            // btnAnotaAiPedidoPronto
+            // label23
             // 
-            this.btnAnotaAiPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiPedidoPronto.Location = new System.Drawing.Point(314, 76);
-            this.btnAnotaAiPedidoPronto.Name = "btnAnotaAiPedidoPronto";
-            this.btnAnotaAiPedidoPronto.Size = new System.Drawing.Size(145, 33);
-            this.btnAnotaAiPedidoPronto.TabIndex = 20;
-            this.btnAnotaAiPedidoPronto.Text = "Pedido Pronto";
-            this.btnAnotaAiPedidoPronto.UseVisualStyleBackColor = true;
-            this.btnAnotaAiPedidoPronto.Click += new System.EventHandler(this.btnAnotaAiPedidoPronto_Click);
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(8, 84);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(123, 20);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "Client_SECRET";
             // 
-            // btnAnotaAiSaiuParaEntrega
+            // txtRappiClientID
             // 
-            this.btnAnotaAiSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiSaiuParaEntrega.Location = new System.Drawing.Point(465, 76);
-            this.btnAnotaAiSaiuParaEntrega.Name = "btnAnotaAiSaiuParaEntrega";
-            this.btnAnotaAiSaiuParaEntrega.Size = new System.Drawing.Size(145, 33);
-            this.btnAnotaAiSaiuParaEntrega.TabIndex = 21;
-            this.btnAnotaAiSaiuParaEntrega.Text = "Saiu para entrega";
-            this.btnAnotaAiSaiuParaEntrega.UseVisualStyleBackColor = true;
-            this.btnAnotaAiSaiuParaEntrega.Click += new System.EventHandler(this.btnAnotaAiSaiuParaEntrega_Click);
+            this.txtRappiClientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRappiClientID.Location = new System.Drawing.Point(128, 40);
+            this.txtRappiClientID.Name = "txtRappiClientID";
+            this.txtRappiClientID.Size = new System.Drawing.Size(291, 26);
+            this.txtRappiClientID.TabIndex = 27;
             // 
-            // btnAnotaAiCancelar
+            // label24
             // 
-            this.btnAnotaAiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnotaAiCancelar.Location = new System.Drawing.Point(616, 76);
-            this.btnAnotaAiCancelar.Name = "btnAnotaAiCancelar";
-            this.btnAnotaAiCancelar.Size = new System.Drawing.Size(145, 33);
-            this.btnAnotaAiCancelar.TabIndex = 22;
-            this.btnAnotaAiCancelar.Text = "Cancelar";
-            this.btnAnotaAiCancelar.UseVisualStyleBackColor = true;
-            this.btnAnotaAiCancelar.Click += new System.EventHandler(this.btnAnotaAiCancelar_Click);
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(8, 43);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(75, 20);
+            this.label24.TabIndex = 26;
+            this.label24.Text = "Client_ID";
+            // 
+            // btnRappiParar
+            // 
+            this.btnRappiParar.Enabled = false;
+            this.btnRappiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiParar.Location = new System.Drawing.Point(1050, 110);
+            this.btnRappiParar.Name = "btnRappiParar";
+            this.btnRappiParar.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiParar.TabIndex = 25;
+            this.btnRappiParar.Text = "Parar";
+            this.btnRappiParar.UseVisualStyleBackColor = true;
+            this.btnRappiParar.Click += new System.EventHandler(this.btnRappiParar_Click);
+            // 
+            // btnRappiIniciar
+            // 
+            this.btnRappiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiIniciar.Location = new System.Drawing.Point(1050, 59);
+            this.btnRappiIniciar.Name = "btnRappiIniciar";
+            this.btnRappiIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiIniciar.TabIndex = 24;
+            this.btnRappiIniciar.Text = "Iniciar";
+            this.btnRappiIniciar.UseVisualStyleBackColor = true;
+            this.btnRappiIniciar.Click += new System.EventHandler(this.btnRappiIniciar_Click);
+            // 
+            // btnRappiAceitarPedido
+            // 
+            this.btnRappiAceitarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiAceitarPedido.Location = new System.Drawing.Point(12, 168);
+            this.btnRappiAceitarPedido.Name = "btnRappiAceitarPedido";
+            this.btnRappiAceitarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiAceitarPedido.TabIndex = 36;
+            this.btnRappiAceitarPedido.Text = "Aceitar Pedido";
+            this.btnRappiAceitarPedido.UseVisualStyleBackColor = true;
+            this.btnRappiAceitarPedido.Click += new System.EventHandler(this.btnRappiAceitarPedido_Click);
+            // 
+            // btnRappiPedidoPronto
+            // 
+            this.btnRappiPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiPedidoPronto.Location = new System.Drawing.Point(189, 168);
+            this.btnRappiPedidoPronto.Name = "btnRappiPedidoPronto";
+            this.btnRappiPedidoPronto.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiPedidoPronto.TabIndex = 37;
+            this.btnRappiPedidoPronto.Text = "Pedido Pronto";
+            this.btnRappiPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnRappiPedidoPronto.Click += new System.EventHandler(this.btnRappiPedidoPronto_Click);
+            // 
+            // btnRappiRejeitado
+            // 
+            this.btnRappiRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiRejeitado.Location = new System.Drawing.Point(366, 168);
+            this.btnRappiRejeitado.Name = "btnRappiRejeitado";
+            this.btnRappiRejeitado.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiRejeitado.TabIndex = 38;
+            this.btnRappiRejeitado.Text = "Pedido Rejeitado";
+            this.btnRappiRejeitado.UseVisualStyleBackColor = true;
+            this.btnRappiRejeitado.Click += new System.EventHandler(this.btnRappiRejeitado_Click);
             // 
             // Form1
             // 
@@ -1355,6 +1547,9 @@
             this.Text = "MarketPlace";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
@@ -1379,9 +1574,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).EndInit();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1496,6 +1691,22 @@
         private System.Windows.Forms.Button btnAnotaAiPedidoPronto;
         private System.Windows.Forms.Button btnAnotaAiBuscarPedido;
         private System.Windows.Forms.Button btnAnotaAiAceitar;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Button btnRappiToken;
+        private System.Windows.Forms.TextBox txtRappiToken;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DataGridView gridRappi;
+        private System.Windows.Forms.TextBox txtRappiURL;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtRappiSECRET;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtRappiClientID;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btnRappiParar;
+        private System.Windows.Forms.Button btnRappiIniciar;
+        private System.Windows.Forms.Button btnRappiRejeitado;
+        private System.Windows.Forms.Button btnRappiPedidoPronto;
+        private System.Windows.Forms.Button btnRappiAceitarPedido;
     }
 }
 

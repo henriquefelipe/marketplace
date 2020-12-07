@@ -6,6 +6,7 @@ using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using PedZap.Enum;
 using PedZap.Service;
+using Rappi.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,6 +42,10 @@ namespace Example
         private List<PedZap.Domain.pedido> _pedzapPedidos { get; set; }
         private int _pedzapReferenceSelected { get; set; }
 
+        private string _rappiToken { get; set; }
+        private string _rappiSelected { get; set; }
+        private List<Rappi.Domain.order_detail> _rappiOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -50,56 +55,66 @@ namespace Example
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Verifica se existe o arquivo de configuração
-            using (StreamReader sr = new StreamReader(@"C:\MarketPlace.json"))
+            if (File.Exists(@"C:\MarketPlace.json"))
             {
-                string fileJson = sr.ReadToEnd();
-                if (!string.IsNullOrEmpty(fileJson))
+                //Verifica se existe o arquivo de configuração
+                using (StreamReader sr = new StreamReader(@"C:\MarketPlace.json"))
                 {
-                    var marketPlace = JsonConvert.DeserializeObject<MarketPlaceConfig>(fileJson);
-                    if (marketPlace != null)
+                    string fileJson = sr.ReadToEnd();
+                    if (!string.IsNullOrEmpty(fileJson))
                     {
-                        if (marketPlace.AnotaAi != null)
+                        var marketPlace = JsonConvert.DeserializeObject<MarketPlaceConfig>(fileJson);
+                        if (marketPlace != null)
                         {
-                            txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
-                        }
+                            if (marketPlace.AnotaAi != null)
+                            {
+                                txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
+                            }
 
-                        if (marketPlace.DeliveryApp != null)
-                        {
-                            txtDeliveryAppToken.Text = marketPlace.DeliveryApp.Token;
-                        }
+                            if (marketPlace.DeliveryApp != null)
+                            {
+                                txtDeliveryAppToken.Text = marketPlace.DeliveryApp.Token;
+                            }
 
-                        if (marketPlace.Ifood != null)
-                        {
-                            txtIfoodClient_ID.Text = marketPlace.Ifood.Client_ID;
-                            txtIfoodClient_Secret.Text = marketPlace.Ifood.Client_SECRET;
-                            txtIfoodMerchantId.Text = marketPlace.Ifood.MerchantId;
-                            txtIfoodUsuario.Text = marketPlace.Ifood.Usuario;
-                            txtIfoodSenha.Text = marketPlace.Ifood.Senha;
-                        }
+                            if (marketPlace.Ifood != null)
+                            {
+                                txtIfoodClient_ID.Text = marketPlace.Ifood.Client_ID;
+                                txtIfoodClient_Secret.Text = marketPlace.Ifood.Client_SECRET;
+                                txtIfoodMerchantId.Text = marketPlace.Ifood.MerchantId;
+                                txtIfoodUsuario.Text = marketPlace.Ifood.Usuario;
+                                txtIfoodSenha.Text = marketPlace.Ifood.Senha;
+                            }
 
-                        if (marketPlace.Gloria != null)
-                        {
-                            txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
-                        }
+                            if (marketPlace.Gloria != null)
+                            {
+                                txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
+                            }
 
-                        if (marketPlace.MeuCardapioAi != null)
-                        {
-                            txtMeuCardapioAiClient_ID.Text = marketPlace.MeuCardapioAi.Client_ID;
-                            txtMeuCardapioAiClient_SECRET.Text = marketPlace.MeuCardapioAi.Client_SECRET;
-                            txtMeuCardapioAiURL.Text = marketPlace.MeuCardapioAi.Url;
-                        }
+                            if (marketPlace.MeuCardapioAi != null)
+                            {
+                                txtMeuCardapioAiClient_ID.Text = marketPlace.MeuCardapioAi.Client_ID;
+                                txtMeuCardapioAiClient_SECRET.Text = marketPlace.MeuCardapioAi.Client_SECRET;
+                                txtMeuCardapioAiURL.Text = marketPlace.MeuCardapioAi.Url;
+                            }
 
-                        if (marketPlace.Logaroo != null)
-                        {
-                            txtLogarooMerchantId.Text = marketPlace.Logaroo.MerchantId;
-                            txtLogarooEmail.Text = marketPlace.Logaroo.Usuario;
-                            txtLogarooSenha.Text = marketPlace.Logaroo.Senha;
-                        }
+                            if (marketPlace.Logaroo != null)
+                            {
+                                txtLogarooMerchantId.Text = marketPlace.Logaroo.MerchantId;
+                                txtLogarooEmail.Text = marketPlace.Logaroo.Usuario;
+                                txtLogarooSenha.Text = marketPlace.Logaroo.Senha;
+                            }
 
-                        if (marketPlace.SuperMenu != null)
-                        {
-                            txtSuperMenuToken.Text = marketPlace.SuperMenu.Token;
+                            if (marketPlace.Rappi != null)
+                            {
+                                txtRappiClientID.Text = marketPlace.Rappi.Client_ID;
+                                txtRappiSECRET.Text = marketPlace.Rappi.Client_SECRET;
+                                txtRappiURL.Text = marketPlace.Rappi.Url;
+                            }
+
+                            if (marketPlace.SuperMenu != null)
+                            {
+                                txtSuperMenuToken.Text = marketPlace.SuperMenu.Token;
+                            }
                         }
                     }
                 }
@@ -122,8 +137,12 @@ namespace Example
             gridGloriaGood.Refresh();
 
             _meuCardapioAiOrders = new List<MeuCardapioAi.Domain.order>();
-            gridMeuCardapioAi.DataSource = _gloriaOrders.ToList();
+            gridMeuCardapioAi.DataSource = _meuCardapioAiOrders.ToList();
             gridMeuCardapioAi.Refresh();
+
+            _rappiOrders = new List<Rappi.Domain.order_detail>();
+            gridRappi.DataSource = _rappiOrders.ToList();
+            gridRappi.Refresh();
 
             _superMenuOrders = new List<SuperMenu.Domain.order>();
             gridSuperMenu.DataSource = _superMenuOrders.ToList();
@@ -1828,6 +1847,214 @@ namespace Example
             if (result.Success)
             {
                 MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        #endregion
+
+        #region Rappi
+
+        private void btnRappiToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRappiClientID.Text))
+            {
+                MessageBox.Show("Campo Client ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRappiSECRET.Text))
+            {
+                MessageBox.Show("Campo Client SECRET Obrigatório");
+                return;
+            }
+
+
+            var rappiService = new RappiService("");
+            var result = rappiService.Token(txtRappiClientID.Text, txtRappiSECRET.Text, true);
+            if (result.Success)
+            {
+                txtRappiToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnRappiIniciar_Click(object sender, EventArgs e)
+        {
+            rappiIniciar();
+        }
+
+        private void btnRappiParar_Click(object sender, EventArgs e)
+        {
+            rappiParar();
+        }
+
+
+        public async void rappiIniciar()
+        {
+            if (string.IsNullOrEmpty(txtRappiToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtRappiClientID.Enabled = false;
+            txtRappiSECRET.Enabled = false;
+            txtRappiURL.Enabled = false;
+
+            btnRappiIniciar.Enabled = false;
+            btnRappiParar.Enabled = true;
+            _rappiToken = txtRappiToken.Text;
+            await Task.Run(() => rappi());
+        }
+
+        private void rappi()
+        {
+            var rappiService = new RappiService(txtRappiURL.Text);
+
+            try
+            {
+                while (btnRappiParar.Enabled)
+                {
+                    var orderResult = rappiService.Orders(_rappiToken);
+                    if (orderResult.Success)
+                    {
+                        foreach (var item in orderResult.Result)
+                        {
+                            if (item.order_Detail != null)
+                            {
+                                _rappiOrders.Add(item.order_Detail);
+                                WriteGridMeuRappi();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridRappiDelegate();
+        private void WriteGridMeuRappi()
+        {
+            if (gridRappi.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridRappiDelegate(WriteGridMeuRappi);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridRappi.DataSource = _rappiOrders.ToList();
+                gridRappi.Refresh();
+            }
+        }
+
+        void rappiParar()
+        {
+            btnRappiIniciar.Enabled = true;
+            btnRappiParar.Enabled = false;
+        }
+
+
+        private void gridRappi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridRappi.Rows.Count)
+            {
+                _rappiSelected = gridRappi.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnRappiAceitarPedido_Click(object sender, EventArgs e)
+        {            
+            if (btnRappiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_rappiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var rappiService = new RappiService(txtRappiURL.Text);
+            var result = rappiService.Take(_rappiToken, _rappiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnRappiPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (btnRappiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_rappiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var rappiService = new RappiService(txtRappiURL.Text);
+            var result = rappiService.ReadForPickup(_rappiToken, _rappiSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnRappiRejeitado_Click(object sender, EventArgs e)
+        {
+            if (btnRappiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_rappiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var rappiService = new RappiService(txtRappiURL.Text);
+            var result = rappiService.Reject(_rappiToken, _rappiSelected, "Teste", Rappi.Enum.CancelType.ORDER_MISSING_ADDRESS_INFORMATION);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
             }
             else
             {

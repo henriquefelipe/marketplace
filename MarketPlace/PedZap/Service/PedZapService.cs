@@ -92,12 +92,14 @@ namespace PedZap.Service
                 pedido.cli_nome = clienteResult.Result.cli_nome;
                 pedido.cli_telefone = clienteResult.Result.cli_telefone;
 
+                var jsonItens = "";
                 if (pedido.pedidos_itens)
                 {
                     var resultItens = Pedidos_Itens(token, id);
                     if (resultItens.Success)
                     {
                         pedido.pedido_Items.AddRange(resultItens.Result);
+                        jsonItens += resultItens.Json;
                     }
                     else
                     {
@@ -107,7 +109,7 @@ namespace PedZap.Service
 
                 result.Result = pedido;
                 result.Success = true;
-                result.Json = response.Content;
+                result.Json = response.Content + clienteResult.Json + jsonItens;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -144,6 +146,7 @@ namespace PedZap.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var itens = JsonConvert.DeserializeObject<List<pedido_item>>(response.Content);
+                var jsonPergunta = "";
                 foreach(var item in itens)
                 {
                     if(item.perguntas)
@@ -152,6 +155,7 @@ namespace PedZap.Service
                         if(resultPerguntas.Success)
                         {
                             item.pedido_Items_Perguntas.AddRange(resultPerguntas.Result);
+                            jsonPergunta += resultPerguntas.Json;
                         }
                         else
                         {
@@ -162,7 +166,7 @@ namespace PedZap.Service
 
                 result.Result = itens;
                 result.Success = true;
-                result.Json = response.Content;
+                result.Json = response.Content + jsonPergunta;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -192,6 +196,7 @@ namespace PedZap.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var perguntas = JsonConvert.DeserializeObject<List<pedido_item_pergunta>>(response.Content);
+                var jsonResposta = "";
                 foreach (var pergunta in perguntas)
                 {
                     if (pergunta.respostas)
@@ -200,6 +205,7 @@ namespace PedZap.Service
                         if (resultRespostas.Success)
                         {
                             pergunta.pedido_Items_Respostas.AddRange(resultRespostas.Result);
+                            jsonResposta += resultRespostas.Json;
                         }
                         else
                         {
@@ -210,7 +216,7 @@ namespace PedZap.Service
 
                 result.Result = perguntas;
                 result.Success = true;
-                result.Json = response.Content;
+                result.Json = response.Content + jsonResposta;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
