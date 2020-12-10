@@ -11,5 +11,6 @@ namespace MeuCardapioAi.Utils
         public const string URL_TOKEN = "token/";
         public const string URL_PEDIDO_ULTIMO = "v1/liste/ultimos/";
         public const string URL_PEDIDO = "v1/pedido/";
+        public const string URL_PEDIDO_STATUS = "v1/pedidos/status";
     }
 }

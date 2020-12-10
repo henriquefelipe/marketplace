@@ -100,5 +100,34 @@ namespace MeuCardapioAi.Service
             }
             return result;
         }
+
+        public GenericResult<order_result> Status(string token, string pedido, )
+        {
+            var result = new GenericResult<order_result>();
+            try
+            {
+                var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_PEDIDO_STATUS, pedido);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<order_result>(response.Content);
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

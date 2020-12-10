@@ -126,17 +126,10 @@
             this.btnPedZapIniciar = new System.Windows.Forms.Button();
             this.txtPedZapToken = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
-            this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
-            this.btnSuperMenuSaiuParaSerEntregue = new System.Windows.Forms.Button();
-            this.btnSuperMenuConfirmar = new System.Windows.Forms.Button();
-            this.gridSuperMenu = new System.Windows.Forms.DataGridView();
-            this.txtSuperMenuToken = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnSuperMenuParar = new System.Windows.Forms.Button();
-            this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnRappiRejeitado = new System.Windows.Forms.Button();
+            this.btnRappiPedidoPronto = new System.Windows.Forms.Button();
+            this.btnRappiAceitarPedido = new System.Windows.Forms.Button();
             this.btnRappiToken = new System.Windows.Forms.Button();
             this.txtRappiToken = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -149,9 +142,23 @@
             this.label24 = new System.Windows.Forms.Label();
             this.btnRappiParar = new System.Windows.Forms.Button();
             this.btnRappiIniciar = new System.Windows.Forms.Button();
-            this.btnRappiAceitarPedido = new System.Windows.Forms.Button();
-            this.btnRappiPedidoPronto = new System.Windows.Forms.Button();
-            this.btnRappiRejeitado = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
+            this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
+            this.btnSuperMenuSaiuParaSerEntregue = new System.Windows.Forms.Button();
+            this.btnSuperMenuConfirmar = new System.Windows.Forms.Button();
+            this.gridSuperMenu = new System.Windows.Forms.DataGridView();
+            this.txtSuperMenuToken = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnSuperMenuParar = new System.Windows.Forms.Button();
+            this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.btnOnPedidoParar = new System.Windows.Forms.Button();
+            this.btnOnPedidoIniciar = new System.Windows.Forms.Button();
+            this.txtOnPedidoToken = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.gridOnPedido = new System.Windows.Forms.DataGridView();
+            this.btnOnPedidoBuscarPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
@@ -169,10 +176,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
+            this.tabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -183,6 +192,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -1250,118 +1260,6 @@
             this.label13.TabIndex = 8;
             this.label13.Text = "TOKEN";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.btnSuperMenuCancelar);
-            this.tabPage3.Controls.Add(this.btnSuperMenuRejeitar);
-            this.tabPage3.Controls.Add(this.btnSuperMenuSaiuParaSerEntregue);
-            this.tabPage3.Controls.Add(this.btnSuperMenuConfirmar);
-            this.tabPage3.Controls.Add(this.gridSuperMenu);
-            this.tabPage3.Controls.Add(this.txtSuperMenuToken);
-            this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.btnSuperMenuParar);
-            this.tabPage3.Controls.Add(this.btnSuperMenuIniciar);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Super Menu";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // btnSuperMenuCancelar
-            // 
-            this.btnSuperMenuCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuCancelar.Location = new System.Drawing.Point(519, 81);
-            this.btnSuperMenuCancelar.Name = "btnSuperMenuCancelar";
-            this.btnSuperMenuCancelar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuCancelar.TabIndex = 18;
-            this.btnSuperMenuCancelar.Text = "Cancelar";
-            this.btnSuperMenuCancelar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuCancelar.Click += new System.EventHandler(this.btnSuperMenuCancelar_Click);
-            // 
-            // btnSuperMenuRejeitar
-            // 
-            this.btnSuperMenuRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuRejeitar.Location = new System.Drawing.Point(368, 81);
-            this.btnSuperMenuRejeitar.Name = "btnSuperMenuRejeitar";
-            this.btnSuperMenuRejeitar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuRejeitar.TabIndex = 17;
-            this.btnSuperMenuRejeitar.Text = "Rejeitar";
-            this.btnSuperMenuRejeitar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuRejeitar.Click += new System.EventHandler(this.btnSuperMenuRejeitar_Click);
-            // 
-            // btnSuperMenuSaiuParaSerEntregue
-            // 
-            this.btnSuperMenuSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuSaiuParaSerEntregue.Location = new System.Drawing.Point(163, 81);
-            this.btnSuperMenuSaiuParaSerEntregue.Name = "btnSuperMenuSaiuParaSerEntregue";
-            this.btnSuperMenuSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
-            this.btnSuperMenuSaiuParaSerEntregue.TabIndex = 16;
-            this.btnSuperMenuSaiuParaSerEntregue.Text = "Saiu para ser entregue";
-            this.btnSuperMenuSaiuParaSerEntregue.UseVisualStyleBackColor = true;
-            this.btnSuperMenuSaiuParaSerEntregue.Click += new System.EventHandler(this.btnSuperMenuSaiuParaSerEntregue_Click);
-            // 
-            // btnSuperMenuConfirmar
-            // 
-            this.btnSuperMenuConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuConfirmar.Location = new System.Drawing.Point(12, 81);
-            this.btnSuperMenuConfirmar.Name = "btnSuperMenuConfirmar";
-            this.btnSuperMenuConfirmar.Size = new System.Drawing.Size(145, 33);
-            this.btnSuperMenuConfirmar.TabIndex = 15;
-            this.btnSuperMenuConfirmar.Text = "Confirmar";
-            this.btnSuperMenuConfirmar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuConfirmar.Click += new System.EventHandler(this.btnSuperMenuConfirmar_Click);
-            // 
-            // gridSuperMenu
-            // 
-            this.gridSuperMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSuperMenu.Location = new System.Drawing.Point(12, 120);
-            this.gridSuperMenu.Name = "gridSuperMenu";
-            this.gridSuperMenu.Size = new System.Drawing.Size(1209, 551);
-            this.gridSuperMenu.TabIndex = 14;
-            this.gridSuperMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuperMenu_CellClick);
-            // 
-            // txtSuperMenuToken
-            // 
-            this.txtSuperMenuToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSuperMenuToken.Location = new System.Drawing.Point(128, 29);
-            this.txtSuperMenuToken.Name = "txtSuperMenuToken";
-            this.txtSuperMenuToken.Size = new System.Drawing.Size(291, 26);
-            this.txtSuperMenuToken.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "TOKEN";
-            // 
-            // btnSuperMenuParar
-            // 
-            this.btnSuperMenuParar.Enabled = false;
-            this.btnSuperMenuParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuParar.Location = new System.Drawing.Point(1050, 64);
-            this.btnSuperMenuParar.Name = "btnSuperMenuParar";
-            this.btnSuperMenuParar.Size = new System.Drawing.Size(171, 39);
-            this.btnSuperMenuParar.TabIndex = 11;
-            this.btnSuperMenuParar.Text = "Parar";
-            this.btnSuperMenuParar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuParar.Click += new System.EventHandler(this.btnSuperMenuParar_Click);
-            // 
-            // btnSuperMenuIniciar
-            // 
-            this.btnSuperMenuIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuperMenuIniciar.Location = new System.Drawing.Point(1050, 13);
-            this.btnSuperMenuIniciar.Name = "btnSuperMenuIniciar";
-            this.btnSuperMenuIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnSuperMenuIniciar.TabIndex = 10;
-            this.btnSuperMenuIniciar.Text = "Iniciar";
-            this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
-            this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
-            // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.btnRappiRejeitado);
@@ -1385,6 +1283,39 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Rappi";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnRappiRejeitado
+            // 
+            this.btnRappiRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiRejeitado.Location = new System.Drawing.Point(366, 168);
+            this.btnRappiRejeitado.Name = "btnRappiRejeitado";
+            this.btnRappiRejeitado.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiRejeitado.TabIndex = 38;
+            this.btnRappiRejeitado.Text = "Pedido Rejeitado";
+            this.btnRappiRejeitado.UseVisualStyleBackColor = true;
+            this.btnRappiRejeitado.Click += new System.EventHandler(this.btnRappiRejeitado_Click);
+            // 
+            // btnRappiPedidoPronto
+            // 
+            this.btnRappiPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiPedidoPronto.Location = new System.Drawing.Point(189, 168);
+            this.btnRappiPedidoPronto.Name = "btnRappiPedidoPronto";
+            this.btnRappiPedidoPronto.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiPedidoPronto.TabIndex = 37;
+            this.btnRappiPedidoPronto.Text = "Pedido Pronto";
+            this.btnRappiPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnRappiPedidoPronto.Click += new System.EventHandler(this.btnRappiPedidoPronto_Click);
+            // 
+            // btnRappiAceitarPedido
+            // 
+            this.btnRappiAceitarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRappiAceitarPedido.Location = new System.Drawing.Point(12, 168);
+            this.btnRappiAceitarPedido.Name = "btnRappiAceitarPedido";
+            this.btnRappiAceitarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnRappiAceitarPedido.TabIndex = 36;
+            this.btnRappiAceitarPedido.Text = "Aceitar Pedido";
+            this.btnRappiAceitarPedido.UseVisualStyleBackColor = true;
+            this.btnRappiAceitarPedido.Click += new System.EventHandler(this.btnRappiAceitarPedido_Click);
             // 
             // btnRappiToken
             // 
@@ -1502,38 +1433,193 @@
             this.btnRappiIniciar.UseVisualStyleBackColor = true;
             this.btnRappiIniciar.Click += new System.EventHandler(this.btnRappiIniciar_Click);
             // 
-            // btnRappiAceitarPedido
+            // tabPage3
             // 
-            this.btnRappiAceitarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRappiAceitarPedido.Location = new System.Drawing.Point(12, 168);
-            this.btnRappiAceitarPedido.Name = "btnRappiAceitarPedido";
-            this.btnRappiAceitarPedido.Size = new System.Drawing.Size(171, 39);
-            this.btnRappiAceitarPedido.TabIndex = 36;
-            this.btnRappiAceitarPedido.Text = "Aceitar Pedido";
-            this.btnRappiAceitarPedido.UseVisualStyleBackColor = true;
-            this.btnRappiAceitarPedido.Click += new System.EventHandler(this.btnRappiAceitarPedido_Click);
+            this.tabPage3.Controls.Add(this.btnSuperMenuCancelar);
+            this.tabPage3.Controls.Add(this.btnSuperMenuRejeitar);
+            this.tabPage3.Controls.Add(this.btnSuperMenuSaiuParaSerEntregue);
+            this.tabPage3.Controls.Add(this.btnSuperMenuConfirmar);
+            this.tabPage3.Controls.Add(this.gridSuperMenu);
+            this.tabPage3.Controls.Add(this.txtSuperMenuToken);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.btnSuperMenuParar);
+            this.tabPage3.Controls.Add(this.btnSuperMenuIniciar);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Super Menu";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnRappiPedidoPronto
+            // btnSuperMenuCancelar
             // 
-            this.btnRappiPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRappiPedidoPronto.Location = new System.Drawing.Point(189, 168);
-            this.btnRappiPedidoPronto.Name = "btnRappiPedidoPronto";
-            this.btnRappiPedidoPronto.Size = new System.Drawing.Size(171, 39);
-            this.btnRappiPedidoPronto.TabIndex = 37;
-            this.btnRappiPedidoPronto.Text = "Pedido Pronto";
-            this.btnRappiPedidoPronto.UseVisualStyleBackColor = true;
-            this.btnRappiPedidoPronto.Click += new System.EventHandler(this.btnRappiPedidoPronto_Click);
+            this.btnSuperMenuCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuCancelar.Location = new System.Drawing.Point(519, 81);
+            this.btnSuperMenuCancelar.Name = "btnSuperMenuCancelar";
+            this.btnSuperMenuCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuCancelar.TabIndex = 18;
+            this.btnSuperMenuCancelar.Text = "Cancelar";
+            this.btnSuperMenuCancelar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuCancelar.Click += new System.EventHandler(this.btnSuperMenuCancelar_Click);
             // 
-            // btnRappiRejeitado
+            // btnSuperMenuRejeitar
             // 
-            this.btnRappiRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRappiRejeitado.Location = new System.Drawing.Point(366, 168);
-            this.btnRappiRejeitado.Name = "btnRappiRejeitado";
-            this.btnRappiRejeitado.Size = new System.Drawing.Size(171, 39);
-            this.btnRappiRejeitado.TabIndex = 38;
-            this.btnRappiRejeitado.Text = "Pedido Rejeitado";
-            this.btnRappiRejeitado.UseVisualStyleBackColor = true;
-            this.btnRappiRejeitado.Click += new System.EventHandler(this.btnRappiRejeitado_Click);
+            this.btnSuperMenuRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuRejeitar.Location = new System.Drawing.Point(368, 81);
+            this.btnSuperMenuRejeitar.Name = "btnSuperMenuRejeitar";
+            this.btnSuperMenuRejeitar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuRejeitar.TabIndex = 17;
+            this.btnSuperMenuRejeitar.Text = "Rejeitar";
+            this.btnSuperMenuRejeitar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuRejeitar.Click += new System.EventHandler(this.btnSuperMenuRejeitar_Click);
+            // 
+            // btnSuperMenuSaiuParaSerEntregue
+            // 
+            this.btnSuperMenuSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuSaiuParaSerEntregue.Location = new System.Drawing.Point(163, 81);
+            this.btnSuperMenuSaiuParaSerEntregue.Name = "btnSuperMenuSaiuParaSerEntregue";
+            this.btnSuperMenuSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
+            this.btnSuperMenuSaiuParaSerEntregue.TabIndex = 16;
+            this.btnSuperMenuSaiuParaSerEntregue.Text = "Saiu para ser entregue";
+            this.btnSuperMenuSaiuParaSerEntregue.UseVisualStyleBackColor = true;
+            this.btnSuperMenuSaiuParaSerEntregue.Click += new System.EventHandler(this.btnSuperMenuSaiuParaSerEntregue_Click);
+            // 
+            // btnSuperMenuConfirmar
+            // 
+            this.btnSuperMenuConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuConfirmar.Location = new System.Drawing.Point(12, 81);
+            this.btnSuperMenuConfirmar.Name = "btnSuperMenuConfirmar";
+            this.btnSuperMenuConfirmar.Size = new System.Drawing.Size(145, 33);
+            this.btnSuperMenuConfirmar.TabIndex = 15;
+            this.btnSuperMenuConfirmar.Text = "Confirmar";
+            this.btnSuperMenuConfirmar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuConfirmar.Click += new System.EventHandler(this.btnSuperMenuConfirmar_Click);
+            // 
+            // gridSuperMenu
+            // 
+            this.gridSuperMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSuperMenu.Location = new System.Drawing.Point(12, 120);
+            this.gridSuperMenu.Name = "gridSuperMenu";
+            this.gridSuperMenu.Size = new System.Drawing.Size(1209, 551);
+            this.gridSuperMenu.TabIndex = 14;
+            this.gridSuperMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSuperMenu_CellClick);
+            // 
+            // txtSuperMenuToken
+            // 
+            this.txtSuperMenuToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSuperMenuToken.Location = new System.Drawing.Point(128, 29);
+            this.txtSuperMenuToken.Name = "txtSuperMenuToken";
+            this.txtSuperMenuToken.Size = new System.Drawing.Size(291, 26);
+            this.txtSuperMenuToken.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "TOKEN";
+            // 
+            // btnSuperMenuParar
+            // 
+            this.btnSuperMenuParar.Enabled = false;
+            this.btnSuperMenuParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuParar.Location = new System.Drawing.Point(1050, 64);
+            this.btnSuperMenuParar.Name = "btnSuperMenuParar";
+            this.btnSuperMenuParar.Size = new System.Drawing.Size(171, 39);
+            this.btnSuperMenuParar.TabIndex = 11;
+            this.btnSuperMenuParar.Text = "Parar";
+            this.btnSuperMenuParar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuParar.Click += new System.EventHandler(this.btnSuperMenuParar_Click);
+            // 
+            // btnSuperMenuIniciar
+            // 
+            this.btnSuperMenuIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuperMenuIniciar.Location = new System.Drawing.Point(1050, 13);
+            this.btnSuperMenuIniciar.Name = "btnSuperMenuIniciar";
+            this.btnSuperMenuIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnSuperMenuIniciar.TabIndex = 10;
+            this.btnSuperMenuIniciar.Text = "Iniciar";
+            this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
+            this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.btnOnPedidoBuscarPedido);
+            this.tabPage10.Controls.Add(this.gridOnPedido);
+            this.tabPage10.Controls.Add(this.btnOnPedidoParar);
+            this.tabPage10.Controls.Add(this.btnOnPedidoIniciar);
+            this.tabPage10.Controls.Add(this.txtOnPedidoToken);
+            this.tabPage10.Controls.Add(this.label25);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "On Pedido";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // btnOnPedidoParar
+            // 
+            this.btnOnPedidoParar.Enabled = false;
+            this.btnOnPedidoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoParar.Location = new System.Drawing.Point(1047, 72);
+            this.btnOnPedidoParar.Name = "btnOnPedidoParar";
+            this.btnOnPedidoParar.Size = new System.Drawing.Size(171, 39);
+            this.btnOnPedidoParar.TabIndex = 15;
+            this.btnOnPedidoParar.Text = "Parar";
+            this.btnOnPedidoParar.UseVisualStyleBackColor = true;
+            this.btnOnPedidoParar.Click += new System.EventHandler(this.btnOnPedidoParar_Click);
+            // 
+            // btnOnPedidoIniciar
+            // 
+            this.btnOnPedidoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoIniciar.Location = new System.Drawing.Point(1047, 21);
+            this.btnOnPedidoIniciar.Name = "btnOnPedidoIniciar";
+            this.btnOnPedidoIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnOnPedidoIniciar.TabIndex = 14;
+            this.btnOnPedidoIniciar.Text = "Iniciar";
+            this.btnOnPedidoIniciar.UseVisualStyleBackColor = true;
+            this.btnOnPedidoIniciar.Click += new System.EventHandler(this.btnOnPedidoIniciar_Click);
+            // 
+            // txtOnPedidoToken
+            // 
+            this.txtOnPedidoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOnPedidoToken.Location = new System.Drawing.Point(134, 21);
+            this.txtOnPedidoToken.Name = "txtOnPedidoToken";
+            this.txtOnPedidoToken.Size = new System.Drawing.Size(574, 26);
+            this.txtOnPedidoToken.TabIndex = 13;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(14, 24);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(62, 20);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "TOKEN";
+            // 
+            // gridOnPedido
+            // 
+            this.gridOnPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridOnPedido.Location = new System.Drawing.Point(12, 117);
+            this.gridOnPedido.Name = "gridOnPedido";
+            this.gridOnPedido.Size = new System.Drawing.Size(1209, 551);
+            this.gridOnPedido.TabIndex = 16;
+            this.gridOnPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridOnPedido_CellClick);
+            // 
+            // btnOnPedidoBuscarPedido
+            // 
+            this.btnOnPedidoBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoBuscarPedido.Location = new System.Drawing.Point(12, 72);
+            this.btnOnPedidoBuscarPedido.Name = "btnOnPedidoBuscarPedido";
+            this.btnOnPedidoBuscarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnOnPedidoBuscarPedido.TabIndex = 17;
+            this.btnOnPedidoBuscarPedido.Text = "Buscar Pedido";
+            this.btnOnPedidoBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnOnPedidoBuscarPedido.Click += new System.EventHandler(this.btnOnPedidoBuscarPedido_Click);
             // 
             // Form1
             // 
@@ -1571,12 +1657,15 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1707,6 +1796,13 @@
         private System.Windows.Forms.Button btnRappiRejeitado;
         private System.Windows.Forms.Button btnRappiPedidoPronto;
         private System.Windows.Forms.Button btnRappiAceitarPedido;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.DataGridView gridOnPedido;
+        private System.Windows.Forms.Button btnOnPedidoParar;
+        private System.Windows.Forms.Button btnOnPedidoIniciar;
+        private System.Windows.Forms.TextBox txtOnPedidoToken;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button btnOnPedidoBuscarPedido;
     }
 }
 

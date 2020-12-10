@@ -4,6 +4,8 @@ using GloriaFood.Service;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
 using Newtonsoft.Json;
+using OnPedido.Domain;
+using OnPedido.Service;
 using PedZap.Enum;
 using PedZap.Service;
 using Rappi.Service;
@@ -45,6 +47,10 @@ namespace Example
         private string _rappiToken { get; set; }
         private string _rappiSelected { get; set; }
         private List<Rappi.Domain.order_detail> _rappiOrders { get; set; }
+
+        private string _onPedidoToken { get; set; }
+        private List<pedido_info_id> _onPedidoPedidos { get; set; }
+        private string _onPedidoSelected { get; set; }
 
         #endregion
 
@@ -104,6 +110,11 @@ namespace Example
                                 txtLogarooSenha.Text = marketPlace.Logaroo.Senha;
                             }
 
+                            if (marketPlace.OnPedido != null)
+                            {
+                                txtOnPedidoToken.Text = marketPlace.OnPedido.Token;
+                            }
+
                             if (marketPlace.Rappi != null)
                             {
                                 txtRappiClientID.Text = marketPlace.Rappi.Client_ID;
@@ -149,6 +160,10 @@ namespace Example
             gridSuperMenu.Refresh();
 
             _pedzapPedidos = new List<PedZap.Domain.pedido>();
+
+            _onPedidoPedidos = new List<pedido_info_id>();
+            gridOnPedido.DataSource = _onPedidoPedidos.ToList();
+            gridOnPedido.Refresh();
         }
 
         #region Ifood
@@ -2060,6 +2075,116 @@ namespace Example
             {
                 MessageBox.Show(result.Message);
             }
+        }
+
+        #endregion
+
+        #region OnPedido
+
+        private void btnOnPedidoIniciar_Click(object sender, EventArgs e)
+        {
+            onPedidoIniciar();
+        }
+
+        private void btnOnPedidoParar_Click(object sender, EventArgs e)
+        {
+            onPedidoParar();
+        }
+
+        public async void onPedidoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtOnPedidoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+           
+            btnOnPedidoIniciar.Enabled = false;
+            btnOnPedidoParar.Enabled = true;
+            _onPedidoToken = txtOnPedidoToken.Text;
+            await Task.Run(() => onPedido());
+        }
+
+        private void onPedido()
+        {
+            var onPedidoService = new OnPedidoService();
+
+            try
+            {
+                while (btnOnPedidoParar.Enabled)
+                {
+                    var orderResult = onPedidoService.Orders(_onPedidoToken);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result.onpedido != null && orderResult.Result.onpedido.status != null
+                            && orderResult.Result.onpedido.status.pedidos != null
+                            && orderResult.Result.onpedido.status.pedidos.confirmado != null)
+                        {
+                            foreach (var item in orderResult.Result.onpedido.status.pedidos.confirmado.id)
+                            {
+                                _onPedidoPedidos.Add(new pedido_info_id { pedido = Convert.ToInt32(item) });
+                                WriteGridOnPedido();                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridOnPedidoDelegate();
+        private void WriteGridOnPedido()
+        {
+            if (gridOnPedido.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridOnPedidoDelegate(WriteGridOnPedido);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridOnPedido.DataSource = _onPedidoPedidos.ToList();
+                gridOnPedido.Refresh();
+            }
+        }
+
+        void onPedidoParar()
+        {
+            btnOnPedidoIniciar.Enabled = true;
+            btnOnPedidoParar.Enabled = false;
+        }
+
+        private void gridOnPedido_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridOnPedido.Rows.Count)
+            {
+                _onPedidoSelected = gridOnPedido.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnOnPedidoBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            onPedidoService.Order(_onPedidoToken, _onPedidoSelected);
         }
 
         #endregion
