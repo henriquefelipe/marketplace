@@ -101,21 +101,36 @@ namespace MeuCardapioAi.Service
             return result;
         }
 
-        public GenericResult<order_result> Status(string token, string pedido, )
+        public GenericSimpleResult Status(string token, string codigo, string status)
         {
-            var result = new GenericResult<order_result>();
+            var result = new GenericSimpleResult();
             try
             {
-                var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_PEDIDO_STATUS, pedido);
+                var data = new
+                {
+                    codigo,
+                    status
+                };
+
+                var url = string.Format("{0}{1}", _urlBase, Constants.URL_PEDIDO_STATUS);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.PUT);
                 request.AddHeader("Authorization", "Bearer " + token);
                 request.AddHeader("Accept", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<order_result>(response.Content);
-                    result.Success = true;
+                    var resultStatus = JsonConvert.DeserializeObject<result_status>(response.Content);
+                    if (resultStatus.sucesso)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = resultStatus.erro;
+                    }
+
                     result.Json = response.Content;
                 }
                 else

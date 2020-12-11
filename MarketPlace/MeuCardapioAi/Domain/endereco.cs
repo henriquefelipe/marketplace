@@ -15,6 +15,7 @@ namespace MeuCardapioAi.Domain
         public string numero { get; set; }
         public string descricao { get; set; }
         public string localizacao { get; set; }
+        public string complemento { get; set; }
         public string cep { get; set; }
         public endereco_estado estado { get; set; }
     }

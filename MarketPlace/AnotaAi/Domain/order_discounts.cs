@@ -8,5 +8,7 @@ namespace AnotaAi.Domain
 {
     public class order_discounts
     {
+        public decimal amount { get; set; }
+        public string tag { get; set; }
     }
 }

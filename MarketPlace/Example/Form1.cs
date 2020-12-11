@@ -35,6 +35,7 @@ namespace Example
         private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
         private string _meuCardapioAiToken { get; set; }
         private string _meuCardapioAiSelected { get; set; }
+        private string _meuCardapioAiUltimoPedido { get; set; }
         private List<MeuCardapioAi.Domain.order> _meuCardapioAiOrders { get; set; }
         private string _superMenuToken { get; set; }
         private List<SuperMenu.Domain.order> _superMenuOrders { get; set; }
@@ -1546,6 +1547,7 @@ namespace Example
             btnMeuCardapioAiIniciar.Enabled = false;
             btnMeuCardapioAiParar.Enabled = true;
             _meuCardapioAiToken = txtMeuCardapioAiToken.Text;
+            _meuCardapioAiUltimoPedido = txtMeuCardapioAiUltimoPedido.Text;
             await Task.Run(() => meuCardapioAi());
         }
 
@@ -1557,7 +1559,7 @@ namespace Example
             {
                 while (btnMeuCardapioAiParar.Enabled)
                 {
-                    var orderResult = meuCardapioAiService.Orders(_meuCardapioAiToken, "1");
+                    var orderResult = meuCardapioAiService.Orders(_meuCardapioAiToken, _meuCardapioAiUltimoPedido);
                     if (orderResult.Success)
                     {                        
                         _meuCardapioAiOrders.AddRange(orderResult.Result.data.pedidos);
@@ -1638,6 +1640,57 @@ namespace Example
             }
         }
 
+        private void btnMeuCardapioAiSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (btnMeuCardapioAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_meuCardapioAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
+            var result = meuCardapioAiService.Status(_meuCardapioAiToken, _meuCardapioAiSelected, MeuCardapioAi.Enum.OrderStatus.SAIU_PARA_ENTREGA);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnMeuCardapioAiCancelar_Click(object sender, EventArgs e)
+        {
+            if (btnMeuCardapioAiIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_meuCardapioAiSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
+            var result = meuCardapioAiService.Status(_meuCardapioAiToken, _meuCardapioAiSelected, MeuCardapioAi.Enum.OrderStatus.CANCELADO);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 
@@ -2187,8 +2240,9 @@ namespace Example
             onPedidoService.Order(_onPedidoToken, _onPedidoSelected);
         }
 
+
         #endregion
 
-
+        
     }
 }

@@ -27,8 +27,8 @@ namespace MeuCardapioAi.Domain
         public string formaDeEntrega { get; set; }
         public bool aguardandoPagamentoOnline { get; set; }
         public bool foiPagoOnline { get; set; }
-        public string status { get; set; }
-        //"pontosGanhos": null,
+        public string status { get; set; }       
         public bool temCashback { get; set; }
+        public bool retirar { get; set; }        
     }
 }

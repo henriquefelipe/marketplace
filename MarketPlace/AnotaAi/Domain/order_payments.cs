@@ -11,7 +11,7 @@ namespace AnotaAi.Domain
         public string name { get; set; }
         public string code { get; set; }
         public string cardSelected { get; set; }
-        public string changeFor { get; set; }
+        public decimal? changeFor { get; set; }
         public bool prepaid { get; set; }
     }
 }

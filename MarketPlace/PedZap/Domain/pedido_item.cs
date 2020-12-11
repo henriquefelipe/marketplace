@@ -14,7 +14,7 @@ namespace PedZap.Domain
         }
 
         public int ite_id { get; set; }
-        public int ite_codigo { get; set; }
+        public int? ite_codigo { get; set; }
         public string ite_sku { get; set; }
         public string ite_titulo { get; set; }
         public decimal ite_preco { get; set; }

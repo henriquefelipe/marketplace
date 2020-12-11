@@ -55,7 +55,10 @@
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\order_result.cs" />
     <Compile Include="Domain\pagamento.cs" />
+    <Compile Include="Domain\result_status.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Enum\PaymentType.cs" />
+    <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\MeuCardapioAiService.cs" />
     <Compile Include="Utils\Constants.cs" />
@@ -63,9 +66,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enum\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
