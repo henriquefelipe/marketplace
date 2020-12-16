@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\adicionais.cs" />
     <Compile Include="Domain\cliente.cs" />
     <Compile Include="Domain\endereco.cs" />
     <Compile Include="Domain\item.cs" />

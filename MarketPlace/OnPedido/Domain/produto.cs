@@ -1,19 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class produto
+    [Serializable]
+    [XmlType("produto")]
+    public class Produto : IItem
     {
+        [XmlElement]
         public string id { get; set; }
+
+        [XmlElement]
         public string nome { get; set; }
+
+        [XmlElement]
         public decimal qtd { get; set; }
-        public bool promocao { get; set; }
-        public produto_comentario comentario { get; set; }
-        public produto_desconto desconto { get; set; }
-        public produto_valor valor { get; set; }
+
+        //[XmlArrayItem("opcao")]
+        [XmlElement("opcao")]
+        public Opcao[] opcoes { get; set; }
+
+        [XmlElement(Type = typeof(Comentario))]
+        public Comentario comentario { get; set; }
+
+        [XmlElement(Type = typeof(Desconto))]
+        public Desconto desconto { get; set; }
+
+        [XmlElement(Type = typeof(TotalizacaoProduto))]
+        public TotalizacaoProduto valor { get; set; }
+
+        [XmlIgnore]
+        public decimal valor_total_produto
+        {
+            get
+            {
+                return this.valor.total;
+            }
+        }
+
+        [XmlIgnore]
+        public string DescricaoItem => this.nome;
+
+        [XmlIgnore]
+        public string QuantidadeItem => this.qtd.ToString();
+
+        [XmlIgnore]
+        public string ValorItem { get => this.valor.total.ToString("C"); }
     }
 }

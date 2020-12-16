@@ -78,6 +78,8 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnMeuCardapioAiCancelar = new System.Windows.Forms.Button();
+            this.btnMeuCardapioAiSaiuParaEntrega = new System.Windows.Forms.Button();
             this.btnMeuCardapioAiBuscarPedido = new System.Windows.Forms.Button();
             this.txtMeuCardapioAiUltimoPedido = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -159,8 +161,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.btnMeuCardapioAiSaiuParaEntrega = new System.Windows.Forms.Button();
-            this.btnMeuCardapioAiCancelar = new System.Windows.Forms.Button();
+            this.btnOnPedidoRecebido = new System.Windows.Forms.Button();
+            this.btnOnPedidoConfirmado = new System.Windows.Forms.Button();
+            this.btnOnPedidoSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnOnPedidoEntregue = new System.Windows.Forms.Button();
+            this.btnOnPedidoCancelado = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
@@ -754,6 +759,28 @@
             this.tabPage7.Text = "Meu Cardário Ai";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // btnMeuCardapioAiCancelar
+            // 
+            this.btnMeuCardapioAiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiCancelar.Location = new System.Drawing.Point(372, 161);
+            this.btnMeuCardapioAiCancelar.Name = "btnMeuCardapioAiCancelar";
+            this.btnMeuCardapioAiCancelar.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiCancelar.TabIndex = 28;
+            this.btnMeuCardapioAiCancelar.Text = "Cancelar";
+            this.btnMeuCardapioAiCancelar.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiCancelar.Click += new System.EventHandler(this.btnMeuCardapioAiCancelar_Click);
+            // 
+            // btnMeuCardapioAiSaiuParaEntrega
+            // 
+            this.btnMeuCardapioAiSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeuCardapioAiSaiuParaEntrega.Location = new System.Drawing.Point(193, 161);
+            this.btnMeuCardapioAiSaiuParaEntrega.Name = "btnMeuCardapioAiSaiuParaEntrega";
+            this.btnMeuCardapioAiSaiuParaEntrega.Size = new System.Drawing.Size(171, 39);
+            this.btnMeuCardapioAiSaiuParaEntrega.TabIndex = 27;
+            this.btnMeuCardapioAiSaiuParaEntrega.Text = "Saiu para Entrega";
+            this.btnMeuCardapioAiSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnMeuCardapioAiSaiuParaEntrega.Click += new System.EventHandler(this.btnMeuCardapioAiSaiuParaEntrega_Click);
+            // 
             // btnMeuCardapioAiBuscarPedido
             // 
             this.btnMeuCardapioAiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1129,6 +1156,11 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.btnOnPedidoCancelado);
+            this.tabPage10.Controls.Add(this.btnOnPedidoEntregue);
+            this.tabPage10.Controls.Add(this.btnOnPedidoSaiuParaEntrega);
+            this.tabPage10.Controls.Add(this.btnOnPedidoConfirmado);
+            this.tabPage10.Controls.Add(this.btnOnPedidoRecebido);
             this.tabPage10.Controls.Add(this.btnOnPedidoBuscarPedido);
             this.tabPage10.Controls.Add(this.gridOnPedido);
             this.tabPage10.Controls.Add(this.btnOnPedidoParar);
@@ -1139,7 +1171,7 @@
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Size = new System.Drawing.Size(1229, 685);
             this.tabPage10.TabIndex = 9;
-            this.tabPage10.Text = "On Pedido";
+            this.tabPage10.Text = "OnPedido";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
             // btnOnPedidoBuscarPedido
@@ -1625,27 +1657,60 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // btnMeuCardapioAiSaiuParaEntrega
+            // btnOnPedidoRecebido
             // 
-            this.btnMeuCardapioAiSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMeuCardapioAiSaiuParaEntrega.Location = new System.Drawing.Point(193, 161);
-            this.btnMeuCardapioAiSaiuParaEntrega.Name = "btnMeuCardapioAiSaiuParaEntrega";
-            this.btnMeuCardapioAiSaiuParaEntrega.Size = new System.Drawing.Size(171, 39);
-            this.btnMeuCardapioAiSaiuParaEntrega.TabIndex = 27;
-            this.btnMeuCardapioAiSaiuParaEntrega.Text = "Saiu para Entrega";
-            this.btnMeuCardapioAiSaiuParaEntrega.UseVisualStyleBackColor = true;
-            this.btnMeuCardapioAiSaiuParaEntrega.Click += new System.EventHandler(this.btnMeuCardapioAiSaiuParaEntrega_Click);
+            this.btnOnPedidoRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoRecebido.Location = new System.Drawing.Point(189, 72);
+            this.btnOnPedidoRecebido.Name = "btnOnPedidoRecebido";
+            this.btnOnPedidoRecebido.Size = new System.Drawing.Size(142, 39);
+            this.btnOnPedidoRecebido.TabIndex = 18;
+            this.btnOnPedidoRecebido.Text = "Recebido";
+            this.btnOnPedidoRecebido.UseVisualStyleBackColor = true;
+            this.btnOnPedidoRecebido.Click += new System.EventHandler(this.btnOnPedidoRecebido_Click);
             // 
-            // btnMeuCardapioAiCancelar
+            // btnOnPedidoConfirmado
             // 
-            this.btnMeuCardapioAiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMeuCardapioAiCancelar.Location = new System.Drawing.Point(372, 161);
-            this.btnMeuCardapioAiCancelar.Name = "btnMeuCardapioAiCancelar";
-            this.btnMeuCardapioAiCancelar.Size = new System.Drawing.Size(171, 39);
-            this.btnMeuCardapioAiCancelar.TabIndex = 28;
-            this.btnMeuCardapioAiCancelar.Text = "Cancelar";
-            this.btnMeuCardapioAiCancelar.UseVisualStyleBackColor = true;
-            this.btnMeuCardapioAiCancelar.Click += new System.EventHandler(this.btnMeuCardapioAiCancelar_Click);
+            this.btnOnPedidoConfirmado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoConfirmado.Location = new System.Drawing.Point(337, 72);
+            this.btnOnPedidoConfirmado.Name = "btnOnPedidoConfirmado";
+            this.btnOnPedidoConfirmado.Size = new System.Drawing.Size(142, 39);
+            this.btnOnPedidoConfirmado.TabIndex = 19;
+            this.btnOnPedidoConfirmado.Text = "Confirmado";
+            this.btnOnPedidoConfirmado.UseVisualStyleBackColor = true;
+            this.btnOnPedidoConfirmado.Click += new System.EventHandler(this.btnOnPedidoConfirmado_Click);
+            // 
+            // btnOnPedidoSaiuParaEntrega
+            // 
+            this.btnOnPedidoSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoSaiuParaEntrega.Location = new System.Drawing.Point(485, 72);
+            this.btnOnPedidoSaiuParaEntrega.Name = "btnOnPedidoSaiuParaEntrega";
+            this.btnOnPedidoSaiuParaEntrega.Size = new System.Drawing.Size(171, 39);
+            this.btnOnPedidoSaiuParaEntrega.TabIndex = 20;
+            this.btnOnPedidoSaiuParaEntrega.Text = "Saiu para entrega";
+            this.btnOnPedidoSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnOnPedidoSaiuParaEntrega.Click += new System.EventHandler(this.btnOnPedidoSaiuParaEntrega_Click);
+            // 
+            // btnOnPedidoEntregue
+            // 
+            this.btnOnPedidoEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoEntregue.Location = new System.Drawing.Point(662, 72);
+            this.btnOnPedidoEntregue.Name = "btnOnPedidoEntregue";
+            this.btnOnPedidoEntregue.Size = new System.Drawing.Size(146, 39);
+            this.btnOnPedidoEntregue.TabIndex = 21;
+            this.btnOnPedidoEntregue.Text = "Entregue";
+            this.btnOnPedidoEntregue.UseVisualStyleBackColor = true;
+            this.btnOnPedidoEntregue.Click += new System.EventHandler(this.btnOnPedidoEntregue_Click);
+            // 
+            // btnOnPedidoCancelado
+            // 
+            this.btnOnPedidoCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOnPedidoCancelado.Location = new System.Drawing.Point(814, 72);
+            this.btnOnPedidoCancelado.Name = "btnOnPedidoCancelado";
+            this.btnOnPedidoCancelado.Size = new System.Drawing.Size(146, 39);
+            this.btnOnPedidoCancelado.TabIndex = 22;
+            this.btnOnPedidoCancelado.Text = "Cancelado";
+            this.btnOnPedidoCancelado.UseVisualStyleBackColor = true;
+            this.btnOnPedidoCancelado.Click += new System.EventHandler(this.btnOnPedidoCancelado_Click);
             // 
             // Form1
             // 
@@ -1831,6 +1896,11 @@
         private System.Windows.Forms.Button btnOnPedidoBuscarPedido;
         private System.Windows.Forms.Button btnMeuCardapioAiCancelar;
         private System.Windows.Forms.Button btnMeuCardapioAiSaiuParaEntrega;
+        private System.Windows.Forms.Button btnOnPedidoConfirmado;
+        private System.Windows.Forms.Button btnOnPedidoRecebido;
+        private System.Windows.Forms.Button btnOnPedidoSaiuParaEntrega;
+        private System.Windows.Forms.Button btnOnPedidoCancelado;
+        private System.Windows.Forms.Button btnOnPedidoEntregue;
     }
 }
 

@@ -59,9 +59,11 @@
     <Compile Include="Domain\result_order.cs" />
     <Compile Include="Domain\result_orders.cs" />
     <Compile Include="Enum\DiscountType.cs" />
+    <Compile Include="Enum\ExternalCodeType.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Enum\PaymentType.cs" />
+    <Compile Include="Enum\PriceModelType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AnotaAiService.cs" />
     <Compile Include="Utils\Constants.cs" />

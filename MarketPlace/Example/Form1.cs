@@ -50,7 +50,7 @@ namespace Example
         private List<Rappi.Domain.order_detail> _rappiOrders { get; set; }
 
         private string _onPedidoToken { get; set; }
-        private List<pedido_info_id> _onPedidoPedidos { get; set; }
+        private List<Id> _onPedidoPedidos { get; set; }
         private string _onPedidoSelected { get; set; }
 
         #endregion
@@ -162,7 +162,7 @@ namespace Example
 
             _pedzapPedidos = new List<PedZap.Domain.pedido>();
 
-            _onPedidoPedidos = new List<pedido_info_id>();
+            _onPedidoPedidos = new List<Id>();
             gridOnPedido.DataSource = _onPedidoPedidos.ToList();
             gridOnPedido.Refresh();
         }
@@ -583,7 +583,7 @@ namespace Example
                     if (orderResult.Success)
                     {
                         _gloriaOrders.AddRange(orderResult.Result);
-                        
+
                         WriteGridGloria();
                     }
                     else
@@ -623,7 +623,7 @@ namespace Example
 
         private void btnGloriaFoodMenu_Click(object sender, EventArgs e)
         {
-            if(btnGloriaFoodIniciar.Enabled)
+            if (btnGloriaFoodIniciar.Enabled)
             {
                 MessageBox.Show("Inicia primeiro o gloria food");
                 return;
@@ -652,7 +652,7 @@ namespace Example
         {
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
             var result = logarooService.Login(txtLogarooEmail.Text, txtLogarooSenha.Text);
-            if(result.Success)
+            if (result.Success)
             {
                 txtLogarooToken.Text = result.Result.data.token;
             }
@@ -664,7 +664,7 @@ namespace Example
 
         private void btnLogarooBuscarFormaPagamentos_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txtLogarooToken.Text))
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
             {
                 MessageBox.Show("Faça o login primeiro");
                 return;
@@ -720,8 +720,8 @@ namespace Example
 
             Random randNum = new Random();
             var reference_id = randNum.Next();
-            
-            var pedido = new Logaroo.Domain.order();            
+
+            var pedido = new Logaroo.Domain.order();
             pedido.birth = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             pedido.delivery_forecast = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss");
             pedido.city = "Fortaleza";
@@ -729,7 +729,7 @@ namespace Example
             pedido.customer_id_number = "9221";
             pedido.customer_name = "IzzyWay Tecnologia";
             pedido.customer_phone = "+5585981972243";
-            
+
             var item1 = new Logaroo.Domain.orderitem();
             item1.name = "teste1";
             item1.quantity = 1;
@@ -744,7 +744,7 @@ namespace Example
             item2.cod = "2";
             item2.seq = 2;
             item2.observation = "";
-            pedido.items.Add(item2);            
+            pedido.items.Add(item2);
 
             pedido.lat = "-3.82660311645193";
             pedido.lng = "-38.49187777079774";
@@ -792,14 +792,14 @@ namespace Example
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
             var result = logarooService.OrderStatus(txtLogarooToken.Text, txtLogarooNumeroPedido.Text, Logaroo.Enum.OrderStatus.PedidoProntoParaColeta);
             if (result.Success)
-            {               
+            {
                 MessageBox.Show("Alterado com sucesso");
             }
             else
             {
                 MessageBox.Show(result.Message);
             }
-        }        
+        }
 
         private void btnLogarooEmProducao_Click(object sender, EventArgs e)
         {
@@ -860,7 +860,7 @@ namespace Example
             {
                 MessageBox.Show("Faça o login primeiro");
                 return;
-            }          
+            }
 
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
             var result = logarooService.Logout(txtLogarooToken.Text);
@@ -893,7 +893,7 @@ namespace Example
             var result = logarooService.GetOrder(txtLogarooToken.Text, txtLogarooNumeroPedido.Text);
             if (result.Success)
             {
-                if(result.Result.data.status == OrderStatus.PedidoEntregueAoCliente ||
+                if (result.Result.data.status == OrderStatus.PedidoEntregueAoCliente ||
                     result.Result.data.status == OrderStatus.PedidoComprovanteDePagamentoEntregueAoLojista)
                 {
                     MessageBox.Show("Pedido entregue");
@@ -1195,7 +1195,7 @@ namespace Example
                         MessageBox.Show(orderResult.Message);
                         return;
                     }
-                    
+
                     Thread.Sleep(100000);
                 }
             }
@@ -1449,7 +1449,7 @@ namespace Example
                         MessageBox.Show(orderResult.Message);
                         return;
                     }
-                    
+
                     Thread.Sleep(10000);
                 }
             }
@@ -1512,7 +1512,7 @@ namespace Example
 
             var meuCardapioAiService = new MeuCardapioAiService(txtMeuCardapioAiURL.Text);
             var result = meuCardapioAiService.Token(txtMeuCardapioAiClient_ID.Text, txtMeuCardapioAiClient_SECRET.Text);
-            if(result.Success)
+            if (result.Success)
             {
                 txtMeuCardapioAiToken.Text = result.Result.access_token;
             }
@@ -1561,7 +1561,7 @@ namespace Example
                 {
                     var orderResult = meuCardapioAiService.Orders(_meuCardapioAiToken, _meuCardapioAiUltimoPedido);
                     if (orderResult.Success)
-                    {                        
+                    {
                         _meuCardapioAiOrders.AddRange(orderResult.Result.data.pedidos);
 
                         WriteGridMeuCardapioAi();
@@ -1601,7 +1601,7 @@ namespace Example
         }
 
         void meuCardapioAiParar()
-        {            
+        {
             btnMeuCardapioAiIniciar.Enabled = true;
             btnMeuCardapioAiParar.Enabled = false;
         }
@@ -1734,7 +1734,8 @@ namespace Example
                     {
                         foreach (var item in orderResult.Result.info.docs)
                         {
-                            _anotaAiOrders.Add(new AnotaAi.Domain.order { 
+                            _anotaAiOrders.Add(new AnotaAi.Domain.order
+                            {
                                 id = item._id,
                                 check = item.check
                             });
@@ -2053,7 +2054,7 @@ namespace Example
         }
 
         private void btnRappiAceitarPedido_Click(object sender, EventArgs e)
-        {            
+        {
             if (btnRappiIniciar.Enabled)
             {
                 MessageBox.Show("Inicia o aplicativo");
@@ -2151,7 +2152,7 @@ namespace Example
                 MessageBox.Show("Campo Token Obrigatório");
                 return;
             }
-           
+
             btnOnPedidoIniciar.Enabled = false;
             btnOnPedidoParar.Enabled = true;
             _onPedidoToken = txtOnPedidoToken.Text;
@@ -2169,15 +2170,64 @@ namespace Example
                     var orderResult = onPedidoService.Orders(_onPedidoToken);
                     if (orderResult.Success)
                     {
-                        if (orderResult.Result.onpedido != null && orderResult.Result.onpedido.status != null
-                            && orderResult.Result.onpedido.status.pedidos != null
-                            && orderResult.Result.onpedido.status.pedidos.confirmado != null)
+                        if (orderResult.Result.status != null && orderResult.Result.status.pedidos != null)
                         {
-                            foreach (var item in orderResult.Result.onpedido.status.pedidos.confirmado.id)
+                            if (orderResult.Result.status.pedidos.NaoRecebidos != null)
                             {
-                                _onPedidoPedidos.Add(new pedido_info_id { pedido = Convert.ToInt32(item) });
-                                WriteGridOnPedido();                                
+                                foreach (var item in orderResult.Result.status.pedidos.NaoRecebidos.IDs)
+                                {
+                                    var id = Convert.ToInt32(item);
+                                    var existe = _onPedidoPedidos.Any(a => a.pedido == id);
+                                    if (!existe)
+                                        _onPedidoPedidos.Add(new Id { pedido = id, cliente = (byte)OnPedido.Enum.OrderStatus.Nenhum });
+                                }
                             }
+
+                            if (orderResult.Result.status.pedidos.Confirmados != null)
+                            {
+                                foreach (var item in orderResult.Result.status.pedidos.Confirmados.IDs)
+                                {
+                                    var id = Convert.ToInt32(item);
+                                    var existe = _onPedidoPedidos.Any(a => a.pedido == id);
+                                    if (!existe)
+                                        _onPedidoPedidos.Add(new Id { pedido = id, cliente = (byte)OnPedido.Enum.OrderStatus.Confirmado });
+                                }
+                            }
+
+                            if (orderResult.Result.status.pedidos.Cancelados != null)
+                            {
+                                foreach (var item in orderResult.Result.status.pedidos.Cancelados.IDs)
+                                {
+                                    var id = Convert.ToInt32(item);
+                                    var existe = _onPedidoPedidos.Any(a => a.pedido == id);
+                                    if (!existe)
+                                        _onPedidoPedidos.Add(new Id { pedido = id, cliente = (byte)OnPedido.Enum.OrderStatus.Cancelado });
+                                }
+                            }
+
+                            if (orderResult.Result.status.pedidos.Despachados != null)
+                            {
+                                foreach (var item in orderResult.Result.status.pedidos.Despachados.IDs)
+                                {
+                                    var id = Convert.ToInt32(item);
+                                    var existe = _onPedidoPedidos.Any(a => a.pedido == id);
+                                    if (!existe)
+                                        _onPedidoPedidos.Add(new Id { pedido = id, cliente = (byte)OnPedido.Enum.OrderStatus.Despachado });
+                                }
+                            }
+
+                            if (orderResult.Result.status.pedidos.Entregues != null)
+                            {
+                                foreach (var item in orderResult.Result.status.pedidos.Entregues.IDs)
+                                {
+                                    var id = Convert.ToInt32(item);
+                                    var existe = _onPedidoPedidos.Any(a => a.pedido == id);
+                                    if (!existe)
+                                        _onPedidoPedidos.Add(new Id { pedido = id, cliente = (byte)OnPedido.Enum.OrderStatus.Entregue });
+                                }
+                            }
+
+                            WriteGridOnPedido();
                         }
                     }
                     else
@@ -2240,9 +2290,108 @@ namespace Example
             onPedidoService.Order(_onPedidoToken, _onPedidoSelected);
         }
 
+        private void btnOnPedidoRecebido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Recebido).ToString());
+            if(result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnOnPedidoConfirmado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Confirmado).ToString());
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnOnPedidoSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Despachado).ToString());
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnOnPedidoEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Entregue).ToString());
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnOnPedidoCancelado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_onPedidoSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var onPedidoService = new OnPedidoService();
+            var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Cancelado).ToString());
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 
-        
+
     }
 }

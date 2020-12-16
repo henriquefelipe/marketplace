@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class pedido_valor_cupom
+    [Serializable]
+    public class Cupom
     {
+        [XmlElement]
         public bool status { get; set; }
+        [XmlElement]
         public decimal desconto { get; set; }
+        [XmlElement]
         public string cupom { get; set; }
     }
 }

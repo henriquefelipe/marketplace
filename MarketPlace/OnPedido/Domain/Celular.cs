@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class pedido_cliente_celular
+    [Serializable]
+    public class Celular
     {
+        [XmlElement]
         public string formatado { get; set; }
+        [XmlElement]
         public string desformatado { get; set; }
     }
 }

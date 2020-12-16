@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class produto_desconto
+    [Serializable]
+    public class Desconto
     {
+        [XmlElement]
         public bool status { get; set; }
+        [XmlElement]
         public decimal percentual { get; set; }
+        [XmlElement]
         public decimal valor { get; set; }
     }
 }

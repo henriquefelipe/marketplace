@@ -16,6 +16,7 @@ namespace AnotaAi.Domain
         public decimal new_totalPrice { get; set; }
         public decimal new_unitPrice { get; set; }
         public string observation { get; set; }
+        public string priceModel { get; set; }
         public List<subitem> subItems { get; set; }
     }
 

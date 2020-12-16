@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class produto_valor
+    [Serializable]
+    public class TotalizacaoProduto
     {
+        [XmlElement]
         public decimal opcoes { get; set; }
+        [XmlElement]
         public decimal produto { get; set; }
+        [XmlElement]
         public decimal total { get; set; }
     }
 }

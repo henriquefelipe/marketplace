@@ -45,6 +45,7 @@
     <Compile Include="Util.cs" />
     <Compile Include="GenericResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

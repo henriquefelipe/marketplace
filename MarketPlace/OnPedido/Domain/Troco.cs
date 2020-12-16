@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OnPedido.Domain
 {
-    public class pedido_valor_troco
+    [Serializable]
+    public class Troco
     {
+        [XmlElement]
         public bool status { get; set; }
+        [XmlElement]
         public decimal recebido { get; set; }
+        [XmlElement]
         public decimal valor { get; set; }
     }
 }
