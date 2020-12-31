@@ -15,6 +15,7 @@ namespace MeuCardapioAi.Domain
         public endereco endereco { get; set; }
         public string codigo { get; set; }
         public string horario { get; set; }
+        public string horarioEntregaAgendada { get; set; }
         public int statusOrdem { get; set; }
         public decimal subvalor { get; set; }
         public decimal desconto { get; set; }

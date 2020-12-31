@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace MeuCardapioAi.Domain
 {
-    public class cliente
+    public class item_produto_categoria
     {
         public int id { get; set; }
         public string nome { get; set; }
-        public string cpf { get; set; }
-        public string telefone { get; set; }
+        //"impressoras": [],
+        public int posicao { get; set; }
+        public bool disponivel { get; set; }
     }
 }

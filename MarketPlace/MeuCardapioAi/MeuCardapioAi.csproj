@@ -49,15 +49,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\adicionais.cs" />
+    <Compile Include="Domain\adicionais_campo.cs" />
+    <Compile Include="Domain\adicionais_campo_adicional.cs" />
     <Compile Include="Domain\cliente.cs" />
     <Compile Include="Domain\endereco.cs" />
     <Compile Include="Domain\item.cs" />
+    <Compile Include="Domain\item_produto.cs" />
+    <Compile Include="Domain\item_produto_categoria.cs" />
     <Compile Include="Domain\operador.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\order_result.cs" />
     <Compile Include="Domain\pagamento.cs" />
     <Compile Include="Domain\result_status.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Enum\AdicionalEntidade.cs" />
+    <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Enum\PaymentType.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
