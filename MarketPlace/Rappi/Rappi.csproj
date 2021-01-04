@@ -61,6 +61,7 @@
     <Compile Include="Domain\totals_charges.cs" />
     <Compile Include="Domain\totals_other_totals.cs" />
     <Compile Include="Enum\CancelType.cs" />
+    <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Enum\ItemType.cs" />
     <Compile Include="Enum\PaymentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

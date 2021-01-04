@@ -10,7 +10,7 @@ namespace MeuCardapioAi.Domain
     {
         public int id { get; set; }
         public string nome { get; set; }
-        public decimal preco { get; set; }
+        public decimal? preco { get; set; }
         public string descricao { get; set; }
         public string mensagemPedido { get; set; }
         public string imagens { get; set; }

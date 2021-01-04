@@ -2044,7 +2044,6 @@ namespace Example
             btnRappiParar.Enabled = false;
         }
 
-
         private void gridRappi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridRappi.Rows.Count)
@@ -2391,7 +2390,6 @@ namespace Example
         }
 
         #endregion
-
 
     }
 }

@@ -2,7 +2,7 @@
 {
     public class delivery_information
     {
-         public string address_tag { get; set; }
+        public string address_tag { get; set; }
         public string city { get; set; }
         public string street_shorcut { get; set; }
         public string complete_address { get; set; }

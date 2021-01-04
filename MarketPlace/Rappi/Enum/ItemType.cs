@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rappi.Enum
+﻿namespace Rappi.Enum
 {
     public class ItemType
     {
-        public const string PRODUCT = "PRODUCT";
+        public const string PRODUCT = "product";
+        public const string TOPPING = "topping";
     }
 }

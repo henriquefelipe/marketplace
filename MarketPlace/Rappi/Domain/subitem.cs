@@ -8,5 +8,6 @@ namespace Rappi.Domain
 {
     public class subitem
     {
+
     }
 }

@@ -17,6 +17,6 @@ namespace Rappi.Domain
         public decimal unit_price_without_discount { get; set; }
         public decimal percentage_discount { get; set; }
         public decimal quantity { get; set; }
-        public List<subitem> subitems { get; set; }
+        public List<item> subitems { get; set; }
     }
 }
