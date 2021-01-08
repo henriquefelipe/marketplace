@@ -1,4 +1,5 @@
 ﻿using AnotaAi.Service;
+using Cinddi.Service;
 using DeliveryApp.Service;
 using GloriaFood.Service;
 using Logaroo.Enum;
@@ -53,6 +54,10 @@ namespace Example
         private List<Id> _onPedidoPedidos { get; set; }
         private string _onPedidoSelected { get; set; }
 
+        private string _cinddiToken { get; set; }
+        private List<Cinddi.Domain.ResponseOrders> _cinddiPedidos { get; set; }
+        private string _cinddiSelected { get; set; }
+
         #endregion
 
         public Form1()
@@ -76,6 +81,11 @@ namespace Example
                             if (marketPlace.AnotaAi != null)
                             {
                                 txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
+                            }
+
+                            if (marketPlace.Cinddi != null)
+                            {
+                                txtCinddiToken.Text = marketPlace.Cinddi.Token;
                             }
 
                             if (marketPlace.DeliveryApp != null)
@@ -2391,5 +2401,120 @@ namespace Example
 
         #endregion
 
+        #region Cinddi
+        private void btnCinddiIniciar_Click(object sender, EventArgs e)
+        {
+            cinddiIniciar();
+        }
+
+        private void btnCinddiParar_Click(object sender, EventArgs e)
+        {
+            cinddiParar();
+        }
+
+        public async void cinddiIniciar()
+        {
+            if (string.IsNullOrEmpty(txtCinddiToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            btnCinddiIniciar.Enabled = false;
+            btnCinddiParar.Enabled = true;
+            _cinddiToken = txtCinddiToken.Text;
+            await Task.Run(() => cinddi());
+        }
+
+        private void cinddi()
+        {
+            var service = new CinddiService();
+
+            try
+            {
+                while (btnCinddiParar.Enabled)
+                {
+                    var orderResult = service.Orders(_cinddiToken);
+                    if (orderResult.Success)
+                    {
+                        _cinddiPedidos = new List<Cinddi.Domain.ResponseOrders>();
+                        _cinddiPedidos.AddRange(orderResult.Result);
+                        WriteGridCinddi();                        
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridCinddiDelegate();
+        private void WriteGridCinddi()
+        {
+            if (gridCinddi.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridCinddiDelegate(WriteGridCinddi);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridCinddi.DataSource = _cinddiPedidos.ToList();
+                gridCinddi.Refresh();
+            }
+        }
+
+        void cinddiParar()
+        {
+            btnCinddiIniciar.Enabled = true;
+            btnCinddiParar.Enabled = false;
+        }
+
+        private void gridCinddi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridCinddi.Rows.Count)
+            {
+                _cinddiSelected = gridCinddi.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+
+        private void btnCinddiBuscarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCinddiPreparo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCinddiEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCinddiFinalizado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCinddiCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

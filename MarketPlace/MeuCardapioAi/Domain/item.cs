@@ -10,6 +10,7 @@
         public decimal total { get; set; }
         public item_produto produto { get; set; }
         public string unidade { get; set; }
+        public string observacao { get; set; }
         public adicionais adicionais { get; set; }
     }
 }

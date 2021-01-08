@@ -12,6 +12,7 @@ namespace Example
         public MarketPlaceConfigSuperMenu SuperMenu { get; set; }
         public MarketPlaceConfigRappi Rappi { get; set; }
         public MarketPlaceConfigOnPedido OnPedido { get; set; }
+        public MarketPlaceConfigCinddi Cinddi { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -73,6 +74,11 @@ namespace Example
     }
 
     public class MarketPlaceConfigOnPedido
+    {
+        public string Token { get; set; }
+    }
+
+    public class MarketPlaceConfigCinddi
     {
         public string Token { get; set; }
     }

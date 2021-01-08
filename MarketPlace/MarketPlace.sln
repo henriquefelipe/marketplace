@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rappi", "Rappi\Rappi.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnPedido", "OnPedido\OnPedido.csproj", "{F423EA0E-B5C2-4152-AC20-B2DE04B4B1AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinddi", "Cinddi\Cinddi.csproj", "{370A32F6-B2A0-4822-B864-7084D3F18AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F423EA0E-B5C2-4152-AC20-B2DE04B4B1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F423EA0E-B5C2-4152-AC20-B2DE04B4B1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F423EA0E-B5C2-4152-AC20-B2DE04B4B1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

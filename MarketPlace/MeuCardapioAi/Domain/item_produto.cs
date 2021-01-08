@@ -15,9 +15,9 @@ namespace MeuCardapioAi.Domain
         public string mensagemPedido { get; set; }
         public string imagens { get; set; }
         public string empresa { get; set; }
-        public bool exibirNoSite { get; set; }
+        public bool? exibirNoSite { get; set; }
         public int disponibilidade { get; set; }
-        public bool exibirPrecoSite { get; set; }
+        public bool? exibirPrecoSite { get; set; }
         public item_produto_categoria categoria { get; set; }
         public string tipoDeVenda { get; set; }
         public string unidadeMedida { get; set; }
