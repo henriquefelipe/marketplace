@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnPedido", "OnPedido\OnPedi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinddi", "Cinddi\Cinddi.csproj", "{370A32F6-B2A0-4822-B864-7084D3F18AE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDireto", "DeliveryDireto\DeliveryDireto.csproj", "{4051BC94-28AC-41C1-8CB9-E254F822A7CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{370A32F6-B2A0-4822-B864-7084D3F18AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4051BC94-28AC-41C1-8CB9-E254F822A7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4051BC94-28AC-41C1-8CB9-E254F822A7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4051BC94-28AC-41C1-8CB9-E254F822A7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4051BC94-28AC-41C1-8CB9-E254F822A7CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -54,6 +54,7 @@
     <Compile Include="Domain\cliente.cs" />
     <Compile Include="Domain\endereco.cs" />
     <Compile Include="Domain\item.cs" />
+    <Compile Include="Domain\item_medida.cs" />
     <Compile Include="Domain\item_produto.cs" />
     <Compile Include="Domain\item_produto_categoria.cs" />
     <Compile Include="Domain\operador.cs" />

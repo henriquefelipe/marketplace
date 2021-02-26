@@ -40,6 +40,17 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnAnotaAiParar = new System.Windows.Forms.Button();
             this.btnAnotaAiIniciar = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btnCinddiCancelar = new System.Windows.Forms.Button();
+            this.btnCinddiFinalizado = new System.Windows.Forms.Button();
+            this.btnCinddiEntrega = new System.Windows.Forms.Button();
+            this.btnCinddiBuscarPedido = new System.Windows.Forms.Button();
+            this.btnCinddiPreparo = new System.Windows.Forms.Button();
+            this.gridCinddi = new System.Windows.Forms.DataGridView();
+            this.txtCinddiToken = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnCinddiParar = new System.Windows.Forms.Button();
+            this.btnCinddiIniciar = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.gridDeliveryApp = new System.Windows.Forms.DataGridView();
             this.txtDeliveryAppToken = new System.Windows.Forms.TextBox();
@@ -166,20 +177,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.btnCinddiCancelar = new System.Windows.Forms.Button();
-            this.btnCinddiFinalizado = new System.Windows.Forms.Button();
-            this.btnCinddiEntrega = new System.Windows.Forms.Button();
-            this.btnCinddiBuscarPedido = new System.Windows.Forms.Button();
-            this.btnCinddiPreparo = new System.Windows.Forms.Button();
-            this.gridCinddi = new System.Windows.Forms.DataGridView();
-            this.txtCinddiToken = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.btnCinddiParar = new System.Windows.Forms.Button();
-            this.btnCinddiIniciar = new System.Windows.Forms.Button();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.gridDeliveryDireto = new System.Windows.Forms.DataGridView();
+            this.txtDeliveryDiretoToken = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.btnDeliveryDiretoParar = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoIniciar = new System.Windows.Forms.Button();
+            this.txtDeliveryDiretoMerchandId = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtDeliveryDiretoSenha = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtDeliveryDiretoUsuario = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btnDeliveryAppCancelar = new System.Windows.Forms.Button();
+            this.btnDeliveryAppSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnDeliveryAppBuscarPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -200,8 +217,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
-            this.tabPage11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).BeginInit();
+            this.tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -209,6 +226,7 @@
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage7);
@@ -348,8 +366,135 @@
             this.btnAnotaAiIniciar.UseVisualStyleBackColor = true;
             this.btnAnotaAiIniciar.Click += new System.EventHandler(this.btnAnotaAiIniciar_Click);
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.btnCinddiCancelar);
+            this.tabPage11.Controls.Add(this.btnCinddiFinalizado);
+            this.tabPage11.Controls.Add(this.btnCinddiEntrega);
+            this.tabPage11.Controls.Add(this.btnCinddiBuscarPedido);
+            this.tabPage11.Controls.Add(this.btnCinddiPreparo);
+            this.tabPage11.Controls.Add(this.gridCinddi);
+            this.tabPage11.Controls.Add(this.txtCinddiToken);
+            this.tabPage11.Controls.Add(this.label26);
+            this.tabPage11.Controls.Add(this.btnCinddiParar);
+            this.tabPage11.Controls.Add(this.btnCinddiIniciar);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage11.TabIndex = 10;
+            this.tabPage11.Text = "Cinddi";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // btnCinddiCancelar
+            // 
+            this.btnCinddiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiCancelar.Location = new System.Drawing.Point(616, 76);
+            this.btnCinddiCancelar.Name = "btnCinddiCancelar";
+            this.btnCinddiCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnCinddiCancelar.TabIndex = 32;
+            this.btnCinddiCancelar.Text = "Cancelar";
+            this.btnCinddiCancelar.UseVisualStyleBackColor = true;
+            this.btnCinddiCancelar.Click += new System.EventHandler(this.btnCinddiCancelar_Click);
+            // 
+            // btnCinddiFinalizado
+            // 
+            this.btnCinddiFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiFinalizado.Location = new System.Drawing.Point(465, 76);
+            this.btnCinddiFinalizado.Name = "btnCinddiFinalizado";
+            this.btnCinddiFinalizado.Size = new System.Drawing.Size(145, 33);
+            this.btnCinddiFinalizado.TabIndex = 31;
+            this.btnCinddiFinalizado.Text = "Finalizar";
+            this.btnCinddiFinalizado.UseVisualStyleBackColor = true;
+            this.btnCinddiFinalizado.Click += new System.EventHandler(this.btnCinddiFinalizado_Click);
+            // 
+            // btnCinddiEntrega
+            // 
+            this.btnCinddiEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiEntrega.Location = new System.Drawing.Point(314, 76);
+            this.btnCinddiEntrega.Name = "btnCinddiEntrega";
+            this.btnCinddiEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnCinddiEntrega.TabIndex = 30;
+            this.btnCinddiEntrega.Text = "Entregar";
+            this.btnCinddiEntrega.UseVisualStyleBackColor = true;
+            this.btnCinddiEntrega.Click += new System.EventHandler(this.btnCinddiEntrega_Click);
+            // 
+            // btnCinddiBuscarPedido
+            // 
+            this.btnCinddiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiBuscarPedido.Location = new System.Drawing.Point(12, 76);
+            this.btnCinddiBuscarPedido.Name = "btnCinddiBuscarPedido";
+            this.btnCinddiBuscarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnCinddiBuscarPedido.TabIndex = 29;
+            this.btnCinddiBuscarPedido.Text = "Buscar Pedido";
+            this.btnCinddiBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnCinddiBuscarPedido.Click += new System.EventHandler(this.btnCinddiBuscarPedido_Click);
+            // 
+            // btnCinddiPreparo
+            // 
+            this.btnCinddiPreparo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiPreparo.Location = new System.Drawing.Point(163, 76);
+            this.btnCinddiPreparo.Name = "btnCinddiPreparo";
+            this.btnCinddiPreparo.Size = new System.Drawing.Size(145, 33);
+            this.btnCinddiPreparo.TabIndex = 28;
+            this.btnCinddiPreparo.Text = "Preparar";
+            this.btnCinddiPreparo.UseVisualStyleBackColor = true;
+            this.btnCinddiPreparo.Click += new System.EventHandler(this.btnCinddiPreparo_Click);
+            // 
+            // gridCinddi
+            // 
+            this.gridCinddi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCinddi.Location = new System.Drawing.Point(12, 115);
+            this.gridCinddi.Name = "gridCinddi";
+            this.gridCinddi.Size = new System.Drawing.Size(1209, 551);
+            this.gridCinddi.TabIndex = 27;
+            this.gridCinddi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCinddi_CellClick);
+            // 
+            // txtCinddiToken
+            // 
+            this.txtCinddiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCinddiToken.Location = new System.Drawing.Point(128, 35);
+            this.txtCinddiToken.Name = "txtCinddiToken";
+            this.txtCinddiToken.Size = new System.Drawing.Size(291, 26);
+            this.txtCinddiToken.TabIndex = 26;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(8, 38);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(62, 20);
+            this.label26.TabIndex = 25;
+            this.label26.Text = "TOKEN";
+            // 
+            // btnCinddiParar
+            // 
+            this.btnCinddiParar.Enabled = false;
+            this.btnCinddiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiParar.Location = new System.Drawing.Point(1050, 70);
+            this.btnCinddiParar.Name = "btnCinddiParar";
+            this.btnCinddiParar.Size = new System.Drawing.Size(171, 39);
+            this.btnCinddiParar.TabIndex = 24;
+            this.btnCinddiParar.Text = "Parar";
+            this.btnCinddiParar.UseVisualStyleBackColor = true;
+            this.btnCinddiParar.Click += new System.EventHandler(this.btnCinddiParar_Click);
+            // 
+            // btnCinddiIniciar
+            // 
+            this.btnCinddiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCinddiIniciar.Location = new System.Drawing.Point(1050, 19);
+            this.btnCinddiIniciar.Name = "btnCinddiIniciar";
+            this.btnCinddiIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnCinddiIniciar.TabIndex = 23;
+            this.btnCinddiIniciar.Text = "Iniciar";
+            this.btnCinddiIniciar.UseVisualStyleBackColor = true;
+            this.btnCinddiIniciar.Click += new System.EventHandler(this.btnCinddiIniciar_Click);
+            // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.btnDeliveryAppCancelar);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppSaiuParaEntrega);
+            this.tabPage6.Controls.Add(this.btnDeliveryAppBuscarPedido);
             this.tabPage6.Controls.Add(this.gridDeliveryApp);
             this.tabPage6.Controls.Add(this.txtDeliveryAppToken);
             this.tabPage6.Controls.Add(this.label14);
@@ -365,10 +510,11 @@
             // gridDeliveryApp
             // 
             this.gridDeliveryApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDeliveryApp.Location = new System.Drawing.Point(14, 109);
+            this.gridDeliveryApp.Location = new System.Drawing.Point(14, 137);
             this.gridDeliveryApp.Name = "gridDeliveryApp";
-            this.gridDeliveryApp.Size = new System.Drawing.Size(1209, 551);
+            this.gridDeliveryApp.Size = new System.Drawing.Size(1209, 523);
             this.gridDeliveryApp.TabIndex = 12;
+            this.gridDeliveryApp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDeliveryApp_CellClick);
             // 
             // txtDeliveryAppToken
             // 
@@ -1726,129 +1872,161 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // tabPage11
+            // tabPage12
             // 
-            this.tabPage11.Controls.Add(this.btnCinddiCancelar);
-            this.tabPage11.Controls.Add(this.btnCinddiFinalizado);
-            this.tabPage11.Controls.Add(this.btnCinddiEntrega);
-            this.tabPage11.Controls.Add(this.btnCinddiBuscarPedido);
-            this.tabPage11.Controls.Add(this.btnCinddiPreparo);
-            this.tabPage11.Controls.Add(this.gridCinddi);
-            this.tabPage11.Controls.Add(this.txtCinddiToken);
-            this.tabPage11.Controls.Add(this.label26);
-            this.tabPage11.Controls.Add(this.btnCinddiParar);
-            this.tabPage11.Controls.Add(this.btnCinddiIniciar);
-            this.tabPage11.Location = new System.Drawing.Point(4, 22);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage11.TabIndex = 10;
-            this.tabPage11.Text = "Cinddi";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            this.tabPage12.Controls.Add(this.txtDeliveryDiretoSenha);
+            this.tabPage12.Controls.Add(this.label29);
+            this.tabPage12.Controls.Add(this.txtDeliveryDiretoUsuario);
+            this.tabPage12.Controls.Add(this.label30);
+            this.tabPage12.Controls.Add(this.txtDeliveryDiretoMerchandId);
+            this.tabPage12.Controls.Add(this.label28);
+            this.tabPage12.Controls.Add(this.gridDeliveryDireto);
+            this.tabPage12.Controls.Add(this.txtDeliveryDiretoToken);
+            this.tabPage12.Controls.Add(this.label27);
+            this.tabPage12.Controls.Add(this.btnDeliveryDiretoParar);
+            this.tabPage12.Controls.Add(this.btnDeliveryDiretoIniciar);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage12.TabIndex = 11;
+            this.tabPage12.Text = "Delivery Direto";
+            this.tabPage12.UseVisualStyleBackColor = true;
             // 
-            // btnCinddiCancelar
+            // gridDeliveryDireto
             // 
-            this.btnCinddiCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiCancelar.Location = new System.Drawing.Point(616, 76);
-            this.btnCinddiCancelar.Name = "btnCinddiCancelar";
-            this.btnCinddiCancelar.Size = new System.Drawing.Size(145, 33);
-            this.btnCinddiCancelar.TabIndex = 32;
-            this.btnCinddiCancelar.Text = "Cancelar";
-            this.btnCinddiCancelar.UseVisualStyleBackColor = true;
-            this.btnCinddiCancelar.Click += new System.EventHandler(this.btnCinddiCancelar_Click);
+            this.gridDeliveryDireto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDeliveryDireto.Location = new System.Drawing.Point(12, 143);
+            this.gridDeliveryDireto.Name = "gridDeliveryDireto";
+            this.gridDeliveryDireto.Size = new System.Drawing.Size(1209, 523);
+            this.gridDeliveryDireto.TabIndex = 17;
             // 
-            // btnCinddiFinalizado
+            // txtDeliveryDiretoToken
             // 
-            this.btnCinddiFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiFinalizado.Location = new System.Drawing.Point(465, 76);
-            this.btnCinddiFinalizado.Name = "btnCinddiFinalizado";
-            this.btnCinddiFinalizado.Size = new System.Drawing.Size(145, 33);
-            this.btnCinddiFinalizado.TabIndex = 31;
-            this.btnCinddiFinalizado.Text = "Finalizar";
-            this.btnCinddiFinalizado.UseVisualStyleBackColor = true;
-            this.btnCinddiFinalizado.Click += new System.EventHandler(this.btnCinddiFinalizado_Click);
+            this.txtDeliveryDiretoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoToken.Location = new System.Drawing.Point(128, 19);
+            this.txtDeliveryDiretoToken.Name = "txtDeliveryDiretoToken";
+            this.txtDeliveryDiretoToken.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryDiretoToken.TabIndex = 16;
             // 
-            // btnCinddiEntrega
+            // label27
             // 
-            this.btnCinddiEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiEntrega.Location = new System.Drawing.Point(314, 76);
-            this.btnCinddiEntrega.Name = "btnCinddiEntrega";
-            this.btnCinddiEntrega.Size = new System.Drawing.Size(145, 33);
-            this.btnCinddiEntrega.TabIndex = 30;
-            this.btnCinddiEntrega.Text = "Entregar";
-            this.btnCinddiEntrega.UseVisualStyleBackColor = true;
-            this.btnCinddiEntrega.Click += new System.EventHandler(this.btnCinddiEntrega_Click);
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(11, 22);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(62, 20);
+            this.label27.TabIndex = 15;
+            this.label27.Text = "TOKEN";
             // 
-            // btnCinddiBuscarPedido
+            // btnDeliveryDiretoParar
             // 
-            this.btnCinddiBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiBuscarPedido.Location = new System.Drawing.Point(12, 76);
-            this.btnCinddiBuscarPedido.Name = "btnCinddiBuscarPedido";
-            this.btnCinddiBuscarPedido.Size = new System.Drawing.Size(145, 33);
-            this.btnCinddiBuscarPedido.TabIndex = 29;
-            this.btnCinddiBuscarPedido.Text = "Buscar Pedido";
-            this.btnCinddiBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnCinddiBuscarPedido.Click += new System.EventHandler(this.btnCinddiBuscarPedido_Click);
+            this.btnDeliveryDiretoParar.Enabled = false;
+            this.btnDeliveryDiretoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoParar.Location = new System.Drawing.Point(1050, 70);
+            this.btnDeliveryDiretoParar.Name = "btnDeliveryDiretoParar";
+            this.btnDeliveryDiretoParar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoParar.TabIndex = 14;
+            this.btnDeliveryDiretoParar.Text = "Parar";
+            this.btnDeliveryDiretoParar.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoParar.Click += new System.EventHandler(this.btnDeliveryDiretoParar_Click);
             // 
-            // btnCinddiPreparo
+            // btnDeliveryDiretoIniciar
             // 
-            this.btnCinddiPreparo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiPreparo.Location = new System.Drawing.Point(163, 76);
-            this.btnCinddiPreparo.Name = "btnCinddiPreparo";
-            this.btnCinddiPreparo.Size = new System.Drawing.Size(145, 33);
-            this.btnCinddiPreparo.TabIndex = 28;
-            this.btnCinddiPreparo.Text = "Preparar";
-            this.btnCinddiPreparo.UseVisualStyleBackColor = true;
-            this.btnCinddiPreparo.Click += new System.EventHandler(this.btnCinddiPreparo_Click);
+            this.btnDeliveryDiretoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoIniciar.Location = new System.Drawing.Point(1050, 19);
+            this.btnDeliveryDiretoIniciar.Name = "btnDeliveryDiretoIniciar";
+            this.btnDeliveryDiretoIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoIniciar.TabIndex = 13;
+            this.btnDeliveryDiretoIniciar.Text = "Iniciar";
+            this.btnDeliveryDiretoIniciar.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoIniciar.Click += new System.EventHandler(this.btnDeliveryDiretoIniciar_Click);
             // 
-            // gridCinddi
+            // txtDeliveryDiretoMerchandId
             // 
-            this.gridCinddi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCinddi.Location = new System.Drawing.Point(12, 115);
-            this.gridCinddi.Name = "gridCinddi";
-            this.gridCinddi.Size = new System.Drawing.Size(1209, 551);
-            this.gridCinddi.TabIndex = 27;
-            this.gridCinddi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCinddi_CellClick);
+            this.txtDeliveryDiretoMerchandId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoMerchandId.Location = new System.Drawing.Point(128, 56);
+            this.txtDeliveryDiretoMerchandId.Name = "txtDeliveryDiretoMerchandId";
+            this.txtDeliveryDiretoMerchandId.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryDiretoMerchandId.TabIndex = 19;
             // 
-            // txtCinddiToken
+            // label28
             // 
-            this.txtCinddiToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCinddiToken.Location = new System.Drawing.Point(128, 35);
-            this.txtCinddiToken.Name = "txtCinddiToken";
-            this.txtCinddiToken.Size = new System.Drawing.Size(291, 26);
-            this.txtCinddiToken.TabIndex = 26;
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(11, 56);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(90, 20);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "MerchantId";
             // 
-            // label26
+            // txtDeliveryDiretoSenha
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(8, 38);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(62, 20);
-            this.label26.TabIndex = 25;
-            this.label26.Text = "TOKEN";
+            this.txtDeliveryDiretoSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoSenha.Location = new System.Drawing.Point(567, 55);
+            this.txtDeliveryDiretoSenha.Name = "txtDeliveryDiretoSenha";
+            this.txtDeliveryDiretoSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtDeliveryDiretoSenha.TabIndex = 23;
             // 
-            // btnCinddiParar
+            // label29
             // 
-            this.btnCinddiParar.Enabled = false;
-            this.btnCinddiParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiParar.Location = new System.Drawing.Point(1050, 70);
-            this.btnCinddiParar.Name = "btnCinddiParar";
-            this.btnCinddiParar.Size = new System.Drawing.Size(171, 39);
-            this.btnCinddiParar.TabIndex = 24;
-            this.btnCinddiParar.Text = "Parar";
-            this.btnCinddiParar.UseVisualStyleBackColor = true;
-            this.btnCinddiParar.Click += new System.EventHandler(this.btnCinddiParar_Click);
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(474, 58);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(56, 20);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "Senha";
             // 
-            // btnCinddiIniciar
+            // txtDeliveryDiretoUsuario
             // 
-            this.btnCinddiIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCinddiIniciar.Location = new System.Drawing.Point(1050, 19);
-            this.btnCinddiIniciar.Name = "btnCinddiIniciar";
-            this.btnCinddiIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnCinddiIniciar.TabIndex = 23;
-            this.btnCinddiIniciar.Text = "Iniciar";
-            this.btnCinddiIniciar.UseVisualStyleBackColor = true;
-            this.btnCinddiIniciar.Click += new System.EventHandler(this.btnCinddiIniciar_Click);
+            this.txtDeliveryDiretoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoUsuario.Location = new System.Drawing.Point(567, 19);
+            this.txtDeliveryDiretoUsuario.Name = "txtDeliveryDiretoUsuario";
+            this.txtDeliveryDiretoUsuario.Size = new System.Drawing.Size(187, 26);
+            this.txtDeliveryDiretoUsuario.TabIndex = 21;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(474, 22);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(64, 20);
+            this.label30.TabIndex = 20;
+            this.label30.Text = "Usuario";
+            // 
+            // btnDeliveryAppCancelar
+            // 
+            this.btnDeliveryAppCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppCancelar.Location = new System.Drawing.Point(373, 92);
+            this.btnDeliveryAppCancelar.Name = "btnDeliveryAppCancelar";
+            this.btnDeliveryAppCancelar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppCancelar.TabIndex = 31;
+            this.btnDeliveryAppCancelar.Text = "Cancelar";
+            this.btnDeliveryAppCancelar.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppCancelar.Click += new System.EventHandler(this.btnDeliveryAppCancelar_Click);
+            // 
+            // btnDeliveryAppSaiuParaEntrega
+            // 
+            this.btnDeliveryAppSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppSaiuParaEntrega.Location = new System.Drawing.Point(194, 92);
+            this.btnDeliveryAppSaiuParaEntrega.Name = "btnDeliveryAppSaiuParaEntrega";
+            this.btnDeliveryAppSaiuParaEntrega.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppSaiuParaEntrega.TabIndex = 30;
+            this.btnDeliveryAppSaiuParaEntrega.Text = "Saiu para Entrega";
+            this.btnDeliveryAppSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppSaiuParaEntrega.Click += new System.EventHandler(this.btnDeliveryAppSaiuParaEntrega_Click);
+            // 
+            // btnDeliveryAppBuscarPedido
+            // 
+            this.btnDeliveryAppBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryAppBuscarPedido.Location = new System.Drawing.Point(17, 92);
+            this.btnDeliveryAppBuscarPedido.Name = "btnDeliveryAppBuscarPedido";
+            this.btnDeliveryAppBuscarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryAppBuscarPedido.TabIndex = 29;
+            this.btnDeliveryAppBuscarPedido.Text = "Buscar Pedido";
+            this.btnDeliveryAppBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnDeliveryAppBuscarPedido.Click += new System.EventHandler(this.btnDeliveryAppBuscarPedido_Click);
             // 
             // Form1
             // 
@@ -1865,6 +2043,9 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
@@ -1895,9 +2076,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
-            this.tabPage11.ResumeLayout(false);
-            this.tabPage11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).EndInit();
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2053,6 +2234,21 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnCinddiParar;
         private System.Windows.Forms.Button btnCinddiIniciar;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.DataGridView gridDeliveryDireto;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoToken;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnDeliveryDiretoParar;
+        private System.Windows.Forms.Button btnDeliveryDiretoIniciar;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoSenha;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoUsuario;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoMerchandId;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button btnDeliveryAppCancelar;
+        private System.Windows.Forms.Button btnDeliveryAppSaiuParaEntrega;
+        private System.Windows.Forms.Button btnDeliveryAppBuscarPedido;
     }
 }
 

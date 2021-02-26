@@ -4,12 +4,13 @@ using RestSharp;
 using System;
 using System.Text.RegularExpressions;
 using OnPedido.Domain;
+using System.Threading;
 
 namespace OnPedido.Service
 {
     public class OnPedidoService
-    {       
-        public OnPedidoService() { }        
+    {
+        public OnPedidoService() { }
 
         public GenericResult<ResponseOrders> Orders(string token)
         {
@@ -18,10 +19,10 @@ namespace OnPedido.Service
             {
                 var url = string.Format("{0}{1}{2}", Constants.URL, token, Constants.URL_ORDERS);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);                                
+                var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {                   
+                {
                     string cleanXml = Regex.Replace(response.Content, @"<[a-zA-Z\-]+><\/[a-zA-Z\-]+>", new MatchEvaluator((m) => ""));
                     result.Result = cleanXml.DeserializeXml<ResponseOrders>();
                     result.Success = true;
@@ -39,19 +40,25 @@ namespace OnPedido.Service
             return result;
         }
 
-        public GenericResult<ResponseOrders> Order(string token, string id)
+        public GenericResult<ResponseOrders> Order(string token, string id, int tentativas = 0)
         {
             var result = new GenericResult<ResponseOrders>();
             try
             {
                 var url = string.Format("{0}{1}{2}{3}", Constants.URL, token, Constants.URL_ORDER, id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);                
+                var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    if (response.Content == "<onpedido></onpedido>")
+                    {
+                        result.Message = response.Content;
+                        return result;
+                    }
+
                     string cleanXml = Regex.Replace(response.Content, @"<[a-zA-Z\-]+><\/[a-zA-Z\-]+>", new MatchEvaluator((m) => ""));
-                    result.Result = cleanXml.DeserializeXml<ResponseOrders>();                    
+                    result.Result = cleanXml.DeserializeXml<ResponseOrders>();
                     result.Success = true;
                     result.Json = response.Content;
                 }
@@ -78,7 +85,7 @@ namespace OnPedido.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    string cleanXml = Regex.Replace(response.Content, @"<[a-zA-Z\-]+><\/[a-zA-Z\-]+>", new MatchEvaluator((m) => ""));                    
+                    string cleanXml = Regex.Replace(response.Content, @"<[a-zA-Z\-]+><\/[a-zA-Z\-]+>", new MatchEvaluator((m) => ""));
                     result.Result = cleanXml.DeserializeXml<ResponseOrders>();
                     result.Success = true;
                     result.Json = response.Content;

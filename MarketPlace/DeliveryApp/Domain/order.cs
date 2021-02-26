@@ -8,6 +8,12 @@ namespace DeliveryApp.Domain
 {
     public class order
     {
+        public order()
+        {
+            ItemOrder = new List<item>();
+            PizzaOrders = new List<pizza>();
+        }
+
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
@@ -32,14 +38,20 @@ namespace DeliveryApp.Domain
         public decimal troco { get; set; }
         public int client_id { get; set; }
         public bool payment_online { get; set; }
-        public decimal latitude { get; set; }
-        public decimal longitude { get; set; }
+        public decimal? latitude { get; set; }
+        public decimal? longitude { get; set; }
         public string cpf_in_note { get; set; }
         public bool printed { get; set; }
         public decimal total_discount { get; set; }
         public decimal taxa_extra { get; set; }
         public string taxa_extra_title { get; set; }
         public decimal sub_total { get; set; }
-        public decimal total { get; set; }       
+        public decimal total { get; set; }  
+        public bool is_scheduled { get; set; }
+        public string scheduled_at { get; set; }
+
+        public fidelityProgram FidelityProgram { get; set; }
+        public List<item> ItemOrder { get; set; }
+        public List<pizza> PizzaOrders { get; set; }
     }
 }

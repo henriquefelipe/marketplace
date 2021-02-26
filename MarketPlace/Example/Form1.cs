@@ -1,6 +1,7 @@
 ﻿using AnotaAi.Service;
 using Cinddi.Service;
 using DeliveryApp.Service;
+using DeliveryDireto.Service;
 using GloriaFood.Service;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
@@ -28,7 +29,9 @@ namespace Example
         private string _anotaAiToken { get; set; }
         private List<AnotaAi.Domain.order> _anotaAiOrders { get; set; }
         private string _deliveryAppToken { get; set; }
+        private string _deliveryAppReferenceSelected { get; set; }
         private List<DeliveryApp.Domain.order> _deliveryAppOrders { get; set; }
+        private List<string> _deliveryDiretoOrders { get; set; }
         private string _ifoodToken { get; set; }
         private List<Ifood.Domain.order> _ifoodOrders { get; set; }
         private string _ifoodReferenceSelected { get; set; }
@@ -93,6 +96,14 @@ namespace Example
                                 txtDeliveryAppToken.Text = marketPlace.DeliveryApp.Token;
                             }
 
+                            if (marketPlace.DeliveryDireto != null)
+                            {
+                                txtDeliveryDiretoToken.Text = marketPlace.DeliveryDireto.Token;                                
+                                txtDeliveryDiretoMerchandId.Text = marketPlace.DeliveryDireto.MerchantId;
+                                txtDeliveryDiretoUsuario.Text = marketPlace.DeliveryDireto.Usuario;
+                                txtDeliveryDiretoSenha.Text = marketPlace.DeliveryDireto.Senha;
+                            }
+
                             if (marketPlace.Ifood != null)
                             {
                                 txtIfoodClient_ID.Text = marketPlace.Ifood.Client_ID;
@@ -150,6 +161,10 @@ namespace Example
             gridDeliveryApp.DataSource = _deliveryAppOrders.ToList();
             gridDeliveryApp.Refresh();
 
+            _deliveryDiretoOrders = new List<string>();
+            gridDeliveryDireto.DataSource = _deliveryDiretoOrders.ToList();
+            gridDeliveryDireto.Refresh();
+
             _ifoodOrders = new List<Ifood.Domain.order>();
             gridIfood.DataSource = _ifoodOrders.ToList();
             gridIfood.Refresh();
@@ -176,6 +191,13 @@ namespace Example
             gridOnPedido.DataSource = _onPedidoPedidos.ToList();
             gridOnPedido.Refresh();
         }
+
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            var json = @"{'count':1,'orders':[{'instructions':null,'coupons':[],'tax_list':[],'missed_reason':null,'id':114412588,'total_price':59,'sub_total_price':50,'tax_value':0,'persons':0,'latitude':0,'longitude':0,'client_first_name':'Paulo','client_last_name':'Roberto','client_email':'raffaella_lidiany@outlook.com','client_phone':'+5584987460755','restaurant_name':'Divino Camarão','currency':'BRL','type':'delivery','status':'accepted','source':'mobile_web','pin_skipped':true,'accepted_at':'2020-06-05T21:17:02.000Z','tax_type':'NET','tax_name':'Sales Tax','fulfill_at':'2020-06-05T22:12:02.000Z','reference':null,'restaurant_id':120883,'client_id':7876195,'updated_at':'2020-06-05T21:17:02.000Z','restaurant_phone':'+55 84 2030 7074','restaurant_timezone':'America/Fortaleza','company_account_id':692661,'pos_system_id':13381,'restaurant_key':'bdJYkIErqujJ9qmV3J','restaurant_country':'Brazil','restaurant_city':'Natal','restaurant_state':'Rio Grande do Norte','restaurant_zipcode':'59066-035','restaurant_street':'Av. da Integração, 3491- Candelária','restaurant_latitude':'-5.842292073108915','restaurant_longitude':'-35.22011252883607','restaurant_token':'','gateway_transaction_id':null,'gateway_type':null,'api_version':2,'payment':'CARD','for_later':false,'client_address':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09, Terminal de ônibus da Conceição , 59074-330, Felipe camarão ','client_address_parts':{'street':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09','city':'Felipe camarão ','zipcode':'59074-330','more_address':'Terminal de ônibus da Conceição '},'items':[{'id':144328153,'name':'DELIVERY_FEE','total_item_price':9,'price':9,'quantity':1,'instructions':null,'type':'delivery_fee','type_id':243971,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]},{'id':144329357,'name':'Promoção Sexta/ Camarão internacional','total_item_price':50,'price':50,'quantity':1,'instructions':'','type':'item','type_id':4098465,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]}]}]}";
+            var t = JsonConvert.DeserializeObject<GloriaFood.Domain.polling>(json);
+        }
+
 
         #region Ifood
         private void btnIfoodIniciar_Click(object sender, EventArgs e)
@@ -1152,13 +1174,7 @@ namespace Example
         }
 
         #endregion
-
-        private void btnTeste_Click(object sender, EventArgs e)
-        {
-            var json = @"{'count':1,'orders':[{'instructions':null,'coupons':[],'tax_list':[],'missed_reason':null,'id':114412588,'total_price':59,'sub_total_price':50,'tax_value':0,'persons':0,'latitude':0,'longitude':0,'client_first_name':'Paulo','client_last_name':'Roberto','client_email':'raffaella_lidiany@outlook.com','client_phone':'+5584987460755','restaurant_name':'Divino Camarão','currency':'BRL','type':'delivery','status':'accepted','source':'mobile_web','pin_skipped':true,'accepted_at':'2020-06-05T21:17:02.000Z','tax_type':'NET','tax_name':'Sales Tax','fulfill_at':'2020-06-05T22:12:02.000Z','reference':null,'restaurant_id':120883,'client_id':7876195,'updated_at':'2020-06-05T21:17:02.000Z','restaurant_phone':'+55 84 2030 7074','restaurant_timezone':'America/Fortaleza','company_account_id':692661,'pos_system_id':13381,'restaurant_key':'bdJYkIErqujJ9qmV3J','restaurant_country':'Brazil','restaurant_city':'Natal','restaurant_state':'Rio Grande do Norte','restaurant_zipcode':'59066-035','restaurant_street':'Av. da Integração, 3491- Candelária','restaurant_latitude':'-5.842292073108915','restaurant_longitude':'-35.22011252883607','restaurant_token':'','gateway_transaction_id':null,'gateway_type':null,'api_version':2,'payment':'CARD','for_later':false,'client_address':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09, Terminal de ônibus da Conceição , 59074-330, Felipe camarão ','client_address_parts':{'street':'Rua Antônio carolino, n° 100. Residencial Ária, Casa 09','city':'Felipe camarão ','zipcode':'59074-330','more_address':'Terminal de ônibus da Conceição '},'items':[{'id':144328153,'name':'DELIVERY_FEE','total_item_price':9,'price':9,'quantity':1,'instructions':null,'type':'delivery_fee','type_id':243971,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]},{'id':144329357,'name':'Promoção Sexta/ Camarão internacional','total_item_price':50,'price':50,'quantity':1,'instructions':'','type':'item','type_id':4098465,'tax_rate':0,'tax_value':0,'parent_id':null,'item_discount':0,'cart_discount_rate':0,'cart_discount':0,'tax_type':'NET','options':[]}]}]}";
-            var t = JsonConvert.DeserializeObject<GloriaFood.Domain.polling>(json);
-        }
-
+       
         #region PedZap
 
         public async void pedZaoIniciar()
@@ -1447,7 +1463,7 @@ namespace Example
             {
                 while (btnDeliveryAppParar.Enabled)
                 {
-                    var orderResult = deliveryAppService.Order(_deliveryAppToken);
+                    var orderResult = deliveryAppService.Orders(_deliveryAppToken, (byte)DeliveryApp.Enum.OrderStatus.NovoPedido);
                     if (orderResult.Success)
                     {
                         _deliveryAppOrders.AddRange(orderResult.Result);
@@ -1495,6 +1511,93 @@ namespace Example
             btnDeliveryAppIniciar.Enabled = true;
             btnDeliveryAppParar.Enabled = false;
         }
+
+        private void gridDeliveryApp_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridDeliveryApp.Rows.Count)
+            {
+                _deliveryAppReferenceSelected = gridDeliveryApp.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnDeliveryAppBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryAppIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryAppReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryAppService();
+            var result = service.Order(_deliveryAppToken, _deliveryAppReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDeliveryAppSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryAppIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryAppReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryAppService();
+            var result = service.Status(_deliveryAppToken, _deliveryAppReferenceSelected, (byte)DeliveryApp.Enum.OrderStatus.Enviado);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDeliveryAppCancelar_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryAppIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryAppReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryAppService();
+            var result = service.Status(_deliveryAppToken, _deliveryAppReferenceSelected, (byte)DeliveryApp.Enum.OrderStatus.Cancelado);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
 
         #endregion
 
@@ -2492,29 +2595,177 @@ namespace Example
 
         private void btnCinddiBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_cinddiSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
 
+            var service = new CinddiService();
+            service.Order(_cinddiToken, _cinddiSelected);
         }
 
         private void btnCinddiPreparo_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_cinddiSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
 
+            var service = new CinddiService();
+            service.Status(_cinddiToken, _cinddiSelected, Cinddi.Enum.OrderStatus.PREPARO);
         }
 
         private void btnCinddiEntrega_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_cinddiSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
 
+            var service = new CinddiService();
+            service.Status(_cinddiToken, _cinddiSelected, Cinddi.Enum.OrderStatus.ENTREGA);
         }
 
         private void btnCinddiFinalizado_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_cinddiSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
 
+            var service = new CinddiService();
+            service.Status(_cinddiToken, _cinddiSelected, Cinddi.Enum.OrderStatus.FINALIZADO);
         }
 
         private void btnCinddiCancelar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(_cinddiSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
 
+            var service = new CinddiService();
+            service.Status(_cinddiToken, _cinddiSelected, Cinddi.Enum.OrderStatus.CANCELADO);
         }
 
         #endregion
+
+        #region Delivery Direto
+
+        private void btnDeliveryDiretoIniciar_Click(object sender, EventArgs e)
+        {
+            onDeliveryDiretoIniciar();
+        }
+
+        public async void onDeliveryDiretoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtDeliveryDiretoUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoMerchandId.Text))
+            {
+                MessageBox.Show("Campo MerchandId Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            btnDeliveryDiretoIniciar.Enabled = false;
+            btnDeliveryDiretoParar.Enabled = true;
+          
+            await Task.Run(() => deliveryDireto());
+        }
+
+        private void deliveryDireto()
+        {
+            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
+                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
+
+            try
+            {
+                while (btnDeliveryDiretoParar.Enabled)
+                {
+                    var orderResult = service.Orders(DateTime.Now.AddHours(-1));
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result.wspdv_response != null)
+                        {
+                            _deliveryDiretoOrders.AddRange(orderResult.Result.wspdv_response.response_body.codPedido.ToList());
+                            WriteGridDeliveryDireto();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridDeliveryDiretoDelegate();
+        private void WriteGridDeliveryDireto()
+        {
+            if (gridDeliveryDireto.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridDeliveryDiretoDelegate(WriteGridDeliveryDireto);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridDeliveryDireto.DataSource = _deliveryAppOrders.ToList();
+                gridDeliveryDireto.Refresh();
+            }
+        }
+
+        void deliveryDiretoParar()
+        {
+            btnDeliveryDiretoIniciar.Enabled = true;
+            btnDeliveryDiretoParar.Enabled = false;
+        }
+
+        private void gridDeliveryDireto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridDeliveryDireto.Rows.Count)
+            {
+                // _onPedidoSelected = gridOnPedido.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnDeliveryDiretoParar_Click(object sender, EventArgs e)
+        {
+            deliveryDiretoParar();
+        }
+
+        #endregion
+        
     }
 }

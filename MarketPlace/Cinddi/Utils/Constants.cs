@@ -8,7 +8,7 @@ namespace Cinddi.Utils
 {
     public static class Constants
     {
-        public const string URL = "http://cinndi.com.br/api/";
+        public const string URL = "https://cinndi.azurewebsites.net/api/";
 
         public const string URL_ORDERS = "consulta_pedidos.php?chave=";
         public const string URL_ORDER = "consulta_xml.php?chave=";

@@ -8,6 +8,7 @@ namespace DeliveryApp.Utils
 {
     public static class Constants
     {
-        public const string URL_BASE = "https://deliveryapp.neemo.com.br/api/integration/v1/order";        
+        public const string URL_BASE = "https://deliveryapp.neemo.com.br/api/integration/v1/order";      
+        
     }
 }

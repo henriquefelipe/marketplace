@@ -23,8 +23,15 @@ namespace Cinddi.Service
                 var request = new RestRequest(Method.GET);                                
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {                                       
-                    result.Result = JsonConvert.DeserializeObject<List<ResponseOrders>>(response.Content);
+                {
+                    if (!string.IsNullOrEmpty(response.Content))
+                    {
+                        result.Result = JsonConvert.DeserializeObject<List<ResponseOrders>>(response.Content);
+                    }
+
+                    if (result.Result == null)
+                        result.Result = new List<ResponseOrders>();
+
                     result.Success = true;
                     result.Json = response.Content;
                 }
