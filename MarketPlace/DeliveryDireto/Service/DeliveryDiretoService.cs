@@ -14,52 +14,33 @@ namespace DeliveryDireto.Service
     public class DeliveryDiretoService
     {
         private string _urlBase = Constants.URL_BASE;
-        private string _usuario = "";
-        private string _senha = "";
-        private string _merchantId = "";
-        private string _token = "";
+        private string _parametros = "";       
 
-        public DeliveryDiretoService(string usuario, string senha, string merchantId, string token) 
-        {
-            _usuario = usuario;
-            _senha = senha;
-            _merchantId = merchantId;
-            _token = token;
+        public DeliveryDiretoService(string usuario, string senha, string merchantId, string token)
+        {            
+            _parametros = string.Format("login={0}&senha={1}&key={2}&idFrn={3}&contentType=json",
+                        usuario, senha, token, merchantId);
         }
 
-        public GenericResult<wspdvresponse> Orders(DateTime data)
+        public GenericResult<List<string>> Orders(DateTime data, string status = "00")
         {
-            var result = new GenericResult<wspdvresponse>();
+            var result = new GenericResult<List<string>>();
             try
-            {
-                var parametros = string.Format("login={0}&senha={1}&key={2}&idFrn={3}&status={4}&data={5}&contentType=json",
-                        _usuario, _senha, _token, _merchantId, "00", data.ToString("yyyy-MM-dd HH:mm:ss"));
-
-                var url = string.Format("{0}{1}?{2}", _urlBase, Constants.ORDER_SELECIONAR_PEDIDOS_ALTERADOS_A_PARTIR_DE, parametros);
-                //var url = string.Format("{0}{1}", _urlBase, Constants.ORDER_SELECIONAR_PEDIDOS_ALTERADOS_A_PARTIR_DE);
+            {                
+                var url = string.Format("{0}{1}?{2}&status={3}&data={4}", _urlBase, Constants.ORDER_SELECIONAR_PEDIDOS_ALTERADOS_A_PARTIR_DE, _parametros,
+                            status, data.ToString("yyyy-MM-dd HH:mm:ss"));
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
-                //request.AddParameter("login", _usuario);
-                //request.AddParameter("senha", _senha);
-                //request.AddParameter("key", _token);
-                //request.AddParameter("idFrn", _merchantId);
-                //request.AddParameter("contentType", "json");
-                //request.AddParameter("status", "00");
-                //request.AddParameter("data", data.ToString("aaaa-MM-dd HH:mm:ss"));
 
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //if (response.Content.Contains("wspdv-response"))
-                    //{
-                    //    result.Message = response.Content;
-                    //}
-                    //else
-                    //{
-                        result.Result = JsonConvert.DeserializeObject<wspdvresponse>(response.Content);
+                    var responseResult = JsonConvert.DeserializeObject<wspdvresponse<List<string>>>(response.Content);
+                    if (responseResult != null)
+                    {
+                        result.Result = responseResult.wspdvResponse.responseBody;
                         result.Success = true;                        
-                    //}
-
+                    }
                     result.Json = response.Content;
                 }
                 else
@@ -74,42 +55,127 @@ namespace DeliveryDireto.Service
             return result;
         }
 
-        //public GenericResult<order> Order(string codPedido)
-        //{
-        //    var result = new GenericResult<order>();
-        //    try
-        //    {
-        //        var url = string.Format("{0}{1}{2}", _urlBase, Constants.ORDER_GET, id);
-        //        var client = new RestClient(url);
-        //        var request = new RestRequest(Method.GET);
-        //        request.AddHeader("Authorization", token);
-        //        request.AddHeader("Accept", "application/json");
-        //        IRestResponse response = client.Execute(request);
-        //        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //        {
-        //            var result_order = JsonConvert.DeserializeObject<result_order>(response.Content);
-        //            if (result_order.success)
-        //            {
-        //                result.Result = result_order.info;
-        //                result.Success = true;
-        //                result.Json = response.Content;
-        //            }
-        //            else
-        //            {
-        //                result.Message = result_order.message;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            result.Message = response.Content + " - " + response.StatusDescription;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.Message = ex.Message;
-        //    }
-        //    return result;
-        //}
+        public GenericResult<order> Order(string codPedido)
+        {
+            var result = new GenericResult<order>();
+            try
+            {
+                var url = string.Format("{0}{1}?{2}&codPedido={3}", _urlBase, Constants.ORDER_SELECIONA_PEDIDOS, _parametros,
+                            codPedido);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);                
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<order>>(response.Content);
+                    if (result_order.wspdvResponse.responseBody != null)
+                    {
+                        var pedido = result_order.wspdvResponse.responseBody;
+
+                        var resultItens = OrderItens(codPedido);
+                        if(resultItens.Success)
+                        {
+                            pedido.itens.AddRange(resultItens.Result);
+                            result.Result = pedido;
+                            result.Success = true;
+                            result.Json = response.Content;
+                        }
+                        else
+                        {
+                            result.Json = response.Content + resultItens.Json;
+                        }
+                    }
+                    else
+                    {
+                        result.Json = response.Content;
+                        result.Message = result_order.wspdvResponse.responseMessage;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericResult<List<item>> OrderItens(string codPedido)
+        {
+            var result = new GenericResult<List<item>>();
+            try
+            {
+                var url = string.Format("{0}{1}?{2}&codPedido={3}", _urlBase, Constants.ORDER_SELECIONA_ITENS, _parametros,
+                            codPedido);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<response_body_order_item>>(response.Content);
+                    if (result_order.wspdvResponse.responseBody != null)
+                    {
+                        result.Result = result_order.wspdvResponse.responseBody.item;
+                        result.Success = true;
+                        result.Json = response.Content;
+                    }
+                    else
+                    {
+                        result.Message = result_order.wspdvResponse.responseMessage;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Status(string codPedido, string status)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var url = string.Format("{0}{1}?{2}&codPedido={3}&statusProcessamento={4}", _urlBase, Constants.ORDER_CONFIRMAR, _parametros,
+                            codPedido, status);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Accept", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<bool>>(response.Content);
+                    if (result_order != null && result_order.wspdvResponse != null && result_order.wspdvResponse.responseBody)
+                    {                        
+                        result.Success = true;
+                        result.Json = response.Content;
+                    }
+                    else
+                    {
+                        result.Message = result_order.wspdvResponse.responseMessage;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
     }
 }

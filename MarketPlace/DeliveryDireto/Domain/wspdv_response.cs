@@ -7,37 +7,29 @@ using System.Threading.Tasks;
 
 namespace DeliveryDireto.Domain
 {
-    public class wspdvresponse
+    public class wspdvresponse<TResult>
     {
-        //{"wspdv-response":{"response-status":"00","response-message":"0 pedidos encontrados","response-date":"26\/02\/2021 04:06:31","response-numFound":"0","response-body":{"@class":"list","codPedido":[] } }
-
-        [JsonProperty("wspdv-response")]
-        public wspdv_response wspdv_response { get; set; }
+        [JsonProperty(PropertyName = "wspdv-response")]
+        public wspdv_response<TResult> wspdvResponse { get; set; }
     }
 
-    public class wspdv_response
+    public class wspdv_response<TResult>
     {
-        [JsonProperty("response-status")]
-        public string response_status { get; set; }
+        [JsonProperty(PropertyName = "response-status")]
+        public string responseStatus { get; set; }
 
-        [JsonProperty("response-message")]
-        public string response_message { get; set; }
+        [JsonProperty(PropertyName = "response-message")]
+        public string responseMessage { get; set; }
 
-        [JsonProperty("response-date")]
-        public string response_date { get; set; }
+        [JsonProperty(PropertyName = "response-date")]
+        public string responseDate { get; set; }
 
-        [JsonProperty("response-numFound")]
+        [JsonProperty(PropertyName = "response-numFound")]
         public string response_numFound { get; set; }
 
-        [JsonProperty("response-body")]
-        public response_body response_body { get; set; }
+        [JsonProperty(PropertyName = "response-body")]
+        public TResult responseBody { get; set; }
     }
 
-    public class response_body
-    {
-        [JsonProperty("@class")]
-        public string _class { get; set; }
-
-        public List<string> codPedido { get; set; }
-    }
+    
 }

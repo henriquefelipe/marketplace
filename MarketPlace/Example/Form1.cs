@@ -31,7 +31,8 @@ namespace Example
         private string _deliveryAppToken { get; set; }
         private string _deliveryAppReferenceSelected { get; set; }
         private List<DeliveryApp.Domain.order> _deliveryAppOrders { get; set; }
-        private List<string> _deliveryDiretoOrders { get; set; }
+        private List<DeliveryDireto.Domain.order> _deliveryDiretoOrders { get; set; }
+        private string _deliveryDiretoReferenceSelected { get; set; }
         private string _ifoodToken { get; set; }
         private List<Ifood.Domain.order> _ifoodOrders { get; set; }
         private string _ifoodReferenceSelected { get; set; }
@@ -161,7 +162,7 @@ namespace Example
             gridDeliveryApp.DataSource = _deliveryAppOrders.ToList();
             gridDeliveryApp.Refresh();
 
-            _deliveryDiretoOrders = new List<string>();
+            _deliveryDiretoOrders = new List<DeliveryDireto.Domain.order>();
             gridDeliveryDireto.DataSource = _deliveryDiretoOrders.ToList();
             gridDeliveryDireto.Refresh();
 
@@ -2703,12 +2704,17 @@ namespace Example
             {
                 while (btnDeliveryDiretoParar.Enabled)
                 {
-                    var orderResult = service.Orders(DateTime.Now.AddHours(-1));
+                    var orderResult = service.Orders(DateTime.Now);
                     if (orderResult.Success)
                     {
-                        if (orderResult.Result.wspdv_response != null)
+                        if (orderResult.Result != null)
                         {
-                            _deliveryDiretoOrders.AddRange(orderResult.Result.wspdv_response.response_body.codPedido.ToList());
+                            foreach (var item in orderResult.Result)
+                            {
+                                var order = new DeliveryDireto.Domain.order();
+                                order.codPedido = item;
+                                _deliveryDiretoOrders.Add(order);
+                            }
                             WriteGridDeliveryDireto();
                         }
                     }
@@ -2741,7 +2747,7 @@ namespace Example
             }
             else
             {
-                gridDeliveryDireto.DataSource = _deliveryAppOrders.ToList();
+                gridDeliveryDireto.DataSource = _deliveryDiretoOrders.ToList();
                 gridDeliveryDireto.Refresh();
             }
         }
@@ -2756,7 +2762,7 @@ namespace Example
         {
             if (e.RowIndex > -1 && e.RowIndex < gridDeliveryDireto.Rows.Count)
             {
-                // _onPedidoSelected = gridOnPedido.Rows[e.RowIndex].Cells[0].Value.ToString();
+                _deliveryDiretoReferenceSelected = gridDeliveryDireto.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
         }
 
@@ -2765,7 +2771,62 @@ namespace Example
             deliveryDiretoParar();
         }
 
+        private void btnDeliveryDiretoBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryDiretoIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryDiretoReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
+                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
+            var result = service.Order(_deliveryDiretoReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDeliveryDiretoAprovar_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryDiretoIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryDiretoReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
+                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
+            var result = service.Status(_deliveryDiretoReferenceSelected, DeliveryDireto.Enum.OrderStatusProcessing.PEDIDO_APROVADO_EM_PRODUCAO);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         #endregion
-        
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace DeliveryDireto.Domain
         public order()
         {
             pagamentos = new List<order_payment>();
+            itens = new List<item>();
         }
 
         public string codPedido { get; set; }
@@ -48,7 +50,7 @@ namespace DeliveryDireto.Domain
         public string cpfCliente { get; set; }
         public string cpfNota { get; set; }
         public string status { get; set; }
+        public List<item> itens { get; set; }
         public List<order_payment> pagamentos { get; set; }
-
     }
 }
