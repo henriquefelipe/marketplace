@@ -31,5 +31,14 @@ namespace DeliveryDireto.Domain
         public TResult responseBody { get; set; }
     }
 
-    
+    public class response_body_orders
+    {
+        public response_body_orders()
+        {
+            codPedido = new List<string>();
+        }
+
+        public List<string> codPedido { get; set; }
+    }
+
 }

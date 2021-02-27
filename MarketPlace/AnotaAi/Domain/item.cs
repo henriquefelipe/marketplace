@@ -27,10 +27,13 @@ namespace AnotaAi.Domain
     {
         public string name { get; set; }
         public decimal quantity { get; set; }
-        public decimal totalPrice { get; set; }
-        public decimal unitPrice { get; set; }
-        public decimal new_totalPrice { get; set; }
-        public decimal new_unitPrice { get; set; }
+        public decimal totalPrice { get; set; } // Utilizado na versão 1
+        public decimal unitPrice { get; set; } // Utilizado na versão 1 
+        public decimal new_totalPrice { get; set; } // Utilizado na versão 1
+        public decimal new_unitPrice { get; set; } // Utilizado na versão 1
+
+        public decimal price { get; set; } // Utilizado na versão 2
+        public decimal total { get; set; } // Utilizado na versão 2
         public string externalCode { get; set; }
         public string externalId { get; set; }
     }

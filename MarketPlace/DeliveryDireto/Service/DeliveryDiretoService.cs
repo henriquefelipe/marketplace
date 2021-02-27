@@ -35,10 +35,10 @@ namespace DeliveryDireto.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    var responseResult = JsonConvert.DeserializeObject<wspdvresponse<List<string>>>(response.Content);
+                    var responseResult = JsonConvert.DeserializeObject<wspdvresponse<response_body_orders>>(response.Content);
                     if (responseResult != null)
                     {
-                        result.Result = responseResult.wspdvResponse.responseBody;
+                        result.Result = responseResult.wspdvResponse.responseBody.codPedido;
                         result.Success = true;                        
                     }
                     result.Json = response.Content;

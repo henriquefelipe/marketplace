@@ -52,7 +52,7 @@
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\orders.cs" />
     <Compile Include="Domain\order_payment.cs" />
-    <Compile Include="Domain\wspdv_response.cs" />
+    <Compile Include="Domain\wspdvresponse.cs" />
     <Compile Include="Enum\OrderPayment.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\OrderStatusProcessing.cs" />
