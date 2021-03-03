@@ -3,6 +3,8 @@
 Integrações feitas até o momento.
 
   - Anota Ai
+  - Delivery App
+  - Delivery Direto
   - Gloria Food
   - Ifood
   - Meu Cardápio Ai
@@ -21,6 +23,41 @@ Para fazer a integração com o anota ai é preciso de algumas informações, cr
 ```sh
 {
 	AnotaAi: {
+		Token: "Coloca aqui o token"
+	}
+}
+```
+
+# Delivery App
+
+Links importantes:
+  - https://www.neemo.com.br/
+  - https://deliveryapp.neemo.com.br/api/docs/?integration=true#!/order/POST_version_order
+
+Para fazer a integração com o delivery app é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	DeliveryApp: {
+		Token: "Coloca aqui o token"
+	}
+}
+```
+
+# Delivery Direto
+
+Links importantes:
+  - https://site.deliverydireto.com.br/
+  - https://drive.google.com/file/d/15FTecMUnXzq6IMBvy7H5gPXea7YV7zQT/view
+
+Para fazer a integração com o delivery direto é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	DeliveryDireto: {
+		Usuario: "Coloca aqui o usuário",
+		Senha: "Coloca aqui a senha",
+		MerchantId: "coloca aqui o id da loja",
 		Token: "Coloca aqui o token"
 	}
 }

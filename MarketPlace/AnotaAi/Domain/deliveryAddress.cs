@@ -23,7 +23,7 @@ namespace AnotaAi.Domain
 
     public class deliveryAddress_coordinates
     {
-        public int latitude { get; set; }
-        public int longitude { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
     }
 }
