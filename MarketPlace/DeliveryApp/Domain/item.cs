@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,15 @@ namespace DeliveryApp.Domain
             ComplementCategories = new List<complement_categorie>();
         }
 
-
         public string title { get; set; }
         public int quantity { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }
         public decimal total { get; set; }
         public string notes { get; set; }
-        //public string ref { get; set;  }
+
+        [JsonProperty(PropertyName = "ref")]
+        public string _ref { get; set;  }
         public string variacao_ref { get; set; }
         public string category { get; set; }
 

@@ -18,6 +18,7 @@ namespace DeliveryApp.Domain
         public string name { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
+        public string date { get; set; }
         public string updated_at { get; set; }
         public int status { get; set; }
         public decimal tax { get; set; }

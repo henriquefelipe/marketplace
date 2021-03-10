@@ -79,12 +79,12 @@ namespace DeliveryDireto.Service
                             pedido.itens.AddRange(resultItens.Result);
                             result.Result = pedido;
                             result.Success = true;
-                            result.Json = response.Content;
+                            result.Json = response.Content + resultItens.Json;
                         }
                         else
                         {
-                            result.Json = response.Content + resultItens.Json;
-                        }
+                            result.Json = response.Content;
+                        }                        
                     }
                     else
                     {
