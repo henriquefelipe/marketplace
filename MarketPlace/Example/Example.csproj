@@ -107,6 +107,10 @@
       <Project>{572c537e-0dfb-4b13-9b0d-6918d191c4bc}</Project>
       <Name>GloriaFood</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IDelivery\IDelivery.csproj">
+      <Project>{c991a94c-63ce-40b2-b3d1-3a61ab0d0080}</Project>
+      <Name>IDelivery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ifood\Ifood.csproj">
       <Project>{72ee52a9-3a7a-43a6-b8e6-b8a10b05f05e}</Project>
       <Name>Ifood</Name>
@@ -126,6 +130,10 @@
     <ProjectReference Include="..\OnPedido\OnPedido.csproj">
       <Project>{f423ea0e-b5c2-4152-ac20-b2de04b4b1aa}</Project>
       <Name>OnPedido</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PedreiroDigital\PedreiroDigital.csproj">
+      <Project>{a7822d3b-963c-44f6-80ec-5f8d40d298cc}</Project>
+      <Name>PedreiroDigital</Name>
     </ProjectReference>
     <ProjectReference Include="..\PedZap\PedZap.csproj">
       <Project>{9a45d340-8699-4fc2-9264-d5514b6d511d}</Project>

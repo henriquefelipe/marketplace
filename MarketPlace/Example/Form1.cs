@@ -8,6 +8,7 @@ using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
+using PedreiroDigital.Service;
 using PedZap.Enum;
 using PedZap.Service;
 using Rappi.Service;
@@ -61,6 +62,11 @@ namespace Example
         private string _cinddiToken { get; set; }
         private List<Cinddi.Domain.ResponseOrders> _cinddiPedidos { get; set; }
         private string _cinddiSelected { get; set; }
+
+        private string _pedreiroDigitalToken { get; set; }
+        private List<PedreiroDigital.Domain.order> _pedreiroDigitalOrders { get; set; }
+        private string _pedreiroDigitalReferenceSelected { get; set; }
+
 
         #endregion
 
@@ -138,6 +144,13 @@ namespace Example
                                 txtOnPedidoToken.Text = marketPlace.OnPedido.Token;
                             }
 
+                            if (marketPlace.PedreiroDigital != null)
+                            {
+                                txtPedreiroDigitalToken.Text = marketPlace.PedreiroDigital.Token;
+                                txtPedreiroDigitalMerchantId.Text = marketPlace.PedreiroDigital.MerchantId;
+                                txtPedreiroDigitalURL.Text = marketPlace.PedreiroDigital.Url;
+                            }
+
                             if (marketPlace.Rappi != null)
                             {
                                 txtRappiClientID.Text = marketPlace.Rappi.Client_ID;
@@ -191,6 +204,10 @@ namespace Example
             _onPedidoPedidos = new List<Id>();
             gridOnPedido.DataSource = _onPedidoPedidos.ToList();
             gridOnPedido.Refresh();
+
+            _pedreiroDigitalOrders = new List<PedreiroDigital.Domain.order>();
+            gridPedreiroDigital.DataSource = _pedreiroDigitalOrders.ToList();
+            gridPedreiroDigital.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -2825,8 +2842,148 @@ namespace Example
             }
         }
 
+
         #endregion
 
+        #region Pedreiro Digital
 
+        private void btnPedreiroDigitalIniciar_Click(object sender, EventArgs e)
+        {
+            pedreiroDigitalIniciar();
+        }
+
+        private void btnPedreiroDigitalParar_Click(object sender, EventArgs e)
+        {
+            pedreiroDigitalParar();
+        }
+
+        private void btnPedreiroDigitalAprovar_Click(object sender, EventArgs e)
+        {
+            if (btnPedreiroDigitalIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pedreiroDigitalReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new PedreiroDigitalService(txtPedreiroDigitalURL.Text, 
+                                txtPedreiroDigitalMerchantId.Text, txtPedreiroDigitalToken.Text);
+
+            var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)PedreiroDigital.Enum.OrderStatus.Confirmado);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        public async void pedreiroDigitalIniciar()
+        {
+            if (string.IsNullOrEmpty(txtPedreiroDigitalToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPedreiroDigitalURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoMerchandId.Text))
+            {
+                MessageBox.Show("Campo MerchandId Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            btnPedreiroDigitalIniciar.Enabled = false;
+            btnPedreiroDigitalParar.Enabled = true;
+
+            await Task.Run(() => pedreiroDigital());
+        }
+
+        private void pedreiroDigital()
+        {
+            var service = new PedreiroDigitalService(txtPedreiroDigitalURL.Text, txtPedreiroDigitalMerchantId.Text,
+                                    txtPedreiroDigitalToken.Text);
+
+            try
+            {
+                while (btnPedreiroDigitalParar.Enabled)
+                {
+                    var orderResult = service.Orders((byte)PedreiroDigital.Enum.OrderStatus.Pendente);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result != null)
+                        {
+                            _pedreiroDigitalOrders.AddRange(orderResult.Result.requests);
+                            WriteGridPedreiroDigital();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridPedreiroDigitalDelegate();
+        private void WriteGridPedreiroDigital()
+        {
+            if (gridPedreiroDigital.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridPedreiroDigitalDelegate(WriteGridPedreiroDigital);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridPedreiroDigital.DataSource = _pedreiroDigitalOrders.ToList();
+                gridPedreiroDigital.Refresh();
+            }
+        }
+
+        void pedreiroDigitalParar()
+        {
+            btnPedreiroDigitalIniciar.Enabled = true;
+            btnPedreiroDigitalParar.Enabled = false;
+        }
+
+        private void gridPedreiroDigital_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridPedreiroDigital.Rows.Count)
+            {
+                _pedreiroDigitalReferenceSelected = gridPedreiroDigital.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+
+        #endregion
     }
 }
