@@ -105,6 +105,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.txtIDeliveryURL = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.btnIDeliveryAprovar = new System.Windows.Forms.Button();
+            this.txtIDeliveryMerchantId = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtIDeliveryToken = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.btnIDeliveryParar = new System.Windows.Forms.Button();
+            this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnMeuCardapioAiCancelar = new System.Windows.Forms.Button();
             this.btnMeuCardapioAiSaiuParaEntrega = new System.Windows.Forms.Button();
@@ -156,6 +167,17 @@
             this.btnOnPedidoIniciar = new System.Windows.Forms.Button();
             this.txtOnPedidoToken = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.txtPedreiroDigitalURL = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btnPedreiroDigitalAprovar = new System.Windows.Forms.Button();
+            this.txtPedreiroDigitalMerchantId = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.gridPedreiroDigital = new System.Windows.Forms.DataGridView();
+            this.txtPedreiroDigitalToken = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
+            this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnPedZapDesistencia = new System.Windows.Forms.Button();
             this.btnPedZapPreparado = new System.Windows.Forms.Button();
@@ -194,18 +216,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.tabPage13 = new System.Windows.Forms.TabPage();
-            this.tabPage14 = new System.Windows.Forms.TabPage();
-            this.btnPedreiroDigitalAprovar = new System.Windows.Forms.Button();
-            this.txtPedreiroDigitalMerchantId = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.gridPedreiroDigital = new System.Windows.Forms.DataGridView();
-            this.txtPedreiroDigitalToken = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
-            this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
-            this.txtPedreiroDigitalURL = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
@@ -221,24 +231,27 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).BeginInit();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMeuCardapioAi)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).BeginInit();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).BeginInit();
+            this.tabPage14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
-            this.tabPage14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage6);
@@ -249,7 +262,6 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage10);
-            this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -1092,6 +1104,121 @@
             this.btnGloriaFoodIniciar.UseVisualStyleBackColor = true;
             this.btnGloriaFoodIniciar.Click += new System.EventHandler(this.btnGloriaFoodIniciar_Click);
             // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.txtIDeliveryURL);
+            this.tabPage13.Controls.Add(this.label36);
+            this.tabPage13.Controls.Add(this.btnIDeliveryAprovar);
+            this.tabPage13.Controls.Add(this.txtIDeliveryMerchantId);
+            this.tabPage13.Controls.Add(this.label34);
+            this.tabPage13.Controls.Add(this.dataGridView1);
+            this.tabPage13.Controls.Add(this.txtIDeliveryToken);
+            this.tabPage13.Controls.Add(this.label35);
+            this.tabPage13.Controls.Add(this.btnIDeliveryParar);
+            this.tabPage13.Controls.Add(this.btnIDeliveryIniciar);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage13.TabIndex = 12;
+            this.tabPage13.Text = "IDelivery";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // txtIDeliveryURL
+            // 
+            this.txtIDeliveryURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDeliveryURL.Location = new System.Drawing.Point(643, 19);
+            this.txtIDeliveryURL.Name = "txtIDeliveryURL";
+            this.txtIDeliveryURL.Size = new System.Drawing.Size(291, 26);
+            this.txtIDeliveryURL.TabIndex = 50;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(526, 22);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(42, 20);
+            this.label36.TabIndex = 49;
+            this.label36.Text = "URL";
+            // 
+            // btnIDeliveryAprovar
+            // 
+            this.btnIDeliveryAprovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIDeliveryAprovar.Location = new System.Drawing.Point(13, 98);
+            this.btnIDeliveryAprovar.Name = "btnIDeliveryAprovar";
+            this.btnIDeliveryAprovar.Size = new System.Drawing.Size(171, 39);
+            this.btnIDeliveryAprovar.TabIndex = 48;
+            this.btnIDeliveryAprovar.Text = "Aprovar";
+            this.btnIDeliveryAprovar.UseVisualStyleBackColor = true;
+            this.btnIDeliveryAprovar.Click += new System.EventHandler(this.btnIDeliveryAprovar_Click);
+            // 
+            // txtIDeliveryMerchantId
+            // 
+            this.txtIDeliveryMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDeliveryMerchantId.Location = new System.Drawing.Point(126, 56);
+            this.txtIDeliveryMerchantId.Name = "txtIDeliveryMerchantId";
+            this.txtIDeliveryMerchantId.Size = new System.Drawing.Size(291, 26);
+            this.txtIDeliveryMerchantId.TabIndex = 47;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(9, 56);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(90, 20);
+            this.label34.TabIndex = 46;
+            this.label34.Text = "MerchantId";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(10, 143);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1209, 523);
+            this.dataGridView1.TabIndex = 45;
+            // 
+            // txtIDeliveryToken
+            // 
+            this.txtIDeliveryToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDeliveryToken.Location = new System.Drawing.Point(126, 19);
+            this.txtIDeliveryToken.Name = "txtIDeliveryToken";
+            this.txtIDeliveryToken.Size = new System.Drawing.Size(291, 26);
+            this.txtIDeliveryToken.TabIndex = 44;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(9, 22);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(62, 20);
+            this.label35.TabIndex = 43;
+            this.label35.Text = "TOKEN";
+            // 
+            // btnIDeliveryParar
+            // 
+            this.btnIDeliveryParar.Enabled = false;
+            this.btnIDeliveryParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIDeliveryParar.Location = new System.Drawing.Point(1048, 70);
+            this.btnIDeliveryParar.Name = "btnIDeliveryParar";
+            this.btnIDeliveryParar.Size = new System.Drawing.Size(171, 39);
+            this.btnIDeliveryParar.TabIndex = 42;
+            this.btnIDeliveryParar.Text = "Parar";
+            this.btnIDeliveryParar.UseVisualStyleBackColor = true;
+            this.btnIDeliveryParar.Click += new System.EventHandler(this.btnIDeliveryParar_Click);
+            // 
+            // btnIDeliveryIniciar
+            // 
+            this.btnIDeliveryIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIDeliveryIniciar.Location = new System.Drawing.Point(1048, 19);
+            this.btnIDeliveryIniciar.Name = "btnIDeliveryIniciar";
+            this.btnIDeliveryIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnIDeliveryIniciar.TabIndex = 41;
+            this.btnIDeliveryIniciar.Text = "Iniciar";
+            this.btnIDeliveryIniciar.UseVisualStyleBackColor = true;
+            this.btnIDeliveryIniciar.Click += new System.EventHandler(this.btnIDeliveryIniciar_Click);
+            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.btnMeuCardapioAiCancelar);
@@ -1649,6 +1776,122 @@
             this.label25.TabIndex = 12;
             this.label25.Text = "TOKEN";
             // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.txtPedreiroDigitalURL);
+            this.tabPage14.Controls.Add(this.label33);
+            this.tabPage14.Controls.Add(this.btnPedreiroDigitalAprovar);
+            this.tabPage14.Controls.Add(this.txtPedreiroDigitalMerchantId);
+            this.tabPage14.Controls.Add(this.label31);
+            this.tabPage14.Controls.Add(this.gridPedreiroDigital);
+            this.tabPage14.Controls.Add(this.txtPedreiroDigitalToken);
+            this.tabPage14.Controls.Add(this.label32);
+            this.tabPage14.Controls.Add(this.btnPedreiroDigitalParar);
+            this.tabPage14.Controls.Add(this.btnPedreiroDigitalIniciar);
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage14.TabIndex = 13;
+            this.tabPage14.Text = "Aipedi";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // txtPedreiroDigitalURL
+            // 
+            this.txtPedreiroDigitalURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPedreiroDigitalURL.Location = new System.Drawing.Point(668, 22);
+            this.txtPedreiroDigitalURL.Name = "txtPedreiroDigitalURL";
+            this.txtPedreiroDigitalURL.Size = new System.Drawing.Size(291, 26);
+            this.txtPedreiroDigitalURL.TabIndex = 42;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(551, 25);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(42, 20);
+            this.label33.TabIndex = 41;
+            this.label33.Text = "URL";
+            // 
+            // btnPedreiroDigitalAprovar
+            // 
+            this.btnPedreiroDigitalAprovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedreiroDigitalAprovar.Location = new System.Drawing.Point(13, 98);
+            this.btnPedreiroDigitalAprovar.Name = "btnPedreiroDigitalAprovar";
+            this.btnPedreiroDigitalAprovar.Size = new System.Drawing.Size(171, 39);
+            this.btnPedreiroDigitalAprovar.TabIndex = 40;
+            this.btnPedreiroDigitalAprovar.Text = "Aprovar";
+            this.btnPedreiroDigitalAprovar.UseVisualStyleBackColor = true;
+            this.btnPedreiroDigitalAprovar.Click += new System.EventHandler(this.btnPedreiroDigitalAprovar_Click);
+            // 
+            // txtPedreiroDigitalMerchantId
+            // 
+            this.txtPedreiroDigitalMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPedreiroDigitalMerchantId.Location = new System.Drawing.Point(126, 56);
+            this.txtPedreiroDigitalMerchantId.Name = "txtPedreiroDigitalMerchantId";
+            this.txtPedreiroDigitalMerchantId.Size = new System.Drawing.Size(291, 26);
+            this.txtPedreiroDigitalMerchantId.TabIndex = 38;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(9, 56);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(90, 20);
+            this.label31.TabIndex = 37;
+            this.label31.Text = "MerchantId";
+            // 
+            // gridPedreiroDigital
+            // 
+            this.gridPedreiroDigital.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPedreiroDigital.Location = new System.Drawing.Point(10, 143);
+            this.gridPedreiroDigital.Name = "gridPedreiroDigital";
+            this.gridPedreiroDigital.Size = new System.Drawing.Size(1209, 523);
+            this.gridPedreiroDigital.TabIndex = 36;
+            this.gridPedreiroDigital.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPedreiroDigital_CellClick);
+            // 
+            // txtPedreiroDigitalToken
+            // 
+            this.txtPedreiroDigitalToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPedreiroDigitalToken.Location = new System.Drawing.Point(126, 19);
+            this.txtPedreiroDigitalToken.Name = "txtPedreiroDigitalToken";
+            this.txtPedreiroDigitalToken.Size = new System.Drawing.Size(291, 26);
+            this.txtPedreiroDigitalToken.TabIndex = 35;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(9, 22);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(62, 20);
+            this.label32.TabIndex = 34;
+            this.label32.Text = "TOKEN";
+            // 
+            // btnPedreiroDigitalParar
+            // 
+            this.btnPedreiroDigitalParar.Enabled = false;
+            this.btnPedreiroDigitalParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedreiroDigitalParar.Location = new System.Drawing.Point(1048, 70);
+            this.btnPedreiroDigitalParar.Name = "btnPedreiroDigitalParar";
+            this.btnPedreiroDigitalParar.Size = new System.Drawing.Size(171, 39);
+            this.btnPedreiroDigitalParar.TabIndex = 33;
+            this.btnPedreiroDigitalParar.Text = "Parar";
+            this.btnPedreiroDigitalParar.UseVisualStyleBackColor = true;
+            this.btnPedreiroDigitalParar.Click += new System.EventHandler(this.btnPedreiroDigitalParar_Click);
+            // 
+            // btnPedreiroDigitalIniciar
+            // 
+            this.btnPedreiroDigitalIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedreiroDigitalIniciar.Location = new System.Drawing.Point(1048, 19);
+            this.btnPedreiroDigitalIniciar.Name = "btnPedreiroDigitalIniciar";
+            this.btnPedreiroDigitalIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnPedreiroDigitalIniciar.TabIndex = 32;
+            this.btnPedreiroDigitalIniciar.Text = "Iniciar";
+            this.btnPedreiroDigitalIniciar.UseVisualStyleBackColor = true;
+            this.btnPedreiroDigitalIniciar.Click += new System.EventHandler(this.btnPedreiroDigitalIniciar_Click);
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.btnPedZapDesistencia);
@@ -2071,131 +2314,6 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // tabPage13
-            // 
-            this.tabPage13.Location = new System.Drawing.Point(4, 22);
-            this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage13.TabIndex = 12;
-            this.tabPage13.Text = "IDelivery";
-            this.tabPage13.UseVisualStyleBackColor = true;
-            // 
-            // tabPage14
-            // 
-            this.tabPage14.Controls.Add(this.txtPedreiroDigitalURL);
-            this.tabPage14.Controls.Add(this.label33);
-            this.tabPage14.Controls.Add(this.btnPedreiroDigitalAprovar);
-            this.tabPage14.Controls.Add(this.txtPedreiroDigitalMerchantId);
-            this.tabPage14.Controls.Add(this.label31);
-            this.tabPage14.Controls.Add(this.gridPedreiroDigital);
-            this.tabPage14.Controls.Add(this.txtPedreiroDigitalToken);
-            this.tabPage14.Controls.Add(this.label32);
-            this.tabPage14.Controls.Add(this.btnPedreiroDigitalParar);
-            this.tabPage14.Controls.Add(this.btnPedreiroDigitalIniciar);
-            this.tabPage14.Location = new System.Drawing.Point(4, 22);
-            this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage14.TabIndex = 13;
-            this.tabPage14.Text = "Pedreiro Digital";
-            this.tabPage14.UseVisualStyleBackColor = true;
-            // 
-            // btnPedreiroDigitalAprovar
-            // 
-            this.btnPedreiroDigitalAprovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedreiroDigitalAprovar.Location = new System.Drawing.Point(13, 98);
-            this.btnPedreiroDigitalAprovar.Name = "btnPedreiroDigitalAprovar";
-            this.btnPedreiroDigitalAprovar.Size = new System.Drawing.Size(171, 39);
-            this.btnPedreiroDigitalAprovar.TabIndex = 40;
-            this.btnPedreiroDigitalAprovar.Text = "Aprovar";
-            this.btnPedreiroDigitalAprovar.UseVisualStyleBackColor = true;
-            this.btnPedreiroDigitalAprovar.Click += new System.EventHandler(this.btnPedreiroDigitalAprovar_Click);
-            // 
-            // txtPedreiroDigitalMerchantId
-            // 
-            this.txtPedreiroDigitalMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPedreiroDigitalMerchantId.Location = new System.Drawing.Point(126, 56);
-            this.txtPedreiroDigitalMerchantId.Name = "txtPedreiroDigitalMerchantId";
-            this.txtPedreiroDigitalMerchantId.Size = new System.Drawing.Size(291, 26);
-            this.txtPedreiroDigitalMerchantId.TabIndex = 38;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(9, 56);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(90, 20);
-            this.label31.TabIndex = 37;
-            this.label31.Text = "MerchantId";
-            // 
-            // gridPedreiroDigital
-            // 
-            this.gridPedreiroDigital.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPedreiroDigital.Location = new System.Drawing.Point(10, 143);
-            this.gridPedreiroDigital.Name = "gridPedreiroDigital";
-            this.gridPedreiroDigital.Size = new System.Drawing.Size(1209, 523);
-            this.gridPedreiroDigital.TabIndex = 36;
-            this.gridPedreiroDigital.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPedreiroDigital_CellClick);
-            // 
-            // txtPedreiroDigitalToken
-            // 
-            this.txtPedreiroDigitalToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPedreiroDigitalToken.Location = new System.Drawing.Point(126, 19);
-            this.txtPedreiroDigitalToken.Name = "txtPedreiroDigitalToken";
-            this.txtPedreiroDigitalToken.Size = new System.Drawing.Size(291, 26);
-            this.txtPedreiroDigitalToken.TabIndex = 35;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(9, 22);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(62, 20);
-            this.label32.TabIndex = 34;
-            this.label32.Text = "TOKEN";
-            // 
-            // btnPedreiroDigitalParar
-            // 
-            this.btnPedreiroDigitalParar.Enabled = false;
-            this.btnPedreiroDigitalParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedreiroDigitalParar.Location = new System.Drawing.Point(1048, 70);
-            this.btnPedreiroDigitalParar.Name = "btnPedreiroDigitalParar";
-            this.btnPedreiroDigitalParar.Size = new System.Drawing.Size(171, 39);
-            this.btnPedreiroDigitalParar.TabIndex = 33;
-            this.btnPedreiroDigitalParar.Text = "Parar";
-            this.btnPedreiroDigitalParar.UseVisualStyleBackColor = true;
-            this.btnPedreiroDigitalParar.Click += new System.EventHandler(this.btnPedreiroDigitalParar_Click);
-            // 
-            // btnPedreiroDigitalIniciar
-            // 
-            this.btnPedreiroDigitalIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedreiroDigitalIniciar.Location = new System.Drawing.Point(1048, 19);
-            this.btnPedreiroDigitalIniciar.Name = "btnPedreiroDigitalIniciar";
-            this.btnPedreiroDigitalIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnPedreiroDigitalIniciar.TabIndex = 32;
-            this.btnPedreiroDigitalIniciar.Text = "Iniciar";
-            this.btnPedreiroDigitalIniciar.UseVisualStyleBackColor = true;
-            this.btnPedreiroDigitalIniciar.Click += new System.EventHandler(this.btnPedreiroDigitalIniciar_Click);
-            // 
-            // txtPedreiroDigitalURL
-            // 
-            this.txtPedreiroDigitalURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPedreiroDigitalURL.Location = new System.Drawing.Point(668, 22);
-            this.txtPedreiroDigitalURL.Name = "txtPedreiroDigitalURL";
-            this.txtPedreiroDigitalURL.Size = new System.Drawing.Size(291, 26);
-            this.txtPedreiroDigitalURL.TabIndex = 42;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(551, 25);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(42, 20);
-            this.label33.TabIndex = 41;
-            this.label33.Text = "URL";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2229,6 +2347,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).EndInit();
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMeuCardapioAi)).EndInit();
@@ -2238,6 +2359,9 @@
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).EndInit();
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
@@ -2247,9 +2371,6 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
-            this.tabPage14.ResumeLayout(false);
-            this.tabPage14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2434,6 +2555,16 @@
         private System.Windows.Forms.Button btnPedreiroDigitalIniciar;
         private System.Windows.Forms.TextBox txtPedreiroDigitalURL;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txtIDeliveryURL;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button btnIDeliveryAprovar;
+        private System.Windows.Forms.TextBox txtIDeliveryMerchantId;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtIDeliveryToken;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button btnIDeliveryParar;
+        private System.Windows.Forms.Button btnIDeliveryIniciar;
     }
 }
 

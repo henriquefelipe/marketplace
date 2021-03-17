@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedreiroDigital.Enum
+namespace Aipedi.Enum
 {
     public class OrderType
     {

@@ -1,4 +1,4 @@
-﻿using PedreiroDigital.Domain;
+﻿using Aipedi.Domain;
 using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedreiroDigital.Service
+namespace Aipedi.Service
 {
-    public class PedreiroDigitalService
+    public class AipediService
     {
         private string _url;
         private string _token;
         private string _merchantId;
 
-        public PedreiroDigitalService(string url, string merchantId, string token)
+        public AipediService(string url, string merchantId, string token)
         {
             _url = url;
             _merchantId = merchantId;

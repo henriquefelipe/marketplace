@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedreiroDigital.Domain
+namespace Aipedi.Domain
 {
-    public class result_status
+    public class eventAcknowledgment
     {
-        public string message { get; set; }
+        public string id { get; set; }
     }
 }

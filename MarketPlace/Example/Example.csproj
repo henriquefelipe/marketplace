@@ -131,9 +131,9 @@
       <Project>{f423ea0e-b5c2-4152-ac20-b2de04b4b1aa}</Project>
       <Name>OnPedido</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PedreiroDigital\PedreiroDigital.csproj">
+    <ProjectReference Include="..\Aipedi\Aipedi.csproj">
       <Project>{a7822d3b-963c-44f6-80ec-5f8d40d298cc}</Project>
-      <Name>PedreiroDigital</Name>
+      <Name>Aipedi</Name>
     </ProjectReference>
     <ProjectReference Include="..\PedZap\PedZap.csproj">
       <Project>{9a45d340-8699-4fc2-9264-d5514b6d511d}</Project>

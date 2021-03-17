@@ -1,4 +1,5 @@
-﻿using AnotaAi.Service;
+﻿using Aipedi.Service;
+using AnotaAi.Service;
 using Cinddi.Service;
 using DeliveryApp.Service;
 using DeliveryDireto.Service;
@@ -8,7 +9,7 @@ using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
-using PedreiroDigital.Service;
+using Aipedi.Service;
 using PedZap.Enum;
 using PedZap.Service;
 using Rappi.Service;
@@ -64,7 +65,7 @@ namespace Example
         private string _cinddiSelected { get; set; }
 
         private string _pedreiroDigitalToken { get; set; }
-        private List<PedreiroDigital.Domain.order> _pedreiroDigitalOrders { get; set; }
+        private List<Aipedi.Domain.order> _pedreiroDigitalOrders { get; set; }
         private string _pedreiroDigitalReferenceSelected { get; set; }
 
 
@@ -205,7 +206,7 @@ namespace Example
             gridOnPedido.DataSource = _onPedidoPedidos.ToList();
             gridOnPedido.Refresh();
 
-            _pedreiroDigitalOrders = new List<PedreiroDigital.Domain.order>();
+            _pedreiroDigitalOrders = new List<Aipedi.Domain.order>();
             gridPedreiroDigital.DataSource = _pedreiroDigitalOrders.ToList();
             gridPedreiroDigital.Refresh();
         }
@@ -2871,10 +2872,10 @@ namespace Example
                 return;
             }
 
-            var service = new PedreiroDigitalService(txtPedreiroDigitalURL.Text, 
+            var service = new AipediService(txtPedreiroDigitalURL.Text, 
                                 txtPedreiroDigitalMerchantId.Text, txtPedreiroDigitalToken.Text);
 
-            var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)PedreiroDigital.Enum.OrderStatus.Confirmado);
+            var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)Aipedi.Enum.OrderStatus.Confirmado);
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -2919,14 +2920,14 @@ namespace Example
 
         private void pedreiroDigital()
         {
-            var service = new PedreiroDigitalService(txtPedreiroDigitalURL.Text, txtPedreiroDigitalMerchantId.Text,
+            var service = new AipediService(txtPedreiroDigitalURL.Text, txtPedreiroDigitalMerchantId.Text,
                                     txtPedreiroDigitalToken.Text);
 
             try
             {
                 while (btnPedreiroDigitalParar.Enabled)
                 {
-                    var orderResult = service.Orders((byte)PedreiroDigital.Enum.OrderStatus.Pendente);
+                    var orderResult = service.Orders((byte)Aipedi.Enum.OrderStatus.Pendente);
                     if (orderResult.Success)
                     {
                         if (orderResult.Result != null)
@@ -2983,6 +2984,25 @@ namespace Example
             }
         }
 
+
+        #endregion
+
+        #region IDelivery
+
+        private void btnIDeliveryIniciar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIDeliveryParar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIDeliveryAprovar_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
     }

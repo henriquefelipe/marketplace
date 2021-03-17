@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedreiroDigital.Domain
+namespace Aipedi.Domain
 {
     public class poolingEvent
     {

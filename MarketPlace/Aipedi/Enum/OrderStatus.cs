@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedreiroDigital.Enum
+namespace Aipedi.Enum
 {
     public enum OrderStatus
     {
@@ -13,6 +13,7 @@ namespace PedreiroDigital.Enum
         PedidoEmProducao = 2,
         PedidoPronto = 3,
         SaiuParaEntrega = 4,
-        Entregue = 5
+        Entregue = 5,
+        Cancelado = 6
     }
 }

@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinddi", "Cinddi\Cinddi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDireto", "DeliveryDireto\DeliveryDireto.csproj", "{4051BC94-28AC-41C1-8CB9-E254F822A7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedreiroDigital", "PedreiroDigital\PedreiroDigital.csproj", "{A7822D3B-963C-44F6-80EC-5F8D40D298CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aipedi", "Aipedi\Aipedi.csproj", "{A7822D3B-963C-44F6-80EC-5F8D40D298CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDelivery", "IDelivery\IDelivery.csproj", "{C991A94C-63CE-40B2-B3D1-3A61AB0D0080}"
 EndProject
