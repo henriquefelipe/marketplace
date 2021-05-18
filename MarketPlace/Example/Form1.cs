@@ -4,12 +4,12 @@ using Cinddi.Service;
 using DeliveryApp.Service;
 using DeliveryDireto.Service;
 using GloriaFood.Service;
+using IDelivery.Service;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
-using Aipedi.Service;
 using PedZap.Enum;
 using PedZap.Service;
 using Rappi.Service;
@@ -68,6 +68,9 @@ namespace Example
         private List<Aipedi.Domain.order> _pedreiroDigitalOrders { get; set; }
         private string _pedreiroDigitalReferenceSelected { get; set; }
 
+        private string _iDeliveryToken { get; set; }
+        private List<IDelivery.Domain.order> _iDeliveryOrders { get; set; }
+        private string _iDeliveryReferenceSelected { get; set; }
 
         #endregion
 
@@ -124,6 +127,13 @@ namespace Example
                             if (marketPlace.Gloria != null)
                             {
                                 txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
+                            }
+
+                            if (marketPlace.IDelivery != null)
+                            {
+                                txtIDeliveryToken.Text = marketPlace.IDelivery.Token;
+                                txtIDeliveryMerchantId.Text = marketPlace.IDelivery.MerchantId;
+                                txtIDeliveryURL.Text = marketPlace.IDelivery.Url;
                             }
 
                             if (marketPlace.MeuCardapioAi != null)
@@ -209,6 +219,10 @@ namespace Example
             _pedreiroDigitalOrders = new List<Aipedi.Domain.order>();
             gridPedreiroDigital.DataSource = _pedreiroDigitalOrders.ToList();
             gridPedreiroDigital.Refresh();
+
+            _iDeliveryOrders = new List<IDelivery.Domain.order>();
+            gridiDelivery.DataSource = _iDeliveryOrders.ToList();
+            gridiDelivery.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -2846,7 +2860,7 @@ namespace Example
 
         #endregion
 
-        #region Pedreiro Digital
+        #region Ai Pedi
 
         private void btnPedreiroDigitalIniciar_Click(object sender, EventArgs e)
         {
@@ -2991,17 +3005,132 @@ namespace Example
 
         private void btnIDeliveryIniciar_Click(object sender, EventArgs e)
         {
-
+            iDeliveryIniciar();
         }
 
         private void btnIDeliveryParar_Click(object sender, EventArgs e)
         {
-
+            iDeliveryParar();
         }
 
         private void btnIDeliveryAprovar_Click(object sender, EventArgs e)
         {
+            if (btnIDeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_iDeliveryReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new IDeliveryService(txtIDeliveryURL.Text, txtIDeliveryMerchantId.Text,
+                                    txtIDeliveryToken.Text);
+            var result = service.Status(Convert.ToInt32(_iDeliveryReferenceSelected), (int)IDelivery.Enum.OrderStatus.Aprovado);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        public async void iDeliveryIniciar()
+        {
+            if (string.IsNullOrEmpty(txtIDeliveryToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtIDeliveryURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtIDeliveryMerchantId.Text))
+            {
+                MessageBox.Show("Campo MerchandId Obrigatório");
+                return;
+            }
+
+
+            btnIDeliveryIniciar.Enabled = false;
+            btnIDeliveryParar.Enabled = true;
+
+            await Task.Run(() => iDelivery());
+        }
+
+        private void iDelivery()
+        {
+            var service = new IDeliveryService(txtIDeliveryURL.Text, txtIDeliveryMerchantId.Text,
+                                    txtIDeliveryToken.Text);
+
+            try
+            {
+                while (btnIDeliveryParar.Enabled)
+                {
+                    var orderResult = service.Orders(true);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result != null)
+                        {
+                            _iDeliveryOrders.AddRange(orderResult.Result);
+                            WriteGridiDelivery();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWriteGridiDeliveryDelegate();
+        private void WriteGridiDelivery()
+        {
+            if (gridiDelivery.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridiDeliveryDelegate(WriteGridiDelivery);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridiDelivery.DataSource = _iDeliveryOrders.ToList();
+                gridiDelivery.Refresh();
+            }
+        }
+
+        void iDeliveryParar()
+        {
+            btnIDeliveryIniciar.Enabled = true;
+            btnIDeliveryParar.Enabled = false;
+        }
+
+        private void gridiDelivery_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridiDelivery.Rows.Count)
+            {
+                _iDeliveryReferenceSelected = gridiDelivery.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
         }
 
         #endregion

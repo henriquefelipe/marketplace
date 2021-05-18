@@ -25,6 +25,7 @@ namespace Logaroo.Domain
         public string neighborhood { get; set; }
         public string number { get; set; }        
         public string payment_code { get; set; }
+        public string complement { get; set; }
         public string state { get; set; }
         public string street { get; set; }
         public decimal sub_total { get; set; }

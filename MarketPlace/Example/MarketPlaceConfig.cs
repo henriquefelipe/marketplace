@@ -15,6 +15,8 @@ namespace Example
         public MarketPlaceConfigOnPedido OnPedido { get; set; }
         public MarketPlaceConfigCinddi Cinddi { get; set; }
         public MarketPlacePedreiroDigital PedreiroDigital { get; set; }
+
+        public MarketPlaceIDelivery IDelivery { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -96,6 +98,13 @@ namespace Example
     }
 
     public class MarketPlacePedreiroDigital
+    {
+        public string Token { get; set; }
+        public string MerchantId { get; set; }
+        public string Url { get; set; }
+    }
+
+    public class MarketPlaceIDelivery
     {
         public string Token { get; set; }
         public string MerchantId { get; set; }

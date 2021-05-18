@@ -48,7 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\customer.cs" />
+    <Compile Include="Domain\deliveryAddress.cs" />
+    <Compile Include="Domain\item.cs" />
+    <Compile Include="Domain\merchant.cs" />
+    <Compile Include="Domain\order.cs" />
+    <Compile Include="Domain\order_result.cs" />
+    <Compile Include="Domain\payment.cs" />
+    <Compile Include="Domain\subItem.cs" />
+    <Compile Include="Enum\OrderStatus.cs" />
+    <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IDeliveryService.cs" />
+    <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
@@ -56,11 +69,7 @@
       <Name>MarketPlace</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\" />
-    <Folder Include="Enum\" />
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
