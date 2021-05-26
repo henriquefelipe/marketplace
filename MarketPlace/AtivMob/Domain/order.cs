@@ -8,6 +8,11 @@ namespace AtivMob.Domain
 {
     public class order
     {
+        public order()
+        {
+            packages = new List<packages>();
+        }
+
         public string id { get; set; }
         public seller seller { get; set; }
         public sale sale { get; set; }

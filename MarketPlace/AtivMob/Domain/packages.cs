@@ -8,6 +8,11 @@ namespace AtivMob.Domain
 {
     public class packages
     {
+        public packages()
+        {
+            volumes = new List<volumes>();
+        }
+
         public string id { get; set; }
         public deliveryService deliveryService { get; set; }
         public packingList packingList { get; set; }

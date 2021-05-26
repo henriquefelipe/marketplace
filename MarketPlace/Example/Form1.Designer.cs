@@ -51,6 +51,14 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnAnotaAiParar = new System.Windows.Forms.Button();
             this.btnAnotaAiIniciar = new System.Windows.Forms.Button();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.txtAtivMobURL = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtAtivMobToken = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.btnAtivMobCriarPedido = new System.Windows.Forms.Button();
+            this.txtAtivMobMerchantId = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.btnCinddiCancelar = new System.Windows.Forms.Button();
             this.btnCinddiFinalizado = new System.Windows.Forms.Button();
@@ -221,6 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
+            this.tabPage15.SuspendLayout();
             this.tabPage11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -253,6 +262,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage15);
             this.tabControl1.Controls.Add(this.tabPage11);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage12);
@@ -511,6 +521,85 @@
             this.btnAnotaAiIniciar.Text = "Iniciar";
             this.btnAnotaAiIniciar.UseVisualStyleBackColor = true;
             this.btnAnotaAiIniciar.Click += new System.EventHandler(this.btnAnotaAiIniciar_Click);
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.txtAtivMobURL);
+            this.tabPage15.Controls.Add(this.label39);
+            this.tabPage15.Controls.Add(this.txtAtivMobToken);
+            this.tabPage15.Controls.Add(this.label38);
+            this.tabPage15.Controls.Add(this.btnAtivMobCriarPedido);
+            this.tabPage15.Controls.Add(this.txtAtivMobMerchantId);
+            this.tabPage15.Controls.Add(this.label37);
+            this.tabPage15.Location = new System.Drawing.Point(4, 22);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage15.TabIndex = 14;
+            this.tabPage15.Text = "AtivMob";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // txtAtivMobURL
+            // 
+            this.txtAtivMobURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAtivMobURL.Location = new System.Drawing.Point(601, 70);
+            this.txtAtivMobURL.Name = "txtAtivMobURL";
+            this.txtAtivMobURL.Size = new System.Drawing.Size(414, 26);
+            this.txtAtivMobURL.TabIndex = 30;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(456, 76);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(42, 20);
+            this.label39.TabIndex = 29;
+            this.label39.Text = "URL";
+            // 
+            // txtAtivMobToken
+            // 
+            this.txtAtivMobToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAtivMobToken.Location = new System.Drawing.Point(601, 20);
+            this.txtAtivMobToken.Name = "txtAtivMobToken";
+            this.txtAtivMobToken.Size = new System.Drawing.Size(414, 26);
+            this.txtAtivMobToken.TabIndex = 28;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(456, 26);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(53, 20);
+            this.label38.TabIndex = 27;
+            this.label38.Text = "Token";
+            // 
+            // btnAtivMobCriarPedido
+            // 
+            this.btnAtivMobCriarPedido.Location = new System.Drawing.Point(12, 92);
+            this.btnAtivMobCriarPedido.Name = "btnAtivMobCriarPedido";
+            this.btnAtivMobCriarPedido.Size = new System.Drawing.Size(178, 42);
+            this.btnAtivMobCriarPedido.TabIndex = 31;
+            this.btnAtivMobCriarPedido.Text = "Criar Pedido";
+            this.btnAtivMobCriarPedido.Click += new System.EventHandler(this.btnAtivMobCriarPedido_Click);
+            // 
+            // txtAtivMobMerchantId
+            // 
+            this.txtAtivMobMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAtivMobMerchantId.Location = new System.Drawing.Point(153, 20);
+            this.txtAtivMobMerchantId.Name = "txtAtivMobMerchantId";
+            this.txtAtivMobMerchantId.Size = new System.Drawing.Size(187, 26);
+            this.txtAtivMobMerchantId.TabIndex = 25;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(8, 26);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(90, 20);
+            this.label37.TabIndex = 24;
+            this.label37.Text = "MerchantId";
             // 
             // tabPage11
             // 
@@ -2333,6 +2422,8 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).EndInit();
+            this.tabPage15.ResumeLayout(false);
+            this.tabPage15.PerformLayout();
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).EndInit();
@@ -2566,6 +2657,14 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Button btnIDeliveryParar;
         private System.Windows.Forms.Button btnIDeliveryIniciar;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.Button btnAtivMobCriarPedido;
+        private System.Windows.Forms.TextBox txtAtivMobMerchantId;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtAtivMobToken;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox txtAtivMobURL;
+        private System.Windows.Forms.Label label39;
     }
 }
 

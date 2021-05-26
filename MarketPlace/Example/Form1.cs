@@ -63,14 +63,12 @@ namespace Example
         private string _cinddiToken { get; set; }
         private List<Cinddi.Domain.ResponseOrders> _cinddiPedidos { get; set; }
         private string _cinddiSelected { get; set; }
-
-        private string _pedreiroDigitalToken { get; set; }
+        
         private List<Aipedi.Domain.order> _pedreiroDigitalOrders { get; set; }
         private string _pedreiroDigitalReferenceSelected { get; set; }
-
-        private string _iDeliveryToken { get; set; }
+        
         private List<IDelivery.Domain.order> _iDeliveryOrders { get; set; }
-        private string _iDeliveryReferenceSelected { get; set; }
+        private string _iDeliveryReferenceSelected { get; set; }              
 
         #endregion
 
@@ -95,6 +93,13 @@ namespace Example
                             if (marketPlace.AnotaAi != null)
                             {
                                 txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
+                            }
+
+                            if (marketPlace.AtivMob != null)
+                            {
+                                txtAtivMobToken.Text = marketPlace.AtivMob.Token;
+                                txtAtivMobURL.Text = marketPlace.AtivMob.Url;
+                                txtAtivMobMerchantId.Text = marketPlace.AtivMob.MerchantId;
                             }
 
                             if (marketPlace.Cinddi != null)
@@ -3130,6 +3135,86 @@ namespace Example
             if (e.RowIndex > -1 && e.RowIndex < gridiDelivery.Rows.Count)
             {
                 _iDeliveryReferenceSelected = gridiDelivery.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        #endregion
+
+        #region AtivMob
+
+        private void btnAtivMobCriarPedido_Click(object sender, EventArgs e)
+        {
+            var order = new AtivMob.Domain.order();
+            order.id = new Random().Next().ToString();
+            order.sale = new AtivMob.Domain.sale();
+            order.sale.place = new AtivMob.Domain.place();
+            order.sale.place.description = AtivMob.Enum.sale_place.FISICO;
+
+            var package = new AtivMob.Domain.packages();
+            package.id = order.id;
+            //package.origin = new AtivMob.Domain.origin();
+
+            //package.origin.pickupPlace = new AtivMob.Domain.pickupPlace();
+            //package.origin.pickupPlace.store = new AtivMob.Domain.store();
+            //package.origin.pickupPlace.store.id = 485;
+
+            //package.origin.phones.Add(new AtivMob.Domain.phones { number = 87704779, type = (string)AtivMob.Enum.phone_type.CELLPHONE });
+            //package.origin.address = new AtivMob.Domain.address();
+            //package.origin.address.city = "Fortaleza";
+            //package.origin.address.complement = "4º Etapa";
+            //package.origin.address.country = "Brasil";
+            //package.origin.address.district = "Conjunto Ceará";
+            //package.origin.address.ibgeCode = 10545;
+            //package.origin.address.number = "47";
+            //package.origin.address.state = "CE";
+            //package.origin.address.street = "Rua 1014";
+            //package.origin.address.zipcode = "60545578";
+
+            package.deadline = new AtivMob.Domain.deadline();
+            package.deadline.date = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm");
+
+            package.destination = new AtivMob.Domain.destination();
+            package.destination.phones.Add(new AtivMob.Domain.phones { number = 87704779, type = (string)AtivMob.Enum.phone_type.CELLPHONE });
+            package.destination.address = new AtivMob.Domain.address();
+            package.destination.address.city = "Fortaleza";
+            package.destination.address.complement = "";
+            package.destination.address.country = "Brasil";
+            package.destination.address.district = "Genibaú";
+            package.destination.address.ibgeCode = 10545;
+            package.destination.address.number = "58";
+            package.destination.address.state = "CE";
+            package.destination.address.street = "Rua Dom Lustosa";
+            package.destination.address.zipcode = "";
+
+            package.destination.deliveryPlace = new AtivMob.Domain.deliveryPlace();
+            package.destination.deliveryPlace.customer = new AtivMob.Domain.customer();
+            package.destination.deliveryPlace.customer.name = "Henrique";
+            package.destination.deliveryPlace.customer.cpf = "7458787888";
+
+            package.invoice = new AtivMob.Domain.invoice();
+            package.invoice.number = 123;
+            package.invoice.issueDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+            package.shipping = new AtivMob.Domain.shipping();
+            package.shipping.cost = 10;
+
+            var volume1 = new AtivMob.Domain.volumes();
+            volume1.products.Add(new AtivMob.Domain.products { description = "Coca-Cola", price = 5 });
+            volume1.products.Add(new AtivMob.Domain.products { description = "Coxinha", price = 10 });
+
+            package.volumes.Add(volume1);
+
+            order.packages.Add(package);
+
+            var service = new AtivMob.Service.AtivMobService(txtAtivMobURL.Text, txtAtivMobMerchantId.Text, txtAtivMobToken.Text);
+            var result = service.Order(order);
+            if(result.Success)
+            {
+                MessageBox.Show("Criado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 

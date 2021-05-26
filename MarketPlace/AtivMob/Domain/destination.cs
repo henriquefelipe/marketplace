@@ -8,6 +8,11 @@ namespace AtivMob.Domain
 {
     public class destination
     {
+        public destination()
+        {
+            phones = new List<phones>();
+        }
+
         public seller seller { get; set; }
         public deliveryPlace deliveryPlace { get; set; }
         public IList<phones> phones { get; set; }

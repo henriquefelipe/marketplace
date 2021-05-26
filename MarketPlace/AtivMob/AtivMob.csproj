@@ -69,15 +69,27 @@
     <Compile Include="Domain\pickupPlace.cs" />
     <Compile Include="Domain\place.cs" />
     <Compile Include="Domain\products.cs" />
+    <Compile Include="Domain\result.cs" />
     <Compile Include="Domain\sale.cs" />
     <Compile Include="Domain\seller.cs" />
+    <Compile Include="Enum\periodo_prevista.cs" />
+    <Compile Include="Enum\phone_type.cs" />
+    <Compile Include="Enum\sale_place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\shipping.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\volumes.cs" />
+    <Compile Include="Service\AtivMobService.cs" />
+    <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
+      <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
+      <Name>MarketPlace</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

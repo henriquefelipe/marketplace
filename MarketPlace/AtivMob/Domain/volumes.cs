@@ -8,6 +8,11 @@ namespace AtivMob.Domain
 {
     public class volumes
     {
+        public volumes()
+        {
+            products = new List<products>();
+        }
+
         public decimal weight { get; set; }
         public int height { get; set; }
         public int width { get; set; }
