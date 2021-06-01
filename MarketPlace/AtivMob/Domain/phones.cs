@@ -9,6 +9,6 @@ namespace AtivMob.Domain
     public class phones
     {
         public string type { get; set; }
-        public int number { get; set; }
+        public long number { get; set; }
     }
 }

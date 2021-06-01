@@ -3195,6 +3195,9 @@ namespace Example
             package.invoice.number = 123;
             package.invoice.issueDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
+            package.deadline = new AtivMob.Domain.deadline();
+            package.deadline.date = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm");
+
             package.shipping = new AtivMob.Domain.shipping();
             package.shipping.cost = 10;
 
