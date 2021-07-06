@@ -4,6 +4,7 @@ using Cinddi.Service;
 using DeliveryApp.Service;
 using DeliveryDireto.Service;
 using GloriaFood.Service;
+using Goomer.Service;
 using IDelivery.Service;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
@@ -40,6 +41,8 @@ namespace Example
         private string _ifoodReferenceSelected { get; set; }
         private string _gloriaToken { get; set; }
         private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
+        private List<Goomer.Domain.order> _goomerOrders { get; set; }
+        private string _goomerSelected { get; set; }
         private string _meuCardapioAiToken { get; set; }
         private string _meuCardapioAiSelected { get; set; }
         private string _meuCardapioAiUltimoPedido { get; set; }
@@ -134,6 +137,15 @@ namespace Example
                                 txtGloriaFoodToken.Text = marketPlace.Gloria.Token;
                             }
 
+                            if (marketPlace.Goomer != null)
+                            {
+                                txtGoomerToken.Text = marketPlace.Goomer.Token;
+                                txtGoomerStore.Text = marketPlace.Goomer.MerchantId;
+                                txtGoomerURL.Text = marketPlace.Goomer.Url;
+                                txtGoomerCLIENT_ID.Text = marketPlace.Goomer.Client_ID;
+                                txtGoomerCLIENT_SECRET.Text = marketPlace.Goomer.Client_SECRET;
+                            }
+
                             if (marketPlace.IDelivery != null)
                             {
                                 txtIDeliveryToken.Text = marketPlace.IDelivery.Token;
@@ -202,6 +214,10 @@ namespace Example
             _gloriaOrders = new List<GloriaFood.Domain.order>();
             gridGloriaGood.DataSource = _gloriaOrders.ToList();
             gridGloriaGood.Refresh();
+
+            _goomerOrders = new List<Goomer.Domain.order>();
+            gridGoomer.DataSource = _goomerOrders.ToList();
+            gridGoomer.Refresh();
 
             _meuCardapioAiOrders = new List<MeuCardapioAi.Domain.order>();
             gridMeuCardapioAi.DataSource = _meuCardapioAiOrders.ToList();
@@ -3277,6 +3293,310 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+
+
+        #endregion
+
+        #region Goomer
+        private void btnGoomerIniciar_Click(object sender, EventArgs e)
+        {
+            goomerIniciar();
+        }
+        
+        private void btnGoomerParar_Click(object sender, EventArgs e)
+        {
+            goomerParar();
+        }
+
+        private void btnGoomerLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtGoomerURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtGoomerStore.Text))
+            {
+                MessageBox.Show("Campo Store Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtGoomerToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtGoomerCLIENT_ID.Text))
+            {
+                MessageBox.Show("Campo Client_ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtGoomerCLIENT_SECRET.Text))
+            {
+                MessageBox.Show("Campo Client_SECRET Obrigatório");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.OathToken(txtGoomerToken.Text, txtGoomerStore.Text, txtGoomerCLIENT_SECRET.Text, txtGoomerCLIENT_ID.Text);
+            if (result.Success)
+            {
+                txtGoomerAuthToken.Text = result.Result.authToken;
+                txtGoomerRefreshToken.Text = result.Result.refreshToken;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btnGoomerRefreshToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtGoomerRefreshToken.Text))
+            {
+                MessageBox.Show("Campo Refresh Token Obrigatório");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.RefreshToken(txtGoomerRefreshToken.Text);
+            if (result.Success)
+            {
+                txtGoomerAuthToken.Text = result.Result.authToken;
+                txtGoomerRefreshToken.Text = result.Result.refreshToken;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btnGoomerVerPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Order(txtGoomerAuthToken.Text, _goomerSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);                
+            }
+        }
+
+        private void btnGoomerAceitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Accept(txtGoomerAuthToken.Text, _goomerSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Aceito");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnGoomerRejeitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Deny(txtGoomerAuthToken.Text, _goomerSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Rejeitado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnGoomerCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Cancel(txtGoomerAuthToken.Text, _goomerSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnGoomerEmPreparo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Update(txtGoomerAuthToken.Text, _goomerSelected, Goomer.Enum.ORDER_STATUS.PREPARING);
+            if (result.Success)
+            {
+                MessageBox.Show("Em preparo");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnGoomerEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Update(txtGoomerAuthToken.Text, _goomerSelected, Goomer.Enum.ORDER_STATUS.FINISHED);
+            if (result.Success)
+            {
+                MessageBox.Show("Retirada");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnGoomerSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_goomerSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.Update(txtGoomerAuthToken.Text, _goomerSelected, Goomer.Enum.ORDER_STATUS.DELIVERYNG);
+            if (result.Success)
+            {
+                MessageBox.Show("Saiu para entrega");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void gridGoomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridGoomer.Rows.Count)
+            {
+                _goomerSelected = gridGoomer.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        void goomerParar()
+        {
+            btnGoomerIniciar.Enabled = true;
+            btnGoomerParar.Enabled = false;
+        }
+
+        private delegate void WritelstGridWriteGridGoomerDelegate();
+        private void WriteGridGoomer()
+        {
+            if (gridGoomer.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridGoomerDelegate(WriteGridGoomer);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridGoomer.DataSource = _goomerOrders.ToList();
+                gridGoomer.Refresh();
+            }
+        }
+
+        public async void goomerIniciar()
+        {
+            if (string.IsNullOrEmpty(txtGoomerAuthToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+            
+            btnGoomerIniciar.Enabled = false;
+            btnGoomerParar.Enabled = true;
+
+            await Task.Run(() => goomer());
+        }
+
+        private void goomer()
+        {
+            var service = new GoomerService(txtGoomerURL.Text);
+
+            try
+            {
+                while (btnGoomerParar.Enabled)
+                {
+                    var orderResult = service.Orders(txtGoomerAuthToken.Text);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result != null)
+                        {
+                            foreach(var item in orderResult.Result.orders)
+                                _goomerOrders.Add(new Goomer.Domain.order { id = item });
+                            WriteGridGoomer();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
 
 
         #endregion

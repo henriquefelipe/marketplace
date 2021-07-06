@@ -127,16 +127,20 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage16 = new System.Windows.Forms.TabPage();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtGoomerAuthToken = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtGoomerRefreshToken = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.btnGoomerRefreshToken = new System.Windows.Forms.Button();
+            this.btnGoomerLogin = new System.Windows.Forms.Button();
+            this.txtGoomerStore = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtGoomerCLIENT_SECRET = new System.Windows.Forms.TextBox();
+            this.txtGoomerCLIENT_ID = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtGoomerToken = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnGoomerCancelar = new System.Windows.Forms.Button();
             this.btnGoomerRejeitar = new System.Windows.Forms.Button();
             this.btnGoomerVerPedido = new System.Windows.Forms.Button();
@@ -244,12 +248,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.btnGoomerLogin = new System.Windows.Forms.Button();
-            this.btnGoomerRefreshToken = new System.Windows.Forms.Button();
-            this.txtGoomerAuthToken = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.txtGoomerRefreshToken = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
+            this.txtGoomerURL = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.btnGoomerEmPreparo = new System.Windows.Forms.Button();
+            this.btnGoomerEntregue = new System.Windows.Forms.Button();
+            this.btnGoomerSaiuParaEntrega = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
@@ -1364,22 +1367,25 @@
             // 
             // tabPage16
             // 
+            this.tabPage16.Controls.Add(this.btnGoomerSaiuParaEntrega);
+            this.tabPage16.Controls.Add(this.btnGoomerEntregue);
+            this.tabPage16.Controls.Add(this.btnGoomerEmPreparo);
+            this.tabPage16.Controls.Add(this.txtGoomerURL);
+            this.tabPage16.Controls.Add(this.label46);
             this.tabPage16.Controls.Add(this.txtGoomerAuthToken);
             this.tabPage16.Controls.Add(this.label44);
             this.tabPage16.Controls.Add(this.txtGoomerRefreshToken);
             this.tabPage16.Controls.Add(this.label45);
             this.tabPage16.Controls.Add(this.btnGoomerRefreshToken);
             this.tabPage16.Controls.Add(this.btnGoomerLogin);
-            this.tabPage16.Controls.Add(this.textBox4);
+            this.tabPage16.Controls.Add(this.txtGoomerStore);
             this.tabPage16.Controls.Add(this.label43);
-            this.tabPage16.Controls.Add(this.textBox1);
-            this.tabPage16.Controls.Add(this.textBox2);
+            this.tabPage16.Controls.Add(this.txtGoomerCLIENT_SECRET);
+            this.tabPage16.Controls.Add(this.txtGoomerCLIENT_ID);
             this.tabPage16.Controls.Add(this.label40);
             this.tabPage16.Controls.Add(this.label41);
-            this.tabPage16.Controls.Add(this.textBox3);
+            this.tabPage16.Controls.Add(this.txtGoomerToken);
             this.tabPage16.Controls.Add(this.label42);
-            this.tabPage16.Controls.Add(this.button1);
-            this.tabPage16.Controls.Add(this.button2);
             this.tabPage16.Controls.Add(this.btnGoomerCancelar);
             this.tabPage16.Controls.Add(this.btnGoomerRejeitar);
             this.tabPage16.Controls.Add(this.btnGoomerVerPedido);
@@ -1394,13 +1400,73 @@
             this.tabPage16.Text = "Goomer";
             this.tabPage16.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // txtGoomerAuthToken
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(117, 69);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 26);
-            this.textBox4.TabIndex = 29;
+            this.txtGoomerAuthToken.Enabled = false;
+            this.txtGoomerAuthToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerAuthToken.Location = new System.Drawing.Point(117, 161);
+            this.txtGoomerAuthToken.Name = "txtGoomerAuthToken";
+            this.txtGoomerAuthToken.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerAuthToken.TabIndex = 35;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(24, 161);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(85, 20);
+            this.label44.TabIndex = 34;
+            this.label44.Text = "authToken";
+            // 
+            // txtGoomerRefreshToken
+            // 
+            this.txtGoomerRefreshToken.Enabled = false;
+            this.txtGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerRefreshToken.Location = new System.Drawing.Point(544, 158);
+            this.txtGoomerRefreshToken.Name = "txtGoomerRefreshToken";
+            this.txtGoomerRefreshToken.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerRefreshToken.TabIndex = 33;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(370, 161);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(103, 20);
+            this.label45.TabIndex = 32;
+            this.label45.Text = "refreshToken";
+            // 
+            // btnGoomerRefreshToken
+            // 
+            this.btnGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerRefreshToken.Location = new System.Drawing.Point(902, 155);
+            this.btnGoomerRefreshToken.Name = "btnGoomerRefreshToken";
+            this.btnGoomerRefreshToken.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerRefreshToken.TabIndex = 31;
+            this.btnGoomerRefreshToken.Text = "Refresh Token";
+            this.btnGoomerRefreshToken.UseVisualStyleBackColor = true;
+            this.btnGoomerRefreshToken.Click += new System.EventHandler(this.btnGoomerRefreshToken_Click);
+            // 
+            // btnGoomerLogin
+            // 
+            this.btnGoomerLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerLogin.Location = new System.Drawing.Point(751, 155);
+            this.btnGoomerLogin.Name = "btnGoomerLogin";
+            this.btnGoomerLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerLogin.TabIndex = 30;
+            this.btnGoomerLogin.Text = "Login";
+            this.btnGoomerLogin.UseVisualStyleBackColor = true;
+            this.btnGoomerLogin.Click += new System.EventHandler(this.btnGoomerLogin_Click);
+            // 
+            // txtGoomerStore
+            // 
+            this.txtGoomerStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerStore.Location = new System.Drawing.Point(117, 69);
+            this.txtGoomerStore.Name = "txtGoomerStore";
+            this.txtGoomerStore.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerStore.TabIndex = 29;
             // 
             // label43
             // 
@@ -1412,21 +1478,21 @@
             this.label43.TabIndex = 28;
             this.label43.Text = "Store";
             // 
-            // textBox1
+            // txtGoomerCLIENT_SECRET
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(544, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 26);
-            this.textBox1.TabIndex = 25;
+            this.txtGoomerCLIENT_SECRET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerCLIENT_SECRET.Location = new System.Drawing.Point(544, 66);
+            this.txtGoomerCLIENT_SECRET.Name = "txtGoomerCLIENT_SECRET";
+            this.txtGoomerCLIENT_SECRET.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerCLIENT_SECRET.TabIndex = 25;
             // 
-            // textBox2
+            // txtGoomerCLIENT_ID
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(544, 31);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 26);
-            this.textBox2.TabIndex = 24;
+            this.txtGoomerCLIENT_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerCLIENT_ID.Location = new System.Drawing.Point(544, 31);
+            this.txtGoomerCLIENT_ID.Name = "txtGoomerCLIENT_ID";
+            this.txtGoomerCLIENT_ID.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerCLIENT_ID.TabIndex = 24;
             // 
             // label40
             // 
@@ -1448,13 +1514,13 @@
             this.label41.TabIndex = 22;
             this.label41.Text = "CLIENT_ID";
             // 
-            // textBox3
+            // txtGoomerToken
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(117, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(187, 26);
-            this.textBox3.TabIndex = 27;
+            this.txtGoomerToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerToken.Location = new System.Drawing.Point(117, 27);
+            this.txtGoomerToken.Name = "txtGoomerToken";
+            this.txtGoomerToken.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerToken.TabIndex = 27;
             // 
             // label42
             // 
@@ -1466,26 +1532,6 @@
             this.label42.TabIndex = 26;
             this.label42.Text = "Token";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1046, 211);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 33);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Rejeita Cancelamento";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(865, 211);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 33);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Aceita Cancelamento";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // btnGoomerCancelar
             // 
             this.btnGoomerCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1495,6 +1541,7 @@
             this.btnGoomerCancelar.TabIndex = 19;
             this.btnGoomerCancelar.Text = "Cancelar";
             this.btnGoomerCancelar.UseVisualStyleBackColor = true;
+            this.btnGoomerCancelar.Click += new System.EventHandler(this.btnGoomerCancelar_Click);
             // 
             // btnGoomerRejeitar
             // 
@@ -1505,6 +1552,7 @@
             this.btnGoomerRejeitar.TabIndex = 18;
             this.btnGoomerRejeitar.Text = "Rejeitar";
             this.btnGoomerRejeitar.UseVisualStyleBackColor = true;
+            this.btnGoomerRejeitar.Click += new System.EventHandler(this.btnGoomerRejeitar_Click);
             // 
             // btnGoomerVerPedido
             // 
@@ -1515,6 +1563,7 @@
             this.btnGoomerVerPedido.TabIndex = 17;
             this.btnGoomerVerPedido.Text = "Ver pedido";
             this.btnGoomerVerPedido.UseVisualStyleBackColor = true;
+            this.btnGoomerVerPedido.Click += new System.EventHandler(this.btnGoomerVerPedido_Click);
             // 
             // btnGoomerAceitar
             // 
@@ -1525,6 +1574,7 @@
             this.btnGoomerAceitar.TabIndex = 16;
             this.btnGoomerAceitar.Text = "Aceitar";
             this.btnGoomerAceitar.UseVisualStyleBackColor = true;
+            this.btnGoomerAceitar.Click += new System.EventHandler(this.btnGoomerAceitar_Click);
             // 
             // gridGoomer
             // 
@@ -1533,6 +1583,7 @@
             this.gridGoomer.Name = "gridGoomer";
             this.gridGoomer.Size = new System.Drawing.Size(1213, 417);
             this.gridGoomer.TabIndex = 14;
+            this.gridGoomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridGoomer_CellClick);
             // 
             // btnGoomerParar
             // 
@@ -1544,6 +1595,7 @@
             this.btnGoomerParar.TabIndex = 13;
             this.btnGoomerParar.Text = "Parar";
             this.btnGoomerParar.UseVisualStyleBackColor = true;
+            this.btnGoomerParar.Click += new System.EventHandler(this.btnGoomerParar_Click);
             // 
             // btnGoomerIniciar
             // 
@@ -1554,6 +1606,7 @@
             this.btnGoomerIniciar.TabIndex = 12;
             this.btnGoomerIniciar.Text = "Iniciar";
             this.btnGoomerIniciar.UseVisualStyleBackColor = true;
+            this.btnGoomerIniciar.Click += new System.EventHandler(this.btnGoomerIniciar_Click);
             // 
             // tabPage13
             // 
@@ -2650,63 +2703,56 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // btnGoomerLogin
+            // txtGoomerURL
             // 
-            this.btnGoomerLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomerLogin.Location = new System.Drawing.Point(751, 140);
-            this.btnGoomerLogin.Name = "btnGoomerLogin";
-            this.btnGoomerLogin.Size = new System.Drawing.Size(145, 33);
-            this.btnGoomerLogin.TabIndex = 30;
-            this.btnGoomerLogin.Text = "Login";
-            this.btnGoomerLogin.UseVisualStyleBackColor = true;
+            this.txtGoomerURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerURL.Location = new System.Drawing.Point(117, 113);
+            this.txtGoomerURL.Name = "txtGoomerURL";
+            this.txtGoomerURL.Size = new System.Drawing.Size(392, 26);
+            this.txtGoomerURL.TabIndex = 37;
             // 
-            // btnGoomerRefreshToken
+            // label46
             // 
-            this.btnGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomerRefreshToken.Location = new System.Drawing.Point(902, 139);
-            this.btnGoomerRefreshToken.Name = "btnGoomerRefreshToken";
-            this.btnGoomerRefreshToken.Size = new System.Drawing.Size(145, 33);
-            this.btnGoomerRefreshToken.TabIndex = 31;
-            this.btnGoomerRefreshToken.Text = "Refresh Token";
-            this.btnGoomerRefreshToken.UseVisualStyleBackColor = true;
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(24, 113);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(42, 20);
+            this.label46.TabIndex = 36;
+            this.label46.Text = "URL";
             // 
-            // txtGoomerAuthToken
+            // btnGoomerEmPreparo
             // 
-            this.txtGoomerAuthToken.Enabled = false;
-            this.txtGoomerAuthToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGoomerAuthToken.Location = new System.Drawing.Point(117, 146);
-            this.txtGoomerAuthToken.Name = "txtGoomerAuthToken";
-            this.txtGoomerAuthToken.Size = new System.Drawing.Size(187, 26);
-            this.txtGoomerAuthToken.TabIndex = 35;
+            this.btnGoomerEmPreparo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerEmPreparo.Location = new System.Drawing.Point(751, 211);
+            this.btnGoomerEmPreparo.Name = "btnGoomerEmPreparo";
+            this.btnGoomerEmPreparo.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerEmPreparo.TabIndex = 38;
+            this.btnGoomerEmPreparo.Text = "Em preparo";
+            this.btnGoomerEmPreparo.UseVisualStyleBackColor = true;
+            this.btnGoomerEmPreparo.Click += new System.EventHandler(this.btnGoomerEmPreparo_Click);
             // 
-            // label44
+            // btnGoomerEntregue
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(24, 146);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(85, 20);
-            this.label44.TabIndex = 34;
-            this.label44.Text = "authToken";
+            this.btnGoomerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerEntregue.Location = new System.Drawing.Point(1053, 211);
+            this.btnGoomerEntregue.Name = "btnGoomerEntregue";
+            this.btnGoomerEntregue.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerEntregue.TabIndex = 39;
+            this.btnGoomerEntregue.Text = "Entregue";
+            this.btnGoomerEntregue.UseVisualStyleBackColor = true;
+            this.btnGoomerEntregue.Click += new System.EventHandler(this.btnGoomerEntregue_Click);
             // 
-            // txtGoomerRefreshToken
+            // btnGoomerSaiuParaEntrega
             // 
-            this.txtGoomerRefreshToken.Enabled = false;
-            this.txtGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGoomerRefreshToken.Location = new System.Drawing.Point(544, 143);
-            this.txtGoomerRefreshToken.Name = "txtGoomerRefreshToken";
-            this.txtGoomerRefreshToken.Size = new System.Drawing.Size(187, 26);
-            this.txtGoomerRefreshToken.TabIndex = 33;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(370, 146);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(103, 20);
-            this.label45.TabIndex = 32;
-            this.label45.Text = "refreshToken";
+            this.btnGoomerSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerSaiuParaEntrega.Location = new System.Drawing.Point(902, 211);
+            this.btnGoomerSaiuParaEntrega.Name = "btnGoomerSaiuParaEntrega";
+            this.btnGoomerSaiuParaEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerSaiuParaEntrega.TabIndex = 40;
+            this.btnGoomerSaiuParaEntrega.Text = "Saiu para entrega";
+            this.btnGoomerSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnGoomerSaiuParaEntrega.Click += new System.EventHandler(this.btnGoomerSaiuParaEntrega_Click);
             // 
             // Form1
             // 
@@ -2975,8 +3021,6 @@
         private System.Windows.Forms.Button btnPedreiroDigitalEmProducao;
         private System.Windows.Forms.Button btnPedreiroDigitalEntregue;
         private System.Windows.Forms.TabPage tabPage16;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnGoomerCancelar;
         private System.Windows.Forms.Button btnGoomerRejeitar;
         private System.Windows.Forms.Button btnGoomerVerPedido;
@@ -2984,13 +3028,13 @@
         private System.Windows.Forms.DataGridView gridGoomer;
         private System.Windows.Forms.Button btnGoomerParar;
         private System.Windows.Forms.Button btnGoomerIniciar;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtGoomerStore;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtGoomerCLIENT_SECRET;
+        private System.Windows.Forms.TextBox txtGoomerCLIENT_ID;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtGoomerToken;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox txtGoomerAuthToken;
         private System.Windows.Forms.Label label44;
@@ -2998,6 +3042,11 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Button btnGoomerRefreshToken;
         private System.Windows.Forms.Button btnGoomerLogin;
+        private System.Windows.Forms.TextBox txtGoomerURL;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Button btnGoomerEntregue;
+        private System.Windows.Forms.Button btnGoomerEmPreparo;
+        private System.Windows.Forms.Button btnGoomerSaiuParaEntrega;
     }
 }
 
