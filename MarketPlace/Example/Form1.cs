@@ -2905,6 +2905,63 @@ namespace Example
             }
         }
 
+        private void btnPedreiroDigitalEmProducao_Click(object sender, EventArgs e)
+        {
+            if (btnPedreiroDigitalIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+            
+            if (string.IsNullOrEmpty(_pedreiroDigitalReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new AipediService(txtPedreiroDigitalURL.Text,
+                                txtPedreiroDigitalMerchantId.Text, txtPedreiroDigitalToken.Text);
+
+            var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)Aipedi.Enum.OrderStatus.PedidoPronto);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnPedreiroDigitalEntregue_Click(object sender, EventArgs e)
+        {
+            if (btnPedreiroDigitalIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            _pedreiroDigitalReferenceSelected = "60d4bb51f4e3964a8fd4fdcd";
+            if (string.IsNullOrEmpty(_pedreiroDigitalReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new AipediService(txtPedreiroDigitalURL.Text,
+                                txtPedreiroDigitalMerchantId.Text, txtPedreiroDigitalToken.Text);
+
+            var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)Aipedi.Enum.OrderStatus.Entregue);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         public async void pedreiroDigitalIniciar()
         {
             if (string.IsNullOrEmpty(txtPedreiroDigitalToken.Text))
@@ -3221,6 +3278,9 @@ namespace Example
             }
         }
 
+
         #endregion
+
+        
     }
 }

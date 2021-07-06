@@ -14,7 +14,7 @@ namespace IDelivery.Domain
         public decimal totalPrice { get; set; }
         public decimal discount { get; set; }
         public decimal addition { get; set; }
-        public string externalCode { get; set; }
+        public string externalId { get; set; }
         public string observations { get; set; }
     }
 }

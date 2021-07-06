@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.btnPedreiroDigitalEntregue = new System.Windows.Forms.Button();
+            this.btnPedreiroDigitalEmProducao = new System.Windows.Forms.Button();
             this.txtPedreiroDigitalURL = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.btnPedreiroDigitalAprovar = new System.Windows.Forms.Button();
@@ -124,6 +126,24 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
+            this.tabPage16 = new System.Windows.Forms.TabPage();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnGoomerCancelar = new System.Windows.Forms.Button();
+            this.btnGoomerRejeitar = new System.Windows.Forms.Button();
+            this.btnGoomerVerPedido = new System.Windows.Forms.Button();
+            this.btnGoomerAceitar = new System.Windows.Forms.Button();
+            this.gridGoomer = new System.Windows.Forms.DataGridView();
+            this.btnGoomerParar = new System.Windows.Forms.Button();
+            this.btnGoomerIniciar = new System.Windows.Forms.Button();
             this.tabPage13 = new System.Windows.Forms.TabPage();
             this.txtIDeliveryURL = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -224,6 +244,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
+            this.btnGoomerLogin = new System.Windows.Forms.Button();
+            this.btnGoomerRefreshToken = new System.Windows.Forms.Button();
+            this.txtGoomerAuthToken = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtGoomerRefreshToken = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
@@ -242,6 +268,8 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).BeginInit();
+            this.tabPage16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGoomer)).BeginInit();
             this.tabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).BeginInit();
             this.tabPage7.SuspendLayout();
@@ -268,6 +296,7 @@
             this.tabControl1.Controls.Add(this.tabPage12);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage16);
             this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -284,6 +313,8 @@
             // 
             // tabPage14
             // 
+            this.tabPage14.Controls.Add(this.btnPedreiroDigitalEntregue);
+            this.tabPage14.Controls.Add(this.btnPedreiroDigitalEmProducao);
             this.tabPage14.Controls.Add(this.txtPedreiroDigitalURL);
             this.tabPage14.Controls.Add(this.label33);
             this.tabPage14.Controls.Add(this.btnPedreiroDigitalAprovar);
@@ -300,6 +331,28 @@
             this.tabPage14.TabIndex = 13;
             this.tabPage14.Text = "Aipedi";
             this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // btnPedreiroDigitalEntregue
+            // 
+            this.btnPedreiroDigitalEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedreiroDigitalEntregue.Location = new System.Drawing.Point(367, 98);
+            this.btnPedreiroDigitalEntregue.Name = "btnPedreiroDigitalEntregue";
+            this.btnPedreiroDigitalEntregue.Size = new System.Drawing.Size(171, 39);
+            this.btnPedreiroDigitalEntregue.TabIndex = 44;
+            this.btnPedreiroDigitalEntregue.Text = "Entregue";
+            this.btnPedreiroDigitalEntregue.UseVisualStyleBackColor = true;
+            this.btnPedreiroDigitalEntregue.Click += new System.EventHandler(this.btnPedreiroDigitalEntregue_Click);
+            // 
+            // btnPedreiroDigitalEmProducao
+            // 
+            this.btnPedreiroDigitalEmProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedreiroDigitalEmProducao.Location = new System.Drawing.Point(190, 98);
+            this.btnPedreiroDigitalEmProducao.Name = "btnPedreiroDigitalEmProducao";
+            this.btnPedreiroDigitalEmProducao.Size = new System.Drawing.Size(171, 39);
+            this.btnPedreiroDigitalEmProducao.TabIndex = 43;
+            this.btnPedreiroDigitalEmProducao.Text = "Em Produção";
+            this.btnPedreiroDigitalEmProducao.UseVisualStyleBackColor = true;
+            this.btnPedreiroDigitalEmProducao.Click += new System.EventHandler(this.btnPedreiroDigitalEmProducao_Click);
             // 
             // txtPedreiroDigitalURL
             // 
@@ -1308,6 +1361,199 @@
             this.btnGloriaFoodIniciar.Text = "Iniciar";
             this.btnGloriaFoodIniciar.UseVisualStyleBackColor = true;
             this.btnGloriaFoodIniciar.Click += new System.EventHandler(this.btnGloriaFoodIniciar_Click);
+            // 
+            // tabPage16
+            // 
+            this.tabPage16.Controls.Add(this.txtGoomerAuthToken);
+            this.tabPage16.Controls.Add(this.label44);
+            this.tabPage16.Controls.Add(this.txtGoomerRefreshToken);
+            this.tabPage16.Controls.Add(this.label45);
+            this.tabPage16.Controls.Add(this.btnGoomerRefreshToken);
+            this.tabPage16.Controls.Add(this.btnGoomerLogin);
+            this.tabPage16.Controls.Add(this.textBox4);
+            this.tabPage16.Controls.Add(this.label43);
+            this.tabPage16.Controls.Add(this.textBox1);
+            this.tabPage16.Controls.Add(this.textBox2);
+            this.tabPage16.Controls.Add(this.label40);
+            this.tabPage16.Controls.Add(this.label41);
+            this.tabPage16.Controls.Add(this.textBox3);
+            this.tabPage16.Controls.Add(this.label42);
+            this.tabPage16.Controls.Add(this.button1);
+            this.tabPage16.Controls.Add(this.button2);
+            this.tabPage16.Controls.Add(this.btnGoomerCancelar);
+            this.tabPage16.Controls.Add(this.btnGoomerRejeitar);
+            this.tabPage16.Controls.Add(this.btnGoomerVerPedido);
+            this.tabPage16.Controls.Add(this.btnGoomerAceitar);
+            this.tabPage16.Controls.Add(this.gridGoomer);
+            this.tabPage16.Controls.Add(this.btnGoomerParar);
+            this.tabPage16.Controls.Add(this.btnGoomerIniciar);
+            this.tabPage16.Location = new System.Drawing.Point(4, 22);
+            this.tabPage16.Name = "tabPage16";
+            this.tabPage16.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage16.TabIndex = 15;
+            this.tabPage16.Text = "Goomer";
+            this.tabPage16.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(117, 69);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(187, 26);
+            this.textBox4.TabIndex = 29;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(24, 69);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(48, 20);
+            this.label43.TabIndex = 28;
+            this.label43.Text = "Store";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(544, 66);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(187, 26);
+            this.textBox1.TabIndex = 25;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(544, 31);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(187, 26);
+            this.textBox2.TabIndex = 24;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(370, 69);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(139, 20);
+            this.label40.TabIndex = 23;
+            this.label40.Text = "CLIENT_SECRET";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(418, 33);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(91, 20);
+            this.label41.TabIndex = 22;
+            this.label41.Text = "CLIENT_ID";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(117, 27);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(187, 26);
+            this.textBox3.TabIndex = 27;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(24, 27);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(53, 20);
+            this.label42.TabIndex = 26;
+            this.label42.Text = "Token";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1046, 211);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 33);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Rejeita Cancelamento";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(865, 211);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(175, 33);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Aceita Cancelamento";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerCancelar
+            // 
+            this.btnGoomerCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerCancelar.Location = new System.Drawing.Point(515, 211);
+            this.btnGoomerCancelar.Name = "btnGoomerCancelar";
+            this.btnGoomerCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerCancelar.TabIndex = 19;
+            this.btnGoomerCancelar.Text = "Cancelar";
+            this.btnGoomerCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerRejeitar
+            // 
+            this.btnGoomerRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerRejeitar.Location = new System.Drawing.Point(364, 211);
+            this.btnGoomerRejeitar.Name = "btnGoomerRejeitar";
+            this.btnGoomerRejeitar.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerRejeitar.TabIndex = 18;
+            this.btnGoomerRejeitar.Text = "Rejeitar";
+            this.btnGoomerRejeitar.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerVerPedido
+            // 
+            this.btnGoomerVerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerVerPedido.Location = new System.Drawing.Point(8, 211);
+            this.btnGoomerVerPedido.Name = "btnGoomerVerPedido";
+            this.btnGoomerVerPedido.Size = new System.Drawing.Size(199, 33);
+            this.btnGoomerVerPedido.TabIndex = 17;
+            this.btnGoomerVerPedido.Text = "Ver pedido";
+            this.btnGoomerVerPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerAceitar
+            // 
+            this.btnGoomerAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerAceitar.Location = new System.Drawing.Point(213, 211);
+            this.btnGoomerAceitar.Name = "btnGoomerAceitar";
+            this.btnGoomerAceitar.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerAceitar.TabIndex = 16;
+            this.btnGoomerAceitar.Text = "Aceitar";
+            this.btnGoomerAceitar.UseVisualStyleBackColor = true;
+            // 
+            // gridGoomer
+            // 
+            this.gridGoomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridGoomer.Location = new System.Drawing.Point(8, 250);
+            this.gridGoomer.Name = "gridGoomer";
+            this.gridGoomer.Size = new System.Drawing.Size(1213, 417);
+            this.gridGoomer.TabIndex = 14;
+            // 
+            // btnGoomerParar
+            // 
+            this.btnGoomerParar.Enabled = false;
+            this.btnGoomerParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnGoomerParar.Name = "btnGoomerParar";
+            this.btnGoomerParar.Size = new System.Drawing.Size(171, 39);
+            this.btnGoomerParar.TabIndex = 13;
+            this.btnGoomerParar.Text = "Parar";
+            this.btnGoomerParar.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerIniciar
+            // 
+            this.btnGoomerIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnGoomerIniciar.Name = "btnGoomerIniciar";
+            this.btnGoomerIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnGoomerIniciar.TabIndex = 12;
+            this.btnGoomerIniciar.Text = "Iniciar";
+            this.btnGoomerIniciar.UseVisualStyleBackColor = true;
             // 
             // tabPage13
             // 
@@ -2404,6 +2650,64 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
+            // btnGoomerLogin
+            // 
+            this.btnGoomerLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerLogin.Location = new System.Drawing.Point(751, 140);
+            this.btnGoomerLogin.Name = "btnGoomerLogin";
+            this.btnGoomerLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerLogin.TabIndex = 30;
+            this.btnGoomerLogin.Text = "Login";
+            this.btnGoomerLogin.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerRefreshToken
+            // 
+            this.btnGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerRefreshToken.Location = new System.Drawing.Point(902, 139);
+            this.btnGoomerRefreshToken.Name = "btnGoomerRefreshToken";
+            this.btnGoomerRefreshToken.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerRefreshToken.TabIndex = 31;
+            this.btnGoomerRefreshToken.Text = "Refresh Token";
+            this.btnGoomerRefreshToken.UseVisualStyleBackColor = true;
+            // 
+            // txtGoomerAuthToken
+            // 
+            this.txtGoomerAuthToken.Enabled = false;
+            this.txtGoomerAuthToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerAuthToken.Location = new System.Drawing.Point(117, 146);
+            this.txtGoomerAuthToken.Name = "txtGoomerAuthToken";
+            this.txtGoomerAuthToken.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerAuthToken.TabIndex = 35;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(24, 146);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(85, 20);
+            this.label44.TabIndex = 34;
+            this.label44.Text = "authToken";
+            // 
+            // txtGoomerRefreshToken
+            // 
+            this.txtGoomerRefreshToken.Enabled = false;
+            this.txtGoomerRefreshToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerRefreshToken.Location = new System.Drawing.Point(544, 143);
+            this.txtGoomerRefreshToken.Name = "txtGoomerRefreshToken";
+            this.txtGoomerRefreshToken.Size = new System.Drawing.Size(187, 26);
+            this.txtGoomerRefreshToken.TabIndex = 33;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(370, 146);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(103, 20);
+            this.label45.TabIndex = 32;
+            this.label45.Text = "refreshToken";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2442,6 +2746,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).EndInit();
+            this.tabPage16.ResumeLayout(false);
+            this.tabPage16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGoomer)).EndInit();
             this.tabPage13.ResumeLayout(false);
             this.tabPage13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).EndInit();
@@ -2665,6 +2972,32 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox txtAtivMobURL;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button btnPedreiroDigitalEmProducao;
+        private System.Windows.Forms.Button btnPedreiroDigitalEntregue;
+        private System.Windows.Forms.TabPage tabPage16;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGoomerCancelar;
+        private System.Windows.Forms.Button btnGoomerRejeitar;
+        private System.Windows.Forms.Button btnGoomerVerPedido;
+        private System.Windows.Forms.Button btnGoomerAceitar;
+        private System.Windows.Forms.DataGridView gridGoomer;
+        private System.Windows.Forms.Button btnGoomerParar;
+        private System.Windows.Forms.Button btnGoomerIniciar;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox txtGoomerAuthToken;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtGoomerRefreshToken;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button btnGoomerRefreshToken;
+        private System.Windows.Forms.Button btnGoomerLogin;
     }
 }
 

@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDelivery", "IDelivery\IDel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtivMob", "AtivMob\AtivMob.csproj", "{61BBFA72-07C8-4AF2-9215-DBA55A5EDD45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accon", "Accon\Accon.csproj", "{77DA7553-DD84-43FE-A4C8-C21BC8185A10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer", "Goomer\Goomer.csproj", "{A02CADD0-D127-470B-8EB6-D016BC482AE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{61BBFA72-07C8-4AF2-9215-DBA55A5EDD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61BBFA72-07C8-4AF2-9215-DBA55A5EDD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61BBFA72-07C8-4AF2-9215-DBA55A5EDD45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77DA7553-DD84-43FE-A4C8-C21BC8185A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77DA7553-DD84-43FE-A4C8-C21BC8185A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77DA7553-DD84-43FE-A4C8-C21BC8185A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77DA7553-DD84-43FE-A4C8-C21BC8185A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A02CADD0-D127-470B-8EB6-D016BC482AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02CADD0-D127-470B-8EB6-D016BC482AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02CADD0-D127-470B-8EB6-D016BC482AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02CADD0-D127-470B-8EB6-D016BC482AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
