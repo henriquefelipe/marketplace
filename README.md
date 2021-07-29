@@ -2,15 +2,36 @@
 
 Integrações feitas até o momento.
 
+  - Accon
   - Anota Ai
   - Delivery App
   - Delivery Direto
   - Gloria Food
+  - GoomerGO
   - Ifood
   - Meu Cardápio Ai
   - Logaroo
   - PedZap
   - Super Menu
+  - Uber Eats
+  
+# Accon
+
+Links importantes:
+  - https://portal.accon.app/
+  - http://docs.accon.com.br
+
+Para fazer a integração com o accon é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	Accon: {		
+		Usuario: "Coloca aqui o email",
+		Senha: "Coloca aqui a senha",
+		Rede: "Coloca aqui o network"
+	}
+}
+```
   
 # Anota AI
 
@@ -75,6 +96,26 @@ Para fazer a integração com o gloria food é preciso de algumas informações,
 {
 	Gloria: {
 		Token: "Coloca aqui o token"
+	}
+}
+```
+
+# GoomerGO
+
+Links importantes:
+  - https://goomer.com.br/
+  - https://ajuda.goomer.com.br/integracao/
+
+Para fazer a integração com o goomergo é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	Goomer: {
+		Token: "Coloca aqui o token",
+		MerchantId: "Coloca aqui o MerchantId",
+		Client_SECRET: "Coloca aqui o Client_SECRET",
+		Client_ID: "Coloca aqui o Client_ID",
+		Url: "Coloca aqui a url",
 	}
 }
 ```
@@ -152,6 +193,23 @@ Para fazer a integração com o super menu é preciso de algumas informações, 
 {
 	SuperMenu: {
 		Token: "Coloca aqui o token"
+	}
+}
+```
+
+# UberEats
+
+Links importantes:
+  - https://www.ubereats.com/br/
+
+Para fazer a integração com o super menu é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	UberEats: {		
+		MerchantId: "Coloca aqui o MerchantId",
+		Client_SECRET: "Coloca aqui o Client_SECRET",
+		Client_ID: "Coloca aqui o Client_ID"
 	}
 }
 ```
