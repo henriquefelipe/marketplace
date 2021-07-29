@@ -38,6 +38,7 @@ namespace Goomer.Domain
         public customer customer { get; set; }
         public string cpfFiscal { get; set; }
         public List<payment> payments { get; set; }
+        public decimal paymentChange { get; set; }
         public List<product> products { get; set; }        
     }
 }

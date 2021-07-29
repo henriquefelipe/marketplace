@@ -8,13 +8,13 @@ namespace Accon.Domain
 {
     public class order
     {
-        public int id { get; set; }
+        public string _id { get; set; }
         public rating rating { get; set; }
         public externalVendors externalVendors { get; set; }
         public bool delivery { get; set; }
         public bool canceled { get; set; }
         public bool scheduled { get; set; }
-        public int network { get; set; }
+        public string network { get; set; }
         public int sequential { get; set; }
         public store store { get; set; }
         public user user { get; set; }

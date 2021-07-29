@@ -11,6 +11,7 @@ namespace Goomer.Domain
         public product()
         {
             observations = new List<string>();
+            extras = new List<extra>();
         }
 
         public string name { get; set; }

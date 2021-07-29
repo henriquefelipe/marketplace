@@ -19,6 +19,8 @@ namespace Example
         public MarketPlacePedreiroDigital PedreiroDigital { get; set; }
 
         public MarketPlaceIDelivery IDelivery { get; set; }
+        public MarketPlaceAccon Accon { get; set; }
+        public MarketPlaceUberEats UberEats { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -75,7 +77,6 @@ namespace Example
         public string Url { get; set; }
     }
 
-
     public class MarketPlaceConfigMeuCardapioAi
     {
         public string Client_ID { get; set; }
@@ -129,5 +130,19 @@ namespace Example
         public string Token { get; set; }
         public string MerchantId { get; set; }
         public string Url { get; set; }
+    }
+
+    public class MarketPlaceAccon
+    {
+        public string Usuario { get; set; }
+        public string Senha { get; set; }
+        public string Rede { get; set; }
+    }
+
+    public class MarketPlaceUberEats
+    {
+        public string Client_SECRET { get; set; }
+        public string Client_ID { get; set; }
+        public string MerchantId { get; set; }
     }
 }

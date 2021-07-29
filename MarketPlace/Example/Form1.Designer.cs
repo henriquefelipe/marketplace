@@ -29,6 +29,20 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.txtAcoonToken = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.btnAcconLogin = new System.Windows.Forms.Button();
+            this.btnAcconIntegrado = new System.Windows.Forms.Button();
+            this.gridAccon = new System.Windows.Forms.DataGridView();
+            this.btnAcconParar = new System.Windows.Forms.Button();
+            this.btnAcconIniciar = new System.Windows.Forms.Button();
+            this.txtAcconRede = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.txtAcconSenha = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.txtAcconUsuario = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
             this.tabPage14 = new System.Windows.Forms.TabPage();
             this.btnPedreiroDigitalEntregue = new System.Windows.Forms.Button();
             this.btnPedreiroDigitalEmProducao = new System.Windows.Forms.Button();
@@ -127,6 +141,11 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage16 = new System.Windows.Forms.TabPage();
+            this.btnGoomerSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnGoomerEntregue = new System.Windows.Forms.Button();
+            this.btnGoomerEmPreparo = new System.Windows.Forms.Button();
+            this.txtGoomerURL = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
             this.txtGoomerAuthToken = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.txtGoomerRefreshToken = new System.Windows.Forms.TextBox();
@@ -248,12 +267,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
-            this.txtGoomerURL = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.btnGoomerEmPreparo = new System.Windows.Forms.Button();
-            this.btnGoomerEntregue = new System.Windows.Forms.Button();
-            this.btnGoomerSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.btnUberEatsAprovar = new System.Windows.Forms.Button();
+            this.btnUberEatsBuscarPedido = new System.Windows.Forms.Button();
+            this.txtUberEatsCLIENT_SECRET = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.txtUberEatsCLIENT_ID = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.txtUberEatsMerchantId = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.gridUberEats = new System.Windows.Forms.DataGridView();
+            this.btnUberEatsParar = new System.Windows.Forms.Button();
+            this.btnUberEatsIniciar = new System.Windows.Forms.Button();
+            this.txtUberEatsTOken = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.btnUberEatsLogin = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
             this.tabPage8.SuspendLayout();
@@ -287,10 +318,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
+            this.tabPage18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage17);
             this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage15);
@@ -307,12 +341,162 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage18);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1237, 711);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage17
+            // 
+            this.tabPage17.Controls.Add(this.txtAcoonToken);
+            this.tabPage17.Controls.Add(this.label50);
+            this.tabPage17.Controls.Add(this.btnAcconLogin);
+            this.tabPage17.Controls.Add(this.btnAcconIntegrado);
+            this.tabPage17.Controls.Add(this.gridAccon);
+            this.tabPage17.Controls.Add(this.btnAcconParar);
+            this.tabPage17.Controls.Add(this.btnAcconIniciar);
+            this.tabPage17.Controls.Add(this.txtAcconRede);
+            this.tabPage17.Controls.Add(this.label49);
+            this.tabPage17.Controls.Add(this.txtAcconSenha);
+            this.tabPage17.Controls.Add(this.label47);
+            this.tabPage17.Controls.Add(this.txtAcconUsuario);
+            this.tabPage17.Controls.Add(this.label48);
+            this.tabPage17.Location = new System.Drawing.Point(4, 22);
+            this.tabPage17.Name = "tabPage17";
+            this.tabPage17.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage17.TabIndex = 16;
+            this.tabPage17.Text = "Accon";
+            this.tabPage17.UseVisualStyleBackColor = true;
+            // 
+            // txtAcoonToken
+            // 
+            this.txtAcoonToken.Enabled = false;
+            this.txtAcoonToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcoonToken.Location = new System.Drawing.Point(456, 78);
+            this.txtAcoonToken.Name = "txtAcoonToken";
+            this.txtAcoonToken.Size = new System.Drawing.Size(372, 26);
+            this.txtAcoonToken.TabIndex = 37;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(336, 78);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(53, 20);
+            this.label50.TabIndex = 36;
+            this.label50.Text = "Token";
+            // 
+            // btnAcconLogin
+            // 
+            this.btnAcconLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcconLogin.Location = new System.Drawing.Point(862, 75);
+            this.btnAcconLogin.Name = "btnAcconLogin";
+            this.btnAcconLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnAcconLogin.TabIndex = 35;
+            this.btnAcconLogin.Text = "Login";
+            this.btnAcconLogin.UseVisualStyleBackColor = true;
+            this.btnAcconLogin.Click += new System.EventHandler(this.btnAcconLogin_Click);
+            // 
+            // btnAcconIntegrado
+            // 
+            this.btnAcconIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcconIntegrado.Location = new System.Drawing.Point(8, 127);
+            this.btnAcconIntegrado.Name = "btnAcconIntegrado";
+            this.btnAcconIntegrado.Size = new System.Drawing.Size(145, 33);
+            this.btnAcconIntegrado.TabIndex = 33;
+            this.btnAcconIntegrado.Text = "Integrado";
+            this.btnAcconIntegrado.UseVisualStyleBackColor = true;
+            this.btnAcconIntegrado.Click += new System.EventHandler(this.btnAcconIntegrado_Click);
+            // 
+            // gridAccon
+            // 
+            this.gridAccon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAccon.Location = new System.Drawing.Point(8, 166);
+            this.gridAccon.Name = "gridAccon";
+            this.gridAccon.Size = new System.Drawing.Size(1213, 501);
+            this.gridAccon.TabIndex = 32;
+            this.gridAccon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAccon_CellClick);
+            // 
+            // btnAcconParar
+            // 
+            this.btnAcconParar.Enabled = false;
+            this.btnAcconParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcconParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnAcconParar.Name = "btnAcconParar";
+            this.btnAcconParar.Size = new System.Drawing.Size(171, 39);
+            this.btnAcconParar.TabIndex = 31;
+            this.btnAcconParar.Text = "Parar";
+            this.btnAcconParar.UseVisualStyleBackColor = true;
+            this.btnAcconParar.Click += new System.EventHandler(this.btnAcconParar_Click);
+            // 
+            // btnAcconIniciar
+            // 
+            this.btnAcconIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcconIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnAcconIniciar.Name = "btnAcconIniciar";
+            this.btnAcconIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnAcconIniciar.TabIndex = 30;
+            this.btnAcconIniciar.Text = "Iniciar";
+            this.btnAcconIniciar.UseVisualStyleBackColor = true;
+            this.btnAcconIniciar.Click += new System.EventHandler(this.btnAcconIniciar_Click);
+            // 
+            // txtAcconRede
+            // 
+            this.txtAcconRede.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcconRede.Location = new System.Drawing.Point(456, 20);
+            this.txtAcconRede.Name = "txtAcconRede";
+            this.txtAcconRede.Size = new System.Drawing.Size(291, 26);
+            this.txtAcconRede.TabIndex = 29;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(336, 23);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(55, 20);
+            this.label49.TabIndex = 28;
+            this.label49.Text = "REDE";
+            // 
+            // txtAcconSenha
+            // 
+            this.txtAcconSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcconSenha.Location = new System.Drawing.Point(101, 53);
+            this.txtAcconSenha.Name = "txtAcconSenha";
+            this.txtAcconSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtAcconSenha.TabIndex = 27;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(8, 56);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(56, 20);
+            this.label47.TabIndex = 26;
+            this.label47.Text = "Senha";
+            // 
+            // txtAcconUsuario
+            // 
+            this.txtAcconUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcconUsuario.Location = new System.Drawing.Point(101, 17);
+            this.txtAcconUsuario.Name = "txtAcconUsuario";
+            this.txtAcconUsuario.Size = new System.Drawing.Size(187, 26);
+            this.txtAcconUsuario.TabIndex = 25;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(8, 20);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(64, 20);
+            this.label48.TabIndex = 24;
+            this.label48.Text = "Usuario";
             // 
             // tabPage14
             // 
@@ -1399,6 +1583,57 @@
             this.tabPage16.TabIndex = 15;
             this.tabPage16.Text = "Goomer";
             this.tabPage16.UseVisualStyleBackColor = true;
+            // 
+            // btnGoomerSaiuParaEntrega
+            // 
+            this.btnGoomerSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerSaiuParaEntrega.Location = new System.Drawing.Point(902, 211);
+            this.btnGoomerSaiuParaEntrega.Name = "btnGoomerSaiuParaEntrega";
+            this.btnGoomerSaiuParaEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerSaiuParaEntrega.TabIndex = 40;
+            this.btnGoomerSaiuParaEntrega.Text = "Saiu para entrega";
+            this.btnGoomerSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnGoomerSaiuParaEntrega.Click += new System.EventHandler(this.btnGoomerSaiuParaEntrega_Click);
+            // 
+            // btnGoomerEntregue
+            // 
+            this.btnGoomerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerEntregue.Location = new System.Drawing.Point(1053, 211);
+            this.btnGoomerEntregue.Name = "btnGoomerEntregue";
+            this.btnGoomerEntregue.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerEntregue.TabIndex = 39;
+            this.btnGoomerEntregue.Text = "Entregue";
+            this.btnGoomerEntregue.UseVisualStyleBackColor = true;
+            this.btnGoomerEntregue.Click += new System.EventHandler(this.btnGoomerEntregue_Click);
+            // 
+            // btnGoomerEmPreparo
+            // 
+            this.btnGoomerEmPreparo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomerEmPreparo.Location = new System.Drawing.Point(751, 211);
+            this.btnGoomerEmPreparo.Name = "btnGoomerEmPreparo";
+            this.btnGoomerEmPreparo.Size = new System.Drawing.Size(145, 33);
+            this.btnGoomerEmPreparo.TabIndex = 38;
+            this.btnGoomerEmPreparo.Text = "Em preparo";
+            this.btnGoomerEmPreparo.UseVisualStyleBackColor = true;
+            this.btnGoomerEmPreparo.Click += new System.EventHandler(this.btnGoomerEmPreparo_Click);
+            // 
+            // txtGoomerURL
+            // 
+            this.txtGoomerURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGoomerURL.Location = new System.Drawing.Point(117, 113);
+            this.txtGoomerURL.Name = "txtGoomerURL";
+            this.txtGoomerURL.Size = new System.Drawing.Size(392, 26);
+            this.txtGoomerURL.TabIndex = 37;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(24, 113);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(42, 20);
+            this.label46.TabIndex = 36;
+            this.label46.Text = "URL";
             // 
             // txtGoomerAuthToken
             // 
@@ -2703,56 +2938,166 @@
             this.btnSuperMenuIniciar.UseVisualStyleBackColor = true;
             this.btnSuperMenuIniciar.Click += new System.EventHandler(this.btnSuperMenuIniciar_Click);
             // 
-            // txtGoomerURL
+            // tabPage18
             // 
-            this.txtGoomerURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGoomerURL.Location = new System.Drawing.Point(117, 113);
-            this.txtGoomerURL.Name = "txtGoomerURL";
-            this.txtGoomerURL.Size = new System.Drawing.Size(392, 26);
-            this.txtGoomerURL.TabIndex = 37;
+            this.tabPage18.Controls.Add(this.txtUberEatsTOken);
+            this.tabPage18.Controls.Add(this.label54);
+            this.tabPage18.Controls.Add(this.btnUberEatsLogin);
+            this.tabPage18.Controls.Add(this.btnUberEatsAprovar);
+            this.tabPage18.Controls.Add(this.btnUberEatsBuscarPedido);
+            this.tabPage18.Controls.Add(this.txtUberEatsCLIENT_SECRET);
+            this.tabPage18.Controls.Add(this.label51);
+            this.tabPage18.Controls.Add(this.txtUberEatsCLIENT_ID);
+            this.tabPage18.Controls.Add(this.label52);
+            this.tabPage18.Controls.Add(this.txtUberEatsMerchantId);
+            this.tabPage18.Controls.Add(this.label53);
+            this.tabPage18.Controls.Add(this.gridUberEats);
+            this.tabPage18.Controls.Add(this.btnUberEatsParar);
+            this.tabPage18.Controls.Add(this.btnUberEatsIniciar);
+            this.tabPage18.Location = new System.Drawing.Point(4, 22);
+            this.tabPage18.Name = "tabPage18";
+            this.tabPage18.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage18.TabIndex = 17;
+            this.tabPage18.Text = "Uber Eats";
+            this.tabPage18.UseVisualStyleBackColor = true;
             // 
-            // label46
+            // btnUberEatsAprovar
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(24, 113);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(42, 20);
-            this.label46.TabIndex = 36;
-            this.label46.Text = "URL";
+            this.btnUberEatsAprovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsAprovar.Location = new System.Drawing.Point(190, 98);
+            this.btnUberEatsAprovar.Name = "btnUberEatsAprovar";
+            this.btnUberEatsAprovar.Size = new System.Drawing.Size(171, 39);
+            this.btnUberEatsAprovar.TabIndex = 44;
+            this.btnUberEatsAprovar.Text = "Aprovar";
+            this.btnUberEatsAprovar.UseVisualStyleBackColor = true;
+            this.btnUberEatsAprovar.Click += new System.EventHandler(this.btnUberEatsAprovar_Click);
             // 
-            // btnGoomerEmPreparo
+            // btnUberEatsBuscarPedido
             // 
-            this.btnGoomerEmPreparo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomerEmPreparo.Location = new System.Drawing.Point(751, 211);
-            this.btnGoomerEmPreparo.Name = "btnGoomerEmPreparo";
-            this.btnGoomerEmPreparo.Size = new System.Drawing.Size(145, 33);
-            this.btnGoomerEmPreparo.TabIndex = 38;
-            this.btnGoomerEmPreparo.Text = "Em preparo";
-            this.btnGoomerEmPreparo.UseVisualStyleBackColor = true;
-            this.btnGoomerEmPreparo.Click += new System.EventHandler(this.btnGoomerEmPreparo_Click);
+            this.btnUberEatsBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsBuscarPedido.Location = new System.Drawing.Point(13, 98);
+            this.btnUberEatsBuscarPedido.Name = "btnUberEatsBuscarPedido";
+            this.btnUberEatsBuscarPedido.Size = new System.Drawing.Size(171, 39);
+            this.btnUberEatsBuscarPedido.TabIndex = 43;
+            this.btnUberEatsBuscarPedido.Text = "Buscar Pedido";
+            this.btnUberEatsBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnUberEatsBuscarPedido.Click += new System.EventHandler(this.btnUberEatsBuscarPedido_Click);
             // 
-            // btnGoomerEntregue
+            // txtUberEatsCLIENT_SECRET
             // 
-            this.btnGoomerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomerEntregue.Location = new System.Drawing.Point(1053, 211);
-            this.btnGoomerEntregue.Name = "btnGoomerEntregue";
-            this.btnGoomerEntregue.Size = new System.Drawing.Size(145, 33);
-            this.btnGoomerEntregue.TabIndex = 39;
-            this.btnGoomerEntregue.Text = "Entregue";
-            this.btnGoomerEntregue.UseVisualStyleBackColor = true;
-            this.btnGoomerEntregue.Click += new System.EventHandler(this.btnGoomerEntregue_Click);
+            this.txtUberEatsCLIENT_SECRET.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUberEatsCLIENT_SECRET.Location = new System.Drawing.Point(154, 52);
+            this.txtUberEatsCLIENT_SECRET.Name = "txtUberEatsCLIENT_SECRET";
+            this.txtUberEatsCLIENT_SECRET.Size = new System.Drawing.Size(187, 26);
+            this.txtUberEatsCLIENT_SECRET.TabIndex = 42;
             // 
-            // btnGoomerSaiuParaEntrega
+            // label51
             // 
-            this.btnGoomerSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomerSaiuParaEntrega.Location = new System.Drawing.Point(902, 211);
-            this.btnGoomerSaiuParaEntrega.Name = "btnGoomerSaiuParaEntrega";
-            this.btnGoomerSaiuParaEntrega.Size = new System.Drawing.Size(145, 33);
-            this.btnGoomerSaiuParaEntrega.TabIndex = 40;
-            this.btnGoomerSaiuParaEntrega.Text = "Saiu para entrega";
-            this.btnGoomerSaiuParaEntrega.UseVisualStyleBackColor = true;
-            this.btnGoomerSaiuParaEntrega.Click += new System.EventHandler(this.btnGoomerSaiuParaEntrega_Click);
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(9, 55);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(139, 20);
+            this.label51.TabIndex = 41;
+            this.label51.Text = "CLIENT_SECRET";
+            // 
+            // txtUberEatsCLIENT_ID
+            // 
+            this.txtUberEatsCLIENT_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUberEatsCLIENT_ID.Location = new System.Drawing.Point(154, 16);
+            this.txtUberEatsCLIENT_ID.Name = "txtUberEatsCLIENT_ID";
+            this.txtUberEatsCLIENT_ID.Size = new System.Drawing.Size(187, 26);
+            this.txtUberEatsCLIENT_ID.TabIndex = 40;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(9, 19);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(91, 20);
+            this.label52.TabIndex = 39;
+            this.label52.Text = "CLIENT_ID";
+            // 
+            // txtUberEatsMerchantId
+            // 
+            this.txtUberEatsMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUberEatsMerchantId.Location = new System.Drawing.Point(494, 16);
+            this.txtUberEatsMerchantId.Name = "txtUberEatsMerchantId";
+            this.txtUberEatsMerchantId.Size = new System.Drawing.Size(291, 26);
+            this.txtUberEatsMerchantId.TabIndex = 38;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(386, 16);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(90, 20);
+            this.label53.TabIndex = 37;
+            this.label53.Text = "MerchantId";
+            // 
+            // gridUberEats
+            // 
+            this.gridUberEats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridUberEats.Location = new System.Drawing.Point(10, 143);
+            this.gridUberEats.Name = "gridUberEats";
+            this.gridUberEats.Size = new System.Drawing.Size(1209, 523);
+            this.gridUberEats.TabIndex = 36;
+            this.gridUberEats.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUberEats_CellClick);
+            // 
+            // btnUberEatsParar
+            // 
+            this.btnUberEatsParar.Enabled = false;
+            this.btnUberEatsParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsParar.Location = new System.Drawing.Point(1048, 70);
+            this.btnUberEatsParar.Name = "btnUberEatsParar";
+            this.btnUberEatsParar.Size = new System.Drawing.Size(171, 39);
+            this.btnUberEatsParar.TabIndex = 33;
+            this.btnUberEatsParar.Text = "Parar";
+            this.btnUberEatsParar.UseVisualStyleBackColor = true;
+            this.btnUberEatsParar.Click += new System.EventHandler(this.btnUberEatsParar_Click);
+            // 
+            // btnUberEatsIniciar
+            // 
+            this.btnUberEatsIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsIniciar.Location = new System.Drawing.Point(1048, 19);
+            this.btnUberEatsIniciar.Name = "btnUberEatsIniciar";
+            this.btnUberEatsIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnUberEatsIniciar.TabIndex = 32;
+            this.btnUberEatsIniciar.Text = "Iniciar";
+            this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
+            this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
+            // 
+            // txtUberEatsTOken
+            // 
+            this.txtUberEatsTOken.Enabled = false;
+            this.txtUberEatsTOken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUberEatsTOken.Location = new System.Drawing.Point(494, 55);
+            this.txtUberEatsTOken.Name = "txtUberEatsTOken";
+            this.txtUberEatsTOken.Size = new System.Drawing.Size(356, 26);
+            this.txtUberEatsTOken.TabIndex = 47;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(386, 52);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(53, 20);
+            this.label54.TabIndex = 46;
+            this.label54.Text = "Token";
+            // 
+            // btnUberEatsLogin
+            // 
+            this.btnUberEatsLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsLogin.Location = new System.Drawing.Point(884, 52);
+            this.btnUberEatsLogin.Name = "btnUberEatsLogin";
+            this.btnUberEatsLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnUberEatsLogin.TabIndex = 45;
+            this.btnUberEatsLogin.Text = "Login";
+            this.btnUberEatsLogin.UseVisualStyleBackColor = true;
+            this.btnUberEatsLogin.Click += new System.EventHandler(this.btnUberEatsLogin_Click);
             // 
             // Form1
             // 
@@ -2766,6 +3111,9 @@
             this.Text = "MarketPlace";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage17.ResumeLayout(false);
+            this.tabPage17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).EndInit();
             this.tabPage14.ResumeLayout(false);
             this.tabPage14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).EndInit();
@@ -2816,6 +3164,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
+            this.tabPage18.ResumeLayout(false);
+            this.tabPage18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3047,6 +3398,35 @@
         private System.Windows.Forms.Button btnGoomerEntregue;
         private System.Windows.Forms.Button btnGoomerEmPreparo;
         private System.Windows.Forms.Button btnGoomerSaiuParaEntrega;
+        private System.Windows.Forms.TabPage tabPage17;
+        private System.Windows.Forms.Button btnAcconIntegrado;
+        private System.Windows.Forms.DataGridView gridAccon;
+        private System.Windows.Forms.Button btnAcconParar;
+        private System.Windows.Forms.Button btnAcconIniciar;
+        private System.Windows.Forms.TextBox txtAcconRede;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox txtAcconSenha;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox txtAcconUsuario;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox txtAcoonToken;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Button btnAcconLogin;
+        private System.Windows.Forms.TabPage tabPage18;
+        private System.Windows.Forms.Button btnUberEatsAprovar;
+        private System.Windows.Forms.Button btnUberEatsBuscarPedido;
+        private System.Windows.Forms.TextBox txtUberEatsCLIENT_SECRET;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox txtUberEatsCLIENT_ID;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox txtUberEatsMerchantId;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.DataGridView gridUberEats;
+        private System.Windows.Forms.Button btnUberEatsParar;
+        private System.Windows.Forms.Button btnUberEatsIniciar;
+        private System.Windows.Forms.TextBox txtUberEatsTOken;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Button btnUberEatsLogin;
     }
 }
 

@@ -11,6 +11,6 @@ namespace Accon.Domain
         public string name { get; set; }
         public bool failed { get; set; }
         public bool finished { get; set; }
-        public status status { get; set; }
+        public List<status> status { get; set; }
     }
 }

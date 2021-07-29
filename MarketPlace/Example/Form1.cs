@@ -1,4 +1,5 @@
-﻿using Aipedi.Service;
+﻿using Accon.Service;
+using Aipedi.Service;
 using AnotaAi.Service;
 using Cinddi.Service;
 using DeliveryApp.Service;
@@ -28,6 +29,8 @@ namespace Example
     {
         #region Variaveis
 
+        private List<Accon.Domain.order> _acconOrders { get; set; }
+        private string _acconSelected { get; set; }
         private string _anotaAiSelected { get; set; }
         private string _anotaAiToken { get; set; }
         private List<AnotaAi.Domain.order> _anotaAiOrders { get; set; }
@@ -71,7 +74,10 @@ namespace Example
         private string _pedreiroDigitalReferenceSelected { get; set; }
         
         private List<IDelivery.Domain.order> _iDeliveryOrders { get; set; }
-        private string _iDeliveryReferenceSelected { get; set; }              
+        private string _iDeliveryReferenceSelected { get; set; }
+
+        private List<UberEats.Domain.order_result> _uberOrders { get; set; }
+        private string _uberEaTSSelected { get; set; }
 
         #endregion
 
@@ -93,6 +99,13 @@ namespace Example
                         var marketPlace = JsonConvert.DeserializeObject<MarketPlaceConfig>(fileJson);
                         if (marketPlace != null)
                         {
+                            if (marketPlace.Accon != null)
+                            {
+                                txtAcconUsuario.Text = marketPlace.Accon.Usuario;
+                                txtAcconSenha.Text = marketPlace.Accon.Senha;
+                                txtAcconRede.Text = marketPlace.Accon.Rede;
+                            }
+
                             if (marketPlace.AnotaAi != null)
                             {
                                 txtAnotaAiToken.Text = marketPlace.AnotaAi.Token;
@@ -190,10 +203,21 @@ namespace Example
                             {
                                 txtSuperMenuToken.Text = marketPlace.SuperMenu.Token;
                             }
+
+                            if (marketPlace.UberEats != null)
+                            {
+                                txtUberEatsCLIENT_ID.Text = marketPlace.UberEats.Client_ID;
+                                txtUberEatsCLIENT_SECRET.Text = marketPlace.UberEats.Client_SECRET;
+                                txtUberEatsMerchantId.Text = marketPlace.UberEats.MerchantId;
+                            }
                         }
                     }
                 }
             }
+
+            _acconOrders = new List<Accon.Domain.order>();
+            gridAccon.DataSource = _acconOrders.ToList();
+            gridAccon.Refresh();
 
             _anotaAiOrders = new List<AnotaAi.Domain.order>();
             gridAnotaAi.DataSource = _anotaAiOrders.ToList();
@@ -244,6 +268,10 @@ namespace Example
             _iDeliveryOrders = new List<IDelivery.Domain.order>();
             gridiDelivery.DataSource = _iDeliveryOrders.ToList();
             gridiDelivery.Refresh();
+
+            _uberOrders = new List<UberEats.Domain.order_result>();
+            gridUberEats.DataSource = _uberOrders.ToList();
+            gridUberEats.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -3599,8 +3627,314 @@ namespace Example
 
 
 
+
         #endregion
 
-        
+        #region Accon
+        private void btnAcconIniciar_Click(object sender, EventArgs e)
+        {
+            acconIniciar();
+        }
+
+        private void btnAcconParar_Click(object sender, EventArgs e)
+        {
+            acconParar();
+        }
+
+        private void btnAcconIntegrado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_acconSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new AcconService();
+            var result = service.OrdersStatus(txtAcoonToken.Text, txtAcconRede.Text, _acconSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Aceito");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void gridAccon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAccon.Rows.Count)
+            {
+                _acconSelected = gridAccon.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnAcconLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAcconUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAcconSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAcconRede.Text))
+            {
+                MessageBox.Show("Campo Rede Obrigatório");
+                return;
+            }
+
+            var service = new AcconService();
+            var result = service.OathToken(txtAcconUsuario.Text, txtAcconSenha.Text, txtAcconRede.Text);
+            if (result.Success)
+            {
+                txtAcoonToken.Text = result.Result.token;                
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        void acconParar()
+        {
+            btnAcconIniciar.Enabled = true;
+            btnAcconParar.Enabled = false;
+        }
+
+        private delegate void WritelstGridWriteGridAcconDelegate();
+        private void WriteGridAccon()
+        {
+            if (gridAccon.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridAcconDelegate(WriteGridAccon);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAccon.DataSource = _acconOrders.ToList();
+                gridAccon.Refresh();
+            }
+        }
+
+        public async void acconIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAcoonToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            btnAcconIniciar.Enabled = false;
+            btnAcconParar.Enabled = true;
+
+            await Task.Run(() => accon());
+        }
+
+        private void accon()
+        {
+            var service = new AcconService();
+
+            try
+            {
+                while (btnAcconParar.Enabled)
+                {
+                    var orderResult = service.Orders(txtAcoonToken.Text, txtAcconRede.Text);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result != null)
+                        {
+                            _acconOrders.AddRange(orderResult.Result);                            
+                            WriteGridAccon();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+
+        #endregion
+
+        private void btnUberEatsIniciar_Click(object sender, EventArgs e)
+        {
+            uberIniciar();
+        }
+
+        private void btnUberEatsParar_Click(object sender, EventArgs e)
+        {
+            uberParar();
+        }
+
+        private void btnUberEatsLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUberEatsCLIENT_ID.Text))
+            {
+                MessageBox.Show("Campo CLIENT_ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtUberEatsCLIENT_SECRET.Text))
+            {
+                MessageBox.Show("Campo CLIENT_SECRET Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtUberEatsMerchantId.Text))
+            {
+                MessageBox.Show("Campo MerchantId Obrigatório");
+                return;
+            }
+
+            var service = new UberEatsService();
+            var result = service.OathToken(txtUberEatsCLIENT_ID.Text, txtUberEatsCLIENT_SECRET.Text);
+            if (result.Success)
+            {
+                txtUberEatsTOken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btnUberEatsBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_uberEaTSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new UberEatsService();
+            var result = service.Order(txtUberEatsTOken.Text, _uberEaTSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnUberEatsAprovar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_uberEaTSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new UberEatsService();
+            var result = service.Accept(txtUberEatsTOken.Text, _uberEaTSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void gridUberEats_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridUberEats.Rows.Count)
+            {
+                _uberEaTSSelected = gridUberEats.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        void uberParar()
+        {
+            btnUberEatsIniciar.Enabled = true;
+            btnUberEatsParar.Enabled = false;
+        }
+
+        private delegate void WritelstGridWriteGridUberDelegate();
+        private void WriteGridUber()
+        {
+            if (gridUberEats.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridUberDelegate(WriteGridUber);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridUberEats.DataSource = _uberOrders.ToList();
+                gridUberEats.Refresh();
+            }
+        }
+
+        public async void uberIniciar()
+        {
+            if (string.IsNullOrEmpty(txtUberEatsTOken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            btnUberEatsIniciar.Enabled = false;
+            btnUberEatsParar.Enabled = true;
+
+            await Task.Run(() => uber());
+        }
+
+        private void uber()
+        {
+            var service = new UberEatsService();
+
+            try
+            {
+                while (btnUberEatsParar.Enabled)
+                {
+                    var orderResult = service.Orders(txtUberEatsTOken.Text, txtUberEatsMerchantId.Text);
+                    if (orderResult.Success)
+                    {
+                        _uberOrders.AddRange(orderResult.Result.orders.ToList());
+                        WriteGridUber();                        
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+
     }
 }
