@@ -156,6 +156,21 @@ Para fazer a integração com o meu cardápio ai é preciso de algumas informaç
 }
 ```
 
+# OnPedido
+
+Links importantes:
+  - https://onpedido.com/
+
+Para fazer a integração com o onpedido ai é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	OnPedido: {
+		Token: "Coloca aqui o token"
+	}
+}
+```
+
 # Logaroo
 
 Links importantes:

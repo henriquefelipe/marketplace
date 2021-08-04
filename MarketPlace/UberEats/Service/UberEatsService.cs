@@ -11,8 +11,13 @@ namespace Accon.Service
     {       
         public UberEatsService() { }
                
-        public GenericResult<token> OathToken(string client_id, string client_secret)
+        public GenericResult<token> OathToken(string client_id, string client_secret, string scope = "")
         {
+            if(string.IsNullOrEmpty(scope))
+            {
+                scope = Constants.SCOPE_EATS_STORE_ORDERS_READ + " " + Constants.SCOPE_EATS_ORDER + " " + Constants.SCOPE_EATS_STORE_ORDERS_CANCEL;
+            }
+
             var result = new GenericResult<token>();
             var client = new RestClient(Constants.URL_TOKEN);            
             var request = new RestRequest(Method.POST);
@@ -20,7 +25,7 @@ namespace Accon.Service
             request.AddParameter("client_id", client_id);
             request.AddParameter("client_secret", client_secret);
             request.AddParameter("grant_type", "client_credentials");
-            request.AddParameter("scope", "eats.store.orders.read");
+            request.AddParameter("scope", scope);
             IRestResponse responseToken = client.Execute(request);
 
             if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
@@ -90,11 +95,9 @@ namespace Accon.Service
             var url = string.Format("{0}{1}/accept_pos_order", Constants.URL_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddParameter("scope", "eats.order");
-            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));           
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 result.Success = true;
             }
@@ -106,5 +109,54 @@ namespace Accon.Service
             return result;
         }
 
+        public GenericSimpleResult Deny(string token, string id)
+        {
+            var result = new GenericSimpleResult();
+            var url = string.Format("{0}{1}/deny_pos_order", Constants.URL_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            {
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult Cancel(string token, string id)
+        {
+            var dados = new
+            {
+                reason = "RESTAURANT_TOO_BUSY"
+            };
+
+            var data = JsonConvert.SerializeObject(dados);
+
+            var result = new GenericSimpleResult();
+            var url = string.Format("{0}{1}/cancel", Constants.URL_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            request.RequestFormat = DataFormat.Json;
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            return result;
+        }
     }
 }

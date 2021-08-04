@@ -69,10 +69,10 @@ namespace Example
         private string _cinddiToken { get; set; }
         private List<Cinddi.Domain.ResponseOrders> _cinddiPedidos { get; set; }
         private string _cinddiSelected { get; set; }
-        
+
         private List<Aipedi.Domain.order> _pedreiroDigitalOrders { get; set; }
         private string _pedreiroDigitalReferenceSelected { get; set; }
-        
+
         private List<IDelivery.Domain.order> _iDeliveryOrders { get; set; }
         private string _iDeliveryReferenceSelected { get; set; }
 
@@ -130,7 +130,7 @@ namespace Example
 
                             if (marketPlace.DeliveryDireto != null)
                             {
-                                txtDeliveryDiretoToken.Text = marketPlace.DeliveryDireto.Token;                                
+                                txtDeliveryDiretoToken.Text = marketPlace.DeliveryDireto.Token;
                                 txtDeliveryDiretoMerchandId.Text = marketPlace.DeliveryDireto.MerchantId;
                                 txtDeliveryDiretoUsuario.Text = marketPlace.DeliveryDireto.Usuario;
                                 txtDeliveryDiretoSenha.Text = marketPlace.DeliveryDireto.Senha;
@@ -1256,7 +1256,7 @@ namespace Example
         }
 
         #endregion
-       
+
         #region PedZap
 
         public async void pedZaoIniciar()
@@ -2494,7 +2494,7 @@ namespace Example
 
             var onPedidoService = new OnPedidoService();
             var result = onPedidoService.Status(_onPedidoToken, _onPedidoSelected, ((byte)OnPedido.Enum.OrderStatus.Recebido).ToString());
-            if(result.Success)
+            if (result.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -2624,7 +2624,7 @@ namespace Example
                     {
                         _cinddiPedidos = new List<Cinddi.Domain.ResponseOrders>();
                         _cinddiPedidos.AddRange(orderResult.Result);
-                        WriteGridCinddi();                        
+                        WriteGridCinddi();
                     }
                     else
                     {
@@ -2772,7 +2772,7 @@ namespace Example
 
             btnDeliveryDiretoIniciar.Enabled = false;
             btnDeliveryDiretoParar.Enabled = true;
-          
+
             await Task.Run(() => deliveryDireto());
         }
 
@@ -2935,7 +2935,7 @@ namespace Example
                 return;
             }
 
-            var service = new AipediService(txtPedreiroDigitalURL.Text, 
+            var service = new AipediService(txtPedreiroDigitalURL.Text,
                                 txtPedreiroDigitalMerchantId.Text, txtPedreiroDigitalToken.Text);
 
             var result = service.Status(_pedreiroDigitalReferenceSelected, (byte)Aipedi.Enum.OrderStatus.Confirmado);
@@ -2956,7 +2956,7 @@ namespace Example
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(_pedreiroDigitalReferenceSelected))
             {
                 MessageBox.Show("Selecione um registro");
@@ -3312,7 +3312,7 @@ namespace Example
 
             var service = new AtivMob.Service.AtivMobService(txtAtivMobURL.Text, txtAtivMobMerchantId.Text, txtAtivMobToken.Text);
             var result = service.Order(order);
-            if(result.Success)
+            if (result.Success)
             {
                 MessageBox.Show("Criado com sucesso");
             }
@@ -3331,7 +3331,7 @@ namespace Example
         {
             goomerIniciar();
         }
-        
+
         private void btnGoomerParar_Click(object sender, EventArgs e)
         {
             goomerParar();
@@ -3421,7 +3421,7 @@ namespace Example
             }
             else
             {
-                MessageBox.Show(result.Message);                
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -3581,7 +3581,7 @@ namespace Example
                 MessageBox.Show("Faça o login");
                 return;
             }
-            
+
             btnGoomerIniciar.Enabled = false;
             btnGoomerParar.Enabled = true;
 
@@ -3601,7 +3601,7 @@ namespace Example
                     {
                         if (orderResult.Result != null)
                         {
-                            foreach(var item in orderResult.Result.orders)
+                            foreach (var item in orderResult.Result.orders)
                                 _goomerOrders.Add(new Goomer.Domain.order { id = item });
                             WriteGridGoomer();
                         }
@@ -3693,7 +3693,7 @@ namespace Example
             var result = service.OathToken(txtAcconUsuario.Text, txtAcconSenha.Text, txtAcconRede.Text);
             if (result.Success)
             {
-                txtAcoonToken.Text = result.Result.token;                
+                txtAcoonToken.Text = result.Result.token;
             }
             else
             {
@@ -3750,7 +3750,7 @@ namespace Example
                     {
                         if (orderResult.Result != null)
                         {
-                            _acconOrders.AddRange(orderResult.Result);                            
+                            _acconOrders.AddRange(orderResult.Result);
                             WriteGridAccon();
                         }
                     }
@@ -3776,6 +3776,7 @@ namespace Example
 
         #endregion
 
+        #region Uber Eats
         private void btnUberEatsIniciar_Click(object sender, EventArgs e)
         {
             uberIniciar();
@@ -3859,6 +3860,46 @@ namespace Example
             }
         }
 
+        private void btnUberEatsRejeitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_uberEaTSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new UberEatsService();
+            var result = service.Deny(txtUberEatsTOken.Text, _uberEaTSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnUberEatsCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_uberEaTSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new UberEatsService();
+            var result = service.Cancel(txtUberEatsTOken.Text, _uberEaTSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void gridUberEats_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridUberEats.Rows.Count)
@@ -3914,7 +3955,7 @@ namespace Example
                     if (orderResult.Success)
                     {
                         _uberOrders.AddRange(orderResult.Result.orders.ToList());
-                        WriteGridUber();                        
+                        WriteGridUber();
                     }
                     else
                     {
@@ -3935,6 +3976,6 @@ namespace Example
             }
         }
 
-
+        #endregion
     }
 }
