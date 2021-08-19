@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Domain\cart.cs" />
     <Compile Include="Domain\currency.cs" />
+    <Compile Include="Domain\delivery.cs" />
     <Compile Include="Domain\eater.cs" />
     <Compile Include="Domain\eaters.cs" />
     <Compile Include="Domain\item.cs" />

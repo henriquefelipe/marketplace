@@ -77,7 +77,7 @@ namespace Accon.Service
             request.AddHeader("X-NETWORK-ID", network);
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 result.Success = true;
             }
@@ -85,7 +85,7 @@ namespace Accon.Service
             {
                 result.Message = response.Content;
             }
-
+            
             return result;
         }
      

@@ -95,6 +95,10 @@
       <Project>{a7822d3b-963c-44f6-80ec-5f8d40d298cc}</Project>
       <Name>Aipedi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Aiqfome\Aiqfome.csproj">
+      <Project>{61d2230a-5888-49ae-89d1-9c65a625d178}</Project>
+      <Name>Aiqfome</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnotaAi\AnotaAi.csproj">
       <Project>{175d27bf-35ce-45b3-b30f-5242110128d1}</Project>
       <Name>AnotaAi</Name>

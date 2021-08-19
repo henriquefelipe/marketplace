@@ -59,6 +59,7 @@
     <Compile Include="Domain\deliveryService.cs" />
     <Compile Include="Domain\destination.cs" />
     <Compile Include="Domain\distributionCenter.cs" />
+    <Compile Include="Domain\evento.cs" />
     <Compile Include="Domain\invoice.cs" />
     <Compile Include="Domain\issuer.cs" />
     <Compile Include="Domain\label.cs" />
@@ -69,10 +70,13 @@
     <Compile Include="Domain\phones.cs" />
     <Compile Include="Domain\pickupPlace.cs" />
     <Compile Include="Domain\place.cs" />
+    <Compile Include="Domain\processar_evento.cs" />
     <Compile Include="Domain\products.cs" />
     <Compile Include="Domain\result.cs" />
+    <Compile Include="Domain\result_event.cs" />
     <Compile Include="Domain\sale.cs" />
     <Compile Include="Domain\seller.cs" />
+    <Compile Include="Enum\event_code.cs" />
     <Compile Include="Enum\periodo_prevista.cs" />
     <Compile Include="Enum\phone_type.cs" />
     <Compile Include="Enum\sale_place.cs" />

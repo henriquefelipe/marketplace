@@ -112,12 +112,12 @@ namespace Logaroo.Domain
         public int id { get; set; }
         public string android { get; set; }
         public string app { get; set; }
-        public int battery { get; set; }
+        public int? battery { get; set; }
         public string first_name { get; set; }
         public bool has_route { get; set; }
         public string last_name { get; set; }
-        public long lat { get; set; }
-        public long lng { get; set; }
+        public long? lat { get; set; }
+        public long? lng { get; set; }
     }
 }
 

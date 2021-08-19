@@ -54,14 +54,14 @@ namespace Accon.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<orders_result>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
+                result.Success = true;                
             }
             else
             {
                 result.Message = response.Content;
             }
 
+            result.Json = response.Content;
             return result;
         }
 
@@ -78,13 +78,14 @@ namespace Accon.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<order>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
+                result.Success = true;                
             }
             else
             {
                 result.Message = response.Content;
             }
+
+            result.Json = response.Content;
 
             return result;
         }

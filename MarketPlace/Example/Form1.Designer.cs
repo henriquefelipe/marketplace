@@ -268,6 +268,7 @@
             this.btnSuperMenuParar = new System.Windows.Forms.Button();
             this.btnSuperMenuIniciar = new System.Windows.Forms.Button();
             this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.btnUberEatsRejeitar = new System.Windows.Forms.Button();
             this.btnUberEatsCancelar = new System.Windows.Forms.Button();
             this.txtUberEatsTOken = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
@@ -283,7 +284,7 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnUberEatsRejeitar = new System.Windows.Forms.Button();
+            this.btnAtivMobStatus = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -766,6 +767,7 @@
             // 
             // tabPage15
             // 
+            this.tabPage15.Controls.Add(this.btnAtivMobStatus);
             this.tabPage15.Controls.Add(this.txtAtivMobURL);
             this.tabPage15.Controls.Add(this.label39);
             this.tabPage15.Controls.Add(this.txtAtivMobToken);
@@ -818,7 +820,8 @@
             // 
             // btnAtivMobCriarPedido
             // 
-            this.btnAtivMobCriarPedido.Location = new System.Drawing.Point(12, 92);
+            this.btnAtivMobCriarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtivMobCriarPedido.Location = new System.Drawing.Point(12, 116);
             this.btnAtivMobCriarPedido.Name = "btnAtivMobCriarPedido";
             this.btnAtivMobCriarPedido.Size = new System.Drawing.Size(178, 42);
             this.btnAtivMobCriarPedido.TabIndex = 31;
@@ -2965,6 +2968,17 @@
             this.tabPage18.Text = "Uber Eats";
             this.tabPage18.UseVisualStyleBackColor = true;
             // 
+            // btnUberEatsRejeitar
+            // 
+            this.btnUberEatsRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUberEatsRejeitar.Location = new System.Drawing.Point(367, 98);
+            this.btnUberEatsRejeitar.Name = "btnUberEatsRejeitar";
+            this.btnUberEatsRejeitar.Size = new System.Drawing.Size(171, 39);
+            this.btnUberEatsRejeitar.TabIndex = 49;
+            this.btnUberEatsRejeitar.Text = "Rejeitar";
+            this.btnUberEatsRejeitar.UseVisualStyleBackColor = true;
+            this.btnUberEatsRejeitar.Click += new System.EventHandler(this.btnUberEatsRejeitar_Click);
+            // 
             // btnUberEatsCancelar
             // 
             this.btnUberEatsCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3114,16 +3128,15 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnUberEatsRejeitar
+            // btnAtivMobStatus
             // 
-            this.btnUberEatsRejeitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUberEatsRejeitar.Location = new System.Drawing.Point(367, 98);
-            this.btnUberEatsRejeitar.Name = "btnUberEatsRejeitar";
-            this.btnUberEatsRejeitar.Size = new System.Drawing.Size(171, 39);
-            this.btnUberEatsRejeitar.TabIndex = 49;
-            this.btnUberEatsRejeitar.Text = "Rejeitar";
-            this.btnUberEatsRejeitar.UseVisualStyleBackColor = true;
-            this.btnUberEatsRejeitar.Click += new System.EventHandler(this.btnUberEatsRejeitar_Click);
+            this.btnAtivMobStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtivMobStatus.Location = new System.Drawing.Point(196, 116);
+            this.btnAtivMobStatus.Name = "btnAtivMobStatus";
+            this.btnAtivMobStatus.Size = new System.Drawing.Size(178, 42);
+            this.btnAtivMobStatus.TabIndex = 32;
+            this.btnAtivMobStatus.Text = "Status";
+            this.btnAtivMobStatus.Click += new System.EventHandler(this.btnAtivMobStatus_Click);
             // 
             // Form1
             // 
@@ -3455,6 +3468,7 @@
         private System.Windows.Forms.Button btnUberEatsLogin;
         private System.Windows.Forms.Button btnUberEatsCancelar;
         private System.Windows.Forms.Button btnUberEatsRejeitar;
+        private System.Windows.Forms.Button btnAtivMobStatus;
     }
 }
 

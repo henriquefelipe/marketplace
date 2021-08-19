@@ -764,7 +764,8 @@ namespace Example
         private string _urlLogarooDesenvolvimento = "https://api.dev.logaroo.com.br/v1/";
         private void btnLogarooLogin_Click(object sender, EventArgs e)
         {
-            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            //var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var logarooService = new Logaroo.Service.LogarooService();
             var result = logarooService.Login(txtLogarooEmail.Text, txtLogarooSenha.Text);
             if (result.Success)
             {
@@ -955,7 +956,8 @@ namespace Example
                 return;
             }
 
-            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            //var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var logarooService = new Logaroo.Service.LogarooService();
             var result = logarooService.GetOrder(txtLogarooToken.Text, txtLogarooNumeroPedido.Text);
             if (result.Success)
             {
@@ -3322,7 +3324,36 @@ namespace Example
             }
         }
 
+        private void btnAtivMobStatus_Click(object sender, EventArgs e)
+        {
+            var service = new AtivMob.Service.AtivMobService(txtAtivMobURL.Text, txtAtivMobMerchantId.Text, txtAtivMobToken.Text);
+            var result = service.ConsultarEventos();
+            if (result.Success)
+            {
+                var lista = new List<string>();
+                foreach(var item in result.Result.events)
+                {
+                    lista.Add(item.event_id);
+                }
 
+                if (lista.Any())
+                {
+                    var resultProcessarEventos = service.ProcessarEventos(lista);
+                    if (resultProcessarEventos.Success)
+                    {
+                        MessageBox.Show("Status processados ok");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Status ok");
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 
@@ -3977,5 +4008,6 @@ namespace Example
         }
 
         #endregion
+        
     }
 }

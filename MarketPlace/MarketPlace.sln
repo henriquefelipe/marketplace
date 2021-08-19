@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer", "Goomer\Goomer.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats", "UberEats\UberEats.csproj", "{DA7501A5-63E5-497D-B643-CC002C4D98FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiqfome", "Aiqfome\Aiqfome.csproj", "{61D2230A-5888-49AE-89D1-9C65A625D178}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{DA7501A5-63E5-497D-B643-CC002C4D98FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7501A5-63E5-497D-B643-CC002C4D98FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7501A5-63E5-497D-B643-CC002C4D98FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D2230A-5888-49AE-89D1-9C65A625D178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D2230A-5888-49AE-89D1-9C65A625D178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D2230A-5888-49AE-89D1-9C65A625D178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D2230A-5888-49AE-89D1-9C65A625D178}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
