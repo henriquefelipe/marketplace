@@ -68,6 +68,7 @@
             this.btnAnotaAiParar = new System.Windows.Forms.Button();
             this.btnAnotaAiIniciar = new System.Windows.Forms.Button();
             this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.btnAtivMobStatus = new System.Windows.Forms.Button();
             this.txtAtivMobURL = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.txtAtivMobToken = new System.Windows.Forms.TextBox();
@@ -284,7 +285,25 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnAtivMobStatus = new System.Windows.Forms.Button();
+            this.tabPage19 = new System.Windows.Forms.TabPage();
+            this.txtAiqfomeToken = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.btnAiqfomeLogin = new System.Windows.Forms.Button();
+            this.btnAiqfomeIntegrado = new System.Windows.Forms.Button();
+            this.gridAiqfome = new System.Windows.Forms.DataGridView();
+            this.btnAiqfomeParar = new System.Windows.Forms.Button();
+            this.btnAiqfomeIniciar = new System.Windows.Forms.Button();
+            this.txtAiqfomeAgente = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.txtAiqfomeSenha = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtAiqfomeUsuario = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.txtAiqfomeAuthorization = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.btnAiqfomeRefresh = new System.Windows.Forms.Button();
+            this.txtAiqfomeURL = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -323,11 +342,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPage18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
+            this.tabPage19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAiqfome)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage17);
+            this.tabControl1.Controls.Add(this.tabPage19);
             this.tabControl1.Controls.Add(this.tabPage14);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage15);
@@ -781,6 +803,16 @@
             this.tabPage15.TabIndex = 14;
             this.tabPage15.Text = "AtivMob";
             this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // btnAtivMobStatus
+            // 
+            this.btnAtivMobStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtivMobStatus.Location = new System.Drawing.Point(196, 116);
+            this.btnAtivMobStatus.Name = "btnAtivMobStatus";
+            this.btnAtivMobStatus.Size = new System.Drawing.Size(178, 42);
+            this.btnAtivMobStatus.TabIndex = 32;
+            this.btnAtivMobStatus.Text = "Status";
+            this.btnAtivMobStatus.Click += new System.EventHandler(this.btnAtivMobStatus_Click);
             // 
             // txtAtivMobURL
             // 
@@ -3128,15 +3160,203 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnAtivMobStatus
+            // tabPage19
             // 
-            this.btnAtivMobStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtivMobStatus.Location = new System.Drawing.Point(196, 116);
-            this.btnAtivMobStatus.Name = "btnAtivMobStatus";
-            this.btnAtivMobStatus.Size = new System.Drawing.Size(178, 42);
-            this.btnAtivMobStatus.TabIndex = 32;
-            this.btnAtivMobStatus.Text = "Status";
-            this.btnAtivMobStatus.Click += new System.EventHandler(this.btnAtivMobStatus_Click);
+            this.tabPage19.Controls.Add(this.txtAiqfomeURL);
+            this.tabPage19.Controls.Add(this.label60);
+            this.tabPage19.Controls.Add(this.btnAiqfomeRefresh);
+            this.tabPage19.Controls.Add(this.txtAiqfomeAuthorization);
+            this.tabPage19.Controls.Add(this.label59);
+            this.tabPage19.Controls.Add(this.txtAiqfomeToken);
+            this.tabPage19.Controls.Add(this.label55);
+            this.tabPage19.Controls.Add(this.btnAiqfomeLogin);
+            this.tabPage19.Controls.Add(this.btnAiqfomeIntegrado);
+            this.tabPage19.Controls.Add(this.gridAiqfome);
+            this.tabPage19.Controls.Add(this.btnAiqfomeParar);
+            this.tabPage19.Controls.Add(this.btnAiqfomeIniciar);
+            this.tabPage19.Controls.Add(this.txtAiqfomeAgente);
+            this.tabPage19.Controls.Add(this.label56);
+            this.tabPage19.Controls.Add(this.txtAiqfomeSenha);
+            this.tabPage19.Controls.Add(this.label57);
+            this.tabPage19.Controls.Add(this.txtAiqfomeUsuario);
+            this.tabPage19.Controls.Add(this.label58);
+            this.tabPage19.Location = new System.Drawing.Point(4, 22);
+            this.tabPage19.Name = "tabPage19";
+            this.tabPage19.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage19.TabIndex = 18;
+            this.tabPage19.Text = "Aiqfome";
+            this.tabPage19.UseVisualStyleBackColor = true;
+            // 
+            // txtAiqfomeToken
+            // 
+            this.txtAiqfomeToken.Enabled = false;
+            this.txtAiqfomeToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeToken.Location = new System.Drawing.Point(456, 94);
+            this.txtAiqfomeToken.Name = "txtAiqfomeToken";
+            this.txtAiqfomeToken.Size = new System.Drawing.Size(288, 26);
+            this.txtAiqfomeToken.TabIndex = 50;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(388, 94);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(53, 20);
+            this.label55.TabIndex = 49;
+            this.label55.Text = "Token";
+            // 
+            // btnAiqfomeLogin
+            // 
+            this.btnAiqfomeLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeLogin.Location = new System.Drawing.Point(750, 91);
+            this.btnAiqfomeLogin.Name = "btnAiqfomeLogin";
+            this.btnAiqfomeLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeLogin.TabIndex = 48;
+            this.btnAiqfomeLogin.Text = "Login";
+            this.btnAiqfomeLogin.UseVisualStyleBackColor = true;
+            this.btnAiqfomeLogin.Click += new System.EventHandler(this.btnAiqfomeLogin_Click);
+            // 
+            // btnAiqfomeIntegrado
+            // 
+            this.btnAiqfomeIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeIntegrado.Location = new System.Drawing.Point(8, 127);
+            this.btnAiqfomeIntegrado.Name = "btnAiqfomeIntegrado";
+            this.btnAiqfomeIntegrado.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeIntegrado.TabIndex = 47;
+            this.btnAiqfomeIntegrado.Text = "Integrado";
+            this.btnAiqfomeIntegrado.UseVisualStyleBackColor = true;
+            // 
+            // gridAiqfome
+            // 
+            this.gridAiqfome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAiqfome.Location = new System.Drawing.Point(8, 166);
+            this.gridAiqfome.Name = "gridAiqfome";
+            this.gridAiqfome.Size = new System.Drawing.Size(1213, 501);
+            this.gridAiqfome.TabIndex = 46;
+            // 
+            // btnAiqfomeParar
+            // 
+            this.btnAiqfomeParar.Enabled = false;
+            this.btnAiqfomeParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnAiqfomeParar.Name = "btnAiqfomeParar";
+            this.btnAiqfomeParar.Size = new System.Drawing.Size(171, 39);
+            this.btnAiqfomeParar.TabIndex = 45;
+            this.btnAiqfomeParar.Text = "Parar";
+            this.btnAiqfomeParar.UseVisualStyleBackColor = true;
+            this.btnAiqfomeParar.Click += new System.EventHandler(this.btnAiqfomeParar_Click);
+            // 
+            // btnAiqfomeIniciar
+            // 
+            this.btnAiqfomeIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnAiqfomeIniciar.Name = "btnAiqfomeIniciar";
+            this.btnAiqfomeIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnAiqfomeIniciar.TabIndex = 44;
+            this.btnAiqfomeIniciar.Text = "Iniciar";
+            this.btnAiqfomeIniciar.UseVisualStyleBackColor = true;
+            this.btnAiqfomeIniciar.Click += new System.EventHandler(this.btnAiqfomeIniciar_Click);
+            // 
+            // txtAiqfomeAgente
+            // 
+            this.txtAiqfomeAgente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeAgente.Location = new System.Drawing.Point(456, 20);
+            this.txtAiqfomeAgente.Name = "txtAiqfomeAgente";
+            this.txtAiqfomeAgente.Size = new System.Drawing.Size(291, 26);
+            this.txtAiqfomeAgente.TabIndex = 43;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(336, 23);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(52, 20);
+            this.label56.TabIndex = 42;
+            this.label56.Text = "Agent";
+            // 
+            // txtAiqfomeSenha
+            // 
+            this.txtAiqfomeSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeSenha.Location = new System.Drawing.Point(101, 53);
+            this.txtAiqfomeSenha.Name = "txtAiqfomeSenha";
+            this.txtAiqfomeSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtAiqfomeSenha.TabIndex = 41;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(8, 56);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(56, 20);
+            this.label57.TabIndex = 40;
+            this.label57.Text = "Senha";
+            // 
+            // txtAiqfomeUsuario
+            // 
+            this.txtAiqfomeUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeUsuario.Location = new System.Drawing.Point(101, 17);
+            this.txtAiqfomeUsuario.Name = "txtAiqfomeUsuario";
+            this.txtAiqfomeUsuario.Size = new System.Drawing.Size(187, 26);
+            this.txtAiqfomeUsuario.TabIndex = 39;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(8, 20);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(64, 20);
+            this.label58.TabIndex = 38;
+            this.label58.Text = "Usuario";
+            // 
+            // txtAiqfomeAuthorization
+            // 
+            this.txtAiqfomeAuthorization.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeAuthorization.Location = new System.Drawing.Point(456, 53);
+            this.txtAiqfomeAuthorization.Name = "txtAiqfomeAuthorization";
+            this.txtAiqfomeAuthorization.Size = new System.Drawing.Size(288, 26);
+            this.txtAiqfomeAuthorization.TabIndex = 52;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(335, 56);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(103, 20);
+            this.label59.TabIndex = 51;
+            this.label59.Text = "Authorization";
+            // 
+            // btnAiqfomeRefresh
+            // 
+            this.btnAiqfomeRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeRefresh.Location = new System.Drawing.Point(899, 91);
+            this.btnAiqfomeRefresh.Name = "btnAiqfomeRefresh";
+            this.btnAiqfomeRefresh.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeRefresh.TabIndex = 53;
+            this.btnAiqfomeRefresh.Text = "Refresh";
+            this.btnAiqfomeRefresh.UseVisualStyleBackColor = true;
+            // 
+            // txtAiqfomeURL
+            // 
+            this.txtAiqfomeURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAiqfomeURL.Location = new System.Drawing.Point(101, 85);
+            this.txtAiqfomeURL.Name = "txtAiqfomeURL";
+            this.txtAiqfomeURL.Size = new System.Drawing.Size(187, 26);
+            this.txtAiqfomeURL.TabIndex = 55;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(8, 88);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(29, 20);
+            this.label60.TabIndex = 54;
+            this.label60.Text = "Url";
             // 
             // Form1
             // 
@@ -3206,6 +3426,9 @@
             this.tabPage18.ResumeLayout(false);
             this.tabPage18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
+            this.tabPage19.ResumeLayout(false);
+            this.tabPage19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAiqfome)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3469,6 +3692,25 @@
         private System.Windows.Forms.Button btnUberEatsCancelar;
         private System.Windows.Forms.Button btnUberEatsRejeitar;
         private System.Windows.Forms.Button btnAtivMobStatus;
+        private System.Windows.Forms.TabPage tabPage19;
+        private System.Windows.Forms.Button btnAiqfomeRefresh;
+        private System.Windows.Forms.TextBox txtAiqfomeAuthorization;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.TextBox txtAiqfomeToken;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Button btnAiqfomeLogin;
+        private System.Windows.Forms.Button btnAiqfomeIntegrado;
+        private System.Windows.Forms.DataGridView gridAiqfome;
+        private System.Windows.Forms.Button btnAiqfomeParar;
+        private System.Windows.Forms.Button btnAiqfomeIniciar;
+        private System.Windows.Forms.TextBox txtAiqfomeAgente;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox txtAiqfomeSenha;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox txtAiqfomeUsuario;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox txtAiqfomeURL;
+        private System.Windows.Forms.Label label60;
     }
 }
 

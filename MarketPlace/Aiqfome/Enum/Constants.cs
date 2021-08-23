@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Aiqfome.Utils
+{
+    public static class Constants
+    {
+
+        public const string URL_TOKEN = "auth/token";            
+        public const string URL_ORDERS = "orders/";
+
+        ////public const string URL_CREATE_ORDERS_CANCELED = "https://api.uber.com/v1/eats/stores/{{eats_store_id}}/canceled-orders?limit=5";
+        ////public const string URL_ORDER_CANCEL = "https://api.uber.com/v1/eats/orders/{{order_id}}/cancel";
+        ////public const string URL_ORDER_DANY = "https://api.uber.com/v1/eats/orders/{{order_id}}/deny_pos_order";
+
+
+        //public const string SCOPE_EATS_ORDER = "eats.order"; //Aceite/Deny do pedido
+        //public const string SCOPE_EATS_STORE_ORDERS_READ = "eats.store.orders.read"; // Leitura dos detalhes do pedido / Pegar lista dos últimos pedidos aceitos ou cancelados
+        //public const string SCOPE_EATS_STORE_ORDERS_CANCEL = "eats.store.orders.cancel"; //Cancelamento dos pedidos
+    }
+}

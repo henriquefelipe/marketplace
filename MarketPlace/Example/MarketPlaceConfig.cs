@@ -4,6 +4,7 @@ namespace Example
     public class MarketPlaceConfig
     {
         public MarketPlaceConfigAnotaAi AnotaAi { get; set; }
+        public MarketPlaceConfigAiqfome Aiqfome { get; set; }
         public MarketPlaceConfigAtivMob AtivMob { get; set; }
         public MarketPlaceConfigDeliveryApp DeliveryApp { get; set; }
         public MarketPlaceConfigDeliveryDireto DeliveryDireto { get; set; }
@@ -145,4 +146,14 @@ namespace Example
         public string Client_ID { get; set; }
         public string MerchantId { get; set; }
     }
+
+    public class MarketPlaceConfigAiqfome
+    {
+        public string Token { get; set; }
+        public string Url { get; set; }
+        public string MerchantId { get; set; }
+        public string Usuario { get; set; }
+        public string Senha { get; set; }
+    }
+
 }

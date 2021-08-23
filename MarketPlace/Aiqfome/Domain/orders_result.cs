@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Aiqfome.Domain
 {
     public class orders_result
-    {
+    {        
         //public data data { get; set; }
         public orders_links_result links { get; set; }
         public orders_meta_result meta { get; set; }

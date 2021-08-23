@@ -1,5 +1,6 @@
 ﻿using Accon.Service;
 using Aipedi.Service;
+using Aiqfome.Service;
 using AnotaAi.Service;
 using Cinddi.Service;
 using DeliveryApp.Service;
@@ -104,6 +105,15 @@ namespace Example
                                 txtAcconUsuario.Text = marketPlace.Accon.Usuario;
                                 txtAcconSenha.Text = marketPlace.Accon.Senha;
                                 txtAcconRede.Text = marketPlace.Accon.Rede;
+                            }
+
+                            if (marketPlace.Aiqfome != null)
+                            {
+                                txtAiqfomeAgente.Text = marketPlace.Aiqfome.MerchantId;
+                                txtAiqfomeSenha.Text = marketPlace.Aiqfome.Senha;
+                                txtAiqfomeAuthorization.Text = marketPlace.Aiqfome.Token;
+                                txtAiqfomeUsuario.Text = marketPlace.Aiqfome.Usuario;
+                                txtAiqfomeURL.Text = marketPlace.Aiqfome.Url;
                             }
 
                             if (marketPlace.AnotaAi != null)
@@ -4008,6 +4018,122 @@ namespace Example
         }
 
         #endregion
-        
+
+        #region Aiqfome
+
+        private void btnAiqfomeLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAiqfomeUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAiqfomeSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAiqfomeAgente.Text))
+            {
+                MessageBox.Show("Campo MerchantId Obrigatório");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text);
+            var result = service.Token(txtAiqfomeUsuario.Text, txtAiqfomeSenha.Text);
+            if (result.Success)
+            {
+                txtAiqfomeToken.Text = result.Result.data.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btnAiqfomeIniciar_Click(object sender, EventArgs e)
+        {
+            aiqfomeIniciar();
+        }
+
+        private void btnAiqfomeParar_Click(object sender, EventArgs e)
+        {
+            aiqfomeParar();
+        }
+
+        void aiqfomeParar()
+        {
+            btnAiqfomeIniciar.Enabled = true;
+            btnAiqfomeParar.Enabled = false;
+        }
+
+        private delegate void WritelstGridWriteGridAiqfomeDelegate();
+        private void WriteGridAiqfome()
+        {
+            if (gridAiqfome.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridAiqfomeDelegate(WriteGridAiqfome);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                //gridAiqfome.DataSource = _uberOrders.ToList();
+                gridAiqfome.Refresh();
+            }
+        }
+
+        public async void aiqfomeIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAiqfomeToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            btnAiqfomeIniciar.Enabled = true;
+            btnAiqfomeParar.Enabled = false;
+
+            await Task.Run(() => aiqfome());
+        }
+
+        private void aiqfome()
+        {
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text);
+
+            try
+            {
+                while (btnAiqfomeIniciar.Enabled)
+                {
+                    var orderResult = service.Orders(txtAiqfomeToken.Text);
+                    if (orderResult.Success)
+                    {
+                        //_uberOrders.AddRange(orderResult.Result.orders.ToList());
+                        WriteGridAiqfome();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        #endregion
+
+
     }
 }
