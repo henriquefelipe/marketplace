@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\error_result.cs" />
+    <Compile Include="Domain\open_close_result.cs" />
     <Compile Include="Domain\orders_result.cs" />
     <Compile Include="Domain\token_result.cs" />
     <Compile Include="Enum\Constants.cs" />
+    <Compile Include="Enum\StoreStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AiqfomeService.cs" />
   </ItemGroup>

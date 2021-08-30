@@ -10,15 +10,11 @@ namespace Aiqfome.Utils
     {
 
         public const string URL_TOKEN = "auth/token";            
-        public const string URL_ORDERS = "orders/";
+        public const string URL_ORDERS = "orders";
+        public const string URL_ORDERS_MARK_AS_READ = "orders/mark-as-read";
+        public const string URL_ORDERS_MARK_AS_READY = "orders/mark-as-ready";
 
-        ////public const string URL_CREATE_ORDERS_CANCELED = "https://api.uber.com/v1/eats/stores/{{eats_store_id}}/canceled-orders?limit=5";
-        ////public const string URL_ORDER_CANCEL = "https://api.uber.com/v1/eats/orders/{{order_id}}/cancel";
-        ////public const string URL_ORDER_DANY = "https://api.uber.com/v1/eats/orders/{{order_id}}/deny_pos_order";
-
-
-        //public const string SCOPE_EATS_ORDER = "eats.order"; //Aceite/Deny do pedido
-        //public const string SCOPE_EATS_STORE_ORDERS_READ = "eats.store.orders.read"; // Leitura dos detalhes do pedido / Pegar lista dos últimos pedidos aceitos ou cancelados
-        //public const string SCOPE_EATS_STORE_ORDERS_CANCEL = "eats.store.orders.cancel"; //Cancelamento dos pedidos
+        public const string URL_STORE_OPEN = "store/open";
+        public const string URL_STORE_CLOSE = "store/close";
     }
 }

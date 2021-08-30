@@ -6,6 +6,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,8 @@ namespace AnotaAi.Service
             var result = new GenericResult<result_orders>();
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 var url = string.Format("{0}{1}", _urlBase, Constants.ORDER_LIST);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
@@ -51,6 +54,8 @@ namespace AnotaAi.Service
             var result = new GenericResult<order>();
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 var url = string.Format("{0}{1}{2}", _urlBase, Constants.ORDER_GET, id);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);

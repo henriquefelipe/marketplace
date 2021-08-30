@@ -4021,6 +4021,8 @@ namespace Example
 
         #region Aiqfome
 
+        private const string USER_AGENT = "izzyway (henrique@izzyway.com.br)";
+
         private void btnAiqfomeLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtAiqfomeUsuario.Text))
@@ -4041,7 +4043,7 @@ namespace Example
                 return;
             }
 
-            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text);
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
             var result = service.Token(txtAiqfomeUsuario.Text, txtAiqfomeSenha.Text);
             if (result.Success)
             {
@@ -4101,7 +4103,7 @@ namespace Example
 
         private void aiqfome()
         {
-            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text);
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
 
             try
             {
@@ -4131,6 +4133,47 @@ namespace Example
                 MessageBox.Show(message);
             }
         }
+
+        private void btnAiqfomeAbrir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAiqfomeToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
+            var result = service.Open(txtAiqfomeToken.Text);
+            if (result.Success && result.Result.data.status == Aiqfome.Enum.StoreStatus.OPEN)
+            {
+                MessageBox.Show("Aberto");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);                
+            }
+        }
+
+        private void btnAiqfomeFechar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAiqfomeToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
+            var result = service.Close(txtAiqfomeToken.Text);
+            if (result.Success && result.Result.data.status == Aiqfome.Enum.StoreStatus.CLOSED)
+            {
+                MessageBox.Show("Fechado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
 
         #endregion
 
