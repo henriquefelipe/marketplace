@@ -50,7 +50,17 @@
   <ItemGroup>
     <Compile Include="Domain\error_result.cs" />
     <Compile Include="Domain\open_close_result.cs" />
+    <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\orders_result.cs" />
+    <Compile Include="Domain\order_aiqentrega.cs" />
+    <Compile Include="Domain\order_item.cs" />
+    <Compile Include="Domain\order_item_addicional.cs" />
+    <Compile Include="Domain\order_payment_method.cs" />
+    <Compile Include="Domain\order_read_result.cs" />
+    <Compile Include="Domain\order_result.cs" />
+    <Compile Include="Domain\order_store.cs" />
+    <Compile Include="Domain\order_timeline.cs" />
+    <Compile Include="Domain\order_user.cs" />
     <Compile Include="Domain\token_result.cs" />
     <Compile Include="Enum\Constants.cs" />
     <Compile Include="Enum\StoreStatus.cs" />

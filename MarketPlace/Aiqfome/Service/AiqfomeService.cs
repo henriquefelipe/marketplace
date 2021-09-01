@@ -103,9 +103,9 @@ namespace Aiqfome.Service
             return result;
         }
 
-        public GenericResult<orders_result> Order(string token, string id)
+        public GenericResult<order_result> Order(string token, string id)
         {
-            var result = new GenericResult<orders_result>();
+            var result = new GenericResult<order_result>();
             try
             {
                 var client = new RestClient(string.Format("{0}{1}/{2}", _url, Constants.URL_ORDERS, id ));
@@ -117,7 +117,7 @@ namespace Aiqfome.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<orders_result>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<order_result>(response.Content);
                     result.Success = true;
                     result.Json = response.Content;
                 }
@@ -137,9 +137,9 @@ namespace Aiqfome.Service
             return result;
         }
 
-        public GenericResult<orders_result> MarkAsRead(string token, string id)
+        public GenericResult<order_read_result> MarkAsRead(string token, string id)
         {
-            var result = new GenericResult<orders_result>();
+            var result = new GenericResult<order_read_result>();
             try
             {
                 var dados = new
@@ -159,7 +159,7 @@ namespace Aiqfome.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<orders_result>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<order_read_result>(response.Content);
                     result.Success = true;
                     result.Json = response.Content;
                 }
@@ -179,9 +179,9 @@ namespace Aiqfome.Service
             return result;
         }
 
-        public GenericResult<orders_result> MarkAsReady(string token, string id)
+        public GenericResult<order_read_result> MarkAsReady(string token, string id)
         {
-            var result = new GenericResult<orders_result>();
+            var result = new GenericResult<order_read_result>();
             try
             {
                 var dados = new
@@ -201,7 +201,7 @@ namespace Aiqfome.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<orders_result>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<order_read_result>(response.Content);
                     result.Success = true;
                     result.Json = response.Content;
                 }

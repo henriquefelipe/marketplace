@@ -80,6 +80,9 @@ namespace Example
         private List<UberEats.Domain.order_result> _uberOrders { get; set; }
         private string _uberEaTSSelected { get; set; }
 
+        private List<Aiqfome.Domain.orders_result_order> _aiqfomeOrders { get; set; }
+        private string _aiqfomeSSelected { get; set; }
+
         #endregion
 
         public Form1()
@@ -282,6 +285,10 @@ namespace Example
             _uberOrders = new List<UberEats.Domain.order_result>();
             gridUberEats.DataSource = _uberOrders.ToList();
             gridUberEats.Refresh();
+
+            _aiqfomeOrders = new List<Aiqfome.Domain.orders_result_order>();
+            gridAiqfome.DataSource = _aiqfomeOrders.ToList();
+            gridAiqfome.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -4082,7 +4089,7 @@ namespace Example
             }
             else
             {
-                //gridAiqfome.DataSource = _uberOrders.ToList();
+                gridAiqfome.DataSource = _aiqfomeOrders.ToList();
                 gridAiqfome.Refresh();
             }
         }
@@ -4095,8 +4102,8 @@ namespace Example
                 return;
             }
 
-            btnAiqfomeIniciar.Enabled = true;
-            btnAiqfomeParar.Enabled = false;
+            btnAiqfomeIniciar.Enabled = false;
+            btnAiqfomeParar.Enabled = true;
 
             await Task.Run(() => aiqfome());
         }
@@ -4107,12 +4114,12 @@ namespace Example
 
             try
             {
-                while (btnAiqfomeIniciar.Enabled)
+                while (btnAiqfomeParar.Enabled)
                 {
                     var orderResult = service.Orders(txtAiqfomeToken.Text);
                     if (orderResult.Success)
                     {
-                        //_uberOrders.AddRange(orderResult.Result.orders.ToList());
+                        _aiqfomeOrders.AddRange(orderResult.Result.data.ToList());
                         WriteGridAiqfome();
                     }
                     else
@@ -4174,6 +4181,73 @@ namespace Example
             }
         }
 
+        private void gridAiqfome_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAiqfome.Rows.Count)
+            {
+                _aiqfomeSSelected = gridAiqfome.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnAiqfomeBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_aiqfomeSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
+            var result = service.Order(txtAiqfomeToken.Text, _aiqfomeSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAiqfomeIntegrado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_aiqfomeSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
+            var result = service.MarkAsRead(txtAiqfomeToken.Text, _aiqfomeSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAiqfomePedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_aiqfomeSSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new AiqfomeService(txtAiqfomeURL.Text, txtAiqfomeAgente.Text, txtAiqfomeAuthorization.Text, USER_AGENT);
+            var result = service.MarkAsReady(txtAiqfomeToken.Text, _aiqfomeSSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 

@@ -44,6 +44,8 @@
             this.txtAcconUsuario = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.tabPage19 = new System.Windows.Forms.TabPage();
+            this.btnAiqfomeFechar = new System.Windows.Forms.Button();
+            this.btnAiqfomeAbrir = new System.Windows.Forms.Button();
             this.txtAiqfomeURL = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.btnAiqfomeRefresh = new System.Windows.Forms.Button();
@@ -304,8 +306,8 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnAiqfomeFechar = new System.Windows.Forms.Button();
-            this.btnAiqfomeAbrir = new System.Windows.Forms.Button();
+            this.btnAiqfomeBuscarPedido = new System.Windows.Forms.Button();
+            this.btnAiqfomePedidoPronto = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -527,6 +529,8 @@
             // 
             // tabPage19
             // 
+            this.tabPage19.Controls.Add(this.btnAiqfomePedidoPronto);
+            this.tabPage19.Controls.Add(this.btnAiqfomeBuscarPedido);
             this.tabPage19.Controls.Add(this.btnAiqfomeFechar);
             this.tabPage19.Controls.Add(this.btnAiqfomeAbrir);
             this.tabPage19.Controls.Add(this.txtAiqfomeURL);
@@ -553,6 +557,28 @@
             this.tabPage19.TabIndex = 18;
             this.tabPage19.Text = "Aiqfome";
             this.tabPage19.UseVisualStyleBackColor = true;
+            // 
+            // btnAiqfomeFechar
+            // 
+            this.btnAiqfomeFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeFechar.Location = new System.Drawing.Point(899, 17);
+            this.btnAiqfomeFechar.Name = "btnAiqfomeFechar";
+            this.btnAiqfomeFechar.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeFechar.TabIndex = 57;
+            this.btnAiqfomeFechar.Text = "Fechar";
+            this.btnAiqfomeFechar.UseVisualStyleBackColor = true;
+            this.btnAiqfomeFechar.Click += new System.EventHandler(this.btnAiqfomeFechar_Click);
+            // 
+            // btnAiqfomeAbrir
+            // 
+            this.btnAiqfomeAbrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeAbrir.Location = new System.Drawing.Point(750, 17);
+            this.btnAiqfomeAbrir.Name = "btnAiqfomeAbrir";
+            this.btnAiqfomeAbrir.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeAbrir.TabIndex = 56;
+            this.btnAiqfomeAbrir.Text = "Abrir";
+            this.btnAiqfomeAbrir.UseVisualStyleBackColor = true;
+            this.btnAiqfomeAbrir.Click += new System.EventHandler(this.btnAiqfomeAbrir_Click);
             // 
             // txtAiqfomeURL
             // 
@@ -633,12 +659,13 @@
             // btnAiqfomeIntegrado
             // 
             this.btnAiqfomeIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAiqfomeIntegrado.Location = new System.Drawing.Point(8, 127);
+            this.btnAiqfomeIntegrado.Location = new System.Drawing.Point(173, 127);
             this.btnAiqfomeIntegrado.Name = "btnAiqfomeIntegrado";
             this.btnAiqfomeIntegrado.Size = new System.Drawing.Size(145, 33);
             this.btnAiqfomeIntegrado.TabIndex = 47;
             this.btnAiqfomeIntegrado.Text = "Integrado";
             this.btnAiqfomeIntegrado.UseVisualStyleBackColor = true;
+            this.btnAiqfomeIntegrado.Click += new System.EventHandler(this.btnAiqfomeIntegrado_Click);
             // 
             // gridAiqfome
             // 
@@ -647,6 +674,7 @@
             this.gridAiqfome.Name = "gridAiqfome";
             this.gridAiqfome.Size = new System.Drawing.Size(1213, 501);
             this.gridAiqfome.TabIndex = 46;
+            this.gridAiqfome.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAiqfome_CellClick);
             // 
             // btnAiqfomeParar
             // 
@@ -3362,27 +3390,27 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnAiqfomeFechar
+            // btnAiqfomeBuscarPedido
             // 
-            this.btnAiqfomeFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAiqfomeFechar.Location = new System.Drawing.Point(899, 17);
-            this.btnAiqfomeFechar.Name = "btnAiqfomeFechar";
-            this.btnAiqfomeFechar.Size = new System.Drawing.Size(145, 33);
-            this.btnAiqfomeFechar.TabIndex = 57;
-            this.btnAiqfomeFechar.Text = "Fechar";
-            this.btnAiqfomeFechar.UseVisualStyleBackColor = true;
-            this.btnAiqfomeFechar.Click += new System.EventHandler(this.btnAiqfomeFechar_Click);
+            this.btnAiqfomeBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomeBuscarPedido.Location = new System.Drawing.Point(12, 127);
+            this.btnAiqfomeBuscarPedido.Name = "btnAiqfomeBuscarPedido";
+            this.btnAiqfomeBuscarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomeBuscarPedido.TabIndex = 58;
+            this.btnAiqfomeBuscarPedido.Text = "Buscar Pedido";
+            this.btnAiqfomeBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnAiqfomeBuscarPedido.Click += new System.EventHandler(this.btnAiqfomeBuscarPedido_Click);
             // 
-            // btnAiqfomeAbrir
+            // btnAiqfomePedidoPronto
             // 
-            this.btnAiqfomeAbrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAiqfomeAbrir.Location = new System.Drawing.Point(750, 17);
-            this.btnAiqfomeAbrir.Name = "btnAiqfomeAbrir";
-            this.btnAiqfomeAbrir.Size = new System.Drawing.Size(145, 33);
-            this.btnAiqfomeAbrir.TabIndex = 56;
-            this.btnAiqfomeAbrir.Text = "Abrir";
-            this.btnAiqfomeAbrir.UseVisualStyleBackColor = true;
-            this.btnAiqfomeAbrir.Click += new System.EventHandler(this.btnAiqfomeAbrir_Click);
+            this.btnAiqfomePedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAiqfomePedidoPronto.Location = new System.Drawing.Point(324, 127);
+            this.btnAiqfomePedidoPronto.Name = "btnAiqfomePedidoPronto";
+            this.btnAiqfomePedidoPronto.Size = new System.Drawing.Size(145, 33);
+            this.btnAiqfomePedidoPronto.TabIndex = 59;
+            this.btnAiqfomePedidoPronto.Text = "Pedido Pronto";
+            this.btnAiqfomePedidoPronto.UseVisualStyleBackColor = true;
+            this.btnAiqfomePedidoPronto.Click += new System.EventHandler(this.btnAiqfomePedidoPronto_Click);
             // 
             // Form1
             // 
@@ -3739,6 +3767,8 @@
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Button btnAiqfomeFechar;
         private System.Windows.Forms.Button btnAiqfomeAbrir;
+        private System.Windows.Forms.Button btnAiqfomeBuscarPedido;
+        private System.Windows.Forms.Button btnAiqfomePedidoPronto;
     }
 }
 
