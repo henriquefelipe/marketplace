@@ -9,9 +9,7 @@ namespace UberEats.Domain
 {
     public class delivery
     {
-        public delivery_location location { get; set; }
-
-        [JsonProperty("@types")]
+        public delivery_location location { get; set; }        
         public string type { get; set; }
         public string notes { get; set; }
     }

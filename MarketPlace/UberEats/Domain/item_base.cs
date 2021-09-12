@@ -19,5 +19,6 @@ namespace UberEats.Domain
         public decimal quantity { get; set; }
         public item_price price { get; set; }
         public List<item_group> selected_modifier_groups { get; set; }
+        
     }
 }

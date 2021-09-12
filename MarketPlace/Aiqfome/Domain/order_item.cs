@@ -26,5 +26,7 @@ namespace Aiqfome.Domain
         public string observations { get; set; }
 
         public List<order_item_addicional> order_additional_items { get; set; }
+        public List<order_item_mandatory> order_mandatory_items { get; set; }
+        //public List<order_item_mandatory> order_item_subitems { get; set; }
     }
 }

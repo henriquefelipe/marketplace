@@ -10,6 +10,7 @@ namespace UberEats.Domain
     {        
         public string instance_id { get; set; }
         public string eater_id { get; set; }
+        public string special_instructions { get; set; }
     }
 
     public class item_price

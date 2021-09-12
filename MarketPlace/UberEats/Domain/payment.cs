@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UberEats.Domain
+﻿namespace UberEats.Domain
 {
     public class payment
     {
@@ -17,6 +11,7 @@ namespace UberEats.Domain
         public currency sub_total { get; set; }
         public currency tax { get; set; }
         public currency total_fee { get; set; }
+        public currency tip { get; set; }
         public currency total_fee_tax { get; set; }
         public currency delivery_fee { get; set; }
         public currency delivery_fee_tax { get; set; }
