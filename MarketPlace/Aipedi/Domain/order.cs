@@ -27,7 +27,8 @@ namespace Aipedi.Domain
         public decimal totalPrice { get; set; }
         public decimal deliveryFee { get; set; }
         public deliveryAddress deliveryAddress { get; set; }
-        public DateTime deliveryDateTime { get; set; }
+        public string deliveryDateTime { get; set; }
+        public string preparationStartDateTime { get; set; }
         public int preparationTimeInSeconds { get; set; }
         public bool scheduled { get; set; }
         public List<benefits> benefits { get; set; }

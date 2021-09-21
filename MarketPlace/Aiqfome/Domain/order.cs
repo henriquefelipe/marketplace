@@ -12,7 +12,7 @@ namespace Aiqfome.Domain
         {
             items = new List<order_item>();
         }
-
+        
         public int order_id { get; set; }
         public string created_at { get; set; }
         public bool is_ready { get; set; }
@@ -26,6 +26,7 @@ namespace Aiqfome.Domain
         public string order_delivery_time { get; set; }
 
 
+        public int id { get; set; }
         public string delivery_time { get; set; }
         public string coupon_hash { get; set; }
         public string order_observations { get; set; }
