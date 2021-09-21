@@ -2,6 +2,7 @@
 
 Integrações feitas até o momento.
 
+  - Aiqfome
   - Accon
   - Anota Ai
   - Delivery App
@@ -14,6 +15,26 @@ Integrações feitas até o momento.
   - PedZap
   - Super Menu
   - Uber Eats
+  
+ # Aiqfome
+
+Links importantes:
+  - https://aiqfome.com/
+  - https://app.swaggerhub.com/apis-docs/aiq6/api-aiqfome/1.0.0
+
+Para fazer a integração com o aiqfome é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	Aiqfome: {	
+		Token: "Coloca aqui o token",
+		Usuario: "Coloca aqui o email",
+		Senha: "Coloca aqui a senha",
+		MerchantId: "Coloca aqui o merchantId",		
+		Url: "Coloca aqui a url"
+	}
+}
+```
   
 # Accon
 
