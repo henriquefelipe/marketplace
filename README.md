@@ -2,8 +2,9 @@
 
 Integrações feitas até o momento.
 
-  - Aiqfome
   - Accon
+  - Aiqfome
+  - Aipedi  
   - Anota Ai
   - Delivery App
   - Delivery Direto
@@ -11,11 +12,30 @@ Integrações feitas até o momento.
   - GoomerGO
   - Ifood
   - Meu Cardápio Ai
+  - OnPedido
   - Logaroo
   - PedZap
   - Rappi
   - Super Menu
   - Uber Eats
+  
+ # Accon
+
+Links importantes:
+  - https://portal.accon.app/
+  - http://docs.accon.com.br
+
+Para fazer a integração com o accon é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	Accon: {		
+		Usuario: "Coloca aqui o email",
+		Senha: "Coloca aqui a senha",
+		Rede: "Coloca aqui o network"
+	}
+}
+```
   
  # Aiqfome
 
@@ -36,24 +56,9 @@ Para fazer a integração com o aiqfome é preciso de algumas informações, cri
 	}
 }
 ```
-  
-# Accon
+ 
+# Aipedi
 
-Links importantes:
-  - https://portal.accon.app/
-  - http://docs.accon.com.br
-
-Para fazer a integração com o accon é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
-
-```sh
-{
-	Accon: {		
-		Usuario: "Coloca aqui o email",
-		Senha: "Coloca aqui a senha",
-		Rede: "Coloca aqui o network"
-	}
-}
-```
   
 # Anota AI
 
