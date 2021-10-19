@@ -13,6 +13,7 @@ Integrações feitas até o momento.
   - Meu Cardápio Ai
   - Logaroo
   - PedZap
+  - Rappi
   - Super Menu
   - Uber Eats
   
@@ -216,6 +217,11 @@ Links importantes:
   - https://www.pedzap.com.br/
   - https://pedzap.docs.apiary.io/#introduction/autenticacao
 
+# Rappi
+
+Links importantes:
+  - https://www.rappi.com.br/
+  - https://dev-portal.rappi.com/
 
 
 # Super Menu

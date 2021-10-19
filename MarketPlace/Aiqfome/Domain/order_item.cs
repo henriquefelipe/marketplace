@@ -11,6 +11,7 @@ namespace Aiqfome.Domain
         public order_item()
         {
             order_additional_items = new List<order_item_addicional>();
+            order_mandatory_items = new List<order_item_mandatory>();
         }
 
         public string id { get; set; }

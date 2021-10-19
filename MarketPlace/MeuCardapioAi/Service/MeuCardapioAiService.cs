@@ -22,24 +22,29 @@ namespace MeuCardapioAi.Service
         public GenericResult<token> Token(string client_id, string client_secret)
         {
             var result = new GenericResult<token>();
-
-            var client = new RestClient(_urlBase + Constants.URL_TOKEN);
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("client_id", client_id);
-            request.AddParameter("client_secret", client_secret);
-            request.AddParameter("grant_type", "client_credentials");
-            IRestResponse responseToken = client.Execute(request);
-
-            if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = responseToken.StatusDescription;
-            }
+                var client = new RestClient(_urlBase + Constants.URL_TOKEN);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("client_id", client_id);
+                request.AddParameter("client_secret", client_secret);
+                request.AddParameter("grant_type", "client_credentials");
+                IRestResponse responseToken = client.Execute(request);
 
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = responseToken.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
             return result;
         }
 
