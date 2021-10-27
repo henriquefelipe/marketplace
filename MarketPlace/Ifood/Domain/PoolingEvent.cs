@@ -9,9 +9,16 @@ namespace Ifood.Domain
     public class poolingEvent
     {
         public string code { get; set; }
+
         public string correlationId { get; set; }
         public DateTime createdAt { get; set; }
         public string id { get; set; }
+
+        #region "ifood 2"
+        public string fullCode { get; set; }
+
+        public string orderId { get; set; }
+        #endregion
     }
 
     public static class PoolingEventStatusCode

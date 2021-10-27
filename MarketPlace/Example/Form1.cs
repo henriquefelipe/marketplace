@@ -42,6 +42,7 @@ namespace Example
         private string _deliveryDiretoReferenceSelected { get; set; }
         private string _ifoodToken { get; set; }
         private List<Ifood.Domain.order> _ifoodOrders { get; set; }
+        private List<Ifood.Domain.order2> _ifoodOrders2 { get; set; }
         private string _ifoodReferenceSelected { get; set; }
         private string _gloriaToken { get; set; }
         private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
@@ -244,10 +245,18 @@ namespace Example
             gridDeliveryDireto.DataSource = _deliveryDiretoOrders.ToList();
             gridDeliveryDireto.Refresh();
 
-            _ifoodOrders = new List<Ifood.Domain.order>();
-            gridIfood.DataSource = _ifoodOrders.ToList();
-            gridIfood.Refresh();
-
+            if (chkIfood2.Checked)
+            {
+                _ifoodOrders2 = new List<Ifood.Domain.order2>();
+                gridIfood.DataSource = _ifoodOrders2.ToList();
+                gridIfood.Refresh();
+            }
+            else
+            {
+                _ifoodOrders = new List<Ifood.Domain.order>();
+                gridIfood.DataSource = _ifoodOrders.ToList();
+                gridIfood.Refresh();
+            }
             _gloriaOrders = new List<GloriaFood.Domain.order>();
             gridGloriaGood.DataSource = _gloriaOrders.ToList();
             gridGloriaGood.Refresh();
@@ -344,8 +353,10 @@ namespace Example
 
             btnIfoodIniciar.Enabled = false;
             btnIfoodParar.Enabled = true;
-
-            await Task.Run(() => ifood());
+            if (chkIfood2.Checked)
+                await Task.Run(() => ifood2());
+            else
+                await Task.Run(() => ifood());
         }
 
         private void ifood()
@@ -441,6 +452,121 @@ namespace Example
             }
         }
 
+        private void ifood2()
+        {
+            var ifoodService = new Ifood.Service.IfoodService();
+
+            try
+            {
+                var eventTentatives = 0;
+
+                while (btnIfoodParar.Enabled)
+                {
+                    if (eventTentatives == 0)
+                    {
+                        var oathTokenResult = ifoodService.OathToken_2(txtIfoodClient_ID.Text, txtIfoodClient_Secret.Text);
+                        if (oathTokenResult.Success)
+                        {
+                            _ifoodToken = oathTokenResult.Result.accessToken;
+                        }
+                        else
+                        {
+                            MessageBox.Show(oathTokenResult.Message);
+                            return;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(_ifoodToken))
+                    {
+                        var eventPollingResult = ifoodService.EventPolling2(_ifoodToken);
+
+                        if (eventPollingResult.Success)
+                        {
+                            var eventsIds = new List<Ifood.Domain.eventAcknowledgment>();
+
+                            foreach (var poolingEvent in eventPollingResult.Result)
+                            {
+                                if (poolingEvent.code == Ifood.Domain.PoolingEventStatusCode.PLACED)
+                                {
+                                    var orderResult = ifoodService.Orders(_ifoodToken, poolingEvent.correlationId);
+                                    if (orderResult.Success)
+                                    {
+                                        var order = _ifoodOrders.FirstOrDefault(f => f.id == orderResult.Result.id);
+                                        if (order == null)
+                                        {
+                                            _ifoodOrders.Add(orderResult.Result);
+                                        }
+
+                                        WriteGridIfood();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(orderResult.Message);
+                                        return;
+                                    }
+                                }
+                                else if (poolingEvent.fullCode == Ifood.Domain.PoolingEventStatusCode.PLACED)
+                                {
+                                    var orderResult = ifoodService.Orders_2(_ifoodToken, poolingEvent.orderId);
+                                    if (orderResult.Success)
+                                    {
+                                        var order = _ifoodOrders2.FirstOrDefault(f => f.id == orderResult.Result.id);
+                                        if (order == null)
+                                        {
+                                            _ifoodOrders2.Add(orderResult.Result);
+                                        }
+
+                                        WriteGridIfood();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(orderResult.Message);
+                                        return;
+                                    }
+                                }
+
+                                eventsIds.Add(new Ifood.Domain.eventAcknowledgment { id = poolingEvent.id });
+                            }
+                            if (eventsIds.Any())
+                            {
+                                var eventAcknowledgmentResult = ifoodService.EventAcknowledgment_2(_ifoodToken, eventsIds);
+                                if (!eventAcknowledgmentResult.Success)
+                                {
+                                    MessageBox.Show(eventAcknowledgmentResult.Message);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(eventPollingResult.Message);
+                            return;
+                        }
+                    }
+
+                    // O ifood solicita que a requisição do event pooling seja feito a cada 30 segundos
+                    Thread.Sleep(3000);
+
+                    eventTentatives++;
+
+                    //A cada uma hora eu faço ser chamado de novo o oath para pegar o novo token
+                    if (eventTentatives >= 119)
+                    {
+                        eventTentatives = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+
         private void btnIfoodParar_Click(object sender, EventArgs e)
         {
             ifoodParar();
@@ -499,7 +625,7 @@ namespace Example
             }
 
             var ifoodService = new Ifood.Service.IfoodService();
-            var result = ifoodService.OrdersConfirmation(_ifoodToken, _ifoodReferenceSelected);
+            var result =chkIfood2.Checked ? ifoodService.OrdersConfirmation2(_ifoodToken, _ifoodReferenceSelected) :  ifoodService.OrdersConfirmation(_ifoodToken, _ifoodReferenceSelected);
             if (result.Success)
             {
                 MessageBox.Show("Confirmado com sucesso");
@@ -652,8 +778,17 @@ namespace Example
             }
             else
             {
-                gridIfood.DataSource = _ifoodOrders.ToList();
-                gridIfood.Refresh();
+                if (chkIfood2.Checked)
+                {
+                    gridIfood.DataSource = _ifoodOrders2.ToList();
+                    gridIfood.Refresh();
+                }
+                else
+                {
+                    gridIfood.DataSource = _ifoodOrders.ToList();
+                    gridIfood.Refresh();
+
+                }
             }
         }
 
@@ -3348,7 +3483,7 @@ namespace Example
             if (result.Success)
             {
                 var lista = new List<string>();
-                foreach(var item in result.Result.events)
+                foreach (var item in result.Result.events)
                 {
                     lista.Add(item.event_id);
                 }
@@ -4157,7 +4292,7 @@ namespace Example
             }
             else
             {
-                MessageBox.Show(result.Message);                
+                MessageBox.Show(result.Message);
             }
         }
 

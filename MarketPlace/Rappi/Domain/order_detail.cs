@@ -11,7 +11,7 @@ namespace Rappi.Domain
         public string created_at { get; set; }
         public string delivery_method { get; set; }
         public string payment_method { get; set; }
-        public string billing_information { get; set; }
+        public billing_information billing_information { get; set; }
         public delivery_information delivery_Information { get; set; }
         public totals totals { get; set; }
         public List<item> items { get; set; }

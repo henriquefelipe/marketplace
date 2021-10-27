@@ -35,8 +35,8 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,9 +58,11 @@
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\merchant.cs" />
     <Compile Include="Domain\order.cs" />
+    <Compile Include="Domain\Order2.cs" />
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\poolingEvent.cs" />
     <Compile Include="Domain\subItem.cs" />
+    <Compile Include="Domain\token2.cs" />
     <Compile Include="Domain\token.cs" />
     <Compile Include="Enum\CancelamentCode.cs" />
     <Compile Include="Enum\BenefitsTarget.cs" />
