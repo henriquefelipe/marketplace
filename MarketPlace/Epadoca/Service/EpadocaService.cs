@@ -11,7 +11,6 @@ namespace Epadoca.Service
     {
         private string _urlBase;
 
-
         public EpadocaService(string urlBase)
         {
             _urlBase = urlBase;
@@ -41,11 +40,11 @@ namespace Epadoca.Service
             return result;
         }
 
-        public GenericResult<List<order>> Orders(string token)
+        public GenericResult<List<order>> Orders(string token, string store)
         {
             var result = new GenericResult<List<order>>();
 
-            var url = string.Format("{0}{1}", _urlBase, Constants.URL_MANAGER_PADARIA_GET);
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MANAGER_PEDIDO_GET, store);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));

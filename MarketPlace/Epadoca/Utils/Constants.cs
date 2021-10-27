@@ -10,6 +10,7 @@ namespace Epadoca.Utils
     {       
         public const string URL_TOKEN = "token";
         public const string URL_MANAGER_PADARIA_GET = "manager/padaria/Get";
+        public const string URL_MANAGER_PEDIDO_GET = "manager/pedido/Get";
         public const string URL_MANAGER_PEDIDO_COMPLETO = "manager/pedido/completo/";
         public const string URL_MANAGER_PEDIDO_DETALHE = "manager/pedido/Detalhe/";
         public const string URL_MANAGER_PEDIDO_PRODUTOS = "manager/pedido/produtos/";

@@ -5,6 +5,7 @@ using AnotaAi.Service;
 using Cinddi.Service;
 using DeliveryApp.Service;
 using DeliveryDireto.Service;
+using Epadoca.Service;
 using GloriaFood.Service;
 using Goomer.Service;
 using IDelivery.Service;
@@ -84,6 +85,9 @@ namespace Example
         private List<Aiqfome.Domain.orders_result_order> _aiqfomeOrders { get; set; }
         private string _aiqfomeSSelected { get; set; }
 
+        private string _epadocaSelected { get; set; }
+        private List<Epadoca.Domain.order> _epadocaOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -148,6 +152,14 @@ namespace Example
                                 txtDeliveryDiretoMerchandId.Text = marketPlace.DeliveryDireto.MerchantId;
                                 txtDeliveryDiretoUsuario.Text = marketPlace.DeliveryDireto.Usuario;
                                 txtDeliveryDiretoSenha.Text = marketPlace.DeliveryDireto.Senha;
+                            }
+
+                            if (marketPlace.Epadoca != null)
+                            {
+                                txtEpadocaUsuario.Text = marketPlace.Epadoca.Usuario;
+                                txtEpadocaSenha.Text = marketPlace.Epadoca.Senha;
+                                txtEpadocaMerchantId.Text = marketPlace.Epadoca.MerchantId;
+                                txtEpadocaUrl.Text = marketPlace.Epadoca.Url;
                             }
 
                             if (marketPlace.Ifood != null)
@@ -244,6 +256,10 @@ namespace Example
             _deliveryDiretoOrders = new List<DeliveryDireto.Domain.order>();
             gridDeliveryDireto.DataSource = _deliveryDiretoOrders.ToList();
             gridDeliveryDireto.Refresh();
+
+            _epadocaOrders = new List<Epadoca.Domain.order>();
+            gridEpadoca.DataSource = _epadocaOrders.ToList();
+            gridEpadoca.Refresh();
 
             if (chkIfood2.Checked)
             {
@@ -4384,8 +4400,153 @@ namespace Example
             }
         }
 
+
         #endregion
 
+        #region Epadoca
 
+        private void btnEpadocaLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEpadocaUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtEpadocaSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.Token(txtEpadocaUsuario.Text, txtEpadocaSenha.Text);
+            if (result.Success)
+            {
+                txtEpadocaToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btnEpadocaIniciar_Click(object sender, EventArgs e)
+        {
+            epadocaIniciar();
+        }
+
+        private void btnEpadocaParar_Click(object sender, EventArgs e)
+        {
+            epadocaParar();
+        }
+
+        private void gridEpadoca_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridEpadoca.Rows.Count)
+            {
+                _epadocaSelected = gridEpadoca.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        void epadocaParar()
+        {
+            btnEpadocaIniciar.Enabled = true;
+            btnEpadocaParar.Enabled = false;
+        }
+
+        private delegate void WritelstGridWriteGridEpadocaDelegate();
+        private void WriteGridEpadoca()
+        {
+            if (gridEpadoca.InvokeRequired)
+            {
+                var d = new WritelstGridWriteGridEpadocaDelegate(WriteGridEpadoca);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridEpadoca.DataSource = _epadocaOrders.ToList();
+                gridEpadoca.Refresh();
+            }
+        }
+
+        public async void epadocaIniciar()
+        {
+            if (string.IsNullOrEmpty(txtEpadocaToken.Text))
+            {
+                MessageBox.Show("Faça o login");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtEpadocaMerchantId.Text))
+            {
+                MessageBox.Show("Digite o merchantId");
+                return;
+            }
+
+            btnEpadocaIniciar.Enabled = false;
+            btnEpadocaParar.Enabled = true;
+
+            await Task.Run(() => epadoca());
+        }
+
+        private void epadoca()
+        {
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+
+            try
+            {
+                while (btnEpadocaParar.Enabled)
+                {
+                    var orderResult = service.Orders(txtEpadocaToken.Text, txtEpadocaMerchantId.Text);
+                    if (orderResult.Success)
+                    {
+                        if (orderResult.Result != null)
+                        {
+                            _epadocaOrders.AddRange(orderResult.Result);
+                            WriteGridEpadoca();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        #endregion
+
+        private void btnEpadocaPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_epadocaSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.Order(txtEpadocaToken.Text, _epadocaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
     }
 }
