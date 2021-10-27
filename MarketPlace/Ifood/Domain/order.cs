@@ -31,5 +31,6 @@ namespace Ifood.Domain
         public int preparationTimeInSeconds { get; set; }
         public bool scheduled { get; set; }
         public List<benefits> benefits { get; set; }
+        public additionalFees additionalFees { get; set; }
     }
 }

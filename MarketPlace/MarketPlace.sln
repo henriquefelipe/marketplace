@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats", "UberEats\UberEa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiqfome", "Aiqfome\Aiqfome.csproj", "{61D2230A-5888-49AE-89D1-9C65A625D178}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epadoca", "Epadoca\Epadoca.csproj", "{815AC321-6BD3-43C0-BE31-0F5564929FFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{61D2230A-5888-49AE-89D1-9C65A625D178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61D2230A-5888-49AE-89D1-9C65A625D178}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61D2230A-5888-49AE-89D1-9C65A625D178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815AC321-6BD3-43C0-BE31-0F5564929FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815AC321-6BD3-43C0-BE31-0F5564929FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815AC321-6BD3-43C0-BE31-0F5564929FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815AC321-6BD3-43C0-BE31-0F5564929FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
