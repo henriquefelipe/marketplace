@@ -8,6 +8,11 @@ namespace Epadoca.Domain
 {
     public class item
     {
+        public item()
+        {
+            complementoL = new List<item>();
+        }
+
         public int codigo { get; set; }
         public string guid { get; set; }
         public string nome { get; set; }
@@ -19,7 +24,7 @@ namespace Epadoca.Domain
         public string sku { get; set; }
         public string observacaoProduto { get; set; }
         public bool isApartir { get; set; }
-        //public string complementoL { get; set; }
+        public List<item> complementoL { get; set; }
         public int tipoValoracao { get; set; }
         public decimal quantidadeValoracaoUnitario { get; set; }
         public string quantidadeValoracao { get; set; }

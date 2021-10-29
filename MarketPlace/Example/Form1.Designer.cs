@@ -133,6 +133,26 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnDeliveryDiretoParar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoIniciar = new System.Windows.Forms.Button();
+            this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.btnEpadocaDisponivelParaRetirada = new System.Windows.Forms.Button();
+            this.btnEpadocaSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnEpadocaEntregue = new System.Windows.Forms.Button();
+            this.btnEpadocaAceitar = new System.Windows.Forms.Button();
+            this.txtEpadocaMerchantId = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.txtEpadocaUrl = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtEpadocaToken = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.btnEpadocaLogin = new System.Windows.Forms.Button();
+            this.btnEpadocaPedido = new System.Windows.Forms.Button();
+            this.gridEpadoca = new System.Windows.Forms.DataGridView();
+            this.btnEpadocaParar = new System.Windows.Forms.Button();
+            this.btnEpadocaIniciar = new System.Windows.Forms.Button();
+            this.txtEpadocaSenha = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.txtEpadocaUsuario = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chkIfood2 = new System.Windows.Forms.CheckBox();
             this.btnIfoodCancelamentoRejeita = new System.Windows.Forms.Button();
@@ -309,22 +329,6 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.tabPage20 = new System.Windows.Forms.TabPage();
-            this.txtEpadocaToken = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.btnEpadocaLogin = new System.Windows.Forms.Button();
-            this.btnEpadocaPedido = new System.Windows.Forms.Button();
-            this.gridEpadoca = new System.Windows.Forms.DataGridView();
-            this.btnEpadocaParar = new System.Windows.Forms.Button();
-            this.btnEpadocaIniciar = new System.Windows.Forms.Button();
-            this.txtEpadocaSenha = new System.Windows.Forms.TextBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.txtEpadocaUsuario = new System.Windows.Forms.TextBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.txtEpadocaUrl = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.txtEpadocaMerchantId = new System.Windows.Forms.TextBox();
-            this.label65 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -341,6 +345,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).BeginInit();
+            this.tabPage20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -365,8 +371,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPage18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
-            this.tabPage20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1529,6 +1533,224 @@
             this.btnDeliveryDiretoIniciar.UseVisualStyleBackColor = true;
             this.btnDeliveryDiretoIniciar.Click += new System.EventHandler(this.btnDeliveryDiretoIniciar_Click);
             // 
+            // tabPage20
+            // 
+            this.tabPage20.Controls.Add(this.btnEpadocaDisponivelParaRetirada);
+            this.tabPage20.Controls.Add(this.btnEpadocaSaiuParaEntrega);
+            this.tabPage20.Controls.Add(this.btnEpadocaEntregue);
+            this.tabPage20.Controls.Add(this.btnEpadocaAceitar);
+            this.tabPage20.Controls.Add(this.txtEpadocaMerchantId);
+            this.tabPage20.Controls.Add(this.label65);
+            this.tabPage20.Controls.Add(this.txtEpadocaUrl);
+            this.tabPage20.Controls.Add(this.label64);
+            this.tabPage20.Controls.Add(this.txtEpadocaToken);
+            this.tabPage20.Controls.Add(this.label61);
+            this.tabPage20.Controls.Add(this.btnEpadocaLogin);
+            this.tabPage20.Controls.Add(this.btnEpadocaPedido);
+            this.tabPage20.Controls.Add(this.gridEpadoca);
+            this.tabPage20.Controls.Add(this.btnEpadocaParar);
+            this.tabPage20.Controls.Add(this.btnEpadocaIniciar);
+            this.tabPage20.Controls.Add(this.txtEpadocaSenha);
+            this.tabPage20.Controls.Add(this.label62);
+            this.tabPage20.Controls.Add(this.txtEpadocaUsuario);
+            this.tabPage20.Controls.Add(this.label63);
+            this.tabPage20.Location = new System.Drawing.Point(4, 22);
+            this.tabPage20.Name = "tabPage20";
+            this.tabPage20.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage20.TabIndex = 19;
+            this.tabPage20.Text = "Epadoca";
+            this.tabPage20.UseVisualStyleBackColor = true;
+            // 
+            // btnEpadocaDisponivelParaRetirada
+            // 
+            this.btnEpadocaDisponivelParaRetirada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaDisponivelParaRetirada.Location = new System.Drawing.Point(663, 127);
+            this.btnEpadocaDisponivelParaRetirada.Name = "btnEpadocaDisponivelParaRetirada";
+            this.btnEpadocaDisponivelParaRetirada.Size = new System.Drawing.Size(210, 33);
+            this.btnEpadocaDisponivelParaRetirada.TabIndex = 56;
+            this.btnEpadocaDisponivelParaRetirada.Text = "Disponivel Para Retirada";
+            this.btnEpadocaDisponivelParaRetirada.UseVisualStyleBackColor = true;
+            this.btnEpadocaDisponivelParaRetirada.Click += new System.EventHandler(this.btnEpadocaDisponivelParaRetirada_Click);
+            // 
+            // btnEpadocaSaiuParaEntrega
+            // 
+            this.btnEpadocaSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaSaiuParaEntrega.Location = new System.Drawing.Point(310, 127);
+            this.btnEpadocaSaiuParaEntrega.Name = "btnEpadocaSaiuParaEntrega";
+            this.btnEpadocaSaiuParaEntrega.Size = new System.Drawing.Size(196, 33);
+            this.btnEpadocaSaiuParaEntrega.TabIndex = 55;
+            this.btnEpadocaSaiuParaEntrega.Text = "Saiu Para Entrega";
+            this.btnEpadocaSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnEpadocaSaiuParaEntrega.Click += new System.EventHandler(this.btnEpadocaSaiuParaEntrega_Click);
+            // 
+            // btnEpadocaEntregue
+            // 
+            this.btnEpadocaEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaEntregue.Location = new System.Drawing.Point(512, 127);
+            this.btnEpadocaEntregue.Name = "btnEpadocaEntregue";
+            this.btnEpadocaEntregue.Size = new System.Drawing.Size(145, 33);
+            this.btnEpadocaEntregue.TabIndex = 54;
+            this.btnEpadocaEntregue.Text = "Entregue";
+            this.btnEpadocaEntregue.UseVisualStyleBackColor = true;
+            this.btnEpadocaEntregue.Click += new System.EventHandler(this.btnEpadocaEntregue_Click);
+            // 
+            // btnEpadocaAceitar
+            // 
+            this.btnEpadocaAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaAceitar.Location = new System.Drawing.Point(159, 127);
+            this.btnEpadocaAceitar.Name = "btnEpadocaAceitar";
+            this.btnEpadocaAceitar.Size = new System.Drawing.Size(145, 33);
+            this.btnEpadocaAceitar.TabIndex = 53;
+            this.btnEpadocaAceitar.Text = "Aceitar";
+            this.btnEpadocaAceitar.UseVisualStyleBackColor = true;
+            this.btnEpadocaAceitar.Click += new System.EventHandler(this.btnEpadocaAceitar_Click);
+            // 
+            // txtEpadocaMerchantId
+            // 
+            this.txtEpadocaMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpadocaMerchantId.Location = new System.Drawing.Point(456, 46);
+            this.txtEpadocaMerchantId.Name = "txtEpadocaMerchantId";
+            this.txtEpadocaMerchantId.Size = new System.Drawing.Size(372, 26);
+            this.txtEpadocaMerchantId.TabIndex = 52;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Location = new System.Drawing.Point(336, 46);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(90, 20);
+            this.label65.TabIndex = 51;
+            this.label65.Text = "MerchantId";
+            // 
+            // txtEpadocaUrl
+            // 
+            this.txtEpadocaUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpadocaUrl.Location = new System.Drawing.Point(456, 14);
+            this.txtEpadocaUrl.Name = "txtEpadocaUrl";
+            this.txtEpadocaUrl.Size = new System.Drawing.Size(372, 26);
+            this.txtEpadocaUrl.TabIndex = 50;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(336, 14);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(42, 20);
+            this.label64.TabIndex = 49;
+            this.label64.Text = "URL";
+            // 
+            // txtEpadocaToken
+            // 
+            this.txtEpadocaToken.Enabled = false;
+            this.txtEpadocaToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpadocaToken.Location = new System.Drawing.Point(456, 78);
+            this.txtEpadocaToken.Name = "txtEpadocaToken";
+            this.txtEpadocaToken.Size = new System.Drawing.Size(372, 26);
+            this.txtEpadocaToken.TabIndex = 48;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(336, 78);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(53, 20);
+            this.label61.TabIndex = 47;
+            this.label61.Text = "Token";
+            // 
+            // btnEpadocaLogin
+            // 
+            this.btnEpadocaLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaLogin.Location = new System.Drawing.Point(862, 75);
+            this.btnEpadocaLogin.Name = "btnEpadocaLogin";
+            this.btnEpadocaLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnEpadocaLogin.TabIndex = 46;
+            this.btnEpadocaLogin.Text = "Login";
+            this.btnEpadocaLogin.UseVisualStyleBackColor = true;
+            this.btnEpadocaLogin.Click += new System.EventHandler(this.btnEpadocaLogin_Click);
+            // 
+            // btnEpadocaPedido
+            // 
+            this.btnEpadocaPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaPedido.Location = new System.Drawing.Point(8, 127);
+            this.btnEpadocaPedido.Name = "btnEpadocaPedido";
+            this.btnEpadocaPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnEpadocaPedido.TabIndex = 45;
+            this.btnEpadocaPedido.Text = "Pedido";
+            this.btnEpadocaPedido.UseVisualStyleBackColor = true;
+            this.btnEpadocaPedido.Click += new System.EventHandler(this.btnEpadocaPedido_Click);
+            // 
+            // gridEpadoca
+            // 
+            this.gridEpadoca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridEpadoca.Location = new System.Drawing.Point(8, 166);
+            this.gridEpadoca.Name = "gridEpadoca";
+            this.gridEpadoca.RowHeadersWidth = 51;
+            this.gridEpadoca.Size = new System.Drawing.Size(1213, 501);
+            this.gridEpadoca.TabIndex = 44;
+            this.gridEpadoca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEpadoca_CellClick);
+            // 
+            // btnEpadocaParar
+            // 
+            this.btnEpadocaParar.Enabled = false;
+            this.btnEpadocaParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnEpadocaParar.Name = "btnEpadocaParar";
+            this.btnEpadocaParar.Size = new System.Drawing.Size(171, 39);
+            this.btnEpadocaParar.TabIndex = 43;
+            this.btnEpadocaParar.Text = "Parar";
+            this.btnEpadocaParar.UseVisualStyleBackColor = true;
+            this.btnEpadocaParar.Click += new System.EventHandler(this.btnEpadocaParar_Click);
+            // 
+            // btnEpadocaIniciar
+            // 
+            this.btnEpadocaIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnEpadocaIniciar.Name = "btnEpadocaIniciar";
+            this.btnEpadocaIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnEpadocaIniciar.TabIndex = 42;
+            this.btnEpadocaIniciar.Text = "Iniciar";
+            this.btnEpadocaIniciar.UseVisualStyleBackColor = true;
+            this.btnEpadocaIniciar.Click += new System.EventHandler(this.btnEpadocaIniciar_Click);
+            // 
+            // txtEpadocaSenha
+            // 
+            this.txtEpadocaSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpadocaSenha.Location = new System.Drawing.Point(101, 53);
+            this.txtEpadocaSenha.Name = "txtEpadocaSenha";
+            this.txtEpadocaSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtEpadocaSenha.TabIndex = 41;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(8, 56);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(56, 20);
+            this.label62.TabIndex = 40;
+            this.label62.Text = "Senha";
+            // 
+            // txtEpadocaUsuario
+            // 
+            this.txtEpadocaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpadocaUsuario.Location = new System.Drawing.Point(101, 17);
+            this.txtEpadocaUsuario.Name = "txtEpadocaUsuario";
+            this.txtEpadocaUsuario.Size = new System.Drawing.Size(187, 26);
+            this.txtEpadocaUsuario.TabIndex = 39;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(8, 20);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(64, 20);
+            this.label63.TabIndex = 38;
+            this.label63.Text = "Usuario";
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.chkIfood2);
@@ -1546,7 +1768,7 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1229, 685);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ifood";
@@ -1558,7 +1780,7 @@
             this.chkIfood2.Checked = true;
             this.chkIfood2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIfood2.Location = new System.Drawing.Point(8, 105);
-            this.chkIfood2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkIfood2.Margin = new System.Windows.Forms.Padding(2);
             this.chkIfood2.Name = "chkIfood2";
             this.chkIfood2.Size = new System.Drawing.Size(71, 17);
             this.chkIfood2.TabIndex = 12;
@@ -1804,7 +2026,7 @@
             this.tabPage2.Controls.Add(this.btnGloriaFoodIniciar);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1229, 685);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gloria Food";
@@ -3464,176 +3686,6 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // tabPage20
-            // 
-            this.tabPage20.Controls.Add(this.txtEpadocaMerchantId);
-            this.tabPage20.Controls.Add(this.label65);
-            this.tabPage20.Controls.Add(this.txtEpadocaUrl);
-            this.tabPage20.Controls.Add(this.label64);
-            this.tabPage20.Controls.Add(this.txtEpadocaToken);
-            this.tabPage20.Controls.Add(this.label61);
-            this.tabPage20.Controls.Add(this.btnEpadocaLogin);
-            this.tabPage20.Controls.Add(this.btnEpadocaPedido);
-            this.tabPage20.Controls.Add(this.gridEpadoca);
-            this.tabPage20.Controls.Add(this.btnEpadocaParar);
-            this.tabPage20.Controls.Add(this.btnEpadocaIniciar);
-            this.tabPage20.Controls.Add(this.txtEpadocaSenha);
-            this.tabPage20.Controls.Add(this.label62);
-            this.tabPage20.Controls.Add(this.txtEpadocaUsuario);
-            this.tabPage20.Controls.Add(this.label63);
-            this.tabPage20.Location = new System.Drawing.Point(4, 22);
-            this.tabPage20.Name = "tabPage20";
-            this.tabPage20.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage20.TabIndex = 19;
-            this.tabPage20.Text = "Epadoca";
-            this.tabPage20.UseVisualStyleBackColor = true;
-            // 
-            // txtEpadocaToken
-            // 
-            this.txtEpadocaToken.Enabled = false;
-            this.txtEpadocaToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpadocaToken.Location = new System.Drawing.Point(456, 78);
-            this.txtEpadocaToken.Name = "txtEpadocaToken";
-            this.txtEpadocaToken.Size = new System.Drawing.Size(372, 26);
-            this.txtEpadocaToken.TabIndex = 48;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(336, 78);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(53, 20);
-            this.label61.TabIndex = 47;
-            this.label61.Text = "Token";
-            // 
-            // btnEpadocaLogin
-            // 
-            this.btnEpadocaLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEpadocaLogin.Location = new System.Drawing.Point(862, 75);
-            this.btnEpadocaLogin.Name = "btnEpadocaLogin";
-            this.btnEpadocaLogin.Size = new System.Drawing.Size(145, 33);
-            this.btnEpadocaLogin.TabIndex = 46;
-            this.btnEpadocaLogin.Text = "Login";
-            this.btnEpadocaLogin.UseVisualStyleBackColor = true;
-            this.btnEpadocaLogin.Click += new System.EventHandler(this.btnEpadocaLogin_Click);
-            // 
-            // btnEpadocaPedido
-            // 
-            this.btnEpadocaPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEpadocaPedido.Location = new System.Drawing.Point(8, 127);
-            this.btnEpadocaPedido.Name = "btnEpadocaPedido";
-            this.btnEpadocaPedido.Size = new System.Drawing.Size(145, 33);
-            this.btnEpadocaPedido.TabIndex = 45;
-            this.btnEpadocaPedido.Text = "Pedido";
-            this.btnEpadocaPedido.UseVisualStyleBackColor = true;
-            this.btnEpadocaPedido.Click += new System.EventHandler(this.btnEpadocaPedido_Click);
-            // 
-            // gridEpadoca
-            // 
-            this.gridEpadoca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridEpadoca.Location = new System.Drawing.Point(8, 166);
-            this.gridEpadoca.Name = "gridEpadoca";
-            this.gridEpadoca.RowHeadersWidth = 51;
-            this.gridEpadoca.Size = new System.Drawing.Size(1213, 501);
-            this.gridEpadoca.TabIndex = 44;
-            this.gridEpadoca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEpadoca_CellClick);
-            // 
-            // btnEpadocaParar
-            // 
-            this.btnEpadocaParar.Enabled = false;
-            this.btnEpadocaParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEpadocaParar.Location = new System.Drawing.Point(1050, 69);
-            this.btnEpadocaParar.Name = "btnEpadocaParar";
-            this.btnEpadocaParar.Size = new System.Drawing.Size(171, 39);
-            this.btnEpadocaParar.TabIndex = 43;
-            this.btnEpadocaParar.Text = "Parar";
-            this.btnEpadocaParar.UseVisualStyleBackColor = true;
-            this.btnEpadocaParar.Click += new System.EventHandler(this.btnEpadocaParar_Click);
-            // 
-            // btnEpadocaIniciar
-            // 
-            this.btnEpadocaIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEpadocaIniciar.Location = new System.Drawing.Point(1050, 18);
-            this.btnEpadocaIniciar.Name = "btnEpadocaIniciar";
-            this.btnEpadocaIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnEpadocaIniciar.TabIndex = 42;
-            this.btnEpadocaIniciar.Text = "Iniciar";
-            this.btnEpadocaIniciar.UseVisualStyleBackColor = true;
-            this.btnEpadocaIniciar.Click += new System.EventHandler(this.btnEpadocaIniciar_Click);
-            // 
-            // txtEpadocaSenha
-            // 
-            this.txtEpadocaSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpadocaSenha.Location = new System.Drawing.Point(101, 53);
-            this.txtEpadocaSenha.Name = "txtEpadocaSenha";
-            this.txtEpadocaSenha.Size = new System.Drawing.Size(187, 26);
-            this.txtEpadocaSenha.TabIndex = 41;
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(8, 56);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(56, 20);
-            this.label62.TabIndex = 40;
-            this.label62.Text = "Senha";
-            // 
-            // txtEpadocaUsuario
-            // 
-            this.txtEpadocaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpadocaUsuario.Location = new System.Drawing.Point(101, 17);
-            this.txtEpadocaUsuario.Name = "txtEpadocaUsuario";
-            this.txtEpadocaUsuario.Size = new System.Drawing.Size(187, 26);
-            this.txtEpadocaUsuario.TabIndex = 39;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(8, 20);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(64, 20);
-            this.label63.TabIndex = 38;
-            this.label63.Text = "Usuario";
-            // 
-            // txtEpadocaUrl
-            // 
-            this.txtEpadocaUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpadocaUrl.Location = new System.Drawing.Point(456, 14);
-            this.txtEpadocaUrl.Name = "txtEpadocaUrl";
-            this.txtEpadocaUrl.Size = new System.Drawing.Size(372, 26);
-            this.txtEpadocaUrl.TabIndex = 50;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(336, 14);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(42, 20);
-            this.label64.TabIndex = 49;
-            this.label64.Text = "URL";
-            // 
-            // txtEpadocaMerchantId
-            // 
-            this.txtEpadocaMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpadocaMerchantId.Location = new System.Drawing.Point(456, 46);
-            this.txtEpadocaMerchantId.Name = "txtEpadocaMerchantId";
-            this.txtEpadocaMerchantId.Size = new System.Drawing.Size(372, 26);
-            this.txtEpadocaMerchantId.TabIndex = 52;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(336, 46);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(90, 20);
-            this.label65.TabIndex = 51;
-            this.label65.Text = "MerchantId";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3669,6 +3721,9 @@
             this.tabPage12.ResumeLayout(false);
             this.tabPage12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).EndInit();
+            this.tabPage20.ResumeLayout(false);
+            this.tabPage20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).EndInit();
@@ -3706,9 +3761,6 @@
             this.tabPage18.ResumeLayout(false);
             this.tabPage18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
-            this.tabPage20.ResumeLayout(false);
-            this.tabPage20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4012,6 +4064,10 @@
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.TextBox txtEpadocaMerchantId;
         private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Button btnEpadocaSaiuParaEntrega;
+        private System.Windows.Forms.Button btnEpadocaEntregue;
+        private System.Windows.Forms.Button btnEpadocaAceitar;
+        private System.Windows.Forms.Button btnEpadocaDisponivelParaRetirada;
     }
 }
 

@@ -9,13 +9,15 @@ namespace Epadoca.Service
 {
     public class EpadocaService
     {
-        private string _urlBase;
+        private string _urlBase = Constants.URL_BASE;
+
+        public EpadocaService() { }
 
         public EpadocaService(string urlBase)
         {
             _urlBase = urlBase;
         }
-       
+
         public GenericResult<token> Token(string username, string password)
         {
             var result = new GenericResult<token>();
@@ -44,7 +46,7 @@ namespace Epadoca.Service
         {
             var result = new GenericResult<List<order>>();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MANAGER_PEDIDO_GET, store);
+            var url = string.Format("{0}{1}/{2}?tipo=Ecommerce,EcommerceAgendado,Encomenda,CardapioLoja", _urlBase, Constants.URL_MANAGER_PEDIDO_ABERTO, store);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -107,6 +109,118 @@ namespace Epadoca.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<List<item>>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult Aceitar(string token, string guid)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                guid = guid
+            };
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_MANAGER_PEDIDO_PREPARAR_PEDIDO);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {                
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult SaiuParaEntrega(string token, string guid)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                guid = guid
+            };
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_MANAGER_PEDIDO_ENTREGARPEDIDO);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult Entregue(string token, string guid)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                guid = guid
+            };
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_MANAGER_PEDIDO_FINALIZAR_PEDIDO);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult DisponivelParaRetirada(string token, string guid)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                guid = guid
+            };
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_MANAGER_PEDIDO_PRONTO);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
                 result.Success = true;
                 result.Json = response.Content;
             }

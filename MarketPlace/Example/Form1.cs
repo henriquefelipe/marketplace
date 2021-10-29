@@ -4493,6 +4493,9 @@ namespace Example
 
         private void epadoca()
         {
+            _epadocaOrders = new List<Epadoca.Domain.order>();
+            WriteGridEpadoca();
+
             var service = new EpadocaService(txtEpadocaUrl.Text);
 
             try
@@ -4527,8 +4530,6 @@ namespace Example
             }
         }
 
-        #endregion
-
         private void btnEpadocaPedido_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_epadocaSelected))
@@ -4548,5 +4549,91 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+        private void btnEpadocaAceitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_epadocaSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.Aceitar(txtEpadocaToken.Text, _epadocaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_epadocaSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.SaiuParaEntrega(txtEpadocaToken.Text, _epadocaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_epadocaSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.Entregue(txtEpadocaToken.Text, _epadocaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaDisponivelParaRetirada_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_epadocaSelected))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.DisponivelParaRetirada(txtEpadocaToken.Text, _epadocaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+       
+
+        
     }
 }
