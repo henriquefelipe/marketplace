@@ -32,4 +32,10 @@ namespace Ifood.Domain
         public const string DELIVERED = "DELIVERED";   //Indica um pedido que foi entregue.
         public const string CONCLUDED = "CONCLUDED";   //Indica um pedido que foi concluído (Em até duas horas do fluxo normal)*.
     }
+
+    public static class PoolingEventStatusCode_VERSAO_2
+    {
+        public const string PLACED = "PLC";
+
+    }
 }

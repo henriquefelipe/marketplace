@@ -53,7 +53,9 @@
     <Compile Include="Domain\benefit.cs" />
     <Compile Include="Domain\address.cs" />
     <Compile Include="Domain\customer.cs" />
+    <Compile Include="Domain\delivery.cs" />
     <Compile Include="Domain\deliveryAddress.cs" />
+    <Compile Include="Domain\error_return.cs" />
     <Compile Include="Domain\eventAcknowledgment.cs" />
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\merchant.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Domain\subItem.cs" />
     <Compile Include="Domain\token2.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Domain\total.cs" />
     <Compile Include="Enum\CancelamentCode.cs" />
     <Compile Include="Enum\BenefitsTarget.cs" />
     <Compile Include="Enum\AdditionalFeesType.cs" />

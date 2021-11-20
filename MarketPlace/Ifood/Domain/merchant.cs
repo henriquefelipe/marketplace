@@ -9,8 +9,6 @@ namespace Ifood.Domain
     public class merchant
     {
         public string id { get; set; }
-        public string nome { get; set; }
-        public List<string> phones { get; set; }
-        public address address { get; set; }        
+        public string nome { get; set; }     
     }
 }

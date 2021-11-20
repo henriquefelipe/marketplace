@@ -8,12 +8,6 @@ namespace Ifood.Domain
 {
     public class additionalFees
     {
-        public decimal total { get; set; }
-        public List<additionalFees_values> values { get; set; }
-    }
-
-    public class additionalFees_values
-    {
         public string type { get; set; }
         public decimal value { get; set; }
     }

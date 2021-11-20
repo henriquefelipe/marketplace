@@ -3,6 +3,7 @@ using Ifood.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 
 namespace Ifood.Service
@@ -10,7 +11,10 @@ namespace Ifood.Service
     public class IfoodService
     {
         private string _urlBase = Constants.URL_BASE;
-        public IfoodService() { }
+
+        public IfoodService()
+        {
+        }
 
         public IfoodService(string urlBase)
         {
@@ -25,54 +29,37 @@ namespace Ifood.Service
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public GenericResult<token> OathToken(string client_id, string client_secret, string username, string password)
+        public GenericResult<token2> OathToken(string client_id, string client_secret)
         {
-            var result = new GenericResult<token>();
-
-            var client = new RestClient(_urlBase + Constants.URL_TOKEN);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("client_id", client_id);
-            request.AddParameter("client_secret", client_secret);
-            request.AddParameter("grant_type", "password");
-            request.AddParameter("username", username);
-            request.AddParameter("password", password);           
-            IRestResponse responseToken = client.Execute(request);
-
-            if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = responseToken.StatusDescription;
-            }
-
-            return result;
-        }
-        public GenericResult<token2> OathToken_2(string client_id, string client_secret)
-        {
-            _urlBase = Constants.URL_BASE_VERSION_2;
             var result = new GenericResult<token2>();
-            var client = new RestClient(_urlBase + Constants.URL_TOKEN_2);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddParameter("grantType", "client_credentials");
-            request.AddParameter("clientId", client_id);
-            request.AddParameter("clientSecret", client_secret);
-
-            IRestResponse responseToken = client.Execute(request);
-
-            if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                result.Result = JsonConvert.DeserializeObject<token2>(responseToken.Content);
-                result.Success = true;
+                var url = _urlBase + Constants.URL_TOKEN;
+
+                var client = new RestClient(url);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddParameter("grantType", "client_credentials");
+                request.AddParameter("clientId", client_id);
+                request.AddParameter("clientSecret", client_secret);
+
+                IRestResponse responseToken = client.Execute(request);
+
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<token2>(responseToken.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    var error = JsonConvert.DeserializeObject<error_return>(responseToken.Content);
+                    result.Message = responseToken.StatusDescription + $" => {error.error.message}";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                result.Message = responseToken.StatusDescription;
+                result.Message = ex.Message;
             }
 
             return result;
@@ -87,35 +74,6 @@ namespace Ifood.Service
         /// <returns></returns>
         public GenericResult<List<poolingEvent>> EventPolling(string token)
         {
-            var result = new GenericResult<List<poolingEvent>>();
-
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_POOLING);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
-            }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                result.Result = new List<poolingEvent>();
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = response.StatusDescription;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<poolingEvent>> EventPolling2(string token)
-        {
-            _urlBase = Constants.URL_BASE_VERSION_2;
             var result = new GenericResult<List<poolingEvent>>();
 
             var url = string.Format("{0}order/{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_POOLING);
@@ -142,7 +100,6 @@ namespace Ifood.Service
             return result;
         }
 
-
         /// <summary>
         /// Após o e-PDV receber os eventos do IFood, para cada evento que o e-PDV conseguiu realizar o parse e integrá-lo com sucesso, o e-PDV deve enviar uma requisição confirmando o recebimento dos eventos.
         /// Recomenda-se que o e-PDV envie uma lista de todos os eventos recebidos com sucesso de uma única vez.Importante salientar que apenas o id do evento é obrigatório.
@@ -156,42 +113,16 @@ namespace Ifood.Service
         {
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.VERSION_2, Constants.URL_EVENT_ACNOWLEDGMENT);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddHeader("Content-Type", "application/json");
-            request.RequestFormat = DataFormat.Json;
-            request.AddBody(events);
-            //request.AddParameter("data", events, ParameterType.RequestBody);            
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = response.Content;
-            }
-
-            return result;
-        }
-
-        public GenericSimpleResult EventAcknowledgment_2(string token, List<eventAcknowledgment> events)
-        {
-            _urlBase = Constants.URL_BASE_VERSION_2;
-            var result = new GenericSimpleResult();
-
             var url = string.Format("{0}order/{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_ACNOWLEDGMENT);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
             request.RequestFormat = DataFormat.Json;
             request.AddBody(events);
             //request.AddParameter("data", events, ParameterType.RequestBody);            
             IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
             {
                 result.Success = true;
             }
@@ -218,8 +149,7 @@ namespace Ifood.Service
         public GenericResult<order> Orders(string token, string reference)
         {
             var result = new GenericResult<order>();
-
-            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference);
+            var url = string.Format("{0}order/{1}/{2}/{3}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference);            
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -227,30 +157,6 @@ namespace Ifood.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<order>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
-            }
-            else
-            {
-                result.Message = response.StatusDescription;
-            }
-
-            return result;
-        }
-
-        public GenericResult<order2> Orders_2(string token, string reference)
-        {
-            _urlBase = Constants.URL_BASE_VERSION_2;
-            var result = new GenericResult<order2>();
-
-            var url = string.Format("{0}order/{1}/{2}/{3}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                result.Result = JsonConvert.DeserializeObject<order2>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
             }
@@ -275,7 +181,7 @@ namespace Ifood.Service
 
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -304,10 +210,10 @@ namespace Ifood.Service
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRMATION);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRM);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
@@ -322,15 +228,15 @@ namespace Ifood.Service
             return result;
         }
 
-        public GenericSimpleResult OrdersConfirmation2(string token, string reference)
+        public GenericSimpleResult OrdersStarPreparation(string token, string reference)
         {
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRMATION);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_START_PREPARATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
@@ -344,6 +250,7 @@ namespace Ifood.Service
 
             return result;
         }
+
 
         /// <summary>
         /// Informa ao IFood que o pedido saiu para ser entregue ao cliente.       
@@ -356,10 +263,10 @@ namespace Ifood.Service
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_DISPATCH);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_DISPATCH);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -385,10 +292,10 @@ namespace Ifood.Service
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_REJECTION);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_REJECTION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -420,15 +327,15 @@ namespace Ifood.Service
             var data = new
             {
                 cancellationCode = code.ToString(),
-                details = detail
+                reason = detail
             };
 
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_3, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -454,10 +361,10 @@ namespace Ifood.Service
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -483,10 +390,10 @@ namespace Ifood.Service
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_2, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
+            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CANCELATION_ACCEPTED);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -502,5 +409,5 @@ namespace Ifood.Service
         }
 
         #endregion
-    }   
+    }
 }

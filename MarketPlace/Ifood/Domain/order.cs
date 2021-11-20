@@ -11,26 +11,26 @@ namespace Ifood.Domain
         public order()
         {
             items = new List<item>();
-            benefits = new List<benefits>();
+            //benefits = new List<benefits>();
+            additionalFees = new List<additionalFees>();
         }
 
-        public string id { get; set; }
-        public string reference { get; set; }
-        public string shortReference { get; set; }
+        public string id { get; set; }           
+        public string orderType { get; set; }
         public string createdAt { get; set; }
-        public string type { get; set; }
+        public string preparationStartDateTime { get; set; }
+        public string orderTiming { get; set; }
+        public string displayId { get; set; }
+        public bool isTest { get; set; }
+        public string salesChannel { get; set; }
         public merchant merchant { get; set; }
-        public List<payment> payments { get; set; }
+        public payment payments { get; set; }
         public customer customer { get; set; }
         public List<item> items { get; set; }
-        public decimal subTotal { get; set; }
-        public decimal totalPrice { get; set; }
-        public decimal deliveryFee { get; set; }
-        public deliveryAddress deliveryAddress { get; set; }
-        public DateTime deliveryDateTime { get; set; }
-        public int preparationTimeInSeconds { get; set; }
-        public bool scheduled { get; set; }
-        public List<benefits> benefits { get; set; }
-        public additionalFees additionalFees { get; set; }
+        public total total { get; set; }       
+        public delivery delivery { get; set; }         
+        //public List<benefits> benefits { get; set; }
+        public List<additionalFees> additionalFees { get; set; }
+       
     }
 }

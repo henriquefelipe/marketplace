@@ -53,6 +53,7 @@ namespace Epadoca.Domain
         public string voucher { get; set; }
         public string tipoEntregaLogistica { get; set; }
         public string clienteNomeFantasia { get; set; }
+        public string observacao { get; set; }
 
         public List<item> itens { get; set; }
     }
