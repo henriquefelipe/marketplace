@@ -31,7 +31,10 @@ namespace Rappi.Service
             var request = new RestRequest(Method.POST);
             request.AddParameter("client_id", client_id);
             request.AddParameter("client_secret", client_secret);
-            request.AddParameter("audience", "https://int-public-api-v2/api");
+            if (desenvolvimento)
+                request.AddParameter("audience", "https://int-public-api-v2/api");
+            else
+                request.AddParameter("audience", "https://services.rappi.com.br/api/v2/restaurants-integrations-public-api");
             request.AddParameter("grant_type", "client_credentials");
             IRestResponse responseToken = client.Execute(request);
 

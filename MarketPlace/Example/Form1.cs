@@ -2176,7 +2176,7 @@ namespace Example
 
 
             var rappiService = new RappiService("");
-            var result = rappiService.Token(txtRappiClientID.Text, txtRappiSECRET.Text, true);
+            var result = rappiService.Token(txtRappiClientID.Text, txtRappiSECRET.Text, false);
             if (result.Success)
             {
                 txtRappiToken.Text = result.Result.access_token;

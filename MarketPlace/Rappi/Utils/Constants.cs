@@ -13,6 +13,8 @@ namespace Rappi.Utils
 
         public const string URL_ORDERS = "/api/v2/restaurants-integrations-public-api/orders";
 
-        public const string URL_ORDER = "/api/v2/restaurants-integrations-public-api/orders/";      
+        public const string URL_ORDER = "/api/v2/restaurants-integrations-public-api/orders/";
+
+        public const string URL_BASE_PRODUCAO = "https://services.rappi.com.br";
     }
 }
