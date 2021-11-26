@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ifood.Enum
 {
-    public class OrderTiming
-    {
-        public const string IMMEDIATE = "IMMEDIATE";
-        public const string SCHEDULED = "SCHEDULED";
+    public class BenefitsName
+    {        
+        public const string MERCHANT = "MERCHANT";
+        public const string IFOOD = "IFOOD";
     }
 }
