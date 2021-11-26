@@ -168,36 +168,36 @@ namespace Ifood.Service
             return result;
         }
 
-        /// <summary>
-        /// Informa ao IFood que o pedido foi integrado pelo e-PDV.
-        /// Integração significa que o e-PDV foi capaz de realizar o parse do pedido e integrar em seu sistema.
-        /// </summary>
-        /// <param name="token"></param>
-        /// <param name="reference"></param>
-        /// <returns></returns>
-        public GenericSimpleResult OrdersIntegration(string token, string reference)
-        {
-            var data = new { };
+        ///// <summary>
+        ///// Informa ao IFood que o pedido foi integrado pelo e-PDV.
+        ///// Integração significa que o e-PDV foi capaz de realizar o parse do pedido e integrar em seu sistema.
+        ///// </summary>
+        ///// <param name="token"></param>
+        ///// <param name="reference"></param>
+        ///// <returns></returns>
+        //public GenericSimpleResult OrdersIntegration(string token, string reference)
+        //{
+        //    var data = new { };
 
-            var result = new GenericSimpleResult();
+        //    var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddParameter("application/json", data, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
-            {
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = response.StatusDescription;
-            }
+        //    var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_INTEGRATION);
+        //    var client = new RestClient(url);
+        //    var request = new RestRequest(Method.POST);
+        //    request.AddHeader("Authorization", string.Format("bearer {0}", token));
+        //    request.AddParameter("application/json", data, ParameterType.RequestBody);
+        //    IRestResponse response = client.Execute(request);
+        //    if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+        //    {
+        //        result.Success = true;
+        //    }
+        //    else
+        //    {
+        //        result.Message = response.StatusDescription;
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
         /// <summary>
         /// Informa ao IFood que o pedido foi confirmado pelo e-PDV.        

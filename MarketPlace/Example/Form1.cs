@@ -43,7 +43,6 @@ namespace Example
         private string _deliveryDiretoReferenceSelected { get; set; }
         private string _ifoodToken { get; set; }
         private List<Ifood.Domain.order> _ifoodOrders { get; set; }
-        private List<Ifood.Domain.order2> _ifoodOrders2 { get; set; }
         private string _ifoodReferenceSelected { get; set; }
         private string _gloriaToken { get; set; }
         private List<GloriaFood.Domain.order> _gloriaOrders { get; set; }
@@ -465,16 +464,16 @@ namespace Example
                 return;
             }
 
-            var ifoodService = new Ifood.Service.IfoodService();
-            var result = ifoodService.OrdersIntegration(_ifoodToken, _ifoodReferenceSelected);
-            if (result.Success)
-            {
-                MessageBox.Show("Integrado com sucesso");
-            }
-            else
-            {
-                MessageBox.Show(result.Message);
-            }
+            //var ifoodService = new Ifood.Service.IfoodService();
+            //var result = ifoodService.OrdersIntegration(_ifoodToken, _ifoodReferenceSelected);
+            //if (result.Success)
+            //{
+            //    MessageBox.Show("Integrado com sucesso");
+            //}
+            //else
+            //{
+            //    MessageBox.Show(result.Message);
+            //}
         }
 
         private void btnIfoodConfirmado_Click(object sender, EventArgs e)

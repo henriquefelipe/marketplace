@@ -18,7 +18,7 @@ namespace Ifood.Domain
         public string streetNumber { get; set; }
         public string postalCode { get; set; }
         public string reference { get; set; }
-        public string complement { get; set; }
+        public string complement { get; set; }        
     }
 
     public class coordinates

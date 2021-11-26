@@ -8,10 +8,10 @@ namespace Ifood.Domain
 {
     public class total
     {
-        public double subTotal { get; set; }
-        public double deliveryFee { get; set; }
-        public int benefits { get; set; }
-        public double orderAmount { get; set; }
-        public double additionalFees { get; set; }
+        public decimal subTotal { get; set; }
+        public decimal deliveryFee { get; set; }
+        public decimal benefits { get; set; }
+        public decimal orderAmount { get; set; }
+        public decimal additionalFees { get; set; }
     }
 }

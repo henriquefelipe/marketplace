@@ -82,7 +82,7 @@ namespace Epadoca.Service
                 {
                     result.Result.itens = resultItens.Result;
                     result.Success = true;
-                    result.Json = response.Content;
+                    result.Json = response.Content + resultItens.Json;
                 }
                 else
                 {
