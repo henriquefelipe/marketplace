@@ -278,3 +278,5 @@ Para fazer a integração com o super menu é preciso de algumas informações, 
 	}
 }
 ```
+
+https://www.paypal.com/donate/?hosted_button_id=9KM4CAAQ46WYQ
