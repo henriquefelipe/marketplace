@@ -279,4 +279,6 @@ Para fazer a integração com o super menu é preciso de algumas informações, 
 }
 ```
 
+Gostou do projeto e deseja incentivar as pesquisas.  Você fazer uma doação para o time de desenvolvimento através do link abaixo.
+
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9KM4CAAQ46WYQ)
