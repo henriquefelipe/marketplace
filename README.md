@@ -279,4 +279,4 @@ Para fazer a integração com o super menu é preciso de algumas informações, 
 }
 ```
 
-https://www.paypal.com/donate/?hosted_button_id=9KM4CAAQ46WYQ
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9KM4CAAQ46WYQ)
