@@ -154,6 +154,9 @@
             this.txtEpadocaUsuario = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage21 = new System.Windows.Forms.TabPage();
+            this.btnIfoodEmPreparacao = new System.Windows.Forms.Button();
             this.btnIfoodCancelamentoRejeita = new System.Windows.Forms.Button();
             this.btnIfoodCancelamentoAceita = new System.Windows.Forms.Button();
             this.btnIfoodCancelamento = new System.Windows.Forms.Button();
@@ -162,12 +165,16 @@
             this.btnIfoodConfirmado = new System.Windows.Forms.Button();
             this.btnIfoodIntegrado = new System.Windows.Forms.Button();
             this.gridIfood = new System.Windows.Forms.DataGridView();
+            this.tabPage22 = new System.Windows.Forms.TabPage();
+            this.btnIfoodVendas = new System.Windows.Forms.Button();
             this.btnIfoodParar = new System.Windows.Forms.Button();
             this.btnIfoodIniciar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIfoodMerchantId = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtIfoodClient_Secret = new System.Windows.Forms.TextBox();
-            this.txtIfoodClient_ID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtIfoodClient_ID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnTeste = new System.Windows.Forms.Button();
@@ -321,7 +328,9 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnIfoodEmPreparacao = new System.Windows.Forms.Button();
+            this.btnIfoodStatus = new System.Windows.Forms.Button();
+            this.txtIfoodMerchantGUID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -341,7 +350,10 @@
             this.tabPage20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).BeginInit();
+            this.tabPage22.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGloriaGood)).BeginInit();
@@ -1745,15 +1757,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnIfoodEmPreparacao);
-            this.tabPage1.Controls.Add(this.btnIfoodCancelamentoRejeita);
-            this.tabPage1.Controls.Add(this.btnIfoodCancelamentoAceita);
-            this.tabPage1.Controls.Add(this.btnIfoodCancelamento);
-            this.tabPage1.Controls.Add(this.btnIfoodRejeitado);
-            this.tabPage1.Controls.Add(this.btnIfoodSaiuParaSerEntregue);
-            this.tabPage1.Controls.Add(this.btnIfoodConfirmado);
-            this.tabPage1.Controls.Add(this.btnIfoodIntegrado);
-            this.tabPage1.Controls.Add(this.gridIfood);
+            this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.btnIfoodParar);
             this.tabPage1.Controls.Add(this.btnIfoodIniciar);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -1765,92 +1769,146 @@
             this.tabPage1.Text = "Ifood";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage21);
+            this.tabControl2.Controls.Add(this.tabPage22);
+            this.tabControl2.Location = new System.Drawing.Point(8, 112);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1213, 565);
+            this.tabControl2.TabIndex = 13;
+            // 
+            // tabPage21
+            // 
+            this.tabPage21.Controls.Add(this.btnIfoodStatus);
+            this.tabPage21.Controls.Add(this.btnIfoodEmPreparacao);
+            this.tabPage21.Controls.Add(this.btnIfoodCancelamentoRejeita);
+            this.tabPage21.Controls.Add(this.btnIfoodCancelamentoAceita);
+            this.tabPage21.Controls.Add(this.btnIfoodCancelamento);
+            this.tabPage21.Controls.Add(this.btnIfoodRejeitado);
+            this.tabPage21.Controls.Add(this.btnIfoodSaiuParaSerEntregue);
+            this.tabPage21.Controls.Add(this.btnIfoodConfirmado);
+            this.tabPage21.Controls.Add(this.btnIfoodIntegrado);
+            this.tabPage21.Controls.Add(this.gridIfood);
+            this.tabPage21.Location = new System.Drawing.Point(4, 22);
+            this.tabPage21.Name = "tabPage21";
+            this.tabPage21.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage21.Size = new System.Drawing.Size(1205, 539);
+            this.tabPage21.TabIndex = 0;
+            this.tabPage21.Text = "Pedidos";
+            this.tabPage21.UseVisualStyleBackColor = true;
+            // 
+            // btnIfoodEmPreparacao
+            // 
+            this.btnIfoodEmPreparacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodEmPreparacao.Location = new System.Drawing.Point(234, 26);
+            this.btnIfoodEmPreparacao.Name = "btnIfoodEmPreparacao";
+            this.btnIfoodEmPreparacao.Size = new System.Drawing.Size(134, 33);
+            this.btnIfoodEmPreparacao.TabIndex = 21;
+            this.btnIfoodEmPreparacao.Text = "Em Preparação";
+            this.btnIfoodEmPreparacao.UseVisualStyleBackColor = true;
+            // 
             // btnIfoodCancelamentoRejeita
             // 
             this.btnIfoodCancelamentoRejeita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamentoRejeita.Location = new System.Drawing.Point(998, 139);
+            this.btnIfoodCancelamentoRejeita.Location = new System.Drawing.Point(1024, 26);
             this.btnIfoodCancelamentoRejeita.Name = "btnIfoodCancelamentoRejeita";
             this.btnIfoodCancelamentoRejeita.Size = new System.Drawing.Size(175, 33);
-            this.btnIfoodCancelamentoRejeita.TabIndex = 11;
+            this.btnIfoodCancelamentoRejeita.TabIndex = 20;
             this.btnIfoodCancelamentoRejeita.Text = "Rejeita Cancelamento";
             this.btnIfoodCancelamentoRejeita.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamentoRejeita.Click += new System.EventHandler(this.btnIfoodCancelamentoRejeita_Click);
             // 
             // btnIfoodCancelamentoAceita
             // 
             this.btnIfoodCancelamentoAceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamentoAceita.Location = new System.Drawing.Point(817, 139);
+            this.btnIfoodCancelamentoAceita.Location = new System.Drawing.Point(840, 26);
             this.btnIfoodCancelamentoAceita.Name = "btnIfoodCancelamentoAceita";
             this.btnIfoodCancelamentoAceita.Size = new System.Drawing.Size(175, 33);
-            this.btnIfoodCancelamentoAceita.TabIndex = 10;
+            this.btnIfoodCancelamentoAceita.TabIndex = 19;
             this.btnIfoodCancelamentoAceita.Text = "Aceita Cancelamento";
             this.btnIfoodCancelamentoAceita.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamentoAceita.Click += new System.EventHandler(this.btnIfoodCancelamentoAceita_Click);
             // 
             // btnIfoodCancelamento
             // 
             this.btnIfoodCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodCancelamento.Location = new System.Drawing.Point(666, 139);
+            this.btnIfoodCancelamento.Location = new System.Drawing.Point(689, 26);
             this.btnIfoodCancelamento.Name = "btnIfoodCancelamento";
             this.btnIfoodCancelamento.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodCancelamento.TabIndex = 9;
+            this.btnIfoodCancelamento.TabIndex = 18;
             this.btnIfoodCancelamento.Text = "Cancelamento";
             this.btnIfoodCancelamento.UseVisualStyleBackColor = true;
-            this.btnIfoodCancelamento.Click += new System.EventHandler(this.btnIfoodCancelamento_Click);
             // 
             // btnIfoodRejeitado
             // 
             this.btnIfoodRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodRejeitado.Location = new System.Drawing.Point(515, 139);
+            this.btnIfoodRejeitado.Location = new System.Drawing.Point(569, 26);
             this.btnIfoodRejeitado.Name = "btnIfoodRejeitado";
-            this.btnIfoodRejeitado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodRejeitado.TabIndex = 8;
+            this.btnIfoodRejeitado.Size = new System.Drawing.Size(114, 33);
+            this.btnIfoodRejeitado.TabIndex = 17;
             this.btnIfoodRejeitado.Text = "Rejeitado";
             this.btnIfoodRejeitado.UseVisualStyleBackColor = true;
-            this.btnIfoodRejeitado.Click += new System.EventHandler(this.btnIfoodRejeitado_Click);
             // 
             // btnIfoodSaiuParaSerEntregue
             // 
             this.btnIfoodSaiuParaSerEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodSaiuParaSerEntregue.Location = new System.Drawing.Point(310, 139);
+            this.btnIfoodSaiuParaSerEntregue.Location = new System.Drawing.Point(374, 26);
             this.btnIfoodSaiuParaSerEntregue.Name = "btnIfoodSaiuParaSerEntregue";
-            this.btnIfoodSaiuParaSerEntregue.Size = new System.Drawing.Size(199, 33);
-            this.btnIfoodSaiuParaSerEntregue.TabIndex = 7;
+            this.btnIfoodSaiuParaSerEntregue.Size = new System.Drawing.Size(189, 33);
+            this.btnIfoodSaiuParaSerEntregue.TabIndex = 16;
             this.btnIfoodSaiuParaSerEntregue.Text = "Saiu para ser entregue";
             this.btnIfoodSaiuParaSerEntregue.UseVisualStyleBackColor = true;
-            this.btnIfoodSaiuParaSerEntregue.Click += new System.EventHandler(this.btnIfoodSaiuParaSerEntregue_Click);
             // 
             // btnIfoodConfirmado
             // 
             this.btnIfoodConfirmado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodConfirmado.Location = new System.Drawing.Point(8, 139);
+            this.btnIfoodConfirmado.Location = new System.Drawing.Point(113, 26);
             this.btnIfoodConfirmado.Name = "btnIfoodConfirmado";
-            this.btnIfoodConfirmado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodConfirmado.TabIndex = 6;
+            this.btnIfoodConfirmado.Size = new System.Drawing.Size(115, 33);
+            this.btnIfoodConfirmado.TabIndex = 15;
             this.btnIfoodConfirmado.Text = "Confirmado";
             this.btnIfoodConfirmado.UseVisualStyleBackColor = true;
-            this.btnIfoodConfirmado.Click += new System.EventHandler(this.btnIfoodConfirmado_Click);
             // 
             // btnIfoodIntegrado
             // 
             this.btnIfoodIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodIntegrado.Location = new System.Drawing.Point(225, 100);
+            this.btnIfoodIntegrado.Location = new System.Drawing.Point(432, 182);
             this.btnIfoodIntegrado.Name = "btnIfoodIntegrado";
             this.btnIfoodIntegrado.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodIntegrado.TabIndex = 5;
+            this.btnIfoodIntegrado.TabIndex = 14;
             this.btnIfoodIntegrado.Text = "Integrado";
             this.btnIfoodIntegrado.UseVisualStyleBackColor = true;
-            this.btnIfoodIntegrado.Click += new System.EventHandler(this.btnIfoodIntegrado_Click);
             // 
             // gridIfood
             // 
             this.gridIfood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridIfood.Location = new System.Drawing.Point(8, 178);
+            this.gridIfood.Location = new System.Drawing.Point(6, 65);
             this.gridIfood.Name = "gridIfood";
             this.gridIfood.RowHeadersWidth = 51;
-            this.gridIfood.Size = new System.Drawing.Size(1213, 487);
-            this.gridIfood.TabIndex = 4;
-            this.gridIfood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIfood_CellClick);
+            this.gridIfood.Size = new System.Drawing.Size(1193, 468);
+            this.gridIfood.TabIndex = 13;
+            // 
+            // tabPage22
+            // 
+            this.tabPage22.Controls.Add(this.btnIfoodVendas);
+            this.tabPage22.Location = new System.Drawing.Point(4, 22);
+            this.tabPage22.Name = "tabPage22";
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage22.Size = new System.Drawing.Size(1205, 539);
+            this.tabPage22.TabIndex = 1;
+            this.tabPage22.Text = "Financeiro";
+            this.tabPage22.UseVisualStyleBackColor = true;
+            // 
+            // btnIfoodVendas
+            // 
+            this.btnIfoodVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodVendas.Location = new System.Drawing.Point(7, 18);
+            this.btnIfoodVendas.Name = "btnIfoodVendas";
+            this.btnIfoodVendas.Size = new System.Drawing.Size(145, 33);
+            this.btnIfoodVendas.TabIndex = 16;
+            this.btnIfoodVendas.Text = "Vendas";
+            this.btnIfoodVendas.UseVisualStyleBackColor = true;
+            this.btnIfoodVendas.Click += new System.EventHandler(this.btnIfoodVendas_Click);
             // 
             // btnIfoodParar
             // 
@@ -1877,6 +1935,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtIfoodMerchantGUID);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtIfoodMerchantId);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtIfoodClient_Secret);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtIfoodClient_ID);
@@ -1888,6 +1950,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Restaurante";
             // 
+            // txtIfoodMerchantId
+            // 
+            this.txtIfoodMerchantId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIfoodMerchantId.Location = new System.Drawing.Point(522, 19);
+            this.txtIfoodMerchantId.Name = "txtIfoodMerchantId";
+            this.txtIfoodMerchantId.Size = new System.Drawing.Size(187, 26);
+            this.txtIfoodMerchantId.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(374, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "merchantId";
+            // 
             // txtIfoodClient_Secret
             // 
             this.txtIfoodClient_Secret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1895,14 +1975,6 @@
             this.txtIfoodClient_Secret.Name = "txtIfoodClient_Secret";
             this.txtIfoodClient_Secret.Size = new System.Drawing.Size(187, 26);
             this.txtIfoodClient_Secret.TabIndex = 3;
-            // 
-            // txtIfoodClient_ID
-            // 
-            this.txtIfoodClient_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIfoodClient_ID.Location = new System.Drawing.Point(162, 19);
-            this.txtIfoodClient_ID.Name = "txtIfoodClient_ID";
-            this.txtIfoodClient_ID.Size = new System.Drawing.Size(187, 26);
-            this.txtIfoodClient_ID.TabIndex = 2;
             // 
             // label2
             // 
@@ -1913,6 +1985,14 @@
             this.label2.Size = new System.Drawing.Size(139, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "CLIENT_SECRET";
+            // 
+            // txtIfoodClient_ID
+            // 
+            this.txtIfoodClient_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIfoodClient_ID.Location = new System.Drawing.Point(162, 19);
+            this.txtIfoodClient_ID.Name = "txtIfoodClient_ID";
+            this.txtIfoodClient_ID.Size = new System.Drawing.Size(187, 26);
+            this.txtIfoodClient_ID.TabIndex = 2;
             // 
             // label1
             // 
@@ -3595,16 +3675,34 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnIfoodEmPreparacao
+            // btnIfoodStatus
             // 
-            this.btnIfoodEmPreparacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIfoodEmPreparacao.Location = new System.Drawing.Point(159, 139);
-            this.btnIfoodEmPreparacao.Name = "btnIfoodEmPreparacao";
-            this.btnIfoodEmPreparacao.Size = new System.Drawing.Size(145, 33);
-            this.btnIfoodEmPreparacao.TabIndex = 12;
-            this.btnIfoodEmPreparacao.Text = "Em Preparação";
-            this.btnIfoodEmPreparacao.UseVisualStyleBackColor = true;
-            this.btnIfoodEmPreparacao.Click += new System.EventHandler(this.btnIfoodEmPreparacao_Click);
+            this.btnIfoodStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIfoodStatus.Location = new System.Drawing.Point(6, 26);
+            this.btnIfoodStatus.Name = "btnIfoodStatus";
+            this.btnIfoodStatus.Size = new System.Drawing.Size(101, 33);
+            this.btnIfoodStatus.TabIndex = 22;
+            this.btnIfoodStatus.Text = "Status";
+            this.btnIfoodStatus.UseVisualStyleBackColor = true;
+            this.btnIfoodStatus.Click += new System.EventHandler(this.btnIfoodStatus_Click);
+            // 
+            // txtIfoodMerchantGUID
+            // 
+            this.txtIfoodMerchantGUID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIfoodMerchantGUID.Location = new System.Drawing.Point(522, 51);
+            this.txtIfoodMerchantGUID.Name = "txtIfoodMerchantGUID";
+            this.txtIfoodMerchantGUID.Size = new System.Drawing.Size(187, 26);
+            this.txtIfoodMerchantGUID.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(374, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 20);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "merchant Guid";
             // 
             // Form1
             // 
@@ -3645,7 +3743,10 @@
             this.tabPage20.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridIfood)).EndInit();
+            this.tabPage22.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -3694,14 +3795,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnIfoodParar;
         private System.Windows.Forms.Button btnIfoodIniciar;
-        private System.Windows.Forms.Button btnIfoodIntegrado;
-        private System.Windows.Forms.DataGridView gridIfood;
-        private System.Windows.Forms.Button btnIfoodCancelamentoRejeita;
-        private System.Windows.Forms.Button btnIfoodCancelamentoAceita;
-        private System.Windows.Forms.Button btnIfoodCancelamento;
-        private System.Windows.Forms.Button btnIfoodRejeitado;
-        private System.Windows.Forms.Button btnIfoodSaiuParaSerEntregue;
-        private System.Windows.Forms.Button btnIfoodConfirmado;
         private System.Windows.Forms.TextBox txtGloriaFoodToken;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnGloriaFoodParar;
@@ -3977,7 +4070,24 @@
         private System.Windows.Forms.Button btnEpadocaEntregue;
         private System.Windows.Forms.Button btnEpadocaAceitar;
         private System.Windows.Forms.Button btnEpadocaDisponivelParaRetirada;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage21;
         private System.Windows.Forms.Button btnIfoodEmPreparacao;
+        private System.Windows.Forms.Button btnIfoodCancelamentoRejeita;
+        private System.Windows.Forms.Button btnIfoodCancelamentoAceita;
+        private System.Windows.Forms.Button btnIfoodCancelamento;
+        private System.Windows.Forms.Button btnIfoodRejeitado;
+        private System.Windows.Forms.Button btnIfoodSaiuParaSerEntregue;
+        private System.Windows.Forms.Button btnIfoodConfirmado;
+        private System.Windows.Forms.Button btnIfoodIntegrado;
+        private System.Windows.Forms.DataGridView gridIfood;
+        private System.Windows.Forms.TabPage tabPage22;
+        private System.Windows.Forms.Button btnIfoodVendas;
+        private System.Windows.Forms.TextBox txtIfoodMerchantId;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnIfoodStatus;
+        private System.Windows.Forms.TextBox txtIfoodMerchantGUID;
+        private System.Windows.Forms.Label label4;
     }
 }
 

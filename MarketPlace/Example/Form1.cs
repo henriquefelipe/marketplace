@@ -9,6 +9,7 @@ using Epadoca.Service;
 using GloriaFood.Service;
 using Goomer.Service;
 using IDelivery.Service;
+using Ifood.Enum;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
 using Newtonsoft.Json;
@@ -164,7 +165,9 @@ namespace Example
                             if (marketPlace.Ifood != null)
                             {
                                 txtIfoodClient_ID.Text = marketPlace.Ifood.Client_ID;
-                                txtIfoodClient_Secret.Text = marketPlace.Ifood.Client_SECRET;                               
+                                txtIfoodClient_Secret.Text = marketPlace.Ifood.Client_SECRET;
+                                txtIfoodMerchantId.Text = marketPlace.Ifood.MerchantId;
+                                txtIfoodMerchantGUID.Text = marketPlace.Ifood.Usuario;
                             }
 
                             if (marketPlace.Gloria != null)
@@ -332,7 +335,9 @@ namespace Example
             }            
 
             txtIfoodClient_ID.Enabled = false;
-            txtIfoodClient_Secret.Enabled = false;           
+            txtIfoodClient_Secret.Enabled = false;
+            txtIfoodMerchantId.Enabled = false;
+            txtIfoodMerchantGUID.Enabled = false;
 
             btnIfoodIniciar.Enabled = false;
             btnIfoodParar.Enabled = true;
@@ -444,10 +449,40 @@ namespace Example
         void ifoodParar()
         {
             txtIfoodClient_ID.Enabled = true;
-            txtIfoodClient_Secret.Enabled = true;           
+            txtIfoodClient_Secret.Enabled = true;
+            txtIfoodMerchantId.Enabled = true;
+            txtIfoodMerchantGUID.Enabled = true;
 
             btnIfoodIniciar.Enabled = true;
             btnIfoodParar.Enabled = false;
+        }
+
+        private void btnIfoodStatus_Click(object sender, EventArgs e)
+        {
+            if (btnIfoodIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            var ifoodService = new Ifood.Service.IfoodService();
+            var result = ifoodService.Status(_ifoodToken, txtIfoodMerchantGUID.Text);
+            if (result.Success)
+            {
+                var retorno = result.Result[0];
+                if (retorno.state == StatusState.OK)
+                {
+                    MessageBox.Show("Loja OK");
+                }
+                else
+                {
+                    MessageBox.Show($"{retorno.message.title} - {retorno.message.subtitle}");
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnIfoodIntegrado_Click(object sender, EventArgs e)
@@ -681,6 +716,26 @@ namespace Example
             if (e.RowIndex > -1 && e.RowIndex < gridIfood.Rows.Count)
             {
                 _ifoodReferenceSelected = gridIfood.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnIfoodVendas_Click(object sender, EventArgs e)
+        {
+            if (btnIfoodIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+            
+            var ifoodService = new Ifood.Service.IfoodService();
+            var result = ifoodService.Sales(_ifoodToken, txtIfoodMerchantId.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido rejeitado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -4492,6 +4547,8 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+
 
         #endregion
 

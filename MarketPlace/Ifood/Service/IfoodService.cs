@@ -67,6 +67,33 @@ namespace Ifood.Service
 
         #region Eventos
 
+        public GenericResult<List<status>> Status(string token, string merchantGuid)
+        {
+            var result = new GenericResult<List<status>>();
+
+            var url = string.Format("{0}merchant/v1.0/merchants/{1}/status/", _urlBase, merchantGuid);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<List<status>>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;               
+            }            
+            else
+            {
+                var retorno = JsonConvert.DeserializeObject<error_return>(response.Content);
+                if (retorno != null && retorno.error != null)
+                    result.Message = retorno.error.message;
+                else
+                    result.Message = response.Content;
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Obtém todos os eventos ainda não recebidos.
         /// </summary>
@@ -86,6 +113,7 @@ namespace Ifood.Service
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
+                //result.Requisicao = response.
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
@@ -398,6 +426,40 @@ namespace Ifood.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        #endregion
+
+        #region Financeiro
+
+        public GenericResult<List<poolingEvent>> Sales(string token, string merchantId)
+        {
+            var result = new GenericResult<List<poolingEvent>>();
+
+            //var parametros = "merchantId=" + merchantId;
+
+            var url = string.Format("{0}merchants/{1}/sales", _urlBase, merchantId);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            {
+                result.Result = new List<poolingEvent>();
                 result.Success = true;
             }
             else
