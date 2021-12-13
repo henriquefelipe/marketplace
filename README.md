@@ -8,6 +8,7 @@ Integrações feitas até o momento.
   - Anota Ai
   - Delivery App
   - Delivery Direto
+  - Epadoca
   - Gloria Food
   - GoomerGO
   - Ifood
@@ -107,6 +108,23 @@ Para fazer a integração com o delivery direto é preciso de algumas informaç�
 		Senha: "Coloca aqui a senha",
 		MerchantId: "coloca aqui o id da loja",
 		Token: "Coloca aqui o token"
+	}
+}
+```
+# Epadoca
+
+Links importantes:
+  - https://epadoca.com/
+
+Para fazer a integração com o delivery direto é preciso de algumas informações, criei um arquivo json "MarketPlace.json" no Disco "C:\"  que o aplicativo de exemplo ler, essas informações cada SoftHouse e restaurante tem.  
+
+```sh
+{
+	DeliveryDireto: {
+		Usuario: "Coloca aqui o usuário",
+		Senha: "Coloca aqui a senha",
+		MerchantId: "coloca aqui o id da loja",
+		Url: "Coloca aqui a url"
 	}
 }
 ```
@@ -260,3 +278,7 @@ Para fazer a integração com o super menu é preciso de algumas informações, 
 	}
 }
 ```
+
+Gostou do projeto e deseja incentivar as pesquisas.  Você fazer uma doação para o time de desenvolvimento através do link abaixo.
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9KM4CAAQ46WYQ)
