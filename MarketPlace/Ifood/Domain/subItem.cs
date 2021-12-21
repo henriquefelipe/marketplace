@@ -8,9 +8,12 @@ namespace Ifood.Domain
 {
     public class subItem
     {
+        public int index { get; set; }
         public string name { get; set; }
         public decimal quantity { get; set; }
+        public string unit { get; set; }
         public decimal price { get; set; }
+        public decimal unitPrice { get; set; }
         public decimal totalPrice { get; set; }
         public decimal discount { get; set; }
         public decimal addition { get; set; }

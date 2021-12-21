@@ -8,8 +8,8 @@ namespace Ifood.Enum
 {
     public class OrderType
     {
-        public const string DELIVERY = "DELIVERY";        
-        public const string TOGO = "TOGO";
+        public const string DELIVERY = "DELIVERY";                
         public const string TAKEOUT = "TAKEOUT";
+        public const string INDOOR = "INDOOR";
     }
 }

@@ -563,6 +563,32 @@ namespace Example
             }
         }
 
+        private void btnIfoodPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (btnIfoodIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_ifoodReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var ifoodService = new Ifood.Service.IfoodService();
+            var result = ifoodService.OrdersReadyToPickup(_ifoodToken, _ifoodReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido Pronto");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void btnIfoodSaiuParaSerEntregue_Click(object sender, EventArgs e)
         {
             if (btnIfoodIniciar.Enabled)
@@ -4550,8 +4576,9 @@ namespace Example
 
 
 
+
+
         #endregion
 
-        
     }
 }

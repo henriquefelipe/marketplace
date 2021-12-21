@@ -76,6 +76,7 @@
     <Compile Include="Enum\BenefitsTarget.cs" />
     <Compile Include="Enum\AdditionalFeesType.cs" />
     <Compile Include="Enum\DeliveryBy.cs" />
+    <Compile Include="Enum\IndoorMode.cs" />
     <Compile Include="Enum\PaymentMethodCurrency.cs" />
     <Compile Include="Enum\PaymentMethodType.cs" />
     <Compile Include="Enum\PaymentType.cs" />
