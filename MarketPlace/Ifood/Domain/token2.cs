@@ -8,7 +8,9 @@ namespace Ifood.Domain
 {
     public class token2
     {
+   
         public string accessToken { get; set; }
+        public string refreshToken { get; set; }
         public string type { get; set; }
         public int expiresIn { get; set; }
     }
