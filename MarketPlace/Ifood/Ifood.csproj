@@ -71,6 +71,7 @@
     <Compile Include="Domain\token2.cs" />
     <Compile Include="Domain\token.cs" />
     <Compile Include="Domain\total.cs" />
+    <Compile Include="Domain\userCodeResult.cs" />
     <Compile Include="Enum\BenefitsName.cs" />
     <Compile Include="Enum\CancelamentCode.cs" />
     <Compile Include="Enum\BenefitsTarget.cs" />

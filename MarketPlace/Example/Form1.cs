@@ -168,6 +168,8 @@ namespace Example
                                 txtIfoodClient_Secret.Text = marketPlace.Ifood.Client_SECRET;
                                 txtIfoodMerchantId.Text = marketPlace.Ifood.MerchantId;
                                 txtIfoodMerchantGUID.Text = marketPlace.Ifood.Usuario;
+                                txtIfoodDistribuidoAuthorizationCode.Text = marketPlace.Ifood.AuthorizationCode;
+                                txtIfoodDistribuidoAuthorizationCodeVerificier.Text = marketPlace.Ifood.AuthorizationCodeVerifier;
                             }
 
                             if (marketPlace.Gloria != null)
@@ -357,7 +359,17 @@ namespace Example
                 {
                     if (eventTentatives == 0)
                     {
-                        var oathTokenResult = ifoodService.OathToken(txtIfoodClient_ID.Text, txtIfoodClient_Secret.Text);
+                        var centralizado = rbtIfoodTipoCentralizado.Checked;
+                        var authorizationCode = "";
+                        var authorizationCodeVerifier = "";
+                        var refreshToken = "";
+                        if(!centralizado)
+                        {
+                            authorizationCode = txtIfoodDistribuidoAuthorizationCode.Text;
+                            authorizationCodeVerifier = txtIfoodDistribuidoAuthorizationCodeVerificier.Text;
+                        }
+
+                        var oathTokenResult = ifoodService.OathToken(centralizado, txtIfoodClient_ID.Text, txtIfoodClient_Secret.Text, authorizationCode, authorizationCodeVerifier, refreshToken);
                         if (oathTokenResult.Success)
                         {
                             _ifoodToken = oathTokenResult.Result.accessToken;
@@ -455,6 +467,40 @@ namespace Example
 
             btnIfoodIniciar.Enabled = true;
             btnIfoodParar.Enabled = false;
+        }
+
+        private void btnIfoodGerarUserCode_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIfoodClient_ID.Text))
+            {
+                MessageBox.Show("Campo Client_ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtIfoodClient_Secret.Text))
+            {
+                MessageBox.Show("Campo Client_Secret Obrigatório");
+                return;
+            }
+
+            if(!rbtIfoodTipoDistribuido.Checked)
+            {
+                MessageBox.Show("Selecione o tipo distribuido");
+                return;
+            }            
+
+            var ifoodService = new Ifood.Service.IfoodService();
+            var result = ifoodService.UserCode(txtIfoodClient_ID.Text);
+            if(result.Success)
+            {
+                txtIfoodDistribuidoUrl.Text = result.Result.verificationUrlComplete;
+                txtIfoodDistribuidoCode.Text = result.Result.userCode;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+
         }
 
         private void btnIfoodStatus_Click(object sender, EventArgs e)
@@ -4580,5 +4626,6 @@ namespace Example
 
         #endregion
 
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace DeliveryApp.Domain
     {
         public string award { get; set; }
         public string award_item { get; set; }
-        //public string ref  { get; set; }
+
+        [JsonProperty("ref")]
+        public string referencia { get; set; }
     }
 }

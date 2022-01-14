@@ -63,6 +63,8 @@ namespace Example
         public string Usuario { get; set; }
 
         public string Senha { get; set; }
+        public string AuthorizationCode { get; set; }
+        public string AuthorizationCodeVerifier { get; set; }
     }
 
     public class MarketPlaceConfigGloriaFood

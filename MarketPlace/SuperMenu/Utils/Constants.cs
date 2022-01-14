@@ -10,7 +10,6 @@ namespace SuperMenu.Utils
     {
         public const string URL_BASE = "https://api.supermenu.com.br/pdv/";       
 
-
         public const string URL_ORDERS = "orders";
         public const string URL_EVENTS_POLLING = "events:polling";
         public const string URL_EVENTS_ACKNOWLEDGMENT = "events/acknowledgment";

@@ -29,7 +29,7 @@ namespace Ifood.Service
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public GenericResult<token2> OathToken(string client_id, string client_secret)
+        public GenericResult<token2> OathToken(bool centralizado, string client_id, string client_secret, string authorizationCode = "", string authorizationCodeVerifier = "", string refreshToken = "")
         {
             var result = new GenericResult<token2>();
             try
@@ -40,9 +40,27 @@ namespace Ifood.Service
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddParameter("grantType", "client_credentials");
                 request.AddParameter("clientId", client_id);
                 request.AddParameter("clientSecret", client_secret);
+
+                if (centralizado)
+                {
+                    request.AddParameter("grantType", "client_credentials");
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(refreshToken))
+                    {
+                        request.AddParameter("grantType", "authorization_code");
+                        request.AddParameter("authorizationCode", authorizationCode);
+                        request.AddParameter("authorizationCodeVerifier", authorizationCodeVerifier);                        
+                    }
+                    else
+                    {
+                        request.AddParameter("grantType", "refresh_token");
+                        request.AddParameter("refreshToken", refreshToken);
+                    }
+                }                
 
                 IRestResponse responseToken = client.Execute(request);
 
@@ -64,6 +82,42 @@ namespace Ifood.Service
 
             return result;
         }
+
+        public GenericResult<userCodeResult> UserCode(string client_id)
+        {
+            var result = new GenericResult<userCodeResult>();
+            try
+            {
+                var url = _urlBase + Constants.URL_CODE;
+
+                var client = new RestClient(url);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddParameter("grantType", "client_credentials");
+                request.AddParameter("clientId", client_id);                
+
+                IRestResponse responseToken = client.Execute(request);
+
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<userCodeResult>(responseToken.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    var error = JsonConvert.DeserializeObject<error_return>(responseToken.Content);
+                    result.Message = responseToken.StatusDescription + $" => {error.error.message}";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
 
         #region Eventos
 
