@@ -9,5 +9,6 @@ namespace Ifood.Domain
     public class eventAcknowledgment
     {
         public string id { get; set; }
+        public string EventStatusCode { get; set; }
     }
 }

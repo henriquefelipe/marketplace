@@ -53,14 +53,14 @@ namespace Ifood.Service
                     {
                         request.AddParameter("grantType", "authorization_code");
                         request.AddParameter("authorizationCode", authorizationCode);
-                        request.AddParameter("authorizationCodeVerifier", authorizationCodeVerifier);                        
+                        request.AddParameter("authorizationCodeVerifier", authorizationCodeVerifier);
                     }
                     else
                     {
                         request.AddParameter("grantType", "refresh_token");
                         request.AddParameter("refreshToken", refreshToken);
                     }
-                }                
+                }
 
                 IRestResponse responseToken = client.Execute(request);
 
@@ -95,7 +95,7 @@ namespace Ifood.Service
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddParameter("grantType", "client_credentials");
-                request.AddParameter("clientId", client_id);                
+                request.AddParameter("clientId", client_id);
 
                 IRestResponse responseToken = client.Execute(request);
 
@@ -126,7 +126,7 @@ namespace Ifood.Service
             var result = new GenericResult<List<status>>();
 
             var url = string.Format("{0}merchant/v1.0/merchants/{1}/status/", _urlBase, merchantGuid);
-            var client = new RestClient(url);
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             IRestResponse response = client.Execute(request);
@@ -134,8 +134,10 @@ namespace Ifood.Service
             {
                 result.Result = JsonConvert.DeserializeObject<List<status>>(response.Content);
                 result.Success = true;
-                result.Json = response.Content;               
-            }            
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
             else
             {
                 var retorno = JsonConvert.DeserializeObject<error_return>(response.Content);
@@ -153,31 +155,37 @@ namespace Ifood.Service
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        public GenericResult<List<poolingEvent>> EventPolling(string token)
+        public GenericResult<List<poolingEvent>> EventPolling(string token, string merchantid)
         {
             var result = new GenericResult<List<poolingEvent>>();
 
-            var url = string.Format("{0}order/{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_POOLING);
-            var client = new RestClient(url);
+            var url = string.Format("{0}order/{1}/{2}", _urlBase, Constants.VERSION_1, Constants.URL_EVENT_POOLING+ "?types=COL,CAN");
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            if (!string.IsNullOrEmpty(merchantid))
+                request.AddHeader("x-polling-merchants", merchantid);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
-                //result.Requisicao = response.
+
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 result.Result = new List<poolingEvent>();
                 result.Success = true;
+
             }
             else
             {
                 result.Message = response.StatusDescription;
             }
+
+            result.Request = client.requestResult;
+            result.Response = client.responsetResult;
 
             return result;
         }
@@ -231,16 +239,21 @@ namespace Ifood.Service
         public GenericResult<order> Orders(string token, string reference)
         {
             var result = new GenericResult<order>();
-            var url = string.Format("{0}order/{1}/{2}/{3}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference);            
-            var client = new RestClient(url);
+            var url = string.Format("{0}order/{1}/{2}/{3}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference);
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            IRestResponse response = client.Execute(request);
+            var response = client.Execute<RestObject>(request);
+
+            //var restReturn =Util.Write(response);
+
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
             }
             else
             {
@@ -524,7 +537,7 @@ namespace Ifood.Service
             //var parametros = "merchantId=" + merchantId;
 
             var url = string.Format("{0}merchants/{1}/sales", _urlBase, merchantId);
-            var client = new RestClient(url);
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             IRestResponse response = client.Execute(request);
@@ -533,6 +546,8 @@ namespace Ifood.Service
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
