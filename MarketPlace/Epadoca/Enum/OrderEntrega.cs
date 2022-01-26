@@ -10,6 +10,8 @@ namespace Epadoca.Enum
     {
         public const int Entrega = 1;
         public const int EntregaAgendado = 2;
-        public const int Retirada = 4;       
+        public const int Retirada = 3;
+        public const int RetiradaImediatamente = 4;
+        public const int BacaoOuMesa = 5;
     }
 }
