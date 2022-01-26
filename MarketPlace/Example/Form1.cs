@@ -383,7 +383,7 @@ namespace Example
 
                     if (!string.IsNullOrEmpty(_ifoodToken))
                     {
-                        var eventPollingResult = ifoodService.EventPolling(_ifoodToken);
+                        var eventPollingResult = ifoodService.EventPolling(_ifoodToken, txtIfoodMerchantGUID.Text);
 
                         if (eventPollingResult.Success)
                         {
