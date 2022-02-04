@@ -52,6 +52,7 @@
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Enum\OrderPagamento.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\OrderEntrega.cs" />
     <Compile Include="Enum\OrderType.cs" />
