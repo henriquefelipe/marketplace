@@ -11,7 +11,8 @@ namespace MarketPlace
         public string Message { get; set; }
         public bool Success { get; set; }
         public string Json { get; set; }
-
+        public string Request { get; set; }
+        public string Response { get; set; }
     }
 
     public class GenericResult<TResult> : GenericSimpleResult
