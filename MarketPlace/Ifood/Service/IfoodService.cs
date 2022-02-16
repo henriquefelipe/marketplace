@@ -74,11 +74,16 @@ namespace Ifood.Service
                     var error = JsonConvert.DeserializeObject<error_return>(responseToken.Content);
                     result.Message = responseToken.StatusDescription + $" => {error.error.message}";
                 }
+
+                result.StatusCode = responseToken.StatusCode;
+
             }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
             }
+
+         
 
             return result;
         }
@@ -147,6 +152,7 @@ namespace Ifood.Service
                     result.Message = response.Content;
             }
 
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -170,20 +176,20 @@ namespace Ifood.Service
             {
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
-                result.Json = response.Content;
+                result.Json = response.Content;   
 
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 result.Result = new List<poolingEvent>();
                 result.Success = true;
-
             }
             else
             {
                 result.Message = response.StatusDescription;
             }
 
+            result.StatusCode = response.StatusCode;
             result.Request = client.requestResult;
             result.Response = client.responsetResult;
 
@@ -219,7 +225,7 @@ namespace Ifood.Service
             else
             {
                 result.Message = response.Content;
-            }
+            }            
 
             return result;
         }
@@ -260,7 +266,7 @@ namespace Ifood.Service
 
             result.Request = client.requestResult;
             result.Response = client.responsetResult;
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -322,6 +328,7 @@ namespace Ifood.Service
             }
             result.Request = client.requestResult;
             result.Response = client.responsetResult;
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -375,6 +382,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -404,6 +412,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -427,6 +436,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -467,6 +477,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -496,7 +507,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -525,7 +536,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -561,7 +572,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 

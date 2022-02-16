@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,15 +14,12 @@ namespace MarketPlace
         public string Json { get; set; }
         public string Request { get; set; }
         public string Response { get; set; }
+        public HttpStatusCode StatusCode { get; set; }
     }
 
     public class GenericResult<TResult> : GenericSimpleResult
     {
         public TResult Result { get; set; }
-
-        public string Request { get; set; }
-        public string Response { get; set; }
-
     }
 
 
