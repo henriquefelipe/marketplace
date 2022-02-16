@@ -74,11 +74,16 @@ namespace Ifood.Service
                     var error = JsonConvert.DeserializeObject<error_return>(responseToken.Content);
                     result.Message = responseToken.StatusDescription + $" => {error.error.message}";
                 }
+
+                result.StatusCode = responseToken.StatusCode;
+
             }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
             }
+
+         
 
             return result;
         }
@@ -147,6 +152,7 @@ namespace Ifood.Service
                     result.Message = response.Content;
             }
 
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -170,20 +176,20 @@ namespace Ifood.Service
             {
                 result.Result = JsonConvert.DeserializeObject<List<poolingEvent>>(response.Content);
                 result.Success = true;
-                result.Json = response.Content;
+                result.Json = response.Content;   
 
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 result.Result = new List<poolingEvent>();
                 result.Success = true;
-
             }
             else
             {
                 result.Message = response.StatusDescription;
             }
 
+            result.StatusCode = response.StatusCode;
             result.Request = client.requestResult;
             result.Response = client.responsetResult;
 
@@ -219,7 +225,7 @@ namespace Ifood.Service
             else
             {
                 result.Message = response.Content;
-            }
+            }            
 
             return result;
         }
@@ -245,8 +251,6 @@ namespace Ifood.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             var response = client.Execute<RestObject>(request);
 
-            //var restReturn =Util.Write(response);
-
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<order>(response.Content);
@@ -260,6 +264,9 @@ namespace Ifood.Service
                 result.Message = response.StatusDescription;
             }
 
+            result.Request = client.requestResult;
+            result.Response = client.responsetResult;
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -306,7 +313,7 @@ namespace Ifood.Service
             var result = new GenericSimpleResult();
 
             var url = string.Format("{0}order/{1}/{2}/{3}/{4}", _urlBase, Constants.VERSION_1, Constants.URL_ORDER, reference, Constants.URL_ORDER_CONFIRM);
-            var client = new RestClient(url);
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddParameter("application/json", data, ParameterType.RequestBody);
@@ -319,6 +326,9 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.Request = client.requestResult;
+            result.Response = client.responsetResult;
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -372,6 +382,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -401,6 +412,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -424,6 +436,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -464,6 +477,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
+            result.StatusCode = response.StatusCode;
 
             return result;
         }
@@ -493,7 +507,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -522,7 +536,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
@@ -558,7 +572,7 @@ namespace Ifood.Service
             {
                 result.Message = response.StatusDescription;
             }
-
+            result.StatusCode = response.StatusCode;
             return result;
         }
 
