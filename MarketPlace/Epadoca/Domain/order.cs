@@ -22,6 +22,7 @@ namespace Epadoca.Domain
         public string enderecoBairro { get; set; }
         public string enderecoLogradouro { get; set; }
         public string enderecoNumero { get; set; }
+        public string enderecoComplemento { get; set; }
         public string enderecoCep { get; set; }
         public string entrega { get; set; }
         public int tipoEntrega { get; set; }
