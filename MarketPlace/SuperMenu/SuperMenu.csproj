@@ -59,6 +59,7 @@
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\PoolingEvent.cs" />
     <Compile Include="Domain\subItem.cs" />
+    <Compile Include="Enum\PaymentKind.cs" />
     <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\SuperMenuService.cs" />

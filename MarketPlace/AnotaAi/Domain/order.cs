@@ -23,5 +23,6 @@ namespace AnotaAi.Domain
         public decimal deliveryFee { get; set; } // taxa de entrega
         public List<order_discounts> discounts { get; set; }
         public deliveryAddress deliveryAddress { get; set; }
+        public string observation { get; set; }
     }
 }

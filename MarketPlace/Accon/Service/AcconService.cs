@@ -52,9 +52,9 @@ namespace Accon.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                result.Result = JsonConvert.DeserializeObject<List<order>>(response.Content);
-                result.Success = true;
                 result.Json = response.Content;
+                result.Result = JsonConvert.DeserializeObject<List<order>>(response.Content);
+                result.Success = true;                
             }
             else
             {

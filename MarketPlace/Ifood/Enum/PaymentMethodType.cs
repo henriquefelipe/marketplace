@@ -17,5 +17,6 @@ namespace Ifood.Enum
         public const string DIGITAL_WALLET = "DIGITAL_WALLET";
         public const string PIX = "PIX";
         public const string OTHER = "OTHER";
+        public const string EXTERNAL = "EXTERNAL";
     }
 }
