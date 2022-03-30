@@ -8,6 +8,7 @@ namespace Ifood.Enum
 {
     public class DeliveryBy
     {
-        public const string MERCHANT = "MERCHANT";                     
+        public const string MERCHANT = "MERCHANT";
+        public const string IFOOD = "IFOOD";
     }
 }
