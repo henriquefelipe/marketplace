@@ -88,6 +88,13 @@ namespace Example
         private string _epadocaSelected { get; set; }
         private List<Epadoca.Domain.order> _epadocaOrders { get; set; }
 
+        private string _b2foodSelected { get; set; }
+        private string _b2FoodToken { get; set; }
+
+        private string _bigdimSelected { get; set; }
+        private string _bigdimToken { get; set; }
+        private List<Bigdim.Domain.pedido> _bigdimOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -307,6 +314,10 @@ namespace Example
             _aiqfomeOrders = new List<Aiqfome.Domain.orders_result_order>();
             gridAiqfome.DataSource = _aiqfomeOrders.ToList();
             gridAiqfome.Refresh();
+
+            _bigdimOrders = new List<Bigdim.Domain.pedido>();
+            gridBigdim.DataSource = _bigdimOrders.ToList();
+            gridBigdim.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -4621,11 +4632,261 @@ namespace Example
         }
 
 
+        #endregion
+
+        #region B2Food
+
+        private void btnB2FoodIniciar_Click(object sender, EventArgs e)
+        {
+            b2foodIniciar();
+        }
+
+        private void btnB2FoodParar_Click(object sender, EventArgs e)
+        {
+            b2foodParar();
+        }
+
+        private void btnB2FoodAceito_Click(object sender, EventArgs e)
+        {
+            if (btnB2FoodIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_b2foodSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var superMenuService = new SuperMenu.Service.SuperMenuService();
+            var result = superMenuService.StatusEdit(_superMenuToken, _superMenuReferenceSelected, SuperMenu.Domain.PoolingEventStatusCode.APPROVED);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido confirmado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnB2FoodCancelado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridB2Food_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridB2Food.Rows.Count)
+            {
+                _b2foodSelected = gridB2Food.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        public async void b2foodIniciar()
+        {
+            if (string.IsNullOrEmpty(txtSuperMenuToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtB2FoodToken.Enabled = false;
+
+            btnB2FoodIniciar.Enabled = false;
+            btnB2FoodParar.Enabled = true;
+            _b2FoodToken = txtB2FoodToken.Text;
+            await Task.Run(() => b2food());
+        }
 
 
+        void b2foodParar()
+        {
+            txtB2FoodToken.Enabled = true;
+
+            btnB2FoodIniciar.Enabled = true;
+            btnB2FoodParar.Enabled = false;
+        }
+
+        private void b2food()
+        {
+            var service = new B2Food.Service.B2FoodService(_b2FoodToken);
+
+            try
+            {
+                while (btnB2FoodParar.Enabled)
+                {
+                    var pedidosResult = service.PedidosPendentes();
+
+                    if (pedidosResult.Success)
+                    {    
+                        foreach(var numero in pedidosResult.Result)
+                        {
+                            var pedido = service.Order(numero.ToString());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(pedidosResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridB2FoodDelegate();
+        private void WriteGridB2Food()
+        {
+            if (gridB2Food.InvokeRequired)
+            {
+                var d = new WritelstGridB2FoodDelegate(WriteGridB2Food);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridB2Food.DataSource = _superMenuOrders.ToList();
+                gridB2Food.Refresh();
+            }
+        }
 
         #endregion
 
-        
+        #region Bigdim
+
+        private void btnBigdimIniciar_Click(object sender, EventArgs e)
+        {
+            bigdimIniciar();
+        }
+
+        private void btnBigdimParar_Click(object sender, EventArgs e)
+        {
+            bigdimParar();
+        }
+
+        public async void bigdimIniciar()
+        {
+            if (string.IsNullOrEmpty(txtBigdimToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtBigdimToken.Enabled = false;
+
+            btnBigdimIniciar.Enabled = false;
+            btnBigdimParar.Enabled = true;
+            _bigdimToken = txtBigdimToken.Text;
+            await Task.Run(() => bigdim());
+        }
+
+
+        void bigdimParar()
+        {
+            txtBigdimToken.Enabled = true;
+
+            btnBigdimIniciar.Enabled = true;
+            btnBigdimParar.Enabled = false;
+        }
+
+        private void bigdim()
+        {
+            var service = new Bigdim.Service.BigdimService(_bigdimToken);
+
+            try
+            {
+                while (btnBigdimParar.Enabled)
+                {
+                    var pedidosResult = service.PedidosPendentes();
+
+                    if (pedidosResult.Success)
+                    {
+                        foreach (var item in pedidosResult.Result.resposta)
+                        {
+                            _bigdimOrders.Add(item.pedido);
+                        }
+
+                        WriteGridBigdim();
+                    }
+                    else
+                    {
+                        MessageBox.Show(pedidosResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridBigdimDelegate();
+        private void WriteGridBigdim()
+        {
+            if (gridBigdim.InvokeRequired)
+            {
+                var d = new WritelstGridBigdimDelegate(WriteGridBigdim);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridBigdim.DataSource = _bigdimOrders.ToList();
+                gridBigdim.Refresh();
+            }
+        }
+
+        private void gridBigdim_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridBigdim.Rows.Count)
+            {
+                _bigdimSelected = gridBigdim.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        #endregion
+
+        private void btnBigdimAceito_Click(object sender, EventArgs e)
+        {
+            if (btnBigdimIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigdimSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new Bigdim.Service.BigdimService(_bigdimToken);
+            var result = service.AlterarStatus(_bigdimSelected, Bigdim.Enum.order_state.EM_PREPARO);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido confirmado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
     }
 }

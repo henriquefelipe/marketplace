@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtB2FoodToken.Text" xml:space="preserve">
+    <value>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiRXN0YWJlbGVjaW1lbnRvIiwidW5pcXVlX25hbWUiOiJJenp5V2F5IiwiRXN0YWJlbGVjaW1lbnRvSUQiOiIzMzUiLCJFc3RhYmVsZWNpbWVudG9HdWlkIjoiYzcwYzA4YWUtMDY0OC00MTIzLWIzMGItNDg2ZjI2YzUwOTYxIiwiSUQiOiI3NTE5IiwibmJmIjoxNjQ0MzQ1ODA2LCJleHAiOjE2NzU4ODE4MDYsImlhdCI6MTY0NDM0NTgwNn0.ILT9mp6ylhzPb_su8r-rlmN6ufpEC3-0Dhnt4bRnD2U</value>
+  </data>
 </root>

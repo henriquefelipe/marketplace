@@ -101,6 +101,10 @@
       <Project>{61d2230a-5888-49ae-89d1-9c65a625d178}</Project>
       <Name>Aiqfome</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Americanas\Americanas.csproj">
+      <Project>{ec445945-e4db-47e7-a096-51f985013a42}</Project>
+      <Name>Americanas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnotaAi\AnotaAi.csproj">
       <Project>{175d27bf-35ce-45b3-b30f-5242110128d1}</Project>
       <Name>AnotaAi</Name>
@@ -108,6 +112,14 @@
     <ProjectReference Include="..\AtivMob\AtivMob.csproj">
       <Project>{61bbfa72-07c8-4af2-9215-dba55a5edd45}</Project>
       <Name>AtivMob</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\B2Food\B2Food.csproj">
+      <Project>{d791b84b-2181-4076-8655-08f3072f96f6}</Project>
+      <Name>B2Food</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BigDim\Bigdim.csproj">
+      <Project>{6f5c18a0-f29a-4857-b6b6-8b8ada9f0b22}</Project>
+      <Name>Bigdim</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cinddi\Cinddi.csproj">
       <Project>{370a32f6-b2a0-4822-b864-7084d3f18ae1}</Project>
