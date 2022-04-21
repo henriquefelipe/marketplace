@@ -16,14 +16,14 @@ namespace Bigdim.Domain
         public string status { get; set; }
         public string formaPagamento { get; set; }
         public decimal valorFrete { get; set; }
-        public decimal valorTroco { get; set; }
+        public decimal? valorTroco { get; set; }
         public decimal subTotal { get; set; }
         public decimal valorTotal { get; set; }
         public string motivoRecusaCancelamento { get; set; }
         public string tipoRetiradaProduto { get; set; }
         public string token { get; set; }
         public string transacao { get; set; }
-        public decimal valorTrocoCliente { get; set; }
+        public decimal? valorTrocoCliente { get; set; }
         public string ultimaAlteracaoStatus { get; set; }
         public string estimativaEntrega { get; set; }
         public int? tempoEntregaMinutos { get; set; }

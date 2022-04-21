@@ -92,6 +92,8 @@ namespace Bigdim.Service
                         genericResult.Message = response.Content;
                     }
                 }
+
+                genericResult.Json = response.Content;
             }
             catch (Exception ex)
             {

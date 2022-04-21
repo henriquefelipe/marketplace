@@ -28,5 +28,7 @@ namespace DeliveryApp.Domain
 
         [JsonProperty(PropertyName = "ref")]
         public string _ref { get; set; }
+
+        public string ref_adicional { get; set; }
     }
 }

@@ -90,6 +90,7 @@ namespace Example
 
         private string _b2foodSelected { get; set; }
         private string _b2FoodToken { get; set; }
+        private List<B2Food.Domain.pedido> _b2foodOrders { get; set; }
 
         private string _bigdimSelected { get; set; }
         private string _bigdimToken { get; set; }
@@ -318,6 +319,10 @@ namespace Example
             _bigdimOrders = new List<Bigdim.Domain.pedido>();
             gridBigdim.DataSource = _bigdimOrders.ToList();
             gridBigdim.Refresh();
+
+            _b2foodOrders = new List<B2Food.Domain.pedido>();
+            gridB2Food.DataSource = _b2foodOrders.ToList();
+            gridB2Food.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -4660,8 +4665,8 @@ namespace Example
                 return;
             }
 
-            var superMenuService = new SuperMenu.Service.SuperMenuService();
-            var result = superMenuService.StatusEdit(_superMenuToken, _superMenuReferenceSelected, SuperMenu.Domain.PoolingEventStatusCode.APPROVED);
+            var service = new B2Food.Service.B2FoodService(_b2FoodToken);
+            var result = service.AlterarStatus(_b2foodSelected, B2Food.Enum.order_status.ACEITO, 30, "Henrique", "8598774587");
             if (result.Success)
             {
                 MessageBox.Show("Pedido confirmado com sucesso");
@@ -4724,8 +4729,14 @@ namespace Example
                     {    
                         foreach(var numero in pedidosResult.Result)
                         {
-                            var pedido = service.Order(numero.ToString());
+                            var pedidoResult = service.Order(numero.ToString());
+                            if (pedidoResult.Success)
+                            {
+                                _b2foodOrders.Add(pedidoResult.Result);
+                            }
                         }
+
+                        WriteGridB2Food();
                     }
                     else
                     {
@@ -4756,7 +4767,7 @@ namespace Example
             }
             else
             {
-                gridB2Food.DataSource = _superMenuOrders.ToList();
+                gridB2Food.DataSource = _b2foodOrders.ToList();
                 gridB2Food.Refresh();
             }
         }
@@ -4814,7 +4825,10 @@ namespace Example
                     {
                         foreach (var item in pedidosResult.Result.resposta)
                         {
-                            _bigdimOrders.Add(item.pedido);
+                            if (item.pedido.status == Bigdim.Enum.order_state.AGUARDANDO_ACEITE)
+                            {
+                                _bigdimOrders.Add(item.pedido);
+                            }
                         }
 
                         WriteGridBigdim();

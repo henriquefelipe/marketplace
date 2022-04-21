@@ -54,6 +54,9 @@
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\pizza.cs" />
+    <Compile Include="Domain\produto.cs" />
+    <Compile Include="Domain\produto_option.cs" />
+    <Compile Include="Domain\promotionGroupOrders.cs" />
     <Compile Include="Domain\result_order.cs" />
     <Compile Include="Enum\FormaEntregaPedido.cs" />
     <Compile Include="Enum\OrderStatus.cs" />

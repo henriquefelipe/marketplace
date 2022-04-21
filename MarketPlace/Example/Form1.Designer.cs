@@ -80,6 +80,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
             this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
+            this.tabPage25 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.btnAnotaAiCancelar = new System.Windows.Forms.Button();
             this.btnAnotaAiSaiuParaEntrega = new System.Windows.Forms.Button();
@@ -100,6 +101,21 @@
             this.btnAtivMobCriarPedido = new System.Windows.Forms.Button();
             this.txtAtivMobMerchantId = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
+            this.tabPage24 = new System.Windows.Forms.TabPage();
+            this.gridBigdim = new System.Windows.Forms.DataGridView();
+            this.txtBigdimToken = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.btnBigdimAceito = new System.Windows.Forms.Button();
+            this.btnBigdimParar = new System.Windows.Forms.Button();
+            this.btnBigdimIniciar = new System.Windows.Forms.Button();
+            this.tabPage23 = new System.Windows.Forms.TabPage();
+            this.btnB2FoodCancelado = new System.Windows.Forms.Button();
+            this.txtB2FoodToken = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.btnB2FoodAceito = new System.Windows.Forms.Button();
+            this.gridB2Food = new System.Windows.Forms.DataGridView();
+            this.btnB2FoodParar = new System.Windows.Forms.Button();
+            this.btnB2FoodIniciar = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.btnCinddiCancelar = new System.Windows.Forms.Button();
             this.btnCinddiFinalizado = new System.Windows.Forms.Button();
@@ -345,22 +361,17 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.tabPage23 = new System.Windows.Forms.TabPage();
-            this.tabPage24 = new System.Windows.Forms.TabPage();
-            this.tabPage25 = new System.Windows.Forms.TabPage();
-            this.txtB2FoodToken = new System.Windows.Forms.TextBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.btnB2FoodAceito = new System.Windows.Forms.Button();
-            this.gridB2Food = new System.Windows.Forms.DataGridView();
-            this.btnB2FoodParar = new System.Windows.Forms.Button();
-            this.btnB2FoodIniciar = new System.Windows.Forms.Button();
-            this.btnB2FoodCancelado = new System.Windows.Forms.Button();
-            this.txtBigdimToken = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.btnBigdimAceito = new System.Windows.Forms.Button();
-            this.btnBigdimParar = new System.Windows.Forms.Button();
-            this.btnBigdimIniciar = new System.Windows.Forms.Button();
-            this.gridBigdim = new System.Windows.Forms.DataGridView();
+            this.btnAmericanasCancelado = new System.Windows.Forms.Button();
+            this.txtAmericanasClientID = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.btnAmericanasAceito = new System.Windows.Forms.Button();
+            this.gridAmericanas = new System.Windows.Forms.DataGridView();
+            this.btnAmericanasParar = new System.Windows.Forms.Button();
+            this.btnAmericanasIniciar = new System.Windows.Forms.Button();
+            this.txtAmericanasStore = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.txtAmericanasClientSecret = new System.Windows.Forms.TextBox();
+            this.label74 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -368,9 +379,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridAiqfome)).BeginInit();
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).BeginInit();
+            this.tabPage25.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).BeginInit();
             this.tabPage15.SuspendLayout();
+            this.tabPage24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBigdim)).BeginInit();
+            this.tabPage23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridB2Food)).BeginInit();
             this.tabPage11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -405,10 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPage18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
-            this.tabPage23.SuspendLayout();
-            this.tabPage24.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridB2Food)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridBigdim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAmericanas)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -983,6 +996,26 @@
             this.btnPedreiroDigitalIniciar.UseVisualStyleBackColor = true;
             this.btnPedreiroDigitalIniciar.Click += new System.EventHandler(this.btnPedreiroDigitalIniciar_Click);
             // 
+            // tabPage25
+            // 
+            this.tabPage25.Controls.Add(this.txtAmericanasClientSecret);
+            this.tabPage25.Controls.Add(this.label74);
+            this.tabPage25.Controls.Add(this.txtAmericanasStore);
+            this.tabPage25.Controls.Add(this.label73);
+            this.tabPage25.Controls.Add(this.btnAmericanasCancelado);
+            this.tabPage25.Controls.Add(this.txtAmericanasClientID);
+            this.tabPage25.Controls.Add(this.label72);
+            this.tabPage25.Controls.Add(this.btnAmericanasAceito);
+            this.tabPage25.Controls.Add(this.gridAmericanas);
+            this.tabPage25.Controls.Add(this.btnAmericanasParar);
+            this.tabPage25.Controls.Add(this.btnAmericanasIniciar);
+            this.tabPage25.Location = new System.Drawing.Point(4, 22);
+            this.tabPage25.Name = "tabPage25";
+            this.tabPage25.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage25.TabIndex = 22;
+            this.tabPage25.Text = "Americanas";
+            this.tabPage25.UseVisualStyleBackColor = true;
+            // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.btnAnotaAiCancelar);
@@ -1198,6 +1231,176 @@
             this.label37.Size = new System.Drawing.Size(90, 20);
             this.label37.TabIndex = 24;
             this.label37.Text = "MerchantId";
+            // 
+            // tabPage24
+            // 
+            this.tabPage24.Controls.Add(this.gridBigdim);
+            this.tabPage24.Controls.Add(this.txtBigdimToken);
+            this.tabPage24.Controls.Add(this.label71);
+            this.tabPage24.Controls.Add(this.btnBigdimAceito);
+            this.tabPage24.Controls.Add(this.btnBigdimParar);
+            this.tabPage24.Controls.Add(this.btnBigdimIniciar);
+            this.tabPage24.Location = new System.Drawing.Point(4, 22);
+            this.tabPage24.Name = "tabPage24";
+            this.tabPage24.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage24.TabIndex = 21;
+            this.tabPage24.Text = "Bigdim";
+            this.tabPage24.UseVisualStyleBackColor = true;
+            // 
+            // gridBigdim
+            // 
+            this.gridBigdim.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridBigdim.Location = new System.Drawing.Point(6, 170);
+            this.gridBigdim.Name = "gridBigdim";
+            this.gridBigdim.RowHeadersWidth = 51;
+            this.gridBigdim.Size = new System.Drawing.Size(1213, 501);
+            this.gridBigdim.TabIndex = 51;
+            this.gridBigdim.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridBigdim_CellClick);
+            // 
+            // txtBigdimToken
+            // 
+            this.txtBigdimToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBigdimToken.Location = new System.Drawing.Point(93, 19);
+            this.txtBigdimToken.Name = "txtBigdimToken";
+            this.txtBigdimToken.Size = new System.Drawing.Size(667, 26);
+            this.txtBigdimToken.TabIndex = 49;
+            this.txtBigdimToken.Text = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpenp5d2F5LnRlY25vbG9naWEuZW1wfDMxMDMyMDIyMTI1MTQ5" +
+    "In0.8LF4CYVP9S7o8MAcdqXwr8emRTs2MroTiP2BIn0kU2AmsePD2DEhJcBqWF3WrzOxmUjLEVTqnKL4" +
+    "gT1YwT52zQ";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(15, 22);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(53, 20);
+            this.label71.TabIndex = 48;
+            this.label71.Text = "Token";
+            // 
+            // btnBigdimAceito
+            // 
+            this.btnBigdimAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBigdimAceito.Location = new System.Drawing.Point(6, 131);
+            this.btnBigdimAceito.Name = "btnBigdimAceito";
+            this.btnBigdimAceito.Size = new System.Drawing.Size(145, 33);
+            this.btnBigdimAceito.TabIndex = 47;
+            this.btnBigdimAceito.Text = "Aceito";
+            this.btnBigdimAceito.UseVisualStyleBackColor = true;
+            this.btnBigdimAceito.Click += new System.EventHandler(this.btnBigdimAceito_Click);
+            // 
+            // btnBigdimParar
+            // 
+            this.btnBigdimParar.Enabled = false;
+            this.btnBigdimParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBigdimParar.Location = new System.Drawing.Point(1048, 73);
+            this.btnBigdimParar.Name = "btnBigdimParar";
+            this.btnBigdimParar.Size = new System.Drawing.Size(171, 39);
+            this.btnBigdimParar.TabIndex = 46;
+            this.btnBigdimParar.Text = "Parar";
+            this.btnBigdimParar.UseVisualStyleBackColor = true;
+            this.btnBigdimParar.Click += new System.EventHandler(this.btnBigdimParar_Click);
+            // 
+            // btnBigdimIniciar
+            // 
+            this.btnBigdimIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBigdimIniciar.Location = new System.Drawing.Point(1048, 22);
+            this.btnBigdimIniciar.Name = "btnBigdimIniciar";
+            this.btnBigdimIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnBigdimIniciar.TabIndex = 45;
+            this.btnBigdimIniciar.Text = "Iniciar";
+            this.btnBigdimIniciar.UseVisualStyleBackColor = true;
+            this.btnBigdimIniciar.Click += new System.EventHandler(this.btnBigdimIniciar_Click);
+            // 
+            // tabPage23
+            // 
+            this.tabPage23.Controls.Add(this.btnB2FoodCancelado);
+            this.tabPage23.Controls.Add(this.txtB2FoodToken);
+            this.tabPage23.Controls.Add(this.label70);
+            this.tabPage23.Controls.Add(this.btnB2FoodAceito);
+            this.tabPage23.Controls.Add(this.gridB2Food);
+            this.tabPage23.Controls.Add(this.btnB2FoodParar);
+            this.tabPage23.Controls.Add(this.btnB2FoodIniciar);
+            this.tabPage23.Location = new System.Drawing.Point(4, 22);
+            this.tabPage23.Name = "tabPage23";
+            this.tabPage23.Size = new System.Drawing.Size(1229, 685);
+            this.tabPage23.TabIndex = 20;
+            this.tabPage23.Text = "B2Food";
+            this.tabPage23.UseVisualStyleBackColor = true;
+            // 
+            // btnB2FoodCancelado
+            // 
+            this.btnB2FoodCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnB2FoodCancelado.Location = new System.Drawing.Point(159, 127);
+            this.btnB2FoodCancelado.Name = "btnB2FoodCancelado";
+            this.btnB2FoodCancelado.Size = new System.Drawing.Size(145, 33);
+            this.btnB2FoodCancelado.TabIndex = 44;
+            this.btnB2FoodCancelado.Text = "Cancelado";
+            this.btnB2FoodCancelado.UseVisualStyleBackColor = true;
+            this.btnB2FoodCancelado.Click += new System.EventHandler(this.btnB2FoodCancelado_Click);
+            // 
+            // txtB2FoodToken
+            // 
+            this.txtB2FoodToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtB2FoodToken.Location = new System.Drawing.Point(95, 15);
+            this.txtB2FoodToken.Name = "txtB2FoodToken";
+            this.txtB2FoodToken.Size = new System.Drawing.Size(667, 26);
+            this.txtB2FoodToken.TabIndex = 43;
+            this.txtB2FoodToken.Text = resources.GetString("txtB2FoodToken.Text");
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(17, 18);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(53, 20);
+            this.label70.TabIndex = 42;
+            this.label70.Text = "Token";
+            // 
+            // btnB2FoodAceito
+            // 
+            this.btnB2FoodAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnB2FoodAceito.Location = new System.Drawing.Point(8, 127);
+            this.btnB2FoodAceito.Name = "btnB2FoodAceito";
+            this.btnB2FoodAceito.Size = new System.Drawing.Size(145, 33);
+            this.btnB2FoodAceito.TabIndex = 41;
+            this.btnB2FoodAceito.Text = "Aceito";
+            this.btnB2FoodAceito.UseVisualStyleBackColor = true;
+            this.btnB2FoodAceito.Click += new System.EventHandler(this.btnB2FoodAceito_Click);
+            // 
+            // gridB2Food
+            // 
+            this.gridB2Food.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridB2Food.Location = new System.Drawing.Point(8, 166);
+            this.gridB2Food.Name = "gridB2Food";
+            this.gridB2Food.RowHeadersWidth = 51;
+            this.gridB2Food.Size = new System.Drawing.Size(1213, 501);
+            this.gridB2Food.TabIndex = 40;
+            this.gridB2Food.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridB2Food_CellClick);
+            // 
+            // btnB2FoodParar
+            // 
+            this.btnB2FoodParar.Enabled = false;
+            this.btnB2FoodParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnB2FoodParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnB2FoodParar.Name = "btnB2FoodParar";
+            this.btnB2FoodParar.Size = new System.Drawing.Size(171, 39);
+            this.btnB2FoodParar.TabIndex = 39;
+            this.btnB2FoodParar.Text = "Parar";
+            this.btnB2FoodParar.UseVisualStyleBackColor = true;
+            this.btnB2FoodParar.Click += new System.EventHandler(this.btnB2FoodParar_Click);
+            // 
+            // btnB2FoodIniciar
+            // 
+            this.btnB2FoodIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnB2FoodIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnB2FoodIniciar.Name = "btnB2FoodIniciar";
+            this.btnB2FoodIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnB2FoodIniciar.TabIndex = 38;
+            this.btnB2FoodIniciar.Text = "Iniciar";
+            this.btnB2FoodIniciar.UseVisualStyleBackColor = true;
+            this.btnB2FoodIniciar.Click += new System.EventHandler(this.btnB2FoodIniciar_Click);
             // 
             // tabPage11
             // 
@@ -3890,184 +4093,112 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // tabPage23
+            // btnAmericanasCancelado
             // 
-            this.tabPage23.Controls.Add(this.btnB2FoodCancelado);
-            this.tabPage23.Controls.Add(this.txtB2FoodToken);
-            this.tabPage23.Controls.Add(this.label70);
-            this.tabPage23.Controls.Add(this.btnB2FoodAceito);
-            this.tabPage23.Controls.Add(this.gridB2Food);
-            this.tabPage23.Controls.Add(this.btnB2FoodParar);
-            this.tabPage23.Controls.Add(this.btnB2FoodIniciar);
-            this.tabPage23.Location = new System.Drawing.Point(4, 22);
-            this.tabPage23.Name = "tabPage23";
-            this.tabPage23.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage23.TabIndex = 20;
-            this.tabPage23.Text = "B2Food";
-            this.tabPage23.UseVisualStyleBackColor = true;
+            this.btnAmericanasCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasCancelado.Location = new System.Drawing.Point(159, 128);
+            this.btnAmericanasCancelado.Name = "btnAmericanasCancelado";
+            this.btnAmericanasCancelado.Size = new System.Drawing.Size(145, 33);
+            this.btnAmericanasCancelado.TabIndex = 51;
+            this.btnAmericanasCancelado.Text = "Cancelado";
+            this.btnAmericanasCancelado.UseVisualStyleBackColor = true;
             // 
-            // tabPage24
+            // txtAmericanasClientID
             // 
-            this.tabPage24.Controls.Add(this.gridBigdim);
-            this.tabPage24.Controls.Add(this.txtBigdimToken);
-            this.tabPage24.Controls.Add(this.label71);
-            this.tabPage24.Controls.Add(this.btnBigdimAceito);
-            this.tabPage24.Controls.Add(this.btnBigdimParar);
-            this.tabPage24.Controls.Add(this.btnBigdimIniciar);
-            this.tabPage24.Location = new System.Drawing.Point(4, 22);
-            this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage24.TabIndex = 21;
-            this.tabPage24.Text = "Bigdim";
-            this.tabPage24.UseVisualStyleBackColor = true;
+            this.txtAmericanasClientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmericanasClientID.Location = new System.Drawing.Point(123, 16);
+            this.txtAmericanasClientID.Name = "txtAmericanasClientID";
+            this.txtAmericanasClientID.Size = new System.Drawing.Size(639, 26);
+            this.txtAmericanasClientID.TabIndex = 50;
+            this.txtAmericanasClientID.Text = "18";
             // 
-            // tabPage25
+            // label72
             // 
-            this.tabPage25.Location = new System.Drawing.Point(4, 22);
-            this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Size = new System.Drawing.Size(1229, 685);
-            this.tabPage25.TabIndex = 22;
-            this.tabPage25.Text = "Americanas";
-            this.tabPage25.UseVisualStyleBackColor = true;
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(17, 19);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(70, 20);
+            this.label72.TabIndex = 49;
+            this.label72.Text = "Client ID";
             // 
-            // txtB2FoodToken
+            // btnAmericanasAceito
             // 
-            this.txtB2FoodToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtB2FoodToken.Location = new System.Drawing.Point(95, 15);
-            this.txtB2FoodToken.Name = "txtB2FoodToken";
-            this.txtB2FoodToken.Size = new System.Drawing.Size(667, 26);
-            this.txtB2FoodToken.TabIndex = 43;
-            this.txtB2FoodToken.Text = resources.GetString("txtB2FoodToken.Text");
+            this.btnAmericanasAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasAceito.Location = new System.Drawing.Point(8, 128);
+            this.btnAmericanasAceito.Name = "btnAmericanasAceito";
+            this.btnAmericanasAceito.Size = new System.Drawing.Size(145, 33);
+            this.btnAmericanasAceito.TabIndex = 48;
+            this.btnAmericanasAceito.Text = "Aceito";
+            this.btnAmericanasAceito.UseVisualStyleBackColor = true;
             // 
-            // label70
+            // gridAmericanas
             // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(17, 18);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(53, 20);
-            this.label70.TabIndex = 42;
-            this.label70.Text = "Token";
+            this.gridAmericanas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAmericanas.Location = new System.Drawing.Point(8, 167);
+            this.gridAmericanas.Name = "gridAmericanas";
+            this.gridAmericanas.RowHeadersWidth = 51;
+            this.gridAmericanas.Size = new System.Drawing.Size(1213, 501);
+            this.gridAmericanas.TabIndex = 47;
             // 
-            // btnB2FoodAceito
+            // btnAmericanasParar
             // 
-            this.btnB2FoodAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB2FoodAceito.Location = new System.Drawing.Point(8, 127);
-            this.btnB2FoodAceito.Name = "btnB2FoodAceito";
-            this.btnB2FoodAceito.Size = new System.Drawing.Size(145, 33);
-            this.btnB2FoodAceito.TabIndex = 41;
-            this.btnB2FoodAceito.Text = "Aceito";
-            this.btnB2FoodAceito.UseVisualStyleBackColor = true;
-            this.btnB2FoodAceito.Click += new System.EventHandler(this.btnB2FoodAceito_Click);
+            this.btnAmericanasParar.Enabled = false;
+            this.btnAmericanasParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasParar.Location = new System.Drawing.Point(1050, 70);
+            this.btnAmericanasParar.Name = "btnAmericanasParar";
+            this.btnAmericanasParar.Size = new System.Drawing.Size(171, 39);
+            this.btnAmericanasParar.TabIndex = 46;
+            this.btnAmericanasParar.Text = "Parar";
+            this.btnAmericanasParar.UseVisualStyleBackColor = true;
             // 
-            // gridB2Food
+            // btnAmericanasIniciar
             // 
-            this.gridB2Food.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridB2Food.Location = new System.Drawing.Point(8, 166);
-            this.gridB2Food.Name = "gridB2Food";
-            this.gridB2Food.RowHeadersWidth = 51;
-            this.gridB2Food.Size = new System.Drawing.Size(1213, 501);
-            this.gridB2Food.TabIndex = 40;
-            this.gridB2Food.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridB2Food_CellClick);
+            this.btnAmericanasIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasIniciar.Location = new System.Drawing.Point(1050, 19);
+            this.btnAmericanasIniciar.Name = "btnAmericanasIniciar";
+            this.btnAmericanasIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnAmericanasIniciar.TabIndex = 45;
+            this.btnAmericanasIniciar.Text = "Iniciar";
+            this.btnAmericanasIniciar.UseVisualStyleBackColor = true;
             // 
-            // btnB2FoodParar
+            // txtAmericanasStore
             // 
-            this.btnB2FoodParar.Enabled = false;
-            this.btnB2FoodParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB2FoodParar.Location = new System.Drawing.Point(1050, 69);
-            this.btnB2FoodParar.Name = "btnB2FoodParar";
-            this.btnB2FoodParar.Size = new System.Drawing.Size(171, 39);
-            this.btnB2FoodParar.TabIndex = 39;
-            this.btnB2FoodParar.Text = "Parar";
-            this.btnB2FoodParar.UseVisualStyleBackColor = true;
-            this.btnB2FoodParar.Click += new System.EventHandler(this.btnB2FoodParar_Click);
+            this.txtAmericanasStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmericanasStore.Location = new System.Drawing.Point(123, 83);
+            this.txtAmericanasStore.Name = "txtAmericanasStore";
+            this.txtAmericanasStore.Size = new System.Drawing.Size(295, 26);
+            this.txtAmericanasStore.TabIndex = 53;
+            this.txtAmericanasStore.Text = "402";
             // 
-            // btnB2FoodIniciar
+            // label73
             // 
-            this.btnB2FoodIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB2FoodIniciar.Location = new System.Drawing.Point(1050, 18);
-            this.btnB2FoodIniciar.Name = "btnB2FoodIniciar";
-            this.btnB2FoodIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnB2FoodIniciar.TabIndex = 38;
-            this.btnB2FoodIniciar.Text = "Iniciar";
-            this.btnB2FoodIniciar.UseVisualStyleBackColor = true;
-            this.btnB2FoodIniciar.Click += new System.EventHandler(this.btnB2FoodIniciar_Click);
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(22, 89);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(48, 20);
+            this.label73.TabIndex = 52;
+            this.label73.Text = "Store";
             // 
-            // btnB2FoodCancelado
+            // txtAmericanasClientSecret
             // 
-            this.btnB2FoodCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB2FoodCancelado.Location = new System.Drawing.Point(159, 127);
-            this.btnB2FoodCancelado.Name = "btnB2FoodCancelado";
-            this.btnB2FoodCancelado.Size = new System.Drawing.Size(145, 33);
-            this.btnB2FoodCancelado.TabIndex = 44;
-            this.btnB2FoodCancelado.Text = "Cancelado";
-            this.btnB2FoodCancelado.UseVisualStyleBackColor = true;
-            this.btnB2FoodCancelado.Click += new System.EventHandler(this.btnB2FoodCancelado_Click);
+            this.txtAmericanasClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmericanasClientSecret.Location = new System.Drawing.Point(123, 48);
+            this.txtAmericanasClientSecret.Name = "txtAmericanasClientSecret";
+            this.txtAmericanasClientSecret.Size = new System.Drawing.Size(639, 26);
+            this.txtAmericanasClientSecret.TabIndex = 55;
+            this.txtAmericanasClientSecret.Text = "Zir4wutGdbQVLiMU6w6dsrRywM8OAbecquYFhmPH";
             // 
-            // txtBigdimToken
+            // label74
             // 
-            this.txtBigdimToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBigdimToken.Location = new System.Drawing.Point(93, 19);
-            this.txtBigdimToken.Name = "txtBigdimToken";
-            this.txtBigdimToken.Size = new System.Drawing.Size(667, 26);
-            this.txtBigdimToken.TabIndex = 49;
-            this.txtBigdimToken.Text = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpenp5d2F5LnRlY25vbG9naWEuZW1wfDMxMDMyMDIyMTI1MTQ5" +
-    "In0.8LF4CYVP9S7o8MAcdqXwr8emRTs2MroTiP2BIn0kU2AmsePD2DEhJcBqWF3WrzOxmUjLEVTqnKL4" +
-    "gT1YwT52zQ";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.Location = new System.Drawing.Point(15, 22);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(53, 20);
-            this.label71.TabIndex = 48;
-            this.label71.Text = "Token";
-            // 
-            // btnBigdimAceito
-            // 
-            this.btnBigdimAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBigdimAceito.Location = new System.Drawing.Point(6, 131);
-            this.btnBigdimAceito.Name = "btnBigdimAceito";
-            this.btnBigdimAceito.Size = new System.Drawing.Size(145, 33);
-            this.btnBigdimAceito.TabIndex = 47;
-            this.btnBigdimAceito.Text = "Aceito";
-            this.btnBigdimAceito.UseVisualStyleBackColor = true;
-            this.btnBigdimAceito.Click += new System.EventHandler(this.btnBigdimAceito_Click);
-            // 
-            // btnBigdimParar
-            // 
-            this.btnBigdimParar.Enabled = false;
-            this.btnBigdimParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBigdimParar.Location = new System.Drawing.Point(1048, 73);
-            this.btnBigdimParar.Name = "btnBigdimParar";
-            this.btnBigdimParar.Size = new System.Drawing.Size(171, 39);
-            this.btnBigdimParar.TabIndex = 46;
-            this.btnBigdimParar.Text = "Parar";
-            this.btnBigdimParar.UseVisualStyleBackColor = true;
-            this.btnBigdimParar.Click += new System.EventHandler(this.btnBigdimParar_Click);
-            // 
-            // btnBigdimIniciar
-            // 
-            this.btnBigdimIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBigdimIniciar.Location = new System.Drawing.Point(1048, 22);
-            this.btnBigdimIniciar.Name = "btnBigdimIniciar";
-            this.btnBigdimIniciar.Size = new System.Drawing.Size(171, 39);
-            this.btnBigdimIniciar.TabIndex = 45;
-            this.btnBigdimIniciar.Text = "Iniciar";
-            this.btnBigdimIniciar.UseVisualStyleBackColor = true;
-            this.btnBigdimIniciar.Click += new System.EventHandler(this.btnBigdimIniciar_Click);
-            // 
-            // gridBigdim
-            // 
-            this.gridBigdim.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridBigdim.Location = new System.Drawing.Point(6, 170);
-            this.gridBigdim.Name = "gridBigdim";
-            this.gridBigdim.RowHeadersWidth = 51;
-            this.gridBigdim.Size = new System.Drawing.Size(1213, 501);
-            this.gridBigdim.TabIndex = 51;
-            this.gridBigdim.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridBigdim_CellClick);
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(17, 51);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(100, 20);
+            this.label74.TabIndex = 54;
+            this.label74.Text = "Client Secret";
             // 
             // Form1
             // 
@@ -4090,11 +4221,19 @@
             this.tabPage14.ResumeLayout(false);
             this.tabPage14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedreiroDigital)).EndInit();
+            this.tabPage25.ResumeLayout(false);
+            this.tabPage25.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAnotaAi)).EndInit();
             this.tabPage15.ResumeLayout(false);
             this.tabPage15.PerformLayout();
+            this.tabPage24.ResumeLayout(false);
+            this.tabPage24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBigdim)).EndInit();
+            this.tabPage23.ResumeLayout(false);
+            this.tabPage23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridB2Food)).EndInit();
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).EndInit();
@@ -4144,12 +4283,7 @@
             this.tabPage18.ResumeLayout(false);
             this.tabPage18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
-            this.tabPage23.ResumeLayout(false);
-            this.tabPage23.PerformLayout();
-            this.tabPage24.ResumeLayout(false);
-            this.tabPage24.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridB2Food)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridBigdim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAmericanas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4488,6 +4622,17 @@
         private System.Windows.Forms.Button btnBigdimAceito;
         private System.Windows.Forms.Button btnBigdimParar;
         private System.Windows.Forms.Button btnBigdimIniciar;
+        private System.Windows.Forms.TextBox txtAmericanasClientSecret;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox txtAmericanasStore;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button btnAmericanasCancelado;
+        private System.Windows.Forms.TextBox txtAmericanasClientID;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Button btnAmericanasAceito;
+        private System.Windows.Forms.DataGridView gridAmericanas;
+        private System.Windows.Forms.Button btnAmericanasParar;
+        private System.Windows.Forms.Button btnAmericanasIniciar;
     }
 }
 

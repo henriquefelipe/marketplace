@@ -10,7 +10,7 @@ namespace B2Food.Domain
     {
         public int id { get; set; }
         public object catalogoModificadorID { get; set; }
-        public int catalogoTamanhoID { get; set; }
+        public int? catalogoTamanhoID { get; set; }
         public int pedidoItemID { get; set; }
         public string nome { get; set; }
         public string nomeGrupo { get; set; }
