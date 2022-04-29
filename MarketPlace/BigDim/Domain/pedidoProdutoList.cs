@@ -8,7 +8,12 @@ namespace Bigdim.Domain
 {
     public class pedidoProdutoList
     {
+        public pedidoProdutoList()
+        {
+            pedidoProdutoAdicionalList = new List<pedidoProdutoAdicional>();
+        }
+
         public pedidoProduto pedidoProduto { get; set; }
-        public object pedidoProdutoAdicionalList { get; set; }
+        public List<pedidoProdutoAdicional> pedidoProdutoAdicionalList { get; set; }
     }
 }

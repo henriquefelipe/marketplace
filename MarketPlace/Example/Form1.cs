@@ -96,6 +96,9 @@ namespace Example
         private string _bigdimToken { get; set; }
         private List<Bigdim.Domain.pedido> _bigdimOrders { get; set; }
 
+        private string _americanasSelected { get; set; }
+        private List<Americanas.Domain.orders> _americanasOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -323,6 +326,10 @@ namespace Example
             _b2foodOrders = new List<B2Food.Domain.pedido>();
             gridB2Food.DataSource = _b2foodOrders.ToList();
             gridB2Food.Refresh();
+
+            _americanasOrders = new List<Americanas.Domain.orders>();
+            gridAmericanas.DataSource = _americanasOrders.ToList();
+            gridAmericanas.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -350,7 +357,7 @@ namespace Example
             {
                 MessageBox.Show("Campo Client_Secret Obrigatório");
                 return;
-            }            
+            }
 
             txtIfoodClient_ID.Enabled = false;
             txtIfoodClient_Secret.Enabled = false;
@@ -363,7 +370,7 @@ namespace Example
         }
 
         private void ifood()
-        {           
+        {
             var ifoodService = new Ifood.Service.IfoodService();
             _ifoodOrders = new List<Ifood.Domain.order>();
 
@@ -379,7 +386,7 @@ namespace Example
                         var authorizationCode = "";
                         var authorizationCodeVerifier = "";
                         var refreshToken = "";
-                        if(!centralizado)
+                        if (!centralizado)
                         {
                             authorizationCode = txtIfoodDistribuidoAuthorizationCode.Text;
                             authorizationCodeVerifier = txtIfoodDistribuidoAuthorizationCodeVerificier.Text;
@@ -499,15 +506,15 @@ namespace Example
                 return;
             }
 
-            if(!rbtIfoodTipoDistribuido.Checked)
+            if (!rbtIfoodTipoDistribuido.Checked)
             {
                 MessageBox.Show("Selecione o tipo distribuido");
                 return;
-            }            
+            }
 
             var ifoodService = new Ifood.Service.IfoodService();
             var result = ifoodService.UserCode(txtIfoodClient_ID.Text);
-            if(result.Success)
+            if (result.Success)
             {
                 txtIfoodDistribuidoUrl.Text = result.Result.verificationUrlComplete;
                 txtIfoodDistribuidoCode.Text = result.Result.userCode;
@@ -814,7 +821,7 @@ namespace Example
                 MessageBox.Show("Inicia o aplicativo");
                 return;
             }
-            
+
             var ifoodService = new Ifood.Service.IfoodService();
             var result = ifoodService.Sales(_ifoodToken, txtIfoodMerchantId.Text);
             if (result.Success)
@@ -4726,8 +4733,8 @@ namespace Example
                     var pedidosResult = service.PedidosPendentes();
 
                     if (pedidosResult.Success)
-                    {    
-                        foreach(var numero in pedidosResult.Result)
+                    {
+                        foreach (var numero in pedidosResult.Result)
                         {
                             var pedidoResult = service.Order(numero.ToString());
                             if (pedidoResult.Success)
@@ -4875,8 +4882,6 @@ namespace Example
             }
         }
 
-        #endregion
-
         private void btnBigdimAceito_Click(object sender, EventArgs e)
         {
             if (btnBigdimIniciar.Enabled)
@@ -4902,5 +4907,199 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+        #endregion
+
+        #region Americanas
+
+        private void btnAmericanasLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAmericanasClientID.Text))
+            {
+                MessageBox.Show("ClientID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAmericanasClientSecret.Text))
+            {
+                MessageBox.Show("Client Secret Obrigatório");
+                return;
+            }
+
+            var service = new Americanas.Service.AmericanasService(true);
+            var result = service.OathToken(txtAmericanasClientID.Text, txtAmericanasClientSecret.Text);
+            if (result.Success)
+            {
+                txtAmericanasToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAmericanasIniciar_Click(object sender, EventArgs e)
+        {
+            americanasIniciar();
+        }
+
+        private void btnAmericanasParar_Click(object sender, EventArgs e)
+        {
+            americanasParar();
+        }
+
+        private void btnAmericanasAceito_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAmericanasCancelado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public async void americanasIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAmericanasToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+
+            btnAmericanasIniciar.Enabled = false;
+            btnAmericanasParar.Enabled = true;
+            await Task.Run(() => americanas());
+        }
+
+
+        void americanasParar()
+        {
+            btnAmericanasIniciar.Enabled = true;
+            btnAmericanasParar.Enabled = false;
+        }
+
+        private void americanas()
+        {
+            var service = new Americanas.Service.AmericanasService(true);
+
+            try
+            {
+                while (btnAmericanasParar.Enabled)
+                {
+                    var pedidosResult = service.Orders(txtAmericanasStore.Text, txtAmericanasToken.Text);
+
+                    if (pedidosResult.Success)
+                    {
+                        foreach (var item in pedidosResult.Result)
+                        {
+                            _americanasOrders.Add(item);
+                        }
+
+                        WriteGridAmericanas();
+                    }
+                    else
+                    {
+                        MessageBox.Show(pedidosResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridAmericanasDelegate();
+        private void WriteGridAmericanas()
+        {
+            if (gridAmericanas.InvokeRequired)
+            {
+                var d = new WritelstGridAmericanasDelegate(WriteGridAmericanas);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAmericanas.DataSource = _americanasOrders.ToList();
+                gridAmericanas.Refresh();
+            }
+        }
+
+        private void gridAmericanas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAmericanas.Rows.Count)
+            {
+                _americanasSelected = gridAmericanas.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnAmericanasBuscarProduto_Click(object sender, EventArgs e)
+        {
+            var service = new Americanas.Service.AmericanasService(true);
+
+            try
+            {
+                var pedidosResult = service.GetProducts(txtAmericanasStore.Text, txtAmericanasToken.Text);
+
+                if (pedidosResult.Success)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show(pedidosResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private void btnAmericanasCriarPedido_Click(object sender, EventArgs e)
+        {
+            var service = new Americanas.Service.AmericanasService(true);
+
+            try
+            {
+                var pedidosResult = service.CreateOrder(txtAmericanasClientID.Text, txtAmericanasStore.Text, 247004, 3);
+
+                if (pedidosResult.Success)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show(pedidosResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        #endregion
+
+
     }
 }

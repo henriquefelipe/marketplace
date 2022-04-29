@@ -9,6 +9,7 @@ namespace B2Food.Domain
     public class modificador
     {
         public int id { get; set; }
+        public string codigoPDV { get; set; }
         public object catalogoModificadorID { get; set; }
         public int? catalogoTamanhoID { get; set; }
         public int pedidoItemID { get; set; }

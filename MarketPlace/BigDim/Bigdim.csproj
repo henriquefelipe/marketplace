@@ -57,11 +57,15 @@
     <Compile Include="Domain\error_result.cs" />
     <Compile Include="Domain\pedido.cs" />
     <Compile Include="Domain\pedidoProduto.cs" />
+    <Compile Include="Domain\pedidoProdutoAdicional.cs" />
     <Compile Include="Domain\pedidoProdutoList.cs" />
     <Compile Include="Domain\produto.cs" />
     <Compile Include="Domain\resposta.cs" />
     <Compile Include="Domain\result.cs" />
     <Compile Include="Domain\state.cs" />
+    <Compile Include="Enum\order_momento_entrega.cs" />
+    <Compile Include="Enum\order_forma_pagamento.cs" />
+    <Compile Include="Enum\order_tipo.cs" />
     <Compile Include="Enum\order_state.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BigdimService.cs" />

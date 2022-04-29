@@ -50,10 +50,12 @@
   <ItemGroup>
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\customerAddress.cs" />
+    <Compile Include="Domain\erro.cs" />
     <Compile Include="Domain\input.cs" />
     <Compile Include="Domain\orders.cs" />
     <Compile Include="Domain\pedido.cs" />
     <Compile Include="Domain\product.cs" />
+    <Compile Include="Domain\produto_teste.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\token.cs" />
     <Compile Include="Enum\order_tipo.cs" />

@@ -24,7 +24,7 @@ namespace DeliveryApp.Domain
         public decimal total { get; set; }
 
         [JsonProperty(PropertyName = "ref")]
-        public decimal _ref { get; set; }
+        public string _ref { get; set; }
         public promotionGroupOrders_bonus bonus { get; set; }
         public List<produto> Products { get; set; }
     }
