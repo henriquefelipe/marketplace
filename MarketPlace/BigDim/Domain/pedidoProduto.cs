@@ -13,7 +13,7 @@ namespace Bigdim.Domain
         public string descricaoProduto { get; set; }
         public string nomeProduto { get; set; }
         public decimal valorUnitario { get; set; }
-        public string quantidade { get; set; }
+        public decimal quantidade { get; set; }
         public decimal valorTotal { get; set; }
         public string observacao { get; set; }
         public int ordem { get; set; }

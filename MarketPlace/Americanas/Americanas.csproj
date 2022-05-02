@@ -56,6 +56,7 @@
     <Compile Include="Domain\pedido.cs" />
     <Compile Include="Domain\product.cs" />
     <Compile Include="Domain\produto_teste.cs" />
+    <Compile Include="Domain\retorno_status.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\token.cs" />
     <Compile Include="Enum\order_tipo.cs" />

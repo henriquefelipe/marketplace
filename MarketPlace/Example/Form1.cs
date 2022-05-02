@@ -4948,6 +4948,24 @@ namespace Example
             americanasParar();
         }
 
+        private void btnAmericanasBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAmericanasToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_americanasSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new Americanas.Service.AmericanasService(true);
+            var pedidoResult = service.Order(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text);
+        }
+
         private void btnAmericanasAceito_Click(object sender, EventArgs e)
         {
 
@@ -5097,6 +5115,9 @@ namespace Example
                 MessageBox.Show(message);
             }
         }
+
+       
+
 
         #endregion
 

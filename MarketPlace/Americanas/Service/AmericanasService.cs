@@ -85,81 +85,58 @@ namespace Americanas.Service
             return result;
         }
 
-        public GenericResult<pedido> Order(string id)
+        public GenericResult<pedido> Order(string storeId, string id, string token)
         {
             var result = new GenericResult<pedido>();
 
-            //var url = string.Format("{0}{1}", Constants.URL_ORDER, id);
-            //var client = new RestClient(url);
-            //var request = new RestRequest(Method.GET);
-            //request.AddHeader("Authorization", string.Format("bearer {0}", _token));
-            //request.AddHeader("Content-Type", "application/json"); 
-            //IRestResponse response = client.Execute(request);
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //{
-            //    result.Result = JsonConvert.DeserializeObject<pedido>(response.Content);
-            //    result.Success = true;                
-            //}
-            //else
-            //{
-            //    result.Message = response.Content;
-            //}
-
-            //result.Json = response.Content;
-
-            return result;
-        }
-
-        public GenericSimpleResult Status(string id)
-        {
-            var result = new GenericSimpleResult();
-            //var url = string.Format("{0}{1}/status", Constants.URL_ORDER, id);
-            //var client = new RestClient(url);
-            //var request = new RestRequest(Method.GET);
-            //request.AddHeader("Authorization", string.Format("bearer {0}", _token));           
-            //IRestResponse response = client.Execute(request);
-            //if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-            //{
-            //    result.Success = true;
-            //}
-            //else
-            //{
-            //    result.Message = response.Content;
-            //}
-
-            return result;
-        }
-
-        public GenericSimpleResult AlterarStatus(string id, int status, int tempoParaEntrega = 0, string entregadorNome = "", string entregadorTelefone = "")
-        {
-            var data = new
+            var url = string.Format("{0}{1}{2}/{3}/{4}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                id = id,
-	            Status = status,
-	            TempoParaEntrega = tempoParaEntrega,
-                EntregadorNome = entregadorNome,
-                EntregadorTelefone = entregadorTelefone,
-            };
+                result.Result = JsonConvert.DeserializeObject<pedido>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
 
-            var result = new GenericSimpleResult();
-            //var url = string.Format("{0}status", Constants.URL_ORDER);
-            //var client = new RestClient(url);
-            //var request = new RestRequest(Method.PUT);
-            //request.AddHeader("Authorization", string.Format("bearer {0}", _token));
-            //request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
-            //IRestResponse response = client.Execute(request);
-            //if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-            //{
-            //    result.Success = true;
-            //}
-            //else
-            //{
-            //    result.Message = response.Content;
-            //}
+            result.Json = response.Content;
 
             return result;
         }
 
+        public GenericResult<retorno_status> Approve(string storeId, string id, string token)
+        {
+            var result = new GenericResult<retorno_status>();
+
+            var url = string.Format("{0}{1}{2}/{3}/{4}/approve", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
+                if (result.Result.order != null && result.Result.order.status == "A")
+                {
+                    result.Success = true;
+                }
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+
+            return result;
+        }
 
         #region Ambiente de Teste
 

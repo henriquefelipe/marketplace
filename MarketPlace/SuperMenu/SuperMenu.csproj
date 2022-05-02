@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\coupon.cs" />
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\deliveryAddress.cs" />
+    <Compile Include="Domain\discount.cs" />
     <Compile Include="Domain\eventAcknowledgment.cs" />
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\merchant.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\PoolingEvent.cs" />
     <Compile Include="Domain\subItem.cs" />
+    <Compile Include="Enum\CouponType.cs" />
     <Compile Include="Enum\PaymentKind.cs" />
     <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

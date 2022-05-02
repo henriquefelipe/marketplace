@@ -24,6 +24,9 @@ namespace SuperMenu.Domain
         public decimal totalPrice { get; set; }
         public decimal deliveryFee { get; set; }
         public string changeFor { get; set; }
-        public deliveryAddress deliveryAddress { get; set; }      
+        public deliveryAddress deliveryAddress { get; set; }     
+        
+        public discount discount { get; set; }
+        public coupon coupon { get; set; }
     }
 }
