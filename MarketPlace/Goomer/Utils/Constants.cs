@@ -11,6 +11,8 @@
         public const string ORDER_ACCEPT = "orders/v1.1/accept/";
         public const string ORDER_DENY = "orders/v1.1/deny/";
         public const string ORDER_UPDATE = "orders/v1.1/update/";
-        public const string ORDER_CANCEL = "orders/v1.1/cancel/";        
+        public const string ORDER_CANCEL = "orders/v1.1/cancel/";
+
+        public const string ORDER_UPDATE_CONTA = "bills/v1/update";
     }
 }

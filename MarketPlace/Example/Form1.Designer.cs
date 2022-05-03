@@ -81,6 +81,7 @@
             this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
             this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
             this.tabPage25 = new System.Windows.Forms.TabPage();
+            this.btnAmericanasBuscarPedido = new System.Windows.Forms.Button();
             this.btnAmericanasCriarPedido = new System.Windows.Forms.Button();
             this.btnAmericanasBuscarProduto = new System.Windows.Forms.Button();
             this.label76 = new System.Windows.Forms.Label();
@@ -378,7 +379,7 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnAmericanasBuscarPedido = new System.Windows.Forms.Button();
+            this.btnGoomeAtualizarConta = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -1029,6 +1030,17 @@
             this.tabPage25.TabIndex = 22;
             this.tabPage25.Text = "Americanas";
             this.tabPage25.UseVisualStyleBackColor = true;
+            // 
+            // btnAmericanasBuscarPedido
+            // 
+            this.btnAmericanasBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasBuscarPedido.Location = new System.Drawing.Point(8, 211);
+            this.btnAmericanasBuscarPedido.Name = "btnAmericanasBuscarPedido";
+            this.btnAmericanasBuscarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnAmericanasBuscarPedido.TabIndex = 62;
+            this.btnAmericanasBuscarPedido.Text = "Buscar pedido";
+            this.btnAmericanasBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnAmericanasBuscarPedido.Click += new System.EventHandler(this.btnAmericanasBuscarPedido_Click);
             // 
             // btnAmericanasCriarPedido
             // 
@@ -2700,6 +2712,7 @@
             // 
             // tabPage16
             // 
+            this.tabPage16.Controls.Add(this.btnGoomeAtualizarConta);
             this.tabPage16.Controls.Add(this.btnGoomerSaiuParaEntrega);
             this.tabPage16.Controls.Add(this.btnGoomerEntregue);
             this.tabPage16.Controls.Add(this.btnGoomerEmPreparo);
@@ -2963,10 +2976,10 @@
             // gridGoomer
             // 
             this.gridGoomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridGoomer.Location = new System.Drawing.Point(8, 250);
+            this.gridGoomer.Location = new System.Drawing.Point(8, 296);
             this.gridGoomer.Name = "gridGoomer";
             this.gridGoomer.RowHeadersWidth = 51;
-            this.gridGoomer.Size = new System.Drawing.Size(1213, 417);
+            this.gridGoomer.Size = new System.Drawing.Size(1213, 371);
             this.gridGoomer.TabIndex = 14;
             this.gridGoomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridGoomer_CellClick);
             // 
@@ -4281,16 +4294,16 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnAmericanasBuscarPedido
+            // btnGoomeAtualizarConta
             // 
-            this.btnAmericanasBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAmericanasBuscarPedido.Location = new System.Drawing.Point(8, 211);
-            this.btnAmericanasBuscarPedido.Name = "btnAmericanasBuscarPedido";
-            this.btnAmericanasBuscarPedido.Size = new System.Drawing.Size(145, 33);
-            this.btnAmericanasBuscarPedido.TabIndex = 62;
-            this.btnAmericanasBuscarPedido.Text = "Buscar pedido";
-            this.btnAmericanasBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnAmericanasBuscarPedido.Click += new System.EventHandler(this.btnAmericanasBuscarPedido_Click);
+            this.btnGoomeAtualizarConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomeAtualizarConta.Location = new System.Drawing.Point(8, 257);
+            this.btnGoomeAtualizarConta.Name = "btnGoomeAtualizarConta";
+            this.btnGoomeAtualizarConta.Size = new System.Drawing.Size(199, 33);
+            this.btnGoomeAtualizarConta.TabIndex = 41;
+            this.btnGoomeAtualizarConta.Text = "Atualizar Conta";
+            this.btnGoomeAtualizarConta.UseVisualStyleBackColor = true;
+            this.btnGoomeAtualizarConta.Click += new System.EventHandler(this.btnGoomeAtualizarConta_Click);
             // 
             // Form1
             // 
@@ -4732,6 +4745,7 @@
         private System.Windows.Forms.Button btnAmericanasBuscarProduto;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Button btnAmericanasBuscarPedido;
+        private System.Windows.Forms.Button btnGoomeAtualizarConta;
     }
 }
 

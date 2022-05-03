@@ -13,11 +13,11 @@ namespace Goomer.Service
 {
     public class GoomerService
     {
-        private string _url;        
+        private string _url;
 
         public GoomerService(string url)
         {
-            _url = url;            
+            _url = url;
         }
 
         public GenericResult<token> OathToken(string integrationToken, string storeId, string clientSecret, string clientId)
@@ -41,7 +41,7 @@ namespace Goomer.Service
                 request.RequestFormat = DataFormat.Json;
                 request.AddParameter("application/json", data, ParameterType.RequestBody);
 
-                IRestResponse response = client.Execute(request);                
+                IRestResponse response = client.Execute(request);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -108,7 +108,7 @@ namespace Goomer.Service
 
                 var client = new RestClient(_url + status);
                 var request = new RestRequest(Method.GET);
-                request.AddHeader("x-api-key", token);                
+                request.AddHeader("x-api-key", token);
 
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -168,7 +168,7 @@ namespace Goomer.Service
 
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {                    
+                {
                     result.Success = true;
                     result.Json = response.Content;
                 }
@@ -275,5 +275,38 @@ namespace Goomer.Service
             return result;
         }
 
+
+        public GenericSimpleResult UpdateConta(string token, conta conta)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = JsonConvert.SerializeObject(conta);
+
+                var client = new RestClient(_url + Constants.ORDER_UPDATE_CONTA);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("x-api-key", token);
+                request.AddHeader("Content-Type", "application/json");
+                request.RequestFormat = DataFormat.Json;
+                request.AddParameter("application/json", data, ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+
+        }
     }
 }

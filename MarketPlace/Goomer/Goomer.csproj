@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\conta.cs" />
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\extra.cs" />
     <Compile Include="Domain\order.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\product.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Enum\MESA_STATUS.cs" />
     <Compile Include="Enum\FORMA_ENTREGA.cs" />
     <Compile Include="Enum\ITEM_TYPE.cs" />
     <Compile Include="Enum\MEIO_PAGAMENTO.cs" />

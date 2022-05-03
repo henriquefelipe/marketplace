@@ -3760,6 +3760,39 @@ namespace Example
             }
         }
 
+        private void btnGoomeAtualizarConta_Click(object sender, EventArgs e)
+        {
+            var conta = new Goomer.Domain.conta();
+            conta.status = Goomer.Enum.MESA_STATUS.CONSUMING;
+            conta.subtotal = Convert.ToDecimal("30,00");
+            conta.discount = Convert.ToDecimal("5,00");
+            conta.service = Convert.ToDecimal("5,00");
+            conta.total = Convert.ToDecimal("30,00");
+            conta.table = "1";
+            conta.tab = "";
+            conta.externalId = "1";
+
+            var produto1 = new Goomer.Domain.conta_produto();
+            produto1.code = "1";
+            produto1.name = "Coca-Cola";
+            produto1.price = Convert.ToDecimal("5,00");
+            produto1.quantity = Convert.ToDecimal("6,00");
+            produto1.type = "default";
+            produto1.date = "";
+            conta.products.Add(produto1);
+
+            var service = new GoomerService(txtGoomerURL.Text);
+            var result = service.UpdateConta(txtGoomerAuthToken.Text, conta);
+            if (result.Success)
+            {
+                MessageBox.Show("Conta atualizado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void gridGoomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridGoomer.Rows.Count)
@@ -5116,11 +5149,12 @@ namespace Example
             }
         }
 
-       
+
+
 
 
         #endregion
 
-
+        
     }
 }

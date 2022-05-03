@@ -10,8 +10,8 @@ namespace Goomer.Enum
     {
         public const string DELIVERY = "delivery";
         public const string TAKEAWAY = "takeaway";
-        public const string TABLE = "table";
-        public const string TAB = "tab";
+        public const string TABLE = "table"; // Mesa
+        public const string TAB = "tab"; // Comanda
         public const string TERMINAL = "terminal";
         public const string KIOSK = "kiosk";
         public const string CHECKOUT = "checkout";

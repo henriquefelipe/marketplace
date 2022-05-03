@@ -10,7 +10,6 @@ namespace Goomer.Enum
     {
         public const string SMARTPHONE = "smartphone";
         public const string TABLET = "tablet";
-        public const string KIOSK = "kiosk";
-        public const string TAB = "tab";
+        public const string KIOSK = "kiosk";       
     }
 }

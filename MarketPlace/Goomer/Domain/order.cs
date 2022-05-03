@@ -19,8 +19,8 @@ namespace Goomer.Domain
         public string externalId { get; set; }
         public string status { get; set; }
         public string deviceType { get; set; }
-        public string table { get; set; }
-        public string tab { get; set; }
+        public string table { get; set; }  //Mesa
+        public string tab { get; set; } //Comanda
         public string identifierName { get; set; }
         public string identifierCode { get; set; }
         public string operation { get; set; }
