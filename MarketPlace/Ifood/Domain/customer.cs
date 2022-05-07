@@ -12,7 +12,7 @@ namespace Ifood.Domain
         public string name { get; set; }
         public string documentNumber { get; set; } //CPF do cliente
         public customer_phone phone { get; set; }
-        public int ordersCountOnMerchant { get; set; }
+        public int? ordersCountOnMerchant { get; set; }
     }
 
     public class customer_phone
