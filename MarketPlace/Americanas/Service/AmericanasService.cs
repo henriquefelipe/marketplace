@@ -11,7 +11,7 @@ namespace Americanas.Service
     public class AmericanasService
     {
         private string _urlBase;
-        public AmericanasService(bool desenvolvedor = false) 
+        public AmericanasService(bool desenvolvedor = false)
         {
             _urlBase = desenvolvedor ? Constants.URL_BASE_HOMOLOGACAO : Constants.URL_BASE_PRODUCAO;
         }
@@ -34,7 +34,7 @@ namespace Americanas.Service
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Accept", "application/json");
-                request.AddHeader("Content-Type", "application/json");               
+                request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
                 IRestResponse responseToken = client.Execute(request);
@@ -65,7 +65,7 @@ namespace Americanas.Service
         {
             var result = new GenericResult<List<orders>>();
 
-            var url = string.Format("{0}{1}{2}/{3}", _urlBase,  Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS);
+            var url = string.Format("{0}{1}{2}/{3}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
@@ -74,7 +74,7 @@ namespace Americanas.Service
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<List<orders>>(response.Content);
-                result.Success = true;                
+                result.Success = true;
             }
             else
             {
@@ -89,10 +89,10 @@ namespace Americanas.Service
         {
             var result = new GenericResult<pedido>();
 
-            var url = string.Format("{0}{1}{2}/{3}/{4}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -110,15 +110,23 @@ namespace Americanas.Service
             return result;
         }
 
-        public GenericResult<retorno_status> Approve(string storeId, string id, string token)
+        public GenericResult<retorno_status> Approve(string storeId, string id, string token, int time)
         {
             var result = new GenericResult<retorno_status>();
+
+            var data = new
+            {
+                time = time
+            };
+            
 
             var url = string.Format("{0}{1}{2}/{3}/{4}/approve", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -127,10 +135,100 @@ namespace Americanas.Service
                 {
                     result.Success = true;
                 }
+                else
+                {
+                    result.Message = result.Result.message;
+                }
             }
             else
             {
                 result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+
+            return result;
+        }
+
+        public GenericResult<retorno_status> Ready(string storeId, string id, string token)
+        {
+            var result = new GenericResult<retorno_status>();
+            var data = new
+            {
+                vehicle_type_for_delivery = "NORMAL"
+            };
+
+            var url = string.Format("{0}{1}{2}/{3}/{4}/ready", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
+                if (result.Result.message == "Ok")
+                {
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = result.Result.message;
+                }
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+
+            return result;
+        }
+
+        public GenericResult<retorno_status> Cancel(string storeId, string id, string token, string mensagem)
+        {
+            var result = new GenericResult<retorno_status>();
+            var data = new
+            {
+                reason_id = "1",
+                canceled_by = "LOJISTA",
+                reason_description = mensagem
+            };
+
+            var url = string.Format("{0}{1}{2}/{3}/{4}/cancel", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
+                if (result.Result.message == "Ok")
+                {
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = result.Result.message;
+                }
+            }
+            else
+            {
+                try
+                {
+                    var resultado = JsonConvert.DeserializeObject<retorno_status>(response.Content);
+                    result.Message = resultado.message;
+                }
+                catch
+                {
+                    result.Message = response.Content;
+                }
             }
 
             result.Json = response.Content;
@@ -169,13 +267,39 @@ namespace Americanas.Service
             var result = new GenericSimpleResult();
             try
             {
+                dynamic inputs = null;
+
                 var data = new
                 {
                     cliente_id = client_id,
                     loja_id = storeId,
                     produto_id = produtoId,
-                    quantidade = quantidade
+                    quantidade = quantidade,
+                    gorjeta = 2,
+                    observacao = "Observacao de um pedido com insumos.",
+                    inputs = inputs
                 };
+
+                //JsonConvert.SerializeObject(data)
+
+                var json = @"{
+                         ""cliente_id"": 18,
+                         ""loja_id"": 402,
+                         ""produto_id"": 247004,
+                         ""quantidade"": 3,
+                         ""inputs"": [
+                              {
+                                   ""id"": 7351,
+                                   ""quantidade"": 1
+                              },
+                              {
+                                   ""id"": 7352,
+                                   ""quantidade"": 1
+                              }
+                         ],
+                         ""gorjeta"": 2,
+                         ""observacao"": ""Observacao de um pedido com insumos.""
+                    }";
 
                 var url = "https://n8n.packk.com.br/webhook/create-order";
                 //var url = "https://webhook.site/381c95d4-5fa7-4027-913c-7f1a21a2b87c";
@@ -186,7 +310,7 @@ namespace Americanas.Service
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiNTFkZjAyMzE1OTU2MjhjMGI4ZDVlZDc1Njg3YmFjMWZjZDlmMzA3ZGFmMWM0OWM0ZTAwM2NkZjcwMDA5M2YwZjdkNzY0ZmI5YmEzNzMxN2EiLCJpYXQiOjE2NDc1NDc4MjUuODM4NDQ0LCJuYmYiOjE2NDc1NDc4MjUuODM4NDg0LCJleHAiOjE2NzkwODM4MjUuODI1MTc2LCJzdWIiOiIiLCJzY29wZXMiOltdfQ.Uc56Usz3OFj45q1Z2oqKkcp7uV2PK1Z-dBNLxGZetCGpxSF42fAAy446SYpyIP6sh6m_OaFJ-bS6lRmtcAC1h18ZwTGeBoW5kqfs8IWEtej7gPkc3yPqJJY4xokTjsuBU4jKiRwprQLXlDwBbpVpIgjUmvk1qTkM3ZdG9ttb5NP190-igSf8MSwcBAZarHWsI7OkMXxmXluzcnBJT0wnkcebVr_mTCGdAxwirvulGyF3zLHJcQgnqrA0bnhq7GU0PpNBbMgyAynAvwdHHoIq1ZhHuZ9bLYWB4kOdvK2cnmzStpohCXFkT6hcKMHrL2ssPRk9VTm6Il9L_my90peWYOe32CkCVMWohOUfnfPMPY1ncpjlDf9nEv2CQ7ezvkGu6eOHOCxk7WwNz6lTWhKkJ8HgVQ4EpP2_sHJLqAHbJO0fJ96u4iIGKNKk8IO0PZgNJo-8KqmupgDLrdJEDzEfmRkU3LQTj23OkJZVQjrFtua3poc-aB-mFc17Cqi5QSKQduho23PAFsJNhG8MQHUsnlfxqVswEvZTZQ1Uy19qX6DAM54i5y2CJGfcBtJjCzriT6-Iz1HqfQHBUtGZOCGhyR8xfbtGbkU2LjGU5jadR7YD-K8USYuZFF07fgr49tdteohMExVnFBrRKz_jXnljpa41ALI8C8SVBgeKFlRakfY");
                 request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                request.AddParameter("application/json", json, ParameterType.RequestBody);
 
                 IRestResponse responseToken = client.Execute(request);
 
@@ -196,7 +320,7 @@ namespace Americanas.Service
                     result.Success = true;
                 }
                 else
-                {                    
+                {
                     result.Message = responseToken.Content;
                 }
 

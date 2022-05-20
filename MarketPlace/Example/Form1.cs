@@ -5001,12 +5001,80 @@ namespace Example
 
         private void btnAmericanasAceito_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtAmericanasToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_americanasSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new Americanas.Service.AmericanasService(true);
+            var pedidoResult = service.Approve(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text, 30);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
         }
 
         private void btnAmericanasCancelado_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtAmericanasToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_americanasSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new Americanas.Service.AmericanasService(true);
+            var pedidoResult = service.Cancel(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text, "Teste");
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
+        }
+
+        private void btnAmericanasPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAmericanasToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_americanasSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new Americanas.Service.AmericanasService(true);
+            var pedidoResult = service.Ready(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text);
+            if(pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
         }
 
         public async void americanasIniciar()
@@ -5044,7 +5112,8 @@ namespace Example
                     {
                         foreach (var item in pedidosResult.Result)
                         {
-                            _americanasOrders.Add(item);
+                            if(!_americanasOrders.Any(a => a.id == item.id))
+                                _americanasOrders.Add(item);
                         }
 
                         WriteGridAmericanas();
@@ -5130,7 +5199,7 @@ namespace Example
 
                 if (pedidosResult.Success)
                 {
-
+                    MessageBox.Show("Pedido criado..");
                 }
                 else
                 {
@@ -5148,6 +5217,7 @@ namespace Example
                 MessageBox.Show(message);
             }
         }
+
 
 
 

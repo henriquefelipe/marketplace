@@ -236,6 +236,7 @@
             this.btnGloriaFoodParar = new System.Windows.Forms.Button();
             this.btnGloriaFoodIniciar = new System.Windows.Forms.Button();
             this.tabPage16 = new System.Windows.Forms.TabPage();
+            this.btnGoomeAtualizarConta = new System.Windows.Forms.Button();
             this.btnGoomerSaiuParaEntrega = new System.Windows.Forms.Button();
             this.btnGoomerEntregue = new System.Windows.Forms.Button();
             this.btnGoomerEmPreparo = new System.Windows.Forms.Button();
@@ -379,7 +380,7 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnGoomeAtualizarConta = new System.Windows.Forms.Button();
+            this.btnAmericanasPedidoPronto = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -1006,6 +1007,7 @@
             // 
             // tabPage25
             // 
+            this.tabPage25.Controls.Add(this.btnAmericanasPedidoPronto);
             this.tabPage25.Controls.Add(this.btnAmericanasBuscarPedido);
             this.tabPage25.Controls.Add(this.btnAmericanasCriarPedido);
             this.tabPage25.Controls.Add(this.btnAmericanasBuscarProduto);
@@ -1145,7 +1147,7 @@
             // btnAmericanasCancelado
             // 
             this.btnAmericanasCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAmericanasCancelado.Location = new System.Drawing.Point(310, 211);
+            this.btnAmericanasCancelado.Location = new System.Drawing.Point(468, 211);
             this.btnAmericanasCancelado.Name = "btnAmericanasCancelado";
             this.btnAmericanasCancelado.Size = new System.Drawing.Size(145, 33);
             this.btnAmericanasCancelado.TabIndex = 51;
@@ -2746,6 +2748,17 @@
             this.tabPage16.Text = "Goomer";
             this.tabPage16.UseVisualStyleBackColor = true;
             // 
+            // btnGoomeAtualizarConta
+            // 
+            this.btnGoomeAtualizarConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoomeAtualizarConta.Location = new System.Drawing.Point(8, 257);
+            this.btnGoomeAtualizarConta.Name = "btnGoomeAtualizarConta";
+            this.btnGoomeAtualizarConta.Size = new System.Drawing.Size(199, 33);
+            this.btnGoomeAtualizarConta.TabIndex = 41;
+            this.btnGoomeAtualizarConta.Text = "Atualizar Conta";
+            this.btnGoomeAtualizarConta.UseVisualStyleBackColor = true;
+            this.btnGoomeAtualizarConta.Click += new System.EventHandler(this.btnGoomeAtualizarConta_Click);
+            // 
             // btnGoomerSaiuParaEntrega
             // 
             this.btnGoomerSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4294,16 +4307,16 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnGoomeAtualizarConta
+            // btnAmericanasPedidoPronto
             // 
-            this.btnGoomeAtualizarConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoomeAtualizarConta.Location = new System.Drawing.Point(8, 257);
-            this.btnGoomeAtualizarConta.Name = "btnGoomeAtualizarConta";
-            this.btnGoomeAtualizarConta.Size = new System.Drawing.Size(199, 33);
-            this.btnGoomeAtualizarConta.TabIndex = 41;
-            this.btnGoomeAtualizarConta.Text = "Atualizar Conta";
-            this.btnGoomeAtualizarConta.UseVisualStyleBackColor = true;
-            this.btnGoomeAtualizarConta.Click += new System.EventHandler(this.btnGoomeAtualizarConta_Click);
+            this.btnAmericanasPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasPedidoPronto.Location = new System.Drawing.Point(310, 211);
+            this.btnAmericanasPedidoPronto.Name = "btnAmericanasPedidoPronto";
+            this.btnAmericanasPedidoPronto.Size = new System.Drawing.Size(145, 33);
+            this.btnAmericanasPedidoPronto.TabIndex = 63;
+            this.btnAmericanasPedidoPronto.Text = "Pedido Pronto";
+            this.btnAmericanasPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnAmericanasPedidoPronto.Click += new System.EventHandler(this.btnAmericanasPedidoPronto_Click);
             // 
             // Form1
             // 
@@ -4746,6 +4759,7 @@
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Button btnAmericanasBuscarPedido;
         private System.Windows.Forms.Button btnGoomeAtualizarConta;
+        private System.Windows.Forms.Button btnAmericanasPedidoPronto;
     }
 }
 
