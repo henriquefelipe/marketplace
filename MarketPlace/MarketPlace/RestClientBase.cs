@@ -41,7 +41,7 @@ namespace MarketPlace
             
             var response = base.Execute(request);
             if (response != null)
-                this.responsetResult = JsonConvert.SerializeObject(response); ;
+                this.responsetResult = JsonConvert.SerializeObject(response);
 
             return response;
         }

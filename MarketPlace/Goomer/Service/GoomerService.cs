@@ -184,14 +184,20 @@ namespace Goomer.Service
             return result;
         }
 
-        public GenericSimpleResult Deny(string token, string orderId)
+        public GenericSimpleResult Deny(string token, string orderId, string mensagem)
         {
             var result = new GenericSimpleResult();
             try
             {
+                var data = new
+                {
+                    message = mensagem
+                };
+
                 var client = new RestClient(_url + Constants.ORDER_DENY + orderId);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("x-api-key", token);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)

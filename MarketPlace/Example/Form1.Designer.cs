@@ -81,6 +81,7 @@
             this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
             this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
             this.tabPage25 = new System.Windows.Forms.TabPage();
+            this.btnAmericanasPedidoPronto = new System.Windows.Forms.Button();
             this.btnAmericanasBuscarPedido = new System.Windows.Forms.Button();
             this.btnAmericanasCriarPedido = new System.Windows.Forms.Button();
             this.btnAmericanasBuscarProduto = new System.Windows.Forms.Button();
@@ -353,6 +354,19 @@
             this.label24 = new System.Windows.Forms.Label();
             this.btnRappiParar = new System.Windows.Forms.Button();
             this.btnRappiIniciar = new System.Windows.Forms.Button();
+            this.tabPageServit = new System.Windows.Forms.TabPage();
+            this.btnServitMerchand = new System.Windows.Forms.Button();
+            this.txtServitToken = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.btnServitLogin = new System.Windows.Forms.Button();
+            this.btnServitIntegrado = new System.Windows.Forms.Button();
+            this.gridServit = new System.Windows.Forms.DataGridView();
+            this.btnServitParar = new System.Windows.Forms.Button();
+            this.btnServitIniciar = new System.Windows.Forms.Button();
+            this.txtServitSenha = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtServitUsuario = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
             this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
@@ -380,7 +394,8 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnAmericanasPedidoPronto = new System.Windows.Forms.Button();
+            this.txtServitStore = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -427,6 +442,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
+            this.tabPageServit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridServit)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPage18.SuspendLayout();
@@ -456,6 +473,7 @@
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPageServit);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage18);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1032,6 +1050,17 @@
             this.tabPage25.TabIndex = 22;
             this.tabPage25.Text = "Americanas";
             this.tabPage25.UseVisualStyleBackColor = true;
+            // 
+            // btnAmericanasPedidoPronto
+            // 
+            this.btnAmericanasPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAmericanasPedidoPronto.Location = new System.Drawing.Point(310, 211);
+            this.btnAmericanasPedidoPronto.Name = "btnAmericanasPedidoPronto";
+            this.btnAmericanasPedidoPronto.Size = new System.Drawing.Size(145, 33);
+            this.btnAmericanasPedidoPronto.TabIndex = 63;
+            this.btnAmericanasPedidoPronto.Text = "Pedido Pronto";
+            this.btnAmericanasPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnAmericanasPedidoPronto.Click += new System.EventHandler(this.btnAmericanasPedidoPronto_Click);
             // 
             // btnAmericanasBuscarPedido
             // 
@@ -4008,6 +4037,152 @@
             this.btnRappiIniciar.UseVisualStyleBackColor = true;
             this.btnRappiIniciar.Click += new System.EventHandler(this.btnRappiIniciar_Click);
             // 
+            // tabPageServit
+            // 
+            this.tabPageServit.Controls.Add(this.txtServitStore);
+            this.tabPageServit.Controls.Add(this.label80);
+            this.tabPageServit.Controls.Add(this.btnServitMerchand);
+            this.tabPageServit.Controls.Add(this.txtServitToken);
+            this.tabPageServit.Controls.Add(this.label77);
+            this.tabPageServit.Controls.Add(this.btnServitLogin);
+            this.tabPageServit.Controls.Add(this.btnServitIntegrado);
+            this.tabPageServit.Controls.Add(this.gridServit);
+            this.tabPageServit.Controls.Add(this.btnServitParar);
+            this.tabPageServit.Controls.Add(this.btnServitIniciar);
+            this.tabPageServit.Controls.Add(this.txtServitSenha);
+            this.tabPageServit.Controls.Add(this.label78);
+            this.tabPageServit.Controls.Add(this.txtServitUsuario);
+            this.tabPageServit.Controls.Add(this.label79);
+            this.tabPageServit.Location = new System.Drawing.Point(4, 22);
+            this.tabPageServit.Name = "tabPageServit";
+            this.tabPageServit.Size = new System.Drawing.Size(1229, 685);
+            this.tabPageServit.TabIndex = 23;
+            this.tabPageServit.Text = "Servit";
+            this.tabPageServit.UseVisualStyleBackColor = true;
+            // 
+            // btnServitMerchand
+            // 
+            this.btnServitMerchand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitMerchand.Location = new System.Drawing.Point(12, 127);
+            this.btnServitMerchand.Name = "btnServitMerchand";
+            this.btnServitMerchand.Size = new System.Drawing.Size(145, 33);
+            this.btnServitMerchand.TabIndex = 49;
+            this.btnServitMerchand.Text = "Merchants";
+            this.btnServitMerchand.UseVisualStyleBackColor = true;
+            this.btnServitMerchand.Click += new System.EventHandler(this.btnServitMerchand_Click);
+            // 
+            // txtServitToken
+            // 
+            this.txtServitToken.Enabled = false;
+            this.txtServitToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitToken.Location = new System.Drawing.Point(456, 78);
+            this.txtServitToken.Name = "txtServitToken";
+            this.txtServitToken.Size = new System.Drawing.Size(372, 26);
+            this.txtServitToken.TabIndex = 48;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(336, 78);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(53, 20);
+            this.label77.TabIndex = 47;
+            this.label77.Text = "Token";
+            // 
+            // btnServitLogin
+            // 
+            this.btnServitLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitLogin.Location = new System.Drawing.Point(862, 75);
+            this.btnServitLogin.Name = "btnServitLogin";
+            this.btnServitLogin.Size = new System.Drawing.Size(145, 33);
+            this.btnServitLogin.TabIndex = 46;
+            this.btnServitLogin.Text = "Login";
+            this.btnServitLogin.UseVisualStyleBackColor = true;
+            this.btnServitLogin.Click += new System.EventHandler(this.btnServitLogin_Click);
+            // 
+            // btnServitIntegrado
+            // 
+            this.btnServitIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitIntegrado.Location = new System.Drawing.Point(163, 127);
+            this.btnServitIntegrado.Name = "btnServitIntegrado";
+            this.btnServitIntegrado.Size = new System.Drawing.Size(145, 33);
+            this.btnServitIntegrado.TabIndex = 45;
+            this.btnServitIntegrado.Text = "Integrado";
+            this.btnServitIntegrado.UseVisualStyleBackColor = true;
+            this.btnServitIntegrado.Click += new System.EventHandler(this.btnServitIntegrado_Click);
+            // 
+            // gridServit
+            // 
+            this.gridServit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridServit.Location = new System.Drawing.Point(8, 166);
+            this.gridServit.Name = "gridServit";
+            this.gridServit.RowHeadersWidth = 51;
+            this.gridServit.Size = new System.Drawing.Size(1213, 501);
+            this.gridServit.TabIndex = 44;
+            this.gridServit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridServit_CellClick);
+            // 
+            // btnServitParar
+            // 
+            this.btnServitParar.Enabled = false;
+            this.btnServitParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitParar.Location = new System.Drawing.Point(1050, 69);
+            this.btnServitParar.Name = "btnServitParar";
+            this.btnServitParar.Size = new System.Drawing.Size(171, 39);
+            this.btnServitParar.TabIndex = 43;
+            this.btnServitParar.Text = "Parar";
+            this.btnServitParar.UseVisualStyleBackColor = true;
+            this.btnServitParar.Click += new System.EventHandler(this.btnServitParar_Click);
+            // 
+            // btnServitIniciar
+            // 
+            this.btnServitIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitIniciar.Location = new System.Drawing.Point(1050, 18);
+            this.btnServitIniciar.Name = "btnServitIniciar";
+            this.btnServitIniciar.Size = new System.Drawing.Size(171, 39);
+            this.btnServitIniciar.TabIndex = 42;
+            this.btnServitIniciar.Text = "Iniciar";
+            this.btnServitIniciar.UseVisualStyleBackColor = true;
+            this.btnServitIniciar.Click += new System.EventHandler(this.btnServitIniciar_Click);
+            // 
+            // txtServitSenha
+            // 
+            this.txtServitSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitSenha.Location = new System.Drawing.Point(101, 53);
+            this.txtServitSenha.Name = "txtServitSenha";
+            this.txtServitSenha.Size = new System.Drawing.Size(187, 26);
+            this.txtServitSenha.TabIndex = 41;
+            this.txtServitSenha.Text = "vCU8jyT=9e[d7d?&";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(8, 56);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(56, 20);
+            this.label78.TabIndex = 40;
+            this.label78.Text = "Senha";
+            // 
+            // txtServitUsuario
+            // 
+            this.txtServitUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitUsuario.Location = new System.Drawing.Point(101, 17);
+            this.txtServitUsuario.Name = "txtServitUsuario";
+            this.txtServitUsuario.Size = new System.Drawing.Size(187, 26);
+            this.txtServitUsuario.TabIndex = 39;
+            this.txtServitUsuario.Text = "solucoessistema";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(8, 20);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(64, 20);
+            this.label79.TabIndex = 38;
+            this.label79.Text = "Usuario";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.btnSuperMenuCancelar);
@@ -4307,16 +4482,24 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnAmericanasPedidoPronto
+            // txtServitStore
             // 
-            this.btnAmericanasPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAmericanasPedidoPronto.Location = new System.Drawing.Point(310, 211);
-            this.btnAmericanasPedidoPronto.Name = "btnAmericanasPedidoPronto";
-            this.btnAmericanasPedidoPronto.Size = new System.Drawing.Size(145, 33);
-            this.btnAmericanasPedidoPronto.TabIndex = 63;
-            this.btnAmericanasPedidoPronto.Text = "Pedido Pronto";
-            this.btnAmericanasPedidoPronto.UseVisualStyleBackColor = true;
-            this.btnAmericanasPedidoPronto.Click += new System.EventHandler(this.btnAmericanasPedidoPronto_Click);
+            this.txtServitStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitStore.Location = new System.Drawing.Point(456, 20);
+            this.txtServitStore.Name = "txtServitStore";
+            this.txtServitStore.Size = new System.Drawing.Size(187, 26);
+            this.txtServitStore.TabIndex = 51;
+            this.txtServitStore.Text = "9";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(341, 23);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(48, 20);
+            this.label80.TabIndex = 50;
+            this.label80.Text = "Store";
             // 
             // Form1
             // 
@@ -4396,6 +4579,9 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).EndInit();
+            this.tabPageServit.ResumeLayout(false);
+            this.tabPageServit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridServit)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
@@ -4760,6 +4946,21 @@
         private System.Windows.Forms.Button btnAmericanasBuscarPedido;
         private System.Windows.Forms.Button btnGoomeAtualizarConta;
         private System.Windows.Forms.Button btnAmericanasPedidoPronto;
+        private System.Windows.Forms.TabPage tabPageServit;
+        private System.Windows.Forms.TextBox txtServitToken;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.Button btnServitLogin;
+        private System.Windows.Forms.Button btnServitIntegrado;
+        private System.Windows.Forms.DataGridView gridServit;
+        private System.Windows.Forms.Button btnServitParar;
+        private System.Windows.Forms.Button btnServitIniciar;
+        private System.Windows.Forms.TextBox txtServitSenha;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox txtServitUsuario;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Button btnServitMerchand;
+        private System.Windows.Forms.TextBox txtServitStore;
+        private System.Windows.Forms.Label label80;
     }
 }
 

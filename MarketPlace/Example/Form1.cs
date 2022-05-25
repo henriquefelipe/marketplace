@@ -99,6 +99,9 @@ namespace Example
         private string _americanasSelected { get; set; }
         private List<Americanas.Domain.orders> _americanasOrders { get; set; }
 
+        private string _servitSelected { get; set; }
+        private List<Servit.Domain.order> _servitOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -330,6 +333,10 @@ namespace Example
             _americanasOrders = new List<Americanas.Domain.orders>();
             gridAmericanas.DataSource = _americanasOrders.ToList();
             gridAmericanas.Refresh();
+
+            _servitOrders = new List<Servit.Domain.order>();
+            gridServit.DataSource = _servitOrders.ToList();
+            gridServit.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -3669,7 +3676,7 @@ namespace Example
             }
 
             var service = new GoomerService(txtGoomerURL.Text);
-            var result = service.Deny(txtGoomerAuthToken.Text, _goomerSelected);
+            var result = service.Deny(txtGoomerAuthToken.Text, _goomerSelected, "Cancelado");
             if (result.Success)
             {
                 MessageBox.Show("Rejeitado");
@@ -5218,13 +5225,156 @@ namespace Example
             }
         }
 
+        #endregion
+
+        #region Servit
+
+        private void btnServitLogin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitUsuario.Text))
+            {
+                MessageBox.Show("Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtServitSenha.Text))
+            {
+                MessageBox.Show("Senha Obrigatório");
+                return;
+            }
+
+            var service = new Servit.Service.ServitService();
+            var result = service.OathToken(txtServitUsuario.Text, txtServitSenha.Text);
+            if (result.Success)
+            {
+                txtServitToken.Text = result.Result.data.token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnServitMerchand_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new Servit.Service.ServitService();
+            var result = service.Merchants(txtServitToken.Text);
+            if (result.Success)
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnServitIniciar_Click(object sender, EventArgs e)
+        {
+            servitIniciar();
+        }
+
+        private void btnServitParar_Click(object sender, EventArgs e)
+        {
+            servitParar();
+        }
+
+        private void btnServitIntegrado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridServit_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridServit.Rows.Count)
+            {
+                _servitSelected = gridServit.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        public async void servitIniciar()
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
 
 
+            btnServitIniciar.Enabled = false;
+            btnServitParar.Enabled = true;
+            await Task.Run(() => servit());
+        }
 
 
+        void servitParar()
+        {
+            btnServitIniciar.Enabled = true;
+            btnServitParar.Enabled = false;
+        }
+
+        private void servit()
+        {
+            var service = new Servit.Service.ServitService();
+
+            try
+            {
+                while (btnServitParar.Enabled)
+                {
+                    var pedidosResult = service.Orders(txtServitToken.Text, txtServitStore.Text);
+
+                    if (pedidosResult.Success)
+                    {
+                        foreach (var item in pedidosResult.Result.data.orders)
+                        {
+                            if (!_servitOrders.Any(a => a.id == item.id))
+                                _servitOrders.Add(item);
+                        }
+
+                        WriteGridServit();
+                    }
+                    else
+                    {
+                        MessageBox.Show(pedidosResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridServitDelegate();
+        private void WriteGridServit()
+        {
+            if (gridServit.InvokeRequired)
+            {
+                var d = new WritelstGridServitDelegate(WriteGridServit);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridServit.DataSource = _servitOrders.ToList();
+                gridServit.Refresh();
+            }
+        }
 
         #endregion
 
-        
+
     }
 }

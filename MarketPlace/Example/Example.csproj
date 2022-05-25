@@ -177,6 +177,10 @@
       <Project>{c3d17fa9-cc22-4a28-a049-2a7ad8164403}</Project>
       <Name>Rappi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Servit\Servit.csproj">
+      <Project>{dd7b2f3a-2797-48a2-af86-bde6e490c13d}</Project>
+      <Name>Servit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SuperMenu\SuperMenu.csproj">
       <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
       <Name>SuperMenu</Name>

@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Americanas", "Americanas\Am
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2Food", "B2Food\B2Food.csproj", "{D791B84B-2181-4076-8655-08F3072F96F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servit", "Servit\Servit.csproj", "{DD7B2F3A-2797-48A2-AF86-BDE6E490C13D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{D791B84B-2181-4076-8655-08F3072F96F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D791B84B-2181-4076-8655-08F3072F96F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D791B84B-2181-4076-8655-08F3072F96F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD7B2F3A-2797-48A2-AF86-BDE6E490C13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD7B2F3A-2797-48A2-AF86-BDE6E490C13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD7B2F3A-2797-48A2-AF86-BDE6E490C13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD7B2F3A-2797-48A2-AF86-BDE6E490C13D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
