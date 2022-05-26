@@ -17,12 +17,12 @@ namespace Americanas.Domain
         public string name { get; set; }
         public string description { get; set; }
         public int quantity { get; set; }
-        public int weight { get; set; }
+        public decimal weight { get; set; }
         public string sku { get; set; }
         public string ean { get; set; }
         public int is_promotion { get; set; }
-        public object promotion_price { get; set; }
-        public int price { get; set; }
+        public decimal? promotion_price { get; set; }
+        public decimal price { get; set; }
         public string note { get; set; }
         public string created_at { get; set; }
         public List<input> inputs { get; set; }

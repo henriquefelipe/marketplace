@@ -14,10 +14,10 @@ namespace Americanas.Domain
         }
 
         public int id { get; set; }
-        public int amount { get; set; }
-        public int tip { get; set; }
-        public int fee { get; set; }
-        public int delivery_fee { get; set; }
+        public decimal amount { get; set; }
+        public string tip { get; set; }
+        public decimal fee { get; set; }
+        public decimal delivery_fee { get; set; }
         public string status { get; set; }
         public string type_order { get; set; }
         public string delivery_method { get; set; }

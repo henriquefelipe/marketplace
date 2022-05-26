@@ -301,6 +301,25 @@ namespace Americanas.Service
                          ""observacao"": ""Observacao de um pedido com insumos.""
                     }";
 
+                json = @"{
+                         ""cliente_id"": 18,
+                         ""loja_id"": 402,
+                         ""produto_id"": 251719,
+                         ""quantidade"": 3,
+                         ""inputs"": [
+                              {
+                                   ""id"": 7351,
+                                   ""quantidade"": 1
+                              },
+                              {
+                                   ""id"": 7352,
+                                   ""quantidade"": 1
+                              }
+                         ],
+                         ""gorjeta"": 2,
+                         ""observacao"": ""Observacao de um pedido com insumos.""
+                    }";
+
                 var url = "https://n8n.packk.com.br/webhook/create-order";
                 //var url = "https://webhook.site/381c95d4-5fa7-4027-913c-7f1a21a2b87c";
 

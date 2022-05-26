@@ -59,6 +59,8 @@
     <Compile Include="Domain\retorno_status.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\token.cs" />
+    <Compile Include="Enum\order_status.cs" />
+    <Compile Include="Enum\sku.cs" />
     <Compile Include="Enum\order_tipo.cs" />
     <Compile Include="Enum\order_tipo_cancelamento.cs" />
     <Compile Include="Enum\order_pagamento.cs" />
