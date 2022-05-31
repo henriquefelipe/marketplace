@@ -4966,7 +4966,7 @@ namespace Example
                 return;
             }
 
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
             var result = service.OathToken(txtAmericanasClientID.Text, txtAmericanasClientSecret.Text);
             if (result.Success)
             {
@@ -5002,7 +5002,7 @@ namespace Example
                 return;
             }
 
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
             var pedidoResult = service.Order(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text);
         }
 
@@ -5020,7 +5020,7 @@ namespace Example
                 return;
             }
 
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
             var pedidoResult = service.Approve(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text, 30);
             if (pedidoResult.Success)
             {
@@ -5046,7 +5046,7 @@ namespace Example
                 return;
             }
 
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
             var pedidoResult = service.Cancel(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text, "Teste");
             if (pedidoResult.Success)
             {
@@ -5072,7 +5072,7 @@ namespace Example
                 return;
             }
 
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
             var pedidoResult = service.Ready(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text);
             if(pedidoResult.Success)
             {
@@ -5107,7 +5107,7 @@ namespace Example
 
         private void americanas()
         {
-            var service = new Americanas.Service.AmericanasService(true);
+            var service = new Americanas.Service.AmericanasService();
 
             try
             {

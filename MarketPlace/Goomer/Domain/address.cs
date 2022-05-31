@@ -10,7 +10,7 @@ namespace Goomer.Domain
     {
         public string zipCode { get; set; }
         public string street { get; set; }
-        public int streetNumber { get; set; }
+        public string streetNumber { get; set; }
         public string complement { get; set; }
         public string neighborhood { get; set; }
         public string reference { get; set; }

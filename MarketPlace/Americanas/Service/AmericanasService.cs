@@ -120,7 +120,7 @@ namespace Americanas.Service
             };
             
 
-            var url = string.Format("{0}{1}{2}/{3}/{4}/approve", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var url = string.Format("{0}{1}{2}/{3}{4}/approve", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
@@ -158,7 +158,7 @@ namespace Americanas.Service
                 vehicle_type_for_delivery = "NORMAL"
             };
 
-            var url = string.Format("{0}{1}{2}/{3}/{4}/ready", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var url = string.Format("{0}{1}{2}/{3}{4}/ready", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
@@ -198,7 +198,7 @@ namespace Americanas.Service
                 reason_description = mensagem
             };
 
-            var url = string.Format("{0}{1}{2}/{3}/{4}/cancel", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
+            var url = string.Format("{0}{1}{2}/{3}{4}/cancel", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
