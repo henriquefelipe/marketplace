@@ -102,6 +102,9 @@ namespace Example
         private string _servitSelected { get; set; }
         private List<Servit.Domain.order> _servitOrders { get; set; }
 
+        private string _jotajaSelected { get; set; }
+        private List<JotaJa.Domain.order> _jotajaOrders { get; set; }
+
         #endregion
 
         public Form1()
@@ -337,6 +340,10 @@ namespace Example
             _servitOrders = new List<Servit.Domain.order>();
             gridServit.DataSource = _servitOrders.ToList();
             gridServit.Refresh();
+
+            _jotajaOrders = new List<JotaJa.Domain.order>();
+            gridJotaJa.DataSource = _jotajaOrders.ToList();
+            gridJotaJa.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -5287,6 +5294,31 @@ namespace Example
 
         private void btnServitIntegrado_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_servitSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var ids = new List<int>();
+            ids.Add(Convert.ToInt32(_servitSelected));
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.Acknowledgment(txtServitToken.Text, ids);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
 
         }
 
@@ -5311,7 +5343,6 @@ namespace Example
             btnServitParar.Enabled = true;
             await Task.Run(() => servit());
         }
-
 
         void servitParar()
         {
@@ -5373,8 +5404,135 @@ namespace Example
             }
         }
 
+
         #endregion
 
+        #region Jotaja
 
+        private void btnJotajaToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaKey.Text))
+            {
+                MessageBox.Show("Key Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtJotajaSecret.Text))
+            {
+                MessageBox.Show("Client Secret Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.OathToken(txtJotajaKey.Text, txtJotajaSecret.Text);
+            if (result.Success)
+            {
+                txtJotajaToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnJotajaIniciar_Click(object sender, EventArgs e)
+        {
+            jotjaIniciar();
+        }
+
+        private void btnJotajaParar_Click(object sender, EventArgs e)
+        {
+            jotajaParar();
+        }
+
+        private void btnJotajaBuscarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridJotaJa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridJotaJa.Rows.Count)
+            {
+                _jotajaSelected = gridJotaJa.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        public async void jotjaIniciar()
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+
+            btnJotajaIniciar.Enabled = false;
+            btnJotajaParar.Enabled = true;
+            await Task.Run(() => jotaja());
+        }
+
+
+        void jotajaParar()
+        {
+            btnJotajaIniciar.Enabled = true;
+            btnJotajaParar.Enabled = false;
+        }
+
+        private void jotaja()
+        {
+            var service = new JotaJa.Service.JotaJaService(true);
+
+            try
+            {
+                while (btnJotajaParar.Enabled)
+                {
+                    var pedidosResult = service.Orders(txtJotajaToken.Text);
+
+                    if (pedidosResult.Success)
+                    {
+                        foreach (var item in pedidosResult.Result.items)
+                        {
+                            //if (!_jotajaOrders.Any(a => a.id == item.id))
+                            //    _jotajaOrders.Add(item);
+                        }
+
+                        WriteGridJotaJa();
+                    }
+                    else
+                    {
+                        MessageBox.Show(pedidosResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridJotaJaDelegate();
+        private void WriteGridJotaJa()
+        {
+            if (gridJotaJa.InvokeRequired)
+            {
+                var d = new WritelstGridJotaJaDelegate(WriteGridJotaJa);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridJotaJa.DataSource = _jotajaOrders.ToList();
+                gridJotaJa.Refresh();
+            }
+        }
+
+        #endregion
     }
 }

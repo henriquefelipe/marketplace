@@ -10,8 +10,7 @@ namespace Servit.Domain
     {
         public bool success { get; set; }
         public string title { get; set; }
-        public string message { get; set; }
-        public token_data data { get; set; }
+        public string message { get; set; }        
     }
 
     public class retornoGeneric<TResult> : retorno
