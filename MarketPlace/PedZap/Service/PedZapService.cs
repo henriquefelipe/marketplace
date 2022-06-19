@@ -22,11 +22,11 @@ namespace PedZap.Service
             _urlBase = urlBase;
         }
 
-        public GenericResult<List<pedido>> Pedidos(string token, string status, int offset)
+        public GenericResult<List<pedido>> Pedidos(string token, string status, int offset, string parametros = "")
         {
             var result = new GenericResult<List<pedido>>();
 
-            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.URL_PEDIDOS, status, offset);
+            var url = string.Format("{0}{1}/{2}/{3}{4}", _urlBase, Constants.URL_PEDIDOS, status, offset, parametros);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");

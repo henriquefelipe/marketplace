@@ -109,7 +109,6 @@ namespace Servit.Service
             var result = new GenericResult<retornoGeneric<order_result>>();
             try
             {
-
                 var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, merchantid);
                 var client = new RestClientBase(url);
                 var request = new RestRequest(Method.GET);

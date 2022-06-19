@@ -26,7 +26,7 @@ namespace PedZap.Domain
         public string ped_cidade { get; set; }
         public string ped_estado { get; set; }
         public string ped_pontoreferencia { get; set; }
-        public int ped_tempo { get; set; }
+        public int? ped_tempo { get; set; }
         public string ped_formapagamento { get; set; }
         public decimal? ped_trocopara { get; set; }
         public decimal? ped_custoentrega { get; set; }
@@ -50,6 +50,9 @@ namespace PedZap.Domain
         public bool pedidos_itens { get; set; }
         public decimal ped_desconto { get; set; }
         public string ped_desconto_cupom { get; set; }
+        public string mes_sku { get; set; }
+        public string mes_hash { get; set; }
+        public string mes_titulo { get; set; }
 
         public List<pedido_item> pedido_Items { get; set; }
     }

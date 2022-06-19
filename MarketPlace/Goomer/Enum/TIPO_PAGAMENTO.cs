@@ -11,6 +11,7 @@ namespace Goomer.Enum
         public const string CASH = "cash";
         public const string CREDIT = "credit";
         public const string DEBIT = "debit";
+        public const string TRANSFER = "transfer";
         public const string VOUCHER = "voucher";
         public const string UNKNOWN = "unknown";
     }

@@ -8,6 +8,8 @@ namespace PedZap.Enum
 {
     public class PedidoTipo
     {
+        public const string BALCAO = "BAL";
+        public const string MESA = "MES";
         public const string RETIRADA = "RET";
         public const string ENTREGA = "ENT";       
     }

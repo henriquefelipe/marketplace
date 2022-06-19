@@ -8,6 +8,7 @@ namespace Ifood.Enum
 {
     public class SalesChannel
     {
-        public const string IFOOD = "IFOOD";                      
+        public const string IFOOD = "IFOOD";
+        public const string POS = "POS";
     }
 }
