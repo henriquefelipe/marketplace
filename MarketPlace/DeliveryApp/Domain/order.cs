@@ -14,6 +14,7 @@ namespace DeliveryApp.Domain
             PizzaOrders = new List<pizza>();
             OrderAdditionals = new List<additional>();
             PromotionGroupOrders = new List<promotionGroupOrders>();
+            Vouchers = new List<voucher>();
         }
 
         public int id { get; set; }
@@ -58,5 +59,6 @@ namespace DeliveryApp.Domain
         public List<pizza> PizzaOrders { get; set; }
         public List<additional> OrderAdditionals { get; set; }
         public List<promotionGroupOrders> PromotionGroupOrders { get; set; }
+        public List<voucher> Vouchers { get; set; }
     }
 }

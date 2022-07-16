@@ -22,12 +22,20 @@ namespace Servit.Domain
         public string updated_at { get; set; }
         public int bill_id { get; set; }
         public int restaurant_id { get; set; }
-        public int waiter_id { get; set; }
+        public int? waiter_id { get; set; }
         public string accepted_by { get; set; }
         public string accepted_auto { get; set; }
-        public bool? created_by_waiter { get; set; }       
+        public bool? created_by_waiter { get; set; }
+
+        public order_insights insights { get; set; }
 
         public bill bill { get; set; }
         public List<order_product> order_products { get; set; }
+    }
+
+    public class order_insights
+    {
+        public string birth_date { get; set; }
+        public int number_times { get; set; }
     }
 }

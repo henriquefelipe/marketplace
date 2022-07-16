@@ -36,7 +36,7 @@ namespace DeliveryDireto.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var responseResult = JsonConvert.DeserializeObject<wspdvresponse<response_body_orders>>(response.Content);
-                    if (responseResult != null)
+                    if (responseResult != null && responseResult.wspdvResponse != null && responseResult.wspdvResponse.responseBody != null)
                     {
                         result.Result = responseResult.wspdvResponse.responseBody.codPedido;
                         result.Success = true;                        

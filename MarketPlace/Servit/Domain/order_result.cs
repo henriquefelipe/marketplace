@@ -11,8 +11,10 @@ namespace Servit.Domain
         public order_result()
         {
             orders = new List<order>();
+            bills = new List<bills>();
         }
 
         public List<order> orders { get; set; }
+        public List<bills> bills { get; set; }
     }
 }

@@ -49,19 +49,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\bill.cs" />
+    <Compile Include="Domain\bills.cs" />
     <Compile Include="Domain\merchant_data.cs" />
+    <Compile Include="Domain\newOrder.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\order_product.cs" />
     <Compile Include="Domain\order_result.cs" />
     <Compile Include="Domain\retorno.cs" />
     <Compile Include="Domain\token_data.cs" />
+    <Compile Include="Enum\PaymentMethod.cs" />
+    <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ServitService.cs" />
     <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enum\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>

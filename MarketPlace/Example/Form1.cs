@@ -5310,7 +5310,7 @@ namespace Example
             ids.Add(Convert.ToInt32(_servitSelected));
 
             var service = new Servit.Service.ServitService();
-            var pedidoResult = service.Acknowledgment(txtServitToken.Text, ids);
+            var pedidoResult = service.OrdersAcknowledgment(txtServitToken.Text, ids);
             if (pedidoResult.Success)
             {
                 MessageBox.Show("OK");
@@ -5320,6 +5320,103 @@ namespace Example
                 MessageBox.Show(pedidoResult.Message);
             }
 
+        }
+
+        private void btnServitEmPagamento_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_servitSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.StatusUpdate(txtServitToken.Text, txtServitStore.Text, _servitSelected, Servit.Enum.OrderStatus.IN_PAYMENT);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
+        }
+
+        private void btnServitConsumindo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_servitSelected))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var mesa = "7";
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.StatusUpdate(txtServitToken.Text, txtServitStore.Text, mesa, Servit.Enum.OrderStatus.CONSUMING);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
+        }
+
+        private void btnServitAtualizarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            var newOrder = new Servit.Domain.newOrder();
+            newOrder.table_number = "7";
+            newOrder.note = "Integrado";
+            newOrder.price = 4500;
+
+            var produto1 = new Servit.Domain.newOrder_product();
+            produto1.name = "Cheese";
+            produto1.description = "Sanduiche com queijo";
+            produto1.price = 4000;
+            produto1.quantity = 1;
+            produto1.sku = "75";
+            produto1.options.Add(new Servit.Domain.newOrder_product_option { name = "Pão Arabe" });
+            produto1.options.Add(new Servit.Domain.newOrder_product_option { name = "Batatinha Frita", price = 10 , quantity = 1 });
+            newOrder.products.Add(produto1);
+
+            var produto2 = new Servit.Domain.newOrder_product();
+            produto2.name = "Coca-cola";
+            produto2.description = "Bem gelado";
+            produto2.price = 500;
+            produto2.quantity = 1;
+            produto2.sku = "";            
+            newOrder.products.Add(produto2);
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.NewOrder(txtServitToken.Text, newOrder);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
         }
 
         private void gridServit_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -5533,6 +5630,10 @@ namespace Example
             }
         }
 
+
+
         #endregion
+
+        
     }
 }

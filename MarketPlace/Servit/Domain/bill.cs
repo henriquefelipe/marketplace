@@ -29,6 +29,7 @@ namespace Servit.Domain
         public int id { get; set; }
         public string cpf { get; set; }
         public string email { get; set; }
+        public string name { get; set; }
     }
 
     public class bill_table

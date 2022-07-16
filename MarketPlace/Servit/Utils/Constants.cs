@@ -13,6 +13,8 @@ namespace Servit.Utils
         public const string URL_TOKEN = "pdv/oauth/token";
         public const string URL_MERCHANTS = "pdv/merchants";        
         public const string URL_ORDERS = "pdv/event/orders";
-        public const string URL_Acknowledgment = "pdv/acknowledgment";       
+        public const string URL_ORDERS_ACKNOWLEDGMENT = "pdv/orders/acknowledgment";
+        public const string URL_BILLS_ACKNOWLEDGMENT = "pdv/bills/acknowledgment";
+        public const string URL_STATUS_UPDATE = "pdv/event/mechant/";
     }
 }

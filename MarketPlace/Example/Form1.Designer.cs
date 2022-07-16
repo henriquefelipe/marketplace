@@ -408,6 +408,9 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
+            this.btnServitEmPagamento = new System.Windows.Forms.Button();
+            this.btnServitConsumindo = new System.Windows.Forms.Button();
+            this.btnServitAtualizarPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -4186,6 +4189,9 @@
             // 
             // tabPageServit
             // 
+            this.tabPageServit.Controls.Add(this.btnServitAtualizarPedido);
+            this.tabPageServit.Controls.Add(this.btnServitConsumindo);
+            this.tabPageServit.Controls.Add(this.btnServitEmPagamento);
             this.tabPageServit.Controls.Add(this.txtServitStore);
             this.tabPageServit.Controls.Add(this.label80);
             this.tabPageServit.Controls.Add(this.btnServitMerchand);
@@ -4647,6 +4653,39 @@
             this.btnUberEatsIniciar.Text = "Iniciar";
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
+            // 
+            // btnServitEmPagamento
+            // 
+            this.btnServitEmPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitEmPagamento.Location = new System.Drawing.Point(314, 127);
+            this.btnServitEmPagamento.Name = "btnServitEmPagamento";
+            this.btnServitEmPagamento.Size = new System.Drawing.Size(145, 33);
+            this.btnServitEmPagamento.TabIndex = 52;
+            this.btnServitEmPagamento.Text = "Em Pagamento";
+            this.btnServitEmPagamento.UseVisualStyleBackColor = true;
+            this.btnServitEmPagamento.Click += new System.EventHandler(this.btnServitEmPagamento_Click);
+            // 
+            // btnServitConsumindo
+            // 
+            this.btnServitConsumindo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitConsumindo.Location = new System.Drawing.Point(465, 127);
+            this.btnServitConsumindo.Name = "btnServitConsumindo";
+            this.btnServitConsumindo.Size = new System.Drawing.Size(145, 33);
+            this.btnServitConsumindo.TabIndex = 53;
+            this.btnServitConsumindo.Text = "Consumindo";
+            this.btnServitConsumindo.UseVisualStyleBackColor = true;
+            this.btnServitConsumindo.Click += new System.EventHandler(this.btnServitConsumindo_Click);
+            // 
+            // btnServitAtualizarPedido
+            // 
+            this.btnServitAtualizarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitAtualizarPedido.Location = new System.Drawing.Point(616, 127);
+            this.btnServitAtualizarPedido.Name = "btnServitAtualizarPedido";
+            this.btnServitAtualizarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnServitAtualizarPedido.TabIndex = 54;
+            this.btnServitAtualizarPedido.Text = "Atualizar Pedido";
+            this.btnServitAtualizarPedido.UseVisualStyleBackColor = true;
+            this.btnServitAtualizarPedido.Click += new System.EventHandler(this.btnServitAtualizarPedido_Click);
             // 
             // Form1
             // 
@@ -5123,6 +5162,9 @@
         private System.Windows.Forms.DataGridView gridJotaJa;
         private System.Windows.Forms.Button btnJotajaParar;
         private System.Windows.Forms.Button btnJotajaIniciar;
+        private System.Windows.Forms.Button btnServitEmPagamento;
+        private System.Windows.Forms.Button btnServitConsumindo;
+        private System.Windows.Forms.Button btnServitAtualizarPedido;
     }
 }
 

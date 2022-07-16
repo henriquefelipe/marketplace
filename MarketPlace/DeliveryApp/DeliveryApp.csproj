@@ -58,6 +58,7 @@
     <Compile Include="Domain\produto_option.cs" />
     <Compile Include="Domain\promotionGroupOrders.cs" />
     <Compile Include="Domain\result_order.cs" />
+    <Compile Include="Domain\voucher.cs" />
     <Compile Include="Enum\FormaEntregaPedido.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\PaymentMethod.cs" />
