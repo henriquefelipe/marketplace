@@ -100,7 +100,7 @@ namespace Example
         private List<Americanas.Domain.orders> _americanasOrders { get; set; }
 
         private string _servitSelected { get; set; }
-        private List<Servit.Domain.order> _servitOrders { get; set; }
+        private List<Servit.Domain.evento> _servitEvents { get; set; }
 
         private string _jotajaSelected { get; set; }
         private List<JotaJa.Domain.order> _jotajaOrders { get; set; }
@@ -337,8 +337,8 @@ namespace Example
             gridAmericanas.DataSource = _americanasOrders.ToList();
             gridAmericanas.Refresh();
 
-            _servitOrders = new List<Servit.Domain.order>();
-            gridServit.DataSource = _servitOrders.ToList();
+            _servitEvents = new List<Servit.Domain.evento>();
+            gridServit.DataSource = _servitEvents.ToList();
             gridServit.Refresh();
 
             _jotajaOrders = new List<JotaJa.Domain.order>();
@@ -4719,8 +4719,9 @@ namespace Example
                 return;
             }
 
-            var service = new B2Food.Service.B2FoodService(_b2FoodToken);
-            var result = service.AlterarStatus(_b2foodSelected, B2Food.Enum.order_status.ACEITO, 30, "Henrique", "8598774587");
+            var service = new B2Food.Service.B2FoodService(_b2FoodToken, true);
+            var id = Convert.ToInt32(_b2foodSelected);
+            var result = service.AlterarStatus(id, B2Food.Enum.order_status.ACEITO, 30, "Henrique", "8598774587");
             if (result.Success)
             {
                 MessageBox.Show("Pedido confirmado com sucesso");
@@ -4771,7 +4772,7 @@ namespace Example
 
         private void b2food()
         {
-            var service = new B2Food.Service.B2FoodService(_b2FoodToken);
+            var service = new B2Food.Service.B2FoodService(_b2FoodToken, true);
 
             try
             {
@@ -5292,7 +5293,7 @@ namespace Example
             servitParar();
         }
 
-        private void btnServitIntegrado_Click(object sender, EventArgs e)
+        private void btnServitConfirmarEvento_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtServitToken.Text))
             {
@@ -5310,7 +5311,7 @@ namespace Example
             ids.Add(Convert.ToInt32(_servitSelected));
 
             var service = new Servit.Service.ServitService();
-            var pedidoResult = service.OrdersAcknowledgment(txtServitToken.Text, ids);
+            var pedidoResult = service.EventsAcknowledgment(txtServitToken.Text, ids);
             if (pedidoResult.Success)
             {
                 MessageBox.Show("OK");
@@ -5322,7 +5323,7 @@ namespace Example
 
         }
 
-        private void btnServitEmPagamento_Click(object sender, EventArgs e)
+        private void btnServitBloqueioMesa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtServitToken.Text))
             {
@@ -5330,14 +5331,8 @@ namespace Example
                 return;
             }
 
-            if (string.IsNullOrEmpty(_servitSelected))
-            {
-                MessageBox.Show("Selecione o pedido");
-                return;
-            }
-
             var service = new Servit.Service.ServitService();
-            var pedidoResult = service.StatusUpdate(txtServitToken.Text, txtServitStore.Text, _servitSelected, Servit.Enum.OrderStatus.IN_PAYMENT);
+            var pedidoResult = service.TableBlock(txtServitToken.Text, txtServitStore.Text, "7");
             if (pedidoResult.Success)
             {
                 MessageBox.Show("OK");
@@ -5348,7 +5343,7 @@ namespace Example
             }
         }
 
-        private void btnServitConsumindo_Click(object sender, EventArgs e)
+        private void btnServitDesbloqueioMesa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtServitToken.Text))
             {
@@ -5356,59 +5351,8 @@ namespace Example
                 return;
             }
 
-            if (string.IsNullOrEmpty(_servitSelected))
-            {
-                MessageBox.Show("Selecione o pedido");
-                return;
-            }
-
-            var mesa = "7";
-
             var service = new Servit.Service.ServitService();
-            var pedidoResult = service.StatusUpdate(txtServitToken.Text, txtServitStore.Text, mesa, Servit.Enum.OrderStatus.CONSUMING);
-            if (pedidoResult.Success)
-            {
-                MessageBox.Show("OK");
-            }
-            else
-            {
-                MessageBox.Show(pedidoResult.Message);
-            }
-        }
-
-        private void btnServitAtualizarPedido_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtServitToken.Text))
-            {
-                MessageBox.Show("Campo Token Obrigatório");
-                return;
-            }
-
-            var newOrder = new Servit.Domain.newOrder();
-            newOrder.table_number = "7";
-            newOrder.note = "Integrado";
-            newOrder.price = 4500;
-
-            var produto1 = new Servit.Domain.newOrder_product();
-            produto1.name = "Cheese";
-            produto1.description = "Sanduiche com queijo";
-            produto1.price = 4000;
-            produto1.quantity = 1;
-            produto1.sku = "75";
-            produto1.options.Add(new Servit.Domain.newOrder_product_option { name = "Pão Arabe" });
-            produto1.options.Add(new Servit.Domain.newOrder_product_option { name = "Batatinha Frita", price = 10 , quantity = 1 });
-            newOrder.products.Add(produto1);
-
-            var produto2 = new Servit.Domain.newOrder_product();
-            produto2.name = "Coca-cola";
-            produto2.description = "Bem gelado";
-            produto2.price = 500;
-            produto2.quantity = 1;
-            produto2.sku = "";            
-            newOrder.products.Add(produto2);
-
-            var service = new Servit.Service.ServitService();
-            var pedidoResult = service.NewOrder(txtServitToken.Text, newOrder);
+            var pedidoResult = service.TableUnlock(txtServitToken.Text, txtServitStore.Text, "7");
             if (pedidoResult.Success)
             {
                 MessageBox.Show("OK");
@@ -5455,14 +5399,15 @@ namespace Example
             {
                 while (btnServitParar.Enabled)
                 {
-                    var pedidosResult = service.Orders(txtServitToken.Text, txtServitStore.Text);
+                    var pedidosResult = service.Events(txtServitToken.Text, txtServitStore.Text);
 
                     if (pedidosResult.Success)
                     {
-                        foreach (var item in pedidosResult.Result.data.orders)
+                        foreach (var item in pedidosResult.Result.data.events)
                         {
-                            if (!_servitOrders.Any(a => a.id == item.id))
-                                _servitOrders.Add(item);
+                            if (!_servitEvents.Any(a => a.id == item.id))
+                                _servitEvents.Add(item);
+                            
                         }
 
                         WriteGridServit();
@@ -5496,7 +5441,7 @@ namespace Example
             }
             else
             {
-                gridServit.DataSource = _servitOrders.ToList();
+                gridServit.DataSource = _servitEvents.ToList();
                 gridServit.Refresh();
             }
         }
@@ -5632,8 +5577,156 @@ namespace Example
 
 
 
+
+
         #endregion
 
-        
+        #region CRM Bonus
+
+        private void btnCRMBonusInicio_Click(object sender, EventArgs e)
+        {
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.Inicio(txtCRMBonusClienteNome.Text, txtCRMBonusClienteEmail.Text, txtCRMBonusClienteAniversario.Text, txtCRMBonusClienteCPF.Text);
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                txtCRMBonusCustomerId.Text = result.Result.data.customer_id.ToString();
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnCRMBonusValidarPIN_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCRMBonusPIN.Text))
+            {
+                MessageBox.Show("PIN Obrigatório");
+                txtCRMBonusPIN.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtCRMBonusCustomerId.Text))
+            {
+                MessageBox.Show("CustomerId Obrigatório");
+                txtCRMBonusCustomerId.Focus();
+                return;
+            }
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.ValidarPin(txtCRMBonusPIN.Text, Convert.ToInt32(txtCRMBonusCustomerId.Text));
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnCRMBonusReenviarPIN_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCRMBonusCustomerId.Text))
+            {
+                MessageBox.Show("CustomerId Obrigatório");
+                txtCRMBonusCustomerId.Focus();
+                return;
+            }
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.ReenviarPin(Convert.ToInt32(txtCRMBonusCustomerId.Text));
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnCRMBonusBonusDisponivel_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCRMBonusCustomerId.Text))
+            {
+                MessageBox.Show("CustomerId Obrigatório");
+                txtCRMBonusCustomerId.Focus();
+                return;
+            }
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.BonusDisponivel(Convert.ToInt32(txtCRMBonusCustomerId.Text), 100);
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                txtCRMBonusBonusID.Text = result.Result.data.ids_bonus;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnCRMBonusCampanhaDisponivel_Click(object sender, EventArgs e)
+        {
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.CampanhaDisponivel(100);
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnCRMBonusFinalizarCompra_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCRMBonusCustomerId.Text))
+            {
+                MessageBox.Show("CustomerId Obrigatório");
+                txtCRMBonusCustomerId.Focus();
+                return;
+            }
+
+            var utilizarBonus = true;
+            if(utilizarBonus)
+            {
+                if (string.IsNullOrEmpty(txtCRMBonusBonusID.Text))
+                {
+                    MessageBox.Show("Bonus Ids Obrigatório");
+                    txtCRMBonusBonusID.Focus();
+                    return;
+                }
+            }
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.FinalizarCompra(false, utilizarBonus, txtCRMBonusBonusID.Text, Convert.ToInt32(txtCRMBonusCustomerId.Text), 2, 5255, "", false, "", "Henrique", 100, "1", "");
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
     }
 }

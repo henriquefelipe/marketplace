@@ -15,6 +15,7 @@ namespace Servit.Domain
 
         public int id { get; set; }
         public int product_id { get; set; }
+        public string sku { get; set; } // utilizado no cancelamento
         public int order_id { get; set; }
         public decimal price { get; set; }
         public decimal quantity { get; set; }
@@ -29,7 +30,7 @@ namespace Servit.Domain
     public class product
     {
         public int id { get; set; }
-        public string sku { get; set; }
+        public string sku { get; set; } // utilizado na criação do pedido
         public string name { get; set; }
         public string description { get; set; }
         public string image { get; set; }

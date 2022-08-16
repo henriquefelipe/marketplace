@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace B2Food.Utils
 {
     public static class Constants
-    {        
-        public const string URL_ORDER = "https://api.b2foodapp.com.br/api/pedido/";
+    {
+        public const string URL_BASE = "https://api.b2foodapp.com.br/api/pedido/";
+        public const string URL_BASE_TESTE = "https://apiteste.b2foodapp.com.br/api/pedido/";
+        
         public const string URL_ORDER_PENDENTES = "pendentes";   
         public const string URL_ORDER_NAO_IMPORTADO = "naoimportados";
     }

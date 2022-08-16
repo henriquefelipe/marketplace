@@ -4,6 +4,7 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Logaroo.Service
 {
@@ -27,20 +28,22 @@ namespace Logaroo.Service
         {
             var result = new GenericResult<login>();
 
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             var client = new RestClient(_urlBase + Constants.URL_LOGIN);
             var request = new RestRequest(Method.POST);           
             request.AddParameter("email", email);
             request.AddParameter("password", password);
-            IRestResponse responseToken = client.Execute(request);
+            IRestResponse response = client.Execute(request);
 
-            if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                result.Result = JsonConvert.DeserializeObject<login>(responseToken.Content);
+                result.Result = JsonConvert.DeserializeObject<login>(response.Content);
                 result.Success = true;
             }
             else
             {
-                result.Message = responseToken.StatusDescription;
+                result.Message = response.StatusDescription + response.Content;
             }
 
             return result;
@@ -160,6 +163,8 @@ namespace Logaroo.Service
         /// <returns></returns>
         public GenericResult<ordercreateresult> Order(string token, order order)
         {
+
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var result = new GenericResult<ordercreateresult>();
 
             var data = JsonConvert.SerializeObject(order);

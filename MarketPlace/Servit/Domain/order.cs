@@ -28,8 +28,9 @@ namespace Servit.Domain
         public bool? created_by_waiter { get; set; }
 
         public order_insights insights { get; set; }
-
-        public bill bill { get; set; }
+        public order_user user { get; set; }
+        public order_table table { get; set; }
+        public order_waiter waiter { get; set; }
         public List<order_product> order_products { get; set; }
     }
 
@@ -37,5 +38,26 @@ namespace Servit.Domain
     {
         public string birth_date { get; set; }
         public int number_times { get; set; }
+    }
+
+    public class order_user
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string country_code { get; set; }
+        public string phone { get; set; }
+    }
+
+    public class order_table
+    {        
+        public int id { get; set; }
+        public string number { get; set; }
+    }
+
+    public class order_waiter
+    {
+        public int id { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
     }
 }

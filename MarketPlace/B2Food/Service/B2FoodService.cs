@@ -11,9 +11,12 @@ namespace B2Food.Service
     public class B2FoodService
     {
         private string _token;
-        public B2FoodService(string token)
+        private string _urlBase = Constants.URL_BASE;
+        public B2FoodService(string token, bool teste = false)
         {
             _token = token;
+            if (teste)
+                _urlBase = Constants.URL_BASE_TESTE;
         }
 
         public GenericResult<List<long>> PedidosPendentes()
@@ -22,7 +25,7 @@ namespace B2Food.Service
 
             try
             {
-                var url = string.Format("{0}{1}", Constants.URL_ORDER, Constants.URL_ORDER_PENDENTES);
+                var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDER_PENDENTES);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Authorization", string.Format("bearer {0}", _token));
@@ -53,7 +56,7 @@ namespace B2Food.Service
 
             try
             {
-                var url = string.Format("{0}{1}", Constants.URL_ORDER, id);
+                var url = string.Format("{0}{1}", _urlBase, id);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Authorization", string.Format("bearer {0}", _token));
@@ -85,7 +88,7 @@ namespace B2Food.Service
 
             try
             {
-                var url = string.Format("{0}{1}/status", Constants.URL_ORDER, id);
+                var url = string.Format("{0}{1}/status", _urlBase, id);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Authorization", string.Format("bearer {0}", _token));
@@ -109,7 +112,7 @@ namespace B2Food.Service
             return genericResult;
         }
 
-        public GenericSimpleResult AlterarStatus(string id, int status, int tempoParaEntrega = 0, string entregadorNome = "", string entregadorTelefone = "")
+        public GenericSimpleResult AlterarStatus(int id, int status, int tempoParaEntrega = 0, string entregadorNome = "", string entregadorTelefone = "")
         {
             var data = new
             {
@@ -124,13 +127,13 @@ namespace B2Food.Service
 
             try
             {
-                var url = string.Format("{0}status", Constants.URL_ORDER);
+                var url = string.Format("{0}status", _urlBase);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.PUT);
                 request.AddHeader("Authorization", string.Format("bearer {0}", _token));
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     genericResult.Success = true;
                 }

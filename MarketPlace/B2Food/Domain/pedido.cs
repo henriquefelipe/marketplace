@@ -43,6 +43,7 @@ namespace B2Food.Domain
         public int status { get; set; }
         public int motivoPerda { get; set; }
         public int formaPagamentoID { get; set; }
+        public string formaPagamentoCodigoPDV { get; set; }
         public string motivoCancelamento { get; set; }
         public string motivoSolicitacaoCancelamento { get; set; }
         public string gatewayPagamento { get; set; }

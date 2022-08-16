@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,9 @@ namespace DeliveryApp.Domain
         public string title { get; set; }
         public decimal price { get; set; }
         public int qtd_sabor { get; set; }
-        public string ref_ { get; set; }
+
+        [JsonProperty("ref")]
+        public string _ref { get; set; }
         public string ref_sabor_tamanho { get; set; }
 
         public List<complement_categorie> ComplementCategories { get; set; }
