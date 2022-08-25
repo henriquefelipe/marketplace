@@ -23,6 +23,8 @@ namespace CRMBonus.Domain
         public string msg_venda_prime { get; set; }
         public string msg_venda_prime_obrigado { get; set; }
         public List<retorno_bonus_disponivel_historico> historico { get; set; }
+
+        public string msg { get; set; }
     }
 
     public class retorno_bonus_disponivel_historico

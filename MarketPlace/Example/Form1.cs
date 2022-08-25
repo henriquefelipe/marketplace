@@ -5492,6 +5492,26 @@ namespace Example
 
         }
 
+        private void btnJotajaStore_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Store(txtJotajaToken.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void gridJotaJa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridJotaJa.Rows.Count)
@@ -5727,6 +5747,28 @@ namespace Example
             }
         }
 
+        private void btnCRMBonusVendasTotais_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            var valor = new decimal(rand.NextDouble());
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), "", true);
+            var result = service.VendaTotais(valor, 4, "Henrique", "Pedro", "", 0, 0, rand.Next().ToString());
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
         #endregion
+
+        
     }
 }

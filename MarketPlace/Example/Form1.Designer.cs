@@ -147,6 +147,11 @@
             this.btnCinddiParar = new System.Windows.Forms.Button();
             this.btnCinddiIniciar = new System.Windows.Forms.Button();
             this.tabPageCRMBonus = new System.Windows.Forms.TabPage();
+            this.btnCRMBonusVendasTotais = new System.Windows.Forms.Button();
+            this.txtCRMBonusBonusID = new System.Windows.Forms.TextBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.txtCRMBonusCustomerId = new System.Windows.Forms.TextBox();
+            this.label94 = new System.Windows.Forms.Label();
             this.txtCRMBonusClienteCPF = new System.Windows.Forms.TextBox();
             this.label93 = new System.Windows.Forms.Label();
             this.btnCRMBonusFinalizarCompra = new System.Windows.Forms.Button();
@@ -437,10 +442,7 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.txtCRMBonusCustomerId = new System.Windows.Forms.TextBox();
-            this.label94 = new System.Windows.Forms.Label();
-            this.txtCRMBonusBonusID = new System.Windows.Forms.TextBox();
-            this.label95 = new System.Windows.Forms.Label();
+            this.btnJotajaStore = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -1810,6 +1812,7 @@
             // 
             // tabPageCRMBonus
             // 
+            this.tabPageCRMBonus.Controls.Add(this.btnCRMBonusVendasTotais);
             this.tabPageCRMBonus.Controls.Add(this.txtCRMBonusBonusID);
             this.tabPageCRMBonus.Controls.Add(this.label95);
             this.tabPageCRMBonus.Controls.Add(this.txtCRMBonusCustomerId);
@@ -1847,6 +1850,53 @@
             this.tabPageCRMBonus.Text = "CRM Bonus";
             this.tabPageCRMBonus.UseVisualStyleBackColor = true;
             // 
+            // btnCRMBonusVendasTotais
+            // 
+            this.btnCRMBonusVendasTotais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCRMBonusVendasTotais.Location = new System.Drawing.Point(1021, 386);
+            this.btnCRMBonusVendasTotais.Name = "btnCRMBonusVendasTotais";
+            this.btnCRMBonusVendasTotais.Size = new System.Drawing.Size(171, 39);
+            this.btnCRMBonusVendasTotais.TabIndex = 58;
+            this.btnCRMBonusVendasTotais.Text = "Vendas Totais";
+            this.btnCRMBonusVendasTotais.UseVisualStyleBackColor = true;
+            this.btnCRMBonusVendasTotais.Click += new System.EventHandler(this.btnCRMBonusVendasTotais_Click);
+            // 
+            // txtCRMBonusBonusID
+            // 
+            this.txtCRMBonusBonusID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCRMBonusBonusID.Location = new System.Drawing.Point(665, 89);
+            this.txtCRMBonusBonusID.Name = "txtCRMBonusBonusID";
+            this.txtCRMBonusBonusID.Size = new System.Drawing.Size(291, 26);
+            this.txtCRMBonusBonusID.TabIndex = 57;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label95.Location = new System.Drawing.Point(550, 95);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(73, 20);
+            this.label95.TabIndex = 56;
+            this.label95.Text = "Bonus Id";
+            // 
+            // txtCRMBonusCustomerId
+            // 
+            this.txtCRMBonusCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCRMBonusCustomerId.Location = new System.Drawing.Point(665, 57);
+            this.txtCRMBonusCustomerId.Name = "txtCRMBonusCustomerId";
+            this.txtCRMBonusCustomerId.Size = new System.Drawing.Size(291, 26);
+            this.txtCRMBonusCustomerId.TabIndex = 55;
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label94.Location = new System.Drawing.Point(550, 63);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(96, 20);
+            this.label94.TabIndex = 54;
+            this.label94.Text = "Customer Id";
+            // 
             // txtCRMBonusClienteCPF
             // 
             this.txtCRMBonusClienteCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1868,7 +1918,7 @@
             // btnCRMBonusFinalizarCompra
             // 
             this.btnCRMBonusFinalizarCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCRMBonusFinalizarCompra.Location = new System.Drawing.Point(973, 386);
+            this.btnCRMBonusFinalizarCompra.Location = new System.Drawing.Point(832, 386);
             this.btnCRMBonusFinalizarCompra.Name = "btnCRMBonusFinalizarCompra";
             this.btnCRMBonusFinalizarCompra.Size = new System.Drawing.Size(171, 39);
             this.btnCRMBonusFinalizarCompra.TabIndex = 51;
@@ -1888,7 +1938,7 @@
             // btnCRMBonusCampanhaDisponivel
             // 
             this.btnCRMBonusCampanhaDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCRMBonusCampanhaDisponivel.Location = new System.Drawing.Point(785, 386);
+            this.btnCRMBonusCampanhaDisponivel.Location = new System.Drawing.Point(655, 386);
             this.btnCRMBonusCampanhaDisponivel.Name = "btnCRMBonusCampanhaDisponivel";
             this.btnCRMBonusCampanhaDisponivel.Size = new System.Drawing.Size(171, 39);
             this.btnCRMBonusCampanhaDisponivel.TabIndex = 48;
@@ -1899,7 +1949,7 @@
             // btnCRMBonusBonusDisponivel
             // 
             this.btnCRMBonusBonusDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCRMBonusBonusDisponivel.Location = new System.Drawing.Point(596, 386);
+            this.btnCRMBonusBonusDisponivel.Location = new System.Drawing.Point(478, 386);
             this.btnCRMBonusBonusDisponivel.Name = "btnCRMBonusBonusDisponivel";
             this.btnCRMBonusBonusDisponivel.Size = new System.Drawing.Size(171, 39);
             this.btnCRMBonusBonusDisponivel.TabIndex = 47;
@@ -1910,7 +1960,7 @@
             // btnCRMBonusReenviarPIN
             // 
             this.btnCRMBonusReenviarPIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCRMBonusReenviarPIN.Location = new System.Drawing.Point(402, 386);
+            this.btnCRMBonusReenviarPIN.Location = new System.Drawing.Point(301, 386);
             this.btnCRMBonusReenviarPIN.Name = "btnCRMBonusReenviarPIN";
             this.btnCRMBonusReenviarPIN.Size = new System.Drawing.Size(171, 39);
             this.btnCRMBonusReenviarPIN.TabIndex = 46;
@@ -1921,9 +1971,9 @@
             // btnCRMBonusValidarPIN
             // 
             this.btnCRMBonusValidarPIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCRMBonusValidarPIN.Location = new System.Drawing.Point(211, 386);
+            this.btnCRMBonusValidarPIN.Location = new System.Drawing.Point(157, 386);
             this.btnCRMBonusValidarPIN.Name = "btnCRMBonusValidarPIN";
-            this.btnCRMBonusValidarPIN.Size = new System.Drawing.Size(171, 39);
+            this.btnCRMBonusValidarPIN.Size = new System.Drawing.Size(138, 39);
             this.btnCRMBonusValidarPIN.TabIndex = 45;
             this.btnCRMBonusValidarPIN.Text = "Validar PIN";
             this.btnCRMBonusValidarPIN.UseVisualStyleBackColor = true;
@@ -1934,7 +1984,7 @@
             this.btnCRMBonusInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCRMBonusInicio.Location = new System.Drawing.Point(23, 386);
             this.btnCRMBonusInicio.Name = "btnCRMBonusInicio";
-            this.btnCRMBonusInicio.Size = new System.Drawing.Size(171, 39);
+            this.btnCRMBonusInicio.Size = new System.Drawing.Size(128, 39);
             this.btnCRMBonusInicio.TabIndex = 44;
             this.btnCRMBonusInicio.Text = "Inicio";
             this.btnCRMBonusInicio.UseVisualStyleBackColor = true;
@@ -3510,6 +3560,7 @@
             // 
             // tabPageJotaJa
             // 
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaStore);
             this.tabPageJotaJa.Controls.Add(this.btnJotajaBuscarPedido);
             this.tabPageJotaJa.Controls.Add(this.txtJotajaToken);
             this.tabPageJotaJa.Controls.Add(this.label81);
@@ -5000,41 +5051,16 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // txtCRMBonusCustomerId
+            // btnJotajaStore
             // 
-            this.txtCRMBonusCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCRMBonusCustomerId.Location = new System.Drawing.Point(665, 57);
-            this.txtCRMBonusCustomerId.Name = "txtCRMBonusCustomerId";
-            this.txtCRMBonusCustomerId.Size = new System.Drawing.Size(291, 26);
-            this.txtCRMBonusCustomerId.TabIndex = 55;
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label94.Location = new System.Drawing.Point(550, 63);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(96, 20);
-            this.label94.TabIndex = 54;
-            this.label94.Text = "Customer Id";
-            // 
-            // txtCRMBonusBonusID
-            // 
-            this.txtCRMBonusBonusID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCRMBonusBonusID.Location = new System.Drawing.Point(665, 89);
-            this.txtCRMBonusBonusID.Name = "txtCRMBonusBonusID";
-            this.txtCRMBonusBonusID.Size = new System.Drawing.Size(291, 26);
-            this.txtCRMBonusBonusID.TabIndex = 57;
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label95.Location = new System.Drawing.Point(550, 95);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(73, 20);
-            this.label95.TabIndex = 56;
-            this.label95.Text = "Bonus Id";
+            this.btnJotajaStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaStore.Location = new System.Drawing.Point(159, 159);
+            this.btnJotajaStore.Name = "btnJotajaStore";
+            this.btnJotajaStore.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaStore.TabIndex = 74;
+            this.btnJotajaStore.Text = "Store";
+            this.btnJotajaStore.UseVisualStyleBackColor = true;
+            this.btnJotajaStore.Click += new System.EventHandler(this.btnJotajaStore_Click);
             // 
             // Form1
             // 
@@ -5546,6 +5572,8 @@
         private System.Windows.Forms.Label label94;
         private System.Windows.Forms.TextBox txtCRMBonusBonusID;
         private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.Button btnCRMBonusVendasTotais;
+        private System.Windows.Forms.Button btnJotajaStore;
     }
 }
 

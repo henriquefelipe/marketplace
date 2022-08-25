@@ -2,10 +2,15 @@
 
 Integrações feitas até o momento.
 
+Delivery
+
   - Accon
   - Aiqfome
   - Aipedi  
+  - Americanas Delivery
   - Anota Ai
+  - B2Food
+  - Bigdim
   - Delivery App
   - Delivery Direto
   - Epadoca
@@ -19,6 +24,11 @@ Integrações feitas até o momento.
   - Rappi
   - Super Menu
   - Uber Eats
+  
+Cardápio Digital (Mesa)
+
+  - Goomer
+  - Servit
   
  # Accon
 

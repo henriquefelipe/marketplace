@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj" />
   </ItemGroup>
 

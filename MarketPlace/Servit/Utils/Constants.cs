@@ -15,5 +15,7 @@ namespace Servit.Utils
         public const string URL_EVENTS_MERCHANT = "pdv/events/merchant";
         public const string URL_EVENT_MECHANT = "pdv/event/mechant";
         public const string URL_EVENTS_ACKNOWLEDGMENT = "pdv/events/acknowledgment";
+
+        public const string URL_ORDERS = "pdv/event/orders";
     }
 }

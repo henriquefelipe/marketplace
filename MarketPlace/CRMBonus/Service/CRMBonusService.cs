@@ -1,4 +1,5 @@
 ﻿using CRMBonus.Domain;
+using CRMBonus.Enum;
 using CRMBonus.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
@@ -29,8 +30,11 @@ namespace CRMBonus.Service
             byte[] codempresaAsBytes = Encoding.ASCII.GetBytes(codempresa);
             this._codempresaBase64 = System.Convert.ToBase64String(codempresaAsBytes);
 
-            byte[] celularAsBytes = Encoding.ASCII.GetBytes(celular);
-            this._celularBase64 = System.Convert.ToBase64String(celularAsBytes);
+            if (!string.IsNullOrEmpty(celular))
+            {
+                byte[] celularAsBytes = Encoding.ASCII.GetBytes(celular);
+                this._celularBase64 = System.Convert.ToBase64String(celularAsBytes);
+            }
 
             _urlBase = desenvolvedor ? Constants.URL_BASE_HOMOLOGACAO : Constants.URL_BASE_PRODUCAO;
         }
@@ -65,7 +69,14 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_inicio>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {                    
@@ -109,7 +120,14 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_validar_pin>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {
@@ -152,7 +170,14 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_inicio>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {
@@ -196,7 +221,14 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_bonus_disponivel>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {
@@ -239,7 +271,14 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_campanha_disponivel>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {
@@ -296,7 +335,71 @@ namespace CRMBonus.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<retorno<retorno_finalizar_compra>>(response.Content);
-                    result.Success = true;
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + $" {response.Content}";
+                }
+
+                result.StatusCode = response.StatusCode;
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<retorno<retorno_venda_totais>> VendaTotais(decimal totalVendaLiquida, int qtdTotalItens, string nomeVendedor,
+                    string nomeConsumidor, string celularConsumidor, int bonusId, int orderId, string nrPedido)
+        {
+            var result = new GenericResult<retorno<retorno_venda_totais>>();
+            try
+            {
+                var data = new
+                {
+                    total_venda_liquida = totalVendaLiquida,
+                    qtd_total_itens = qtdTotalItens,
+                    nome_vendedor = nomeVendedor,
+                    nome_consumidor = nomeConsumidor,
+                    celular_consumidor = celularConsumidor,
+                    bonus_id = bonusId,
+                    order_id = orderId,
+                    nr_pedido = nrPedido
+                };
+
+                var url = _urlBase + Constants.URL_VENDAS_TOTAIS;
+                var client = new RestClient(url);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", _authorizationBase64);
+                request.AddHeader("Codempresa", _codempresaBase64);
+                request.AddHeader("Celular", _celularBase64);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<retorno<retorno_venda_totais>>(response.Content);
+                    if (result.Result.message == Message.SUCESSO || result.Result.message == Message.SUCESSO_COM_PONTO)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.data.msg;
+                    }
                 }
                 else
                 {

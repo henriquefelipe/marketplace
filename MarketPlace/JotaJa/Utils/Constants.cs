@@ -13,6 +13,7 @@ namespace JotaJa.Utils
 
 
         public const string URL_LOGIN = "auth/login";
+        public const string URL_REFRESH = "auth/refresh";
         public const string URL_ORDERS = "orders";
         public const string URL_STORE = "store";
 

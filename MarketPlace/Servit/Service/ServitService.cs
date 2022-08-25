@@ -265,45 +265,45 @@ namespace Servit.Service
             return result;
         }
 
-        //public GenericSimpleResult NewOrder(string token, newOrder newOrder)
-        //{
-        //    var result = new GenericSimpleResult();
-        //    try
-        //    {                
-        //        var url = string.Format("{0}{1}/{2}/newOrder", _urlBase, Constants.URL_ORDERS, newOrder.table_number);
-        //        var client = new RestClientBase(url);
-        //        var request = new RestRequest(Method.POST);
-        //        request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //        request.AddHeader("Content-Type", "application/json");
-        //        request.AddParameter("application/json", JsonConvert.SerializeObject(newOrder), ParameterType.RequestBody);
-        //        IRestResponse response = client.Execute(request);
-        //        if (response.StatusCode == System.Net.HttpStatusCode.Created)
-        //        {
-        //            var retorno = JsonConvert.DeserializeObject<retorno>(response.Content);
-        //            if (retorno.success)
-        //            {
-        //                result.Success = true;
-        //            }
-        //            else
-        //            {
-        //                result.Message = retorno.message;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            result.Message = response.Content;
-        //        }
+        public GenericSimpleResult NewOrder(string token, string merchantid, newOrder newOrder)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var url = string.Format("{0}{1}/{2}/newOrder", _urlBase, Constants.URL_ORDERS, merchantid);
+                var client = new RestClientBase(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(newOrder), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    var retorno = JsonConvert.DeserializeObject<retorno>(response.Content);
+                    if (retorno.success)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = retorno.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
 
-        //        result.Json = response.Content;
-        //        result.Request = client.requestResult;
-        //        result.Response = client.responsetResult;
-        //        result.StatusCode = response.StatusCode;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.Message = ex.Message;
-        //    }
-        //    return result;
-        //}
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+                result.StatusCode = response.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

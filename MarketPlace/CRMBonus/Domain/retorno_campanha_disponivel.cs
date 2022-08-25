@@ -12,6 +12,7 @@ namespace CRMBonus.Domain
         }
 
         public int loja_id { get; set; }
+        public string msg { get; set; }
         public List<retorno_campanha_disponivel_campanha> campanhas { get; set; }
     }
 

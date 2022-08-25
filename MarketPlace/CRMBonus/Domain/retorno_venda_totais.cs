@@ -4,10 +4,8 @@ using System.Text;
 
 namespace CRMBonus.Domain
 {
-    public class retorno_finalizar_compra
+    public  class retorno_venda_totais
     {
-        public int bonus_id { get; set; }
-        public int order_id { get; set; }
         public string msg { get; set; }
     }
 }

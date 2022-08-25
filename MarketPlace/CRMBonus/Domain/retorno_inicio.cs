@@ -10,5 +10,7 @@ namespace CRMBonus.Domain
         public int customer_id { get; set; }
         public bool solicita_pin { get; set; }
         public string sms { get; set; }
+
+        public string msg { get; set; }
     }
 }
