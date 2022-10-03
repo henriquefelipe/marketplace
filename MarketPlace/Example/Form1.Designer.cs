@@ -308,6 +308,7 @@
             this.btnIDeliveryParar = new System.Windows.Forms.Button();
             this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
             this.tabPageJotaJa = new System.Windows.Forms.TabPage();
+            this.btnJotajaStore = new System.Windows.Forms.Button();
             this.btnJotajaBuscarPedido = new System.Windows.Forms.Button();
             this.txtJotajaToken = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
@@ -399,6 +400,7 @@
             this.btnRappiParar = new System.Windows.Forms.Button();
             this.btnRappiIniciar = new System.Windows.Forms.Button();
             this.tabPageServit = new System.Windows.Forms.TabPage();
+            this.btnServitFinalizar = new System.Windows.Forms.Button();
             this.btnServitDesbloqueioMesa = new System.Windows.Forms.Button();
             this.btnServitBloqueioMesa = new System.Windows.Forms.Button();
             this.txtServitStore = new System.Windows.Forms.TextBox();
@@ -442,7 +444,8 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.btnJotajaStore = new System.Windows.Forms.Button();
+            this.txtServitMesa = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -3579,6 +3582,17 @@
             this.tabPageJotaJa.Text = "Jotajá";
             this.tabPageJotaJa.UseVisualStyleBackColor = true;
             // 
+            // btnJotajaStore
+            // 
+            this.btnJotajaStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaStore.Location = new System.Drawing.Point(159, 159);
+            this.btnJotajaStore.Name = "btnJotajaStore";
+            this.btnJotajaStore.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaStore.TabIndex = 74;
+            this.btnJotajaStore.Text = "Store";
+            this.btnJotajaStore.UseVisualStyleBackColor = true;
+            this.btnJotajaStore.Click += new System.EventHandler(this.btnJotajaStore_Click);
+            // 
             // btnJotajaBuscarPedido
             // 
             this.btnJotajaBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4565,6 +4579,9 @@
             // 
             // tabPageServit
             // 
+            this.tabPageServit.Controls.Add(this.txtServitMesa);
+            this.tabPageServit.Controls.Add(this.label96);
+            this.tabPageServit.Controls.Add(this.btnServitFinalizar);
             this.tabPageServit.Controls.Add(this.btnServitDesbloqueioMesa);
             this.tabPageServit.Controls.Add(this.btnServitBloqueioMesa);
             this.tabPageServit.Controls.Add(this.txtServitStore);
@@ -4587,6 +4604,17 @@
             this.tabPageServit.TabIndex = 23;
             this.tabPageServit.Text = "Servit";
             this.tabPageServit.UseVisualStyleBackColor = true;
+            // 
+            // btnServitFinalizar
+            // 
+            this.btnServitFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServitFinalizar.Location = new System.Drawing.Point(676, 127);
+            this.btnServitFinalizar.Name = "btnServitFinalizar";
+            this.btnServitFinalizar.Size = new System.Drawing.Size(205, 33);
+            this.btnServitFinalizar.TabIndex = 54;
+            this.btnServitFinalizar.Text = "Finalizar";
+            this.btnServitFinalizar.UseVisualStyleBackColor = true;
+            this.btnServitFinalizar.Click += new System.EventHandler(this.btnServitFinalizar_Click);
             // 
             // btnServitDesbloqueioMesa
             // 
@@ -5051,16 +5079,24 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // btnJotajaStore
+            // txtServitMesa
             // 
-            this.btnJotajaStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJotajaStore.Location = new System.Drawing.Point(159, 159);
-            this.btnJotajaStore.Name = "btnJotajaStore";
-            this.btnJotajaStore.Size = new System.Drawing.Size(145, 33);
-            this.btnJotajaStore.TabIndex = 74;
-            this.btnJotajaStore.Text = "Store";
-            this.btnJotajaStore.UseVisualStyleBackColor = true;
-            this.btnJotajaStore.Click += new System.EventHandler(this.btnJotajaStore_Click);
+            this.txtServitMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitMesa.Location = new System.Drawing.Point(802, 21);
+            this.txtServitMesa.Name = "txtServitMesa";
+            this.txtServitMesa.Size = new System.Drawing.Size(205, 26);
+            this.txtServitMesa.TabIndex = 56;
+            this.txtServitMesa.Text = "1";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label96.Location = new System.Drawing.Point(689, 24);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(48, 20);
+            this.label96.TabIndex = 55;
+            this.label96.Text = "Mesa";
             // 
             // Form1
             // 
@@ -5574,6 +5610,9 @@
         private System.Windows.Forms.Label label95;
         private System.Windows.Forms.Button btnCRMBonusVendasTotais;
         private System.Windows.Forms.Button btnJotajaStore;
+        private System.Windows.Forms.Button btnServitFinalizar;
+        private System.Windows.Forms.TextBox txtServitMesa;
+        private System.Windows.Forms.Label label96;
     }
 }
 

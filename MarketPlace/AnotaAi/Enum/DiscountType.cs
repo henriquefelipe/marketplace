@@ -8,7 +8,7 @@ namespace AnotaAi.Enum
 {
     public class DiscountType
     {
-        public const string FIDELIDADE = "Fidelidade";
+        public const string FIDELIDADE = "fidelidade";
         public const string PROMOCAO = "promoção";
         public const string CUPOM = "Cupom";
     }

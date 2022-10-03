@@ -10,7 +10,8 @@ namespace Servit.Enum
     {
         public const string MONEY = "MONEY";
         public const string PIX = "PIX";
-        public const string CREDIT_CARD = "CREDIT_CARD";
-        public const string CARD_MACHINE = "CARD_MACHINE";
+        public const string CREDIT_CARD = "CREDIT_CARD";        
+        public const string CARD_MACHINE_DEBIT = "CARD_MACHINE_DEBIT";
+        public const string CARD_MACHINE_CREDIT = "CARD_MACHINE_CREDIT";
     }
 }

@@ -16,5 +16,7 @@ namespace Servit.Enum
         public const string IN_PAYMENT = "IN_PAYMENT";
         public const string CHANGE_TABLE = "CHANGE_TABLE";
         public const string CANCELED = "CANCELED";
+        public const string TABLE_PAID = "TABLE_PAID"; // Pagamento
+        public const string NEW_ADVANCE = "NEW_ADVANCE"; // Adiantamento
     }
 }

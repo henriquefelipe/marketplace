@@ -21,7 +21,7 @@ namespace Bigdim.Domain
         public bool habilitarControleEstoque { get; set; }
         public int quantidadeEstoqueDisponivel { get; set; }
         public string codigoPdv { get; set; }
-        public int ordem { get; set; }
+        public int? ordem { get; set; }
         public int versao { get; set; }
     }
 }

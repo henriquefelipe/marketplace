@@ -5363,6 +5363,27 @@ namespace Example
             }
         }
 
+        private void btnServitFinalizar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.Status(txtServitToken.Text, txtServitStore.Text, txtServitMesa.Text, Servit.Enum.OrderStatus.CLOSED);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
+        }
+
+
         private void gridServit_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridServit.Rows.Count)
@@ -5767,8 +5788,10 @@ namespace Example
         }
 
 
+
+
         #endregion
 
-        
+       
     }
 }

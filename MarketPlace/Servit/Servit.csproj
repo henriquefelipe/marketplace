@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\data.cs" />
+    <Compile Include="Domain\environment.cs" />
+    <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\table.cs" />
     <Compile Include="Domain\bill.cs" />
     <Compile Include="Domain\merchant_data.cs" />
@@ -58,8 +60,10 @@
     <Compile Include="Domain\event_result.cs" />
     <Compile Include="Domain\retorno.cs" />
     <Compile Include="Domain\token_data.cs" />
+    <Compile Include="Domain\waiter.cs" />
     <Compile Include="Enum\EventOrigin.cs" />
     <Compile Include="Enum\EventModel.cs" />
+    <Compile Include="Enum\EventType.cs" />
     <Compile Include="Enum\EventStatus.cs" />
     <Compile Include="Enum\PaymentMethod.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
