@@ -5788,10 +5788,125 @@ namespace Example
         }
 
 
+        #endregion
 
+        #region Cresce Vendas
+        private void btnCresceVendasCompra_Click(object sender, EventArgs e)
+        {
+            var compra = new CresceVendas.Domain.compra();
+            compra.registration = "05903219004";
+
+            Random rand = new Random();
+
+            compra.payment = new CresceVendas.Domain.payment();
+            compra.payment.coupon = rand.Next().ToString();
+            compra.payment.total = 40;
+            compra.payment.method = CresceVendas.Enum.PaymentMethod.DINHEIRO;
+            compra.payment.installments = 1;
+            compra.payment.splits = CresceVendas.Enum.PaymentSplits.A_VISTA;
+            compra.payment.date = "2019-08-01T12:00:00";
+
+            var item1 = new CresceVendas.Domain.item();
+            item1.category = "Alimentos";
+            item1.subcategory = "Carnes";
+            item1.product_name = "Picanha bovina";
+            item1.code = "12345";
+            item1.unit_type = "kg";
+            item1.unit_value = 20;
+            item1.quantity = 1;
+            item1.total_value = 20;
+            compra.items.Add(item1);
+
+            var item2 = new CresceVendas.Domain.item();
+            item2.category = "Alimentos";
+            item2.subcategory = "Laticínios";
+            item2.product_name = "Leite integral";
+            item2.code = "23456";
+            item2.unit_type = "kg";
+            item2.unit_value = 20;
+            item2.quantity = 1;
+            item2.total_value = 20;
+            compra.items.Add(item2);
+
+            var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
+            var retorno = service.Compra(compra);
+            if(retorno.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(retorno.Message);
+            }
+        }
 
         #endregion
 
-       
+        private void btnCresceVendasSaldo_Click(object sender, EventArgs e)
+        {
+            var registration = "05903219004";
+
+            var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
+            var retorno = service.ConsultarSaldo(registration, 15);
+            if (retorno.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(retorno.Message);
+            }
+        }
+
+        private void btnCresceVendasCancelamento_Click(object sender, EventArgs e)
+        {
+            var coupon = "1362436046";
+
+            var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
+            var retorno = service.Cancelar(coupon);
+            if (retorno.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(retorno.Message);
+            }
+        }
+
+        private void btnCresceVendasTotalCompras_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            var total = Decimal.Round(new decimal(rand.NextDouble()), 2);
+
+            var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
+            var retorno = service.DiarioTotalCompras(12345, total, "2019-08-01");
+            if (retorno.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(retorno.Message);
+            }
+        }
+
+        private void btnCresceVendasPreCadastro_Click(object sender, EventArgs e)
+        {
+            var registration = "05903219004";
+            var phone = "11987654321";
+
+            var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
+            var retorno = service.PreCadastro(registration, phone);
+            if (retorno.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(retorno.Message);
+            }
+        }
     }
 }
+

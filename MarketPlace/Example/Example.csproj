@@ -125,6 +125,10 @@
       <Project>{370a32f6-b2a0-4822-b864-7084d3f18ae1}</Project>
       <Name>Cinddi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CresceVendas\CresceVendas.csproj">
+      <Project>{2b375576-e31f-4a9d-90f3-83024a2daf3d}</Project>
+      <Name>CresceVendas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CRMBonus\CRMBonus.csproj">
       <Project>{90c857a2-55f0-4314-b9fc-a3c9b40add13}</Project>
       <Name>CRMBonus</Name>

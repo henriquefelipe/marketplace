@@ -39,5 +39,7 @@ namespace Servit.Domain
     {
         public string name { get; set; }
         public int id { get; set; }
+        public string country_code { get; set; }
+        public string phone { get; set; }
     }
 }

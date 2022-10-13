@@ -400,6 +400,8 @@
             this.btnRappiParar = new System.Windows.Forms.Button();
             this.btnRappiIniciar = new System.Windows.Forms.Button();
             this.tabPageServit = new System.Windows.Forms.TabPage();
+            this.txtServitMesa = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
             this.btnServitFinalizar = new System.Windows.Forms.Button();
             this.btnServitDesbloqueioMesa = new System.Windows.Forms.Button();
             this.btnServitBloqueioMesa = new System.Windows.Forms.Button();
@@ -444,8 +446,16 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
-            this.txtServitMesa = new System.Windows.Forms.TextBox();
-            this.label96 = new System.Windows.Forms.Label();
+            this.tabPageCresceVendas = new System.Windows.Forms.TabPage();
+            this.btnCresceVendasCompra = new System.Windows.Forms.Button();
+            this.txtCresceVendasEmail = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.Label();
+            this.txtCresceVendasToken = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.btnCresceVendasSaldo = new System.Windows.Forms.Button();
+            this.btnCresceVendasCancelamento = new System.Windows.Forms.Button();
+            this.btnCresceVendasTotalCompras = new System.Windows.Forms.Button();
+            this.btnCresceVendasPreCadastro = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -501,6 +511,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPageUberEats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
+            this.tabPageCresceVendas.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -514,6 +525,7 @@
             this.tabControl1.Controls.Add(this.tabPageBigdim);
             this.tabControl1.Controls.Add(this.tabPageB2Food);
             this.tabControl1.Controls.Add(this.tabPageCinddi);
+            this.tabControl1.Controls.Add(this.tabPageCresceVendas);
             this.tabControl1.Controls.Add(this.tabPageCRMBonus);
             this.tabControl1.Controls.Add(this.tabPageDeliveryApp);
             this.tabControl1.Controls.Add(this.tabPageDeliveryDireto);
@@ -4605,6 +4617,25 @@
             this.tabPageServit.Text = "Servit";
             this.tabPageServit.UseVisualStyleBackColor = true;
             // 
+            // txtServitMesa
+            // 
+            this.txtServitMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServitMesa.Location = new System.Drawing.Point(802, 21);
+            this.txtServitMesa.Name = "txtServitMesa";
+            this.txtServitMesa.Size = new System.Drawing.Size(205, 26);
+            this.txtServitMesa.TabIndex = 56;
+            this.txtServitMesa.Text = "1";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label96.Location = new System.Drawing.Point(689, 24);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(48, 20);
+            this.label96.TabIndex = 55;
+            this.label96.Text = "Mesa";
+            // 
             // btnServitFinalizar
             // 
             this.btnServitFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5079,24 +5110,116 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
-            // txtServitMesa
+            // tabPageCresceVendas
             // 
-            this.txtServitMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServitMesa.Location = new System.Drawing.Point(802, 21);
-            this.txtServitMesa.Name = "txtServitMesa";
-            this.txtServitMesa.Size = new System.Drawing.Size(205, 26);
-            this.txtServitMesa.TabIndex = 56;
-            this.txtServitMesa.Text = "1";
+            this.tabPageCresceVendas.Controls.Add(this.btnCresceVendasPreCadastro);
+            this.tabPageCresceVendas.Controls.Add(this.btnCresceVendasTotalCompras);
+            this.tabPageCresceVendas.Controls.Add(this.btnCresceVendasCancelamento);
+            this.tabPageCresceVendas.Controls.Add(this.btnCresceVendasSaldo);
+            this.tabPageCresceVendas.Controls.Add(this.txtCresceVendasToken);
+            this.tabPageCresceVendas.Controls.Add(this.label98);
+            this.tabPageCresceVendas.Controls.Add(this.btnCresceVendasCompra);
+            this.tabPageCresceVendas.Controls.Add(this.txtCresceVendasEmail);
+            this.tabPageCresceVendas.Controls.Add(this.Email);
+            this.tabPageCresceVendas.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCresceVendas.Name = "tabPageCresceVendas";
+            this.tabPageCresceVendas.Size = new System.Drawing.Size(1229, 685);
+            this.tabPageCresceVendas.TabIndex = 26;
+            this.tabPageCresceVendas.Text = "Cresce Vendas";
+            this.tabPageCresceVendas.UseVisualStyleBackColor = true;
             // 
-            // label96
+            // btnCresceVendasCompra
             // 
-            this.label96.AutoSize = true;
-            this.label96.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label96.Location = new System.Drawing.Point(689, 24);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(48, 20);
-            this.label96.TabIndex = 55;
-            this.label96.Text = "Mesa";
+            this.btnCresceVendasCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCresceVendasCompra.Location = new System.Drawing.Point(12, 68);
+            this.btnCresceVendasCompra.Name = "btnCresceVendasCompra";
+            this.btnCresceVendasCompra.Size = new System.Drawing.Size(145, 33);
+            this.btnCresceVendasCompra.TabIndex = 33;
+            this.btnCresceVendasCompra.Text = "Criar Compra";
+            this.btnCresceVendasCompra.UseVisualStyleBackColor = true;
+            this.btnCresceVendasCompra.Click += new System.EventHandler(this.btnCresceVendasCompra_Click);
+            // 
+            // txtCresceVendasEmail
+            // 
+            this.txtCresceVendasEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCresceVendasEmail.Location = new System.Drawing.Point(128, 27);
+            this.txtCresceVendasEmail.Name = "txtCresceVendasEmail";
+            this.txtCresceVendasEmail.Size = new System.Drawing.Size(291, 26);
+            this.txtCresceVendasEmail.TabIndex = 31;
+            this.txtCresceVendasEmail.Text = "izzyway139@valedesconto.api";
+            // 
+            // Email
+            // 
+            this.Email.AutoSize = true;
+            this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Email.Location = new System.Drawing.Point(8, 30);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(48, 20);
+            this.Email.TabIndex = 30;
+            this.Email.Text = "Email";
+            // 
+            // txtCresceVendasToken
+            // 
+            this.txtCresceVendasToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCresceVendasToken.Location = new System.Drawing.Point(569, 24);
+            this.txtCresceVendasToken.Name = "txtCresceVendasToken";
+            this.txtCresceVendasToken.Size = new System.Drawing.Size(291, 26);
+            this.txtCresceVendasToken.TabIndex = 35;
+            this.txtCresceVendasToken.Text = "4RZiSC1DxwmknDVapMmL";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label98.Location = new System.Drawing.Point(449, 27);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(62, 20);
+            this.label98.TabIndex = 34;
+            this.label98.Text = "TOKEN";
+            // 
+            // btnCresceVendasSaldo
+            // 
+            this.btnCresceVendasSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCresceVendasSaldo.Location = new System.Drawing.Point(172, 68);
+            this.btnCresceVendasSaldo.Name = "btnCresceVendasSaldo";
+            this.btnCresceVendasSaldo.Size = new System.Drawing.Size(145, 33);
+            this.btnCresceVendasSaldo.TabIndex = 36;
+            this.btnCresceVendasSaldo.Text = "Saldo";
+            this.btnCresceVendasSaldo.UseVisualStyleBackColor = true;
+            this.btnCresceVendasSaldo.Click += new System.EventHandler(this.btnCresceVendasSaldo_Click);
+            // 
+            // btnCresceVendasCancelamento
+            // 
+            this.btnCresceVendasCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCresceVendasCancelamento.Location = new System.Drawing.Point(335, 68);
+            this.btnCresceVendasCancelamento.Name = "btnCresceVendasCancelamento";
+            this.btnCresceVendasCancelamento.Size = new System.Drawing.Size(145, 33);
+            this.btnCresceVendasCancelamento.TabIndex = 37;
+            this.btnCresceVendasCancelamento.Text = "Cancelamento";
+            this.btnCresceVendasCancelamento.UseVisualStyleBackColor = true;
+            this.btnCresceVendasCancelamento.Click += new System.EventHandler(this.btnCresceVendasCancelamento_Click);
+            // 
+            // btnCresceVendasTotalCompras
+            // 
+            this.btnCresceVendasTotalCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCresceVendasTotalCompras.Location = new System.Drawing.Point(498, 68);
+            this.btnCresceVendasTotalCompras.Name = "btnCresceVendasTotalCompras";
+            this.btnCresceVendasTotalCompras.Size = new System.Drawing.Size(145, 33);
+            this.btnCresceVendasTotalCompras.TabIndex = 38;
+            this.btnCresceVendasTotalCompras.Text = "Total de Compras";
+            this.btnCresceVendasTotalCompras.UseVisualStyleBackColor = true;
+            this.btnCresceVendasTotalCompras.Click += new System.EventHandler(this.btnCresceVendasTotalCompras_Click);
+            // 
+            // btnCresceVendasPreCadastro
+            // 
+            this.btnCresceVendasPreCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCresceVendasPreCadastro.Location = new System.Drawing.Point(659, 68);
+            this.btnCresceVendasPreCadastro.Name = "btnCresceVendasPreCadastro";
+            this.btnCresceVendasPreCadastro.Size = new System.Drawing.Size(145, 33);
+            this.btnCresceVendasPreCadastro.TabIndex = 39;
+            this.btnCresceVendasPreCadastro.Text = "Pré-Cadastro";
+            this.btnCresceVendasPreCadastro.UseVisualStyleBackColor = true;
+            this.btnCresceVendasPreCadastro.Click += new System.EventHandler(this.btnCresceVendasPreCadastro_Click);
             // 
             // Form1
             // 
@@ -5190,6 +5313,8 @@
             this.tabPageUberEats.ResumeLayout(false);
             this.tabPageUberEats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
+            this.tabPageCresceVendas.ResumeLayout(false);
+            this.tabPageCresceVendas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5613,6 +5738,16 @@
         private System.Windows.Forms.Button btnServitFinalizar;
         private System.Windows.Forms.TextBox txtServitMesa;
         private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TabPage tabPageCresceVendas;
+        private System.Windows.Forms.TextBox txtCresceVendasToken;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Button btnCresceVendasCompra;
+        private System.Windows.Forms.TextBox txtCresceVendasEmail;
+        private System.Windows.Forms.Label Email;
+        private System.Windows.Forms.Button btnCresceVendasSaldo;
+        private System.Windows.Forms.Button btnCresceVendasCancelamento;
+        private System.Windows.Forms.Button btnCresceVendasTotalCompras;
+        private System.Windows.Forms.Button btnCresceVendasPreCadastro;
     }
 }
 

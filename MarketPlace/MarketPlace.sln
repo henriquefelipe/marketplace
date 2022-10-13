@@ -57,7 +57,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servit", "Servit\Servit.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JotaJa", "JotaJa\JotaJa.csproj", "{E50B2095-11B2-4926-BC46-3B0B6BB99899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMBonus", "CRMBonus\CRMBonus.csproj", "{90C857A2-55F0-4314-B9FC-A3C9B40ADD13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRMBonus", "CRMBonus\CRMBonus.csproj", "{90C857A2-55F0-4314-B9FC-A3C9B40ADD13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CresceVendas", "CresceVendas\CresceVendas.csproj", "{2B375576-E31F-4A9D-90F3-83024A2DAF3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{90C857A2-55F0-4314-B9FC-A3C9B40ADD13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C857A2-55F0-4314-B9FC-A3C9B40ADD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C857A2-55F0-4314-B9FC-A3C9B40ADD13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B375576-E31F-4A9D-90F3-83024A2DAF3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B375576-E31F-4A9D-90F3-83024A2DAF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B375576-E31F-4A9D-90F3-83024A2DAF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B375576-E31F-4A9D-90F3-83024A2DAF3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
