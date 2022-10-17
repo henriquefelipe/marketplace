@@ -5798,23 +5798,23 @@ namespace Example
 
             Random rand = new Random();
 
-            compra.payment = new CresceVendas.Domain.payment();
-            compra.payment.coupon = rand.Next().ToString();
-            compra.payment.total = 40;
-            compra.payment.method = CresceVendas.Enum.PaymentMethod.DINHEIRO;
-            compra.payment.installments = 1;
-            compra.payment.splits = CresceVendas.Enum.PaymentSplits.A_VISTA;
-            compra.payment.date = "2019-08-01T12:00:00";
+            //compra.payment = new CresceVendas.Domain.payment();
+            //compra.payment.coupon = rand.Next().ToString();
+            //compra.payment.total = 40;
+            //compra.payment.method = CresceVendas.Enum.PaymentMethod.DINHEIRO;
+            //compra.payment.installments = 1;
+            //compra.payment.splits = CresceVendas.Enum.PaymentSplits.A_VISTA;
+            //compra.payment.date = "2019-08-01T12:00:00";
 
             var item1 = new CresceVendas.Domain.item();
             item1.category = "Alimentos";
             item1.subcategory = "Carnes";
-            item1.product_name = "Picanha bovina";
-            item1.code = "12345";
-            item1.unit_type = "kg";
-            item1.unit_value = 20;
+            item1.product_name = "COXAO MOLE";
+            item1.code = "1";
+            item1.unit_type = CresceVendas.Enum.UnitType.UM;
+            item1.unit_value = 60;
             item1.quantity = 1;
-            item1.total_value = 20;
+            //item1.total_value = 60;
             compra.items.Add(item1);
 
             var item2 = new CresceVendas.Domain.item();
@@ -5822,10 +5822,10 @@ namespace Example
             item2.subcategory = "Laticínios";
             item2.product_name = "Leite integral";
             item2.code = "23456";
-            item2.unit_type = "kg";
+            item2.unit_type = CresceVendas.Enum.UnitType.UM;
             item2.unit_value = 20;
             item2.quantity = 1;
-            item2.total_value = 20;
+            //item2.total_value = 20;
             compra.items.Add(item2);
 
             var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);

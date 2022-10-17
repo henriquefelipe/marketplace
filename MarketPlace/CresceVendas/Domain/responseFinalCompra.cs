@@ -22,6 +22,7 @@ namespace CresceVendas.Domain
         public decimal balance { get; set; }
         public responseFinalCompraUser user { get; set; }
         public List<error> errors { get; set; }
+        public discount discounts { get; set; }
     }
 
     public class responseFinalCompraUser

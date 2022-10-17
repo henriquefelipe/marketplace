@@ -9,13 +9,13 @@ namespace CresceVendas.Domain
         public compra()
         {
             items = new List<item>();
-            discounts = new List<discount>();
+            discounts = new List<compradiscount>();
         }
 
         public string registration { get; set; }
         public List<item> items { get; set; }
-        public payment payment { get; set; }
-        public List<discount> discounts { get; set; }
+        //public payment payment { get; set; }
+        public List<compradiscount> discounts { get; set; }
     }
 
     public class item
@@ -27,7 +27,7 @@ namespace CresceVendas.Domain
         public string unit_type { get; set; }
         public decimal unit_value { get; set; }
         public decimal quantity { get; set; }
-        public decimal total_value { get; set; }
+        //public decimal total_value { get; set; }
     }
 
     public class payment
@@ -40,7 +40,7 @@ namespace CresceVendas.Domain
         public string date { get; set; }
     }
 
-    public class discount
+    public class compradiscount
     {
         public string code { get; set; }
         public decimal quantity { get; set; }
