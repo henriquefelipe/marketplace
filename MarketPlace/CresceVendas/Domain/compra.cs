@@ -14,7 +14,7 @@ namespace CresceVendas.Domain
 
         public string registration { get; set; }
         public List<item> items { get; set; }
-        //public payment payment { get; set; }
+        public payment payment { get; set; }
         public List<compradiscount> discounts { get; set; }
     }
 
@@ -27,7 +27,7 @@ namespace CresceVendas.Domain
         public string unit_type { get; set; }
         public decimal unit_value { get; set; }
         public decimal quantity { get; set; }
-        //public decimal total_value { get; set; }
+        public decimal total_value { get; set; }
     }
 
     public class payment

@@ -18,7 +18,7 @@ namespace CRMBonus.Utils
         public const string URL_BONUS_DISPONIVEL = "pages/api_bonus_disponivel";
         public const string URL_CAMPANHA_DISPONIVEL = "pages/api_campanha_disponivel";
         public const string URL_FINALIZA_COMPRA = "pages/api_finaliza_compra";
-        public const string URL_CANCELAR_BONUS = "pages/cancelar_bonus";
+        public const string URL_CANCELAR_BONUS = "pages/api_cancelar_bonus";
         public const string URL_VENDAS_TOTAIS = "pages/api_vendas_totais";
     }
 }

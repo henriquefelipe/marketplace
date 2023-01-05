@@ -36,7 +36,7 @@ namespace CresceVendas.Domain
     public class responseFinalCompraUserAdress
     {
         public string street { get; set; }
-        public int number { get; set; }
+        public int? number { get; set; }
         public string district { get; set; }
         public string adjunct { get; set; }
         public string city { get; set; }

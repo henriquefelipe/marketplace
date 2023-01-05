@@ -51,16 +51,21 @@ namespace Rappi.Service
             return result;
         }
 
-        public GenericResult<List<order>> Orders(string token)
+        public GenericResult<List<order>> Orders(string token, string storeId = "")
         {
             var result = new GenericResult<List<order>>();
             try
             {
                 var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDERS);
+                if (!string.IsNullOrEmpty(storeId))
+                    url += "?storeId=" + storeId;
+
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("x-authorization", "Bearer " + token);
                 request.AddHeader("Accept", "application/json");
+                //if(!string.IsNullOrEmpty(storeId))
+                //    request.AddHeader("storeId ", storeId);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {

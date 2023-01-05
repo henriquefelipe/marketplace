@@ -352,5 +352,55 @@ namespace Servit.Service
             return result;
         }
 
+        public GenericSimpleResult TransferenciaCompleta(string token, string merchantid, string origemCodigo, string destinoCodigo, string idLocalizacao = "")
+        {
+            var result = new GenericSimpleResult();
+            try
+            {                
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/to/{5}", _urlBase, Constants.URL_EVENT_MECHANT, merchantid, Constants.URL_TABLE_CHANGE, origemCodigo, destinoCodigo);
+                var client = new RestClientBase(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+
+                if(!string.IsNullOrEmpty(idLocalizacao))
+                {
+                    var data = new
+                    {
+                        id = idLocalizacao
+                    };
+                    request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                }
+
+               
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    var retorno = JsonConvert.DeserializeObject<retorno>(response.Content);
+                    if (retorno.success)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = retorno.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+                result.StatusCode = response.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

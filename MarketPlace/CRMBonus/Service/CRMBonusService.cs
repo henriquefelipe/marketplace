@@ -341,7 +341,7 @@ namespace CRMBonus.Service
                     }
                     else
                     {
-                        result.Message = result.Result.data.msg;
+                        result.Message = result.Result.message;
                     }
                 }
                 else
@@ -399,6 +399,62 @@ namespace CRMBonus.Service
                     else
                     {
                         result.Message = result.Result.data.msg;
+                    }
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + $" {response.Content}";
+                }
+
+                result.StatusCode = response.StatusCode;
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult CancelarBonus(string nrPedido, int customer_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    loja_id = _codloja,
+                    customer_id = customer_id,                   
+                    bonus_id = nrPedido
+                };
+
+                var url = _urlBase + Constants.URL_CANCELAR_BONUS;
+                var client = new RestClient(url);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", _authorizationBase64);
+                request.AddHeader("Codempresa", _codempresaBase64);
+                request.AddHeader("Celular", _celularBase64);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var retorno = JsonConvert.DeserializeObject<retorno_cancelar_bonus>(response.Content);
+                    if (retorno.status)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        if (retorno.message != null)
+                            result.Message = retorno.message.msg;
+                        else if (retorno.data != null)
+                            result.Message = retorno.data.msg;
+                        else
+                            result.Message = response.Content;
                     }
                 }
                 else

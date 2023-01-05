@@ -2387,7 +2387,9 @@ namespace Example
             {
                 while (btnRappiParar.Enabled)
                 {
-                    var orderResult = rappiService.Orders(_rappiToken);
+                    var storeId = txtRappiStoreId.Text;
+
+                    var orderResult = rappiService.Orders(_rappiToken, storeId);
                     if (orderResult.Success)
                     {
                         foreach (var item in orderResult.Result)
@@ -5467,6 +5469,25 @@ namespace Example
             }
         }
 
+        private void btnServitTransferencia_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtServitToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            var service = new Servit.Service.ServitService();
+            var pedidoResult = service.TransferenciaCompleta(txtServitToken.Text, txtServitStore.Text, txtServitMesa.Text, txtServitMesaDestino.Text);
+            if (pedidoResult.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(pedidoResult.Message);
+            }
+        }
 
         #endregion
 
@@ -5768,6 +5789,40 @@ namespace Example
             }
         }
 
+        private void btnCRMBonusCancelarBonus_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCRMBonusCustomerId.Text))
+            {
+                MessageBox.Show("CustomerId Obrigatório");
+                txtCRMBonusCustomerId.Focus();
+                return;
+            }
+
+            var utilizarBonus = true;
+            if (utilizarBonus)
+            {
+                if (string.IsNullOrEmpty(txtCRMBonusBonusID.Text))
+                {
+                    MessageBox.Show("Bonus Ids Obrigatório");
+                    txtCRMBonusBonusID.Focus();
+                    return;
+                }
+            }
+
+            var service = new CRMBonus.Service.CRMBonusService(txtCRMBonusAuthorization.Text, txtCRMBonusCodigoEmpresa.Text,
+                    Convert.ToInt32(txtCRMBonusCodigoLoja.Text), txtCRMBonusClienteCelular.Text, true);
+            var result = service.CancelarBonus(txtCRMBonusBonusID.Text, Convert.ToInt32(txtCRMBonusCustomerId.Text));
+            if (result.Success)
+            {
+                txtCRMBonusJSON.Text = result.Json;
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void btnCRMBonusVendasTotais_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
@@ -5794,7 +5849,7 @@ namespace Example
         private void btnCresceVendasCompra_Click(object sender, EventArgs e)
         {
             var compra = new CresceVendas.Domain.compra();
-            compra.registration = "05903219004";
+            compra.registration = "05903219004";            
 
             Random rand = new Random();
 
@@ -5838,9 +5893,7 @@ namespace Example
             {
                 MessageBox.Show(retorno.Message);
             }
-        }
-
-        #endregion
+        }        
 
         private void btnCresceVendasSaldo_Click(object sender, EventArgs e)
         {
@@ -5906,6 +5959,14 @@ namespace Example
             {
                 MessageBox.Show(retorno.Message);
             }
+        }
+
+        #endregion
+
+        private void btnMeuCardapioAiTestarJSON_Click(object sender, EventArgs e)
+        {
+            var json = "{'sucesso':true,'data':{'cliente':{'id':1165643,'nome':'Cristiele Soares','cpf':null,'telefone':'88988464962'},'operador':{'papeis':[],'operador':false,'ativo':false,'id':1457,'email':'alberione_gomes@hotmail.com','nome':'Alberas'},'itens':[{'id':4323684,'nome':'ARROZ COM STROGONOFF DE FRANGO','qtde':2,'valor':12,'total':24,'codigoPDV':'205','produto':{'id':28072,'nome':'ARROZ COM STROGONOFF DE FRANGO','preco':12,'descricao':'SERVE ATE 1 PESSOA ( NÃO FAZEMOS ALTERAÇÕES) ','mensagemPedido':null,'imagens':null,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425},'exibirNoSite':false,'disponibilidade':0,'exibirPrecoSite':false,'categoria':{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true},'tipoDeVenda':'Unidade','unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':false,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[{'nome':'EMBALAGEM','obrigatorio':true,'tipo':'escolha-simples','opcoesDisponiveis':[],'entidade':'produto','compartilhado':false,'classe':'escolha-simples-produto','id':180204,'produtos':[{'id':28072,'nome':null,'preco':null,'descricao':'','mensagemPedido':null,'imagens':null,'catalogo':null,'exibirNoSite':false,'disponibilidade':null,'exibirPrecoSite':false,'categoria':null,'tipoDeVenda':null,'unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':true,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true}],'tipoDeCobranca':'SOMA','ordem':0}],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true,'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'id':425,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425}},'ordem':23,'codigoPdv':'205','produtoNaEmpresa':{'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.455Z','atualizacao':'2022-12-22T20:30:36.455Z'}},'preco':null,'disponibilidade':null,'temEstoque':true,'exibirPrecoSite':true,'exibirPrecoNoCardapio':true,'disponivelNaMesa':true,'disponivelParaDelivery':true,'novoPreco':null,'destaque':null,'mensagemPedido':null}},'observacao':'','unidade':'','sabores':[],'adicionais':{}}],'pagamentos':[{'id':1908514,'formaDePagamento':'dinheiro','online':false,'trocoPara':0,'levarTroco':false,'valor':24}],'codigo':'27090','horario':'2022-12-22T20:29:47.000Z','statusOrdem':0,'subvalor':24,'desconto':0,'taxaEntrega':0,'total':24,'pago':false,'cancelado':false,'podeEditar':true,'finalizado':false,'formaDeEntrega':'Retirar','retirar':true,'aguardandoPagamentoOnline':false,'foiPagoOnline':false,'status':'Novo'}}";
+            var dados = JsonConvert.DeserializeObject<MeuCardapioAi.Domain.order_result>(json);
         }
     }
 }
