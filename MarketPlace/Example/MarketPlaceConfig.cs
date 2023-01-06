@@ -23,6 +23,7 @@ namespace Example
         public MarketPlaceAccon Accon { get; set; }
         public MarketPlaceUberEats UberEats { get; set; }
         public MarketPlaceEpadoca Epadoca { get; set; }
+        public MarketPlaceQueroDelivery QueroDelivery { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -165,6 +166,12 @@ namespace Example
         public string Senha { get; set; }
         public string Url { get; set; }
         public string MerchantId { get; set; }
+    }
+
+    public class MarketPlaceQueroDelivery
+    {
+        public string Token { get; set; }
+        public string PlaceId { get; set; }
     }
 
 }
