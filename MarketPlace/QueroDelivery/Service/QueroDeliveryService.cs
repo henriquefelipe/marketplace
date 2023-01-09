@@ -41,5 +41,33 @@ namespace QueroDelivery.Service
             }
             return result;
         }
+
+        public GenericResult<order> Order(string token, string placeid, string orderid)
+        {
+            var result = new GenericResult<order>();
+            try
+            {
+                var url = string.Format("{0}{1}?placeId={2}&orderId={3}", Constants.URL_BASE, Constants.URL_ORDER, placeid, orderid);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", "Basic " + token);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<order>(response.Content);
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

@@ -108,6 +108,7 @@ namespace Example
 
         private string _queroDeliveryToken { get; set; }
         private string _queroDeliveryPlaceId { get; set; }
+        private string _queroDeliverySelected { get; set; }
         private List<QueroDelivery.Domain.orders> _queroDeliveryOrders { get; set; }
 
         #endregion
@@ -6082,9 +6083,38 @@ namespace Example
             btnQuerodeliveryParar.Enabled = false;
         }
 
+        private void gridQuerodelivery_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridQuerodelivery.Rows.Count)
+            {
+                _queroDeliverySelected = gridQuerodelivery.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
         private void btnQuerodeliveryBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (btnQuerodeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_queroDeliverySelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var queroDeliveryService = new QueroDeliveryService();
+            var result = queroDeliveryService.Order(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Buscando pedido com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnQuerodeliveryAceitar_Click(object sender, EventArgs e)

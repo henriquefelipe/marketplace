@@ -4636,6 +4636,7 @@
             this.gridQuerodelivery.RowHeadersWidth = 51;
             this.gridQuerodelivery.Size = new System.Drawing.Size(1209, 551);
             this.gridQuerodelivery.TabIndex = 24;
+            this.gridQuerodelivery.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridQuerodelivery_CellClick);
             // 
             // txtQuerodeliveryToken
             // 
