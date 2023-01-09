@@ -6119,8 +6119,72 @@ namespace Example
 
         private void btnQuerodeliveryAceitar_Click(object sender, EventArgs e)
         {
+            if (btnQuerodeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_queroDeliverySelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var queroDeliveryService = new QueroDeliveryService();
+            var result = queroDeliveryService.Accept(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Aceito com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        private void btnQuerodeliveryCancelar_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void btnQuerodeliveryEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnQuerodeliveryProntoRetirada_Click(object sender, EventArgs e)
+        {
+            if (btnQuerodeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_queroDeliverySelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var queroDeliveryService = new QueroDeliveryService();
+            var result = queroDeliveryService.Ready(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido pronto para retirada com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnQuerodeliveryConcluído_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
         private void btnMeuCardapioAiTestarJSON_Click(object sender, EventArgs e)

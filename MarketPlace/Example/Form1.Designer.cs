@@ -473,6 +473,10 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
+            this.btnQuerodeliveryCancelar = new System.Windows.Forms.Button();
+            this.btnQuerodeliveryEntrega = new System.Windows.Forms.Button();
+            this.btnQuerodeliveryProntoRetirada = new System.Windows.Forms.Button();
+            this.btnQuerodeliveryConcluído = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -4572,6 +4576,10 @@
             // 
             // tabPageQueroDelivery
             // 
+            this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryConcluído);
+            this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryCancelar);
+            this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryEntrega);
+            this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryProntoRetirada);
             this.tabPageQueroDelivery.Controls.Add(this.txtQuerodeliveryPlaceID);
             this.tabPageQueroDelivery.Controls.Add(this.label101);
             this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryBuscarPedido);
@@ -5427,6 +5435,50 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
+            // btnQuerodeliveryCancelar
+            // 
+            this.btnQuerodeliveryCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuerodeliveryCancelar.Location = new System.Drawing.Point(314, 76);
+            this.btnQuerodeliveryCancelar.Name = "btnQuerodeliveryCancelar";
+            this.btnQuerodeliveryCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnQuerodeliveryCancelar.TabIndex = 31;
+            this.btnQuerodeliveryCancelar.Text = "Cancelar";
+            this.btnQuerodeliveryCancelar.UseVisualStyleBackColor = true;
+            this.btnQuerodeliveryCancelar.Click += new System.EventHandler(this.btnQuerodeliveryCancelar_Click);
+            // 
+            // btnQuerodeliveryEntrega
+            // 
+            this.btnQuerodeliveryEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuerodeliveryEntrega.Location = new System.Drawing.Point(465, 76);
+            this.btnQuerodeliveryEntrega.Name = "btnQuerodeliveryEntrega";
+            this.btnQuerodeliveryEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnQuerodeliveryEntrega.TabIndex = 30;
+            this.btnQuerodeliveryEntrega.Text = "Saiu para entrega";
+            this.btnQuerodeliveryEntrega.UseVisualStyleBackColor = true;
+            this.btnQuerodeliveryEntrega.Click += new System.EventHandler(this.btnQuerodeliveryEntrega_Click);
+            // 
+            // btnQuerodeliveryProntoRetirada
+            // 
+            this.btnQuerodeliveryProntoRetirada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuerodeliveryProntoRetirada.Location = new System.Drawing.Point(616, 76);
+            this.btnQuerodeliveryProntoRetirada.Name = "btnQuerodeliveryProntoRetirada";
+            this.btnQuerodeliveryProntoRetirada.Size = new System.Drawing.Size(182, 33);
+            this.btnQuerodeliveryProntoRetirada.TabIndex = 29;
+            this.btnQuerodeliveryProntoRetirada.Text = "Pedido Pronto Retirada";
+            this.btnQuerodeliveryProntoRetirada.UseVisualStyleBackColor = true;
+            this.btnQuerodeliveryProntoRetirada.Click += new System.EventHandler(this.btnQuerodeliveryProntoRetirada_Click);
+            // 
+            // btnQuerodeliveryConcluído
+            // 
+            this.btnQuerodeliveryConcluído.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuerodeliveryConcluído.Location = new System.Drawing.Point(804, 76);
+            this.btnQuerodeliveryConcluído.Name = "btnQuerodeliveryConcluído";
+            this.btnQuerodeliveryConcluído.Size = new System.Drawing.Size(145, 33);
+            this.btnQuerodeliveryConcluído.TabIndex = 32;
+            this.btnQuerodeliveryConcluído.Text = "Pedido Concluído";
+            this.btnQuerodeliveryConcluído.UseVisualStyleBackColor = true;
+            this.btnQuerodeliveryConcluído.Click += new System.EventHandler(this.btnQuerodeliveryConcluído_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5974,6 +6026,10 @@
         private System.Windows.Forms.Button btnQuerodeliveryIniciar;
         private System.Windows.Forms.TextBox txtQuerodeliveryPlaceID;
         private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.Button btnQuerodeliveryCancelar;
+        private System.Windows.Forms.Button btnQuerodeliveryEntrega;
+        private System.Windows.Forms.Button btnQuerodeliveryProntoRetirada;
+        private System.Windows.Forms.Button btnQuerodeliveryConcluído;
     }
 }
 
