@@ -6146,7 +6146,28 @@ namespace Example
 
         private void btnQuerodeliveryCancelar_Click(object sender, EventArgs e)
         {
+            if (btnQuerodeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_queroDeliverySelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var queroDeliveryService = new QueroDeliveryService();
+            var result = queroDeliveryService.Cancel(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected, "Teste de Api");
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnQuerodeliveryEntrega_Click(object sender, EventArgs e)
