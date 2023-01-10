@@ -1,5 +1,6 @@
 ﻿using QueroDelivery.Domain;
 using QueroDelivery.Utils;
+using QueroDelivery.Enum;
 using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
@@ -186,8 +187,8 @@ namespace QueroDelivery.Service
                 var data = new
                 {
                     reason = motivo,
-                    code = "SYSTEMIC_ISSUES",
-                    mode = "AUTO"
+                    code = CancellationCodes.SYSTEMIC_ISSUES,
+                    mode = CancellationModes.AUTO
                 };
 
                 var url = string.Format("{0}{1}/{2}/{3}?placeId={4}", Constants.URL_BASE, Constants.URL_ORDER, orderid, Constants.URL_ORDER_REJECTION, placeid);
