@@ -6214,7 +6214,7 @@ namespace Example
             var result = queroDeliveryService.ReadyToPickup(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected);
             if (result.Success)
             {
-                MessageBox.Show("Pedido pronto para retirada");
+                MessageBox.Show("Pronto para retirada");
             }
             else
             {
@@ -6224,7 +6224,28 @@ namespace Example
 
         private void btnQuerodeliveryConcluído_Click(object sender, EventArgs e)
         {
+            if (btnQuerodeliveryIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(_queroDeliverySelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var queroDeliveryService = new QueroDeliveryService();
+            var result = queroDeliveryService.Finalize(_queroDeliveryToken, _queroDeliveryPlaceId, _queroDeliverySelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Finalizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         #endregion
