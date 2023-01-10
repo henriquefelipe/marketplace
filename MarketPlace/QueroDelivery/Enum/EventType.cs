@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QueroDelivery.Enum
 {
-    public class EventTypes
+    public class EventType
     {
         public const string CREATED = "CREATED";
         public const string CONFIRMED = "CONFIRMED";
