@@ -18,5 +18,8 @@ namespace Servit.Domain
         public string deleted_at { get; set; }
         public string old_table { get; set; }
         public string new_table { get; set; }
+
+        public bool comanda { get; set; }
+        public string comanda_number { get; set; }
     }
 }
