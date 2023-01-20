@@ -5547,7 +5547,22 @@ namespace Example
 
         private void btnJotajaBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
 
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Orders(txtJotajaToken.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnJotajaStore_Click(object sender, EventArgs e)
@@ -5613,8 +5628,8 @@ namespace Example
                     {
                         foreach (var item in pedidosResult.Result.items)
                         {
-                            //if (!_jotajaOrders.Any(a => a.id == item.id))
-                            //    _jotajaOrders.Add(item);
+                            if (!_jotajaOrders.Any(a => a.id == item.id))
+                                _jotajaOrders.Add(item);
                         }
 
                         WriteGridJotaJa();

@@ -147,30 +147,30 @@ namespace JotaJa.Service
             return result;
         }
 
-        //public GenericResult<pedido> Order(string storeId, string id, string token)
-        //{
-        //    var result = new GenericResult<pedido>();
+        public GenericResult<order> Order(string token, string orderid)
+        {
+            var result = new GenericResult<order>();
 
-        //    var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
-        //    var client = new RestClient(url);
-        //    var request = new RestRequest(Method.GET);
-        //    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //    request.AddHeader("Content-Type", "application/json");
-        //    IRestResponse response = client.Execute(request);
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        result.Result = JsonConvert.DeserializeObject<pedido>(response.Content);
-        //        result.Success = true;
-        //    }
-        //    else
-        //    {
-        //        result.Message = response.Content;
-        //    }
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, orderid);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<order>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
 
-        //    result.Json = response.Content;
+            result.Json = response.Content;
 
-        //    return result;
-        //}
+            return result;
+        }
 
         //public GenericResult<retorno_status> Approve(string storeId, string id, string token, int time)
         //{
