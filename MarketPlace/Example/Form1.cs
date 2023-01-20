@@ -5554,7 +5554,7 @@ namespace Example
             }
 
             var service = new JotaJa.Service.JotaJaService(true);
-            var result = service.Orders(txtJotajaToken.Text);
+            var result = service.Order(txtJotajaToken.Text, _jotajaSelected);
             if (result.Success)
             {
                 MessageBox.Show("OK");
