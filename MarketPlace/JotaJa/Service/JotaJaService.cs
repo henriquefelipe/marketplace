@@ -172,7 +172,7 @@ namespace JotaJa.Service
             return result;
         }
 
-        public GenericSimpleResult Accept(string token, string orderid)
+        public GenericSimpleResult Accept(string token, string orderid) // Aceitar/Produção pedido
         {
             var result = new GenericSimpleResult();
             try
@@ -181,6 +181,176 @@ namespace JotaJa.Service
                 {
                     orderId = orderid,
                     status = Enum.OrderStatus.CONFIRMED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Cancel(string token, string orderid) // Recusar/Cancelar pedido
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.CANCELED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Dispatch(string token, string orderid) // Saiu pra entrega
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PICKED_UP
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult ReadyPickup(string token, string orderid) // Pronto para retirada
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PREPARED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Pending(string token, string orderid) // Pagamento pendente
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PENDING
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Finalize(string token, string orderid) // Finalizar pedido
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.FULFILLED
                 };
                 var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
                 var client = new RestClient(url);
