@@ -5668,9 +5668,50 @@ namespace Example
             }
         }
 
+        private void btnJotajaAceitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
 
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Accept(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido aceito");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
+        private void btnJotajaCancelar_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnJotajaSaiuEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJotajaProntoRetirada_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJotajaPagamentoPendente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnJotajaFinalizarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
 
