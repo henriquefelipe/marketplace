@@ -72,13 +72,13 @@ namespace JotaJa.Service
 
                 var client = new RestClient(url);
                 client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Accept", "application/json");
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
                 IRestResponse responseToken = client.Execute(request);
-                if (responseToken.StatusCode == System.Net.HttpStatusCode.Created)
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
                     result.Success = true;
