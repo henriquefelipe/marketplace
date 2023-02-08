@@ -55,6 +55,10 @@ namespace Epadoca.Domain
         public string tipoEntregaLogistica { get; set; }
         public string clienteNomeFantasia { get; set; }
         public string observacao { get; set; }
+        public string lojaFisicaDetalhe { get; set; }
+        public string lojaFisicaLocal { get; set; }
+        public string lojaFisicaNumero { get; set; }
+        public string lojaFisicaComanda { get; set; }
 
         public List<item> itens { get; set; }
     }
