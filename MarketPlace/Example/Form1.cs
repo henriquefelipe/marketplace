@@ -5547,7 +5547,22 @@ namespace Example
 
         private void btnJotajaBuscarPedido_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
 
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Order(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
         private void btnJotajaStore_Click(object sender, EventArgs e)
@@ -5613,8 +5628,8 @@ namespace Example
                     {
                         foreach (var item in pedidosResult.Result.items)
                         {
-                            //if (!_jotajaOrders.Any(a => a.id == item.id))
-                            //    _jotajaOrders.Add(item);
+                            if (!_jotajaOrders.Any(a => a.id == item.id))
+                                _jotajaOrders.Add(item);
                         }
 
                         WriteGridJotaJa();
@@ -5653,9 +5668,125 @@ namespace Example
             }
         }
 
+        private void btnJotajaAceitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
 
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Accept(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido aceito");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
+        private void btnJotajaCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
 
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Cancel(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido cancelado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnJotajaSaiuEntrega_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Dispatch(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido saiu para a entrega");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnJotajaProntoRetirada_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.ReadyPickup(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido pronto para retirada");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnJotajaPagamentoPendente_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Pending(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido pagamento pendente");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnJotajaFinalizarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtJotajaToken.Text))
+            {
+                MessageBox.Show("Token Obrigatório");
+                return;
+            }
+
+            var service = new JotaJa.Service.JotaJaService(true);
+            var result = service.Finalize(txtJotajaToken.Text, _jotajaSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido finalizado");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 

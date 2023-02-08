@@ -72,13 +72,13 @@ namespace JotaJa.Service
 
                 var client = new RestClient(url);
                 client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Accept", "application/json");
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
                 IRestResponse responseToken = client.Execute(request);
-                if (responseToken.StatusCode == System.Net.HttpStatusCode.Created)
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
                     result.Success = true;
@@ -147,155 +147,233 @@ namespace JotaJa.Service
             return result;
         }
 
-        //public GenericResult<pedido> Order(string storeId, string id, string token)
-        //{
-        //    var result = new GenericResult<pedido>();
+        public GenericResult<order> Order(string token, string orderid)
+        {
+            var result = new GenericResult<order>();
 
-        //    var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
-        //    var client = new RestClient(url);
-        //    var request = new RestRequest(Method.GET);
-        //    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //    request.AddHeader("Content-Type", "application/json");
-        //    IRestResponse response = client.Execute(request);
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        result.Result = JsonConvert.DeserializeObject<pedido>(response.Content);
-        //        result.Success = true;
-        //    }
-        //    else
-        //    {
-        //        result.Message = response.Content;
-        //    }
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, orderid);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<order>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
 
-        //    result.Json = response.Content;
+            result.Json = response.Content;
 
-        //    return result;
-        //}
+            return result;
+        }
 
-        //public GenericResult<retorno_status> Approve(string storeId, string id, string token, int time)
-        //{
-        //    var result = new GenericResult<retorno_status>();
+        public GenericSimpleResult Accept(string token, string orderid) // Aceitar/Produção pedido
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.CONFIRMED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
-        //    var data = new
-        //    {
-        //        time = time
-        //    };
+        public GenericSimpleResult Cancel(string token, string orderid) // Recusar/Cancelar pedido
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.CANCELED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
+        public GenericSimpleResult Dispatch(string token, string orderid) // Saiu pra entrega
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PICKED_UP
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
-        //    var url = string.Format("{0}{1}{2}/{3}{4}/approve", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
-        //    var client = new RestClient(url);
-        //    var request = new RestRequest(Method.POST);
-        //    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //    request.AddHeader("Content-Type", "application/json");
-        //    request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+        public GenericSimpleResult ReadyPickup(string token, string orderid) // Pronto para retirada
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PREPARED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
-        //    IRestResponse response = client.Execute(request);
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
-        //        if (result.Result.order != null && result.Result.order.status == "A")
-        //        {
-        //            result.Success = true;
-        //        }
-        //        else
-        //        {
-        //            result.Message = result.Result.message;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        result.Message = response.Content;
-        //    }
+        public GenericSimpleResult Pending(string token, string orderid) // Pagamento pendente
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.PENDING
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
-        //    result.Json = response.Content;
-
-        //    return result;
-        //}
-
-        //public GenericResult<retorno_status> Ready(string storeId, string id, string token)
-        //{
-        //    var result = new GenericResult<retorno_status>();
-        //    var data = new
-        //    {
-        //        vehicle_type_for_delivery = "NORMAL"
-        //    };
-
-        //    var url = string.Format("{0}{1}{2}/{3}{4}/ready", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
-        //    var client = new RestClient(url);
-        //    var request = new RestRequest(Method.POST);
-        //    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //    request.AddHeader("Content-Type", "application/json");
-        //    request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
-
-        //    IRestResponse response = client.Execute(request);
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
-        //        if (result.Result.message == "Ok")
-        //        {
-        //            result.Success = true;
-        //        }
-        //        else
-        //        {
-        //            result.Message = result.Result.message;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        result.Message = response.Content;
-        //    }
-
-        //    result.Json = response.Content;
-
-        //    return result;
-        //}
-
-        //public GenericResult<retorno_status> Cancel(string storeId, string id, string token, string mensagem)
-        //{
-        //    var result = new GenericResult<retorno_status>();
-        //    var data = new
-        //    {
-        //        reason_id = "1",
-        //        canceled_by = "LOJISTA",
-        //        reason_description = mensagem
-        //    };
-
-        //    var url = string.Format("{0}{1}{2}/{3}{4}/cancel", _urlBase, Constants.URL_ORDERS, storeId, Constants.URL_ORDERS_ORDERS, id);
-        //    var client = new RestClient(url);
-        //    var request = new RestRequest(Method.POST);
-        //    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
-        //    request.AddHeader("Content-Type", "application/json");
-        //    request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
-
-        //    IRestResponse response = client.Execute(request);
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        result.Result = JsonConvert.DeserializeObject<retorno_status>(response.Content);
-        //        if (result.Result.message == "Ok")
-        //        {
-        //            result.Success = true;
-        //        }
-        //        else
-        //        {
-        //            result.Message = result.Result.message;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            var resultado = JsonConvert.DeserializeObject<retorno_status>(response.Content);
-        //            result.Message = resultado.message;
-        //        }
-        //        catch
-        //        {
-        //            result.Message = response.Content;
-        //        }
-        //    }
-
-        //    result.Json = response.Content;
-
-        //    return result;
-        //}
+        public GenericSimpleResult Finalize(string token, string orderid) // Finalizar pedido
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    orderId = orderid,
+                    status = Enum.OrderStatus.FULFILLED
+                };
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDERS, "statusUpdate");
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

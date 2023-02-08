@@ -319,6 +319,12 @@
             this.btnIDeliveryParar = new System.Windows.Forms.Button();
             this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
             this.tabPageJotaJa = new System.Windows.Forms.TabPage();
+            this.btnJotajaFinalizarPedido = new System.Windows.Forms.Button();
+            this.btnJotajaPagamentoPendente = new System.Windows.Forms.Button();
+            this.btnJotajaProntoRetirada = new System.Windows.Forms.Button();
+            this.btnJotajaSaiuEntrega = new System.Windows.Forms.Button();
+            this.btnJotajaCancelar = new System.Windows.Forms.Button();
+            this.btnJotajaAceitar = new System.Windows.Forms.Button();
             this.btnJotajaStore = new System.Windows.Forms.Button();
             this.btnJotajaBuscarPedido = new System.Windows.Forms.Button();
             this.txtJotajaToken = new System.Windows.Forms.TextBox();
@@ -3722,6 +3728,12 @@
             // 
             // tabPageJotaJa
             // 
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaFinalizarPedido);
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaPagamentoPendente);
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaProntoRetirada);
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaSaiuEntrega);
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaCancelar);
+            this.tabPageJotaJa.Controls.Add(this.btnJotajaAceitar);
             this.tabPageJotaJa.Controls.Add(this.btnJotajaStore);
             this.tabPageJotaJa.Controls.Add(this.btnJotajaBuscarPedido);
             this.tabPageJotaJa.Controls.Add(this.txtJotajaToken);
@@ -3740,6 +3752,72 @@
             this.tabPageJotaJa.TabIndex = 24;
             this.tabPageJotaJa.Text = "Jotajá";
             this.tabPageJotaJa.UseVisualStyleBackColor = true;
+            // 
+            // btnJotajaFinalizarPedido
+            // 
+            this.btnJotajaFinalizarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaFinalizarPedido.Location = new System.Drawing.Point(1065, 159);
+            this.btnJotajaFinalizarPedido.Name = "btnJotajaFinalizarPedido";
+            this.btnJotajaFinalizarPedido.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaFinalizarPedido.TabIndex = 80;
+            this.btnJotajaFinalizarPedido.Text = "Finalizar pedido";
+            this.btnJotajaFinalizarPedido.UseVisualStyleBackColor = true;
+            this.btnJotajaFinalizarPedido.Click += new System.EventHandler(this.btnJotajaFinalizarPedido_Click);
+            // 
+            // btnJotajaPagamentoPendente
+            // 
+            this.btnJotajaPagamentoPendente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaPagamentoPendente.Location = new System.Drawing.Point(914, 159);
+            this.btnJotajaPagamentoPendente.Name = "btnJotajaPagamentoPendente";
+            this.btnJotajaPagamentoPendente.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaPagamentoPendente.TabIndex = 79;
+            this.btnJotajaPagamentoPendente.Text = "Pagto Pendente";
+            this.btnJotajaPagamentoPendente.UseVisualStyleBackColor = true;
+            this.btnJotajaPagamentoPendente.Click += new System.EventHandler(this.btnJotajaPagamentoPendente_Click);
+            // 
+            // btnJotajaProntoRetirada
+            // 
+            this.btnJotajaProntoRetirada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaProntoRetirada.Location = new System.Drawing.Point(763, 159);
+            this.btnJotajaProntoRetirada.Name = "btnJotajaProntoRetirada";
+            this.btnJotajaProntoRetirada.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaProntoRetirada.TabIndex = 78;
+            this.btnJotajaProntoRetirada.Text = "Pronto p/ retirada";
+            this.btnJotajaProntoRetirada.UseVisualStyleBackColor = true;
+            this.btnJotajaProntoRetirada.Click += new System.EventHandler(this.btnJotajaProntoRetirada_Click);
+            // 
+            // btnJotajaSaiuEntrega
+            // 
+            this.btnJotajaSaiuEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaSaiuEntrega.Location = new System.Drawing.Point(612, 159);
+            this.btnJotajaSaiuEntrega.Name = "btnJotajaSaiuEntrega";
+            this.btnJotajaSaiuEntrega.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaSaiuEntrega.TabIndex = 77;
+            this.btnJotajaSaiuEntrega.Text = "Sair para entrega";
+            this.btnJotajaSaiuEntrega.UseVisualStyleBackColor = true;
+            this.btnJotajaSaiuEntrega.Click += new System.EventHandler(this.btnJotajaSaiuEntrega_Click);
+            // 
+            // btnJotajaCancelar
+            // 
+            this.btnJotajaCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaCancelar.Location = new System.Drawing.Point(461, 159);
+            this.btnJotajaCancelar.Name = "btnJotajaCancelar";
+            this.btnJotajaCancelar.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaCancelar.TabIndex = 76;
+            this.btnJotajaCancelar.Text = "Cancelar";
+            this.btnJotajaCancelar.UseVisualStyleBackColor = true;
+            this.btnJotajaCancelar.Click += new System.EventHandler(this.btnJotajaCancelar_Click);
+            // 
+            // btnJotajaAceitar
+            // 
+            this.btnJotajaAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJotajaAceitar.Location = new System.Drawing.Point(310, 159);
+            this.btnJotajaAceitar.Name = "btnJotajaAceitar";
+            this.btnJotajaAceitar.Size = new System.Drawing.Size(145, 33);
+            this.btnJotajaAceitar.TabIndex = 75;
+            this.btnJotajaAceitar.Text = "Aceitar";
+            this.btnJotajaAceitar.UseVisualStyleBackColor = true;
+            this.btnJotajaAceitar.Click += new System.EventHandler(this.btnJotajaAceitar_Click);
             // 
             // btnJotajaStore
             // 
@@ -6030,6 +6108,12 @@
         private System.Windows.Forms.Button btnQuerodeliverySaiuParaEntrega;
         private System.Windows.Forms.Button btnQuerodeliveryProntoRetirada;
         private System.Windows.Forms.Button btnQuerodeliveryConcluído;
+        private System.Windows.Forms.Button btnJotajaAceitar;
+        private System.Windows.Forms.Button btnJotajaSaiuEntrega;
+        private System.Windows.Forms.Button btnJotajaCancelar;
+        private System.Windows.Forms.Button btnJotajaPagamentoPendente;
+        private System.Windows.Forms.Button btnJotajaProntoRetirada;
+        private System.Windows.Forms.Button btnJotajaFinalizarPedido;
     }
 }
 
