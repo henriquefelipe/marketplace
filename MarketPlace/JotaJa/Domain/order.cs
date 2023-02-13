@@ -40,6 +40,7 @@ namespace JotaJa.Domain
         public decimal? balconyDiscount { get; set; }
         public string countryName { get; set; }
         public string paymentMethod { get; set; }
+        public paymentType paymentType { get; set; }
         public string currency { get; set; }
         public decimal? additionalFees { get; set; }
         public decimal? subTotal { get; set; }

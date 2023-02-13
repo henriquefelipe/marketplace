@@ -9,9 +9,9 @@ namespace JotaJa.Domain
         public decimal? quantity { get; set; }
         public string note { get; set; }
         public decimal? productId { get; set; }
+        public string sku { get; set; }
         public decimal? price { get; set; }
         public string productName { get; set; }
-        public string sku { get; set; }
         public string unity { get; set; }
         public bool fraction { get; set; }
         public decimal? fractionlPrice { get; set; }
