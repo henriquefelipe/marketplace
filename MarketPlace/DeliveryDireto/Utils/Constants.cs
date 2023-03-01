@@ -2,11 +2,11 @@
 {
     public static class Constants
     {
-        public const string URL_BASE = "https://deliverydireto.com.br/wspdv/api/";
-        
-        public const string ORDER_SELECIONAR_PEDIDOS_ALTERADOS_A_PARTIR_DE = "selecionaPedidosAlteradosAPartirDe";
-        public const string ORDER_SELECIONA_PEDIDOS = "selecionaPedidos";
-        public const string ORDER_SELECIONA_ITENS = "selecionaItens";
-        public const string ORDER_CONFIRMAR = "confirmaProcessamento";        
+        public const string URL_BASE = "https://deliverydireto.com.br/";
+        public const string ADMIN_API = "admin-api";
+        public const string TOKEN = "token";
+        public const string VERSAO_API = "v1"; // Nova api versão 1.0
+        public const string ORDERS = "orders";
+        public const string STATUS = "status";
     }
 }

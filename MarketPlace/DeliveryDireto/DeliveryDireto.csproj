@@ -49,11 +49,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\item.cs" />
+    <Compile Include="Domain\center.cs" />
+    <Compile Include="Domain\compositeItems.cs" />
+    <Compile Include="Domain\customer.cs" />
+    <Compile Include="Domain\deliveryArea.cs" />
+    <Compile Include="Domain\deliveryFeePricingRule.cs" />
+    <Compile Include="Domain\inactivationPeriod.cs" />
+    <Compile Include="Domain\items.cs" />
+    <Compile Include="Domain\itemsComposite.cs" />
+    <Compile Include="Domain\loyaltyprogram.cs" />
+    <Compile Include="Domain\loyaltyprogramReward.cs" />
+    <Compile Include="Domain\memberGetMember.cs" />
+    <Compile Include="Domain\metadata.cs" />
+    <Compile Include="Domain\operationTime.cs" />
+    <Compile Include="Domain\options.cs" />
     <Compile Include="Domain\order.cs" />
-    <Compile Include="Domain\orders.cs" />
-    <Compile Include="Domain\order_payment.cs" />
-    <Compile Include="Domain\wspdvresponse.cs" />
+    <Compile Include="Domain\data.cs" />
+    <Compile Include="Domain\pagination.cs" />
+    <Compile Include="Domain\paymentMethod.cs" />
+    <Compile Include="Domain\price.cs" />
+    <Compile Include="Domain\properties.cs" />
+    <Compile Include="Domain\result_orders.cs" />
+    <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\scheduledOrder.cs" />
+    <Compile Include="Domain\store.cs" />
+    <Compile Include="Domain\table.cs" />
+    <Compile Include="Domain\totals.cs" />
+    <Compile Include="Domain\voucher.cs" />
     <Compile Include="Enum\CodTipoProdutoPdv.cs" />
     <Compile Include="Enum\DescricaoMontagem.cs" />
     <Compile Include="Enum\OrderPayment.cs" />
