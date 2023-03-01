@@ -9,48 +9,35 @@ namespace DeliveryDireto.Domain
 {
     public class order
     {
-        public order()
-        {
-            pagamentos = new List<order_payment>();
-            itens = new List<item>();
-        }
-
-        public string codPedido { get; set; }
-        public string idPedidoCurto { get; set; }
-        public int idFrn { get; set; }
-        public string dataEntrega { get; set; }
-        public string dataPedido { get; set; }
-        public string dataAgendamento { get; set; }
-        public bool togo { get; set; }
-        public decimal vlrTaxa { get; set; }
-        public decimal vlrPratos { get; set; }
-        public decimal vlrTroco { get; set; }
-        public decimal vlrDesconto { get; set; }
-        public decimal vlrTotal { get; set; }
-        public string obsPedido { get; set; }
-        public string condicaoPgto { get; set; }
-        public string formaPgto { get; set; }
-        public string codCupom { get; set; }
-        public string nome { get; set; }
-        public string email { get; set; }
-        public string dddTelefone { get; set; }
-        public string numTelefone { get; set; }
-        public string logradouro { get; set; }
-        public string logradouroNum { get; set; }
-        public string cidade { get; set; }
-        public string estado { get; set; }
-        public string bairro { get; set; }
-        public string complemento { get; set; }
-        public string cep { get; set; }
-        public decimal lat { get; set; }
-        public decimal lng { get; set; }
-        public int minEspera { get; set; }
-        public int maxEspera { get; set; }
-        public bool clienteNovo { get; set; }
-        public string cpfCliente { get; set; }
-        public string cpfNota { get; set; }
+        public string created { get; set; }
+        public decimal customerOrderNumber { get; set; }
+        public decimal id { get; set; }
+        public bool isNewCustomer { get; set; }
+        public bool isRegisteredInvoice { get; set; }
+        public string modified { get; set; }
+        public string notes { get; set; }
+        public decimal orderNumber { get; set; }
+        public string registeredDocument { get; set; }
         public string status { get; set; }
-        public List<item> itens { get; set; }
-        public List<order_payment> pagamentos { get; set; }
+        public string statusReason { get; set; }
+        public string type { get; set; }
+        public totals total { get; set; }
+        public operationTime operationTime { get; set; }
+        public metadata metadata { get; set; }
+        public customer customer { get; set; }
+        public string source { get; set; }
+        public paymentMethod paymentMethod { get; set; }
+        public List<items> items { get; set; }
+        public List<compositeItems> compositeItems { get; set; }
+        public scheduledOrder scheduledOrder { get; set; }
+        public address address { get; set; }
+        public voucher voucher { get; set; }
+        public loyaltyprogram loyaltyprogram { get; set; }
+        public memberGetMember memberGetMember { get; set; }
+        public deliveryArea deliveryArea { get; set; }
+        public table table { get; set; }
+        public bool? isCanceled { get; set; }
+        public bool? isOnlinePayment { get; set; }
+        public loyaltyprogramReward loyaltyprogramReward { get; set; }
     }
 }

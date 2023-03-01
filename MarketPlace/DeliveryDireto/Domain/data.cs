@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace DeliveryDireto.Domain
 {
-    public class orders
+    public class data
     {
-        [JsonProperty(PropertyName = "@class")]
-        public string _class { get; set; }
-
-        public List<string> codPedido { get; set; }
+        public List<order> orders { get; set; }
+        public pagination pagination { get; set; }
     }
 }
