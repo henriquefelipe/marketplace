@@ -74,13 +74,10 @@
     <Compile Include="Domain\scheduledOrder.cs" />
     <Compile Include="Domain\store.cs" />
     <Compile Include="Domain\table.cs" />
+    <Compile Include="Domain\token.cs" />
     <Compile Include="Domain\totals.cs" />
     <Compile Include="Domain\voucher.cs" />
-    <Compile Include="Enum\CodTipoProdutoPdv.cs" />
-    <Compile Include="Enum\DescricaoMontagem.cs" />
-    <Compile Include="Enum\OrderPayment.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
-    <Compile Include="Enum\OrderStatusProcessing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DeliveryDiretoService.cs" />
     <Compile Include="Utils\Constants.cs" />
