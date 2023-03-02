@@ -8,13 +8,13 @@ namespace DeliveryDireto.Domain
 {
     public class options
     {
-        public string price { get; set; }
-        public string amount { get; set; }
+        public price price { get; set; }
+        public decimal? amount { get; set; }
         public string customCode { get; set; }
         public string description { get; set; }
         public decimal? id { get; set; }
         public string name { get; set; }
-        public string ordersOptionsId { get; set; }
-        public string sequence { get; set; }
+        public decimal? ordersOptionsId { get; set; }
+        public decimal? sequence { get; set; }
     }
 }
