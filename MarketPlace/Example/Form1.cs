@@ -2964,6 +2964,25 @@ namespace Example
 
         public async void onDeliveryDiretoIniciar()
         {
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoClientSecret.Text))
+            {
+                MessageBox.Show("Campo Client Secret Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoClientId.Text))
+            {
+                MessageBox.Show("Campo Client ID Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryDiretoMerchandId.Text))
+            {
+                MessageBox.Show("Campo MerchandId Obrigatório");
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtDeliveryDiretoUsuario.Text))
             {
                 MessageBox.Show("Campo Usuário Obrigatório");
@@ -2976,18 +2995,6 @@ namespace Example
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtDeliveryDiretoMerchandId.Text))
-            {
-                MessageBox.Show("Campo MerchandId Obrigatório");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtDeliveryDiretoToken.Text))
-            {
-                MessageBox.Show("Campo Token Obrigatório");
-                return;
-            }
-
             btnDeliveryDiretoIniciar.Enabled = false;
             btnDeliveryDiretoParar.Enabled = true;
 
@@ -2996,26 +3003,31 @@ namespace Example
 
         private void deliveryDireto()
         {
-            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
-                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
+            var service = new DeliveryDiretoService(true);
 
             try
             {
+                var result = service.OAuthToken(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoClientSecret.Text, txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text);
+                if (result.Success)
+                {
+                    txtDeliveryDiretoToken.Text = result.Result.access_token;
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
                 while (btnDeliveryDiretoParar.Enabled)
                 {
-                    var orderResult = service.Orders(DateTime.Now);
+                    var orderResult = service.Orders(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text);
                     if (orderResult.Success)
                     {
-                        if (orderResult.Result != null)
+                        foreach (var item in orderResult.Result.data.orders)
                         {
-                            foreach (var item in orderResult.Result)
-                            {
-                                var order = new DeliveryDireto.Domain.order();
-                                order.codPedido = item;
-                                _deliveryDiretoOrders.Add(order);
-                            }
-                            WriteGridDeliveryDireto();
+                            if (!_deliveryDiretoOrders.Any(a => a.id == item.id))
+                                _deliveryDiretoOrders.Add(item);
                         }
+
+                        WriteGridDeliveryDireto();
                     }
                     else
                     {
@@ -3084,9 +3096,8 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
-                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
-            var result = service.Order(_deliveryDiretoReferenceSelected);
+            var service = new DeliveryDiretoService(true);
+            var result = service.Order(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -3111,9 +3122,8 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text,
-                                txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoToken.Text);
-            var result = service.Status(_deliveryDiretoReferenceSelected, DeliveryDireto.Enum.OrderStatusProcessing.PEDIDO_APROVADO_EM_PRODUCAO);
+            var service = new DeliveryDiretoService(true);
+            var result = service.Accept(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -3124,6 +3134,83 @@ namespace Example
             }
         }
 
+        private void btnDeliveryDiretoRejeitar_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryDiretoIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryDiretoReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryDiretoService(true);
+            var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDeliveryDiretoSaiuEntrega_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryDiretoIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryDiretoReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryDiretoService(true);
+            var result = service.Dispatch(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDeliveryDiretoFinalizar_Click(object sender, EventArgs e)
+        {
+            if (btnDeliveryDiretoIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_deliveryDiretoReferenceSelected))
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new DeliveryDiretoService(true);
+            var result = service.Finalize(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
 
         #endregion
 
