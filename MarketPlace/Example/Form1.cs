@@ -3154,7 +3154,7 @@ namespace Example
             }
 
             var service = new DeliveryDiretoService(true);
-            var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected, "Teste do sistema de integração");
+            var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected, "Cancelado pelo sistema de integração - IzzyWay");
             if (result.Success)
             {
                 MessageBox.Show("OK");
