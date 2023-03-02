@@ -12,7 +12,7 @@ namespace DeliveryDireto.Domain
         public string amount { get; set; }
         public string customCode { get; set; }
         public string description { get; set; }
-        public decimal id { get; set; }
+        public decimal? id { get; set; }
         public string name { get; set; }
         public string ordersOptionsId { get; set; }
         public string sequence { get; set; }

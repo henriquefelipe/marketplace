@@ -8,7 +8,7 @@ namespace DeliveryDireto.Domain
 {
     public class paymentMethod
     {
-        public decimal paymentsId { get; set; }
+        public decimal? paymentsId { get; set; }
         public string name { get; set; }
     }
 }

@@ -10,13 +10,13 @@ namespace DeliveryDireto.Domain
     public class order
     {
         public string created { get; set; }
-        public decimal customerOrderNumber { get; set; }
-        public decimal id { get; set; }
-        public bool isNewCustomer { get; set; }
-        public bool isRegisteredInvoice { get; set; }
+        public decimal? customerOrderNumber { get; set; }
+        public decimal? id { get; set; }
+        public bool? isNewCustomer { get; set; }
+        public bool? isRegisteredInvoice { get; set; }
         public string modified { get; set; }
         public string notes { get; set; }
-        public decimal orderNumber { get; set; }
+        public decimal? orderNumber { get; set; }
         public string registeredDocument { get; set; }
         public string status { get; set; }
         public string statusReason { get; set; }

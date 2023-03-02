@@ -8,7 +8,7 @@ namespace DeliveryDireto.Domain
 {
     public class price
     {
-        public decimal value { get; set; }
+        public decimal? value { get; set; }
         public string currency { get; set; }
     }
 }

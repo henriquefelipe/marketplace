@@ -8,7 +8,7 @@ namespace DeliveryDireto.Domain
 {
     public class loyaltyprogram
     {
-        public decimal id { get; set; }
+        public decimal? id { get; set; }
         public string description { get; set; }
         public string customCode { get; set; }
     }

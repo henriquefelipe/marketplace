@@ -9,7 +9,7 @@ namespace DeliveryDireto.Domain
     public class voucher
     {
         public string type { get; set; }
-        public decimal id { get; set; }
+        public decimal? id { get; set; }
         public string description { get; set; }
         public string code { get; set; }
         public string customCode { get; set; }
