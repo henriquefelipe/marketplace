@@ -110,7 +110,7 @@ namespace DeliveryDireto.Service
         {
             var result = new GenericResult<result_orders>();
 
-            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS);
+            var url = string.Format("{0}{1}/{2}/{3}?showItems=true&showExtras=true", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Content-Type", "application/json");
@@ -137,7 +137,7 @@ namespace DeliveryDireto.Service
         {
             var result = new GenericResult<result_orders>();
 
-            var url = string.Format("{0}{1}/{2}/{3}?ordersId={4}", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+            var url = string.Format("{0}{1}/{2}/{3}?ordersId={4}&showItems=true&showExtras=true", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Content-Type", "application/json");
