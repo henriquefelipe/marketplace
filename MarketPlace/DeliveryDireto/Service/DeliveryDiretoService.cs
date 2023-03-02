@@ -204,7 +204,7 @@ namespace DeliveryDireto.Service
             {
                 var data = new
                 {
-                    status = Enum.OrderStatus.REJECTED,
+                    status = Enum.OrderStatus.HIDDEN,
                     statusReason = motivo
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);

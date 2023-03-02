@@ -3113,7 +3113,7 @@ namespace Example
             }
         }
 
-        private void btnDeliveryDiretoAprovar_Click(object sender, EventArgs e)
+        private void btnDeliveryDiretoAceitar_Click(object sender, EventArgs e)
         {
             if (btnDeliveryDiretoIniciar.Enabled)
             {
@@ -3139,7 +3139,7 @@ namespace Example
             }
         }
 
-        private void btnDeliveryDiretoRejeitar_Click(object sender, EventArgs e)
+        private void btnDeliveryDiretoCancelar_Click(object sender, EventArgs e)
         {
             if (btnDeliveryDiretoIniciar.Enabled)
             {
@@ -3165,7 +3165,7 @@ namespace Example
             }
         }
 
-        private void btnDeliveryDiretoSaiuEntrega_Click(object sender, EventArgs e)
+        private void btnDeliveryDiretoEntregaRetirada_Click(object sender, EventArgs e)
         {
             if (btnDeliveryDiretoIniciar.Enabled)
             {
