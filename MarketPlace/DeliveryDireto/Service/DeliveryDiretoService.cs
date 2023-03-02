@@ -205,7 +205,7 @@ namespace DeliveryDireto.Service
                 var data = new
                 {
                     status = Enum.OrderStatus.REJECTED,
-                    statusReason = (string)null
+                    statusReason = "Cancelado pelo sistema de integração - IzzyWay"
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
@@ -353,7 +353,7 @@ namespace DeliveryDireto.Service
                 var data = new
                 {
                     status = Enum.OrderStatus.HIDDEN,
-                    statusReason = (string)null
+                    statusReason = "Cancelado pelo sistema de integração - IzzyWay"
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
