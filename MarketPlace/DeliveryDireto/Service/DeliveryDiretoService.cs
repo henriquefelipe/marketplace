@@ -345,14 +345,14 @@ namespace DeliveryDireto.Service
             return result;
         }
 
-        public GenericSimpleResult Hide(string X_DeliveryDireto_ID, string client_id, string token, string order_id, string motivo)
+        public GenericSimpleResult Reject(string X_DeliveryDireto_ID, string client_id, string token, string order_id, string motivo)
         {
             var result = new GenericSimpleResult();
             try
             {
                 var data = new
                 {
-                    status = Enum.OrderStatus.HIDDEN,
+                    status = Enum.OrderStatus.REJECTED,
                     statusReason = motivo
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
