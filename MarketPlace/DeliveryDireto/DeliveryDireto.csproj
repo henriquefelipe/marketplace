@@ -78,6 +78,7 @@
     <Compile Include="Domain\totals.cs" />
     <Compile Include="Domain\voucher.cs" />
     <Compile Include="Enum\CurrencyType.cs" />
+    <Compile Include="Enum\GrantTypes.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DeliveryDiretoService.cs" />
