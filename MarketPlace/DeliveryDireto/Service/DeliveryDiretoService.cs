@@ -117,6 +117,7 @@ namespace DeliveryDireto.Service
             request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
             request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -143,6 +144,7 @@ namespace DeliveryDireto.Service
             request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
             request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -170,11 +172,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -205,11 +209,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -240,11 +246,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -275,11 +283,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -310,11 +320,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -345,11 +357,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
@@ -380,11 +394,13 @@ namespace DeliveryDireto.Service
                 };
                 var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                var request = new RestRequest(Method.PUT);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
                 request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
                 request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
