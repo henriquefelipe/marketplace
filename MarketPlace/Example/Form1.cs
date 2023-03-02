@@ -3154,7 +3154,7 @@ namespace Example
             }
 
             var service = new DeliveryDiretoService(true);
-            var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
+            var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected, "Teste do sistema de integração");
             if (result.Success)
             {
                 MessageBox.Show("OK");
