@@ -2957,6 +2957,20 @@ namespace Example
 
         #region Delivery Direto
 
+        private void btnDeliveryDiretoLogin_Click(object sender, EventArgs e)
+        {
+            var service = new DeliveryDiretoService(true);
+            var result = service.OAuthToken(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoClientSecret.Text, txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text);
+            if (result.Success)
+            {
+                txtDeliveryDiretoToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
         private void btnDeliveryDiretoIniciar_Click(object sender, EventArgs e)
         {
             onDeliveryDiretoIniciar();
@@ -3007,15 +3021,6 @@ namespace Example
 
             try
             {
-                var result = service.OAuthToken(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoClientSecret.Text, txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text);
-                if (result.Success)
-                {
-                    txtDeliveryDiretoToken.Text = result.Result.access_token;
-                }
-                else
-                {
-                    MessageBox.Show(result.Message);
-                }
                 while (btnDeliveryDiretoParar.Enabled)
                 {
                     var orderResult = service.Orders(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text);
@@ -3035,7 +3040,7 @@ namespace Example
                         return;
                     }
 
-                    Thread.Sleep(10000);
+                    Thread.Sleep(30000);
                 }
             }
             catch (Exception ex)
@@ -3073,7 +3078,7 @@ namespace Example
         {
             if (e.RowIndex > -1 && e.RowIndex < gridDeliveryDireto.Rows.Count)
             {
-                _deliveryDiretoReferenceSelected = gridDeliveryDireto.Rows[e.RowIndex].Cells[0].Value.ToString();
+                _deliveryDiretoReferenceSelected = gridDeliveryDireto.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
         }
 

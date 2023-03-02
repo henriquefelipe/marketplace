@@ -490,6 +490,7 @@
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
             this.btnJotajaToken = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoLogin = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -2429,6 +2430,7 @@
             // 
             // tabPageDeliveryDireto
             // 
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoLogin);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoFinalizar);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoSaiuEntrega);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoRejeitar);
@@ -2496,6 +2498,7 @@
             this.txtDeliveryDiretoClientSecret.Name = "txtDeliveryDiretoClientSecret";
             this.txtDeliveryDiretoClientSecret.Size = new System.Drawing.Size(243, 26);
             this.txtDeliveryDiretoClientSecret.TabIndex = 36;
+            this.txtDeliveryDiretoClientSecret.Text = "CPuEZ7xgmtm21KHRDSkCxZ93aDUsMLx-ySxa";
             // 
             // label103
             // 
@@ -2514,6 +2517,7 @@
             this.txtDeliveryDiretoClientId.Name = "txtDeliveryDiretoClientId";
             this.txtDeliveryDiretoClientId.Size = new System.Drawing.Size(243, 26);
             this.txtDeliveryDiretoClientId.TabIndex = 33;
+            this.txtDeliveryDiretoClientId.Text = "7a3eeb74-39a8-409b-8d80-79ecab2f4799";
             // 
             // label102
             // 
@@ -2554,6 +2558,7 @@
             this.txtDeliveryDiretoSenha.Name = "txtDeliveryDiretoSenha";
             this.txtDeliveryDiretoSenha.Size = new System.Drawing.Size(187, 26);
             this.txtDeliveryDiretoSenha.TabIndex = 23;
+            this.txtDeliveryDiretoSenha.Text = "0IHB5Zki6kXj";
             // 
             // label29
             // 
@@ -2572,6 +2577,7 @@
             this.txtDeliveryDiretoUsuario.Name = "txtDeliveryDiretoUsuario";
             this.txtDeliveryDiretoUsuario.Size = new System.Drawing.Size(187, 26);
             this.txtDeliveryDiretoUsuario.TabIndex = 21;
+            this.txtDeliveryDiretoUsuario.Text = "tgOWUs61@apidd.com";
             // 
             // label30
             // 
@@ -2590,6 +2596,7 @@
             this.txtDeliveryDiretoMerchandId.Name = "txtDeliveryDiretoMerchandId";
             this.txtDeliveryDiretoMerchandId.Size = new System.Drawing.Size(578, 26);
             this.txtDeliveryDiretoMerchandId.TabIndex = 19;
+            this.txtDeliveryDiretoMerchandId.Text = "RxaJVmdokyo-ZLGp3skwkDJwqI8eGZGFDOOM";
             // 
             // label28
             // 
@@ -2617,7 +2624,7 @@
             this.txtDeliveryDiretoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeliveryDiretoToken.Location = new System.Drawing.Point(128, 96);
             this.txtDeliveryDiretoToken.Name = "txtDeliveryDiretoToken";
-            this.txtDeliveryDiretoToken.Size = new System.Drawing.Size(578, 26);
+            this.txtDeliveryDiretoToken.Size = new System.Drawing.Size(430, 26);
             this.txtDeliveryDiretoToken.TabIndex = 16;
             // 
             // label27
@@ -5641,6 +5648,17 @@
             this.btnJotajaToken.UseVisualStyleBackColor = true;
             this.btnJotajaToken.Click += new System.EventHandler(this.btnJotajaToken_Click);
             // 
+            // btnDeliveryDiretoLogin
+            // 
+            this.btnDeliveryDiretoLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoLogin.Location = new System.Drawing.Point(564, 93);
+            this.btnDeliveryDiretoLogin.Name = "btnDeliveryDiretoLogin";
+            this.btnDeliveryDiretoLogin.Size = new System.Drawing.Size(142, 33);
+            this.btnDeliveryDiretoLogin.TabIndex = 40;
+            this.btnDeliveryDiretoLogin.Text = "Login";
+            this.btnDeliveryDiretoLogin.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoLogin.Click += new System.EventHandler(this.btnDeliveryDiretoLogin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6205,6 +6223,7 @@
         private System.Windows.Forms.Button btnDeliveryDiretoSaiuEntrega;
         private System.Windows.Forms.Button btnDeliveryDiretoRejeitar;
         private System.Windows.Forms.Button btnJotajaToken;
+        private System.Windows.Forms.Button btnDeliveryDiretoLogin;
     }
 }
 
