@@ -3040,7 +3040,7 @@ namespace Example
                         return;
                     }
 
-                    Thread.Sleep(10000);
+                    Thread.Sleep(15000);
                 }
             }
             catch (Exception ex)
