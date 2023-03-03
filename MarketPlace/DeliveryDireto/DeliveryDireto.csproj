@@ -80,6 +80,7 @@
     <Compile Include="Enum\CurrencyType.cs" />
     <Compile Include="Enum\GrantTypes.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
+    <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DeliveryDiretoService.cs" />
     <Compile Include="Utils\Constants.cs" />
