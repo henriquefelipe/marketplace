@@ -4,6 +4,7 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
+using System.Linq;
 
 namespace DeliveryDireto.Service
 {
@@ -158,6 +159,19 @@ namespace DeliveryDireto.Service
 
             result.Json = response.Content;
             return result;
+        }
+
+        public string OrderJSON(string json, decimal? order_id)
+        {
+            var pedido = JsonConvert.DeserializeObject<result_orders>(json);
+            if(pedido != null)
+            {
+                return JsonConvert.SerializeObject(pedido.data.orders.Where(x => x.id == order_id).FirstOrDefault());
+            }
+            else
+            {
+                return "";
+            }
         }
 
         public GenericSimpleResult Accept(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
