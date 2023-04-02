@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System.Collections.Generic;
 
-namespace Accon.Service
+namespace UberEats.Service
 {
     public class UberEatsService
     {       

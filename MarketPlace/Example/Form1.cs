@@ -26,6 +26,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Woocommerce.Service;
+using UberEats.Service;
 
 namespace Example
 {
@@ -110,6 +112,9 @@ namespace Example
         private string _queroDeliveryPlaceId { get; set; }
         private string _queroDeliverySelected { get; set; }
         private List<QueroDelivery.Domain.orders> _queroDeliveryOrders { get; set; }
+
+        private List<Woocommerce.Domain.order> _woocommerceOrders { get; set; }
+        private int _woocommerceId { get; set; }
 
         #endregion
 
@@ -360,6 +365,10 @@ namespace Example
             _queroDeliveryOrders = new List<QueroDelivery.Domain.orders>();
             gridQuerodelivery.DataSource = _queroDeliveryOrders.ToList();
             gridQuerodelivery.Refresh();
+
+            _woocommerceOrders = new List<Woocommerce.Domain.order>();
+            gridWoocommerce.DataSource = _woocommerceOrders.ToList();
+            gridWoocommerce.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -6385,6 +6394,140 @@ namespace Example
         {
             var json = "{'sucesso':true,'data':{'cliente':{'id':1165643,'nome':'Cristiele Soares','cpf':null,'telefone':'88988464962'},'operador':{'papeis':[],'operador':false,'ativo':false,'id':1457,'email':'alberione_gomes@hotmail.com','nome':'Alberas'},'itens':[{'id':4323684,'nome':'ARROZ COM STROGONOFF DE FRANGO','qtde':2,'valor':12,'total':24,'codigoPDV':'205','produto':{'id':28072,'nome':'ARROZ COM STROGONOFF DE FRANGO','preco':12,'descricao':'SERVE ATE 1 PESSOA ( NÃO FAZEMOS ALTERAÇÕES) ','mensagemPedido':null,'imagens':null,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425},'exibirNoSite':false,'disponibilidade':0,'exibirPrecoSite':false,'categoria':{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true},'tipoDeVenda':'Unidade','unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':false,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[{'nome':'EMBALAGEM','obrigatorio':true,'tipo':'escolha-simples','opcoesDisponiveis':[],'entidade':'produto','compartilhado':false,'classe':'escolha-simples-produto','id':180204,'produtos':[{'id':28072,'nome':null,'preco':null,'descricao':'','mensagemPedido':null,'imagens':null,'catalogo':null,'exibirNoSite':false,'disponibilidade':null,'exibirPrecoSite':false,'categoria':null,'tipoDeVenda':null,'unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':true,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true}],'tipoDeCobranca':'SOMA','ordem':0}],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true,'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'id':425,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425}},'ordem':23,'codigoPdv':'205','produtoNaEmpresa':{'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.455Z','atualizacao':'2022-12-22T20:30:36.455Z'}},'preco':null,'disponibilidade':null,'temEstoque':true,'exibirPrecoSite':true,'exibirPrecoNoCardapio':true,'disponivelNaMesa':true,'disponivelParaDelivery':true,'novoPreco':null,'destaque':null,'mensagemPedido':null}},'observacao':'','unidade':'','sabores':[],'adicionais':{}}],'pagamentos':[{'id':1908514,'formaDePagamento':'dinheiro','online':false,'trocoPara':0,'levarTroco':false,'valor':24}],'codigo':'27090','horario':'2022-12-22T20:29:47.000Z','statusOrdem':0,'subvalor':24,'desconto':0,'taxaEntrega':0,'total':24,'pago':false,'cancelado':false,'podeEditar':true,'finalizado':false,'formaDeEntrega':'Retirar','retirar':true,'aguardandoPagamentoOnline':false,'foiPagoOnline':false,'status':'Novo'}}";
             var dados = JsonConvert.DeserializeObject<MeuCardapioAi.Domain.order_result>(json);
+        }
+
+        #region Woocommerce
+
+        public async void woocommerceIniciar()
+        {
+            if (string.IsNullOrEmpty(txtWoocommerceURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtWoocommerceKey.Text))
+            {
+                MessageBox.Show("Campo KEY Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtWoocommerceSecret.Text))
+            {
+                MessageBox.Show("Campo SECRET Obrigatório");
+                return;
+            }
+
+            txtWoocommerceURL.Enabled = false;
+            txtWoocommerceKey.Enabled = false;
+            txtWoocommerceSecret.Enabled = false;
+
+            btnWoocommerceIniciar.Enabled = false;
+            btnWoocommerceParar.Enabled = true;           
+            await Task.Run(() => woocommerce());
+        }
+
+        private void woocommerce()
+        {
+            var service = new WoocommerceService(txtWoocommerceURL.Text, txtWoocommerceKey.Text, txtWoocommerceSecret.Text);
+
+            try
+            {
+                while (btnWoocommerceParar.Enabled)
+                {
+                    var orderResult = service.Orders();
+                    if (orderResult.Success)
+                    {
+                        foreach (var item in orderResult.Result)
+                        {
+                            _woocommerceOrders.Add(item);
+                        };
+
+                        WriteGridWoocommerce();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(30000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridWoocommerceDelegate();
+        private void WriteGridWoocommerce()
+        {
+            if (gridWoocommerce.InvokeRequired)
+            {
+                var d = new WritelstGridWoocommerceDelegate(WriteGridWoocommerce);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridWoocommerce.DataSource = _woocommerceOrders.ToList();
+                gridWoocommerce.Refresh();
+            }
+        }
+
+        private void btnWoocommerceIniciar_Click(object sender, EventArgs e)
+        {
+            woocommerceIniciar();
+        }
+
+        private void btnWoocommerceParar_Click(object sender, EventArgs e)
+        {
+            txtWoocommerceURL.Enabled = true;
+            txtWoocommerceKey.Enabled = true;
+            txtWoocommerceSecret.Enabled = true;
+
+            btnWoocommerceIniciar.Enabled = true;
+            btnWoocommerceParar.Enabled = false;
+        }
+
+        #endregion
+
+        private void gridWoocommerce_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridWoocommerce.Rows.Count)
+            {
+                _woocommerceId = Convert.ToInt32(gridWoocommerce.Rows[e.RowIndex].Cells[0].Value.ToString());
+            }
+        }
+
+        private void btnWoocommerceCompleted_Click(object sender, EventArgs e)
+        {
+            if (btnWoocommerceIniciar.Enabled)
+            {
+                MessageBox.Show("Inicia o aplicativo");
+                return;
+            }
+
+            if (_woocommerceId == 0)
+            {
+                MessageBox.Show("Selecione um registro");
+                return;
+            }
+
+            var service = new WoocommerceService(txtWoocommerceURL.Text, txtWoocommerceKey.Text, txtWoocommerceSecret.Text);
+            var result = service.Update(_woocommerceId, Woocommerce.Enum.order_status.COMPLETED);
+            if (result.Success)
+            {
+                MessageBox.Show("Atualizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
     }
 }

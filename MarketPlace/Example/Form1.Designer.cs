@@ -483,6 +483,17 @@
             this.gridUberEats = new System.Windows.Forms.DataGridView();
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
+            this.tabPageWoocommerce = new System.Windows.Forms.TabPage();
+            this.gridWoocommerce = new System.Windows.Forms.DataGridView();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.txtWoocommerceURL = new System.Windows.Forms.TextBox();
+            this.txtWoocommerceKey = new System.Windows.Forms.TextBox();
+            this.txtWoocommerceSecret = new System.Windows.Forms.TextBox();
+            this.btnWoocommerceIniciar = new System.Windows.Forms.Button();
+            this.btnWoocommerceParar = new System.Windows.Forms.Button();
+            this.btnWoocommerceCompleted = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -541,6 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPageUberEats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
+            this.tabPageWoocommerce.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -573,6 +586,7 @@
             this.tabControl1.Controls.Add(this.tabPageServit);
             this.tabControl1.Controls.Add(this.tabPageSuperMenu);
             this.tabControl1.Controls.Add(this.tabPageUberEats);
+            this.tabControl1.Controls.Add(this.tabPageWoocommerce);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -5557,6 +5571,125 @@
             this.btnUberEatsIniciar.UseVisualStyleBackColor = true;
             this.btnUberEatsIniciar.Click += new System.EventHandler(this.btnUberEatsIniciar_Click);
             // 
+            // tabPageWoocommerce
+            // 
+            this.tabPageWoocommerce.Controls.Add(this.btnWoocommerceCompleted);
+            this.tabPageWoocommerce.Controls.Add(this.btnWoocommerceParar);
+            this.tabPageWoocommerce.Controls.Add(this.btnWoocommerceIniciar);
+            this.tabPageWoocommerce.Controls.Add(this.txtWoocommerceSecret);
+            this.tabPageWoocommerce.Controls.Add(this.txtWoocommerceKey);
+            this.tabPageWoocommerce.Controls.Add(this.txtWoocommerceURL);
+            this.tabPageWoocommerce.Controls.Add(this.label104);
+            this.tabPageWoocommerce.Controls.Add(this.label103);
+            this.tabPageWoocommerce.Controls.Add(this.label102);
+            this.tabPageWoocommerce.Controls.Add(this.gridWoocommerce);
+            this.tabPageWoocommerce.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWoocommerce.Name = "tabPageWoocommerce";
+            this.tabPageWoocommerce.Size = new System.Drawing.Size(1229, 685);
+            this.tabPageWoocommerce.TabIndex = 28;
+            this.tabPageWoocommerce.Text = "Woocommerce";
+            this.tabPageWoocommerce.UseVisualStyleBackColor = true;
+            // 
+            // gridWoocommerce
+            // 
+            this.gridWoocommerce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridWoocommerce.Location = new System.Drawing.Point(8, 150);
+            this.gridWoocommerce.Name = "gridWoocommerce";
+            this.gridWoocommerce.RowHeadersWidth = 51;
+            this.gridWoocommerce.Size = new System.Drawing.Size(1209, 516);
+            this.gridWoocommerce.TabIndex = 37;
+            this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.Location = new System.Drawing.Point(8, 21);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(42, 20);
+            this.label102.TabIndex = 38;
+            this.label102.Text = "URL";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(8, 65);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(35, 20);
+            this.label103.TabIndex = 39;
+            this.label103.Text = "Key";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label104.Location = new System.Drawing.Point(528, 65);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(56, 20);
+            this.label104.TabIndex = 40;
+            this.label104.Text = "Secret";
+            // 
+            // txtWoocommerceURL
+            // 
+            this.txtWoocommerceURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceURL.Location = new System.Drawing.Point(81, 23);
+            this.txtWoocommerceURL.Name = "txtWoocommerceURL";
+            this.txtWoocommerceURL.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceURL.TabIndex = 41;
+            this.txtWoocommerceURL.Text = "https://appsolution.com.br/loja";
+            // 
+            // txtWoocommerceKey
+            // 
+            this.txtWoocommerceKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceKey.Location = new System.Drawing.Point(81, 65);
+            this.txtWoocommerceKey.Name = "txtWoocommerceKey";
+            this.txtWoocommerceKey.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceKey.TabIndex = 42;
+            this.txtWoocommerceKey.Text = "ck_9d82731a51f9ea988efab1352c3ed0e818c17376";
+            // 
+            // txtWoocommerceSecret
+            // 
+            this.txtWoocommerceSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceSecret.Location = new System.Drawing.Point(599, 65);
+            this.txtWoocommerceSecret.Name = "txtWoocommerceSecret";
+            this.txtWoocommerceSecret.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceSecret.TabIndex = 43;
+            this.txtWoocommerceSecret.Text = "cs_52ffc888100e7f3e4fd5ff16efa074c6753771e2";
+            // 
+            // btnWoocommerceIniciar
+            // 
+            this.btnWoocommerceIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWoocommerceIniciar.Location = new System.Drawing.Point(1070, 17);
+            this.btnWoocommerceIniciar.Name = "btnWoocommerceIniciar";
+            this.btnWoocommerceIniciar.Size = new System.Drawing.Size(147, 40);
+            this.btnWoocommerceIniciar.TabIndex = 44;
+            this.btnWoocommerceIniciar.Text = "Iniciar";
+            this.btnWoocommerceIniciar.UseVisualStyleBackColor = true;
+            this.btnWoocommerceIniciar.Click += new System.EventHandler(this.btnWoocommerceIniciar_Click);
+            // 
+            // btnWoocommerceParar
+            // 
+            this.btnWoocommerceParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWoocommerceParar.Location = new System.Drawing.Point(1070, 65);
+            this.btnWoocommerceParar.Name = "btnWoocommerceParar";
+            this.btnWoocommerceParar.Size = new System.Drawing.Size(147, 40);
+            this.btnWoocommerceParar.TabIndex = 45;
+            this.btnWoocommerceParar.Text = "Parar";
+            this.btnWoocommerceParar.UseVisualStyleBackColor = true;
+            this.btnWoocommerceParar.Click += new System.EventHandler(this.btnWoocommerceParar_Click);
+            // 
+            // btnWoocommerceCompleted
+            // 
+            this.btnWoocommerceCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWoocommerceCompleted.Location = new System.Drawing.Point(8, 104);
+            this.btnWoocommerceCompleted.Name = "btnWoocommerceCompleted";
+            this.btnWoocommerceCompleted.Size = new System.Drawing.Size(147, 40);
+            this.btnWoocommerceCompleted.TabIndex = 46;
+            this.btnWoocommerceCompleted.Text = "Completed";
+            this.btnWoocommerceCompleted.UseVisualStyleBackColor = true;
+            this.btnWoocommerceCompleted.Click += new System.EventHandler(this.btnWoocommerceCompleted_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5654,6 +5787,9 @@
             this.tabPageUberEats.ResumeLayout(false);
             this.tabPageUberEats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).EndInit();
+            this.tabPageWoocommerce.ResumeLayout(false);
+            this.tabPageWoocommerce.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6114,6 +6250,17 @@
         private System.Windows.Forms.Button btnJotajaPagamentoPendente;
         private System.Windows.Forms.Button btnJotajaProntoRetirada;
         private System.Windows.Forms.Button btnJotajaFinalizarPedido;
+        private System.Windows.Forms.TabPage tabPageWoocommerce;
+        private System.Windows.Forms.DataGridView gridWoocommerce;
+        private System.Windows.Forms.Button btnWoocommerceParar;
+        private System.Windows.Forms.Button btnWoocommerceIniciar;
+        private System.Windows.Forms.TextBox txtWoocommerceSecret;
+        private System.Windows.Forms.TextBox txtWoocommerceKey;
+        private System.Windows.Forms.TextBox txtWoocommerceURL;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.Button btnWoocommerceCompleted;
     }
 }
 

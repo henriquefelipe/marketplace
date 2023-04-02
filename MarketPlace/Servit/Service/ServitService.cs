@@ -402,5 +402,54 @@ namespace Servit.Service
             }
             return result;
         }
+
+        public GenericSimpleResult CancelarItem(string token, string merchantid, string mesaCodigo, string sku, int sequence, int quantity, string user = "")
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    sku,
+                    sequence,
+                    quantity,
+                    user
+                };
+
+                var url = string.Format("{0}{1}/{2}/{3}/{4}", _urlBase, Constants.URL_EVENT_MERCHANT, merchantid, Constants.URL_CANCEL_TABLE_PRODUCT, mesaCodigo);
+                var client = new RestClientBase(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    var retorno = JsonConvert.DeserializeObject<retorno>(response.Content);
+                    if (retorno.success)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = retorno.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+                result.StatusCode = response.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

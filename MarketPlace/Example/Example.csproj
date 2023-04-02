@@ -205,6 +205,10 @@
       <Project>{da7501a5-63e5-497d-b643-cc002c4d98fc}</Project>
       <Name>UberEats</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Woocommerce\Woocommerce.csproj">
+      <Project>{9a7414b8-25c8-4c04-b1e6-3b7e9961c42a}</Project>
+      <Name>Woocommerce</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
