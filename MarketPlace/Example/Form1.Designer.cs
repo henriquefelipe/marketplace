@@ -199,7 +199,15 @@
             this.btnDeliveryAppParar = new System.Windows.Forms.Button();
             this.btnDeliveryAppIniciar = new System.Windows.Forms.Button();
             this.tabPageDeliveryDireto = new System.Windows.Forms.TabPage();
-            this.btnDeliveryDiretoAprovar = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoLogin = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoFinalizar = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoEntregaRetirada = new System.Windows.Forms.Button();
+            this.btnDeliveryDiretoCancelar = new System.Windows.Forms.Button();
+            this.txtDeliveryDiretoClientSecret = new System.Windows.Forms.TextBox();
+            this.label103 = new System.Windows.Forms.Label();
+            this.txtDeliveryDiretoClientId = new System.Windows.Forms.TextBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.btnDeliveryDiretoAceitar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoBuscarPedido = new System.Windows.Forms.Button();
             this.txtDeliveryDiretoSenha = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -2436,7 +2444,15 @@
             // 
             // tabPageDeliveryDireto
             // 
-            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoAprovar);
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoLogin);
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoFinalizar);
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoEntregaRetirada);
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoCancelar);
+            this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoClientSecret);
+            this.tabPageDeliveryDireto.Controls.Add(this.label103);
+            this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoClientId);
+            this.tabPageDeliveryDireto.Controls.Add(this.label102);
+            this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoAceitar);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoBuscarPedido);
             this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoSenha);
             this.tabPageDeliveryDireto.Controls.Add(this.label29);
@@ -2456,21 +2472,103 @@
             this.tabPageDeliveryDireto.Text = "Delivery Direto";
             this.tabPageDeliveryDireto.UseVisualStyleBackColor = true;
             // 
-            // btnDeliveryDiretoAprovar
+            // btnDeliveryDiretoLogin
             // 
-            this.btnDeliveryDiretoAprovar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryDiretoAprovar.Location = new System.Drawing.Point(192, 98);
-            this.btnDeliveryDiretoAprovar.Name = "btnDeliveryDiretoAprovar";
-            this.btnDeliveryDiretoAprovar.Size = new System.Drawing.Size(171, 39);
-            this.btnDeliveryDiretoAprovar.TabIndex = 31;
-            this.btnDeliveryDiretoAprovar.Text = "Aprovar";
-            this.btnDeliveryDiretoAprovar.UseVisualStyleBackColor = true;
-            this.btnDeliveryDiretoAprovar.Click += new System.EventHandler(this.btnDeliveryDiretoAprovar_Click);
+            this.btnDeliveryDiretoLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoLogin.Location = new System.Drawing.Point(564, 93);
+            this.btnDeliveryDiretoLogin.Name = "btnDeliveryDiretoLogin";
+            this.btnDeliveryDiretoLogin.Size = new System.Drawing.Size(142, 33);
+            this.btnDeliveryDiretoLogin.TabIndex = 40;
+            this.btnDeliveryDiretoLogin.Text = "Login";
+            this.btnDeliveryDiretoLogin.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoLogin.Click += new System.EventHandler(this.btnDeliveryDiretoLogin_Click);
+            // 
+            // btnDeliveryDiretoFinalizar
+            // 
+            this.btnDeliveryDiretoFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoFinalizar.Location = new System.Drawing.Point(723, 135);
+            this.btnDeliveryDiretoFinalizar.Name = "btnDeliveryDiretoFinalizar";
+            this.btnDeliveryDiretoFinalizar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoFinalizar.TabIndex = 39;
+            this.btnDeliveryDiretoFinalizar.Text = "Finalizar";
+            this.btnDeliveryDiretoFinalizar.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoFinalizar.Click += new System.EventHandler(this.btnDeliveryDiretoFinalizar_Click);
+            // 
+            // btnDeliveryDiretoEntregaRetirada
+            // 
+            this.btnDeliveryDiretoEntregaRetirada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoEntregaRetirada.Location = new System.Drawing.Point(546, 135);
+            this.btnDeliveryDiretoEntregaRetirada.Name = "btnDeliveryDiretoEntregaRetirada";
+            this.btnDeliveryDiretoEntregaRetirada.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoEntregaRetirada.TabIndex = 38;
+            this.btnDeliveryDiretoEntregaRetirada.Text = "Entrega/Retirada";
+            this.btnDeliveryDiretoEntregaRetirada.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoEntregaRetirada.Click += new System.EventHandler(this.btnDeliveryDiretoEntregaRetirada_Click);
+            // 
+            // btnDeliveryDiretoCancelar
+            // 
+            this.btnDeliveryDiretoCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoCancelar.Location = new System.Drawing.Point(369, 135);
+            this.btnDeliveryDiretoCancelar.Name = "btnDeliveryDiretoCancelar";
+            this.btnDeliveryDiretoCancelar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoCancelar.TabIndex = 37;
+            this.btnDeliveryDiretoCancelar.Text = "Cancelar";
+            this.btnDeliveryDiretoCancelar.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoCancelar.Click += new System.EventHandler(this.btnDeliveryDiretoCancelar_Click);
+            // 
+            // txtDeliveryDiretoClientSecret
+            // 
+            this.txtDeliveryDiretoClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoClientSecret.Location = new System.Drawing.Point(128, 23);
+            this.txtDeliveryDiretoClientSecret.Name = "txtDeliveryDiretoClientSecret";
+            this.txtDeliveryDiretoClientSecret.Size = new System.Drawing.Size(243, 26);
+            this.txtDeliveryDiretoClientSecret.TabIndex = 36;
+            this.txtDeliveryDiretoClientSecret.Text = "CPuEZ7xgmtm21KHRDSkCxZ93aDUsMLx-ySxa";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(21, 26);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(96, 20);
+            this.label103.TabIndex = 35;
+            this.label103.Text = "ClientSecret";
+            // 
+            // txtDeliveryDiretoClientId
+            // 
+            this.txtDeliveryDiretoClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryDiretoClientId.Location = new System.Drawing.Point(463, 22);
+            this.txtDeliveryDiretoClientId.Name = "txtDeliveryDiretoClientId";
+            this.txtDeliveryDiretoClientId.Size = new System.Drawing.Size(243, 26);
+            this.txtDeliveryDiretoClientId.TabIndex = 33;
+            this.txtDeliveryDiretoClientId.Text = "7a3eeb74-39a8-409b-8d80-79ecab2f4799";
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.Location = new System.Drawing.Point(384, 25);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(63, 20);
+            this.label102.TabIndex = 32;
+            this.label102.Text = "ClientId";
+            // 
+            // btnDeliveryDiretoAceitar
+            // 
+            this.btnDeliveryDiretoAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryDiretoAceitar.Location = new System.Drawing.Point(192, 135);
+            this.btnDeliveryDiretoAceitar.Name = "btnDeliveryDiretoAceitar";
+            this.btnDeliveryDiretoAceitar.Size = new System.Drawing.Size(171, 39);
+            this.btnDeliveryDiretoAceitar.TabIndex = 31;
+            this.btnDeliveryDiretoAceitar.Text = "Aceitar";
+            this.btnDeliveryDiretoAceitar.UseVisualStyleBackColor = true;
+            this.btnDeliveryDiretoAceitar.Click += new System.EventHandler(this.btnDeliveryDiretoAceitar_Click);
             // 
             // btnDeliveryDiretoBuscarPedido
             // 
             this.btnDeliveryDiretoBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryDiretoBuscarPedido.Location = new System.Drawing.Point(15, 98);
+            this.btnDeliveryDiretoBuscarPedido.Location = new System.Drawing.Point(15, 135);
             this.btnDeliveryDiretoBuscarPedido.Name = "btnDeliveryDiretoBuscarPedido";
             this.btnDeliveryDiretoBuscarPedido.Size = new System.Drawing.Size(171, 39);
             this.btnDeliveryDiretoBuscarPedido.TabIndex = 30;
@@ -2481,16 +2579,17 @@
             // txtDeliveryDiretoSenha
             // 
             this.txtDeliveryDiretoSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryDiretoSenha.Location = new System.Drawing.Point(567, 55);
+            this.txtDeliveryDiretoSenha.Location = new System.Drawing.Point(842, 55);
             this.txtDeliveryDiretoSenha.Name = "txtDeliveryDiretoSenha";
             this.txtDeliveryDiretoSenha.Size = new System.Drawing.Size(187, 26);
             this.txtDeliveryDiretoSenha.TabIndex = 23;
+            this.txtDeliveryDiretoSenha.Text = "0IHB5Zki6kXj";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(474, 58);
+            this.label29.Location = new System.Drawing.Point(749, 58);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(56, 20);
             this.label29.TabIndex = 22;
@@ -2499,16 +2598,17 @@
             // txtDeliveryDiretoUsuario
             // 
             this.txtDeliveryDiretoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryDiretoUsuario.Location = new System.Drawing.Point(567, 19);
+            this.txtDeliveryDiretoUsuario.Location = new System.Drawing.Point(842, 19);
             this.txtDeliveryDiretoUsuario.Name = "txtDeliveryDiretoUsuario";
             this.txtDeliveryDiretoUsuario.Size = new System.Drawing.Size(187, 26);
             this.txtDeliveryDiretoUsuario.TabIndex = 21;
+            this.txtDeliveryDiretoUsuario.Text = "tgOWUs61@apidd.com";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(474, 22);
+            this.label30.Location = new System.Drawing.Point(749, 22);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(64, 20);
             this.label30.TabIndex = 20;
@@ -2517,16 +2617,17 @@
             // txtDeliveryDiretoMerchandId
             // 
             this.txtDeliveryDiretoMerchandId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryDiretoMerchandId.Location = new System.Drawing.Point(128, 56);
+            this.txtDeliveryDiretoMerchandId.Location = new System.Drawing.Point(128, 58);
             this.txtDeliveryDiretoMerchandId.Name = "txtDeliveryDiretoMerchandId";
-            this.txtDeliveryDiretoMerchandId.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryDiretoMerchandId.Size = new System.Drawing.Size(578, 26);
             this.txtDeliveryDiretoMerchandId.TabIndex = 19;
+            this.txtDeliveryDiretoMerchandId.Text = "RxaJVmdokyo-ZLGp3skwkDJwqI8eGZGFDOOM";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(11, 56);
+            this.label28.Location = new System.Drawing.Point(11, 58);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(90, 20);
             this.label28.TabIndex = 18;
@@ -2535,26 +2636,27 @@
             // gridDeliveryDireto
             // 
             this.gridDeliveryDireto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDeliveryDireto.Location = new System.Drawing.Point(12, 143);
+            this.gridDeliveryDireto.Location = new System.Drawing.Point(12, 186);
             this.gridDeliveryDireto.Name = "gridDeliveryDireto";
             this.gridDeliveryDireto.RowHeadersWidth = 51;
-            this.gridDeliveryDireto.Size = new System.Drawing.Size(1209, 523);
+            this.gridDeliveryDireto.Size = new System.Drawing.Size(1209, 480);
             this.gridDeliveryDireto.TabIndex = 17;
             this.gridDeliveryDireto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDeliveryDireto_CellClick);
             // 
             // txtDeliveryDiretoToken
             // 
+            this.txtDeliveryDiretoToken.Enabled = false;
             this.txtDeliveryDiretoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryDiretoToken.Location = new System.Drawing.Point(128, 19);
+            this.txtDeliveryDiretoToken.Location = new System.Drawing.Point(128, 96);
             this.txtDeliveryDiretoToken.Name = "txtDeliveryDiretoToken";
-            this.txtDeliveryDiretoToken.Size = new System.Drawing.Size(291, 26);
+            this.txtDeliveryDiretoToken.Size = new System.Drawing.Size(430, 26);
             this.txtDeliveryDiretoToken.TabIndex = 16;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(11, 22);
+            this.label27.Location = new System.Drawing.Point(25, 99);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 20);
             this.label27.TabIndex = 15;
@@ -5946,7 +6048,7 @@
         private System.Windows.Forms.Button btnDeliveryAppSaiuParaEntrega;
         private System.Windows.Forms.Button btnDeliveryAppBuscarPedido;
         private System.Windows.Forms.Button btnDeliveryDiretoBuscarPedido;
-        private System.Windows.Forms.Button btnDeliveryDiretoAprovar;
+        private System.Windows.Forms.Button btnDeliveryDiretoAceitar;
         private System.Windows.Forms.TabPage tabPageIDelivery;
         private System.Windows.Forms.TabPage tabPageAipedi;
         private System.Windows.Forms.Button btnPedreiroDigitalAprovar;
@@ -6167,7 +6269,6 @@
         private System.Windows.Forms.Button btnJotajaBuscarPedido;
         private System.Windows.Forms.TextBox txtJotajaToken;
         private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Button btnJotajaToken;
         private System.Windows.Forms.TextBox txtJotajaSecret;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.TextBox txtJotajaKey;
@@ -6261,6 +6362,15 @@
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Button btnWoocommerceCompleted;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoClientId;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoClientSecret;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Button btnDeliveryDiretoFinalizar;
+        private System.Windows.Forms.Button btnDeliveryDiretoEntregaRetirada;
+        private System.Windows.Forms.Button btnDeliveryDiretoCancelar;
+        private System.Windows.Forms.Button btnJotajaToken;
+        private System.Windows.Forms.Button btnDeliveryDiretoLogin;
     }
 }
 

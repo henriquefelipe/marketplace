@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DeliveryDireto.Enum
 {
-    public class CodTipoProdutoPdv
+    public class OrderType
     {
-        public const string CUSTOM = "CUSTOM";
-        public const string EXTRA = "EXTRA";
+        public const string DELIVERY = "DELIVERY";
+        public const string TAKEOUT = "TAKEOUT";
     }
 }

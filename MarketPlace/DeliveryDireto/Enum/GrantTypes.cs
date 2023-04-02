@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DeliveryDireto.Enum
 {
-    public class DescricaoMontagem
+    public class GrantTypes
     {
-        public const string ESCOLHA_O_SABOR = "Escolha o sabor:: ";
-        public const string BORDA = "Borda: ";
+        public const string PASSWORD = "password";
+        public const string REFRESH_TOKEN = "refresh_token";
     }
 }

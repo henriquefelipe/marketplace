@@ -4,43 +4,199 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeliveryDireto.Service
 {
     public class DeliveryDiretoService
     {
-        private string _urlBase = Constants.URL_BASE;
-        private string _parametros = "";       
-
-        public DeliveryDiretoService(string usuario, string senha, string merchantId, string token)
-        {            
-            _parametros = string.Format("login={0}&senha={1}&key={2}&idFrn={3}&contentType=json",
-                        usuario, senha, token, merchantId);
+        private string _urlBase;
+        public DeliveryDiretoService(bool desenvolvedor = false)
+        {
+            _urlBase = desenvolvedor ? Constants.URL_BASE : Constants.URL_BASE;
         }
 
-        public GenericResult<List<string>> Orders(DateTime data, string status = "00")
+        public GenericResult<token> OAuthToken(string X_DeliveryDireto_ID, string client_id, string client_secret, string username, string password)
         {
-            var result = new GenericResult<List<string>>();
+            var result = new GenericResult<token>();
             try
-            {                
-                var url = string.Format("{0}{1}?{2}&status={3}&data={4}", _urlBase, Constants.ORDER_SELECIONAR_PEDIDOS_ALTERADOS_A_PARTIR_DE, _parametros,
-                            status, data.ToString("yyyy-MM-dd HH:mm:ss"));
+            {
+                var data = new
+                {
+                    grant_type = Enum.GrantTypes.PASSWORD,
+                    client_id,
+                    client_secret,
+                    username,
+                    password
+                };
+
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.ADMIN_API, Constants.TOKEN);
+
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse responseToken = client.Execute(request);
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = responseToken.StatusDescription + $" {responseToken.Content}";
+                }
+
+                result.StatusCode = responseToken.StatusCode;
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<token> RefreshToken(string X_DeliveryDireto_ID, string client_id, string client_secret, string refresh_token)
+        {
+            var result = new GenericResult<token>();
+            try
+            {
+                var data = new
+                {
+                    grant_type = Enum.GrantTypes.REFRESH_TOKEN,
+                    client_id,
+                    client_secret,
+                    refresh_token
+                };
+
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.ADMIN_API, Constants.TOKEN);
+
+                var client = new RestClient(url);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse responseToken = client.Execute(request);
+                if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = responseToken.StatusDescription + $" {responseToken.Content}";
+                }
+
+                result.StatusCode = responseToken.StatusCode;
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<result_orders> Orders(string X_DeliveryDireto_ID, string client_id, string token)
+        {
+            var result = new GenericResult<result_orders>();
+
+            var url = string.Format("{0}{1}/{2}/{3}?showItems=true&showExtras=true", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+            request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<result_orders>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<result_orders> Order(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericResult<result_orders>();
+
+            var url = string.Format("{0}{1}/{2}/{3}?ordersId={4}&showItems=true&showExtras=true", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+            request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<result_orders>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public string OrderJSON(string json, decimal? order_id)
+        {
+            var pedido = JsonConvert.DeserializeObject<result_orders>(json);
+            if(pedido != null)
+            {
+                return JsonConvert.SerializeObject(pedido.data.orders.Where(x => x.id == order_id).FirstOrDefault());
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public GenericSimpleResult Accept(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.APPROVED,
+                    statusReason = (string)null
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
-                    var responseResult = JsonConvert.DeserializeObject<wspdvresponse<response_body_orders>>(response.Content);
-                    if (responseResult != null && responseResult.wspdvResponse != null && responseResult.wspdvResponse.responseBody != null)
-                    {
-                        result.Result = responseResult.wspdvResponse.responseBody.codPedido;
-                        result.Success = true;                        
-                    }
+                    result.Success = true;
                     result.Json = response.Content;
                 }
                 else
@@ -55,115 +211,30 @@ namespace DeliveryDireto.Service
             return result;
         }
 
-        public GenericResult<order> Order(string codPedido)
-        {
-            var result = new GenericResult<order>();
-            try
-            {
-                var url = string.Format("{0}{1}?{2}&codPedido={3}", _urlBase, Constants.ORDER_SELECIONA_PEDIDOS, _parametros,
-                            codPedido);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);                
-                request.AddHeader("Accept", "application/json");
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<order>>(response.Content);
-                    if (result_order.wspdvResponse.responseBody != null)
-                    {
-                        var pedido = result_order.wspdvResponse.responseBody;
-
-                        var resultItens = OrderItens(codPedido);
-                        if(resultItens.Success)
-                        {
-                            pedido.itens.AddRange(resultItens.Result);
-                            result.Result = pedido;
-                            result.Success = true;
-                            result.Json = response.Content + resultItens.Json;
-                        }
-                        else
-                        {
-                            result.Json = response.Content;
-                        }                        
-                    }
-                    else
-                    {
-                        result.Json = response.Content;
-                        result.Message = result_order.wspdvResponse.responseMessage;
-                    }
-                }
-                else
-                {
-                    result.Message = response.Content + " - " + response.StatusDescription;
-                }
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-            return result;
-        }
-
-        public GenericResult<List<item>> OrderItens(string codPedido)
-        {
-            var result = new GenericResult<List<item>>();
-            try
-            {
-                var url = string.Format("{0}{1}?{2}&codPedido={3}", _urlBase, Constants.ORDER_SELECIONA_ITENS, _parametros,
-                            codPedido);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
-                request.AddHeader("Accept", "application/json");
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<response_body_order_item>>(response.Content);
-                    if (result_order.wspdvResponse.responseBody != null)
-                    {
-                        result.Result = result_order.wspdvResponse.responseBody.item;
-                        result.Success = true;
-                        result.Json = response.Content;
-                    }
-                    else
-                    {
-                        result.Message = result_order.wspdvResponse.responseMessage;
-                    }
-                }
-                else
-                {
-                    result.Message = response.Content + " - " + response.StatusDescription;
-                }
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-            return result;
-        }
-
-        public GenericSimpleResult Status(string codPedido, string status)
+        public GenericSimpleResult Cancel(string X_DeliveryDireto_ID, string client_id, string token, string order_id, string motivo)
         {
             var result = new GenericSimpleResult();
             try
             {
-                var url = string.Format("{0}{1}?{2}&codPedido={3}&statusProcessamento={4}", _urlBase, Constants.ORDER_CONFIRMAR, _parametros,
-                            codPedido, status);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.GET);
-                request.AddHeader("Accept", "application/json");
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                var data = new
                 {
-                    var result_order = JsonConvert.DeserializeObject<wspdvresponse<bool>>(response.Content);
-                    if (result_order != null && result_order.wspdvResponse != null && result_order.wspdvResponse.responseBody)
-                    {                        
-                        result.Success = true;
-                        result.Json = response.Content;
-                    }
-                    else
-                    {
-                        result.Message = result_order.wspdvResponse.responseMessage;
-                    }
+                    status = Enum.OrderStatus.HIDDEN,
+                    statusReason = motivo
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
                 }
                 else
                 {
@@ -177,5 +248,189 @@ namespace DeliveryDireto.Service
             return result;
         }
 
+        public GenericSimpleResult Pending(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.WAITING,
+                    statusReason = (string)null
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Dispatch(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.IN_TRANSIT,
+                    statusReason = (string)null
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Finalize(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.DONE,
+                    statusReason = (string)null
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Reject(string X_DeliveryDireto_ID, string client_id, string token, string order_id, string motivo)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.REJECTED,
+                    statusReason = motivo
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult PaymentPending(string X_DeliveryDireto_ID, string client_id, string token, string order_id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status = Enum.OrderStatus.WARNING,
+                    statusReason = (string)null
+                };
+                var url = string.Format("{0}{1}/{2}/{3}/{4}/status", _urlBase, Constants.ADMIN_API, Constants.VERSAO_API, Constants.ORDERS, order_id);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("X-DeliveryDireto-ID", X_DeliveryDireto_ID);
+                request.AddHeader("X-DeliveryDireto-Client-Id", client_id);
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }
