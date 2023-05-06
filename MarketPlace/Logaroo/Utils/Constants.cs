@@ -10,6 +10,8 @@
         public const string URL_ORDER = "painel/dm-order";
         public const string URL_ORDER_IMPORT = "painel/order/import";
         public const string URL_ORDER_STATUS = "painel/dm-order";
-        public const string URL_PAYMENTS = "painel/payments";               
+        public const string URL_PAYMENTS = "painel/payments";
+
+        public const string URL_MERCADOO_ORDENS = "mercadoo/orders";
     }
 }

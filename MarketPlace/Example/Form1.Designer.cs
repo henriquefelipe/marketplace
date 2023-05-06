@@ -6362,10 +6362,8 @@
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Button btnWoocommerceCompleted;
-        private System.Windows.Forms.TextBox txtDeliveryDiretoClientId;
-        private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.TextBox txtDeliveryDiretoClientSecret;
-        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.TextBox txtDeliveryDiretoClientId;        
+        private System.Windows.Forms.TextBox txtDeliveryDiretoClientSecret;        
         private System.Windows.Forms.Button btnDeliveryDiretoFinalizar;
         private System.Windows.Forms.Button btnDeliveryDiretoEntregaRetirada;
         private System.Windows.Forms.Button btnDeliveryDiretoCancelar;

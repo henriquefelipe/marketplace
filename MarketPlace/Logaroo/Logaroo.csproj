@@ -54,6 +54,15 @@
     <Compile Include="Domain\ordercreateresult.cs" />
     <Compile Include="Domain\orders.cs" />
     <Compile Include="Domain\order.cs" />
+    <Compile Include="Domain\order_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_address_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_customer_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_item_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_payment_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_price_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_sales_channel_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_store_mercadoo.cs" />
     <Compile Include="Domain\payments.cs" />
     <Compile Include="Domain\login.cs" />
     <Compile Include="Enum\OrderSaleChannel.cs" />
