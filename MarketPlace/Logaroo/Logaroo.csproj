@@ -66,6 +66,7 @@
     <Compile Include="Domain\payments.cs" />
     <Compile Include="Domain\login.cs" />
     <Compile Include="Enum\OrderSaleChannel.cs" />
+    <Compile Include="Enum\DeliveryType.cs" />
     <Compile Include="Enum\PaymentCode.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ namespace Logaroo.Domain
 {
     public class order_orders_address_mercadoo
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string city { get; set; }
         public string type { get; set; }
         public string state { get; set; }
@@ -22,6 +22,9 @@ namespace Logaroo.Domain
         public string subtitle { get; set; }
         public string complement { get; set; }
         public string neighborhood { get; set; }
+        public string created_at { get; set; }
+        public string deleted_at { get; set; }
+        public string updated_at { get; set; }
     }
 
     public class order_orders_address_location_mercadoo

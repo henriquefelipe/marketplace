@@ -986,11 +986,12 @@ namespace Example
 
         #region Logaroo
 
-        private string _urlLogarooDesenvolvimento = "https://api.dev.logaroo.com.br/v1/";
+        //private string _urlLogarooDesenvolvimento = "https://api.dev.logaroo.com.br/v1/";
+        private string _urlLogarooDesenvolvimento = "https://api.alpha.logaroo.com.br/v1/";
         private void btnLogarooLogin_Click(object sender, EventArgs e)
         {
-            //var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
-            var logarooService = new Logaroo.Service.LogarooService();
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            //var logarooService = new Logaroo.Service.LogarooService();
             var result = logarooService.Login(txtLogarooEmail.Text, txtLogarooSenha.Text);
             if (result.Success)
             {
@@ -6615,6 +6616,33 @@ namespace Example
             if (result.Success)
             {
                 MessageBox.Show("Atualizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnMercadooPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLogarooToken.Text))
+            {
+                MessageBox.Show("Faça o login primeiro");
+                return;
+            }
+
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var result = logarooService.MercadooOrdersPendentes(txtLogarooToken.Text, txtLogarooMerchantId.Text, txtLogarooMail.Text);
+            if (result.Success)
+            {
+                foreach (var pedido in result.Result.data.items)
+                {
+                    var resultPedidoDetalhe = logarooService.MercadooOrder(txtLogarooToken.Text, pedido.id.ToString());
+                    var resultPedidoModerar = logarooService.MercadooOrderModerar(txtLogarooToken.Text, pedido.id.ToString(), true);
+                }
+
+                gridLogaroo.DataSource = result.Result.data.items;
+                gridLogaroo.Refresh();
             }
             else
             {

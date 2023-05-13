@@ -25,13 +25,39 @@ namespace Logaroo.Domain
     }
 
     public class order_data_items_mercadoo
+    {        
+        public int id { get; set; }
+        public string type { get; set; }
+        public string code { get; set; }
+        public order_data_items_owner_mercadoo owner { get; set; }
+        public order_data_items_details_mercadoo details { get; set; }
+    }
+
+    public class order_data_items_owner_mercadoo
     {
-        public order_data_items_mercadoo()
+        public string cpf { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+    }
+
+    public class order_data_items_details_mercadoo
+    {
+        public order_data_items_details_mercadoo()
         {
-            orders = new List<order_orders_mercadoo>();
+            payments = new List<order_data_items_details_payments_mercadoo>();
         }
 
-        public string status { get; set; }
-        public List<order_orders_mercadoo> orders { get; set; }
+        public string birth { get; set; }
+        public string created_at { get; set; }
+        public string delivery_forecast { get; set; }
+        public string delivery_method { get; set; }
+        public List<order_data_items_details_payments_mercadoo> payments { get; set; }
+    }
+
+    public class order_data_items_details_payments_mercadoo
+    {
+        public string type { get; set; }
+        public string value { get; set; }       
     }
 }

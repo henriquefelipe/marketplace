@@ -204,9 +204,7 @@
             this.btnDeliveryDiretoEntregaRetirada = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoCancelar = new System.Windows.Forms.Button();
             this.txtDeliveryDiretoClientSecret = new System.Windows.Forms.TextBox();
-            this.label103 = new System.Windows.Forms.Label();
             this.txtDeliveryDiretoClientId = new System.Windows.Forms.TextBox();
-            this.label102 = new System.Windows.Forms.Label();
             this.btnDeliveryDiretoAceitar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoBuscarPedido = new System.Windows.Forms.Button();
             this.txtDeliveryDiretoSenha = new System.Windows.Forms.TextBox();
@@ -365,6 +363,8 @@
             this.btnMeuCardapioAiParar = new System.Windows.Forms.Button();
             this.btnMeuCardapioAiIniciar = new System.Windows.Forms.Button();
             this.tabPageLogaroo = new System.Windows.Forms.TabPage();
+            this.btnMercadooPedidos = new System.Windows.Forms.Button();
+            this.label105 = new System.Windows.Forms.Label();
             this.btnLogarooPedidoEntregue = new System.Windows.Forms.Button();
             this.btnLogarooEmProducao = new System.Windows.Forms.Button();
             this.btnLogarooLogout = new System.Windows.Forms.Button();
@@ -492,16 +492,18 @@
             this.btnUberEatsParar = new System.Windows.Forms.Button();
             this.btnUberEatsIniciar = new System.Windows.Forms.Button();
             this.tabPageWoocommerce = new System.Windows.Forms.TabPage();
-            this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.label102 = new System.Windows.Forms.Label();
-            this.label103 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.txtWoocommerceURL = new System.Windows.Forms.TextBox();
-            this.txtWoocommerceKey = new System.Windows.Forms.TextBox();
-            this.txtWoocommerceSecret = new System.Windows.Forms.TextBox();
-            this.btnWoocommerceIniciar = new System.Windows.Forms.Button();
-            this.btnWoocommerceParar = new System.Windows.Forms.Button();
             this.btnWoocommerceCompleted = new System.Windows.Forms.Button();
+            this.btnWoocommerceParar = new System.Windows.Forms.Button();
+            this.btnWoocommerceIniciar = new System.Windows.Forms.Button();
+            this.txtWoocommerceSecret = new System.Windows.Forms.TextBox();
+            this.txtWoocommerceKey = new System.Windows.Forms.TextBox();
+            this.txtWoocommerceURL = new System.Windows.Forms.TextBox();
+            this.label104 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.gridWoocommerce = new System.Windows.Forms.DataGridView();
+            this.txtLogarooMail = new System.Windows.Forms.TextBox();
+            this.label106 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -2449,9 +2451,7 @@
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoEntregaRetirada);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoCancelar);
             this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoClientSecret);
-            this.tabPageDeliveryDireto.Controls.Add(this.label103);
             this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoClientId);
-            this.tabPageDeliveryDireto.Controls.Add(this.label102);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoAceitar);
             this.tabPageDeliveryDireto.Controls.Add(this.btnDeliveryDiretoBuscarPedido);
             this.tabPageDeliveryDireto.Controls.Add(this.txtDeliveryDiretoSenha);
@@ -2525,16 +2525,6 @@
             this.txtDeliveryDiretoClientSecret.TabIndex = 36;
             this.txtDeliveryDiretoClientSecret.Text = "CPuEZ7xgmtm21KHRDSkCxZ93aDUsMLx-ySxa";
             // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label103.Location = new System.Drawing.Point(21, 26);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(96, 20);
-            this.label103.TabIndex = 35;
-            this.label103.Text = "ClientSecret";
-            // 
             // txtDeliveryDiretoClientId
             // 
             this.txtDeliveryDiretoClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2543,16 +2533,6 @@
             this.txtDeliveryDiretoClientId.Size = new System.Drawing.Size(243, 26);
             this.txtDeliveryDiretoClientId.TabIndex = 33;
             this.txtDeliveryDiretoClientId.Text = "7a3eeb74-39a8-409b-8d80-79ecab2f4799";
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label102.Location = new System.Drawing.Point(384, 25);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(63, 20);
-            this.label102.TabIndex = 32;
-            this.label102.Text = "ClientId";
             // 
             // btnDeliveryDiretoAceitar
             // 
@@ -4267,6 +4247,10 @@
             // 
             // tabPageLogaroo
             // 
+            this.tabPageLogaroo.Controls.Add(this.txtLogarooMail);
+            this.tabPageLogaroo.Controls.Add(this.label106);
+            this.tabPageLogaroo.Controls.Add(this.btnMercadooPedidos);
+            this.tabPageLogaroo.Controls.Add(this.label105);
             this.tabPageLogaroo.Controls.Add(this.btnLogarooPedidoEntregue);
             this.tabPageLogaroo.Controls.Add(this.btnLogarooEmProducao);
             this.tabPageLogaroo.Controls.Add(this.btnLogarooLogout);
@@ -4293,6 +4277,27 @@
             this.tabPageLogaroo.TabIndex = 3;
             this.tabPageLogaroo.Text = "Logaroo";
             this.tabPageLogaroo.UseVisualStyleBackColor = true;
+            // 
+            // btnMercadooPedidos
+            // 
+            this.btnMercadooPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMercadooPedidos.Location = new System.Drawing.Point(12, 307);
+            this.btnMercadooPedidos.Name = "btnMercadooPedidos";
+            this.btnMercadooPedidos.Size = new System.Drawing.Size(168, 33);
+            this.btnMercadooPedidos.TabIndex = 32;
+            this.btnMercadooPedidos.Text = "Listar Pedidos";
+            this.btnMercadooPedidos.UseVisualStyleBackColor = true;
+            this.btnMercadooPedidos.Click += new System.EventHandler(this.btnMercadooPedidos_Click);
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label105.Location = new System.Drawing.Point(18, 266);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(122, 29);
+            this.label105.TabIndex = 31;
+            this.label105.Text = "Mercadoo";
             // 
             // btnLogarooPedidoEntregue
             // 
@@ -4341,10 +4346,10 @@
             // gridLogaroo
             // 
             this.gridLogaroo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridLogaroo.Location = new System.Drawing.Point(8, 273);
+            this.gridLogaroo.Location = new System.Drawing.Point(8, 346);
             this.gridLogaroo.Name = "gridLogaroo";
             this.gridLogaroo.RowHeadersWidth = 51;
-            this.gridLogaroo.Size = new System.Drawing.Size(1209, 404);
+            this.gridLogaroo.Size = new System.Drawing.Size(1209, 331);
             this.gridLogaroo.TabIndex = 26;
             // 
             // btnLogarooPedidoProntoParaColeta
@@ -5692,83 +5697,16 @@
             this.tabPageWoocommerce.Text = "Woocommerce";
             this.tabPageWoocommerce.UseVisualStyleBackColor = true;
             // 
-            // gridWoocommerce
+            // btnWoocommerceCompleted
             // 
-            this.gridWoocommerce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridWoocommerce.Location = new System.Drawing.Point(8, 150);
-            this.gridWoocommerce.Name = "gridWoocommerce";
-            this.gridWoocommerce.RowHeadersWidth = 51;
-            this.gridWoocommerce.Size = new System.Drawing.Size(1209, 516);
-            this.gridWoocommerce.TabIndex = 37;
-            this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label102.Location = new System.Drawing.Point(8, 21);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(42, 20);
-            this.label102.TabIndex = 38;
-            this.label102.Text = "URL";
-            // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label103.Location = new System.Drawing.Point(8, 65);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(35, 20);
-            this.label103.TabIndex = 39;
-            this.label103.Text = "Key";
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label104.Location = new System.Drawing.Point(528, 65);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(56, 20);
-            this.label104.TabIndex = 40;
-            this.label104.Text = "Secret";
-            // 
-            // txtWoocommerceURL
-            // 
-            this.txtWoocommerceURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWoocommerceURL.Location = new System.Drawing.Point(81, 23);
-            this.txtWoocommerceURL.Name = "txtWoocommerceURL";
-            this.txtWoocommerceURL.Size = new System.Drawing.Size(430, 26);
-            this.txtWoocommerceURL.TabIndex = 41;
-            this.txtWoocommerceURL.Text = "https://appsolution.com.br/loja";
-            // 
-            // txtWoocommerceKey
-            // 
-            this.txtWoocommerceKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWoocommerceKey.Location = new System.Drawing.Point(81, 65);
-            this.txtWoocommerceKey.Name = "txtWoocommerceKey";
-            this.txtWoocommerceKey.Size = new System.Drawing.Size(430, 26);
-            this.txtWoocommerceKey.TabIndex = 42;
-            this.txtWoocommerceKey.Text = "ck_9d82731a51f9ea988efab1352c3ed0e818c17376";
-            // 
-            // txtWoocommerceSecret
-            // 
-            this.txtWoocommerceSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWoocommerceSecret.Location = new System.Drawing.Point(599, 65);
-            this.txtWoocommerceSecret.Name = "txtWoocommerceSecret";
-            this.txtWoocommerceSecret.Size = new System.Drawing.Size(430, 26);
-            this.txtWoocommerceSecret.TabIndex = 43;
-            this.txtWoocommerceSecret.Text = "cs_52ffc888100e7f3e4fd5ff16efa074c6753771e2";
-            // 
-            // btnWoocommerceIniciar
-            // 
-            this.btnWoocommerceIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWoocommerceIniciar.Location = new System.Drawing.Point(1070, 17);
-            this.btnWoocommerceIniciar.Name = "btnWoocommerceIniciar";
-            this.btnWoocommerceIniciar.Size = new System.Drawing.Size(147, 40);
-            this.btnWoocommerceIniciar.TabIndex = 44;
-            this.btnWoocommerceIniciar.Text = "Iniciar";
-            this.btnWoocommerceIniciar.UseVisualStyleBackColor = true;
-            this.btnWoocommerceIniciar.Click += new System.EventHandler(this.btnWoocommerceIniciar_Click);
+            this.btnWoocommerceCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWoocommerceCompleted.Location = new System.Drawing.Point(8, 104);
+            this.btnWoocommerceCompleted.Name = "btnWoocommerceCompleted";
+            this.btnWoocommerceCompleted.Size = new System.Drawing.Size(147, 40);
+            this.btnWoocommerceCompleted.TabIndex = 46;
+            this.btnWoocommerceCompleted.Text = "Completed";
+            this.btnWoocommerceCompleted.UseVisualStyleBackColor = true;
+            this.btnWoocommerceCompleted.Click += new System.EventHandler(this.btnWoocommerceCompleted_Click);
             // 
             // btnWoocommerceParar
             // 
@@ -5781,16 +5719,102 @@
             this.btnWoocommerceParar.UseVisualStyleBackColor = true;
             this.btnWoocommerceParar.Click += new System.EventHandler(this.btnWoocommerceParar_Click);
             // 
-            // btnWoocommerceCompleted
+            // btnWoocommerceIniciar
             // 
-            this.btnWoocommerceCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWoocommerceCompleted.Location = new System.Drawing.Point(8, 104);
-            this.btnWoocommerceCompleted.Name = "btnWoocommerceCompleted";
-            this.btnWoocommerceCompleted.Size = new System.Drawing.Size(147, 40);
-            this.btnWoocommerceCompleted.TabIndex = 46;
-            this.btnWoocommerceCompleted.Text = "Completed";
-            this.btnWoocommerceCompleted.UseVisualStyleBackColor = true;
-            this.btnWoocommerceCompleted.Click += new System.EventHandler(this.btnWoocommerceCompleted_Click);
+            this.btnWoocommerceIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWoocommerceIniciar.Location = new System.Drawing.Point(1070, 17);
+            this.btnWoocommerceIniciar.Name = "btnWoocommerceIniciar";
+            this.btnWoocommerceIniciar.Size = new System.Drawing.Size(147, 40);
+            this.btnWoocommerceIniciar.TabIndex = 44;
+            this.btnWoocommerceIniciar.Text = "Iniciar";
+            this.btnWoocommerceIniciar.UseVisualStyleBackColor = true;
+            this.btnWoocommerceIniciar.Click += new System.EventHandler(this.btnWoocommerceIniciar_Click);
+            // 
+            // txtWoocommerceSecret
+            // 
+            this.txtWoocommerceSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceSecret.Location = new System.Drawing.Point(599, 65);
+            this.txtWoocommerceSecret.Name = "txtWoocommerceSecret";
+            this.txtWoocommerceSecret.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceSecret.TabIndex = 43;
+            this.txtWoocommerceSecret.Text = "cs_52ffc888100e7f3e4fd5ff16efa074c6753771e2";
+            // 
+            // txtWoocommerceKey
+            // 
+            this.txtWoocommerceKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceKey.Location = new System.Drawing.Point(81, 65);
+            this.txtWoocommerceKey.Name = "txtWoocommerceKey";
+            this.txtWoocommerceKey.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceKey.TabIndex = 42;
+            this.txtWoocommerceKey.Text = "ck_9d82731a51f9ea988efab1352c3ed0e818c17376";
+            // 
+            // txtWoocommerceURL
+            // 
+            this.txtWoocommerceURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWoocommerceURL.Location = new System.Drawing.Point(81, 23);
+            this.txtWoocommerceURL.Name = "txtWoocommerceURL";
+            this.txtWoocommerceURL.Size = new System.Drawing.Size(430, 26);
+            this.txtWoocommerceURL.TabIndex = 41;
+            this.txtWoocommerceURL.Text = "https://appsolution.com.br/loja";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label104.Location = new System.Drawing.Point(528, 65);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(56, 20);
+            this.label104.TabIndex = 40;
+            this.label104.Text = "Secret";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(8, 65);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(35, 20);
+            this.label103.TabIndex = 39;
+            this.label103.Text = "Key";
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.Location = new System.Drawing.Point(8, 21);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(42, 20);
+            this.label102.TabIndex = 38;
+            this.label102.Text = "URL";
+            // 
+            // gridWoocommerce
+            // 
+            this.gridWoocommerce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridWoocommerce.Location = new System.Drawing.Point(8, 150);
+            this.gridWoocommerce.Name = "gridWoocommerce";
+            this.gridWoocommerce.RowHeadersWidth = 51;
+            this.gridWoocommerce.Size = new System.Drawing.Size(1209, 516);
+            this.gridWoocommerce.TabIndex = 37;
+            this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
+            // 
+            // txtLogarooMail
+            // 
+            this.txtLogarooMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogarooMail.Location = new System.Drawing.Point(456, 13);
+            this.txtLogarooMail.Name = "txtLogarooMail";
+            this.txtLogarooMail.Size = new System.Drawing.Size(187, 26);
+            this.txtLogarooMail.TabIndex = 34;
+            this.txtLogarooMail.Text = "1";
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label106.Location = new System.Drawing.Point(359, 19);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(37, 20);
+            this.label106.TabIndex = 33;
+            this.label106.Text = "Mail";
             // 
             // Form1
             // 
@@ -6369,6 +6393,10 @@
         private System.Windows.Forms.Button btnDeliveryDiretoCancelar;
         private System.Windows.Forms.Button btnJotajaToken;
         private System.Windows.Forms.Button btnDeliveryDiretoLogin;
+        private System.Windows.Forms.Button btnMercadooPedidos;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.TextBox txtLogarooMail;
+        private System.Windows.Forms.Label label106;
     }
 }
 
