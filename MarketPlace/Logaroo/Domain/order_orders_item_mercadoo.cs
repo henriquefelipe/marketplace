@@ -25,7 +25,7 @@ namespace Logaroo.Domain
     public class order_orders_item_subitem_mercadoo
     {
         public int id { get; set; }
-        public string cod { get; set; }       
+        public string code_pdv { get; set; }       
         public string name { get; set; }
         public decimal price { get; set; }
         public decimal quantity { get; set; }

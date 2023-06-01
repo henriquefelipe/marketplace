@@ -259,15 +259,15 @@ namespace Logaroo.Service
 
         #region Mercadoo
 
-        public GenericResult<order_mercadoo> MercadooOrdersPendentes(string token, string store, string mall_id)
+        public GenericResult<order_mercadoo> MercadooOrdersPendentes(string token, string store)
         {
             var result = new GenericResult<order_mercadoo>();
 
-            var url = string.Format("{0}{1}?pending=1&store={2}&mall_id={3}", _urlBase, Constants.URL_MERCADOO_ORDENS, store, mall_id);            
+            var url = string.Format("{0}{1}?pending=1&store_id={2}", _urlBase, Constants.URL_MERCADOO_ORDERS, store);            
 
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));            
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -292,7 +292,7 @@ namespace Logaroo.Service
         {
             var result = new GenericResult<order_orders_mercadoo>();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MERCADOO_ORDENS, id);
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
 
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
@@ -316,17 +316,20 @@ namespace Logaroo.Service
         {
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/moderate", _urlBase, Constants.URL_MERCADOO_ORDENS, id);
+            var url = string.Format("{0}{1}/{2}/moderate", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
 
             var data = new
             {
                 status
             };
 
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             var client = new RestClient(url);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            //request.RequestFormat = DataFormat.Json;
             request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)

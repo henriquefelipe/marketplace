@@ -6587,8 +6587,6 @@ namespace Example
             btnWoocommerceParar.Enabled = false;
         }
 
-        #endregion
-
         private void gridWoocommerce_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridWoocommerce.Rows.Count)
@@ -6623,6 +6621,9 @@ namespace Example
             }
         }
 
+        #endregion
+
+
         private void btnMercadooPedidos_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLogarooToken.Text))
@@ -6632,7 +6633,7 @@ namespace Example
             }
 
             var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
-            var result = logarooService.MercadooOrdersPendentes(txtLogarooToken.Text, txtLogarooMerchantId.Text, txtLogarooMail.Text);
+            var result = logarooService.MercadooOrdersPendentes(txtLogarooToken.Text, txtLogarooMerchantId.Text);
             if (result.Success)
             {
                 foreach (var pedido in result.Result.data.items)

@@ -32,6 +32,7 @@ namespace Logaroo.Domain
         public decimal total_price { get; set; }
         public string zipcode { get; set; }
         public string status { get; set; }
+        public string type { get; set; }
         public List<orderitem> items { get; set; }
 
         /// <summary>
