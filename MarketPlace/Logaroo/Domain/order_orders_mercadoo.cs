@@ -32,5 +32,6 @@ namespace Logaroo.Domain
         public bool? status { get; set; }
         public order_orders_store_mercadoo store { get; set; }
         public order_orders_sales_channel_mercadoo sales_channel { get; set; }
+        public order_orders_destiny destiny { get; set; }
     }
 }

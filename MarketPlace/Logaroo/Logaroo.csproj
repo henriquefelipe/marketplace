@@ -57,6 +57,7 @@
     <Compile Include="Domain\order_mercadoo.cs" />
     <Compile Include="Domain\order_orders_address_mercadoo.cs" />
     <Compile Include="Domain\order_orders_customer_mercadoo.cs" />
+    <Compile Include="Domain\order_orders_destiny.cs" />
     <Compile Include="Domain\order_orders_item_mercadoo.cs" />
     <Compile Include="Domain\order_orders_mercadoo.cs" />
     <Compile Include="Domain\order_orders_payment_mercadoo.cs" />
