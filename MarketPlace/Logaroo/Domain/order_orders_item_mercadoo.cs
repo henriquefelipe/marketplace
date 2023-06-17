@@ -19,6 +19,9 @@ namespace Logaroo.Domain
         public string name { get; set; }
         public decimal price { get; set; }
         public decimal quantity { get; set; }
+        public bool is_offer { get; set; }
+        public decimal price_offer { get; set; }
+        public decimal total_price { get; set; }
         public List<order_orders_item_subitem_mercadoo> subitems { get; set; }
     }
 

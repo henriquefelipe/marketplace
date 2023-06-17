@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33423.256
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace", "MarketPlace\MarketPlace.csproj", "{8C099D07-604B-471C-A810-C7581EB78373}"
 EndProject
@@ -63,7 +63,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CresceVendas", "CresceVenda
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueroDelivery", "QueroDelivery\QueroDelivery.csproj", "{0BD1A203-8F50-4436-9F29-991A2AF9DBE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woocommerce", "Woocommerce\Woocommerce.csproj", "{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woocommerce", "Woocommerce\Woocommerce.csproj", "{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixCommerce", "PixCommerce\PixCommerce.csproj", "{DACBF174-3FBE-4A18-B22A-15FF999C7807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPedido", "MultiPedido\MultiPedido.csproj", "{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +199,14 @@ Global
 		{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACBF174-3FBE-4A18-B22A-15FF999C7807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACBF174-3FBE-4A18-B22A-15FF999C7807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACBF174-3FBE-4A18-B22A-15FF999C7807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACBF174-3FBE-4A18-B22A-15FF999C7807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

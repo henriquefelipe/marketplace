@@ -177,6 +177,10 @@
       <Project>{494a0d9c-e42d-495b-9881-35e09fc454ba}</Project>
       <Name>MeuCardapioAi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MultiPedido\MultiPedido.csproj">
+      <Project>{421adbfc-12c4-48c6-aeeb-33a66482fe9a}</Project>
+      <Name>MultiPedido</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnPedido\OnPedido.csproj">
       <Project>{f423ea0e-b5c2-4152-ac20-b2de04b4b1aa}</Project>
       <Name>OnPedido</Name>
@@ -184,6 +188,10 @@
     <ProjectReference Include="..\PedZap\PedZap.csproj">
       <Project>{9a45d340-8699-4fc2-9264-d5514b6d511d}</Project>
       <Name>PedZap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PixCommerce\PixCommerce.csproj">
+      <Project>{dacbf174-3fbe-4a18-b22a-15ff999c7807}</Project>
+      <Name>PixCommerce</Name>
     </ProjectReference>
     <ProjectReference Include="..\QueroDelivery\QueroDelivery.csproj">
       <Project>{0bd1a203-8f50-4436-9f29-991a2af9dbe9}</Project>

@@ -28,6 +28,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Woocommerce.Service;
 using UberEats.Service;
+using PixCommerce.Service;
+using System.Runtime.CompilerServices;
 
 namespace Example
 {
@@ -115,6 +117,9 @@ namespace Example
 
         private List<Woocommerce.Domain.order> _woocommerceOrders { get; set; }
         private int _woocommerceId { get; set; }
+
+        private List<PixCommerce.Domain.orders> _pixCommerceOrders { get; set; }
+        private string _pixCommerceId { get; set; }
 
         #endregion
 
@@ -369,6 +374,12 @@ namespace Example
             _woocommerceOrders = new List<Woocommerce.Domain.order>();
             gridWoocommerce.DataSource = _woocommerceOrders.ToList();
             gridWoocommerce.Refresh();
+
+            _pixCommerceOrders = new List<PixCommerce.Domain.orders>();
+            gridPixCommerce.DataSource = _pixCommerceOrders.ToList();
+            gridPixCommerce.Refresh();
+
+            _pixCommerceId = "648e2ce2089c5def4b258cc2";
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -2969,7 +2980,7 @@ namespace Example
 
         private void btnDeliveryDiretoLogin_Click(object sender, EventArgs e)
         {
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
             var result = service.OAuthToken(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoClientSecret.Text, txtDeliveryDiretoUsuario.Text, txtDeliveryDiretoSenha.Text);
             if (result.Success)
             {
@@ -3027,7 +3038,7 @@ namespace Example
 
         private void deliveryDireto()
         {
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
 
             try
             {
@@ -3137,7 +3148,7 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
             var result = service.Accept(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
             if (result.Success)
             {
@@ -3163,7 +3174,7 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
             var result = service.Cancel(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected, "Cancelado pelo sistema de integração - IzzyWay");
             if (result.Success)
             {
@@ -3189,7 +3200,7 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
             var result = service.Dispatch(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
             if (result.Success)
             {
@@ -3215,7 +3226,7 @@ namespace Example
                 return;
             }
 
-            var service = new DeliveryDiretoService(true);
+            var service = new DeliveryDiretoService();
             var result = service.Finalize(txtDeliveryDiretoMerchandId.Text, txtDeliveryDiretoClientId.Text, txtDeliveryDiretoToken.Text, _deliveryDiretoReferenceSelected);
             if (result.Success)
             {
@@ -6623,6 +6634,7 @@ namespace Example
 
         #endregion
 
+        #region Mercadoo
 
         private void btnMercadooPedidos_Click(object sender, EventArgs e)
         {
@@ -6648,6 +6660,268 @@ namespace Example
             else
             {
                 MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        #region PixCommerce
+
+        
+
+        public async void pixCommerceIniciar()
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtPixCommerceToken.Enabled = false;
+
+            btnPixCommerceIniciar.Enabled = false;
+            btnPixCommerceParar.Enabled = true;            
+            await Task.Run(() => pixCommerce());
+        }
+
+        private void pixCommerce()
+        {
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+
+            try
+            {
+                while (btnPixCommerceParar.Enabled)
+                {
+                    var orderResult = service.Orders();
+                    if (orderResult.Success)
+                    {
+                        foreach (var item in orderResult.Result)
+                        {
+                            _pixCommerceOrders.Add(new PixCommerce.Domain.orders
+                            {
+                                codigo = item.codigo,
+                                data_venda = item.data_venda,
+                                venda_id = item.venda_id
+                            });
+                        };
+
+                        WriteGridPixCommerce();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(30000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridpixCommerceDelegate();
+        private void WriteGridPixCommerce()
+        {
+            if (gridPixCommerce.InvokeRequired)
+            {
+                var d = new WritelstGridpixCommerceDelegate(WriteGridPixCommerce);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridPixCommerce.DataSource = _pixCommerceOrders.ToList();
+                gridPixCommerce.Refresh();
+            }
+        }
+
+        private void btnPixCommerceBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.Order(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);              
+            }
+        }
+
+        private void btnPixCommerceIniciar_Click(object sender, EventArgs e)
+        {
+            pixCommerceIniciar();
+        }
+
+        private void btnPixCommerceParar_Click(object sender, EventArgs e)
+        {
+            pixCommerceParar();
+        }
+
+        void pixCommerceParar()
+        {
+            txtPixCommerceToken.Enabled = true;
+
+            btnPixCommerceIniciar.Enabled = true;
+            btnPixCommerceParar.Enabled = false;
+        }
+
+        private void gridPixCommerce_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridPixCommerce.Rows.Count)
+            {
+                _pixCommerceId = gridPixCommerce.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        #endregion
+
+        private void btnPixCommerceCOnfirmar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.Confirm(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnPixCommerceEmProducao_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.Production(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnPixCommerceEmRota_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.InRoute(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnPixCommerceFinalizado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.Final(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnPixCommerceCancelado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPixCommerceToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_pixCommerceId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new PixCommerceService(txtPixCommerceToken.Text);
+            var orderResult = service.Cancel(_pixCommerceId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
             }
         }
     }
