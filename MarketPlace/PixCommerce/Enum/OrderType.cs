@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ifood.Enum
+namespace PixCommerce.Enum
 {
     public class OrderType
     {
