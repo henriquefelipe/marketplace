@@ -17,13 +17,18 @@ Delivery
   - Gloria Food
   - GoomerGO
   - Ifood
+  - JotaJa
   - Meu Cardápio Ai
+  - Mercadoo
+  - Multi Pedido
   - OnPedido
-  - Logaroo
   - PedZap
+  - PixCommerce
+  - Quero Delivery
   - Rappi
   - Super Menu
   - Uber Eats
+  - WooCommerce
   
 Cardápio Digital (Mesa)
 
