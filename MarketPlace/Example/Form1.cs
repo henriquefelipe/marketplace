@@ -30,6 +30,7 @@ using Woocommerce.Service;
 using UberEats.Service;
 using PixCommerce.Service;
 using System.Runtime.CompilerServices;
+using MultiPedido.Service;
 
 namespace Example
 {
@@ -120,6 +121,9 @@ namespace Example
 
         private List<PixCommerce.Domain.orders> _pixCommerceOrders { get; set; }
         private string _pixCommerceId { get; set; }
+
+        private List<MultiPedido.Domain.order> _multiPedidoOrders { get; set; }
+        private string _multiPedidoId { get; set; }
 
         #endregion
 
@@ -380,6 +384,10 @@ namespace Example
             gridPixCommerce.Refresh();
 
             _pixCommerceId = "648e2ce2089c5def4b258cc2";
+
+            _multiPedidoOrders = new List<MultiPedido.Domain.order>();
+            gridMultiPedido.DataSource = _multiPedidoOrders.ToList();
+            gridMultiPedido.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -6666,7 +6674,6 @@ namespace Example
         #endregion
 
         #region PixCommerce
-
         
 
         public async void pixCommerceIniciar()
@@ -6792,8 +6799,6 @@ namespace Example
                 _pixCommerceId = gridPixCommerce.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
         }
-
-        #endregion
 
         private void btnPixCommerceCOnfirmar_Click(object sender, EventArgs e)
         {
@@ -6924,6 +6929,125 @@ namespace Example
                 MessageBox.Show(orderResult.Message);
             }
         }
+
+        #endregion
+
+        #region Multi Pedido
+
+
+        private void btnMultiPedidoIniciar_Click(object sender, EventArgs e)
+        {
+            multiPedidoIniciar();
+        }        
+
+        private void btnMultiPedidoParar_Click(object sender, EventArgs e)
+        {
+            txtMultiPedidoToken.Enabled = true;
+
+            btnMultiPedidoIniciar.Enabled = true;
+            btnMultiPedidoParar.Enabled = false;
+        }
+
+
+        private void gridMultiPedido_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridMultiPedido.Rows.Count)
+            {
+                _multiPedidoId = gridMultiPedido.Rows[e.RowIndex].Cells[18].Value.ToString();
+            }
+        }
+
+        public async void multiPedidoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtMultiPedidoToken.Enabled = false;
+
+            btnMultiPedidoIniciar.Enabled = false;
+            btnMultiPedidoParar.Enabled = true;
+            await Task.Run(() => multiPedido());
+        }
+
+        private void multiPedido()
+        {
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+
+            try
+            {
+                while (btnMultiPedidoParar.Enabled)
+                {
+                    var orderResult = service.Orders();
+                    if (orderResult.Success)
+                    {
+                        _multiPedidoOrders = orderResult.Result;
+
+                        WriteGridMultiPedido();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(30000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridMultiPedidoDelegate();
+        private void WriteGridMultiPedido()
+        {
+            if (gridMultiPedido.InvokeRequired)
+            {
+                var d = new WritelstGridMultiPedidoDelegate(WriteGridMultiPedido);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridMultiPedido.DataSource = _multiPedidoOrders.ToList();
+                gridMultiPedido.Refresh();
+            }
+        }
+
+        private void btnMultiPedidoCOnfirmar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_multiPedidoId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+            var orderResult = service.Acknowledge(_multiPedidoId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        #endregion
     }
 }
 

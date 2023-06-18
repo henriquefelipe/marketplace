@@ -14,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="Enum\" />
-    <Folder Include="Service\" />
   </ItemGroup>
 
 </Project>

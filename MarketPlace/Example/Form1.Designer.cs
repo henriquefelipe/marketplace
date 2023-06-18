@@ -518,6 +518,12 @@
             this.btnPixCommerceEmRota = new System.Windows.Forms.Button();
             this.btnPixCommerceFinalizado = new System.Windows.Forms.Button();
             this.btnPixCommerceCancelado = new System.Windows.Forms.Button();
+            this.btnMultiPedidoCOnfirmar = new System.Windows.Forms.Button();
+            this.gridMultiPedido = new System.Windows.Forms.DataGridView();
+            this.btnMultiPedidoParar = new System.Windows.Forms.Button();
+            this.btnMultiPedidoIniciar = new System.Windows.Forms.Button();
+            this.txtMultiPedidoToken = new System.Windows.Forms.TextBox();
+            this.label109 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -579,7 +585,9 @@
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
             this.tabPagePixCommerce.SuspendLayout();
+            this.tabPageMultiPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -6341,6 +6349,12 @@
             // 
             // tabPageMultiPedido
             // 
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoCOnfirmar);
+            this.tabPageMultiPedido.Controls.Add(this.gridMultiPedido);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoParar);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoIniciar);
+            this.tabPageMultiPedido.Controls.Add(this.txtMultiPedidoToken);
+            this.tabPageMultiPedido.Controls.Add(this.label109);
             this.tabPageMultiPedido.Location = new System.Drawing.Point(4, 25);
             this.tabPageMultiPedido.Name = "tabPageMultiPedido";
             this.tabPageMultiPedido.Size = new System.Drawing.Size(1641, 846);
@@ -6477,6 +6491,75 @@
             this.btnPixCommerceCancelado.UseVisualStyleBackColor = true;
             this.btnPixCommerceCancelado.Click += new System.EventHandler(this.btnPixCommerceCancelado_Click);
             // 
+            // btnMultiPedidoCOnfirmar
+            // 
+            this.btnMultiPedidoCOnfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoCOnfirmar.Location = new System.Drawing.Point(14, 95);
+            this.btnMultiPedidoCOnfirmar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoCOnfirmar.Name = "btnMultiPedidoCOnfirmar";
+            this.btnMultiPedidoCOnfirmar.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoCOnfirmar.TabIndex = 25;
+            this.btnMultiPedidoCOnfirmar.Text = "Confirmar";
+            this.btnMultiPedidoCOnfirmar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoCOnfirmar.Click += new System.EventHandler(this.btnMultiPedidoCOnfirmar_Click);
+            // 
+            // gridMultiPedido
+            // 
+            this.gridMultiPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMultiPedido.Location = new System.Drawing.Point(14, 144);
+            this.gridMultiPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.gridMultiPedido.Name = "gridMultiPedido";
+            this.gridMultiPedido.RowHeadersWidth = 51;
+            this.gridMultiPedido.Size = new System.Drawing.Size(1612, 677);
+            this.gridMultiPedido.TabIndex = 24;
+            this.gridMultiPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMultiPedido_CellClick);
+            // 
+            // btnMultiPedidoParar
+            // 
+            this.btnMultiPedidoParar.Enabled = false;
+            this.btnMultiPedidoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoParar.Location = new System.Drawing.Point(1398, 88);
+            this.btnMultiPedidoParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoParar.Name = "btnMultiPedidoParar";
+            this.btnMultiPedidoParar.Size = new System.Drawing.Size(228, 48);
+            this.btnMultiPedidoParar.TabIndex = 23;
+            this.btnMultiPedidoParar.Text = "Parar";
+            this.btnMultiPedidoParar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoParar.Click += new System.EventHandler(this.btnMultiPedidoParar_Click);
+            // 
+            // btnMultiPedidoIniciar
+            // 
+            this.btnMultiPedidoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoIniciar.Location = new System.Drawing.Point(1398, 25);
+            this.btnMultiPedidoIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoIniciar.Name = "btnMultiPedidoIniciar";
+            this.btnMultiPedidoIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnMultiPedidoIniciar.TabIndex = 22;
+            this.btnMultiPedidoIniciar.Text = "Iniciar";
+            this.btnMultiPedidoIniciar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoIniciar.Click += new System.EventHandler(this.btnMultiPedidoIniciar_Click);
+            // 
+            // txtMultiPedidoToken
+            // 
+            this.txtMultiPedidoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMultiPedidoToken.Location = new System.Drawing.Point(181, 25);
+            this.txtMultiPedidoToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMultiPedidoToken.Name = "txtMultiPedidoToken";
+            this.txtMultiPedidoToken.Size = new System.Drawing.Size(764, 30);
+            this.txtMultiPedidoToken.TabIndex = 21;
+            this.txtMultiPedidoToken.Text = "EvhMOcsmemUkSWvzdkbglKL2oFPnadDcND5xA1GH6JMWqR7UtQPYZACny4T9LCzq";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label109.Location = new System.Drawing.Point(21, 29);
+            this.label109.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(82, 25);
+            this.label109.TabIndex = 20;
+            this.label109.Text = "TOKEN";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -6580,7 +6663,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
             this.tabPagePixCommerce.ResumeLayout(false);
             this.tabPagePixCommerce.PerformLayout();
+            this.tabPageMultiPedido.ResumeLayout(false);
+            this.tabPageMultiPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7076,6 +7162,12 @@
         private System.Windows.Forms.Button btnPixCommerceCancelado;
         private System.Windows.Forms.Button btnPixCommerceFinalizado;
         private System.Windows.Forms.Button btnPixCommerceEmRota;
+        private System.Windows.Forms.Button btnMultiPedidoCOnfirmar;
+        private System.Windows.Forms.DataGridView gridMultiPedido;
+        private System.Windows.Forms.Button btnMultiPedidoParar;
+        private System.Windows.Forms.Button btnMultiPedidoIniciar;
+        private System.Windows.Forms.TextBox txtMultiPedidoToken;
+        private System.Windows.Forms.Label label109;
     }
 }
 
