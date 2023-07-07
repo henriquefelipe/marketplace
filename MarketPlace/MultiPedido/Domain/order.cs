@@ -47,6 +47,9 @@ namespace MultiPedido.Domain
         public string name_ci { get; set; }
         public string name { get; set; }
         public order_client client { get; set; }
+        public List<order_items> items { get; set; }
         public List<order_history> history { get; set; }
+        public string car_plate { get; set; }
+        public string car_model_color { get; set; }
     }
 }
