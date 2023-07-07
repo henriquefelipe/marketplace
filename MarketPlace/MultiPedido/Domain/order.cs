@@ -46,7 +46,7 @@ namespace MultiPedido.Domain
         public decimal service_fee { get; set; }
         public string card_type { get; set; }
         public string phone { get; set; }
-        public string payment_method_operation_value { get; set; }
+        public decimal? payment_method_operation_value { get; set; }
         public string name_ci { get; set; }
         public string name { get; set; }
         public order_client client { get; set; }
