@@ -17,6 +17,7 @@ namespace MultiPedido.Domain
         public decimal? external_id { get; set; }
         public List<order_extras> extras { get; set; }
         public decimal? item_sub_total { get; set; }
+        public string ncm { get; set; }
         public string restaurant_id { get; set; }
         public bool is_weight_product { get; set; }
     }
