@@ -180,16 +180,22 @@ namespace PixCommerce.Service
             return result;
         }
 
-        public GenericSimpleResult Cancel(string orderid)
+        public GenericSimpleResult Cancel(string orderid, string motivo = "Cancelado pelo o sistema")
         {
             var result = new GenericSimpleResult();
             try
             {
+                var data = new
+                {
+                    reason = motivo
+                };                
+
                 var url = string.Format("{0}{1}{2}", Constants.URL_BASE_PRODUCAO, Constants.URL_ORDER_CANCEL, orderid);
                 var client = new RestClient(url);
-                var request = new RestRequest(Method.PUT);
+                var request = new RestRequest(Method.POST);
                 request.AddHeader("TokenAPI", _token);
                 request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {

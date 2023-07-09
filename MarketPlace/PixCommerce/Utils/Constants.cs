@@ -15,6 +15,6 @@ namespace PixCommerce.Utils
         public const string URL_ORDER = "vendas/izzyway";
         public const string URL_ORDER_CONFIRM = "vendas/izzyway/confirm/";
         public const string URL_ORDER_CHANGE = "vendas/change/";
-        public const string URL_ORDER_CANCEL = "vendas/izzyway/cancel/";
+        public const string URL_ORDER_CANCEL = "vendas/cancel/";
     }
 }
