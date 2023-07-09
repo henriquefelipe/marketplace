@@ -34,6 +34,9 @@ namespace MultiPedido.Domain
         public string table { get; set; }
         public string payment_method { get; set; }
         public string external_source { get; set; }
+        public string delivery_fee_discount_type { get; set; }
+        public decimal? delivery_fee_discount_value { get; set; }
+        public decimal? delivery_fee_net_value { get; set; }
         public string online_payment_reference { get; set; }
         public int cashier_id { get; set; }
         public decimal change { get; set; }
@@ -43,10 +46,13 @@ namespace MultiPedido.Domain
         public decimal service_fee { get; set; }
         public string card_type { get; set; }
         public string phone { get; set; }
-        public string payment_method_operation_value { get; set; }
+        public decimal? payment_method_operation_value { get; set; }
         public string name_ci { get; set; }
         public string name { get; set; }
         public order_client client { get; set; }
+        public List<order_items> items { get; set; }
         public List<order_history> history { get; set; }
+        public string car_plate { get; set; }
+        public string car_model_color { get; set; }
     }
 }

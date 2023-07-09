@@ -24,6 +24,7 @@ namespace MultiPedido.Domain
         public string name { get; set; }
         public string cpf { get; set; }
         public string street_number { get; set; }
+        public string postal_code { get; set; }
         public int id { get; set; }
         public string email { get; set; }
     }
