@@ -13,6 +13,7 @@ namespace Logaroo.Domain
         public string reference_id { get; set; }        
         public string birth { get; set; }
         public int sale_channel { get; set; }
+        public int? bag_id { get; set; }
         public string origin { get; set; }
         public string merchant_id { get; set; }
         public string city { get; set; }
