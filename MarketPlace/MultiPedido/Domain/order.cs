@@ -23,13 +23,14 @@ namespace MultiPedido.Domain
         public bool is_table { get; set; }
         public string uuid { get; set; }
         public string client_id { get; set; }
-        public decimal total_net_value { get; set; }
+        public decimal? total_net_value { get; set; }
         public string order_status { get; set; }
-        public decimal total { get; set; }
+        public decimal? total { get; set; }
         public string card_payment_method { get; set; }
         public string transmission_list_uuid { get; set; }
         public string updated_at { get; set; }
         public string delivery_type { get; set; }
+        public decimal? delivery_fee { get; set; }
         public int id { get; set; }
         public string table { get; set; }
         public string payment_method { get; set; }
@@ -39,7 +40,7 @@ namespace MultiPedido.Domain
         public decimal? delivery_fee_net_value { get; set; }
         public string online_payment_reference { get; set; }
         public int cashier_id { get; set; }
-        public decimal change { get; set; }
+        public decimal? change { get; set; }
         public string payment_status { get; set; }
         public int points_earned { get; set; }
         public decimal service_fee { get; set; }
