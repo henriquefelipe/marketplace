@@ -3,6 +3,7 @@ using Logaroo.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -31,7 +32,7 @@ namespace Logaroo.Service
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var client = new RestClient(_urlBase + Constants.URL_LOGIN);
-            var request = new RestRequest(Method.POST);           
+            var request = new RestRequest(Method.POST);
             request.AddParameter("email", email);
             request.AddParameter("password", password);
             IRestResponse response = client.Execute(request);
@@ -64,11 +65,11 @@ namespace Logaroo.Service
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-            {               
-                result.Success = true;                
+            {
+                result.Success = true;
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {                
+            {
                 result.Success = true;
             }
             else
@@ -119,10 +120,10 @@ namespace Logaroo.Service
         /// <returns></returns>
         public GenericResult<orders> Orders(string token, orderfilter filter)
         {
-            var result = new GenericResult<orders>();            
+            var result = new GenericResult<orders>();
 
             var url = string.Format("{0}{1}", _urlBase, Constants.URL_ORDERS);
-            if(!string.IsNullOrEmpty(filter.reference_id))
+            if (!string.IsNullOrEmpty(filter.reference_id))
             {
                 url += "/" + filter.reference_id;
             }
@@ -134,7 +135,7 @@ namespace Logaroo.Service
 
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));                        
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -173,7 +174,7 @@ namespace Logaroo.Service
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
-            request.RequestFormat = DataFormat.Json;            
+            request.RequestFormat = DataFormat.Json;
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -199,10 +200,10 @@ namespace Logaroo.Service
             var result = new GenericSimpleResult();
 
             var data = new
-            {                
+            {
                 status
             };
-            
+
             var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER_STATUS, id);
             var client = new RestClient(url);
             var request = new RestRequest(Method.PUT);
@@ -232,7 +233,7 @@ namespace Logaroo.Service
         {
             var result = new GenericResult<orderresult>();
 
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER, reference_id);            
+            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_ORDER, reference_id);
 
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
@@ -262,27 +263,32 @@ namespace Logaroo.Service
         public GenericResult<order_mercadoo> MercadooOrdersPendentes(string token, string store)
         {
             var result = new GenericResult<order_mercadoo>();
-
-            var url = string.Format("{0}{1}?pending=1&store_id={2}", _urlBase, Constants.URL_MERCADOO_ORDERS, store);            
-
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));            
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                result.Result = JsonConvert.DeserializeObject<order_mercadoo>(response.Content);
-                result.Success = true;
+                var url = string.Format("{0}{1}?pending=1&store_id={2}", _urlBase, Constants.URL_MERCADOO_ORDERS, store);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", string.Format("bearer {0}", token));
+                IRestResponse response = client.Execute(request);
                 result.Json = response.Content;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<order_mercadoo>(response.Content);
+                    result.Success = true;
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    result.Result = new order_mercadoo();
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + " " + response.Content;
+                }
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (Exception ex)
             {
-                result.Result = new order_mercadoo();
-                result.Success = true;
-            }
-            else
-            {
-                result.Message = response.StatusDescription + " " + response.Content;
+                result.Message = ex.Message;
             }
 
             return result;
@@ -291,22 +297,28 @@ namespace Logaroo.Service
         public GenericResult<order_orders_mercadoo> MercadooOrder(string token, string id)
         {
             var result = new GenericResult<order_orders_mercadoo>();
-
-            var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
-
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                result.Result = JsonConvert.DeserializeObject<order_orders_mercadoo>(response.Content);
-                result.Success = true;
-                result.Json = response.Content;
-            }            
-            else
+                var url = string.Format("{0}{1}/{2}", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
+
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", string.Format("bearer {0}", token));
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<order_orders_mercadoo>(response.Content);
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + " " + response.Content;
+                }
+            }
+            catch (Exception ex)
             {
-                result.Message = response.StatusDescription + " " + response.Content;
+                result.Message = ex.Message;
             }
 
             return result;
@@ -315,33 +327,38 @@ namespace Logaroo.Service
         public GenericSimpleResult MercadooOrderModerar(string token, string id, bool status)
         {
             var result = new GenericSimpleResult();
-
-            var url = string.Format("{0}{1}/{2}/moderate", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
-
-            var data = new
+            try
             {
-                status
-            };
+                var url = string.Format("{0}{1}/{2}/moderate", _urlBase, Constants.URL_MERCADOO_ORDERS, id);
 
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                var data = new
+                {
+                    status
+                };
 
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.PUT);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddHeader("Content-Type", "application/json");
-            //request.RequestFormat = DataFormat.Json;
-            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {                
-                result.Success = true;
-                result.Json = response.Content;
-            }            
-            else
-            {
-                result.Message = response.StatusDescription + " " + response.Content;
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("Authorization", string.Format("bearer {0}", token));
+                request.AddHeader("Content-Type", "application/json");
+                //request.RequestFormat = DataFormat.Json;
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + " " + response.Content;
+                }
             }
-
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
             return result;
         }
 
