@@ -52,6 +52,7 @@
     <Compile Include="Domain\adicionais.cs" />
     <Compile Include="Domain\adicionais_campo.cs" />
     <Compile Include="Domain\adicionais_campo_adicional.cs" />
+    <Compile Include="Domain\adicionais_lista.cs" />
     <Compile Include="Domain\cliente.cs" />
     <Compile Include="Domain\endereco.cs" />
     <Compile Include="Domain\item.cs" />

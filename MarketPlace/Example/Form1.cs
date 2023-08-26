@@ -6652,7 +6652,8 @@ namespace Example
                 return;
             }
 
-            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            //var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            var logarooService = new Logaroo.Service.LogarooService();
             var result = logarooService.MercadooOrdersPendentes(txtLogarooToken.Text, txtLogarooMerchantId.Text);
             if (result.Success)
             {

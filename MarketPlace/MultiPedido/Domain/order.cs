@@ -39,7 +39,7 @@ namespace MultiPedido.Domain
         public decimal? delivery_fee_discount_value { get; set; }
         public decimal? delivery_fee_net_value { get; set; }
         public string online_payment_reference { get; set; }
-        public int cashier_id { get; set; }
+        public int? cashier_id { get; set; }
         public decimal? change { get; set; }
         public string payment_status { get; set; }
         public int points_earned { get; set; }

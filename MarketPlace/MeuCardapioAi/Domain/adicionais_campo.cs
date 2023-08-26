@@ -9,6 +9,7 @@
         public int id { get; set; }
         public string template { get; set; }
         public string linkImagem { get; set; }
+        public string codigoPdv { get; set; }
         public adicionais_campo_adicional adicional { get; set; }
     }
 }

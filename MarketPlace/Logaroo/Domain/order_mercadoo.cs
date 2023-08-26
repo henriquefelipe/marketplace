@@ -52,7 +52,6 @@ namespace Logaroo.Domain
         public string created_at { get; set; }
         public string delivery_forecast { get; set; }
         public string delivery_method { get; set; }
-        public int? destiny { get; set; }
         public List<order_data_items_details_payments_mercadoo> payments { get; set; }
     }
 
