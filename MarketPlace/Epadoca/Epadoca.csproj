@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\fidelidade_adicionar_pedido.cs" />
+    <Compile Include="Domain\fidelidade_consultar_cupom.cs" />
+    <Compile Include="Domain\fidelidade_status_retorno.cs" />
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\store.cs" />

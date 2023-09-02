@@ -205,6 +205,10 @@
       <Project>{dd7b2f3a-2797-48a2-af86-bde6e490c13d}</Project>
       <Name>Servit</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Simbora\Simbora.csproj">
+      <Project>{56149c04-43d3-4a3b-9ee0-b69f7b0a92c8}</Project>
+      <Name>Simbora</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SuperMenu\SuperMenu.csproj">
       <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
       <Name>SuperMenu</Name>

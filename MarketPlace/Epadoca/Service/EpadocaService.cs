@@ -231,5 +231,163 @@ namespace Epadoca.Service
 
             return result;
         }
-    }   
+
+
+        #region Fidelidade
+
+        public GenericResult<List<fidelidade_status_retorno>> FidelidadeStatus(string token, string codigo, string nome, string email, string celular, string documento)
+        {
+            var result = new GenericResult<List<fidelidade_status_retorno>>();
+
+            var data = new
+            {
+                codigo,
+                nome,
+                email,
+                celular,
+                documento
+            };
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_STATUS);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<List<fidelidade_status_retorno>>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericResult<fidelidade_consultar_cupom> FidelidadeConsultarCupom(string token, string cupom)
+        {
+            var result = new GenericResult<fidelidade_consultar_cupom>();
+
+            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_CONSULTAR_CUPOM, cupom);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));            
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<fidelidade_consultar_cupom>(response.Content);
+                result.Success = true;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult FidelidadeUtilizarCupom(string token, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                codigoExterno,
+                nome,
+                email,
+                celular,
+                documento
+            };
+
+            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM, cupom);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                if(response.Content == "Cupom Utilizado")
+                    result.Success = true;
+                else
+                    result.Message = response.Content;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult FidelidadeUtilizarCupomManual(string token, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                codigoExterno,
+                nome,
+                email,
+                celular,
+                documento
+            };
+
+            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM_MANUAL, cupom);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                if (response.Content == "Cupom Utilizado")
+                    result.Success = true;
+                else
+                    result.Message = response.Content;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        public GenericSimpleResult FidelidadeAdicionarPedido(string token, fidelidade_adicionar_pedido model)
+        {
+            var result = new GenericSimpleResult();            
+
+            var url = string.Format("{0}{1}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_PEDIDO);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
+            request.AddParameter("application/json", JsonConvert.SerializeObject(model), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                if (response.Content == "Cupom Utilizado")
+                    result.Success = true;
+                else
+                    result.Message = response.Content;
+                result.Json = response.Content;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+
+            return result;
+        }
+
+        #endregion
+    }
+
 }

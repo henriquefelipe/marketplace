@@ -220,6 +220,10 @@
             this.btnDeliveryDiretoParar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoIniciar = new System.Windows.Forms.Button();
             this.tabPageEpadoca = new System.Windows.Forms.TabPage();
+            this.btnEpadocaUtilizarCupom = new System.Windows.Forms.Button();
+            this.btnEpadocaStatusCupom = new System.Windows.Forms.Button();
+            this.btnEpadocaFazerPedido = new System.Windows.Forms.Button();
+            this.label110 = new System.Windows.Forms.Label();
             this.btnEpadocaDisponivelParaRetirada = new System.Windows.Forms.Button();
             this.btnEpadocaSaiuParaEntrega = new System.Windows.Forms.Button();
             this.btnEpadocaEntregue = new System.Windows.Forms.Button();
@@ -388,6 +392,13 @@
             this.txtLogarooMerchantId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.tabPageMultiPedido = new System.Windows.Forms.TabPage();
+            this.btnMultiPedidoCOnfirmar = new System.Windows.Forms.Button();
+            this.gridMultiPedido = new System.Windows.Forms.DataGridView();
+            this.btnMultiPedidoParar = new System.Windows.Forms.Button();
+            this.btnMultiPedidoIniciar = new System.Windows.Forms.Button();
+            this.txtMultiPedidoToken = new System.Windows.Forms.TextBox();
+            this.label109 = new System.Windows.Forms.Label();
             this.tabPageOnPedido = new System.Windows.Forms.TabPage();
             this.btnOnPedidoCancelado = new System.Windows.Forms.Button();
             this.btnOnPedidoEntregue = new System.Windows.Forms.Button();
@@ -412,6 +423,18 @@
             this.btnPedZapIniciar = new System.Windows.Forms.Button();
             this.txtPedZapToken = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.tabPagePixCommerce = new System.Windows.Forms.TabPage();
+            this.btnPixCommerceCancelado = new System.Windows.Forms.Button();
+            this.btnPixCommerceFinalizado = new System.Windows.Forms.Button();
+            this.btnPixCommerceEmRota = new System.Windows.Forms.Button();
+            this.btnPixCommerceEmProducao = new System.Windows.Forms.Button();
+            this.btnPixCommerceCOnfirmar = new System.Windows.Forms.Button();
+            this.btnPixCommerceBuscarPedido = new System.Windows.Forms.Button();
+            this.gridPixCommerce = new System.Windows.Forms.DataGridView();
+            this.btnPixCommerceParar = new System.Windows.Forms.Button();
+            this.btnPixCommerceIniciar = new System.Windows.Forms.Button();
+            this.txtPixCommerceToken = new System.Windows.Forms.TextBox();
+            this.label108 = new System.Windows.Forms.Label();
             this.tabPageQueroDelivery = new System.Windows.Forms.TabPage();
             this.btnQuerodeliveryConcluído = new System.Windows.Forms.Button();
             this.btnQuerodeliveryCancelar = new System.Windows.Forms.Button();
@@ -505,25 +528,12 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.tabPagePixCommerce = new System.Windows.Forms.TabPage();
-            this.tabPageMultiPedido = new System.Windows.Forms.TabPage();
-            this.btnPixCommerceBuscarPedido = new System.Windows.Forms.Button();
-            this.gridPixCommerce = new System.Windows.Forms.DataGridView();
-            this.btnPixCommerceParar = new System.Windows.Forms.Button();
-            this.btnPixCommerceIniciar = new System.Windows.Forms.Button();
-            this.txtPixCommerceToken = new System.Windows.Forms.TextBox();
-            this.label108 = new System.Windows.Forms.Label();
-            this.btnPixCommerceEmProducao = new System.Windows.Forms.Button();
-            this.btnPixCommerceCOnfirmar = new System.Windows.Forms.Button();
-            this.btnPixCommerceEmRota = new System.Windows.Forms.Button();
-            this.btnPixCommerceFinalizado = new System.Windows.Forms.Button();
-            this.btnPixCommerceCancelado = new System.Windows.Forms.Button();
-            this.btnMultiPedidoCOnfirmar = new System.Windows.Forms.Button();
-            this.gridMultiPedido = new System.Windows.Forms.DataGridView();
-            this.btnMultiPedidoParar = new System.Windows.Forms.Button();
-            this.btnMultiPedidoIniciar = new System.Windows.Forms.Button();
-            this.txtMultiPedidoToken = new System.Windows.Forms.TextBox();
-            this.label109 = new System.Windows.Forms.Label();
+            this.tabPageSimbora = new System.Windows.Forms.TabPage();
+            this.txtSimboraToken = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.btnSimboraFazerPedido = new System.Windows.Forms.Button();
+            this.btnSimboraConsultarPedido = new System.Windows.Forms.Button();
+            this.btnSimboraCOnfirmarPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -568,10 +578,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridMeuCardapioAi)).BeginInit();
             this.tabPageLogaroo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).BeginInit();
+            this.tabPageMultiPedido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).BeginInit();
             this.tabPageOnPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).BeginInit();
             this.tabPagePedZap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
+            this.tabPagePixCommerce.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
             this.tabPageQueroDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuerodelivery)).BeginInit();
             this.tabPageRappi.SuspendLayout();
@@ -584,10 +598,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPagePixCommerce.SuspendLayout();
-            this.tabPageMultiPedido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).BeginInit();
+            this.tabPageSimbora.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -620,6 +631,7 @@
             this.tabControl1.Controls.Add(this.tabPageQueroDelivery);
             this.tabControl1.Controls.Add(this.tabPageRappi);
             this.tabControl1.Controls.Add(this.tabPageServit);
+            this.tabControl1.Controls.Add(this.tabPageSimbora);
             this.tabControl1.Controls.Add(this.tabPageSuperMenu);
             this.tabControl1.Controls.Add(this.tabPageUberEats);
             this.tabControl1.Controls.Add(this.tabPageWoocommerce);
@@ -2891,6 +2903,10 @@
             // 
             // tabPageEpadoca
             // 
+            this.tabPageEpadoca.Controls.Add(this.btnEpadocaUtilizarCupom);
+            this.tabPageEpadoca.Controls.Add(this.btnEpadocaStatusCupom);
+            this.tabPageEpadoca.Controls.Add(this.btnEpadocaFazerPedido);
+            this.tabPageEpadoca.Controls.Add(this.label110);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaDisponivelParaRetirada);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaSaiuParaEntrega);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaEntregue);
@@ -2917,6 +2933,53 @@
             this.tabPageEpadoca.TabIndex = 19;
             this.tabPageEpadoca.Text = "Epadoca";
             this.tabPageEpadoca.UseVisualStyleBackColor = true;
+            // 
+            // btnEpadocaUtilizarCupom
+            // 
+            this.btnEpadocaUtilizarCupom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaUtilizarCupom.Location = new System.Drawing.Point(830, 333);
+            this.btnEpadocaUtilizarCupom.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEpadocaUtilizarCupom.Name = "btnEpadocaUtilizarCupom";
+            this.btnEpadocaUtilizarCupom.Size = new System.Drawing.Size(193, 41);
+            this.btnEpadocaUtilizarCupom.TabIndex = 60;
+            this.btnEpadocaUtilizarCupom.Text = "Utilizar Cupom";
+            this.btnEpadocaUtilizarCupom.UseVisualStyleBackColor = true;
+            this.btnEpadocaUtilizarCupom.Click += new System.EventHandler(this.btnEpadocaUtilizarCupom_Click);
+            // 
+            // btnEpadocaStatusCupom
+            // 
+            this.btnEpadocaStatusCupom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaStatusCupom.Location = new System.Drawing.Point(629, 333);
+            this.btnEpadocaStatusCupom.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEpadocaStatusCupom.Name = "btnEpadocaStatusCupom";
+            this.btnEpadocaStatusCupom.Size = new System.Drawing.Size(193, 41);
+            this.btnEpadocaStatusCupom.TabIndex = 59;
+            this.btnEpadocaStatusCupom.Text = "Status Cupom";
+            this.btnEpadocaStatusCupom.UseVisualStyleBackColor = true;
+            this.btnEpadocaStatusCupom.Click += new System.EventHandler(this.btnEpadocaStatusCupom_Click);
+            // 
+            // btnEpadocaFazerPedido
+            // 
+            this.btnEpadocaFazerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaFazerPedido.Location = new System.Drawing.Point(1049, 333);
+            this.btnEpadocaFazerPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEpadocaFazerPedido.Name = "btnEpadocaFazerPedido";
+            this.btnEpadocaFazerPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnEpadocaFazerPedido.TabIndex = 58;
+            this.btnEpadocaFazerPedido.Text = "Fazer Pedido";
+            this.btnEpadocaFazerPedido.UseVisualStyleBackColor = true;
+            this.btnEpadocaFazerPedido.Click += new System.EventHandler(this.btnEpadocaFazerPedido_Click);
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label110.Location = new System.Drawing.Point(669, 265);
+            this.label110.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(166, 38);
+            this.label110.TabIndex = 57;
+            this.label110.Text = "Fidelidade";
             // 
             // btnEpadocaDisponivelParaRetirada
             // 
@@ -3054,11 +3117,11 @@
             // gridEpadoca
             // 
             this.gridEpadoca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridEpadoca.Location = new System.Drawing.Point(11, 204);
+            this.gridEpadoca.Location = new System.Drawing.Point(11, 382);
             this.gridEpadoca.Margin = new System.Windows.Forms.Padding(4);
             this.gridEpadoca.Name = "gridEpadoca";
             this.gridEpadoca.RowHeadersWidth = 51;
-            this.gridEpadoca.Size = new System.Drawing.Size(1617, 617);
+            this.gridEpadoca.Size = new System.Drawing.Size(1617, 439);
             this.gridEpadoca.TabIndex = 44;
             this.gridEpadoca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridEpadoca_CellClick);
             // 
@@ -4911,6 +4974,90 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "Email";
             // 
+            // tabPageMultiPedido
+            // 
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoCOnfirmar);
+            this.tabPageMultiPedido.Controls.Add(this.gridMultiPedido);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoParar);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoIniciar);
+            this.tabPageMultiPedido.Controls.Add(this.txtMultiPedidoToken);
+            this.tabPageMultiPedido.Controls.Add(this.label109);
+            this.tabPageMultiPedido.Location = new System.Drawing.Point(4, 25);
+            this.tabPageMultiPedido.Name = "tabPageMultiPedido";
+            this.tabPageMultiPedido.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageMultiPedido.TabIndex = 30;
+            this.tabPageMultiPedido.Text = "Multi Pedido";
+            this.tabPageMultiPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnMultiPedidoCOnfirmar
+            // 
+            this.btnMultiPedidoCOnfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoCOnfirmar.Location = new System.Drawing.Point(14, 95);
+            this.btnMultiPedidoCOnfirmar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoCOnfirmar.Name = "btnMultiPedidoCOnfirmar";
+            this.btnMultiPedidoCOnfirmar.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoCOnfirmar.TabIndex = 25;
+            this.btnMultiPedidoCOnfirmar.Text = "Confirmar";
+            this.btnMultiPedidoCOnfirmar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoCOnfirmar.Click += new System.EventHandler(this.btnMultiPedidoCOnfirmar_Click);
+            // 
+            // gridMultiPedido
+            // 
+            this.gridMultiPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMultiPedido.Location = new System.Drawing.Point(14, 144);
+            this.gridMultiPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.gridMultiPedido.Name = "gridMultiPedido";
+            this.gridMultiPedido.RowHeadersWidth = 51;
+            this.gridMultiPedido.Size = new System.Drawing.Size(1612, 677);
+            this.gridMultiPedido.TabIndex = 24;
+            this.gridMultiPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMultiPedido_CellClick);
+            // 
+            // btnMultiPedidoParar
+            // 
+            this.btnMultiPedidoParar.Enabled = false;
+            this.btnMultiPedidoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoParar.Location = new System.Drawing.Point(1398, 88);
+            this.btnMultiPedidoParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoParar.Name = "btnMultiPedidoParar";
+            this.btnMultiPedidoParar.Size = new System.Drawing.Size(228, 48);
+            this.btnMultiPedidoParar.TabIndex = 23;
+            this.btnMultiPedidoParar.Text = "Parar";
+            this.btnMultiPedidoParar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoParar.Click += new System.EventHandler(this.btnMultiPedidoParar_Click);
+            // 
+            // btnMultiPedidoIniciar
+            // 
+            this.btnMultiPedidoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoIniciar.Location = new System.Drawing.Point(1398, 25);
+            this.btnMultiPedidoIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoIniciar.Name = "btnMultiPedidoIniciar";
+            this.btnMultiPedidoIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnMultiPedidoIniciar.TabIndex = 22;
+            this.btnMultiPedidoIniciar.Text = "Iniciar";
+            this.btnMultiPedidoIniciar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoIniciar.Click += new System.EventHandler(this.btnMultiPedidoIniciar_Click);
+            // 
+            // txtMultiPedidoToken
+            // 
+            this.txtMultiPedidoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMultiPedidoToken.Location = new System.Drawing.Point(181, 25);
+            this.txtMultiPedidoToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMultiPedidoToken.Name = "txtMultiPedidoToken";
+            this.txtMultiPedidoToken.Size = new System.Drawing.Size(764, 30);
+            this.txtMultiPedidoToken.TabIndex = 21;
+            this.txtMultiPedidoToken.Text = "EvhMOcsmemUkSWvzdkbglKL2oFPnadDcND5xA1GH6JMWqR7UtQPYZACny4T9LCzq";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label109.Location = new System.Drawing.Point(21, 29);
+            this.label109.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(82, 25);
+            this.label109.TabIndex = 20;
+            this.label109.Text = "TOKEN";
+            // 
             // tabPageOnPedido
             // 
             this.tabPageOnPedido.Controls.Add(this.btnOnPedidoCancelado);
@@ -5209,6 +5356,155 @@
             this.label13.Size = new System.Drawing.Size(82, 25);
             this.label13.TabIndex = 8;
             this.label13.Text = "TOKEN";
+            // 
+            // tabPagePixCommerce
+            // 
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceCancelado);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceFinalizado);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceEmRota);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceEmProducao);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceCOnfirmar);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceBuscarPedido);
+            this.tabPagePixCommerce.Controls.Add(this.gridPixCommerce);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceParar);
+            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceIniciar);
+            this.tabPagePixCommerce.Controls.Add(this.txtPixCommerceToken);
+            this.tabPagePixCommerce.Controls.Add(this.label108);
+            this.tabPagePixCommerce.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePixCommerce.Name = "tabPagePixCommerce";
+            this.tabPagePixCommerce.Size = new System.Drawing.Size(1641, 846);
+            this.tabPagePixCommerce.TabIndex = 29;
+            this.tabPagePixCommerce.Text = "PixCommerce";
+            this.tabPagePixCommerce.UseVisualStyleBackColor = true;
+            // 
+            // btnPixCommerceCancelado
+            // 
+            this.btnPixCommerceCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceCancelado.Location = new System.Drawing.Point(623, 462);
+            this.btnPixCommerceCancelado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceCancelado.Name = "btnPixCommerceCancelado";
+            this.btnPixCommerceCancelado.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceCancelado.TabIndex = 24;
+            this.btnPixCommerceCancelado.Text = "Cancelar";
+            this.btnPixCommerceCancelado.UseVisualStyleBackColor = true;
+            this.btnPixCommerceCancelado.Click += new System.EventHandler(this.btnPixCommerceCancelado_Click);
+            // 
+            // btnPixCommerceFinalizado
+            // 
+            this.btnPixCommerceFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceFinalizado.Location = new System.Drawing.Point(1245, 403);
+            this.btnPixCommerceFinalizado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceFinalizado.Name = "btnPixCommerceFinalizado";
+            this.btnPixCommerceFinalizado.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceFinalizado.TabIndex = 23;
+            this.btnPixCommerceFinalizado.Text = "Finalizado";
+            this.btnPixCommerceFinalizado.UseVisualStyleBackColor = true;
+            this.btnPixCommerceFinalizado.Click += new System.EventHandler(this.btnPixCommerceFinalizado_Click);
+            // 
+            // btnPixCommerceEmRota
+            // 
+            this.btnPixCommerceEmRota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceEmRota.Location = new System.Drawing.Point(1026, 403);
+            this.btnPixCommerceEmRota.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceEmRota.Name = "btnPixCommerceEmRota";
+            this.btnPixCommerceEmRota.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceEmRota.TabIndex = 22;
+            this.btnPixCommerceEmRota.Text = "Em Rota";
+            this.btnPixCommerceEmRota.UseVisualStyleBackColor = true;
+            this.btnPixCommerceEmRota.Click += new System.EventHandler(this.btnPixCommerceEmRota_Click);
+            // 
+            // btnPixCommerceEmProducao
+            // 
+            this.btnPixCommerceEmProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceEmProducao.Location = new System.Drawing.Point(825, 403);
+            this.btnPixCommerceEmProducao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceEmProducao.Name = "btnPixCommerceEmProducao";
+            this.btnPixCommerceEmProducao.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceEmProducao.TabIndex = 21;
+            this.btnPixCommerceEmProducao.Text = "Em Produção";
+            this.btnPixCommerceEmProducao.UseVisualStyleBackColor = true;
+            this.btnPixCommerceEmProducao.Click += new System.EventHandler(this.btnPixCommerceEmProducao_Click);
+            // 
+            // btnPixCommerceCOnfirmar
+            // 
+            this.btnPixCommerceCOnfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceCOnfirmar.Location = new System.Drawing.Point(623, 403);
+            this.btnPixCommerceCOnfirmar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceCOnfirmar.Name = "btnPixCommerceCOnfirmar";
+            this.btnPixCommerceCOnfirmar.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceCOnfirmar.TabIndex = 20;
+            this.btnPixCommerceCOnfirmar.Text = "Confirmar";
+            this.btnPixCommerceCOnfirmar.UseVisualStyleBackColor = true;
+            this.btnPixCommerceCOnfirmar.Click += new System.EventHandler(this.btnPixCommerceCOnfirmar_Click);
+            // 
+            // btnPixCommerceBuscarPedido
+            // 
+            this.btnPixCommerceBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceBuscarPedido.Location = new System.Drawing.Point(14, 95);
+            this.btnPixCommerceBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceBuscarPedido.Name = "btnPixCommerceBuscarPedido";
+            this.btnPixCommerceBuscarPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnPixCommerceBuscarPedido.TabIndex = 19;
+            this.btnPixCommerceBuscarPedido.Text = "Buscar Pedido";
+            this.btnPixCommerceBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnPixCommerceBuscarPedido.Click += new System.EventHandler(this.btnPixCommerceBuscarPedido_Click);
+            // 
+            // gridPixCommerce
+            // 
+            this.gridPixCommerce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPixCommerce.Location = new System.Drawing.Point(14, 144);
+            this.gridPixCommerce.Margin = new System.Windows.Forms.Padding(4);
+            this.gridPixCommerce.Name = "gridPixCommerce";
+            this.gridPixCommerce.RowHeadersWidth = 51;
+            this.gridPixCommerce.Size = new System.Drawing.Size(1612, 677);
+            this.gridPixCommerce.TabIndex = 18;
+            this.gridPixCommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPixCommerce_CellClick);
+            // 
+            // btnPixCommerceParar
+            // 
+            this.btnPixCommerceParar.Enabled = false;
+            this.btnPixCommerceParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceParar.Location = new System.Drawing.Point(1398, 88);
+            this.btnPixCommerceParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceParar.Name = "btnPixCommerceParar";
+            this.btnPixCommerceParar.Size = new System.Drawing.Size(228, 48);
+            this.btnPixCommerceParar.TabIndex = 17;
+            this.btnPixCommerceParar.Text = "Parar";
+            this.btnPixCommerceParar.UseVisualStyleBackColor = true;
+            this.btnPixCommerceParar.Click += new System.EventHandler(this.btnPixCommerceParar_Click);
+            // 
+            // btnPixCommerceIniciar
+            // 
+            this.btnPixCommerceIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixCommerceIniciar.Location = new System.Drawing.Point(1398, 25);
+            this.btnPixCommerceIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPixCommerceIniciar.Name = "btnPixCommerceIniciar";
+            this.btnPixCommerceIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnPixCommerceIniciar.TabIndex = 16;
+            this.btnPixCommerceIniciar.Text = "Iniciar";
+            this.btnPixCommerceIniciar.UseVisualStyleBackColor = true;
+            this.btnPixCommerceIniciar.Click += new System.EventHandler(this.btnPixCommerceIniciar_Click);
+            // 
+            // txtPixCommerceToken
+            // 
+            this.txtPixCommerceToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPixCommerceToken.Location = new System.Drawing.Point(181, 25);
+            this.txtPixCommerceToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPixCommerceToken.Name = "txtPixCommerceToken";
+            this.txtPixCommerceToken.Size = new System.Drawing.Size(764, 30);
+            this.txtPixCommerceToken.TabIndex = 15;
+            this.txtPixCommerceToken.Text = "a5e3ec94bfcf2b4d6104f5eea12c721a";
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label108.Location = new System.Drawing.Point(21, 29);
+            this.label108.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(82, 25);
+            this.label108.TabIndex = 14;
+            this.label108.Text = "TOKEN";
             // 
             // tabPageQueroDelivery
             // 
@@ -6327,238 +6623,73 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // tabPagePixCommerce
+            // tabPageSimbora
             // 
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceCancelado);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceFinalizado);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceEmRota);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceEmProducao);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceCOnfirmar);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceBuscarPedido);
-            this.tabPagePixCommerce.Controls.Add(this.gridPixCommerce);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceParar);
-            this.tabPagePixCommerce.Controls.Add(this.btnPixCommerceIniciar);
-            this.tabPagePixCommerce.Controls.Add(this.txtPixCommerceToken);
-            this.tabPagePixCommerce.Controls.Add(this.label108);
-            this.tabPagePixCommerce.Location = new System.Drawing.Point(4, 25);
-            this.tabPagePixCommerce.Name = "tabPagePixCommerce";
-            this.tabPagePixCommerce.Size = new System.Drawing.Size(1641, 846);
-            this.tabPagePixCommerce.TabIndex = 29;
-            this.tabPagePixCommerce.Text = "PixCommerce";
-            this.tabPagePixCommerce.UseVisualStyleBackColor = true;
+            this.tabPageSimbora.Controls.Add(this.btnSimboraCOnfirmarPedido);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraConsultarPedido);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraFazerPedido);
+            this.tabPageSimbora.Controls.Add(this.txtSimboraToken);
+            this.tabPageSimbora.Controls.Add(this.label113);
+            this.tabPageSimbora.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSimbora.Name = "tabPageSimbora";
+            this.tabPageSimbora.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageSimbora.TabIndex = 31;
+            this.tabPageSimbora.Text = "Simbora";
+            this.tabPageSimbora.UseVisualStyleBackColor = true;
             // 
-            // tabPageMultiPedido
+            // txtSimboraToken
             // 
-            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoCOnfirmar);
-            this.tabPageMultiPedido.Controls.Add(this.gridMultiPedido);
-            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoParar);
-            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoIniciar);
-            this.tabPageMultiPedido.Controls.Add(this.txtMultiPedidoToken);
-            this.tabPageMultiPedido.Controls.Add(this.label109);
-            this.tabPageMultiPedido.Location = new System.Drawing.Point(4, 25);
-            this.tabPageMultiPedido.Name = "tabPageMultiPedido";
-            this.tabPageMultiPedido.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageMultiPedido.TabIndex = 30;
-            this.tabPageMultiPedido.Text = "Multi Pedido";
-            this.tabPageMultiPedido.UseVisualStyleBackColor = true;
+            this.txtSimboraToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSimboraToken.Location = new System.Drawing.Point(758, 332);
+            this.txtSimboraToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSimboraToken.Name = "txtSimboraToken";
+            this.txtSimboraToken.Size = new System.Drawing.Size(679, 30);
+            this.txtSimboraToken.TabIndex = 47;
+            this.txtSimboraToken.Text = resources.GetString("txtSimboraToken.Text");
             // 
-            // btnPixCommerceBuscarPedido
+            // label113
             // 
-            this.btnPixCommerceBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceBuscarPedido.Location = new System.Drawing.Point(14, 95);
-            this.btnPixCommerceBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceBuscarPedido.Name = "btnPixCommerceBuscarPedido";
-            this.btnPixCommerceBuscarPedido.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceBuscarPedido.TabIndex = 19;
-            this.btnPixCommerceBuscarPedido.Text = "Buscar Pedido";
-            this.btnPixCommerceBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnPixCommerceBuscarPedido.Click += new System.EventHandler(this.btnPixCommerceBuscarPedido_Click);
+            this.label113.AutoSize = true;
+            this.label113.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label113.Location = new System.Drawing.Point(643, 335);
+            this.label113.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(85, 31);
+            this.label113.TabIndex = 46;
+            this.label113.Text = "Token";
             // 
-            // gridPixCommerce
+            // btnSimboraFazerPedido
             // 
-            this.gridPixCommerce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPixCommerce.Location = new System.Drawing.Point(14, 144);
-            this.gridPixCommerce.Margin = new System.Windows.Forms.Padding(4);
-            this.gridPixCommerce.Name = "gridPixCommerce";
-            this.gridPixCommerce.RowHeadersWidth = 51;
-            this.gridPixCommerce.Size = new System.Drawing.Size(1612, 677);
-            this.gridPixCommerce.TabIndex = 18;
-            this.gridPixCommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPixCommerce_CellClick);
+            this.btnSimboraFazerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraFazerPedido.Location = new System.Drawing.Point(648, 399);
+            this.btnSimboraFazerPedido.Name = "btnSimboraFazerPedido";
+            this.btnSimboraFazerPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraFazerPedido.TabIndex = 48;
+            this.btnSimboraFazerPedido.Text = "Fazer Pedido";
+            this.btnSimboraFazerPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraFazerPedido.Click += new System.EventHandler(this.btnSimboraFazerPedido_Click);
             // 
-            // btnPixCommerceParar
+            // btnSimboraConsultarPedido
             // 
-            this.btnPixCommerceParar.Enabled = false;
-            this.btnPixCommerceParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceParar.Location = new System.Drawing.Point(1398, 88);
-            this.btnPixCommerceParar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceParar.Name = "btnPixCommerceParar";
-            this.btnPixCommerceParar.Size = new System.Drawing.Size(228, 48);
-            this.btnPixCommerceParar.TabIndex = 17;
-            this.btnPixCommerceParar.Text = "Parar";
-            this.btnPixCommerceParar.UseVisualStyleBackColor = true;
-            this.btnPixCommerceParar.Click += new System.EventHandler(this.btnPixCommerceParar_Click);
+            this.btnSimboraConsultarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConsultarPedido.Location = new System.Drawing.Point(849, 399);
+            this.btnSimboraConsultarPedido.Name = "btnSimboraConsultarPedido";
+            this.btnSimboraConsultarPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraConsultarPedido.TabIndex = 49;
+            this.btnSimboraConsultarPedido.Text = "Consultar Pedido";
+            this.btnSimboraConsultarPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraConsultarPedido.Click += new System.EventHandler(this.btnSimboraConsultarPedido_Click);
             // 
-            // btnPixCommerceIniciar
+            // btnSimboraCOnfirmarPedido
             // 
-            this.btnPixCommerceIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceIniciar.Location = new System.Drawing.Point(1398, 25);
-            this.btnPixCommerceIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceIniciar.Name = "btnPixCommerceIniciar";
-            this.btnPixCommerceIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnPixCommerceIniciar.TabIndex = 16;
-            this.btnPixCommerceIniciar.Text = "Iniciar";
-            this.btnPixCommerceIniciar.UseVisualStyleBackColor = true;
-            this.btnPixCommerceIniciar.Click += new System.EventHandler(this.btnPixCommerceIniciar_Click);
-            // 
-            // txtPixCommerceToken
-            // 
-            this.txtPixCommerceToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPixCommerceToken.Location = new System.Drawing.Point(181, 25);
-            this.txtPixCommerceToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPixCommerceToken.Name = "txtPixCommerceToken";
-            this.txtPixCommerceToken.Size = new System.Drawing.Size(764, 30);
-            this.txtPixCommerceToken.TabIndex = 15;
-            this.txtPixCommerceToken.Text = "a5e3ec94bfcf2b4d6104f5eea12c721a";
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label108.Location = new System.Drawing.Point(21, 29);
-            this.label108.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(82, 25);
-            this.label108.TabIndex = 14;
-            this.label108.Text = "TOKEN";
-            // 
-            // btnPixCommerceEmProducao
-            // 
-            this.btnPixCommerceEmProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceEmProducao.Location = new System.Drawing.Point(825, 403);
-            this.btnPixCommerceEmProducao.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceEmProducao.Name = "btnPixCommerceEmProducao";
-            this.btnPixCommerceEmProducao.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceEmProducao.TabIndex = 21;
-            this.btnPixCommerceEmProducao.Text = "Em Produção";
-            this.btnPixCommerceEmProducao.UseVisualStyleBackColor = true;
-            this.btnPixCommerceEmProducao.Click += new System.EventHandler(this.btnPixCommerceEmProducao_Click);
-            // 
-            // btnPixCommerceCOnfirmar
-            // 
-            this.btnPixCommerceCOnfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceCOnfirmar.Location = new System.Drawing.Point(623, 403);
-            this.btnPixCommerceCOnfirmar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceCOnfirmar.Name = "btnPixCommerceCOnfirmar";
-            this.btnPixCommerceCOnfirmar.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceCOnfirmar.TabIndex = 20;
-            this.btnPixCommerceCOnfirmar.Text = "Confirmar";
-            this.btnPixCommerceCOnfirmar.UseVisualStyleBackColor = true;
-            this.btnPixCommerceCOnfirmar.Click += new System.EventHandler(this.btnPixCommerceCOnfirmar_Click);
-            // 
-            // btnPixCommerceEmRota
-            // 
-            this.btnPixCommerceEmRota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceEmRota.Location = new System.Drawing.Point(1026, 403);
-            this.btnPixCommerceEmRota.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceEmRota.Name = "btnPixCommerceEmRota";
-            this.btnPixCommerceEmRota.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceEmRota.TabIndex = 22;
-            this.btnPixCommerceEmRota.Text = "Em Rota";
-            this.btnPixCommerceEmRota.UseVisualStyleBackColor = true;
-            this.btnPixCommerceEmRota.Click += new System.EventHandler(this.btnPixCommerceEmRota_Click);
-            // 
-            // btnPixCommerceFinalizado
-            // 
-            this.btnPixCommerceFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceFinalizado.Location = new System.Drawing.Point(1245, 403);
-            this.btnPixCommerceFinalizado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceFinalizado.Name = "btnPixCommerceFinalizado";
-            this.btnPixCommerceFinalizado.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceFinalizado.TabIndex = 23;
-            this.btnPixCommerceFinalizado.Text = "Finalizado";
-            this.btnPixCommerceFinalizado.UseVisualStyleBackColor = true;
-            this.btnPixCommerceFinalizado.Click += new System.EventHandler(this.btnPixCommerceFinalizado_Click);
-            // 
-            // btnPixCommerceCancelado
-            // 
-            this.btnPixCommerceCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixCommerceCancelado.Location = new System.Drawing.Point(623, 462);
-            this.btnPixCommerceCancelado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPixCommerceCancelado.Name = "btnPixCommerceCancelado";
-            this.btnPixCommerceCancelado.Size = new System.Drawing.Size(193, 41);
-            this.btnPixCommerceCancelado.TabIndex = 24;
-            this.btnPixCommerceCancelado.Text = "Cancelar";
-            this.btnPixCommerceCancelado.UseVisualStyleBackColor = true;
-            this.btnPixCommerceCancelado.Click += new System.EventHandler(this.btnPixCommerceCancelado_Click);
-            // 
-            // btnMultiPedidoCOnfirmar
-            // 
-            this.btnMultiPedidoCOnfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiPedidoCOnfirmar.Location = new System.Drawing.Point(14, 95);
-            this.btnMultiPedidoCOnfirmar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMultiPedidoCOnfirmar.Name = "btnMultiPedidoCOnfirmar";
-            this.btnMultiPedidoCOnfirmar.Size = new System.Drawing.Size(193, 41);
-            this.btnMultiPedidoCOnfirmar.TabIndex = 25;
-            this.btnMultiPedidoCOnfirmar.Text = "Confirmar";
-            this.btnMultiPedidoCOnfirmar.UseVisualStyleBackColor = true;
-            this.btnMultiPedidoCOnfirmar.Click += new System.EventHandler(this.btnMultiPedidoCOnfirmar_Click);
-            // 
-            // gridMultiPedido
-            // 
-            this.gridMultiPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridMultiPedido.Location = new System.Drawing.Point(14, 144);
-            this.gridMultiPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.gridMultiPedido.Name = "gridMultiPedido";
-            this.gridMultiPedido.RowHeadersWidth = 51;
-            this.gridMultiPedido.Size = new System.Drawing.Size(1612, 677);
-            this.gridMultiPedido.TabIndex = 24;
-            this.gridMultiPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMultiPedido_CellClick);
-            // 
-            // btnMultiPedidoParar
-            // 
-            this.btnMultiPedidoParar.Enabled = false;
-            this.btnMultiPedidoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiPedidoParar.Location = new System.Drawing.Point(1398, 88);
-            this.btnMultiPedidoParar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMultiPedidoParar.Name = "btnMultiPedidoParar";
-            this.btnMultiPedidoParar.Size = new System.Drawing.Size(228, 48);
-            this.btnMultiPedidoParar.TabIndex = 23;
-            this.btnMultiPedidoParar.Text = "Parar";
-            this.btnMultiPedidoParar.UseVisualStyleBackColor = true;
-            this.btnMultiPedidoParar.Click += new System.EventHandler(this.btnMultiPedidoParar_Click);
-            // 
-            // btnMultiPedidoIniciar
-            // 
-            this.btnMultiPedidoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiPedidoIniciar.Location = new System.Drawing.Point(1398, 25);
-            this.btnMultiPedidoIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMultiPedidoIniciar.Name = "btnMultiPedidoIniciar";
-            this.btnMultiPedidoIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnMultiPedidoIniciar.TabIndex = 22;
-            this.btnMultiPedidoIniciar.Text = "Iniciar";
-            this.btnMultiPedidoIniciar.UseVisualStyleBackColor = true;
-            this.btnMultiPedidoIniciar.Click += new System.EventHandler(this.btnMultiPedidoIniciar_Click);
-            // 
-            // txtMultiPedidoToken
-            // 
-            this.txtMultiPedidoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMultiPedidoToken.Location = new System.Drawing.Point(181, 25);
-            this.txtMultiPedidoToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMultiPedidoToken.Name = "txtMultiPedidoToken";
-            this.txtMultiPedidoToken.Size = new System.Drawing.Size(764, 30);
-            this.txtMultiPedidoToken.TabIndex = 21;
-            this.txtMultiPedidoToken.Text = "EvhMOcsmemUkSWvzdkbglKL2oFPnadDcND5xA1GH6JMWqR7UtQPYZACny4T9LCzq";
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label109.Location = new System.Drawing.Point(21, 29);
-            this.label109.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(82, 25);
-            this.label109.TabIndex = 20;
-            this.label109.Text = "TOKEN";
+            this.btnSimboraCOnfirmarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraCOnfirmarPedido.Location = new System.Drawing.Point(1050, 399);
+            this.btnSimboraCOnfirmarPedido.Name = "btnSimboraCOnfirmarPedido";
+            this.btnSimboraCOnfirmarPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraCOnfirmarPedido.TabIndex = 50;
+            this.btnSimboraCOnfirmarPedido.Text = "Confirmar Pedido";
+            this.btnSimboraCOnfirmarPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraCOnfirmarPedido.Click += new System.EventHandler(this.btnSimboraCOnfirmarPedido_Click);
             // 
             // Form1
             // 
@@ -6637,12 +6768,18 @@
             this.tabPageLogaroo.ResumeLayout(false);
             this.tabPageLogaroo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLogaroo)).EndInit();
+            this.tabPageMultiPedido.ResumeLayout(false);
+            this.tabPageMultiPedido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).EndInit();
             this.tabPageOnPedido.ResumeLayout(false);
             this.tabPageOnPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).EndInit();
             this.tabPagePedZap.ResumeLayout(false);
             this.tabPagePedZap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
+            this.tabPagePixCommerce.ResumeLayout(false);
+            this.tabPagePixCommerce.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).EndInit();
             this.tabPageQueroDelivery.ResumeLayout(false);
             this.tabPageQueroDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuerodelivery)).EndInit();
@@ -6661,12 +6798,8 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPagePixCommerce.ResumeLayout(false);
-            this.tabPagePixCommerce.PerformLayout();
-            this.tabPageMultiPedido.ResumeLayout(false);
-            this.tabPageMultiPedido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).EndInit();
+            this.tabPageSimbora.ResumeLayout(false);
+            this.tabPageSimbora.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -7168,6 +7301,16 @@
         private System.Windows.Forms.Button btnMultiPedidoIniciar;
         private System.Windows.Forms.TextBox txtMultiPedidoToken;
         private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.Button btnEpadocaFazerPedido;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.Button btnEpadocaStatusCupom;
+        private System.Windows.Forms.Button btnEpadocaUtilizarCupom;
+        private System.Windows.Forms.TabPage tabPageSimbora;
+        private System.Windows.Forms.Button btnSimboraFazerPedido;
+        private System.Windows.Forms.TextBox txtSimboraToken;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Button btnSimboraConsultarPedido;
+        private System.Windows.Forms.Button btnSimboraCOnfirmarPedido;
     }
 }
 

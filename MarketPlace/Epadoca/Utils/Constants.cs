@@ -23,6 +23,13 @@ namespace Epadoca.Utils
         public const string URL_MANAGER_PEDIDO_ENTREGARPEDIDO = "manager/pedido/EntregarPedido";
         public const string URL_MANAGER_PEDIDO_FINALIZAR_PEDIDO = "manager/pedido/FinalizarPedido";
         public const string URL_MANAGER_PEDIDO_PRONTO = "manager/pedido/pronto";
-        public const string URL_MANAGER_PEDIDO_NOTIFICAR_ATRASO = "manager/pedido/NotificarAtraso";        
+        public const string URL_MANAGER_PEDIDO_NOTIFICAR_ATRASO = "manager/pedido/NotificarAtraso";
+
+
+        public const string URL_FIDELIDADE_INTEGRACAO_STATUS = "fidelidade-integracao//status";
+        public const string URL_FIDELIDADE_INTEGRACAO_CONSULTAR_CUPOM = "fidelidade-integracao//consulta-cupom/";
+        public const string URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM = "fidelidade-integracao//utilizar-cupom/";
+        public const string URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM_MANUAL = "fidelidade-integracao//utilizar-cupom-manual/";
+        public const string URL_FIDELIDADE_INTEGRACAO_PEDIDO = "fidelidade-integracao/pedido";
     }
 }

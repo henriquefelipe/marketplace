@@ -65,9 +65,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueroDelivery", "QueroDeliv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Woocommerce", "Woocommerce\Woocommerce.csproj", "{9A7414B8-25C8-4C04-B1E6-3B7E9961C42A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixCommerce", "PixCommerce\PixCommerce.csproj", "{DACBF174-3FBE-4A18-B22A-15FF999C7807}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixCommerce", "PixCommerce\PixCommerce.csproj", "{DACBF174-3FBE-4A18-B22A-15FF999C7807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPedido", "MultiPedido\MultiPedido.csproj", "{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiPedido", "MultiPedido\MultiPedido.csproj", "{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simbora", "Simbora\Simbora.csproj", "{56149C04-43D3-4A3B-9EE0-B69F7B0A92C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +209,10 @@ Global
 		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{421ADBFC-12C4-48C6-AEEB-33A66482FE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56149C04-43D3-4A3B-9EE0-B69F7B0A92C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56149C04-43D3-4A3B-9EE0-B69F7B0A92C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56149C04-43D3-4A3B-9EE0-B69F7B0A92C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56149C04-43D3-4A3B-9EE0-B69F7B0A92C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

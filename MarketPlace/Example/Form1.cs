@@ -31,6 +31,10 @@ using UberEats.Service;
 using PixCommerce.Service;
 using System.Runtime.CompilerServices;
 using MultiPedido.Service;
+using Epadoca.Domain;
+using Simbora.Service;
+using Simbora.Enum;
+using Simbora.Domain;
 
 namespace Example
 {
@@ -4829,6 +4833,66 @@ namespace Example
             }
         }
 
+        private void btnEpadocaFazerPedido_Click(object sender, EventArgs e)
+        {
+            var pedido = new fidelidade_adicionar_pedido();
+            pedido.cliente = new fidelidade_adicionar_pedido_Cliente();
+            pedido.cliente.celular = "";
+            pedido.cliente.codigoExterno = "";
+            pedido.cliente.documento = "24664528043";
+            pedido.cliente.nome = "";
+            pedido.valorDesconto = 0;
+            pedido.valorTotal = 10;
+
+            var produto1 = new fidelidade_adicionar_pedido_produto();
+            produto1.sku = "1";
+            produto1.nome = "Coca-cola";
+            produto1.quantidade = 1;
+            produto1.valorUnitario = 10;
+            produto1.valorTotal = 10;
+
+            pedido.produtoL.Add(produto1);
+
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.FidelidadeAdicionarPedido(txtEpadocaToken.Text, pedido);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaStatusCupom_Click(object sender, EventArgs e)
+        {
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.FidelidadeStatus(txtEpadocaToken.Text, "","","","", "24664528043");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaUtilizarCupom_Click(object sender, EventArgs e)
+        {
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            //var result = service.Fidelidade(txtEpadocaToken.Text, "", "", "", "", "24664528043");
+            //if (result.Success)
+            //{
+            //    MessageBox.Show("OK");
+            //}
+            //else
+            //{
+            //    MessageBox.Show(result.Message);
+            //}
+        }
+
 
         #endregion
 
@@ -7048,7 +7112,96 @@ namespace Example
             }
         }
 
+
         #endregion
+
+        #region Simbora
+        private void btnSimboraFazerPedido_Click(object sender, EventArgs e)
+        {
+            var orders = new orders_new();
+            var order = new Simbora.Domain.order();
+            order.external_id = "5";            
+            order.origin = new Simbora.Domain.order_origin();
+            order.origin.latitude = 0;
+            order.origin.longitude = 0;
+            order.total = 10;
+            order.observation = "Favor entregar na porta";
+            order.client_name = "Henrique";
+            order.client_phone = "859878458788";
+            order.iD_erp_cliente = "";
+            order.iD_integrador = "";
+
+            order.destination = new Simbora.Domain.order_destination();
+            order.destination.latitude = 0;
+            order.destination.longitude = 0;
+            order.destination.street = "R. Caetano Ximenes Aragão";
+            order.destination.number = "665";
+            order.destination.complement = "";
+            order.destination.cep = "60813-620";
+            order.destination.reference = "Sala 3";
+
+            order.payFormat = new Simbora.Domain.order_payFormat();
+            order.payFormat.method = PayFormatMethods.CARD;
+            order.payFormat.change = 0;
+
+            var item1 = new Simbora.Domain.item();
+            item1.name = "Coca-cola";
+            item1.id = "1";
+            item1.uniqueId = "1";
+            item1.index = 1;
+            item1.unitPrice = 10;
+            item1.quantity = 1;
+            item1.price = 10;
+            item1.totalPrice = 10;
+            item1.externalCode = "1";
+
+            order.items.Add(item1);
+
+            orders.orders.Add(order);
+
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.OrderNew(txtSimboraToken.Text, orders);
+            if(result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnSimboraConsultarPedido_Click(object sender, EventArgs e)
+        {
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.Consultar(txtSimboraToken.Text, "1");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnSimboraCOnfirmarPedido_Click(object sender, EventArgs e)
+        {
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.Confirmar(txtSimboraToken.Text, "5");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+
     }
 }
 
