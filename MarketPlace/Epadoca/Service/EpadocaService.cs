@@ -23,10 +23,10 @@ namespace Epadoca.Service
             var result = new GenericResult<token>();
 
             var client = new RestClient(_urlBase + Constants.URL_TOKEN);
-            var request = new RestRequest(Method.POST);            
+            var request = new RestRequest(Method.POST);
             request.AddParameter("grant_type", "password");
             request.AddParameter("username", username);
-            request.AddParameter("password", password);           
+            request.AddParameter("password", password);
             IRestResponse responseToken = client.Execute(request);
 
             if (responseToken.StatusCode == System.Net.HttpStatusCode.OK)
@@ -136,7 +136,7 @@ namespace Epadoca.Service
             request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {                
+            {
                 result.Success = true;
                 result.Json = response.Content;
             }
@@ -235,9 +235,9 @@ namespace Epadoca.Service
 
         #region Fidelidade
 
-        public GenericResult<List<fidelidade_status_retorno>> FidelidadeStatus(string token, string codigo, string nome, string email, string celular, string documento)
+        public GenericResult<fidelidade_status_retorno> FidelidadeStatus(string token, string store, string codigo, string nome, string email, string celular, string documento)
         {
-            var result = new GenericResult<List<fidelidade_status_retorno>>();
+            var result = new GenericResult<fidelidade_status_retorno>();
 
             var data = new
             {
@@ -248,7 +248,7 @@ namespace Epadoca.Service
                 documento
             };
 
-            var url = string.Format("{0}{1}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_STATUS);
+            var url = string.Format("{0}{1}{2}/{3}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO, store, Constants.URL_FIDELIDADE_INTEGRACAO_STATUS);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -256,7 +256,7 @@ namespace Epadoca.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                result.Result = JsonConvert.DeserializeObject<List<fidelidade_status_retorno>>(response.Content);
+                result.Result = JsonConvert.DeserializeObject<fidelidade_status_retorno>(response.Content);
                 result.Success = true;
                 result.Json = response.Content;
             }
@@ -268,14 +268,14 @@ namespace Epadoca.Service
             return result;
         }
 
-        public GenericResult<fidelidade_consultar_cupom> FidelidadeConsultarCupom(string token, string cupom)
+        public GenericResult<fidelidade_consultar_cupom> FidelidadeConsultarCupom(string token, string store, string cupom)
         {
             var result = new GenericResult<fidelidade_consultar_cupom>();
 
-            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_CONSULTAR_CUPOM, cupom);
+            var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO, store, Constants.URL_FIDELIDADE_INTEGRACAO_CONSULTAR_CUPOM, cupom);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", string.Format("bearer {0}", token));            
+            request.AddHeader("Authorization", string.Format("bearer {0}", token));
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -283,15 +283,20 @@ namespace Epadoca.Service
                 result.Success = true;
                 result.Json = response.Content;
             }
+            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var retorno = JsonConvert.DeserializeObject<message_retorno>(response.Content);
+                result.Message = retorno.message;
+            }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + response.Content;
             }
 
             return result;
         }
 
-        public GenericSimpleResult FidelidadeUtilizarCupom(string token, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
+        public GenericSimpleResult FidelidadeUtilizarCupom(string token, string store, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
         {
             var result = new GenericSimpleResult();
 
@@ -304,7 +309,7 @@ namespace Epadoca.Service
                 documento
             };
 
-            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM, cupom);
+            var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO, store, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM, cupom);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -312,21 +317,23 @@ namespace Epadoca.Service
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                if(response.Content == "Cupom Utilizado")
-                    result.Success = true;
-                else
-                    result.Message = response.Content;
+                result.Success = true;
                 result.Json = response.Content;
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var retorno = JsonConvert.DeserializeObject<message_retorno>(response.Content);
+                result.Message = retorno.message;
             }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + response.Content;
             }
 
             return result;
         }
 
-        public GenericSimpleResult FidelidadeUtilizarCupomManual(string token, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
+        public GenericSimpleResult FidelidadeUtilizarCupomManual(string token, string store, string codigoExterno, string nome, string email, string celular, string documento, string cupom)
         {
             var result = new GenericSimpleResult();
 
@@ -339,7 +346,7 @@ namespace Epadoca.Service
                 documento
             };
 
-            var url = string.Format("{0}{1}{2}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM_MANUAL, cupom);
+            var url = string.Format("{0}{1}{2}/{3}{4}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO, store, Constants.URL_FIDELIDADE_INTEGRACAO_UTILIZAR_CUPOM_MANUAL, cupom);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
@@ -353,35 +360,47 @@ namespace Epadoca.Service
                     result.Message = response.Content;
                 result.Json = response.Content;
             }
+            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var retorno = JsonConvert.DeserializeObject<message_retorno>(response.Content);
+                result.Message = retorno.message;
+            }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + response.Content;
             }
 
             return result;
         }
 
-        public GenericSimpleResult FidelidadeAdicionarPedido(string token, fidelidade_adicionar_pedido model)
+        public GenericSimpleResult FidelidadeAdicionarPedido(string token, string store, List<fidelidade_adicionar_pedido> lista)
         {
-            var result = new GenericSimpleResult();            
+            var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO_PEDIDO);
+            var url = string.Format("{0}{1}{2}/{3}", _urlBase, Constants.URL_FIDELIDADE_INTEGRACAO, store, Constants.URL_FIDELIDADE_INTEGRACAO_PEDIDO);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("bearer {0}", token));
-            request.AddParameter("application/json", JsonConvert.SerializeObject(model), ParameterType.RequestBody);
+            request.AddParameter("application/json", JsonConvert.SerializeObject(lista), ParameterType.RequestBody);
+            //request.RequestFormat = DataFormat.Json;
+            //request.AddBody(model);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                if (response.Content == "Cupom Utilizado")
+                if (response.Content.Contains("sucesso"))
                     result.Success = true;
                 else
                     result.Message = response.Content;
                 result.Json = response.Content;
             }
+            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var retorno = JsonConvert.DeserializeObject<message_retorno>(response.Content);
+                result.Message = retorno.message;
+            }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + response.Content;
             }
 
             return result;

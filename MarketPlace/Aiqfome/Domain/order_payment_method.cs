@@ -15,6 +15,15 @@ namespace Aiqfome.Domain
         public decimal change { get; set; }
         public string coupon_value { get; set; }
         public bool pre_paid { get; set; }
+        public decimal original_subtotal { get; set; }
 
+        public order_payment_method_service_fee service_fee { get; set; }
+    }
+
+    public class order_payment_method_service_fee
+    {
+        public decimal store { get; set; }
+        public decimal aiq { get; set; }
+        public decimal total { get; set; }
     }
 }

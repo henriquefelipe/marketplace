@@ -8,6 +8,7 @@ namespace Simbora.Domain
     {
         public string status { get; set; }
         public string message { get; set; }
+        public bool success { get; set; }
         public consultar_pedido_retorno_data data { get; set; }
     }
 

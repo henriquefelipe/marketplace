@@ -220,6 +220,7 @@
             this.btnDeliveryDiretoParar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoIniciar = new System.Windows.Forms.Button();
             this.tabPageEpadoca = new System.Windows.Forms.TabPage();
+            this.btnEpadocaConsultarCupom = new System.Windows.Forms.Button();
             this.btnEpadocaUtilizarCupom = new System.Windows.Forms.Button();
             this.btnEpadocaStatusCupom = new System.Windows.Forms.Button();
             this.btnEpadocaFazerPedido = new System.Windows.Forms.Button();
@@ -490,6 +491,14 @@
             this.label78 = new System.Windows.Forms.Label();
             this.txtServitUsuario = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
+            this.tabPageSimbora = new System.Windows.Forms.TabPage();
+            this.btnSimboraConfirmarPedidoPronto = new System.Windows.Forms.Button();
+            this.btnSimboraConsultarPedidoRoteirazados = new System.Windows.Forms.Button();
+            this.btnSimboraCOnfirmarPedido = new System.Windows.Forms.Button();
+            this.btnSimboraConsultarPedido = new System.Windows.Forms.Button();
+            this.btnSimboraFazerPedido = new System.Windows.Forms.Button();
+            this.txtSimboraToken = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
             this.tabPageSuperMenu = new System.Windows.Forms.TabPage();
             this.btnSuperMenuCancelar = new System.Windows.Forms.Button();
             this.btnSuperMenuRejeitar = new System.Windows.Forms.Button();
@@ -528,12 +537,7 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.tabPageSimbora = new System.Windows.Forms.TabPage();
-            this.txtSimboraToken = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.btnSimboraFazerPedido = new System.Windows.Forms.Button();
-            this.btnSimboraConsultarPedido = new System.Windows.Forms.Button();
-            this.btnSimboraCOnfirmarPedido = new System.Windows.Forms.Button();
+            this.btnSimboraConsultarAtualizacoes = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -592,13 +596,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
             this.tabPageServit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridServit)).BeginInit();
+            this.tabPageSimbora.SuspendLayout();
             this.tabPageSuperMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).BeginInit();
             this.tabPageUberEats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPageSimbora.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -2903,6 +2907,7 @@
             // 
             // tabPageEpadoca
             // 
+            this.tabPageEpadoca.Controls.Add(this.btnEpadocaConsultarCupom);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaUtilizarCupom);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaStatusCupom);
             this.tabPageEpadoca.Controls.Add(this.btnEpadocaFazerPedido);
@@ -2934,10 +2939,22 @@
             this.tabPageEpadoca.Text = "Epadoca";
             this.tabPageEpadoca.UseVisualStyleBackColor = true;
             // 
+            // btnEpadocaConsultarCupom
+            // 
+            this.btnEpadocaConsultarCupom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEpadocaConsultarCupom.Location = new System.Drawing.Point(724, 403);
+            this.btnEpadocaConsultarCupom.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEpadocaConsultarCupom.Name = "btnEpadocaConsultarCupom";
+            this.btnEpadocaConsultarCupom.Size = new System.Drawing.Size(193, 41);
+            this.btnEpadocaConsultarCupom.TabIndex = 61;
+            this.btnEpadocaConsultarCupom.Text = "Consultar Cupom";
+            this.btnEpadocaConsultarCupom.UseVisualStyleBackColor = true;
+            this.btnEpadocaConsultarCupom.Click += new System.EventHandler(this.btnEpadocaConsultarCupom_Click);
+            // 
             // btnEpadocaUtilizarCupom
             // 
             this.btnEpadocaUtilizarCupom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEpadocaUtilizarCupom.Location = new System.Drawing.Point(830, 333);
+            this.btnEpadocaUtilizarCupom.Location = new System.Drawing.Point(848, 333);
             this.btnEpadocaUtilizarCupom.Margin = new System.Windows.Forms.Padding(4);
             this.btnEpadocaUtilizarCupom.Name = "btnEpadocaUtilizarCupom";
             this.btnEpadocaUtilizarCupom.Size = new System.Drawing.Size(193, 41);
@@ -6167,6 +6184,99 @@
             this.label79.TabIndex = 38;
             this.label79.Text = "Usuario";
             // 
+            // tabPageSimbora
+            // 
+            this.tabPageSimbora.Controls.Add(this.btnSimboraConsultarAtualizacoes);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraConfirmarPedidoPronto);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraConsultarPedidoRoteirazados);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraCOnfirmarPedido);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraConsultarPedido);
+            this.tabPageSimbora.Controls.Add(this.btnSimboraFazerPedido);
+            this.tabPageSimbora.Controls.Add(this.txtSimboraToken);
+            this.tabPageSimbora.Controls.Add(this.label113);
+            this.tabPageSimbora.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSimbora.Name = "tabPageSimbora";
+            this.tabPageSimbora.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageSimbora.TabIndex = 31;
+            this.tabPageSimbora.Text = "Simbora";
+            this.tabPageSimbora.UseVisualStyleBackColor = true;
+            // 
+            // btnSimboraConfirmarPedidoPronto
+            // 
+            this.btnSimboraConfirmarPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConfirmarPedidoPronto.Location = new System.Drawing.Point(1050, 443);
+            this.btnSimboraConfirmarPedidoPronto.Name = "btnSimboraConfirmarPedidoPronto";
+            this.btnSimboraConfirmarPedidoPronto.Size = new System.Drawing.Size(309, 38);
+            this.btnSimboraConfirmarPedidoPronto.TabIndex = 52;
+            this.btnSimboraConfirmarPedidoPronto.Text = "Confirmar Pedido Pronto";
+            this.btnSimboraConfirmarPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnSimboraConfirmarPedidoPronto.Click += new System.EventHandler(this.btnSimboraConfirmarPedidoPronto_Click);
+            // 
+            // btnSimboraConsultarPedidoRoteirazados
+            // 
+            this.btnSimboraConsultarPedidoRoteirazados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConsultarPedidoRoteirazados.Location = new System.Drawing.Point(661, 443);
+            this.btnSimboraConsultarPedidoRoteirazados.Name = "btnSimboraConsultarPedidoRoteirazados";
+            this.btnSimboraConsultarPedidoRoteirazados.Size = new System.Drawing.Size(369, 38);
+            this.btnSimboraConsultarPedidoRoteirazados.TabIndex = 51;
+            this.btnSimboraConsultarPedidoRoteirazados.Text = "Consultar Pedido Roteirizados";
+            this.btnSimboraConsultarPedidoRoteirazados.UseVisualStyleBackColor = true;
+            this.btnSimboraConsultarPedidoRoteirazados.Click += new System.EventHandler(this.btnSimboraConsultarPedidoRoteirazados_Click);
+            // 
+            // btnSimboraCOnfirmarPedido
+            // 
+            this.btnSimboraCOnfirmarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraCOnfirmarPedido.Location = new System.Drawing.Point(1050, 399);
+            this.btnSimboraCOnfirmarPedido.Name = "btnSimboraCOnfirmarPedido";
+            this.btnSimboraCOnfirmarPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraCOnfirmarPedido.TabIndex = 50;
+            this.btnSimboraCOnfirmarPedido.Text = "Confirmar Pedido";
+            this.btnSimboraCOnfirmarPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraCOnfirmarPedido.Click += new System.EventHandler(this.btnSimboraCOnfirmarPedido_Click);
+            // 
+            // btnSimboraConsultarPedido
+            // 
+            this.btnSimboraConsultarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConsultarPedido.Location = new System.Drawing.Point(849, 399);
+            this.btnSimboraConsultarPedido.Name = "btnSimboraConsultarPedido";
+            this.btnSimboraConsultarPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraConsultarPedido.TabIndex = 49;
+            this.btnSimboraConsultarPedido.Text = "Consultar Pedido";
+            this.btnSimboraConsultarPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraConsultarPedido.Click += new System.EventHandler(this.btnSimboraConsultarPedido_Click);
+            // 
+            // btnSimboraFazerPedido
+            // 
+            this.btnSimboraFazerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraFazerPedido.Location = new System.Drawing.Point(648, 399);
+            this.btnSimboraFazerPedido.Name = "btnSimboraFazerPedido";
+            this.btnSimboraFazerPedido.Size = new System.Drawing.Size(195, 38);
+            this.btnSimboraFazerPedido.TabIndex = 48;
+            this.btnSimboraFazerPedido.Text = "Fazer Pedido";
+            this.btnSimboraFazerPedido.UseVisualStyleBackColor = true;
+            this.btnSimboraFazerPedido.Click += new System.EventHandler(this.btnSimboraFazerPedido_Click);
+            // 
+            // txtSimboraToken
+            // 
+            this.txtSimboraToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSimboraToken.Location = new System.Drawing.Point(758, 332);
+            this.txtSimboraToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSimboraToken.Name = "txtSimboraToken";
+            this.txtSimboraToken.Size = new System.Drawing.Size(679, 30);
+            this.txtSimboraToken.TabIndex = 47;
+            this.txtSimboraToken.Text = resources.GetString("txtSimboraToken.Text");
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label113.Location = new System.Drawing.Point(643, 335);
+            this.label113.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(68, 25);
+            this.label113.TabIndex = 46;
+            this.label113.Text = "Token";
+            // 
             // tabPageSuperMenu
             // 
             this.tabPageSuperMenu.Controls.Add(this.btnSuperMenuCancelar);
@@ -6623,73 +6733,16 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // tabPageSimbora
+            // btnSimboraConsultarAtualizacoes
             // 
-            this.tabPageSimbora.Controls.Add(this.btnSimboraCOnfirmarPedido);
-            this.tabPageSimbora.Controls.Add(this.btnSimboraConsultarPedido);
-            this.tabPageSimbora.Controls.Add(this.btnSimboraFazerPedido);
-            this.tabPageSimbora.Controls.Add(this.txtSimboraToken);
-            this.tabPageSimbora.Controls.Add(this.label113);
-            this.tabPageSimbora.Location = new System.Drawing.Point(4, 25);
-            this.tabPageSimbora.Name = "tabPageSimbora";
-            this.tabPageSimbora.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageSimbora.TabIndex = 31;
-            this.tabPageSimbora.Text = "Simbora";
-            this.tabPageSimbora.UseVisualStyleBackColor = true;
-            // 
-            // txtSimboraToken
-            // 
-            this.txtSimboraToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSimboraToken.Location = new System.Drawing.Point(758, 332);
-            this.txtSimboraToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSimboraToken.Name = "txtSimboraToken";
-            this.txtSimboraToken.Size = new System.Drawing.Size(679, 30);
-            this.txtSimboraToken.TabIndex = 47;
-            this.txtSimboraToken.Text = resources.GetString("txtSimboraToken.Text");
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label113.Location = new System.Drawing.Point(643, 335);
-            this.label113.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(85, 31);
-            this.label113.TabIndex = 46;
-            this.label113.Text = "Token";
-            // 
-            // btnSimboraFazerPedido
-            // 
-            this.btnSimboraFazerPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimboraFazerPedido.Location = new System.Drawing.Point(648, 399);
-            this.btnSimboraFazerPedido.Name = "btnSimboraFazerPedido";
-            this.btnSimboraFazerPedido.Size = new System.Drawing.Size(195, 38);
-            this.btnSimboraFazerPedido.TabIndex = 48;
-            this.btnSimboraFazerPedido.Text = "Fazer Pedido";
-            this.btnSimboraFazerPedido.UseVisualStyleBackColor = true;
-            this.btnSimboraFazerPedido.Click += new System.EventHandler(this.btnSimboraFazerPedido_Click);
-            // 
-            // btnSimboraConsultarPedido
-            // 
-            this.btnSimboraConsultarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimboraConsultarPedido.Location = new System.Drawing.Point(849, 399);
-            this.btnSimboraConsultarPedido.Name = "btnSimboraConsultarPedido";
-            this.btnSimboraConsultarPedido.Size = new System.Drawing.Size(195, 38);
-            this.btnSimboraConsultarPedido.TabIndex = 49;
-            this.btnSimboraConsultarPedido.Text = "Consultar Pedido";
-            this.btnSimboraConsultarPedido.UseVisualStyleBackColor = true;
-            this.btnSimboraConsultarPedido.Click += new System.EventHandler(this.btnSimboraConsultarPedido_Click);
-            // 
-            // btnSimboraCOnfirmarPedido
-            // 
-            this.btnSimboraCOnfirmarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimboraCOnfirmarPedido.Location = new System.Drawing.Point(1050, 399);
-            this.btnSimboraCOnfirmarPedido.Name = "btnSimboraCOnfirmarPedido";
-            this.btnSimboraCOnfirmarPedido.Size = new System.Drawing.Size(195, 38);
-            this.btnSimboraCOnfirmarPedido.TabIndex = 50;
-            this.btnSimboraCOnfirmarPedido.Text = "Confirmar Pedido";
-            this.btnSimboraCOnfirmarPedido.UseVisualStyleBackColor = true;
-            this.btnSimboraCOnfirmarPedido.Click += new System.EventHandler(this.btnSimboraCOnfirmarPedido_Click);
+            this.btnSimboraConsultarAtualizacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConsultarAtualizacoes.Location = new System.Drawing.Point(818, 498);
+            this.btnSimboraConsultarAtualizacoes.Name = "btnSimboraConsultarAtualizacoes";
+            this.btnSimboraConsultarAtualizacoes.Size = new System.Drawing.Size(309, 38);
+            this.btnSimboraConsultarAtualizacoes.TabIndex = 53;
+            this.btnSimboraConsultarAtualizacoes.Text = "Consultar Atualizações";
+            this.btnSimboraConsultarAtualizacoes.UseVisualStyleBackColor = true;
+            this.btnSimboraConsultarAtualizacoes.Click += new System.EventHandler(this.btnSimboraConsultarAtualizacoes_Click);
             // 
             // Form1
             // 
@@ -6789,6 +6842,8 @@
             this.tabPageServit.ResumeLayout(false);
             this.tabPageServit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridServit)).EndInit();
+            this.tabPageSimbora.ResumeLayout(false);
+            this.tabPageSimbora.PerformLayout();
             this.tabPageSuperMenu.ResumeLayout(false);
             this.tabPageSuperMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSuperMenu)).EndInit();
@@ -6798,8 +6853,6 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPageSimbora.ResumeLayout(false);
-            this.tabPageSimbora.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -7311,6 +7364,10 @@
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Button btnSimboraConsultarPedido;
         private System.Windows.Forms.Button btnSimboraCOnfirmarPedido;
+        private System.Windows.Forms.Button btnEpadocaConsultarCupom;
+        private System.Windows.Forms.Button btnSimboraConsultarPedidoRoteirazados;
+        private System.Windows.Forms.Button btnSimboraConfirmarPedidoPronto;
+        private System.Windows.Forms.Button btnSimboraConsultarAtualizacoes;
     }
 }
 

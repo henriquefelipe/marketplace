@@ -9,6 +9,6 @@ namespace AnotaAi.Enum
     public class PaymentType
     {
         public const string CARD = "card"; //cartão de crédito
-        public const string MONEY = "money"; //dinheiro
+        public const string MONEY = "money"; //dinheiro        
     }
 }

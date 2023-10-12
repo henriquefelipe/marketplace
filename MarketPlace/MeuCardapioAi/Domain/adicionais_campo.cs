@@ -4,6 +4,8 @@
     {
         public string nome { get; set; }
         public decimal valor { get; set; }
+        public decimal qtde { get; set; }
+        public decimal valorTotal { get; set; }
         public bool disponivel { get; set; }
         public string descricao { get; set; }
         public int id { get; set; }

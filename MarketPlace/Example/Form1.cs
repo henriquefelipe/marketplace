@@ -4813,6 +4813,8 @@ namespace Example
             }
         }
 
+        public const string DOCUMENTO = "24664528043";
+
         private void btnEpadocaDisponivelParaRetirada_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_epadocaSelected))
@@ -4839,22 +4841,28 @@ namespace Example
             pedido.cliente = new fidelidade_adicionar_pedido_Cliente();
             pedido.cliente.celular = "";
             pedido.cliente.codigoExterno = "";
-            pedido.cliente.documento = "24664528043";
+            pedido.cliente.documento = DOCUMENTO;
             pedido.cliente.nome = "";
             pedido.valorDesconto = 0;
-            pedido.valorTotal = 10;
+            pedido.valorTotal = 2500;
+            pedido.codigo = DateTime.Now.ToString("HHmmss");
+            pedido.data = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
             var produto1 = new fidelidade_adicionar_pedido_produto();
             produto1.sku = "1";
             produto1.nome = "Coca-cola";
             produto1.quantidade = 1;
-            produto1.valorUnitario = 10;
-            produto1.valorTotal = 10;
+            produto1.valorUnitario = 2500;
+            produto1.valorTotal = 2500;
+            produto1.categoria = "GERAL";
 
             pedido.produtoL.Add(produto1);
 
+            var pedidos = new List<fidelidade_adicionar_pedido>();
+            pedidos.Add(pedido);
+
             var service = new EpadocaService(txtEpadocaUrl.Text);
-            var result = service.FidelidadeAdicionarPedido(txtEpadocaToken.Text, pedido);
+            var result = service.FidelidadeAdicionarPedido(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, pedidos);
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -4868,9 +4876,9 @@ namespace Example
         private void btnEpadocaStatusCupom_Click(object sender, EventArgs e)
         {
             var service = new EpadocaService(txtEpadocaUrl.Text);
-            var result = service.FidelidadeStatus(txtEpadocaToken.Text, "","","","", "24664528043");
+            var result = service.FidelidadeStatus(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, "","","","", DOCUMENTO);
             if (result.Success)
-            {
+            {                
                 MessageBox.Show("OK");
             }
             else
@@ -4882,15 +4890,29 @@ namespace Example
         private void btnEpadocaUtilizarCupom_Click(object sender, EventArgs e)
         {
             var service = new EpadocaService(txtEpadocaUrl.Text);
-            //var result = service.Fidelidade(txtEpadocaToken.Text, "", "", "", "", "24664528043");
-            //if (result.Success)
-            //{
-            //    MessageBox.Show("OK");
-            //}
-            //else
-            //{
-            //    MessageBox.Show(result.Message);
-            //}
+            var result = service.FidelidadeUtilizarCupom(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, "123456", "Henrique", "henrique@izzyway.com.br", "87458788", DOCUMENTO, "99786709-dbf7-4d49-b3fe-6033c71a208f");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEpadocaConsultarCupom_Click(object sender, EventArgs e)
+        {
+            var service = new EpadocaService(txtEpadocaUrl.Text);
+            var result = service.FidelidadeConsultarCupom(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, "99786709-dbf7-4d49-b3fe-6033c71a208f");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
 
@@ -7120,7 +7142,7 @@ namespace Example
         {
             var orders = new orders_new();
             var order = new Simbora.Domain.order();
-            order.external_id = "5";            
+            order.external_id = DateTime.Now.ToString("HHmmss");            
             order.origin = new Simbora.Domain.order_origin();
             order.origin.latitude = 0;
             order.origin.longitude = 0;
@@ -7128,8 +7150,8 @@ namespace Example
             order.observation = "Favor entregar na porta";
             order.client_name = "Henrique";
             order.client_phone = "859878458788";
-            order.iD_erp_cliente = "";
-            order.iD_integrador = "";
+            order.iD_erp_cliente = DateTime.Now.ToString("HHmm");
+            order.iD_integrador = DateTime.Now.ToString("mmss");
 
             order.destination = new Simbora.Domain.order_destination();
             order.destination.latitude = 0;
@@ -7198,6 +7220,25 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+        private void btnSimboraConsultarPedidoRoteirazados_Click(object sender, EventArgs e)
+        {
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.ConsultarPedidosRoteirizados(txtSimboraToken.Text);
+        }
+
+        private void btnSimboraConfirmarPedidoPronto_Click(object sender, EventArgs e)
+        {
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.ConfirmarPedidoPronto(txtSimboraToken.Text, "105627");
+        }
+
+        private void btnSimboraConsultarAtualizacoes_Click(object sender, EventArgs e)
+        {
+            var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
+            var result = simboraServico.ConsultarAtualizacoesPedidos(txtSimboraToken.Text);
+        }
+
 
         #endregion
 

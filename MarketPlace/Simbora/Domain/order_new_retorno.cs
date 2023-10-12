@@ -11,9 +11,9 @@ namespace Simbora.Domain
             orders = new List<order_new_retorno_order>();
         }
 
-        public int status { get; set; }
+        public string status { get; set; }
+        public string message { get; set; }
         public bool success { get; set; }
-        public string message { get; set; }        
         public List<order_new_retorno_order> orders { get; set; }       
     }
 
