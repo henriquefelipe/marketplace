@@ -50,7 +50,8 @@ namespace Logaroo.Domain
         public string birth { get; set; }
         public string created_at { get; set; }
         public string delivered_at { get; set; }
-        public string updated_at { get; set; }        
+        public string updated_at { get; set; }    
+        public router routes { get; set; }
     }
 
     public class ordersItemsAddress

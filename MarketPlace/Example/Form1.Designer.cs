@@ -244,6 +244,17 @@
             this.label62 = new System.Windows.Forms.Label();
             this.txtEpadocaUsuario = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
+            this.tabPageEuFalo = new System.Windows.Forms.TabPage();
+            this.label116 = new System.Windows.Forms.Label();
+            this.txtEuFaloTokenGerado = new System.Windows.Forms.TextBox();
+            this.btnEuFaloUtilizarrSaldo = new System.Windows.Forms.Button();
+            this.btnEuFaloSaldo = new System.Windows.Forms.Button();
+            this.btnEuFaloCriarPedido = new System.Windows.Forms.Button();
+            this.label115 = new System.Windows.Forms.Label();
+            this.txtEuFaloToken = new System.Windows.Forms.TextBox();
+            this.txtEuFaloUsuario = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.btnEuFaloLogin = new System.Windows.Forms.Button();
             this.tabPageIfood = new System.Windows.Forms.TabPage();
             this.btnIfoodGerarUserCode = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -394,6 +405,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPageMultiPedido = new System.Windows.Forms.TabPage();
+            this.btnMultiPedidoPontoParaRetirar = new System.Windows.Forms.Button();
+            this.btnMultiPedidoCancelado = new System.Windows.Forms.Button();
+            this.btnMultiPedidoEntregue = new System.Windows.Forms.Button();
+            this.btnMultiPedidoSaiuParaEntrega = new System.Windows.Forms.Button();
+            this.btnMultiPedidoGerarToken = new System.Windows.Forms.Button();
+            this.label112 = new System.Windows.Forms.Label();
+            this.txtMultiPedidoTOkenGerado = new System.Windows.Forms.TextBox();
+            this.label111 = new System.Windows.Forms.Label();
+            this.txtMultiPedidoEstabelecimento = new System.Windows.Forms.TextBox();
             this.btnMultiPedidoCOnfirmar = new System.Windows.Forms.Button();
             this.gridMultiPedido = new System.Windows.Forms.DataGridView();
             this.btnMultiPedidoParar = new System.Windows.Forms.Button();
@@ -492,6 +512,7 @@
             this.txtServitUsuario = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
             this.tabPageSimbora = new System.Windows.Forms.TabPage();
+            this.btnSimboraConsultarAtualizacoes = new System.Windows.Forms.Button();
             this.btnSimboraConfirmarPedidoPronto = new System.Windows.Forms.Button();
             this.btnSimboraConsultarPedidoRoteirazados = new System.Windows.Forms.Button();
             this.btnSimboraCOnfirmarPedido = new System.Windows.Forms.Button();
@@ -537,7 +558,6 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.btnSimboraConsultarAtualizacoes = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -564,6 +584,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).BeginInit();
             this.tabPageEpadoca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
+            this.tabPageEuFalo.SuspendLayout();
             this.tabPageIfood.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage21.SuspendLayout();
@@ -621,6 +642,7 @@
             this.tabControl1.Controls.Add(this.tabPageDeliveryApp);
             this.tabControl1.Controls.Add(this.tabPageDeliveryDireto);
             this.tabControl1.Controls.Add(this.tabPageEpadoca);
+            this.tabControl1.Controls.Add(this.tabPageEuFalo);
             this.tabControl1.Controls.Add(this.tabPageIfood);
             this.tabControl1.Controls.Add(this.tabPageGloriaFood);
             this.tabControl1.Controls.Add(this.tabPageGoomer);
@@ -3207,6 +3229,136 @@
             this.label63.TabIndex = 38;
             this.label63.Text = "Usuario";
             // 
+            // tabPageEuFalo
+            // 
+            this.tabPageEuFalo.Controls.Add(this.label116);
+            this.tabPageEuFalo.Controls.Add(this.txtEuFaloTokenGerado);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloUtilizarrSaldo);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloSaldo);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloCriarPedido);
+            this.tabPageEuFalo.Controls.Add(this.label115);
+            this.tabPageEuFalo.Controls.Add(this.txtEuFaloToken);
+            this.tabPageEuFalo.Controls.Add(this.txtEuFaloUsuario);
+            this.tabPageEuFalo.Controls.Add(this.label114);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloLogin);
+            this.tabPageEuFalo.Location = new System.Drawing.Point(4, 25);
+            this.tabPageEuFalo.Name = "tabPageEuFalo";
+            this.tabPageEuFalo.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageEuFalo.TabIndex = 32;
+            this.tabPageEuFalo.Text = "Eu Falo";
+            this.tabPageEuFalo.UseVisualStyleBackColor = true;
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label116.Location = new System.Drawing.Point(598, 406);
+            this.label116.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(106, 25);
+            this.label116.TabIndex = 47;
+            this.label116.Text = "Token ger.";
+            // 
+            // txtEuFaloTokenGerado
+            // 
+            this.txtEuFaloTokenGerado.Enabled = false;
+            this.txtEuFaloTokenGerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEuFaloTokenGerado.Location = new System.Drawing.Point(724, 407);
+            this.txtEuFaloTokenGerado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEuFaloTokenGerado.Name = "txtEuFaloTokenGerado";
+            this.txtEuFaloTokenGerado.Size = new System.Drawing.Size(495, 30);
+            this.txtEuFaloTokenGerado.TabIndex = 46;
+            // 
+            // btnEuFaloUtilizarrSaldo
+            // 
+            this.btnEuFaloUtilizarrSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloUtilizarrSaldo.Location = new System.Drawing.Point(1073, 470);
+            this.btnEuFaloUtilizarrSaldo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloUtilizarrSaldo.Name = "btnEuFaloUtilizarrSaldo";
+            this.btnEuFaloUtilizarrSaldo.Size = new System.Drawing.Size(193, 41);
+            this.btnEuFaloUtilizarrSaldo.TabIndex = 45;
+            this.btnEuFaloUtilizarrSaldo.Text = "Utilizar Saldo";
+            this.btnEuFaloUtilizarrSaldo.UseVisualStyleBackColor = true;
+            this.btnEuFaloUtilizarrSaldo.Click += new System.EventHandler(this.btnEuFaloUtilizarrSaldo_Click);
+            // 
+            // btnEuFaloSaldo
+            // 
+            this.btnEuFaloSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloSaldo.Location = new System.Drawing.Point(872, 470);
+            this.btnEuFaloSaldo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloSaldo.Name = "btnEuFaloSaldo";
+            this.btnEuFaloSaldo.Size = new System.Drawing.Size(193, 41);
+            this.btnEuFaloSaldo.TabIndex = 44;
+            this.btnEuFaloSaldo.Text = "Saldo";
+            this.btnEuFaloSaldo.UseVisualStyleBackColor = true;
+            this.btnEuFaloSaldo.Click += new System.EventHandler(this.btnEuFaloSaldo_Click);
+            // 
+            // btnEuFaloCriarPedido
+            // 
+            this.btnEuFaloCriarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloCriarPedido.Location = new System.Drawing.Point(671, 470);
+            this.btnEuFaloCriarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloCriarPedido.Name = "btnEuFaloCriarPedido";
+            this.btnEuFaloCriarPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnEuFaloCriarPedido.TabIndex = 43;
+            this.btnEuFaloCriarPedido.Text = "Criar Pedido";
+            this.btnEuFaloCriarPedido.UseVisualStyleBackColor = true;
+            this.btnEuFaloCriarPedido.Click += new System.EventHandler(this.btnEuFaloCriarPedido_Click);
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label115.Location = new System.Drawing.Point(587, 333);
+            this.label115.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(68, 25);
+            this.label115.TabIndex = 42;
+            this.label115.Text = "Token";
+            // 
+            // txtEuFaloToken
+            // 
+            this.txtEuFaloToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEuFaloToken.Location = new System.Drawing.Point(724, 333);
+            this.txtEuFaloToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEuFaloToken.Name = "txtEuFaloToken";
+            this.txtEuFaloToken.Size = new System.Drawing.Size(495, 30);
+            this.txtEuFaloToken.TabIndex = 41;
+            this.txtEuFaloToken.Text = "Izzy@123";
+            // 
+            // txtEuFaloUsuario
+            // 
+            this.txtEuFaloUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEuFaloUsuario.Location = new System.Drawing.Point(724, 244);
+            this.txtEuFaloUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEuFaloUsuario.Name = "txtEuFaloUsuario";
+            this.txtEuFaloUsuario.Size = new System.Drawing.Size(495, 30);
+            this.txtEuFaloUsuario.TabIndex = 40;
+            this.txtEuFaloUsuario.Text = "apihomologacaoizzy@eufalo.com";
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label114.Location = new System.Drawing.Point(587, 247);
+            this.label114.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(79, 25);
+            this.label114.TabIndex = 39;
+            this.label114.Text = "Usuario";
+            // 
+            // btnEuFaloLogin
+            // 
+            this.btnEuFaloLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloLogin.Location = new System.Drawing.Point(1285, 281);
+            this.btnEuFaloLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloLogin.Name = "btnEuFaloLogin";
+            this.btnEuFaloLogin.Size = new System.Drawing.Size(193, 41);
+            this.btnEuFaloLogin.TabIndex = 38;
+            this.btnEuFaloLogin.Text = "Login";
+            this.btnEuFaloLogin.UseVisualStyleBackColor = true;
+            this.btnEuFaloLogin.Click += new System.EventHandler(this.btnEuFaloLogin_Click);
+            // 
             // tabPageIfood
             // 
             this.tabPageIfood.Controls.Add(this.btnIfoodGerarUserCode);
@@ -4993,6 +5145,15 @@
             // 
             // tabPageMultiPedido
             // 
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoPontoParaRetirar);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoCancelado);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoEntregue);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoSaiuParaEntrega);
+            this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoGerarToken);
+            this.tabPageMultiPedido.Controls.Add(this.label112);
+            this.tabPageMultiPedido.Controls.Add(this.txtMultiPedidoTOkenGerado);
+            this.tabPageMultiPedido.Controls.Add(this.label111);
+            this.tabPageMultiPedido.Controls.Add(this.txtMultiPedidoEstabelecimento);
             this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoCOnfirmar);
             this.tabPageMultiPedido.Controls.Add(this.gridMultiPedido);
             this.tabPageMultiPedido.Controls.Add(this.btnMultiPedidoParar);
@@ -5005,6 +5166,108 @@
             this.tabPageMultiPedido.TabIndex = 30;
             this.tabPageMultiPedido.Text = "Multi Pedido";
             this.tabPageMultiPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnMultiPedidoPontoParaRetirar
+            // 
+            this.btnMultiPedidoPontoParaRetirar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoPontoParaRetirar.Location = new System.Drawing.Point(564, 57);
+            this.btnMultiPedidoPontoParaRetirar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoPontoParaRetirar.Name = "btnMultiPedidoPontoParaRetirar";
+            this.btnMultiPedidoPontoParaRetirar.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoPontoParaRetirar.TabIndex = 34;
+            this.btnMultiPedidoPontoParaRetirar.Text = "Pronto para retirar";
+            this.btnMultiPedidoPontoParaRetirar.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoPontoParaRetirar.Click += new System.EventHandler(this.btnMultiPedidoPontoParaRetirar_Click);
+            // 
+            // btnMultiPedidoCancelado
+            // 
+            this.btnMultiPedidoCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoCancelado.Location = new System.Drawing.Point(1192, 57);
+            this.btnMultiPedidoCancelado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoCancelado.Name = "btnMultiPedidoCancelado";
+            this.btnMultiPedidoCancelado.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoCancelado.TabIndex = 33;
+            this.btnMultiPedidoCancelado.Text = "Cancelado";
+            this.btnMultiPedidoCancelado.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoCancelado.Click += new System.EventHandler(this.btnMultiPedidoCancelado_Click);
+            // 
+            // btnMultiPedidoEntregue
+            // 
+            this.btnMultiPedidoEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoEntregue.Location = new System.Drawing.Point(991, 57);
+            this.btnMultiPedidoEntregue.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoEntregue.Name = "btnMultiPedidoEntregue";
+            this.btnMultiPedidoEntregue.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoEntregue.TabIndex = 32;
+            this.btnMultiPedidoEntregue.Text = "Entregue";
+            this.btnMultiPedidoEntregue.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoEntregue.Click += new System.EventHandler(this.btnMultiPedidoEntregue_Click);
+            // 
+            // btnMultiPedidoSaiuParaEntrega
+            // 
+            this.btnMultiPedidoSaiuParaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoSaiuParaEntrega.Location = new System.Drawing.Point(765, 57);
+            this.btnMultiPedidoSaiuParaEntrega.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoSaiuParaEntrega.Name = "btnMultiPedidoSaiuParaEntrega";
+            this.btnMultiPedidoSaiuParaEntrega.Size = new System.Drawing.Size(193, 41);
+            this.btnMultiPedidoSaiuParaEntrega.TabIndex = 31;
+            this.btnMultiPedidoSaiuParaEntrega.Text = "Saiu Para Entrega";
+            this.btnMultiPedidoSaiuParaEntrega.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoSaiuParaEntrega.Click += new System.EventHandler(this.btnMultiPedidoSaiuParaEntrega_Click);
+            // 
+            // btnMultiPedidoGerarToken
+            // 
+            this.btnMultiPedidoGerarToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiPedidoGerarToken.Location = new System.Drawing.Point(1398, 142);
+            this.btnMultiPedidoGerarToken.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMultiPedidoGerarToken.Name = "btnMultiPedidoGerarToken";
+            this.btnMultiPedidoGerarToken.Size = new System.Drawing.Size(228, 48);
+            this.btnMultiPedidoGerarToken.TabIndex = 30;
+            this.btnMultiPedidoGerarToken.Text = "Gerar Token";
+            this.btnMultiPedidoGerarToken.UseVisualStyleBackColor = true;
+            this.btnMultiPedidoGerarToken.Click += new System.EventHandler(this.btnMultiPedidoGerarToken_Click);
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label112.Location = new System.Drawing.Point(777, 153);
+            this.label112.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(138, 25);
+            this.label112.TabIndex = 29;
+            this.label112.Text = "Token Gerado";
+            // 
+            // txtMultiPedidoTOkenGerado
+            // 
+            this.txtMultiPedidoTOkenGerado.Enabled = false;
+            this.txtMultiPedidoTOkenGerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMultiPedidoTOkenGerado.Location = new System.Drawing.Point(952, 150);
+            this.txtMultiPedidoTOkenGerado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMultiPedidoTOkenGerado.Name = "txtMultiPedidoTOkenGerado";
+            this.txtMultiPedidoTOkenGerado.Size = new System.Drawing.Size(414, 30);
+            this.txtMultiPedidoTOkenGerado.TabIndex = 28;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label111.Location = new System.Drawing.Point(788, 106);
+            this.label111.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(156, 25);
+            this.label111.TabIndex = 27;
+            this.label111.Text = "Estabelecimento";
+            // 
+            // txtMultiPedidoEstabelecimento
+            // 
+            this.txtMultiPedidoEstabelecimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMultiPedidoEstabelecimento.Location = new System.Drawing.Point(952, 106);
+            this.txtMultiPedidoEstabelecimento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMultiPedidoEstabelecimento.Name = "txtMultiPedidoEstabelecimento";
+            this.txtMultiPedidoEstabelecimento.Size = new System.Drawing.Size(168, 30);
+            this.txtMultiPedidoEstabelecimento.TabIndex = 26;
+            this.txtMultiPedidoEstabelecimento.Text = "1";
             // 
             // btnMultiPedidoCOnfirmar
             // 
@@ -5021,11 +5284,11 @@
             // gridMultiPedido
             // 
             this.gridMultiPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridMultiPedido.Location = new System.Drawing.Point(14, 144);
+            this.gridMultiPedido.Location = new System.Drawing.Point(14, 198);
             this.gridMultiPedido.Margin = new System.Windows.Forms.Padding(4);
             this.gridMultiPedido.Name = "gridMultiPedido";
             this.gridMultiPedido.RowHeadersWidth = 51;
-            this.gridMultiPedido.Size = new System.Drawing.Size(1612, 677);
+            this.gridMultiPedido.Size = new System.Drawing.Size(1612, 623);
             this.gridMultiPedido.TabIndex = 24;
             this.gridMultiPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMultiPedido_CellClick);
             // 
@@ -5060,9 +5323,9 @@
             this.txtMultiPedidoToken.Location = new System.Drawing.Point(181, 25);
             this.txtMultiPedidoToken.Margin = new System.Windows.Forms.Padding(4);
             this.txtMultiPedidoToken.Name = "txtMultiPedidoToken";
-            this.txtMultiPedidoToken.Size = new System.Drawing.Size(764, 30);
+            this.txtMultiPedidoToken.Size = new System.Drawing.Size(1185, 30);
             this.txtMultiPedidoToken.TabIndex = 21;
-            this.txtMultiPedidoToken.Text = "EvhMOcsmemUkSWvzdkbglKL2oFPnadDcND5xA1GH6JMWqR7UtQPYZACny4T9LCzq";
+            this.txtMultiPedidoToken.Text = "F4kLBEFfTdUM3zulahg7eG5tEgVjiA6yWJD9zC6mYcxYUOX0KxI8ARs5rZ0NbOCh";
             // 
             // label109
             // 
@@ -6201,6 +6464,17 @@
             this.tabPageSimbora.Text = "Simbora";
             this.tabPageSimbora.UseVisualStyleBackColor = true;
             // 
+            // btnSimboraConsultarAtualizacoes
+            // 
+            this.btnSimboraConsultarAtualizacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimboraConsultarAtualizacoes.Location = new System.Drawing.Point(818, 498);
+            this.btnSimboraConsultarAtualizacoes.Name = "btnSimboraConsultarAtualizacoes";
+            this.btnSimboraConsultarAtualizacoes.Size = new System.Drawing.Size(309, 38);
+            this.btnSimboraConsultarAtualizacoes.TabIndex = 53;
+            this.btnSimboraConsultarAtualizacoes.Text = "Consultar Atualizações";
+            this.btnSimboraConsultarAtualizacoes.UseVisualStyleBackColor = true;
+            this.btnSimboraConsultarAtualizacoes.Click += new System.EventHandler(this.btnSimboraConsultarAtualizacoes_Click);
+            // 
             // btnSimboraConfirmarPedidoPronto
             // 
             this.btnSimboraConfirmarPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -6733,17 +7007,6 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // btnSimboraConsultarAtualizacoes
-            // 
-            this.btnSimboraConsultarAtualizacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimboraConsultarAtualizacoes.Location = new System.Drawing.Point(818, 498);
-            this.btnSimboraConsultarAtualizacoes.Name = "btnSimboraConsultarAtualizacoes";
-            this.btnSimboraConsultarAtualizacoes.Size = new System.Drawing.Size(309, 38);
-            this.btnSimboraConsultarAtualizacoes.TabIndex = 53;
-            this.btnSimboraConsultarAtualizacoes.Text = "Consultar Atualizações";
-            this.btnSimboraConsultarAtualizacoes.UseVisualStyleBackColor = true;
-            this.btnSimboraConsultarAtualizacoes.Click += new System.EventHandler(this.btnSimboraConsultarAtualizacoes_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -6755,6 +7018,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MarketPlace";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageAccon.ResumeLayout(false);
@@ -6796,6 +7060,8 @@
             this.tabPageEpadoca.ResumeLayout(false);
             this.tabPageEpadoca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
+            this.tabPageEuFalo.ResumeLayout(false);
+            this.tabPageEuFalo.PerformLayout();
             this.tabPageIfood.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage21.ResumeLayout(false);
@@ -7368,6 +7634,26 @@
         private System.Windows.Forms.Button btnSimboraConsultarPedidoRoteirazados;
         private System.Windows.Forms.Button btnSimboraConfirmarPedidoPronto;
         private System.Windows.Forms.Button btnSimboraConsultarAtualizacoes;
+        private System.Windows.Forms.Button btnMultiPedidoGerarToken;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.TextBox txtMultiPedidoTOkenGerado;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.TextBox txtMultiPedidoEstabelecimento;
+        private System.Windows.Forms.Button btnMultiPedidoCancelado;
+        private System.Windows.Forms.Button btnMultiPedidoEntregue;
+        private System.Windows.Forms.Button btnMultiPedidoSaiuParaEntrega;
+        private System.Windows.Forms.Button btnMultiPedidoPontoParaRetirar;
+        private System.Windows.Forms.TabPage tabPageEuFalo;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.TextBox txtEuFaloToken;
+        private System.Windows.Forms.TextBox txtEuFaloUsuario;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.Button btnEuFaloLogin;
+        private System.Windows.Forms.Button btnEuFaloUtilizarrSaldo;
+        private System.Windows.Forms.Button btnEuFaloSaldo;
+        private System.Windows.Forms.Button btnEuFaloCriarPedido;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.TextBox txtEuFaloTokenGerado;
     }
 }
 

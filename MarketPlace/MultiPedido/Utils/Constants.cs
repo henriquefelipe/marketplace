@@ -13,5 +13,9 @@ namespace MultiPedido.Utils
         public const string URL_POLL = "poll";
         public const string URL_ACKNOWLEDGE = "acknowledge?orderID=";
 
+
+        public const string URL_BASE_PRODUCAO_PADRAO = "https://api.multipedidos.com.br/";
+
+        public const string URL_LOGIN = "integration/auth/login";        
     }
 }

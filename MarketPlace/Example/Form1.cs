@@ -35,6 +35,8 @@ using Epadoca.Domain;
 using Simbora.Service;
 using Simbora.Enum;
 using Simbora.Domain;
+using EuFalo.Service;
+using EuFalo.Domain;
 
 namespace Example
 {
@@ -2134,6 +2136,12 @@ namespace Example
             {
                 MessageBox.Show(result.Message);
             }
+        }
+
+        private void btnMeuCardapioAiTestarJSON_Click(object sender, EventArgs e)
+        {
+            var json = "{'sucesso':true,'data':{'cliente':{'id':1165643,'nome':'Cristiele Soares','cpf':null,'telefone':'88988464962'},'operador':{'papeis':[],'operador':false,'ativo':false,'id':1457,'email':'alberione_gomes@hotmail.com','nome':'Alberas'},'itens':[{'id':4323684,'nome':'ARROZ COM STROGONOFF DE FRANGO','qtde':2,'valor':12,'total':24,'codigoPDV':'205','produto':{'id':28072,'nome':'ARROZ COM STROGONOFF DE FRANGO','preco':12,'descricao':'SERVE ATE 1 PESSOA ( NÃO FAZEMOS ALTERAÇÕES) ','mensagemPedido':null,'imagens':null,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425},'exibirNoSite':false,'disponibilidade':0,'exibirPrecoSite':false,'categoria':{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true},'tipoDeVenda':'Unidade','unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':false,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[{'nome':'EMBALAGEM','obrigatorio':true,'tipo':'escolha-simples','opcoesDisponiveis':[],'entidade':'produto','compartilhado':false,'classe':'escolha-simples-produto','id':180204,'produtos':[{'id':28072,'nome':null,'preco':null,'descricao':'','mensagemPedido':null,'imagens':null,'catalogo':null,'exibirNoSite':false,'disponibilidade':null,'exibirPrecoSite':false,'categoria':null,'tipoDeVenda':null,'unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':true,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true}],'tipoDeCobranca':'SOMA','ordem':0}],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true,'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'id':425,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425}},'ordem':23,'codigoPdv':'205','produtoNaEmpresa':{'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.455Z','atualizacao':'2022-12-22T20:30:36.455Z'}},'preco':null,'disponibilidade':null,'temEstoque':true,'exibirPrecoSite':true,'exibirPrecoNoCardapio':true,'disponivelNaMesa':true,'disponivelParaDelivery':true,'novoPreco':null,'destaque':null,'mensagemPedido':null}},'observacao':'','unidade':'','sabores':[],'adicionais':{}}],'pagamentos':[{'id':1908514,'formaDePagamento':'dinheiro','online':false,'trocoPara':0,'levarTroco':false,'valor':24}],'codigo':'27090','horario':'2022-12-22T20:29:47.000Z','statusOrdem':0,'subvalor':24,'desconto':0,'taxaEntrega':0,'total':24,'pago':false,'cancelado':false,'podeEditar':true,'finalizado':false,'formaDeEntrega':'Retirar','retirar':true,'aguardandoPagamentoOnline':false,'foiPagoOnline':false,'status':'Novo'}}";
+            var dados = JsonConvert.DeserializeObject<MeuCardapioAi.Domain.order_result>(json);
         }
 
         #endregion
@@ -6586,13 +6594,7 @@ namespace Example
             }
         }
 
-        #endregion
-
-        private void btnMeuCardapioAiTestarJSON_Click(object sender, EventArgs e)
-        {
-            var json = "{'sucesso':true,'data':{'cliente':{'id':1165643,'nome':'Cristiele Soares','cpf':null,'telefone':'88988464962'},'operador':{'papeis':[],'operador':false,'ativo':false,'id':1457,'email':'alberione_gomes@hotmail.com','nome':'Alberas'},'itens':[{'id':4323684,'nome':'ARROZ COM STROGONOFF DE FRANGO','qtde':2,'valor':12,'total':24,'codigoPDV':'205','produto':{'id':28072,'nome':'ARROZ COM STROGONOFF DE FRANGO','preco':12,'descricao':'SERVE ATE 1 PESSOA ( NÃO FAZEMOS ALTERAÇÕES) ','mensagemPedido':null,'imagens':null,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425},'exibirNoSite':false,'disponibilidade':0,'exibirPrecoSite':false,'categoria':{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true},'tipoDeVenda':'Unidade','unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':false,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[{'nome':'EMBALAGEM','obrigatorio':true,'tipo':'escolha-simples','opcoesDisponiveis':[],'entidade':'produto','compartilhado':false,'classe':'escolha-simples-produto','id':180204,'produtos':[{'id':28072,'nome':null,'preco':null,'descricao':'','mensagemPedido':null,'imagens':null,'catalogo':null,'exibirNoSite':false,'disponibilidade':null,'exibirPrecoSite':false,'categoria':null,'tipoDeVenda':null,'unidadeMedida':null,'valorInicial':null,'incremento':1,'disponivelParaDelivery':true,'disponivelNaMesa':true,'exibirPrecoNoCardapio':true,'sku':null,'qtdeMinima':1,'camposAdicionais':[],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true}],'tipoDeCobranca':'SOMA','ordem':0}],'horarios':[],'turnos':[],'tipo':'normal','naoAceitaCupom':false,'naoSincronizar':false,'ehBrinde':false,'categoriasAcima':[],'temEstoque':true,'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'id':425,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.454Z','atualizacao':'2022-12-22T20:30:36.454Z','id':425}},'ordem':23,'codigoPdv':'205','produtoNaEmpresa':{'empresa':{'horariosFuncionamento':[],'pausasProgramadas':[],'camposExtras':[],'formasDeEntrega':[],'modulos':[],'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'formasDePagamento':[],'identificadorMesa':'Mesa','rede':'','valorTaxaServico':10,'fusoHorario':-3,'dark':false,'darkPrincipal':false,'agruparAdicionais':false,'bloqueada':false,'meioDeEnvio':'Mock','aceitarPedidoAutomatico':true,'catalogo':{'nome':null,'categorias':[{'id':2800,'nome':'GUARNIÇÕES','impressoras':[],'codigoPdv':null,'nivel':1,'posicao':2,'disponivel':true}],'ativo':true,'precoPorEmpresa':false,'disponibilidadePorEmpresa':false,'criacao':'2022-12-22T20:30:36.455Z','atualizacao':'2022-12-22T20:30:36.455Z'}},'preco':null,'disponibilidade':null,'temEstoque':true,'exibirPrecoSite':true,'exibirPrecoNoCardapio':true,'disponivelNaMesa':true,'disponivelParaDelivery':true,'novoPreco':null,'destaque':null,'mensagemPedido':null}},'observacao':'','unidade':'','sabores':[],'adicionais':{}}],'pagamentos':[{'id':1908514,'formaDePagamento':'dinheiro','online':false,'trocoPara':0,'levarTroco':false,'valor':24}],'codigo':'27090','horario':'2022-12-22T20:29:47.000Z','statusOrdem':0,'subvalor':24,'desconto':0,'taxaEntrega':0,'total':24,'pago':false,'cancelado':false,'podeEditar':true,'finalizado':false,'formaDeEntrega':'Retirar','retirar':true,'aguardandoPagamentoOnline':false,'foiPagoOnline':false,'status':'Novo'}}";
-            var dados = JsonConvert.DeserializeObject<MeuCardapioAi.Domain.order_result>(json);
-        }
+        #endregion        
 
         #region Woocommerce
 
@@ -7040,7 +7042,7 @@ namespace Example
         {
             if (e.RowIndex > -1 && e.RowIndex < gridMultiPedido.Rows.Count)
             {
-                _multiPedidoId = gridMultiPedido.Rows[e.RowIndex].Cells[18].Value.ToString();
+                _multiPedidoId = gridMultiPedido.Rows[e.RowIndex].Cells[19].Value.ToString();
             }
         }
 
@@ -7065,8 +7067,8 @@ namespace Example
 
             try
             {
-                while (btnMultiPedidoParar.Enabled)
-                {
+                //while (btnMultiPedidoParar.Enabled)
+                //{
                     var orderResult = service.Orders();
                     if (orderResult.Success)
                     {
@@ -7080,8 +7082,8 @@ namespace Example
                         return;
                     }
 
-                    Thread.Sleep(30000);
-                }
+                    //Thread.Sleep(30000);
+                //}
             }
             catch (Exception ex)
             {
@@ -7131,6 +7133,110 @@ namespace Example
             else
             {
                 MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnMultiPedidoSaiuParaEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMultiPedidoPontoParaRetirar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoTOkenGerado.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_multiPedidoId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+            var result = service.Status(txtMultiPedidoTOkenGerado.Text, txtMultiPedidoEstabelecimento.Text, _multiPedidoId, MultiPedido.Enum.OrderStatus.DONE);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        private void btnMultiPedidoEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoTOkenGerado.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_multiPedidoId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+            var result = service.Status(txtMultiPedidoTOkenGerado.Text, txtMultiPedidoEstabelecimento.Text, _multiPedidoId, MultiPedido.Enum.OrderStatus.DONE);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnMultiPedidoCancelado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoTOkenGerado.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_multiPedidoId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+            var result = service.Status(txtMultiPedidoTOkenGerado.Text, txtMultiPedidoEstabelecimento.Text, _multiPedidoId, MultiPedido.Enum.OrderStatus.DONE);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnMultiPedidoGerarToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMultiPedidoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            var service = new MultiPedidoService(txtMultiPedidoToken.Text);
+            var result = service.Login();
+            if (result.Success)
+            {
+                txtMultiPedidoTOkenGerado.Text = result.Result.token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
             }
         }
 
@@ -7242,7 +7348,127 @@ namespace Example
 
         #endregion
 
+        #region Eu Falo
 
+        private void btnEuFaloLogin_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+            var result = service.Login(txtEuFaloUsuario.Text, txtEuFaloToken.Text);
+            if(result.Success)
+            {
+                txtEuFaloTokenGerado.Text = result.Result.accessToken;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEuFaloCriarPedido_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+
+            var categorias = new List<EuFalo.Domain.categoria>();
+            var categoria1 = new EuFalo.Domain.categoria();
+            categoria1.produtoCategoriaCI = "1";
+            categoria1.nomeProdutoCategoria = "GERAL";
+            categorias.Add(categoria1);
+
+            var serviceCategoria = service.CategoriaLista(txtEuFaloTokenGerado.Text, categorias);
+
+            var produtos = new List<EuFalo.Domain.produto>();
+            var produto1 = new EuFalo.Domain.produto();
+            produto1.ativo = true;
+            produto1.categoriaProdutoCI = "1";
+            produto1.nomeProduto = "COCA-COLA";
+            produto1.preco = 100;
+            produtos.Add(produto1);
+
+            var serviceProduto = service.ProdutoLista(txtEuFaloTokenGerado.Text, produtos);
+
+            var formpagamento = new EuFalo.Domain.formpagamento();
+            formpagamento.ativo = true;
+            formpagamento.formaPagamentoCI = "1";
+            formpagamento.nomeFormaPagamento = "DINHEIRO";
+            var serviceFormaPagamento = service.FormaPagamento(txtEuFaloTokenGerado.Text, formpagamento);
+
+            var vendedor = new EuFalo.Domain.vendedor();
+            vendedor.ativo = 1;
+            vendedor.vendedorCI = "1";
+            vendedor.nomeVendedor = "PEDRO HENRIQUE";
+            var serviceVendedor = service.Vendedor(txtEuFaloTokenGerado.Text, vendedor);
+
+            var contato = new EuFalo.Domain.contato();
+            contato.contatoCI = "1";
+            contato.nome = "HENRIQUE";
+            contato.cpf = DOCUMENTO;
+            contato.sexo = "M";
+            var serviceContato = service.Contato(txtEuFaloTokenGerado.Text, contato);
+
+            var venda = new EuFalo.Domain.venda();
+            venda.contatoCI = contato.contatoCI;
+            venda.vendaContatoCI = DateTime.Now.ToString("HHmmss");
+            venda.contatoCPF = DOCUMENTO;
+            venda.contarPontos = true;
+            venda.resgateAutomatico = true;
+            venda.dataVenda = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            venda.numero = DateTime.Now.ToString("HHmmss");
+            venda.valor = 50;
+            venda.vendedorCI = vendedor.vendedorCI;
+            venda.nomeVendedor = vendedor.nomeVendedor;
+            venda.formaPagamentoCI = formpagamento.formaPagamentoCI;
+            venda.nomeFormaPagamento = formpagamento.nomeFormaPagamento;
+            venda.filialCI = "1";
+            venda.filialNomeFantasia = "IzzyWay";
+
+            var item1 = new venda_item();
+            item1.vendaContatoItemCI = "1";
+            item1.produtoCI = "1";
+            item1.quantidade = 1;
+            item1.valor = 50;
+            venda.item.Add(item1);
+
+            var result = service.Venda(txtEuFaloTokenGerado.Text, venda);
+            if (result.Success && !result.Result.errors.Any())
+            {
+                MessageBox.Show("Criado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEuFaloSaldo_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+            var result = service.ConsultarSaldo(txtEuFaloTokenGerado.Text, DOCUMENTO);
+            if (result.Success && result.Result.success.Any())
+            {
+                var retorno = result.Result.success.FirstOrDefault();
+                MessageBox.Show("Saldo: " + retorno.saldo.ToString("N"));
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEuFaloUtilizarrSaldo_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+            var result = service.BaixarVoucher(txtEuFaloTokenGerado.Text, DOCUMENTO, DateTime.Now, 20);
+            if (result.Success && result.Result.success.Any())
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
     }
 }
 

@@ -14,9 +14,9 @@ namespace MultiPedido.Domain
         public decimal quantity { get; set; }
         public string type { get; set; }
         public string notes { get; set; }
-        public decimal? external_id { get; set; }
+        public string external_id { get; set; }
         public crust crust { get; set; }
-        public dough dough { get; set; }
+        //public dough dough { get; set; }
         public List<flavors> flavors { get; set; }
         public List<order_extras> extras { get; set; }
         public string pizza_price_behavior { get; set; }

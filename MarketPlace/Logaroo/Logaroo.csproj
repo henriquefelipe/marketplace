@@ -66,6 +66,7 @@
     <Compile Include="Domain\order_orders_store_mercadoo.cs" />
     <Compile Include="Domain\payments.cs" />
     <Compile Include="Domain\login.cs" />
+    <Compile Include="Domain\router.cs" />
     <Compile Include="Enum\OrderSaleChannel.cs" />
     <Compile Include="Enum\DeliveryType.cs" />
     <Compile Include="Enum\PaymentCode.cs" />

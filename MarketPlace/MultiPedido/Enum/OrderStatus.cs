@@ -11,5 +11,7 @@ namespace MultiPedido.Enum
         public const string DONE = "DONE";
         public const string SENT = "SENT";
         public const string OVER = "OVER";
+        public const string CANCELED = "CANCELED";
+        public const string SCHEDULED = "SCHEDULED";
     }
 }

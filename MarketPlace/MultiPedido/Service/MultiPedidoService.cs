@@ -16,6 +16,60 @@ namespace MultiPedido.Service
             _token = token;
         }
 
+
+        public GenericResult<login> Login()
+        {
+            var result = new GenericResult<login>();
+
+            var url = string.Format("{0}{1}", Constants.URL_BASE_PRODUCAO_PADRAO, Constants.URL_LOGIN);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("x-integration-token", _token);
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<login>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericSimpleResult Status(string jwttoken, string codigoEstabelecimento, string codigoPedido, string status)
+        {
+            var result = new GenericSimpleResult();
+
+            var data = new
+            {
+                status = status
+            };
+
+            var url = string.Format("{0}restaurant/{1}/order/{2}/status", Constants.URL_BASE_PRODUCAO_PADRAO, codigoEstabelecimento, codigoPedido);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", "Bearer " + jwttoken);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {                
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
         public GenericResult<List<order>> Orders()
         {
             var result = new GenericResult<List<order>>();
