@@ -18,5 +18,6 @@ namespace Ifood.Enum
         public const string PIX = "PIX";
         public const string OTHER = "OTHER";
         public const string EXTERNAL = "EXTERNAL";
+        public const string OTHER_VOUCHER = "OTHER_VOUCHER";
     }
 }

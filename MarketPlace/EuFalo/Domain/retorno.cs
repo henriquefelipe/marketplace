@@ -9,11 +9,11 @@ namespace EuFalo.Domain
     {
         public retorno()
         {
-            information = new List<retorno_information>();
+            information = new List<string>();
             errors = new List<retorno_errors>();
         }
 
-        public List<retorno_information> information {  get; set; }
+        public List<string> information {  get; set; }
         public List<retorno_errors> errors { get; set; }
     }
 

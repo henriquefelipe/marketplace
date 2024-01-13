@@ -19,6 +19,7 @@ namespace Logaroo.Domain
         public string name { get; set; }
         public decimal price { get; set; }
         public decimal quantity { get; set; }
+        public decimal fraction { get; set; }
         public bool is_offer { get; set; }
         public decimal price_offer { get; set; }
         public decimal total_price { get; set; }
@@ -32,5 +33,6 @@ namespace Logaroo.Domain
         public string name { get; set; }
         public decimal price { get; set; }
         public decimal quantity { get; set; }
+        public decimal fraction { get; set; }
     }
 }
