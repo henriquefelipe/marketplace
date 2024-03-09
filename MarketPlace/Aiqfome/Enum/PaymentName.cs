@@ -9,5 +9,6 @@ namespace Aiqfome.Enum
     public class PaymentName
     {
         public const string DINHEIRO = "Dinheiro";
+        public const string PAGAMENTO_ONLINE = "Pagamento Online";
     }
 }

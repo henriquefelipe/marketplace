@@ -9,6 +9,8 @@ namespace Ifood.Utils
     public static class Constants
     {
         public const string URL_BASE = "https://merchant-api.ifood.com.br/";
+        public const string URL_BASE_FINANCE = "https://merchant-api.ifood.com.br/financial/v2.0/";
+
         public const string VERSION_1 = "v1.0";
         public const string VERSION_2 = "v2.0";
         public const string VERSION_3 = "v3.0";

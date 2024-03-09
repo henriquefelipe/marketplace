@@ -13,6 +13,8 @@ namespace AnotaAi.Domain
         public int check { get; set; }
         public int shortReference { get; set; }
         public string createdAt { get; set; }
+        public string updatedAt { get; set; }
+        public string preparationStartDateTime { get; set; }
         public string type { get; set; }
         public string time_max { get; set; }
         public order_merchant merchant { get; set; }
@@ -23,6 +25,14 @@ namespace AnotaAi.Domain
         public decimal deliveryFee { get; set; } // taxa de entrega
         public List<order_discounts> discounts { get; set; }
         public deliveryAddress deliveryAddress { get; set; }
+        public pdv pdv { get; set; }
         public string observation { get; set; }
+        public string qr_description { get; set; }
+        public string salesChannel { get; set; }
+    }
+
+    public class pdv
+    {
+        public bool status { get; set; }
     }
 }

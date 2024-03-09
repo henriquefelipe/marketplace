@@ -887,15 +887,15 @@ namespace Example
             }
 
             var ifoodService = new Ifood.Service.IfoodService();
-            var result = ifoodService.Sales(_ifoodToken, txtIfoodMerchantId.Text);
-            if (result.Success)
-            {
-                MessageBox.Show("Pedido rejeitado com sucesso");
-            }
-            else
-            {
-                MessageBox.Show(result.Message);
-            }
+            //var result = ifoodService.Sales(_ifoodToken, txtIfoodMerchantId.Text);
+            //if (result.Success)
+            //{
+            //    MessageBox.Show("Pedido rejeitado com sucesso");
+            //}
+            //else
+            //{
+            //    MessageBox.Show(result.Message);
+            //}
         }
 
         #endregion
