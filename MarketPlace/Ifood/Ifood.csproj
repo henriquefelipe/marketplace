@@ -76,6 +76,9 @@
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\picking.cs" />
     <Compile Include="Domain\poolingEvent.cs" />
+    <Compile Include="Domain\Review\review.cs" />
+    <Compile Include="Domain\Review\reviews.cs" />
+    <Compile Include="Domain\Review\summary.cs" />
     <Compile Include="Domain\schedule.cs" />
     <Compile Include="Domain\status.cs" />
     <Compile Include="Domain\subItem.cs" />

@@ -11,6 +11,8 @@ namespace Ifood.Domain
         public string mode { get; set; }
         public string deliveredBy { get; set; }
         public string deliveryDateTime { get; set; }
+        public string pickupCode { get; set; }
+        public string observations { get; set; }
         public deliveryAddress deliveryAddress { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Ifood.Utils
     {
         public const string URL_BASE = "https://merchant-api.ifood.com.br/";
         public const string URL_BASE_FINANCE = "https://merchant-api.ifood.com.br/financial/v2.0/";
+        public const string URL_BASE_REVIEW = "https://merchant-api.ifood.com.br/review/v1.0/";
 
         public const string VERSION_1 = "v1.0";
         public const string VERSION_2 = "v2.0";

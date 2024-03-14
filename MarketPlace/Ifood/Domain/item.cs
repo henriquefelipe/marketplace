@@ -16,6 +16,7 @@ namespace Ifood.Domain
         public int index { get; set; }
         public string id { get; set; }
         public string name { get; set; }
+        public string uniqueId { get; set; }
         public string externalCode { get; set; }
         public string unit { get; set; }
         public string ean { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Ifood.Domain;
 using Ifood.Domain.Finance;
+using Ifood.Domain.Review;
 using Ifood.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
@@ -968,5 +969,114 @@ namespace Ifood.Service
         }
 
         #endregion
+
+        #region Review
+
+        public GenericResult<reviewss> Reviews(string token, string merchantId, DateTime inicio, DateTime fim)
+        {
+            var result = new GenericResult<reviewss>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE_REVIEW}merchants/{merchantId}/reviews");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                request.AddParameter("dateFrom", inicio.ToString("yyyy-MM-ddT00:00:00Z"));
+                request.AddParameter("dateTo", fim.ToString("yyyy-MM-ddT23:59:00Z"));
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {                    
+                    result.Result = JsonConvert.DeserializeObject<reviewss>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<review> Review(string token, string merchantId, string reviewId)
+        {
+            var result = new GenericResult<review>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE_REVIEW}merchants/{merchantId}/reviews/{reviewId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {                   
+                    result.Result = JsonConvert.DeserializeObject<review>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<summary> Summary(string token, string merchantId)
+        {
+            var result = new GenericResult<summary>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE_REVIEW}merchants/{merchantId}/summary");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {                    
+                    result.Result = JsonConvert.DeserializeObject<summary>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        #endregion
+
     }
 }
