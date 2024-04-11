@@ -165,6 +165,10 @@
       <Project>{72ee52a9-3a7a-43a6-b8e6-b8a10b05f05e}</Project>
       <Name>Ifood</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Iorion19\Iorion19.csproj">
+      <Project>{602a6b91-7846-4468-a51e-505b54086a15}</Project>
+      <Name>Iorion19</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JotaJa\JotaJa.csproj">
       <Project>{e50b2095-11b2-4926-bc46-3b0b6bb99899}</Project>
       <Name>JotaJa</Name>

@@ -37,6 +37,7 @@ using Simbora.Enum;
 using Simbora.Domain;
 using EuFalo.Service;
 using EuFalo.Domain;
+using Iorion19.Service;
 
 namespace Example
 {
@@ -130,6 +131,9 @@ namespace Example
 
         private List<MultiPedido.Domain.order> _multiPedidoOrders { get; set; }
         private string _multiPedidoId { get; set; }
+
+        private List<Iorion19.Domain.pedido> _iorion9Orders { get; set; }
+        private string _iorion19Id { get; set; }
 
         #endregion
 
@@ -286,6 +290,12 @@ namespace Example
                                 txtQuerodeliveryToken.Text = marketPlace.QueroDelivery.Token;
                                 txtQuerodeliveryPlaceID.Text = marketPlace.QueroDelivery.PlaceId;
                             }
+
+                            if (marketPlace.Iorion9 != null)
+                            {
+                                txtIorionToken.Text = marketPlace.Iorion9.Token;
+                                txtIorionURL.Text = marketPlace.Iorion9.Url;
+                            }
                         }
                     }
                 }
@@ -394,6 +404,10 @@ namespace Example
             _multiPedidoOrders = new List<MultiPedido.Domain.order>();
             gridMultiPedido.DataSource = _multiPedidoOrders.ToList();
             gridMultiPedido.Refresh();
+
+            _iorion9Orders = new List<Iorion19.Domain.pedido>();
+            gridIorion.DataSource = _iorion9Orders.ToList();
+            gridIorion.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -7465,6 +7479,156 @@ namespace Example
             else
             {
                 MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        #region Iorion 9
+
+        private async void btnIorionIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtIorionToken.Enabled = false;
+            txtIorionURL.Enabled = false;
+
+            btnIorionIniciar.Enabled = false;
+            btnIorion9Parar.Enabled = true;
+            await Task.Run(() => iorion19());
+        }
+
+        private void iorion19()
+        {
+            var service = new Iorion19Service(txtIorionURL.Text);
+
+            try
+            {
+                //while (btnIorion9Parar.Enabled)
+                //{
+                var orderResult = service.Orders(txtIorionToken.Text, "", DateTime.Now);
+                if (orderResult.Success)
+                {
+                    if (orderResult.Result.code == "200")
+                    {
+                        _iorion9Orders = orderResult.Result.pedidos;
+
+                        WriteGridIorion();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Result.message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+                //Thread.Sleep(30000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridIorionDelegate();
+        private void WriteGridIorion()
+        {
+            if (gridIorion.InvokeRequired)
+            {
+                var d = new WritelstGridIorionDelegate(WriteGridIorion);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridIorion.DataSource = _iorion9Orders.ToList();
+                gridIorion.Refresh();
+            }
+        }
+
+        private void btnIorion9Parar_Click(object sender, EventArgs e)
+        {
+            txtIorionToken.Enabled = true;
+
+            btnIorionIniciar.Enabled = true;
+            btnIorion9Parar.Enabled = false;
+        }
+
+        private void btnIorionStatus_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_iorion19Id))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new Iorion19Service(txtIorionURL.Text);
+            var result = service.ChangeStatus(txtIorionToken.Text, Convert.ToInt32(_iorion19Id));
+            if (result.Success)
+            {
+                if(result.Result.code == "200")
+                    MessageBox.Show("OK");
+                else
+                    MessageBox.Show(result.Result.message);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnIorionCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_iorion19Id))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new Iorion19Service(txtIorionURL.Text);
+            var result = service.Cancel(txtIorionToken.Text, Convert.ToInt32(_iorion19Id));
+            if (result.Success)
+            {
+                if (result.Result.code == "200")
+                    MessageBox.Show("OK");
+                else
+                    MessageBox.Show(result.Result.message);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void gridIorion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridIorion.Rows.Count)
+            {
+                _iorion19Id = gridIorion.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
         }
 

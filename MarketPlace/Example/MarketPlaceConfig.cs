@@ -24,6 +24,7 @@ namespace Example
         public MarketPlaceUberEats UberEats { get; set; }
         public MarketPlaceEpadoca Epadoca { get; set; }
         public MarketPlaceQueroDelivery QueroDelivery { get; set; }
+        public MarketPlaceConfigAtivMob Iorion9 { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
