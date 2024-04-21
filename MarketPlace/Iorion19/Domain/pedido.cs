@@ -42,5 +42,7 @@ namespace Iorion19.Domain
         public endereco_de_entrega endereco_de_entrega { get; set; }
         public usuario usuario { get; set; }
         public List<item> itens { get; set; }
+
+        public mensagem_no_cartao mensagem_no_cartao { get; set; }
     }
 }

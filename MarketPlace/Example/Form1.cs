@@ -38,6 +38,7 @@ using Simbora.Domain;
 using EuFalo.Service;
 using EuFalo.Domain;
 using Iorion19.Service;
+using Agilizone.Service;
 
 namespace Example
 {
@@ -4898,9 +4899,9 @@ namespace Example
         private void btnEpadocaStatusCupom_Click(object sender, EventArgs e)
         {
             var service = new EpadocaService(txtEpadocaUrl.Text);
-            var result = service.FidelidadeStatus(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, "","","","", DOCUMENTO);
+            var result = service.FidelidadeStatus(txtEpadocaToken.Text, txtEpadocaMerchantId.Text, "", "", "", "", DOCUMENTO);
             if (result.Success)
-            {                
+            {
                 MessageBox.Show("OK");
             }
             else
@@ -5329,7 +5330,7 @@ namespace Example
 
             var service = new Americanas.Service.AmericanasService();
             var pedidoResult = service.Ready(txtAmericanasStore.Text, _americanasSelected, txtAmericanasToken.Text);
-            if(pedidoResult.Success)
+            if (pedidoResult.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -5374,7 +5375,7 @@ namespace Example
                     {
                         foreach (var item in pedidosResult.Result)
                         {
-                            if(!_americanasOrders.Any(a => a.id == item.id))
+                            if (!_americanasOrders.Any(a => a.id == item.id))
                                 _americanasOrders.Add(item);
                         }
 
@@ -5522,7 +5523,7 @@ namespace Example
             var result = service.Merchants(txtServitToken.Text);
             if (result.Success)
             {
-                
+
             }
             else
             {
@@ -5675,7 +5676,7 @@ namespace Example
                         {
                             if (!_servitEvents.Any(a => a.id == item.id))
                                 _servitEvents.Add(item);
-                            
+
                         }
 
                         WriteGridServit();
@@ -6141,7 +6142,7 @@ namespace Example
             }
 
             var utilizarBonus = true;
-            if(utilizarBonus)
+            if (utilizarBonus)
             {
                 if (string.IsNullOrEmpty(txtCRMBonusBonusID.Text))
                 {
@@ -6225,7 +6226,7 @@ namespace Example
         private void btnCresceVendasCompra_Click(object sender, EventArgs e)
         {
             var compra = new CresceVendas.Domain.compra();
-            compra.registration = "05903219004";            
+            compra.registration = "05903219004";
 
             Random rand = new Random();
 
@@ -6261,7 +6262,7 @@ namespace Example
 
             var service = new CresceVendas.Service.CresceVendasService(txtCresceVendasEmail.Text, txtCresceVendasToken.Text, true);
             var retorno = service.Compra(compra);
-            if(retorno.Success)
+            if (retorno.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -6269,7 +6270,7 @@ namespace Example
             {
                 MessageBox.Show(retorno.Message);
             }
-        }        
+        }
 
         private void btnCresceVendasSaldo_Click(object sender, EventArgs e)
         {
@@ -6637,7 +6638,7 @@ namespace Example
             txtWoocommerceSecret.Enabled = false;
 
             btnWoocommerceIniciar.Enabled = false;
-            btnWoocommerceParar.Enabled = true;           
+            btnWoocommerceParar.Enabled = true;
             await Task.Run(() => woocommerce());
         }
 
@@ -6777,7 +6778,7 @@ namespace Example
         #endregion
 
         #region PixCommerce
-        
+
 
         public async void pixCommerceIniciar()
         {
@@ -6790,7 +6791,7 @@ namespace Example
             txtPixCommerceToken.Enabled = false;
 
             btnPixCommerceIniciar.Enabled = false;
-            btnPixCommerceParar.Enabled = true;            
+            btnPixCommerceParar.Enabled = true;
             await Task.Run(() => pixCommerce());
         }
 
@@ -6873,7 +6874,7 @@ namespace Example
             }
             else
             {
-                MessageBox.Show(orderResult.Message);              
+                MessageBox.Show(orderResult.Message);
             }
         }
 
@@ -7041,7 +7042,7 @@ namespace Example
         private void btnMultiPedidoIniciar_Click(object sender, EventArgs e)
         {
             multiPedidoIniciar();
-        }        
+        }
 
         private void btnMultiPedidoParar_Click(object sender, EventArgs e)
         {
@@ -7083,20 +7084,20 @@ namespace Example
             {
                 //while (btnMultiPedidoParar.Enabled)
                 //{
-                    var orderResult = service.Orders();
-                    if (orderResult.Success)
-                    {
-                        _multiPedidoOrders = orderResult.Result;
+                var orderResult = service.Orders();
+                if (orderResult.Success)
+                {
+                    _multiPedidoOrders = orderResult.Result;
 
-                        WriteGridMultiPedido();
-                    }
-                    else
-                    {
-                        MessageBox.Show(orderResult.Message);
-                        return;
-                    }
+                    WriteGridMultiPedido();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
 
-                    //Thread.Sleep(30000);
+                //Thread.Sleep(30000);
                 //}
             }
             catch (Exception ex)
@@ -7262,7 +7263,7 @@ namespace Example
         {
             var orders = new orders_new();
             var order = new Simbora.Domain.order();
-            order.external_id = DateTime.Now.ToString("HHmmss");            
+            order.external_id = DateTime.Now.ToString("HHmmss");
             order.origin = new Simbora.Domain.order_origin();
             order.origin.latitude = 0;
             order.origin.longitude = 0;
@@ -7303,7 +7304,7 @@ namespace Example
 
             var simboraServico = new SimboraService("https://teste.webapi.simbora.app/");
             var result = simboraServico.OrderNew(txtSimboraToken.Text, orders);
-            if(result.Success)
+            if (result.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -7368,7 +7369,7 @@ namespace Example
         {
             var service = new EuFaloService();
             var result = service.Login(txtEuFaloUsuario.Text, txtEuFaloToken.Text);
-            if(result.Success)
+            if (result.Success)
             {
                 txtEuFaloTokenGerado.Text = result.Result.accessToken;
             }
@@ -7584,7 +7585,7 @@ namespace Example
             var result = service.ChangeStatus(txtIorionToken.Text, Convert.ToInt32(_iorion19Id));
             if (result.Success)
             {
-                if(result.Result.code == "200")
+                if (result.Result.code == "200")
                     MessageBox.Show("OK");
                 else
                     MessageBox.Show(result.Result.message);
@@ -7633,6 +7634,66 @@ namespace Example
         }
 
         #endregion
+
+        #region Agilizone
+
+        private void btnAgilizoneToken_Click(object sender, EventArgs e)
+        {
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Token(txtAgilizoneClientID.Text, txtAgilizoneClientSecret.Text);
+            if (result.Success)
+            {
+                txtAgilizoneToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAgilizoneOrder_Click(object sender, EventArgs e)
+        {
+            var order = new Agilizone.Domain.order();
+            order.address = new Agilizone.Domain.order_address
+            {
+                city = "maracanau",
+                complement = "",
+                coordinates = new Agilizone.Domain.order_address_coordinates { latitude = 30, longitude = 30 },
+                country = "Brasil",
+                number = "11",
+                state = "Cearaa",
+                street = "Rua 1"
+            };
+            order.client = new Agilizone.Domain.order_client
+            {
+                name = "cledson test",
+                email = "cledson@mail.com",
+                phone = "85998408246"
+            };
+
+            order.details = "Pizza Grande +borda gratis. (1)\n - 1/2 calabresa com bacon (1) \n - 1/2 mussarela e bacon (1)\n- Sem borda (1)";
+            order.number = "12345567";
+            order.paymentType = "CREDIT";
+            order.deliveryFee = 10;
+            order.deliverymanFee = 4;
+            order.amount = 30;
+            order.isPrepaid = true;
+
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Order(order, txtAgilizoneToken.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+
     }
 }
 

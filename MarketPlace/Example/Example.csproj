@@ -93,6 +93,10 @@
       <Project>{77da7553-dd84-43fe-a4c8-c21bc8185a10}</Project>
       <Name>Accon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Agilizone\Agilizone.csproj">
+      <Project>{9944ef9f-edd5-42e0-aa16-f6de3d99b2b8}</Project>
+      <Name>Agilizone</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aipedi\Aipedi.csproj">
       <Project>{a7822d3b-963c-44f6-80ec-5f8d40d298cc}</Project>
       <Name>Aipedi</Name>

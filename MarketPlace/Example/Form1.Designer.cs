@@ -341,6 +341,16 @@
             this.label35 = new System.Windows.Forms.Label();
             this.btnIDeliveryParar = new System.Windows.Forms.Button();
             this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
+            this.tabPageIorion19 = new System.Windows.Forms.TabPage();
+            this.btnIorionCancelar = new System.Windows.Forms.Button();
+            this.txtIorionURL = new System.Windows.Forms.TextBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.btnIorionStatus = new System.Windows.Forms.Button();
+            this.gridIorion = new System.Windows.Forms.DataGridView();
+            this.txtIorionToken = new System.Windows.Forms.TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.btnIorion9Parar = new System.Windows.Forms.Button();
+            this.btnIorionIniciar = new System.Windows.Forms.Button();
             this.tabPageJotaJa = new System.Windows.Forms.TabPage();
             this.btnJotajaFinalizarPedido = new System.Windows.Forms.Button();
             this.btnJotajaPagamentoPendente = new System.Windows.Forms.Button();
@@ -558,16 +568,14 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.tabPageIorion19 = new System.Windows.Forms.TabPage();
-            this.txtIorionURL = new System.Windows.Forms.TextBox();
-            this.label117 = new System.Windows.Forms.Label();
-            this.btnIorionStatus = new System.Windows.Forms.Button();
-            this.gridIorion = new System.Windows.Forms.DataGridView();
-            this.txtIorionToken = new System.Windows.Forms.TextBox();
-            this.label118 = new System.Windows.Forms.Label();
-            this.btnIorion9Parar = new System.Windows.Forms.Button();
-            this.btnIorionIniciar = new System.Windows.Forms.Button();
-            this.btnIorionCancelar = new System.Windows.Forms.Button();
+            this.tabAgilizone = new System.Windows.Forms.TabPage();
+            this.btnAgilizoneToken = new System.Windows.Forms.Button();
+            this.txtAgilizoneClientSecret = new System.Windows.Forms.TextBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.txtAgilizoneClientID = new System.Windows.Forms.TextBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.btnAgilizoneOrder = new System.Windows.Forms.Button();
+            this.txtAgilizoneToken = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -607,6 +615,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGoomer)).BeginInit();
             this.tabPageIDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).BeginInit();
+            this.tabPageIorion19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).BeginInit();
             this.tabPageJotaJa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridJotaJa)).BeginInit();
             this.tabPageMeuCardapioAi.SuspendLayout();
@@ -634,8 +644,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPageIorion19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).BeginInit();
+            this.tabAgilizone.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -643,6 +652,7 @@
             this.tabControl1.Controls.Add(this.tabPageAccon);
             this.tabControl1.Controls.Add(this.tabPageAiqfome);
             this.tabControl1.Controls.Add(this.tabPageAipedi);
+            this.tabControl1.Controls.Add(this.tabAgilizone);
             this.tabControl1.Controls.Add(this.tabPageAmericanas);
             this.tabControl1.Controls.Add(this.tabPageAnotaAi);
             this.tabControl1.Controls.Add(this.tabPageAtivMob);
@@ -4398,6 +4408,124 @@
             this.btnIDeliveryIniciar.UseVisualStyleBackColor = true;
             this.btnIDeliveryIniciar.Click += new System.EventHandler(this.btnIDeliveryIniciar_Click);
             // 
+            // tabPageIorion19
+            // 
+            this.tabPageIorion19.Controls.Add(this.btnIorionCancelar);
+            this.tabPageIorion19.Controls.Add(this.txtIorionURL);
+            this.tabPageIorion19.Controls.Add(this.label117);
+            this.tabPageIorion19.Controls.Add(this.btnIorionStatus);
+            this.tabPageIorion19.Controls.Add(this.gridIorion);
+            this.tabPageIorion19.Controls.Add(this.txtIorionToken);
+            this.tabPageIorion19.Controls.Add(this.label118);
+            this.tabPageIorion19.Controls.Add(this.btnIorion9Parar);
+            this.tabPageIorion19.Controls.Add(this.btnIorionIniciar);
+            this.tabPageIorion19.Location = new System.Drawing.Point(4, 25);
+            this.tabPageIorion19.Name = "tabPageIorion19";
+            this.tabPageIorion19.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageIorion19.TabIndex = 33;
+            this.tabPageIorion19.Text = "Iorion19";
+            this.tabPageIorion19.UseVisualStyleBackColor = true;
+            // 
+            // btnIorionCancelar
+            // 
+            this.btnIorionCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionCancelar.Location = new System.Drawing.Point(706, 399);
+            this.btnIorionCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionCancelar.Name = "btnIorionCancelar";
+            this.btnIorionCancelar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionCancelar.TabIndex = 59;
+            this.btnIorionCancelar.Text = "Cancelar";
+            this.btnIorionCancelar.UseVisualStyleBackColor = true;
+            this.btnIorionCancelar.Click += new System.EventHandler(this.btnIorionCancelar_Click);
+            // 
+            // txtIorionURL
+            // 
+            this.txtIorionURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIorionURL.Location = new System.Drawing.Point(859, 25);
+            this.txtIorionURL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIorionURL.Name = "txtIorionURL";
+            this.txtIorionURL.Size = new System.Drawing.Size(387, 30);
+            this.txtIorionURL.TabIndex = 58;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label117.Location = new System.Drawing.Point(703, 29);
+            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(50, 25);
+            this.label117.TabIndex = 57;
+            this.label117.Text = "URL";
+            // 
+            // btnIorionStatus
+            // 
+            this.btnIorionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionStatus.Location = new System.Drawing.Point(19, 123);
+            this.btnIorionStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionStatus.Name = "btnIorionStatus";
+            this.btnIorionStatus.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionStatus.TabIndex = 56;
+            this.btnIorionStatus.Text = "Status";
+            this.btnIorionStatus.UseVisualStyleBackColor = true;
+            this.btnIorionStatus.Click += new System.EventHandler(this.btnIorionStatus_Click);
+            // 
+            // gridIorion
+            // 
+            this.gridIorion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridIorion.Location = new System.Drawing.Point(15, 178);
+            this.gridIorion.Margin = new System.Windows.Forms.Padding(4);
+            this.gridIorion.Name = "gridIorion";
+            this.gridIorion.RowHeadersWidth = 51;
+            this.gridIorion.Size = new System.Drawing.Size(1612, 644);
+            this.gridIorion.TabIndex = 55;
+            this.gridIorion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIorion_CellClick);
+            // 
+            // txtIorionToken
+            // 
+            this.txtIorionToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIorionToken.Location = new System.Drawing.Point(170, 25);
+            this.txtIorionToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIorionToken.Name = "txtIorionToken";
+            this.txtIorionToken.Size = new System.Drawing.Size(387, 30);
+            this.txtIorionToken.TabIndex = 54;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label118.Location = new System.Drawing.Point(14, 29);
+            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(82, 25);
+            this.label118.TabIndex = 53;
+            this.label118.Text = "TOKEN";
+            // 
+            // btnIorion9Parar
+            // 
+            this.btnIorion9Parar.Enabled = false;
+            this.btnIorion9Parar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorion9Parar.Location = new System.Drawing.Point(1399, 88);
+            this.btnIorion9Parar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorion9Parar.Name = "btnIorion9Parar";
+            this.btnIorion9Parar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorion9Parar.TabIndex = 52;
+            this.btnIorion9Parar.Text = "Parar";
+            this.btnIorion9Parar.UseVisualStyleBackColor = true;
+            this.btnIorion9Parar.Click += new System.EventHandler(this.btnIorion9Parar_Click);
+            // 
+            // btnIorionIniciar
+            // 
+            this.btnIorionIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionIniciar.Location = new System.Drawing.Point(1399, 25);
+            this.btnIorionIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionIniciar.Name = "btnIorionIniciar";
+            this.btnIorionIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionIniciar.TabIndex = 51;
+            this.btnIorionIniciar.Text = "Iniciar";
+            this.btnIorionIniciar.UseVisualStyleBackColor = true;
+            this.btnIorionIniciar.Click += new System.EventHandler(this.btnIorionIniciar_Click);
+            // 
             // tabPageJotaJa
             // 
             this.tabPageJotaJa.Controls.Add(this.btnJotajaFinalizarPedido);
@@ -7020,123 +7148,98 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // tabPageIorion19
+            // tabAgilizone
             // 
-            this.tabPageIorion19.Controls.Add(this.btnIorionCancelar);
-            this.tabPageIorion19.Controls.Add(this.txtIorionURL);
-            this.tabPageIorion19.Controls.Add(this.label117);
-            this.tabPageIorion19.Controls.Add(this.btnIorionStatus);
-            this.tabPageIorion19.Controls.Add(this.gridIorion);
-            this.tabPageIorion19.Controls.Add(this.txtIorionToken);
-            this.tabPageIorion19.Controls.Add(this.label118);
-            this.tabPageIorion19.Controls.Add(this.btnIorion9Parar);
-            this.tabPageIorion19.Controls.Add(this.btnIorionIniciar);
-            this.tabPageIorion19.Location = new System.Drawing.Point(4, 25);
-            this.tabPageIorion19.Name = "tabPageIorion19";
-            this.tabPageIorion19.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageIorion19.TabIndex = 33;
-            this.tabPageIorion19.Text = "Iorion19";
-            this.tabPageIorion19.UseVisualStyleBackColor = true;
+            this.tabAgilizone.Controls.Add(this.txtAgilizoneToken);
+            this.tabAgilizone.Controls.Add(this.btnAgilizoneOrder);
+            this.tabAgilizone.Controls.Add(this.btnAgilizoneToken);
+            this.tabAgilizone.Controls.Add(this.txtAgilizoneClientSecret);
+            this.tabAgilizone.Controls.Add(this.label119);
+            this.tabAgilizone.Controls.Add(this.txtAgilizoneClientID);
+            this.tabAgilizone.Controls.Add(this.label120);
+            this.tabAgilizone.Location = new System.Drawing.Point(4, 25);
+            this.tabAgilizone.Name = "tabAgilizone";
+            this.tabAgilizone.Size = new System.Drawing.Size(1641, 846);
+            this.tabAgilizone.TabIndex = 34;
+            this.tabAgilizone.Text = "Agilizone";
+            this.tabAgilizone.UseVisualStyleBackColor = true;
             // 
-            // txtIorionURL
+            // btnAgilizoneToken
             // 
-            this.txtIorionURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIorionURL.Location = new System.Drawing.Point(859, 25);
-            this.txtIorionURL.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIorionURL.Name = "txtIorionURL";
-            this.txtIorionURL.Size = new System.Drawing.Size(387, 30);
-            this.txtIorionURL.TabIndex = 58;
+            this.btnAgilizoneToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneToken.Location = new System.Drawing.Point(601, 475);
+            this.btnAgilizoneToken.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneToken.Name = "btnAgilizoneToken";
+            this.btnAgilizoneToken.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneToken.TabIndex = 38;
+            this.btnAgilizoneToken.Text = "Token";
+            this.btnAgilizoneToken.UseVisualStyleBackColor = true;
+            this.btnAgilizoneToken.Click += new System.EventHandler(this.btnAgilizoneToken_Click);
             // 
-            // label117
+            // txtAgilizoneClientSecret
             // 
-            this.label117.AutoSize = true;
-            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label117.Location = new System.Drawing.Point(703, 29);
-            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(50, 25);
-            this.label117.TabIndex = 57;
-            this.label117.Text = "URL";
+            this.txtAgilizoneClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgilizoneClientSecret.Location = new System.Drawing.Point(758, 379);
+            this.txtAgilizoneClientSecret.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAgilizoneClientSecret.Name = "txtAgilizoneClientSecret";
+            this.txtAgilizoneClientSecret.Size = new System.Drawing.Size(477, 30);
+            this.txtAgilizoneClientSecret.TabIndex = 37;
+            this.txtAgilizoneClientSecret.Text = "5896817f-27d9-4c3e-8d98-fbc17f20d6ac";
             // 
-            // btnIorionStatus
+            // label119
             // 
-            this.btnIorionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionStatus.Location = new System.Drawing.Point(19, 123);
-            this.btnIorionStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionStatus.Name = "btnIorionStatus";
-            this.btnIorionStatus.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionStatus.TabIndex = 56;
-            this.btnIorionStatus.Text = "Status";
-            this.btnIorionStatus.UseVisualStyleBackColor = true;
-            this.btnIorionStatus.Click += new System.EventHandler(this.btnIorionStatus_Click);
+            this.label119.AutoSize = true;
+            this.label119.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label119.Location = new System.Drawing.Point(596, 379);
+            this.label119.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(124, 25);
+            this.label119.TabIndex = 36;
+            this.label119.Text = "Client Secret";
+            this.label119.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gridIorion
+            // txtAgilizoneClientID
             // 
-            this.gridIorion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridIorion.Location = new System.Drawing.Point(15, 178);
-            this.gridIorion.Margin = new System.Windows.Forms.Padding(4);
-            this.gridIorion.Name = "gridIorion";
-            this.gridIorion.RowHeadersWidth = 51;
-            this.gridIorion.Size = new System.Drawing.Size(1612, 644);
-            this.gridIorion.TabIndex = 55;
-            this.gridIorion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIorion_CellClick);
+            this.txtAgilizoneClientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgilizoneClientID.Location = new System.Drawing.Point(758, 335);
+            this.txtAgilizoneClientID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAgilizoneClientID.Name = "txtAgilizoneClientID";
+            this.txtAgilizoneClientID.Size = new System.Drawing.Size(477, 30);
+            this.txtAgilizoneClientID.TabIndex = 35;
+            this.txtAgilizoneClientID.Text = "ff11f50b-b6d1-4bd4-9075-07783dc09b50";
             // 
-            // txtIorionToken
+            // label120
             // 
-            this.txtIorionToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIorionToken.Location = new System.Drawing.Point(170, 25);
-            this.txtIorionToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIorionToken.Name = "txtIorionToken";
-            this.txtIorionToken.Size = new System.Drawing.Size(387, 30);
-            this.txtIorionToken.TabIndex = 54;
+            this.label120.AutoSize = true;
+            this.label120.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label120.Location = new System.Drawing.Point(634, 339);
+            this.label120.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(86, 25);
+            this.label120.TabIndex = 34;
+            this.label120.Text = "Client ID";
             // 
-            // label118
+            // btnAgilizoneOrder
             // 
-            this.label118.AutoSize = true;
-            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label118.Location = new System.Drawing.Point(14, 29);
-            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(82, 25);
-            this.label118.TabIndex = 53;
-            this.label118.Text = "TOKEN";
+            this.btnAgilizoneOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneOrder.Location = new System.Drawing.Point(814, 475);
+            this.btnAgilizoneOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneOrder.Name = "btnAgilizoneOrder";
+            this.btnAgilizoneOrder.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneOrder.TabIndex = 39;
+            this.btnAgilizoneOrder.Text = "Order";
+            this.btnAgilizoneOrder.UseVisualStyleBackColor = true;
+            this.btnAgilizoneOrder.Click += new System.EventHandler(this.btnAgilizoneOrder_Click);
             // 
-            // btnIorion9Parar
+            // txtAgilizoneToken
             // 
-            this.btnIorion9Parar.Enabled = false;
-            this.btnIorion9Parar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorion9Parar.Location = new System.Drawing.Point(1399, 88);
-            this.btnIorion9Parar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorion9Parar.Name = "btnIorion9Parar";
-            this.btnIorion9Parar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorion9Parar.TabIndex = 52;
-            this.btnIorion9Parar.Text = "Parar";
-            this.btnIorion9Parar.UseVisualStyleBackColor = true;
-            this.btnIorion9Parar.Click += new System.EventHandler(this.btnIorion9Parar_Click);
-            // 
-            // btnIorionIniciar
-            // 
-            this.btnIorionIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionIniciar.Location = new System.Drawing.Point(1399, 25);
-            this.btnIorionIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionIniciar.Name = "btnIorionIniciar";
-            this.btnIorionIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionIniciar.TabIndex = 51;
-            this.btnIorionIniciar.Text = "Iniciar";
-            this.btnIorionIniciar.UseVisualStyleBackColor = true;
-            this.btnIorionIniciar.Click += new System.EventHandler(this.btnIorionIniciar_Click);
-            // 
-            // btnIorionCancelar
-            // 
-            this.btnIorionCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionCancelar.Location = new System.Drawing.Point(706, 399);
-            this.btnIorionCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionCancelar.Name = "btnIorionCancelar";
-            this.btnIorionCancelar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionCancelar.TabIndex = 59;
-            this.btnIorionCancelar.Text = "Cancelar";
-            this.btnIorionCancelar.UseVisualStyleBackColor = true;
-            this.btnIorionCancelar.Click += new System.EventHandler(this.btnIorionCancelar_Click);
+            this.txtAgilizoneToken.Enabled = false;
+            this.txtAgilizoneToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgilizoneToken.Location = new System.Drawing.Point(758, 437);
+            this.txtAgilizoneToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAgilizoneToken.Name = "txtAgilizoneToken";
+            this.txtAgilizoneToken.Size = new System.Drawing.Size(477, 30);
+            this.txtAgilizoneToken.TabIndex = 40;
             // 
             // Form1
             // 
@@ -7209,6 +7312,9 @@
             this.tabPageIDelivery.ResumeLayout(false);
             this.tabPageIDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).EndInit();
+            this.tabPageIorion19.ResumeLayout(false);
+            this.tabPageIorion19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).EndInit();
             this.tabPageJotaJa.ResumeLayout(false);
             this.tabPageJotaJa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridJotaJa)).EndInit();
@@ -7250,9 +7356,8 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPageIorion19.ResumeLayout(false);
-            this.tabPageIorion19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).EndInit();
+            this.tabAgilizone.ResumeLayout(false);
+            this.tabAgilizone.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -7798,6 +7903,14 @@
         private System.Windows.Forms.Label label118;
         private System.Windows.Forms.Button btnIorion9Parar;
         private System.Windows.Forms.Button btnIorionIniciar;
+        private System.Windows.Forms.TabPage tabAgilizone;
+        private System.Windows.Forms.Button btnAgilizoneOrder;
+        private System.Windows.Forms.Button btnAgilizoneToken;
+        private System.Windows.Forms.TextBox txtAgilizoneClientSecret;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.TextBox txtAgilizoneClientID;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.TextBox txtAgilizoneToken;
     }
 }
 

@@ -39,7 +39,10 @@ namespace EuFalo.Service
             }
             else
             {
-                result.Message = response.Content;
+                if (string.IsNullOrEmpty(response.Content))
+                    result.Message = response.StatusDescription;
+                else
+                    result.Message = response.Content;
             }
 
             result.Json = response.Content;
@@ -66,7 +69,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -99,7 +105,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -132,7 +141,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -165,7 +177,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -198,7 +213,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -231,7 +249,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -263,7 +284,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
@@ -303,7 +327,10 @@ namespace EuFalo.Service
                 }
                 else
                 {
-                    result.Message = response.Content;
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
                 }
 
                 result.Json = response.Content;
