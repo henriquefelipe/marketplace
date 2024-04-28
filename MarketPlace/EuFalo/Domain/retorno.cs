@@ -24,6 +24,11 @@ namespace EuFalo.Domain
 
     public class retorno_errors
     {
+        public retorno_errors()
+        {
+            mensagem = new List<string>();
+        }
 
+        public List<string> mensagem { get; set; }
     }
 }

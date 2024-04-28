@@ -39,6 +39,8 @@ using EuFalo.Service;
 using EuFalo.Domain;
 using Iorion19.Service;
 using Agilizone.Service;
+using FixeCRM.Domain;
+using SelfBuyMe.Service;
 
 namespace Example
 {
@@ -7691,9 +7693,186 @@ namespace Example
             }
         }
 
+
         #endregion
 
+        #region FIxeCRM
 
+        private void btnFixeCRMLogin_Click(object sender, EventArgs e)
+        {
+            var service = new FixeCRMService();
+            var result = service.Login(txtFixeCRMUsuario.Text, txtFixeCRMSenha.Text);
+            if (result.Success)
+            {
+                txtFixeCRMToken.Text = result.Result.token;
+                txtFixeCRMIdPassbook.Text = result.Result.user.id_passbooks;
+                txtFixeCRMIdUser.Text = result.Result.user._id;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFixeCRMConsultarSelo_Click(object sender, EventArgs e)
+        {
+            var service = new FixeCRMService();
+            var result = service.Pointsv2(txtFixeCRMToken.Text, txtFixeCRMIdPassbook.Text, "32979091880");
+            if (result.Success)
+            {
+                //txtFixeCRMToken.Text = result.Result.token;
+                //txtFixeCRMIdPassbook.Text = result.Result.user.id_passbooks;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFixeCRMPontos_Click(object sender, EventArgs e)
+        {
+            var point = new point();
+            point.id_user = txtFixeCRMIdUser.Text;
+            point.id_passbook = txtFixeCRMIdPassbook.Text;
+            point.uniqueId = "32979091880";
+            point.value = 100;
+            point.source = "Loja Teste";
+            point.externalId = DateTime.Now.ToString("ddMMyyyyHHmmss");
+            point.is_delivery = false;
+
+            var produto1 = new point_details();
+            produto1.sku = "1";
+            produto1.name = "Coca-Cola";
+            produto1.count = 50;
+            point.details.Add(produto1);
+
+
+            var service = new FixeCRMService();
+            var result = service.AddPoints(txtFixeCRMToken.Text, point);
+            if (result.Success)
+            {
+                if(result.Result.status == FixeCRM.Enum.Status.OK)
+                {
+                    MessageBox.Show("OK");
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFixeCRMResgatar_Click(object sender, EventArgs e)
+        {
+            var point = new point();
+            point.id_user = txtFixeCRMIdUser.Text;
+            point.id_passbook = txtFixeCRMIdPassbook.Text;
+            point.uniqueId = "32979091880";
+            point.value = 1;
+            point.source = "Loja Teste";
+            point.externalId = DateTime.Now.ToString("ddMMyyyyHHmmss");
+            point.is_delivery = false;
+
+            var produto1 = new point_details();
+            produto1.sku = "1";
+            produto1.name = "Coca-Cola";
+            produto1.count = 50;
+            point.details.Add(produto1);
+
+
+            var service = new FixeCRMService();
+            var result = service.RemovePoints(txtFixeCRMToken.Text, point);
+            if (result.Success)
+            {
+                if (result.Result.status == FixeCRM.Enum.Status.OK)
+                {
+                    MessageBox.Show("OK");
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        #endregion
+
+        #region SelfBuyMe
+
+        private void btnSelfBuyMeOrders_Click(object sender, EventArgs e)
+        {
+            var service = new SelfBuyMeService();
+            var result = service.Orders(txtSelfBuyMeToken.Text, "");
+            if(result.Success)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        private void btnSelfBuyMeOrder_Click(object sender, EventArgs e)
+        {
+            var service = new SelfBuyMeService();
+            var result = service.Order(txtSelfBuyMeToken.Text, 132);
+            if (result.Success)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnSelfBuyMePointSales_Click(object sender, EventArgs e)
+        {
+            var service = new SelfBuyMeService();
+            var result = service.PointSales(txtSelfBuyMeToken.Text);
+            if (result.Success)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnSelfBuyMePointSalesGroup_Click(object sender, EventArgs e)
+        {
+            var service = new SelfBuyMeService();
+            var result = service.PointSalesGroup(txtSelfBuyMeToken.Text);
+            if (result.Success)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnSelfBuyMeMarkRead_Click(object sender, EventArgs e)
+        {
+            var ids = new List<int>();
+            ids.Add(132);
+            var service = new SelfBuyMeService();
+            var result = service.MarkRead(txtSelfBuyMeToken.Text, ids);
+            if (result.Success)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
     }
 }
 

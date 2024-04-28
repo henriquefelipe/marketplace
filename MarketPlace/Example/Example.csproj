@@ -153,6 +153,14 @@
       <Project>{19ff5cde-dc28-49e6-864b-c405475e125b}</Project>
       <Name>EuFalo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fidelizi\Fidelizi.csproj">
+      <Project>{5ba3b444-3b22-4580-b882-2a12f0a541a3}</Project>
+      <Name>Fidelizi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FixeCRM\FixeCRM.csproj">
+      <Project>{93ad28ed-99ff-4be3-8d4f-81af5306a9d6}</Project>
+      <Name>FixeCRM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GloriaFood\GloriaFood.csproj">
       <Project>{572c537e-0dfb-4b13-9b0d-6918d191c4bc}</Project>
       <Name>GloriaFood</Name>
@@ -212,6 +220,10 @@
     <ProjectReference Include="..\Rappi\Rappi.csproj">
       <Project>{c3d17fa9-cc22-4a28-a049-2a7ad8164403}</Project>
       <Name>Rappi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SelfBuyMe\SelfBuyMe.csproj">
+      <Project>{6154bfda-0ae4-4af5-be44-873e142e3704}</Project>
+      <Name>SelfBuyMe</Name>
     </ProjectReference>
     <ProjectReference Include="..\Servit\Servit.csproj">
       <Project>{dd7b2f3a-2797-48a2-af86-bde6e490c13d}</Project>

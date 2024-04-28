@@ -34,5 +34,7 @@ namespace AnotaAi.Domain
     public class pdv
     {
         public bool status { get; set; }
+        public int? mode { get; set; }
+        public string table { get; set; }
     }
 }

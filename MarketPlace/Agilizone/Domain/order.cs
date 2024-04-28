@@ -15,14 +15,20 @@ namespace Agilizone.Domain
         public decimal deliverymanFee { get; set; }
         public decimal amount { get; set; }
         public bool isPrepaid { get; set; }
-
+        public string orderType { get; set; }
+        public string originPlatform { get; set; }
+        public string observations { get; set; }
 
         public string _id { get; set; }
         public string storeId { get; set; }
         public string status { get; set; }
-        public string orderTiming { get; set; }
-        public string orderType { get; set; }
+        public string orderTiming { get; set; }        
         public string createdAt { get; set; }
+        public string externalId { get; set; }
+        public string preparationTime { get; set; }
+        public string scheduledPreparationTime { get; set; }
+
+        public order_paymentExtraInfo paymentExtraInfo { get; set; }
     }
 
     public class order_address
@@ -34,6 +40,9 @@ namespace Agilizone.Domain
         public string number { get; set; }
         public string state { get; set; }
         public string street { get; set; }
+        public string neighborhood { get; set; }
+        public string postcode { get; set; }
+        public string reference { get; set; }        
     }
 
     public class order_address_coordinates
@@ -62,4 +71,22 @@ namespace Agilizone.Domain
     //        }
     //    ],
 
+    public class order_paymentExtraInfo
+    {
+        public order_paymentExtraInfo()
+        {
+            discountCoupons = new List<order_paymentExtraInfo_discountCoupons>();
+        }
+
+        public string cardBrand { get; set; }
+
+        public decimal changeFor { get; set; }
+        public List<order_paymentExtraInfo_discountCoupons> discountCoupons { get; set; }
+    }
+
+    public class order_paymentExtraInfo_discountCoupons
+    {
+        public string sponsor { get; set; }
+        public decimal value { get; set; }
+    }
 }
