@@ -16,8 +16,7 @@ namespace Logaroo.Domain
         public int? bag_id { get; set; }
         public int? destiny { get; set; }
         public string origin { get; set; }
-        public string merchant_id { get; set; }
-        public string city { get; set; }
+        public string merchant_id { get; set; }        
         public string customer_email { get; set; }
         public string customer_id_number { get; set; }
         public string customer_name { get; set; }
@@ -30,9 +29,12 @@ namespace Logaroo.Domain
         public string complement { get; set; }
         public string state { get; set; }
         public string street { get; set; }
+        public string city { get; set; }
+        public string landmark { get; set; }
+        public string zipcode { get; set; }
         public decimal sub_total { get; set; }
         public decimal total_price { get; set; }
-        public string zipcode { get; set; }
+        
         public string status { get; set; }
         public string type { get; set; }
         public List<orderitem> items { get; set; }
@@ -42,16 +44,41 @@ namespace Logaroo.Domain
         /// </summary>
         public string delivery_forecast { get; set; }
 
-        public string observation { get; set; }        
-        
+        public string observation { get; set; }
+        public string justification_content { get; set; }
+
+        public order_origin_data origin_data { get; set; }
+
     }
    
     public class orderitem
     {
+        public orderitem()
+        {
+            subitems = new List<ordersubitem>();
+        }
+
         public int seq { get; set; }
         public string cod { get; set; }
         public string name { get; set; }
-        public string observation { get; set; }
+        public string obs { get; set; }
         public decimal quantity { get; set; }
+
+        public List<ordersubitem> subitems { get; set; }
+    }
+
+    public class ordersubitem
+    {        
+        public string cod { get; set; }
+        public string name { get; set; }
+        public string obs { get; set; }
+        public decimal quantity { get; set; }
+        public decimal price { get; set; }
+    }
+
+    public class order_origin_data
+    {
+        public string orogin_id { get; set; }
+        public string collect_code { get; set; }
     }
 }

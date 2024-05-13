@@ -264,7 +264,20 @@
             this.label114 = new System.Windows.Forms.Label();
             this.btnEuFaloLogin = new System.Windows.Forms.Button();
             this.tabPageFidelizi = new System.Windows.Forms.TabPage();
+            this.label124 = new System.Windows.Forms.Label();
+            this.txtFideliziEstabelecimentoCodigo = new System.Windows.Forms.TextBox();
+            this.label125 = new System.Windows.Forms.Label();
+            this.txtFideliziAccessToken = new System.Windows.Forms.TextBox();
+            this.txtFideliziAppTokenn = new System.Windows.Forms.TextBox();
+            this.label126 = new System.Windows.Forms.Label();
+            this.btnFideliziConfiguracoes = new System.Windows.Forms.Button();
             this.tabPageFixeCRM = new System.Windows.Forms.TabPage();
+            this.btnFixeCRMResgatar = new System.Windows.Forms.Button();
+            this.btnFixeCRMPontos = new System.Windows.Forms.Button();
+            this.txtFixeCRMIdUser = new System.Windows.Forms.TextBox();
+            this.btnFixeCRMConsultarSelo = new System.Windows.Forms.Button();
+            this.txtFixeCRMIdPassbook = new System.Windows.Forms.TextBox();
+            this.txtFixeCRMToken = new System.Windows.Forms.TextBox();
             this.btnFixeCRMLogin = new System.Windows.Forms.Button();
             this.txtFixeCRMSenha = new System.Windows.Forms.TextBox();
             this.label121 = new System.Windows.Forms.Label();
@@ -513,6 +526,14 @@
             this.label24 = new System.Windows.Forms.Label();
             this.btnRappiParar = new System.Windows.Forms.Button();
             this.btnRappiIniciar = new System.Windows.Forms.Button();
+            this.tabPageSelfBuyMe = new System.Windows.Forms.TabPage();
+            this.btnSelfBuyMeMarkRead = new System.Windows.Forms.Button();
+            this.btnSelfBuyMePointSalesGroup = new System.Windows.Forms.Button();
+            this.btnSelfBuyMePointSales = new System.Windows.Forms.Button();
+            this.btnSelfBuyMeOrder = new System.Windows.Forms.Button();
+            this.btnSelfBuyMeOrders = new System.Windows.Forms.Button();
+            this.txtSelfBuyMeToken = new System.Windows.Forms.TextBox();
+            this.label123 = new System.Windows.Forms.Label();
             this.tabPageServit = new System.Windows.Forms.TabPage();
             this.btnServitTransferencia = new System.Windows.Forms.Button();
             this.txtServitMesaDestino = new System.Windows.Forms.TextBox();
@@ -583,20 +604,15 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.txtFixeCRMToken = new System.Windows.Forms.TextBox();
-            this.txtFixeCRMIdPassbook = new System.Windows.Forms.TextBox();
-            this.btnFixeCRMConsultarSelo = new System.Windows.Forms.Button();
-            this.txtFixeCRMIdUser = new System.Windows.Forms.TextBox();
-            this.btnFixeCRMPontos = new System.Windows.Forms.Button();
-            this.btnFixeCRMResgatar = new System.Windows.Forms.Button();
-            this.tabPageSelfBuyMe = new System.Windows.Forms.TabPage();
-            this.btnSelfBuyMeOrders = new System.Windows.Forms.Button();
-            this.txtSelfBuyMeToken = new System.Windows.Forms.TextBox();
-            this.label123 = new System.Windows.Forms.Label();
-            this.btnSelfBuyMeOrder = new System.Windows.Forms.Button();
-            this.btnSelfBuyMePointSales = new System.Windows.Forms.Button();
-            this.btnSelfBuyMePointSalesGroup = new System.Windows.Forms.Button();
-            this.btnSelfBuyMeMarkRead = new System.Windows.Forms.Button();
+            this.tabPagePlug4Sales = new System.Windows.Forms.TabPage();
+            this.label127 = new System.Windows.Forms.Label();
+            this.txtPlug4SalesClientSecret = new System.Windows.Forms.TextBox();
+            this.txtPlug4SalesClientId = new System.Windows.Forms.TextBox();
+            this.label128 = new System.Windows.Forms.Label();
+            this.btnPlug4SalesToken = new System.Windows.Forms.Button();
+            this.label129 = new System.Windows.Forms.Label();
+            this.txtPlug4SalesTokenGerado = new System.Windows.Forms.TextBox();
+            this.txtPlug4Sales = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -625,6 +641,7 @@
             this.tabPageEpadoca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
             this.tabPageEuFalo.SuspendLayout();
+            this.tabPageFidelizi.SuspendLayout();
             this.tabPageFixeCRM.SuspendLayout();
             this.tabPageIfood.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -658,6 +675,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridQuerodelivery)).BeginInit();
             this.tabPageRappi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).BeginInit();
+            this.tabPageSelfBuyMe.SuspendLayout();
             this.tabPageServit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridServit)).BeginInit();
             this.tabPageSimbora.SuspendLayout();
@@ -667,7 +685,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPageSelfBuyMe.SuspendLayout();
+            this.tabPagePlug4Sales.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -702,6 +720,7 @@
             this.tabControl1.Controls.Add(this.tabPageOnPedido);
             this.tabControl1.Controls.Add(this.tabPagePedZap);
             this.tabControl1.Controls.Add(this.tabPagePixCommerce);
+            this.tabControl1.Controls.Add(this.tabPagePlug4Sales);
             this.tabControl1.Controls.Add(this.tabPageQueroDelivery);
             this.tabControl1.Controls.Add(this.tabPageRappi);
             this.tabControl1.Controls.Add(this.tabPageSelfBuyMe);
@@ -3503,12 +3522,94 @@
             // 
             // tabPageFidelizi
             // 
+            this.tabPageFidelizi.Controls.Add(this.label124);
+            this.tabPageFidelizi.Controls.Add(this.txtFideliziEstabelecimentoCodigo);
+            this.tabPageFidelizi.Controls.Add(this.label125);
+            this.tabPageFidelizi.Controls.Add(this.txtFideliziAccessToken);
+            this.tabPageFidelizi.Controls.Add(this.txtFideliziAppTokenn);
+            this.tabPageFidelizi.Controls.Add(this.label126);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziConfiguracoes);
             this.tabPageFidelizi.Location = new System.Drawing.Point(4, 25);
             this.tabPageFidelizi.Name = "tabPageFidelizi";
             this.tabPageFidelizi.Size = new System.Drawing.Size(1641, 846);
             this.tabPageFidelizi.TabIndex = 36;
             this.tabPageFidelizi.Text = "Fidelizi";
             this.tabPageFidelizi.UseVisualStyleBackColor = true;
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label124.Location = new System.Drawing.Point(497, 452);
+            this.label124.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(135, 25);
+            this.label124.TabIndex = 54;
+            this.label124.Text = "Estab. Código";
+            // 
+            // txtFideliziEstabelecimentoCodigo
+            // 
+            this.txtFideliziEstabelecimentoCodigo.Enabled = false;
+            this.txtFideliziEstabelecimentoCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFideliziEstabelecimentoCodigo.Location = new System.Drawing.Point(623, 453);
+            this.txtFideliziEstabelecimentoCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFideliziEstabelecimentoCodigo.Name = "txtFideliziEstabelecimentoCodigo";
+            this.txtFideliziEstabelecimentoCodigo.Size = new System.Drawing.Size(495, 30);
+            this.txtFideliziEstabelecimentoCodigo.TabIndex = 53;
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label125.Location = new System.Drawing.Point(430, 378);
+            this.label125.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(138, 25);
+            this.label125.TabIndex = 52;
+            this.label125.Text = "Access Token";
+            // 
+            // txtFideliziAccessToken
+            // 
+            this.txtFideliziAccessToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFideliziAccessToken.Location = new System.Drawing.Point(623, 379);
+            this.txtFideliziAccessToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFideliziAccessToken.Name = "txtFideliziAccessToken";
+            this.txtFideliziAccessToken.Size = new System.Drawing.Size(495, 30);
+            this.txtFideliziAccessToken.TabIndex = 51;
+            this.txtFideliziAccessToken.Text = "fa1a60a77e6ba497d1062ff6233859d3024de7e8";
+            // 
+            // txtFideliziAppTokenn
+            // 
+            this.txtFideliziAppTokenn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFideliziAppTokenn.Location = new System.Drawing.Point(623, 290);
+            this.txtFideliziAppTokenn.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFideliziAppTokenn.Name = "txtFideliziAppTokenn";
+            this.txtFideliziAppTokenn.Size = new System.Drawing.Size(495, 30);
+            this.txtFideliziAppTokenn.TabIndex = 50;
+            this.txtFideliziAppTokenn.Text = "d4dccaae763763afd0480fcd97fedafbc2475490";
+            // 
+            // label126
+            // 
+            this.label126.AutoSize = true;
+            this.label126.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label126.Location = new System.Drawing.Point(486, 293);
+            this.label126.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(109, 25);
+            this.label126.TabIndex = 49;
+            this.label126.Text = "App Token";
+            // 
+            // btnFideliziConfiguracoes
+            // 
+            this.btnFideliziConfiguracoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFideliziConfiguracoes.Location = new System.Drawing.Point(1184, 327);
+            this.btnFideliziConfiguracoes.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFideliziConfiguracoes.Name = "btnFideliziConfiguracoes";
+            this.btnFideliziConfiguracoes.Size = new System.Drawing.Size(193, 41);
+            this.btnFideliziConfiguracoes.TabIndex = 48;
+            this.btnFideliziConfiguracoes.Text = "Configurações";
+            this.btnFideliziConfiguracoes.UseVisualStyleBackColor = true;
+            this.btnFideliziConfiguracoes.Click += new System.EventHandler(this.btnFideliziConfiguracoes_Click);
             // 
             // tabPageFixeCRM
             // 
@@ -3529,6 +3630,72 @@
             this.tabPageFixeCRM.TabIndex = 35;
             this.tabPageFixeCRM.Text = "Fixe CRM";
             this.tabPageFixeCRM.UseVisualStyleBackColor = true;
+            // 
+            // btnFixeCRMResgatar
+            // 
+            this.btnFixeCRMResgatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFixeCRMResgatar.Location = new System.Drawing.Point(1308, 432);
+            this.btnFixeCRMResgatar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFixeCRMResgatar.Name = "btnFixeCRMResgatar";
+            this.btnFixeCRMResgatar.Size = new System.Drawing.Size(249, 41);
+            this.btnFixeCRMResgatar.TabIndex = 44;
+            this.btnFixeCRMResgatar.Text = "Resgatar";
+            this.btnFixeCRMResgatar.UseVisualStyleBackColor = true;
+            this.btnFixeCRMResgatar.Click += new System.EventHandler(this.btnFixeCRMResgatar_Click);
+            // 
+            // btnFixeCRMPontos
+            // 
+            this.btnFixeCRMPontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFixeCRMPontos.Location = new System.Drawing.Point(941, 432);
+            this.btnFixeCRMPontos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFixeCRMPontos.Name = "btnFixeCRMPontos";
+            this.btnFixeCRMPontos.Size = new System.Drawing.Size(359, 41);
+            this.btnFixeCRMPontos.TabIndex = 43;
+            this.btnFixeCRMPontos.Text = "Enviar Selos/Pontos/Cashback";
+            this.btnFixeCRMPontos.UseVisualStyleBackColor = true;
+            this.btnFixeCRMPontos.Click += new System.EventHandler(this.btnFixeCRMPontos_Click);
+            // 
+            // txtFixeCRMIdUser
+            // 
+            this.txtFixeCRMIdUser.Enabled = false;
+            this.txtFixeCRMIdUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFixeCRMIdUser.Location = new System.Drawing.Point(918, 337);
+            this.txtFixeCRMIdUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFixeCRMIdUser.Name = "txtFixeCRMIdUser";
+            this.txtFixeCRMIdUser.Size = new System.Drawing.Size(310, 30);
+            this.txtFixeCRMIdUser.TabIndex = 42;
+            // 
+            // btnFixeCRMConsultarSelo
+            // 
+            this.btnFixeCRMConsultarSelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFixeCRMConsultarSelo.Location = new System.Drawing.Point(740, 432);
+            this.btnFixeCRMConsultarSelo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFixeCRMConsultarSelo.Name = "btnFixeCRMConsultarSelo";
+            this.btnFixeCRMConsultarSelo.Size = new System.Drawing.Size(193, 41);
+            this.btnFixeCRMConsultarSelo.TabIndex = 41;
+            this.btnFixeCRMConsultarSelo.Text = "Consultar Selo";
+            this.btnFixeCRMConsultarSelo.UseVisualStyleBackColor = true;
+            this.btnFixeCRMConsultarSelo.Click += new System.EventHandler(this.btnFixeCRMConsultarSelo_Click);
+            // 
+            // txtFixeCRMIdPassbook
+            // 
+            this.txtFixeCRMIdPassbook.Enabled = false;
+            this.txtFixeCRMIdPassbook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFixeCRMIdPassbook.Location = new System.Drawing.Point(528, 337);
+            this.txtFixeCRMIdPassbook.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFixeCRMIdPassbook.Name = "txtFixeCRMIdPassbook";
+            this.txtFixeCRMIdPassbook.Size = new System.Drawing.Size(310, 30);
+            this.txtFixeCRMIdPassbook.TabIndex = 40;
+            // 
+            // txtFixeCRMToken
+            // 
+            this.txtFixeCRMToken.Enabled = false;
+            this.txtFixeCRMToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFixeCRMToken.Location = new System.Drawing.Point(528, 275);
+            this.txtFixeCRMToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFixeCRMToken.Name = "txtFixeCRMToken";
+            this.txtFixeCRMToken.Size = new System.Drawing.Size(700, 30);
+            this.txtFixeCRMToken.TabIndex = 39;
             // 
             // btnFixeCRMLogin
             // 
@@ -6512,6 +6679,103 @@
             this.btnRappiIniciar.UseVisualStyleBackColor = true;
             this.btnRappiIniciar.Click += new System.EventHandler(this.btnRappiIniciar_Click);
             // 
+            // tabPageSelfBuyMe
+            // 
+            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeMarkRead);
+            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMePointSalesGroup);
+            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMePointSales);
+            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeOrder);
+            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeOrders);
+            this.tabPageSelfBuyMe.Controls.Add(this.txtSelfBuyMeToken);
+            this.tabPageSelfBuyMe.Controls.Add(this.label123);
+            this.tabPageSelfBuyMe.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSelfBuyMe.Name = "tabPageSelfBuyMe";
+            this.tabPageSelfBuyMe.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageSelfBuyMe.TabIndex = 37;
+            this.tabPageSelfBuyMe.Text = "SelfBuy Me";
+            this.tabPageSelfBuyMe.UseVisualStyleBackColor = true;
+            // 
+            // btnSelfBuyMeMarkRead
+            // 
+            this.btnSelfBuyMeMarkRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfBuyMeMarkRead.Location = new System.Drawing.Point(1390, 376);
+            this.btnSelfBuyMeMarkRead.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelfBuyMeMarkRead.Name = "btnSelfBuyMeMarkRead";
+            this.btnSelfBuyMeMarkRead.Size = new System.Drawing.Size(193, 41);
+            this.btnSelfBuyMeMarkRead.TabIndex = 45;
+            this.btnSelfBuyMeMarkRead.Text = "Mark Read";
+            this.btnSelfBuyMeMarkRead.UseVisualStyleBackColor = true;
+            this.btnSelfBuyMeMarkRead.Click += new System.EventHandler(this.btnSelfBuyMeMarkRead_Click);
+            // 
+            // btnSelfBuyMePointSalesGroup
+            // 
+            this.btnSelfBuyMePointSalesGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfBuyMePointSalesGroup.Location = new System.Drawing.Point(1189, 376);
+            this.btnSelfBuyMePointSalesGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelfBuyMePointSalesGroup.Name = "btnSelfBuyMePointSalesGroup";
+            this.btnSelfBuyMePointSalesGroup.Size = new System.Drawing.Size(193, 41);
+            this.btnSelfBuyMePointSalesGroup.TabIndex = 44;
+            this.btnSelfBuyMePointSalesGroup.Text = "Point Sales Group";
+            this.btnSelfBuyMePointSalesGroup.UseVisualStyleBackColor = true;
+            this.btnSelfBuyMePointSalesGroup.Click += new System.EventHandler(this.btnSelfBuyMePointSalesGroup_Click);
+            // 
+            // btnSelfBuyMePointSales
+            // 
+            this.btnSelfBuyMePointSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfBuyMePointSales.Location = new System.Drawing.Point(988, 376);
+            this.btnSelfBuyMePointSales.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelfBuyMePointSales.Name = "btnSelfBuyMePointSales";
+            this.btnSelfBuyMePointSales.Size = new System.Drawing.Size(193, 41);
+            this.btnSelfBuyMePointSales.TabIndex = 43;
+            this.btnSelfBuyMePointSales.Text = "Point Sales";
+            this.btnSelfBuyMePointSales.UseVisualStyleBackColor = true;
+            this.btnSelfBuyMePointSales.Click += new System.EventHandler(this.btnSelfBuyMePointSales_Click);
+            // 
+            // btnSelfBuyMeOrder
+            // 
+            this.btnSelfBuyMeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfBuyMeOrder.Location = new System.Drawing.Point(787, 376);
+            this.btnSelfBuyMeOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelfBuyMeOrder.Name = "btnSelfBuyMeOrder";
+            this.btnSelfBuyMeOrder.Size = new System.Drawing.Size(193, 41);
+            this.btnSelfBuyMeOrder.TabIndex = 42;
+            this.btnSelfBuyMeOrder.Text = "Order";
+            this.btnSelfBuyMeOrder.UseVisualStyleBackColor = true;
+            this.btnSelfBuyMeOrder.Click += new System.EventHandler(this.btnSelfBuyMeOrder_Click);
+            // 
+            // btnSelfBuyMeOrders
+            // 
+            this.btnSelfBuyMeOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfBuyMeOrders.Location = new System.Drawing.Point(586, 376);
+            this.btnSelfBuyMeOrders.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelfBuyMeOrders.Name = "btnSelfBuyMeOrders";
+            this.btnSelfBuyMeOrders.Size = new System.Drawing.Size(193, 41);
+            this.btnSelfBuyMeOrders.TabIndex = 41;
+            this.btnSelfBuyMeOrders.Text = "Orders";
+            this.btnSelfBuyMeOrders.UseVisualStyleBackColor = true;
+            this.btnSelfBuyMeOrders.Click += new System.EventHandler(this.btnSelfBuyMeOrders_Click);
+            // 
+            // txtSelfBuyMeToken
+            // 
+            this.txtSelfBuyMeToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSelfBuyMeToken.Location = new System.Drawing.Point(714, 267);
+            this.txtSelfBuyMeToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSelfBuyMeToken.Name = "txtSelfBuyMeToken";
+            this.txtSelfBuyMeToken.Size = new System.Drawing.Size(650, 30);
+            this.txtSelfBuyMeToken.TabIndex = 40;
+            this.txtSelfBuyMeToken.Text = "1|me2-selfhFl4Lq78pamNButSbJ6AkxjzMOyymiPhOSGlWYeSd66325bb";
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label123.Location = new System.Drawing.Point(590, 271);
+            this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(68, 25);
+            this.label123.TabIndex = 39;
+            this.label123.Text = "Token";
+            // 
             // tabPageServit
             // 
             this.tabPageServit.Controls.Add(this.btnServitTransferencia);
@@ -7350,168 +7614,109 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // txtFixeCRMToken
+            // tabPagePlug4Sales
             // 
-            this.txtFixeCRMToken.Enabled = false;
-            this.txtFixeCRMToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFixeCRMToken.Location = new System.Drawing.Point(528, 275);
-            this.txtFixeCRMToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFixeCRMToken.Name = "txtFixeCRMToken";
-            this.txtFixeCRMToken.Size = new System.Drawing.Size(700, 30);
-            this.txtFixeCRMToken.TabIndex = 39;
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4Sales);
+            this.tabPagePlug4Sales.Controls.Add(this.label129);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesTokenGerado);
+            this.tabPagePlug4Sales.Controls.Add(this.label127);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientSecret);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientId);
+            this.tabPagePlug4Sales.Controls.Add(this.label128);
+            this.tabPagePlug4Sales.Controls.Add(this.btnPlug4SalesToken);
+            this.tabPagePlug4Sales.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePlug4Sales.Name = "tabPagePlug4Sales";
+            this.tabPagePlug4Sales.Size = new System.Drawing.Size(1641, 846);
+            this.tabPagePlug4Sales.TabIndex = 38;
+            this.tabPagePlug4Sales.Text = "Plug4Sales";
+            this.tabPagePlug4Sales.UseVisualStyleBackColor = true;
             // 
-            // txtFixeCRMIdPassbook
+            // label127
             // 
-            this.txtFixeCRMIdPassbook.Enabled = false;
-            this.txtFixeCRMIdPassbook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFixeCRMIdPassbook.Location = new System.Drawing.Point(528, 337);
-            this.txtFixeCRMIdPassbook.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFixeCRMIdPassbook.Name = "txtFixeCRMIdPassbook";
-            this.txtFixeCRMIdPassbook.Size = new System.Drawing.Size(310, 30);
-            this.txtFixeCRMIdPassbook.TabIndex = 40;
+            this.label127.AutoSize = true;
+            this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label127.Location = new System.Drawing.Point(347, 452);
+            this.label127.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(119, 25);
+            this.label127.TabIndex = 57;
+            this.label127.Text = "ClientSecret";
             // 
-            // btnFixeCRMConsultarSelo
+            // txtPlug4SalesClientSecret
             // 
-            this.btnFixeCRMConsultarSelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFixeCRMConsultarSelo.Location = new System.Drawing.Point(740, 432);
-            this.btnFixeCRMConsultarSelo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFixeCRMConsultarSelo.Name = "btnFixeCRMConsultarSelo";
-            this.btnFixeCRMConsultarSelo.Size = new System.Drawing.Size(193, 41);
-            this.btnFixeCRMConsultarSelo.TabIndex = 41;
-            this.btnFixeCRMConsultarSelo.Text = "Consultar Selo";
-            this.btnFixeCRMConsultarSelo.UseVisualStyleBackColor = true;
-            this.btnFixeCRMConsultarSelo.Click += new System.EventHandler(this.btnFixeCRMConsultarSelo_Click);
+            this.txtPlug4SalesClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesClientSecret.Location = new System.Drawing.Point(540, 453);
+            this.txtPlug4SalesClientSecret.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesClientSecret.Name = "txtPlug4SalesClientSecret";
+            this.txtPlug4SalesClientSecret.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesClientSecret.TabIndex = 56;
+            this.txtPlug4SalesClientSecret.Text = "0be5d7b3-fd60-4b45-a631-c3b58e9a7e9d";
             // 
-            // txtFixeCRMIdUser
+            // txtPlug4SalesClientId
             // 
-            this.txtFixeCRMIdUser.Enabled = false;
-            this.txtFixeCRMIdUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFixeCRMIdUser.Location = new System.Drawing.Point(918, 337);
-            this.txtFixeCRMIdUser.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFixeCRMIdUser.Name = "txtFixeCRMIdUser";
-            this.txtFixeCRMIdUser.Size = new System.Drawing.Size(310, 30);
-            this.txtFixeCRMIdUser.TabIndex = 42;
+            this.txtPlug4SalesClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesClientId.Location = new System.Drawing.Point(540, 364);
+            this.txtPlug4SalesClientId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesClientId.Name = "txtPlug4SalesClientId";
+            this.txtPlug4SalesClientId.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesClientId.TabIndex = 55;
+            this.txtPlug4SalesClientId.Text = "783";
             // 
-            // btnFixeCRMPontos
+            // label128
             // 
-            this.btnFixeCRMPontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFixeCRMPontos.Location = new System.Drawing.Point(941, 432);
-            this.btnFixeCRMPontos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFixeCRMPontos.Name = "btnFixeCRMPontos";
-            this.btnFixeCRMPontos.Size = new System.Drawing.Size(359, 41);
-            this.btnFixeCRMPontos.TabIndex = 43;
-            this.btnFixeCRMPontos.Text = "Enviar Selos/Pontos/Cashback";
-            this.btnFixeCRMPontos.UseVisualStyleBackColor = true;
-            this.btnFixeCRMPontos.Click += new System.EventHandler(this.btnFixeCRMPontos_Click);
+            this.label128.AutoSize = true;
+            this.label128.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label128.Location = new System.Drawing.Point(403, 367);
+            this.label128.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(78, 25);
+            this.label128.TabIndex = 54;
+            this.label128.Text = "ClientId";
             // 
-            // btnFixeCRMResgatar
+            // btnPlug4SalesToken
             // 
-            this.btnFixeCRMResgatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFixeCRMResgatar.Location = new System.Drawing.Point(1308, 432);
-            this.btnFixeCRMResgatar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFixeCRMResgatar.Name = "btnFixeCRMResgatar";
-            this.btnFixeCRMResgatar.Size = new System.Drawing.Size(249, 41);
-            this.btnFixeCRMResgatar.TabIndex = 44;
-            this.btnFixeCRMResgatar.Text = "Resgatar";
-            this.btnFixeCRMResgatar.UseVisualStyleBackColor = true;
-            this.btnFixeCRMResgatar.Click += new System.EventHandler(this.btnFixeCRMResgatar_Click);
+            this.btnPlug4SalesToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlug4SalesToken.Location = new System.Drawing.Point(1101, 401);
+            this.btnPlug4SalesToken.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPlug4SalesToken.Name = "btnPlug4SalesToken";
+            this.btnPlug4SalesToken.Size = new System.Drawing.Size(193, 41);
+            this.btnPlug4SalesToken.TabIndex = 53;
+            this.btnPlug4SalesToken.Text = "Token";
+            this.btnPlug4SalesToken.UseVisualStyleBackColor = true;
+            this.btnPlug4SalesToken.Click += new System.EventHandler(this.btnPlug4SalesToken_Click);
             // 
-            // tabPageSelfBuyMe
+            // label129
             // 
-            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeMarkRead);
-            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMePointSalesGroup);
-            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMePointSales);
-            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeOrder);
-            this.tabPageSelfBuyMe.Controls.Add(this.btnSelfBuyMeOrders);
-            this.tabPageSelfBuyMe.Controls.Add(this.txtSelfBuyMeToken);
-            this.tabPageSelfBuyMe.Controls.Add(this.label123);
-            this.tabPageSelfBuyMe.Location = new System.Drawing.Point(4, 25);
-            this.tabPageSelfBuyMe.Name = "tabPageSelfBuyMe";
-            this.tabPageSelfBuyMe.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageSelfBuyMe.TabIndex = 37;
-            this.tabPageSelfBuyMe.Text = "SelfBuy Me";
-            this.tabPageSelfBuyMe.UseVisualStyleBackColor = true;
+            this.label129.AutoSize = true;
+            this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label129.Location = new System.Drawing.Point(491, 544);
+            this.label129.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(106, 25);
+            this.label129.TabIndex = 59;
+            this.label129.Text = "Token ger.";
             // 
-            // btnSelfBuyMeOrders
+            // txtPlug4SalesTokenGerado
             // 
-            this.btnSelfBuyMeOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfBuyMeOrders.Location = new System.Drawing.Point(586, 376);
-            this.btnSelfBuyMeOrders.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelfBuyMeOrders.Name = "btnSelfBuyMeOrders";
-            this.btnSelfBuyMeOrders.Size = new System.Drawing.Size(193, 41);
-            this.btnSelfBuyMeOrders.TabIndex = 41;
-            this.btnSelfBuyMeOrders.Text = "Orders";
-            this.btnSelfBuyMeOrders.UseVisualStyleBackColor = true;
-            this.btnSelfBuyMeOrders.Click += new System.EventHandler(this.btnSelfBuyMeOrders_Click);
+            this.txtPlug4SalesTokenGerado.Enabled = false;
+            this.txtPlug4SalesTokenGerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesTokenGerado.Location = new System.Drawing.Point(617, 545);
+            this.txtPlug4SalesTokenGerado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesTokenGerado.Name = "txtPlug4SalesTokenGerado";
+            this.txtPlug4SalesTokenGerado.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesTokenGerado.TabIndex = 58;
             // 
-            // txtSelfBuyMeToken
+            // txtPlug4Sales
             // 
-            this.txtSelfBuyMeToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSelfBuyMeToken.Location = new System.Drawing.Point(714, 267);
-            this.txtSelfBuyMeToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSelfBuyMeToken.Name = "txtSelfBuyMeToken";
-            this.txtSelfBuyMeToken.Size = new System.Drawing.Size(650, 30);
-            this.txtSelfBuyMeToken.TabIndex = 40;
-            this.txtSelfBuyMeToken.Text = "1|me2-selfhFl4Lq78pamNButSbJ6AkxjzMOyymiPhOSGlWYeSd66325bb";
-            // 
-            // label123
-            // 
-            this.label123.AutoSize = true;
-            this.label123.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label123.Location = new System.Drawing.Point(590, 271);
-            this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(85, 31);
-            this.label123.TabIndex = 39;
-            this.label123.Text = "Token";
-            // 
-            // btnSelfBuyMeOrder
-            // 
-            this.btnSelfBuyMeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfBuyMeOrder.Location = new System.Drawing.Point(787, 376);
-            this.btnSelfBuyMeOrder.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelfBuyMeOrder.Name = "btnSelfBuyMeOrder";
-            this.btnSelfBuyMeOrder.Size = new System.Drawing.Size(193, 41);
-            this.btnSelfBuyMeOrder.TabIndex = 42;
-            this.btnSelfBuyMeOrder.Text = "Order";
-            this.btnSelfBuyMeOrder.UseVisualStyleBackColor = true;
-            this.btnSelfBuyMeOrder.Click += new System.EventHandler(this.btnSelfBuyMeOrder_Click);
-            // 
-            // btnSelfBuyMePointSales
-            // 
-            this.btnSelfBuyMePointSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfBuyMePointSales.Location = new System.Drawing.Point(988, 376);
-            this.btnSelfBuyMePointSales.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelfBuyMePointSales.Name = "btnSelfBuyMePointSales";
-            this.btnSelfBuyMePointSales.Size = new System.Drawing.Size(193, 41);
-            this.btnSelfBuyMePointSales.TabIndex = 43;
-            this.btnSelfBuyMePointSales.Text = "Point Sales";
-            this.btnSelfBuyMePointSales.UseVisualStyleBackColor = true;
-            this.btnSelfBuyMePointSales.Click += new System.EventHandler(this.btnSelfBuyMePointSales_Click);
-            // 
-            // btnSelfBuyMePointSalesGroup
-            // 
-            this.btnSelfBuyMePointSalesGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfBuyMePointSalesGroup.Location = new System.Drawing.Point(1189, 376);
-            this.btnSelfBuyMePointSalesGroup.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelfBuyMePointSalesGroup.Name = "btnSelfBuyMePointSalesGroup";
-            this.btnSelfBuyMePointSalesGroup.Size = new System.Drawing.Size(193, 41);
-            this.btnSelfBuyMePointSalesGroup.TabIndex = 44;
-            this.btnSelfBuyMePointSalesGroup.Text = "Point Sales Group";
-            this.btnSelfBuyMePointSalesGroup.UseVisualStyleBackColor = true;
-            this.btnSelfBuyMePointSalesGroup.Click += new System.EventHandler(this.btnSelfBuyMePointSalesGroup_Click);
-            // 
-            // btnSelfBuyMeMarkRead
-            // 
-            this.btnSelfBuyMeMarkRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfBuyMeMarkRead.Location = new System.Drawing.Point(1390, 376);
-            this.btnSelfBuyMeMarkRead.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelfBuyMeMarkRead.Name = "btnSelfBuyMeMarkRead";
-            this.btnSelfBuyMeMarkRead.Size = new System.Drawing.Size(193, 41);
-            this.btnSelfBuyMeMarkRead.TabIndex = 45;
-            this.btnSelfBuyMeMarkRead.Text = "Mark Read";
-            this.btnSelfBuyMeMarkRead.UseVisualStyleBackColor = true;
-            this.btnSelfBuyMeMarkRead.Click += new System.EventHandler(this.btnSelfBuyMeMarkRead_Click);
+            this.txtPlug4Sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4Sales.Location = new System.Drawing.Point(601, 634);
+            this.txtPlug4Sales.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4Sales.Name = "txtPlug4Sales";
+            this.txtPlug4Sales.Size = new System.Drawing.Size(193, 41);
+            this.txtPlug4Sales.TabIndex = 60;
+            this.txtPlug4Sales.Text = "Criar Pedido";
+            this.txtPlug4Sales.UseVisualStyleBackColor = true;
+            this.txtPlug4Sales.Click += new System.EventHandler(this.txtPlug4Sales_Click);
             // 
             // Form1
             // 
@@ -7570,6 +7775,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
             this.tabPageEuFalo.ResumeLayout(false);
             this.tabPageEuFalo.PerformLayout();
+            this.tabPageFidelizi.ResumeLayout(false);
+            this.tabPageFidelizi.PerformLayout();
             this.tabPageFixeCRM.ResumeLayout(false);
             this.tabPageFixeCRM.PerformLayout();
             this.tabPageIfood.ResumeLayout(false);
@@ -7618,6 +7825,8 @@
             this.tabPageRappi.ResumeLayout(false);
             this.tabPageRappi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRappi)).EndInit();
+            this.tabPageSelfBuyMe.ResumeLayout(false);
+            this.tabPageSelfBuyMe.PerformLayout();
             this.tabPageServit.ResumeLayout(false);
             this.tabPageServit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridServit)).EndInit();
@@ -7632,8 +7841,8 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPageSelfBuyMe.ResumeLayout(false);
-            this.tabPageSelfBuyMe.PerformLayout();
+            this.tabPagePlug4Sales.ResumeLayout(false);
+            this.tabPagePlug4Sales.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8208,6 +8417,22 @@
         private System.Windows.Forms.Button btnSelfBuyMePointSales;
         private System.Windows.Forms.Button btnSelfBuyMePointSalesGroup;
         private System.Windows.Forms.Button btnSelfBuyMeMarkRead;
+        private System.Windows.Forms.Label label124;
+        private System.Windows.Forms.TextBox txtFideliziEstabelecimentoCodigo;
+        private System.Windows.Forms.Label label125;
+        private System.Windows.Forms.TextBox txtFideliziAccessToken;
+        private System.Windows.Forms.TextBox txtFideliziAppTokenn;
+        private System.Windows.Forms.Label label126;
+        private System.Windows.Forms.Button btnFideliziConfiguracoes;
+        private System.Windows.Forms.TabPage tabPagePlug4Sales;
+        private System.Windows.Forms.Label label127;
+        private System.Windows.Forms.TextBox txtPlug4SalesClientSecret;
+        private System.Windows.Forms.TextBox txtPlug4SalesClientId;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.Button btnPlug4SalesToken;
+        private System.Windows.Forms.Label label129;
+        private System.Windows.Forms.TextBox txtPlug4SalesTokenGerado;
+        private System.Windows.Forms.Button txtPlug4Sales;
     }
 }
 

@@ -1,94 +1,96 @@
-﻿//using Agilizone.Domain;
-//using MarketPlace;
-//using Newtonsoft.Json;
-//using RestSharp;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using MarketPlace;
+using Newtonsoft.Json;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace Agilizone.Service
-//{
-//    public class AgilizoneService
-//    {
-//        private string _url = "https://api.agilizup.com/agilizone/v1/";
+namespace Fidelizi.Service
+{
+    public class FideliziService
+    {
+        private string _url = "https://integracao.fidelizii.com.br/v3/";
+        private string _appToken = "";
+        private string _accessTokenn = "";
 
-//        public AgilizoneService() { }
+        public FideliziService(string appToken, string accessToken) 
+        {
+            _appToken = appToken;
+            _accessTokenn = accessToken;
+        }
 
-//        public AgilizoneService(string url)
-//        {
-//            _url = url;           
-//        }
+        public FideliziService(string appToken, string accessToken, string url)
+        {
+            _appToken = appToken;
+            _accessTokenn = accessToken;
+            _url = url;
+        }
 
-//        public GenericResult<token> Token(string client_id, string client_secret)
-//        {
-//            var result = new GenericResult<token>();
-//            try
-//            {
-//                var data = new token_secret
-//                {
-//                    client_id = client_id,
-//                    client_secret = client_secret
-//                };
+        public GenericResult<string> GetConfiguracoes()
+        {
+            var result = new GenericResult<string>();
+            try
+            {                
+                var client = new RestClient(_url + "estabelecimentos");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("App Token", _appToken);
+                request.AddHeader("Access Token", _accessTokenn);                
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<string>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
 
-//                var client = new RestClient(_url + "oauth/token");
-//                var request = new RestRequest(Method.POST);
-//                request.AddHeader("Content-Type", "application/json");                               
-//                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
-//                IRestResponse response = client.Execute(request);
-//                if (response.StatusCode == System.Net.HttpStatusCode.Created)
-//                {
-//                    result.Result = JsonConvert.DeserializeObject<token>(response.Content);
-//                    result.Success = true;                    
-//                }
-//                else
-//                {
-//                    result.Message = response.Content;                    
-//                }
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
-//                result.Json = response.Content;
-//            }
-//            catch (Exception ex)
-//            {
-//                result.Message = ex.Message;
-//            }
-//            return result;
-//        }
+        //public GenericResult<result_order> Order(order order, string token)
+        //{
+        //    var result = new GenericResult<result_order>();
+        //    try
+        //    {
+        //        var data = new
+        //        {
+        //            order = order
+        //        };
 
-//        public GenericResult<result_order> Order(order order, string token)
-//        {
-//            var result = new GenericResult<result_order>();
-//            try
-//            {
-//                var data = new
-//                {
-//                    order = order
-//                };
+        //        var client = new RestClient(_url + "order");
+        //        var request = new RestRequest(Method.POST);
+        //        request.AddHeader("Authorization", "Bearer " + token);
+        //        request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
 
-//                var client = new RestClient(_url + "order");
-//                var request = new RestRequest(Method.POST);
-//                request.AddHeader("Authorization", "Bearer " + token);
-//                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+        //        IRestResponse response = client.Execute(request);
+        //        if (response.StatusCode == System.Net.HttpStatusCode.Created)
+        //        {
+        //            result.Result = JsonConvert.DeserializeObject<result_order>(response.Content);
+        //            result.Success = true;
+        //        }
+        //        else
+        //        {
+        //            result.Message = response.Content + " - " + response.StatusDescription;
+        //        }
 
-//                IRestResponse response = client.Execute(request);
-//                if (response.StatusCode == System.Net.HttpStatusCode.Created)
-//                {
-//                    result.Result = JsonConvert.DeserializeObject<result_order>(response.Content);
-//                    result.Success = true;                                        
-//                }
-//                else
-//                {
-//                    result.Message = response.Content + " - " + response.StatusDescription;
-//                }
-
-//                result.Json = response.Content;
-//            }
-//            catch (Exception ex)
-//            {
-//                result.Message = ex.Message;
-//            }
-//            return result;
-//        }
-//    }
-//}
+        //        result.Json = response.Content;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result.Message = ex.Message;
+        //    }
+        //    return result;
+        //}
+    }
+}

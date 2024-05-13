@@ -6,6 +6,12 @@ namespace Agilizone.Domain
 {
     public class result_order
     {
-        public order order {  get; set; }
+        public result_order_result order {  get; set; }
+    }
+
+    public class result_order_result : order
+    {
+        public string _id { get; set; }
+        public string storeId { get; set; }
     }
 }

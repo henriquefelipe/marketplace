@@ -41,6 +41,8 @@ using Iorion19.Service;
 using Agilizone.Service;
 using FixeCRM.Domain;
 using SelfBuyMe.Service;
+using Fidelizi.Service;
+using Plug4Sales.Service;
 
 namespace Example
 {
@@ -1118,7 +1120,7 @@ namespace Example
             item1.quantity = 1;
             item1.cod = "1";
             item1.seq = 1;
-            item1.observation = "com gelo";
+            item1.obs = "com gelo";
             pedido.items.Add(item1);
 
             var item2 = new Logaroo.Domain.orderitem();
@@ -1126,7 +1128,7 @@ namespace Example
             item2.quantity = 2;
             item2.cod = "2";
             item2.seq = 2;
-            item2.observation = "";
+            item2.obs = "";
             pedido.items.Add(item2);
 
             pedido.lat = "-3.82660311645193";
@@ -7873,6 +7875,123 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
+
+        #region Fidelizi
+
+        private const string FidelizUrlTeste = "https://sandbox.fidelizii.com.br/v3/";
+
+        private void btnFideliziConfiguracoes_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, FidelizUrlTeste);
+            service.GetConfiguracoes();
+        }
+
+        #endregion
+
+        #region Plug4Sales
+        private void btnPlug4SalesToken_Click(object sender, EventArgs e)
+        {
+            var service = new Plug4SalesService();
+            var result = service.Token(txtPlug4SalesClientId.Text, txtPlug4SalesClientSecret.Text);
+            if(result.Success)
+            {
+                if(result.Result.success)
+                {
+                    txtPlug4SalesTokenGerado.Text = result.Result.result.token;
+                }
+                else
+                {
+                    MessageBox.Show(result.Result.error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void txtPlug4Sales_Click(object sender, EventArgs e)
+        {
+            var pedidos = new List<Plug4Sales.Domain.order>();
+            var pedido = new Plug4Sales.Domain.order();
+            pedido.id = Guid.NewGuid().ToString();
+            pedido.displayId = DateTime.Now.ToString("yyyyMMddHHmmss");
+            pedido.createdAt = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            pedido.preparationStartDateTime = DateTime.Now.AddMinutes(40).ToString("yyyy-MM-ddTHH:mm:ss");
+
+            pedido.merchant = new Plug4Sales.Domain.merchant();
+            pedido.merchant.id = Guid.NewGuid().ToString();
+            pedido.merchant.name = "IzzyWay";
+
+            pedido.customer = new Plug4Sales.Domain.customer();
+            pedido.customer.id = Guid.NewGuid().ToString();
+            pedido.customer.name = "Henrique";
+            pedido.customer.phone = new Plug4Sales.Domain.customer_phone();
+            pedido.customer.phone.number = "987704779";
+            pedido.customer.phone.extension = "85";
+
+            pedido.delivery = new Plug4Sales.Domain.delivery();
+            pedido.delivery.deliveredBy = "MERCHANT";
+            pedido.delivery.deliveryAddress = new Plug4Sales.Domain.deliveryAddress();
+            pedido.delivery.deliveryAddress.state = "SP";
+            pedido.delivery.deliveryAddress.city = "São Paulo";
+            pedido.delivery.deliveryAddress.district = "Moema";
+            pedido.delivery.deliveryAddress.street = "Plaza Avenue";
+            pedido.delivery.deliveryAddress.number = "100";
+            pedido.delivery.deliveryAddress.complement = "BL 02 AP 31";
+            pedido.delivery.deliveryAddress.reference = "Yellow House";
+            pedido.delivery.deliveryAddress.formattedAddress = "Plaza Avenue, 100, BL 02 AP 31, Moema - São Paulo, SP - Brazil";
+            pedido.delivery.deliveryAddress.postalCode = "20111-000";            
+
+            var item = new Plug4Sales.Domain.item();
+            item.id = Guid.NewGuid().ToString();
+            item.name = "Pizza";
+            item.unit = "UN";
+            item.quantity = 1;
+            item.unitPrice = new Plug4Sales.Domain.values(30);
+            item.totalPrice = new Plug4Sales.Domain.values(30);
+
+            var option = new Plug4Sales.Domain.option();
+            option.id = Guid.NewGuid().ToString();
+            option.name = "Cebola";
+            option.unit = "UN";
+            option.quantity = 1;
+            option.unitPrice = new Plug4Sales.Domain.values(5);
+            option.totalPrice = new Plug4Sales.Domain.values(5);
+
+            item.options.Add(option);
+
+            pedido.total = new Plug4Sales.Domain.total();
+            pedido.total.itemsPrice = new Plug4Sales.Domain.values(30);
+            pedido.total.otherFees = new Plug4Sales.Domain.values(10);
+            pedido.total.discount = new Plug4Sales.Domain.values(5);
+            pedido.total.orderAmount = new Plug4Sales.Domain.values(35);
+
+
+            pedidos.Add(pedido);
+
+            var service = new Plug4SalesService();
+            var result = service.Orders(txtPlug4SalesTokenGerado.Text, pedidos);
+            if (result.Success)
+            {
+                if (result.Result.success)
+                {
+                    MessageBox.Show(result.Result.result);
+                }
+                else
+                {
+                    MessageBox.Show(result.Result.error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+
     }
 }
 

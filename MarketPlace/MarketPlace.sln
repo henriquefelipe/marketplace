@@ -81,7 +81,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixeCRM", "FixeCRM\FixeCRM.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidelizi", "Fidelizi\Fidelizi.csproj", "{5BA3B444-3B22-4580-B882-2A12F0A541A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfBuyMe", "SelfBuyMe\SelfBuyMe.csproj", "{6154BFDA-0AE4-4AF5-BE44-873E142E3704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfBuyMe", "SelfBuyMe\SelfBuyMe.csproj", "{6154BFDA-0AE4-4AF5-BE44-873E142E3704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plug4Sales", "Plug4Sales\Plug4Sales.csproj", "{1F723DD4-E55E-4245-B76A-473AA83C443F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -249,6 +251,10 @@ Global
 		{6154BFDA-0AE4-4AF5-BE44-873E142E3704}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6154BFDA-0AE4-4AF5-BE44-873E142E3704}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6154BFDA-0AE4-4AF5-BE44-873E142E3704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F723DD4-E55E-4245-B76A-473AA83C443F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F723DD4-E55E-4245-B76A-473AA83C443F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F723DD4-E55E-4245-B76A-473AA83C443F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F723DD4-E55E-4245-B76A-473AA83C443F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
