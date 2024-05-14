@@ -494,6 +494,15 @@
             this.btnPixCommerceIniciar = new System.Windows.Forms.Button();
             this.txtPixCommerceToken = new System.Windows.Forms.TextBox();
             this.label108 = new System.Windows.Forms.Label();
+            this.tabPagePlug4Sales = new System.Windows.Forms.TabPage();
+            this.txtPlug4Sales = new System.Windows.Forms.Button();
+            this.label129 = new System.Windows.Forms.Label();
+            this.txtPlug4SalesTokenGerado = new System.Windows.Forms.TextBox();
+            this.label127 = new System.Windows.Forms.Label();
+            this.txtPlug4SalesClientSecret = new System.Windows.Forms.TextBox();
+            this.txtPlug4SalesClientId = new System.Windows.Forms.TextBox();
+            this.label128 = new System.Windows.Forms.Label();
+            this.btnPlug4SalesToken = new System.Windows.Forms.Button();
             this.tabPageQueroDelivery = new System.Windows.Forms.TabPage();
             this.btnQuerodeliveryConcluído = new System.Windows.Forms.Button();
             this.btnQuerodeliveryCancelar = new System.Windows.Forms.Button();
@@ -604,15 +613,14 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.tabPagePlug4Sales = new System.Windows.Forms.TabPage();
-            this.label127 = new System.Windows.Forms.Label();
-            this.txtPlug4SalesClientSecret = new System.Windows.Forms.TextBox();
-            this.txtPlug4SalesClientId = new System.Windows.Forms.TextBox();
-            this.label128 = new System.Windows.Forms.Label();
-            this.btnPlug4SalesToken = new System.Windows.Forms.Button();
-            this.label129 = new System.Windows.Forms.Label();
-            this.txtPlug4SalesTokenGerado = new System.Windows.Forms.TextBox();
-            this.txtPlug4Sales = new System.Windows.Forms.Button();
+            this.tabPageCardapioWeb = new System.Windows.Forms.TabPage();
+            this.txtCardapioWebToken = new System.Windows.Forms.TextBox();
+            this.label130 = new System.Windows.Forms.Label();
+            this.btnCardapioDigitalAceito = new System.Windows.Forms.Button();
+            this.gridCardapioWeb = new System.Windows.Forms.DataGridView();
+            this.btnCardapioWebParar = new System.Windows.Forms.Button();
+            this.btnCardapioWebIniciar = new System.Windows.Forms.Button();
+            this.btnCardapioWebPedido = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -671,6 +679,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPagePixCommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
+            this.tabPagePlug4Sales.SuspendLayout();
             this.tabPageQueroDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuerodelivery)).BeginInit();
             this.tabPageRappi.SuspendLayout();
@@ -685,7 +694,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPagePlug4Sales.SuspendLayout();
+            this.tabPageCardapioWeb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCardapioWeb)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -699,6 +709,7 @@
             this.tabControl1.Controls.Add(this.tabPageAtivMob);
             this.tabControl1.Controls.Add(this.tabPageBigdim);
             this.tabControl1.Controls.Add(this.tabPageB2Food);
+            this.tabControl1.Controls.Add(this.tabPageCardapioWeb);
             this.tabControl1.Controls.Add(this.tabPageCinddi);
             this.tabControl1.Controls.Add(this.tabPageCresceVendas);
             this.tabControl1.Controls.Add(this.tabPageCRMBonus);
@@ -6296,6 +6307,110 @@
             this.label108.TabIndex = 14;
             this.label108.Text = "TOKEN";
             // 
+            // tabPagePlug4Sales
+            // 
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4Sales);
+            this.tabPagePlug4Sales.Controls.Add(this.label129);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesTokenGerado);
+            this.tabPagePlug4Sales.Controls.Add(this.label127);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientSecret);
+            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientId);
+            this.tabPagePlug4Sales.Controls.Add(this.label128);
+            this.tabPagePlug4Sales.Controls.Add(this.btnPlug4SalesToken);
+            this.tabPagePlug4Sales.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePlug4Sales.Name = "tabPagePlug4Sales";
+            this.tabPagePlug4Sales.Size = new System.Drawing.Size(1641, 846);
+            this.tabPagePlug4Sales.TabIndex = 38;
+            this.tabPagePlug4Sales.Text = "Plug4Sales";
+            this.tabPagePlug4Sales.UseVisualStyleBackColor = true;
+            // 
+            // txtPlug4Sales
+            // 
+            this.txtPlug4Sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4Sales.Location = new System.Drawing.Point(601, 634);
+            this.txtPlug4Sales.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4Sales.Name = "txtPlug4Sales";
+            this.txtPlug4Sales.Size = new System.Drawing.Size(193, 41);
+            this.txtPlug4Sales.TabIndex = 60;
+            this.txtPlug4Sales.Text = "Criar Pedido";
+            this.txtPlug4Sales.UseVisualStyleBackColor = true;
+            this.txtPlug4Sales.Click += new System.EventHandler(this.txtPlug4Sales_Click);
+            // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label129.Location = new System.Drawing.Point(491, 544);
+            this.label129.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(106, 25);
+            this.label129.TabIndex = 59;
+            this.label129.Text = "Token ger.";
+            // 
+            // txtPlug4SalesTokenGerado
+            // 
+            this.txtPlug4SalesTokenGerado.Enabled = false;
+            this.txtPlug4SalesTokenGerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesTokenGerado.Location = new System.Drawing.Point(617, 545);
+            this.txtPlug4SalesTokenGerado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesTokenGerado.Name = "txtPlug4SalesTokenGerado";
+            this.txtPlug4SalesTokenGerado.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesTokenGerado.TabIndex = 58;
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label127.Location = new System.Drawing.Point(347, 452);
+            this.label127.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(119, 25);
+            this.label127.TabIndex = 57;
+            this.label127.Text = "ClientSecret";
+            // 
+            // txtPlug4SalesClientSecret
+            // 
+            this.txtPlug4SalesClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesClientSecret.Location = new System.Drawing.Point(540, 453);
+            this.txtPlug4SalesClientSecret.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesClientSecret.Name = "txtPlug4SalesClientSecret";
+            this.txtPlug4SalesClientSecret.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesClientSecret.TabIndex = 56;
+            this.txtPlug4SalesClientSecret.Text = "0be5d7b3-fd60-4b45-a631-c3b58e9a7e9d";
+            // 
+            // txtPlug4SalesClientId
+            // 
+            this.txtPlug4SalesClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlug4SalesClientId.Location = new System.Drawing.Point(540, 364);
+            this.txtPlug4SalesClientId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlug4SalesClientId.Name = "txtPlug4SalesClientId";
+            this.txtPlug4SalesClientId.Size = new System.Drawing.Size(495, 30);
+            this.txtPlug4SalesClientId.TabIndex = 55;
+            this.txtPlug4SalesClientId.Text = "783";
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label128.Location = new System.Drawing.Point(403, 367);
+            this.label128.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(78, 25);
+            this.label128.TabIndex = 54;
+            this.label128.Text = "ClientId";
+            // 
+            // btnPlug4SalesToken
+            // 
+            this.btnPlug4SalesToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlug4SalesToken.Location = new System.Drawing.Point(1101, 401);
+            this.btnPlug4SalesToken.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPlug4SalesToken.Name = "btnPlug4SalesToken";
+            this.btnPlug4SalesToken.Size = new System.Drawing.Size(193, 41);
+            this.btnPlug4SalesToken.TabIndex = 53;
+            this.btnPlug4SalesToken.Text = "Token";
+            this.btnPlug4SalesToken.UseVisualStyleBackColor = true;
+            this.btnPlug4SalesToken.Click += new System.EventHandler(this.btnPlug4SalesToken_Click);
+            // 
             // tabPageQueroDelivery
             // 
             this.tabPageQueroDelivery.Controls.Add(this.btnQuerodeliveryConcluído);
@@ -7614,109 +7729,102 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // tabPagePlug4Sales
+            // tabPageCardapioWeb
             // 
-            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4Sales);
-            this.tabPagePlug4Sales.Controls.Add(this.label129);
-            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesTokenGerado);
-            this.tabPagePlug4Sales.Controls.Add(this.label127);
-            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientSecret);
-            this.tabPagePlug4Sales.Controls.Add(this.txtPlug4SalesClientId);
-            this.tabPagePlug4Sales.Controls.Add(this.label128);
-            this.tabPagePlug4Sales.Controls.Add(this.btnPlug4SalesToken);
-            this.tabPagePlug4Sales.Location = new System.Drawing.Point(4, 25);
-            this.tabPagePlug4Sales.Name = "tabPagePlug4Sales";
-            this.tabPagePlug4Sales.Size = new System.Drawing.Size(1641, 846);
-            this.tabPagePlug4Sales.TabIndex = 38;
-            this.tabPagePlug4Sales.Text = "Plug4Sales";
-            this.tabPagePlug4Sales.UseVisualStyleBackColor = true;
+            this.tabPageCardapioWeb.Controls.Add(this.btnCardapioWebPedido);
+            this.tabPageCardapioWeb.Controls.Add(this.txtCardapioWebToken);
+            this.tabPageCardapioWeb.Controls.Add(this.label130);
+            this.tabPageCardapioWeb.Controls.Add(this.btnCardapioDigitalAceito);
+            this.tabPageCardapioWeb.Controls.Add(this.gridCardapioWeb);
+            this.tabPageCardapioWeb.Controls.Add(this.btnCardapioWebParar);
+            this.tabPageCardapioWeb.Controls.Add(this.btnCardapioWebIniciar);
+            this.tabPageCardapioWeb.Location = new System.Drawing.Point(4, 25);
+            this.tabPageCardapioWeb.Name = "tabPageCardapioWeb";
+            this.tabPageCardapioWeb.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageCardapioWeb.TabIndex = 39;
+            this.tabPageCardapioWeb.Text = "Cardápio Web";
+            this.tabPageCardapioWeb.UseVisualStyleBackColor = true;
             // 
-            // label127
+            // txtCardapioWebToken
             // 
-            this.label127.AutoSize = true;
-            this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label127.Location = new System.Drawing.Point(347, 452);
-            this.label127.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(119, 25);
-            this.label127.TabIndex = 57;
-            this.label127.Text = "ClientSecret";
+            this.txtCardapioWebToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCardapioWebToken.Location = new System.Drawing.Point(128, 22);
+            this.txtCardapioWebToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCardapioWebToken.Name = "txtCardapioWebToken";
+            this.txtCardapioWebToken.Size = new System.Drawing.Size(888, 30);
+            this.txtCardapioWebToken.TabIndex = 49;
+            this.txtCardapioWebToken.Text = "7n12knwg2uVtuCPdAdKgygpkV2rpaV4nUMdXatSv";
             // 
-            // txtPlug4SalesClientSecret
+            // label130
             // 
-            this.txtPlug4SalesClientSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlug4SalesClientSecret.Location = new System.Drawing.Point(540, 453);
-            this.txtPlug4SalesClientSecret.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPlug4SalesClientSecret.Name = "txtPlug4SalesClientSecret";
-            this.txtPlug4SalesClientSecret.Size = new System.Drawing.Size(495, 30);
-            this.txtPlug4SalesClientSecret.TabIndex = 56;
-            this.txtPlug4SalesClientSecret.Text = "0be5d7b3-fd60-4b45-a631-c3b58e9a7e9d";
+            this.label130.AutoSize = true;
+            this.label130.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label130.Location = new System.Drawing.Point(24, 26);
+            this.label130.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(68, 25);
+            this.label130.TabIndex = 48;
+            this.label130.Text = "Token";
             // 
-            // txtPlug4SalesClientId
+            // btnCardapioDigitalAceito
             // 
-            this.txtPlug4SalesClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlug4SalesClientId.Location = new System.Drawing.Point(540, 364);
-            this.txtPlug4SalesClientId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPlug4SalesClientId.Name = "txtPlug4SalesClientId";
-            this.txtPlug4SalesClientId.Size = new System.Drawing.Size(495, 30);
-            this.txtPlug4SalesClientId.TabIndex = 55;
-            this.txtPlug4SalesClientId.Text = "783";
+            this.btnCardapioDigitalAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCardapioDigitalAceito.Location = new System.Drawing.Point(12, 160);
+            this.btnCardapioDigitalAceito.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCardapioDigitalAceito.Name = "btnCardapioDigitalAceito";
+            this.btnCardapioDigitalAceito.Size = new System.Drawing.Size(193, 41);
+            this.btnCardapioDigitalAceito.TabIndex = 47;
+            this.btnCardapioDigitalAceito.Text = "Aceito";
+            this.btnCardapioDigitalAceito.UseVisualStyleBackColor = true;
+            this.btnCardapioDigitalAceito.Click += new System.EventHandler(this.btnCardapioDigitalAceito_Click);
             // 
-            // label128
+            // gridCardapioWeb
             // 
-            this.label128.AutoSize = true;
-            this.label128.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label128.Location = new System.Drawing.Point(403, 367);
-            this.label128.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(78, 25);
-            this.label128.TabIndex = 54;
-            this.label128.Text = "ClientId";
+            this.gridCardapioWeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCardapioWeb.Location = new System.Drawing.Point(12, 208);
+            this.gridCardapioWeb.Margin = new System.Windows.Forms.Padding(4);
+            this.gridCardapioWeb.Name = "gridCardapioWeb";
+            this.gridCardapioWeb.RowHeadersWidth = 51;
+            this.gridCardapioWeb.Size = new System.Drawing.Size(1617, 617);
+            this.gridCardapioWeb.TabIndex = 46;
+            this.gridCardapioWeb.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCardapioWeb_CellClick);
             // 
-            // btnPlug4SalesToken
+            // btnCardapioWebParar
             // 
-            this.btnPlug4SalesToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlug4SalesToken.Location = new System.Drawing.Point(1101, 401);
-            this.btnPlug4SalesToken.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPlug4SalesToken.Name = "btnPlug4SalesToken";
-            this.btnPlug4SalesToken.Size = new System.Drawing.Size(193, 41);
-            this.btnPlug4SalesToken.TabIndex = 53;
-            this.btnPlug4SalesToken.Text = "Token";
-            this.btnPlug4SalesToken.UseVisualStyleBackColor = true;
-            this.btnPlug4SalesToken.Click += new System.EventHandler(this.btnPlug4SalesToken_Click);
+            this.btnCardapioWebParar.Enabled = false;
+            this.btnCardapioWebParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCardapioWebParar.Location = new System.Drawing.Point(1401, 89);
+            this.btnCardapioWebParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCardapioWebParar.Name = "btnCardapioWebParar";
+            this.btnCardapioWebParar.Size = new System.Drawing.Size(228, 48);
+            this.btnCardapioWebParar.TabIndex = 45;
+            this.btnCardapioWebParar.Text = "Parar";
+            this.btnCardapioWebParar.UseVisualStyleBackColor = true;
+            this.btnCardapioWebParar.Click += new System.EventHandler(this.btnCardapioWebParar_Click);
             // 
-            // label129
+            // btnCardapioWebIniciar
             // 
-            this.label129.AutoSize = true;
-            this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label129.Location = new System.Drawing.Point(491, 544);
-            this.label129.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(106, 25);
-            this.label129.TabIndex = 59;
-            this.label129.Text = "Token ger.";
+            this.btnCardapioWebIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCardapioWebIniciar.Location = new System.Drawing.Point(1401, 26);
+            this.btnCardapioWebIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCardapioWebIniciar.Name = "btnCardapioWebIniciar";
+            this.btnCardapioWebIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnCardapioWebIniciar.TabIndex = 44;
+            this.btnCardapioWebIniciar.Text = "Iniciar";
+            this.btnCardapioWebIniciar.UseVisualStyleBackColor = true;
+            this.btnCardapioWebIniciar.Click += new System.EventHandler(this.btnCardapioWebIniciar_Click);
             // 
-            // txtPlug4SalesTokenGerado
+            // btnCardapioWebPedido
             // 
-            this.txtPlug4SalesTokenGerado.Enabled = false;
-            this.txtPlug4SalesTokenGerado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlug4SalesTokenGerado.Location = new System.Drawing.Point(617, 545);
-            this.txtPlug4SalesTokenGerado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPlug4SalesTokenGerado.Name = "txtPlug4SalesTokenGerado";
-            this.txtPlug4SalesTokenGerado.Size = new System.Drawing.Size(495, 30);
-            this.txtPlug4SalesTokenGerado.TabIndex = 58;
-            // 
-            // txtPlug4Sales
-            // 
-            this.txtPlug4Sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlug4Sales.Location = new System.Drawing.Point(601, 634);
-            this.txtPlug4Sales.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPlug4Sales.Name = "txtPlug4Sales";
-            this.txtPlug4Sales.Size = new System.Drawing.Size(193, 41);
-            this.txtPlug4Sales.TabIndex = 60;
-            this.txtPlug4Sales.Text = "Criar Pedido";
-            this.txtPlug4Sales.UseVisualStyleBackColor = true;
-            this.txtPlug4Sales.Click += new System.EventHandler(this.txtPlug4Sales_Click);
+            this.btnCardapioWebPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCardapioWebPedido.Location = new System.Drawing.Point(724, 403);
+            this.btnCardapioWebPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCardapioWebPedido.Name = "btnCardapioWebPedido";
+            this.btnCardapioWebPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnCardapioWebPedido.TabIndex = 50;
+            this.btnCardapioWebPedido.Text = "Pedido";
+            this.btnCardapioWebPedido.UseVisualStyleBackColor = true;
+            this.btnCardapioWebPedido.Click += new System.EventHandler(this.btnCardapioWebPedido_Click);
             // 
             // Form1
             // 
@@ -7819,6 +7927,8 @@
             this.tabPagePixCommerce.ResumeLayout(false);
             this.tabPagePixCommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).EndInit();
+            this.tabPagePlug4Sales.ResumeLayout(false);
+            this.tabPagePlug4Sales.PerformLayout();
             this.tabPageQueroDelivery.ResumeLayout(false);
             this.tabPageQueroDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuerodelivery)).EndInit();
@@ -7841,8 +7951,9 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPagePlug4Sales.ResumeLayout(false);
-            this.tabPagePlug4Sales.PerformLayout();
+            this.tabPageCardapioWeb.ResumeLayout(false);
+            this.tabPageCardapioWeb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCardapioWeb)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8433,6 +8544,14 @@
         private System.Windows.Forms.Label label129;
         private System.Windows.Forms.TextBox txtPlug4SalesTokenGerado;
         private System.Windows.Forms.Button txtPlug4Sales;
+        private System.Windows.Forms.TabPage tabPageCardapioWeb;
+        private System.Windows.Forms.TextBox txtCardapioWebToken;
+        private System.Windows.Forms.Label label130;
+        private System.Windows.Forms.Button btnCardapioDigitalAceito;
+        private System.Windows.Forms.DataGridView gridCardapioWeb;
+        private System.Windows.Forms.Button btnCardapioWebParar;
+        private System.Windows.Forms.Button btnCardapioWebIniciar;
+        private System.Windows.Forms.Button btnCardapioWebPedido;
     }
 }
 

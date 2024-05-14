@@ -125,6 +125,10 @@
       <Project>{6f5c18a0-f29a-4857-b6b6-8b8ada9f0b22}</Project>
       <Name>Bigdim</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CardapioWeb\CardapioWeb.csproj">
+      <Project>{adfd8890-1d9c-4658-bbba-f0c1f3239410}</Project>
+      <Name>CardapioWeb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cinddi\Cinddi.csproj">
       <Project>{370a32f6-b2a0-4822-b864-7084d3f18ae1}</Project>
       <Name>Cinddi</Name>

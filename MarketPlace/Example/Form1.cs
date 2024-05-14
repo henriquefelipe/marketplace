@@ -43,6 +43,7 @@ using FixeCRM.Domain;
 using SelfBuyMe.Service;
 using Fidelizi.Service;
 using Plug4Sales.Service;
+using CardapioWeb.Service;
 
 namespace Example
 {
@@ -139,6 +140,9 @@ namespace Example
 
         private List<Iorion19.Domain.pedido> _iorion9Orders { get; set; }
         private string _iorion19Id { get; set; }
+
+        private List<CardapioWeb.Domain.responseOrders> _cardapioWebOrders { get; set; }
+        private string _cardapioWebId { get; set; }
 
         #endregion
 
@@ -6759,15 +6763,15 @@ namespace Example
                 return;
             }
 
-            //var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
-            var logarooService = new Logaroo.Service.LogarooService();
+            var logarooService = new Logaroo.Service.LogarooService(_urlLogarooDesenvolvimento);
+            //var logarooService = new Logaroo.Service.LogarooService();
             var result = logarooService.MercadooOrdersPendentes(txtLogarooToken.Text, txtLogarooMerchantId.Text);
             if (result.Success)
             {
                 foreach (var pedido in result.Result.data.items)
                 {
                     var resultPedidoDetalhe = logarooService.MercadooOrder(txtLogarooToken.Text, pedido.id.ToString());
-                    var resultPedidoModerar = logarooService.MercadooOrderModerar(txtLogarooToken.Text, pedido.id.ToString(), true);
+                    //var resultPedidoModerar = logarooService.MercadooOrderModerar(txtLogarooToken.Text, pedido.id.ToString(), true);
                 }
 
                 gridLogaroo.DataSource = result.Result.data.items;
@@ -7753,7 +7757,7 @@ namespace Example
             var result = service.AddPoints(txtFixeCRMToken.Text, point);
             if (result.Success)
             {
-                if(result.Result.status == FixeCRM.Enum.Status.OK)
+                if (result.Result.status == FixeCRM.Enum.Status.OK)
                 {
                     MessageBox.Show("OK");
                 }
@@ -7806,7 +7810,7 @@ namespace Example
         {
             var service = new SelfBuyMeService();
             var result = service.Orders(txtSelfBuyMeToken.Text, "");
-            if(result.Success)
+            if (result.Success)
             {
 
             }
@@ -7815,8 +7819,6 @@ namespace Example
                 MessageBox.Show(result.Message);
             }
         }
-
-        #endregion
 
         private void btnSelfBuyMeOrder_Click(object sender, EventArgs e)
         {
@@ -7876,6 +7878,8 @@ namespace Example
             }
         }
 
+        #endregion
+
         #region Fidelizi
 
         private const string FidelizUrlTeste = "https://sandbox.fidelizii.com.br/v3/";
@@ -7893,9 +7897,9 @@ namespace Example
         {
             var service = new Plug4SalesService();
             var result = service.Token(txtPlug4SalesClientId.Text, txtPlug4SalesClientSecret.Text);
-            if(result.Success)
+            if (result.Success)
             {
-                if(result.Result.success)
+                if (result.Result.success)
                 {
                     txtPlug4SalesTokenGerado.Text = result.Result.result.token;
                 }
@@ -7941,7 +7945,7 @@ namespace Example
             pedido.delivery.deliveryAddress.complement = "BL 02 AP 31";
             pedido.delivery.deliveryAddress.reference = "Yellow House";
             pedido.delivery.deliveryAddress.formattedAddress = "Plaza Avenue, 100, BL 02 AP 31, Moema - São Paulo, SP - Brazil";
-            pedido.delivery.deliveryAddress.postalCode = "20111-000";            
+            pedido.delivery.deliveryAddress.postalCode = "20111-000";
 
             var item = new Plug4Sales.Domain.item();
             item.id = Guid.NewGuid().ToString();
@@ -7986,6 +7990,118 @@ namespace Example
             else
             {
                 MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        #region Cardápio Web
+
+        private const string UrlCardapioWebSandBox = "https://integracao.sandbox.cardapioweb.com/";
+
+        private async void btnCardapioWebIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCardapioWebToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtCardapioWebToken.Enabled = false;
+
+            btnCardapioWebIniciar.Enabled = false;
+            btnCardapioWebParar.Enabled = true;
+            await Task.Run(() => cardapioWeb());
+        }
+
+        private void cardapioWeb()
+        {
+            var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+
+            try
+            {
+                //while (btnIorion9Parar.Enabled)
+                //{
+                var orderResult = service.Orders();
+                if (orderResult.Success)
+                {
+                    _cardapioWebOrders = orderResult.Result.Where(w => w.status == CardapioWeb.Enum.OrderStatus.WAITING_CONFIRMATION).ToList();
+
+                    WriteGridCardapioWeb();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+                //Thread.Sleep(30000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridCardapioWebDelegate();
+        private void WriteGridCardapioWeb()
+        {
+            if (gridCardapioWeb.InvokeRequired)
+            {
+                var d = new WritelstGridCardapioWebDelegate(WriteGridCardapioWeb);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridCardapioWeb.DataSource = _cardapioWebOrders.ToList();
+                gridCardapioWeb.Refresh();
+            }
+        }
+
+        private void btnCardapioWebParar_Click(object sender, EventArgs e)
+        {
+            txtCardapioWebToken.Enabled = true;
+
+            btnCardapioWebIniciar.Enabled = true;
+            btnCardapioWebParar.Enabled = false;
+        }
+
+        private void gridCardapioWeb_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridCardapioWeb.Rows.Count)
+            {
+                _cardapioWebId = gridCardapioWeb.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnCardapioWebPedido_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(_cardapioWebId))
+            {
+                var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+                var result = service.Order(_cardapioWebId);
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnCardapioDigitalAceito_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_cardapioWebId))
+            {
+                var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+                var result = service.Confirm(_cardapioWebId);
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
             }
         }
 
