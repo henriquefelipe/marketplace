@@ -44,6 +44,8 @@ using SelfBuyMe.Service;
 using Fidelizi.Service;
 using Plug4Sales.Service;
 using CardapioWeb.Service;
+using FixeCRM.Service;
+using Plug4Sales.Domain;
 
 namespace Example
 {
@@ -7933,6 +7935,7 @@ namespace Example
             pedido.customer.phone = new Plug4Sales.Domain.customer_phone();
             pedido.customer.phone.number = "987704779";
             pedido.customer.phone.extension = "85";
+            pedido.customer.documentNumber = "00000000000";
 
             pedido.delivery = new Plug4Sales.Domain.delivery();
             pedido.delivery.deliveredBy = "MERCHANT";
@@ -7949,7 +7952,9 @@ namespace Example
 
             var item = new Plug4Sales.Domain.item();
             item.id = Guid.NewGuid().ToString();
-            item.name = "Pizza";
+            item.name = "Calabresa";
+            item.category = "Pizza";
+            item.externalCode = "1";
             item.unit = "UN";
             item.quantity = 1;
             item.unitPrice = new Plug4Sales.Domain.values(30);
@@ -7960,6 +7965,7 @@ namespace Example
             option.name = "Cebola";
             option.unit = "UN";
             option.quantity = 1;
+            option.externalCode = "2";
             option.unitPrice = new Plug4Sales.Domain.values(5);
             option.totalPrice = new Plug4Sales.Domain.values(5);
 
@@ -7967,7 +7973,12 @@ namespace Example
 
             pedido.total = new Plug4Sales.Domain.total();
             pedido.total.itemsPrice = new Plug4Sales.Domain.values(30);
-            pedido.total.otherFees = new Plug4Sales.Domain.values(10);
+
+            var frete = new otherFees_price();
+            frete.value = 10;
+            pedido.otherFees.Add(new Plug4Sales.Domain.otherFees { price = frete });
+
+            pedido.total.otherFees = new Plug4Sales.Domain.values(0);
             pedido.total.discount = new Plug4Sales.Domain.values(5);
             pedido.total.orderAmount = new Plug4Sales.Domain.values(35);
 

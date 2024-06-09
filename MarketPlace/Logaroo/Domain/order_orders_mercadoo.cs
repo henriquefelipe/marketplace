@@ -22,7 +22,8 @@ namespace Logaroo.Domain
         public order_orders_address_mercadoo address { get; set; }
         public int bag_id { get; set; }
         public string created_at { get; set; }
-        public command command { get; set; }
+        public order_orders_command_mercadoo command { get; set; }
+        public string table_number { get; set; }
         public order_orders_customer_mercadoo customer { get; set; }
         public string cpf { get; set; }
         public string code { get; set; }

@@ -9,6 +9,7 @@ namespace Plug4Sales.Domain
         public string id {  get; set; }
         public string name { get; set; }
         public int ordersCountOnMerchant { get; set; }
+        public string documentNumber { get; set; }
         public customer_phone phone { get; set; }
     }
 

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Agilizone.Service
+namespace FixeCRM.Service
 {
     public class FixeCRMService
     {

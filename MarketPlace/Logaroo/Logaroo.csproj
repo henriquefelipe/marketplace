@@ -49,7 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\command.cs" />
+    <Compile Include="Domain\order_mercadoo_status.cs" />
+    <Compile Include="Domain\order_orders_command_mercadoo.cs" />
     <Compile Include="Domain\orderfilter.cs" />
     <Compile Include="Domain\orderstatusresult.cs" />
     <Compile Include="Domain\ordercreateresult.cs" />

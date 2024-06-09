@@ -13,5 +13,6 @@
         public const string URL_PAYMENTS = "painel/payments";
 
         public const string URL_MERCADOO_ORDERS = "mercadoo/orders";
+        public const string URL_MERCADOO_STATUS = "mercadoo/commands";
     }
 }

@@ -13,6 +13,7 @@ namespace Plug4Sales.Domain
 
         public string id { get; set; }
         public string name { get; set; }
+        public string category { get; set; }
         public string externalCode { get; set; }
         public string unit { get; set; }
         public int quantity { get; set; }

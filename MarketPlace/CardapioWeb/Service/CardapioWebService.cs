@@ -195,5 +195,33 @@ namespace CardapioWeb.Service
             }
             return result;
         }
+
+        public GenericSimpleResult Cancel(string id)
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var client = new RestClient(_url + $"api/partner/v1/orders/{id}/cancel");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("X-API-KEY", _token);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }
