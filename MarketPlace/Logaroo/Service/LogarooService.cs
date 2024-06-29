@@ -260,6 +260,45 @@ namespace Logaroo.Service
 
         #region Mercadoo
 
+        public GenericResult<order_mercadoo> MercadooOrders(string token, string store, string parametros)
+        {
+            var result = new GenericResult<order_mercadoo>();
+            try
+            {
+                var url = string.Format("{0}{1}?store_id={2}", _urlBase, Constants.URL_MERCADOO_ORDERS, store);
+                if(!string.IsNullOrEmpty(parametros)) 
+                {
+                    url += "&" + parametros;
+                }
+
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", string.Format("bearer {0}", token));
+                IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<order_mercadoo>(response.Content);
+                    result.Success = true;
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    result.Result = new order_mercadoo();
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.StatusDescription + " " + response.Content;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
         public GenericResult<order_mercadoo> MercadooOrdersPendentes(string token, string store)
         {
             var result = new GenericResult<order_mercadoo>();

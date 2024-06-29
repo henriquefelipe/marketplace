@@ -7467,7 +7467,7 @@ namespace Example
         private void btnEuFaloSaldo_Click(object sender, EventArgs e)
         {
             var service = new EuFaloService();
-            var result = service.ConsultarSaldo(txtEuFaloTokenGerado.Text, DOCUMENTO);
+            var result = service.ConsultarSaldoInstantaneo(txtEuFaloTokenGerado.Text, DOCUMENTO);
             if (result.Success && result.Result.success.Any())
             {
                 var retorno = result.Result.success.FirstOrDefault();
@@ -7482,8 +7482,36 @@ namespace Example
         private void btnEuFaloUtilizarrSaldo_Click(object sender, EventArgs e)
         {
             var service = new EuFaloService();
-            var result = service.BaixarVoucher(txtEuFaloTokenGerado.Text, DOCUMENTO, DateTime.Now, 20);
+            var result = service.BaixarVoucherInstantaneo(txtEuFaloTokenGerado.Text, DOCUMENTO, DateTime.Now, 20);
             if (result.Success && result.Result.success.Any())
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEuFaloListarPorCPF_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+            var result = service.ListarPorCPF(txtEuFaloTokenGerado.Text, DOCUMENTO);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnEuFaloUtilizarrSaldoMeta_Click(object sender, EventArgs e)
+        {
+            var service = new EuFaloService();
+            var result = service.BaixarVoucherMeta(txtEuFaloTokenGerado.Text, DOCUMENTO, txtEuFaloVoucher.Text, DateTime.Now);
+            if (result.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -7884,12 +7912,107 @@ namespace Example
 
         #region Fidelizi
 
-        private const string FidelizUrlTeste = "https://sandbox.fidelizii.com.br/v3/";
+        private const string FideliziUrlTeste = "https://sandbox.fidelizii.com.br/";
+        private const string FideliziCodigoAtendente = "115074";
+        private const int FideliziIdCliente = 3616285;
 
         private void btnFideliziConfiguracoes_Click(object sender, EventArgs e)
         {
-            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, FidelizUrlTeste);
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
             service.GetConfiguracoes();
+        }
+
+        private void btnFideliziPontuar_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            var result = service.Pontuar(100, DOCUMENTO, FideliziCodigoAtendente);
+            if(result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFideliziResgatar_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            var result = service.ResgatarPremio(11111, FideliziIdCliente, FideliziCodigoAtendente);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFideliziEstornar_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            var result = service.EstornarPremio(11111, "Estorno realizado para testes");
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFideliziClientes_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            service.GetClientes();
+        }
+
+        private void btnFideliziCliente_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            service.GetCliente(1596);
+        }
+
+        private void btnFideliziClientePorCPF_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            service.GetClientePorCPF(DOCUMENTO);
+        }
+
+        private void btnFideliziCadastrarCliente_Click(object sender, EventArgs e)
+        {
+            var cadastrarCliente = new Fidelizi.Domain.cliente_cadastro();
+            cadastrarCliente.nome = "Henrique Felipe";
+            cadastrarCliente.cpf = DOCUMENTO;
+            cadastrarCliente.email = "henrique.felipe85@gmail.com";
+            cadastrarCliente.data_nascimento = "1994-12-01";
+            cadastrarCliente.celular = "(85) 98770-4779";
+            cadastrarCliente.sexo = "M";
+            cadastrarCliente.cep = "11111111";
+            cadastrarCliente.endereco = "Rua 15";
+            cadastrarCliente.bairro = "Conjunto Ceará";
+            cadastrarCliente.cidade = "Fortaleza";
+            cadastrarCliente.estado = "CE";
+
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            var result = service.CadastrarCliente(cadastrarCliente);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFideliziAtendentes_Click(object sender, EventArgs e)
+        {
+            var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
+            service.GetAtendentes();
         }
 
         #endregion
@@ -8116,9 +8239,19 @@ namespace Example
             }
         }
 
+
+
+
+
+
+
+
+
+
+
         #endregion
 
-
+       
     }
 }
 

@@ -261,6 +261,9 @@
             this.txtEpadocaUsuario = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.tabPageEuFalo = new System.Windows.Forms.TabPage();
+            this.txtEuFaloVoucher = new System.Windows.Forms.TextBox();
+            this.btnEuFaloUtilizarrSaldoMeta = new System.Windows.Forms.Button();
+            this.btnEuFaloListarPorCPF = new System.Windows.Forms.Button();
             this.label116 = new System.Windows.Forms.Label();
             this.txtEuFaloTokenGerado = new System.Windows.Forms.TextBox();
             this.btnEuFaloUtilizarrSaldo = new System.Windows.Forms.Button();
@@ -621,6 +624,14 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
+            this.btnFideliziPontuar = new System.Windows.Forms.Button();
+            this.btnFideliziResgatar = new System.Windows.Forms.Button();
+            this.btnFideliziEstornar = new System.Windows.Forms.Button();
+            this.btnFideliziClientes = new System.Windows.Forms.Button();
+            this.btnFideliziCliente = new System.Windows.Forms.Button();
+            this.btnFideliziCadastrarCliente = new System.Windows.Forms.Button();
+            this.btnFideliziClientePorCPF = new System.Windows.Forms.Button();
+            this.btnFideliziAtendentes = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -3500,6 +3511,9 @@
             // 
             // tabPageEuFalo
             // 
+            this.tabPageEuFalo.Controls.Add(this.txtEuFaloVoucher);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloUtilizarrSaldoMeta);
+            this.tabPageEuFalo.Controls.Add(this.btnEuFaloListarPorCPF);
             this.tabPageEuFalo.Controls.Add(this.label116);
             this.tabPageEuFalo.Controls.Add(this.txtEuFaloTokenGerado);
             this.tabPageEuFalo.Controls.Add(this.btnEuFaloUtilizarrSaldo);
@@ -3516,6 +3530,39 @@
             this.tabPageEuFalo.TabIndex = 32;
             this.tabPageEuFalo.Text = "Eu Falo";
             this.tabPageEuFalo.UseVisualStyleBackColor = true;
+            // 
+            // txtEuFaloVoucher
+            // 
+            this.txtEuFaloVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEuFaloVoucher.Location = new System.Drawing.Point(771, 619);
+            this.txtEuFaloVoucher.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEuFaloVoucher.Name = "txtEuFaloVoucher";
+            this.txtEuFaloVoucher.Size = new System.Drawing.Size(279, 30);
+            this.txtEuFaloVoucher.TabIndex = 50;
+            // 
+            // btnEuFaloUtilizarrSaldoMeta
+            // 
+            this.btnEuFaloUtilizarrSaldoMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloUtilizarrSaldoMeta.Location = new System.Drawing.Point(872, 537);
+            this.btnEuFaloUtilizarrSaldoMeta.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloUtilizarrSaldoMeta.Name = "btnEuFaloUtilizarrSaldoMeta";
+            this.btnEuFaloUtilizarrSaldoMeta.Size = new System.Drawing.Size(240, 41);
+            this.btnEuFaloUtilizarrSaldoMeta.TabIndex = 49;
+            this.btnEuFaloUtilizarrSaldoMeta.Text = "Utilizar Saldo (Meta)";
+            this.btnEuFaloUtilizarrSaldoMeta.UseVisualStyleBackColor = true;
+            this.btnEuFaloUtilizarrSaldoMeta.Click += new System.EventHandler(this.btnEuFaloUtilizarrSaldoMeta_Click);
+            // 
+            // btnEuFaloListarPorCPF
+            // 
+            this.btnEuFaloListarPorCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEuFaloListarPorCPF.Location = new System.Drawing.Point(671, 537);
+            this.btnEuFaloListarPorCPF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEuFaloListarPorCPF.Name = "btnEuFaloListarPorCPF";
+            this.btnEuFaloListarPorCPF.Size = new System.Drawing.Size(193, 41);
+            this.btnEuFaloListarPorCPF.TabIndex = 48;
+            this.btnEuFaloListarPorCPF.Text = "Listar por CPF";
+            this.btnEuFaloListarPorCPF.UseVisualStyleBackColor = true;
+            this.btnEuFaloListarPorCPF.Click += new System.EventHandler(this.btnEuFaloListarPorCPF_Click);
             // 
             // label116
             // 
@@ -3630,6 +3677,14 @@
             // 
             // tabPageFidelizi
             // 
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziAtendentes);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziClientePorCPF);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziCadastrarCliente);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziCliente);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziClientes);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziEstornar);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziResgatar);
+            this.tabPageFidelizi.Controls.Add(this.btnFideliziPontuar);
             this.tabPageFidelizi.Controls.Add(this.label124);
             this.tabPageFidelizi.Controls.Add(this.txtFideliziEstabelecimentoCodigo);
             this.tabPageFidelizi.Controls.Add(this.label125);
@@ -3659,11 +3714,12 @@
             // 
             this.txtFideliziEstabelecimentoCodigo.Enabled = false;
             this.txtFideliziEstabelecimentoCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFideliziEstabelecimentoCodigo.Location = new System.Drawing.Point(623, 453);
+            this.txtFideliziEstabelecimentoCodigo.Location = new System.Drawing.Point(640, 452);
             this.txtFideliziEstabelecimentoCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtFideliziEstabelecimentoCodigo.Name = "txtFideliziEstabelecimentoCodigo";
             this.txtFideliziEstabelecimentoCodigo.Size = new System.Drawing.Size(495, 30);
             this.txtFideliziEstabelecimentoCodigo.TabIndex = 53;
+            this.txtFideliziEstabelecimentoCodigo.Text = "3870";
             // 
             // label125
             // 
@@ -3679,7 +3735,7 @@
             // txtFideliziAccessToken
             // 
             this.txtFideliziAccessToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFideliziAccessToken.Location = new System.Drawing.Point(623, 379);
+            this.txtFideliziAccessToken.Location = new System.Drawing.Point(640, 378);
             this.txtFideliziAccessToken.Margin = new System.Windows.Forms.Padding(4);
             this.txtFideliziAccessToken.Name = "txtFideliziAccessToken";
             this.txtFideliziAccessToken.Size = new System.Drawing.Size(495, 30);
@@ -3689,7 +3745,7 @@
             // txtFideliziAppTokenn
             // 
             this.txtFideliziAppTokenn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFideliziAppTokenn.Location = new System.Drawing.Point(623, 290);
+            this.txtFideliziAppTokenn.Location = new System.Drawing.Point(640, 293);
             this.txtFideliziAppTokenn.Margin = new System.Windows.Forms.Padding(4);
             this.txtFideliziAppTokenn.Name = "txtFideliziAppTokenn";
             this.txtFideliziAppTokenn.Size = new System.Drawing.Size(495, 30);
@@ -3710,10 +3766,10 @@
             // btnFideliziConfiguracoes
             // 
             this.btnFideliziConfiguracoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFideliziConfiguracoes.Location = new System.Drawing.Point(1184, 327);
+            this.btnFideliziConfiguracoes.Location = new System.Drawing.Point(1172, 282);
             this.btnFideliziConfiguracoes.Margin = new System.Windows.Forms.Padding(4);
             this.btnFideliziConfiguracoes.Name = "btnFideliziConfiguracoes";
-            this.btnFideliziConfiguracoes.Size = new System.Drawing.Size(193, 41);
+            this.btnFideliziConfiguracoes.Size = new System.Drawing.Size(205, 41);
             this.btnFideliziConfiguracoes.TabIndex = 48;
             this.btnFideliziConfiguracoes.Text = "Configurações";
             this.btnFideliziConfiguracoes.UseVisualStyleBackColor = true;
@@ -7826,6 +7882,86 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
+            // btnFideliziPontuar
+            // 
+            this.btnFideliziPontuar.Location = new System.Drawing.Point(1172, 341);
+            this.btnFideliziPontuar.Name = "btnFideliziPontuar";
+            this.btnFideliziPontuar.Size = new System.Drawing.Size(205, 48);
+            this.btnFideliziPontuar.TabIndex = 55;
+            this.btnFideliziPontuar.Text = "Pontuar";
+            this.btnFideliziPontuar.UseVisualStyleBackColor = true;
+            this.btnFideliziPontuar.Click += new System.EventHandler(this.btnFideliziPontuar_Click);
+            // 
+            // btnFideliziResgatar
+            // 
+            this.btnFideliziResgatar.Location = new System.Drawing.Point(1172, 407);
+            this.btnFideliziResgatar.Name = "btnFideliziResgatar";
+            this.btnFideliziResgatar.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziResgatar.TabIndex = 56;
+            this.btnFideliziResgatar.Text = "Resgatar";
+            this.btnFideliziResgatar.UseVisualStyleBackColor = true;
+            this.btnFideliziResgatar.Click += new System.EventHandler(this.btnFideliziResgatar_Click);
+            // 
+            // btnFideliziEstornar
+            // 
+            this.btnFideliziEstornar.Location = new System.Drawing.Point(1172, 460);
+            this.btnFideliziEstornar.Name = "btnFideliziEstornar";
+            this.btnFideliziEstornar.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziEstornar.TabIndex = 57;
+            this.btnFideliziEstornar.Text = "Estornar";
+            this.btnFideliziEstornar.UseVisualStyleBackColor = true;
+            this.btnFideliziEstornar.Click += new System.EventHandler(this.btnFideliziEstornar_Click);
+            // 
+            // btnFideliziClientes
+            // 
+            this.btnFideliziClientes.Location = new System.Drawing.Point(1172, 513);
+            this.btnFideliziClientes.Name = "btnFideliziClientes";
+            this.btnFideliziClientes.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziClientes.TabIndex = 58;
+            this.btnFideliziClientes.Text = "Clientes";
+            this.btnFideliziClientes.UseVisualStyleBackColor = true;
+            this.btnFideliziClientes.Click += new System.EventHandler(this.btnFideliziClientes_Click);
+            // 
+            // btnFideliziCliente
+            // 
+            this.btnFideliziCliente.Location = new System.Drawing.Point(1172, 566);
+            this.btnFideliziCliente.Name = "btnFideliziCliente";
+            this.btnFideliziCliente.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziCliente.TabIndex = 59;
+            this.btnFideliziCliente.Text = "Cliente por Id";
+            this.btnFideliziCliente.UseVisualStyleBackColor = true;
+            this.btnFideliziCliente.Click += new System.EventHandler(this.btnFideliziCliente_Click);
+            // 
+            // btnFideliziCadastrarCliente
+            // 
+            this.btnFideliziCadastrarCliente.Location = new System.Drawing.Point(1172, 672);
+            this.btnFideliziCadastrarCliente.Name = "btnFideliziCadastrarCliente";
+            this.btnFideliziCadastrarCliente.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziCadastrarCliente.TabIndex = 60;
+            this.btnFideliziCadastrarCliente.Text = "Cadastrar Cliente";
+            this.btnFideliziCadastrarCliente.UseVisualStyleBackColor = true;
+            this.btnFideliziCadastrarCliente.Click += new System.EventHandler(this.btnFideliziCadastrarCliente_Click);
+            // 
+            // btnFideliziClientePorCPF
+            // 
+            this.btnFideliziClientePorCPF.Location = new System.Drawing.Point(1172, 619);
+            this.btnFideliziClientePorCPF.Name = "btnFideliziClientePorCPF";
+            this.btnFideliziClientePorCPF.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziClientePorCPF.TabIndex = 61;
+            this.btnFideliziClientePorCPF.Text = "Cliente por CPF";
+            this.btnFideliziClientePorCPF.UseVisualStyleBackColor = true;
+            this.btnFideliziClientePorCPF.Click += new System.EventHandler(this.btnFideliziClientePorCPF_Click);
+            // 
+            // btnFideliziAtendentes
+            // 
+            this.btnFideliziAtendentes.Location = new System.Drawing.Point(1172, 725);
+            this.btnFideliziAtendentes.Name = "btnFideliziAtendentes";
+            this.btnFideliziAtendentes.Size = new System.Drawing.Size(205, 47);
+            this.btnFideliziAtendentes.TabIndex = 62;
+            this.btnFideliziAtendentes.Text = "Atendentes";
+            this.btnFideliziAtendentes.UseVisualStyleBackColor = true;
+            this.btnFideliziAtendentes.Click += new System.EventHandler(this.btnFideliziAtendentes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -8552,6 +8688,17 @@
         private System.Windows.Forms.Button btnCardapioWebParar;
         private System.Windows.Forms.Button btnCardapioWebIniciar;
         private System.Windows.Forms.Button btnCardapioWebPedido;
+        private System.Windows.Forms.Button btnEuFaloListarPorCPF;
+        private System.Windows.Forms.Button btnEuFaloUtilizarrSaldoMeta;
+        private System.Windows.Forms.TextBox txtEuFaloVoucher;
+        private System.Windows.Forms.Button btnFideliziPontuar;
+        private System.Windows.Forms.Button btnFideliziResgatar;
+        private System.Windows.Forms.Button btnFideliziEstornar;
+        private System.Windows.Forms.Button btnFideliziClientes;
+        private System.Windows.Forms.Button btnFideliziCliente;
+        private System.Windows.Forms.Button btnFideliziCadastrarCliente;
+        private System.Windows.Forms.Button btnFideliziClientePorCPF;
+        private System.Windows.Forms.Button btnFideliziAtendentes;
     }
 }
 

@@ -18,6 +18,12 @@ namespace EuFalo.Utils
         public const string URL_CONTATO_SALVAR = "api/v2/contato/salvar/item";
         public const string URL_VENDA = "api/v2/vendacontato/salvar/item";
         public const string URL_CONSULTA_SALDO = "api/programafidelidade/consultarSaldoCashbackInstantaneo";
-        public const string URL_BAIXAR_VOUCHER = "api/programafidelidade/baixarvoucherCashbackInstantaneo/item";        
+        public const string URL_BAIXAR_VOUCHER_INSTANTANEO = "api/programafidelidade/baixarvoucherCashbackInstantaneo/item";
+
+        public const string URL_RESGATE_CASHBACK = "api/programafidelidade/resgatecashback/confirmar/item";
+        public const string URL_BAIXAR_VOUCHER_META = "api/programafidelidade/baixarvoucher/item";
+
+        public const string URL_LISTAR_POR_CPF = "api/programafidelidade/resgatecashback/listarPorCpf";
+        public const string URL_CONSULTAR_SALDO_MENSAGEM = "api/Contato/ConsultarSaldoMensagem";
     }
 }

@@ -14,6 +14,7 @@ namespace Logaroo.Domain
         }
 
         public int id { get; set; }
+        public string uuid { get; set; }
         public string code_pdv { get; set; }
         public string obs { get; set; }
         public string name { get; set; }

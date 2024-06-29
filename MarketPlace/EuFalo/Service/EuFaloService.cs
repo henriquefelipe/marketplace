@@ -270,7 +270,7 @@ namespace EuFalo.Service
             return result;
         }
 
-        public GenericResult<saldo> ConsultarSaldo(string token, string documento)
+        public GenericResult<saldo> ConsultarSaldoInstantaneo(string token, string documento)
         {
             var result = new GenericResult<saldo>();
             try
@@ -306,7 +306,7 @@ namespace EuFalo.Service
             return result;
         }
 
-        public GenericResult<resgate> BaixarVoucher(string token, string documento, DateTime data, decimal valor)
+        public GenericResult<resgate> BaixarVoucherInstantaneo(string token, string documento, DateTime data, decimal valor)
         {
             var result = new GenericResult<resgate>();
             try
@@ -319,7 +319,7 @@ namespace EuFalo.Service
                 };
 
 
-                var url = string.Format("{0}{1}", Constants.URL_BASE, Constants.URL_BAIXAR_VOUCHER);
+                var url = string.Format("{0}{1}", Constants.URL_BASE, Constants.URL_BAIXAR_VOUCHER_INSTANTANEO);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Authorization", "Bearer " + token);
@@ -330,6 +330,92 @@ namespace EuFalo.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<resgate>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<List<lista_cpf>> ListarPorCPF(string token, string documento)
+        {
+            var result = new GenericResult<List<lista_cpf>>();
+            try
+            {
+                var dados = new
+                {
+                    cpf = documento,                    
+                };
+
+
+                var url = string.Format("{0}{1}", Constants.URL_BASE, Constants.URL_LISTAR_POR_CPF);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(dados), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<List<lista_cpf>>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(response.Content))
+                        result.Message = response.StatusDescription;
+                    else
+                        result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<retorno> BaixarVoucherMeta(string token, string documento, string numeroVoucher, DateTime data)
+        {
+            var result = new GenericResult<retorno>();
+            try
+            {
+                var dados = new
+                {
+                    numeroVoucher,                    
+                    cpf = documento,
+                    dataBaixa = data.ToString("yyyy-MM-ddTHH:mm:ss"),
+                };
+
+
+                var url = string.Format("{0}{1}", Constants.URL_BASE, Constants.URL_BAIXAR_VOUCHER_META);
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(dados), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<retorno>(response.Content);
                     result.Success = true;
                 }
                 else
