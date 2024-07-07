@@ -46,6 +46,7 @@ using Plug4Sales.Service;
 using CardapioWeb.Service;
 using FixeCRM.Service;
 using Plug4Sales.Domain;
+using DeliveryVip.Service;
 
 namespace Example
 {
@@ -146,6 +147,9 @@ namespace Example
         private List<CardapioWeb.Domain.responseOrders> _cardapioWebOrders { get; set; }
         private string _cardapioWebId { get; set; }
 
+        private List<DeliveryVip.Domain.eventPooling> _deliveryVipOrders { get; set; }
+        private string _deliveryVipId { get; set; }
+
         #endregion
 
         public Form1()
@@ -210,6 +214,13 @@ namespace Example
                                 txtDeliveryDiretoMerchandId.Text = marketPlace.DeliveryDireto.MerchantId;
                                 txtDeliveryDiretoUsuario.Text = marketPlace.DeliveryDireto.Usuario;
                                 txtDeliveryDiretoSenha.Text = marketPlace.DeliveryDireto.Senha;
+                            }
+
+                            if (marketPlace.DeliveryVip != null)
+                            {                                
+                                txtDeliveryVipMerchant.Text = marketPlace.DeliveryVip.MerchantId;
+                                txtDeliveryVipClientId.Text = marketPlace.DeliveryVip.Usuario;
+                                txtDeliveryVipSecret.Text = marketPlace.DeliveryVip.Senha;
                             }
 
                             if (marketPlace.Epadoca != null)
@@ -419,6 +430,10 @@ namespace Example
             _iorion9Orders = new List<Iorion19.Domain.pedido>();
             gridIorion.DataSource = _iorion9Orders.ToList();
             gridIorion.Refresh();
+
+            _deliveryVipOrders = new List<DeliveryVip.Domain.eventPooling>();
+            gridDeliveryVip.DataSource = _deliveryVipOrders.ToList();
+            gridDeliveryVip.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -7925,7 +7940,7 @@ namespace Example
         private void btnFideliziPontuar_Click(object sender, EventArgs e)
         {
             var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
-            var result = service.Pontuar(100, DOCUMENTO, FideliziCodigoAtendente);
+            var result = service.Pontuar(1000, DOCUMENTO, FideliziCodigoAtendente);
             if(result.Success)
             {
                 MessageBox.Show("OK");
@@ -7939,7 +7954,7 @@ namespace Example
         private void btnFideliziResgatar_Click(object sender, EventArgs e)
         {
             var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
-            var result = service.ResgatarPremio(11111, FideliziIdCliente, FideliziCodigoAtendente);
+            var result = service.ResgatarPremio(63942, FideliziIdCliente, FideliziCodigoAtendente);
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -7973,7 +7988,7 @@ namespace Example
         private void btnFideliziCliente_Click(object sender, EventArgs e)
         {
             var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
-            service.GetCliente(1596);
+            service.GetClienteId(FideliziIdCliente);
         }
 
         private void btnFideliziClientePorCPF_Click(object sender, EventArgs e)
@@ -8240,18 +8255,181 @@ namespace Example
         }
 
 
-
-
-
-
-
-
-
-
-
         #endregion
 
-       
+
+        #region Delivery Vip
+
+        private async void btnDeliveryVipIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDeliveryVipClientId.Text))
+            {
+                MessageBox.Show("Campo ClientId Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryVipSecret.Text))
+            {
+                MessageBox.Show("Campo Secret Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryVipMerchant.Text))
+            {
+                MessageBox.Show("Campo Merchant Obrigatório");
+                return;
+            }
+
+            txtDeliveryVipClientId.Enabled = false;
+            txtDeliveryVipSecret.Enabled = false;
+            txtDeliveryVipMerchant.Enabled = false;
+
+            btnDeliveryVipIniciar.Enabled = false;
+            btnDeliveryVipParar.Enabled = true;
+
+            var service = new DeliveryVipService();
+            var resultToken = service.AuthenticationToken(txtDeliveryVipClientId.Text, txtDeliveryVipSecret.Text);
+            if (!resultToken.Success)
+            {
+                MessageBox.Show(resultToken.Message);
+                return;
+            }
+
+            txtDeliveryVipToken.Text = resultToken.Result.access_token;
+
+            await Task.Run(() => deliveryVip());
+        }
+
+        private void btnDeliveryVipParar_Click(object sender, EventArgs e)
+        {
+            txtDeliveryVipClientId.Enabled = true;
+            txtDeliveryVipSecret.Enabled = true;
+            txtDeliveryVipMerchant.Enabled = true;
+
+            btnDeliveryVipIniciar.Enabled = true;
+            btnDeliveryVipParar.Enabled = false;
+        }
+
+        private void btnDeliveryVipBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_deliveryVipId))
+            {
+                var service = new DeliveryVipService();
+                var result = service.Order(txtDeliveryVipToken.Text, _deliveryVipId);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnDeliveryVipAceitar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_deliveryVipId))
+            {
+                var service = new DeliveryVipService();
+                var result = service.Confirm(txtDeliveryVipToken.Text, _deliveryVipId);
+                if(result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnDeliveryVipCancelar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_deliveryVipId))
+            {
+                var service = new DeliveryVipService();
+                var result = service.RequestCancellation(txtDeliveryVipToken.Text, _deliveryVipId);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void gridDeliveryVip_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridDeliveryVip.Rows.Count)
+            {
+                _deliveryVipId = gridDeliveryVip.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+        }
+
+        private void deliveryVip()
+        {           
+            try
+            {
+                //while (btnIorion9Parar.Enabled)
+                //{
+                var service = new DeliveryVipService();
+                var orderResult = service.EventPooling(txtDeliveryVipToken.Text, txtDeliveryVipMerchant.Text);
+                if (orderResult.Success)
+                {
+                    _deliveryVipOrders = orderResult.Result.ToList();
+
+                    WriteGridDeliveryVip();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+                //Thread.Sleep(30000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridDeliveryVipDelegate();
+        private void WriteGridDeliveryVip()
+        {
+            if (gridDeliveryVip.InvokeRequired)
+            {
+                var d = new WritelstGridDeliveryVipDelegate(WriteGridDeliveryVip);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridDeliveryVip.DataSource = _deliveryVipOrders.ToList();
+                gridDeliveryVip.Refresh();
+            }
+        }
+
+        #endregion
     }
 }
 

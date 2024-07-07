@@ -88,17 +88,18 @@ namespace Fidelizi.Service
                 }
                 else
                 {
-                    var erro = JsonConvert.DeserializeObject<erro>(response.Content);
-                    if (erro.error)
+                    try
                     {
-                        if (erro.messages.cpf.Any())
+                        var erro = JsonConvert.DeserializeObject<erroResult>(response.Content);
+                        if (erro.error)
                         {
-                            foreach (var item in erro.messages.cpf)
+                            foreach (var item in erro.messages)
                             {
                                 result.Message += item;
                             }
                         }
                     }
+                    catch { }
 
                     if (string.IsNullOrEmpty(result.Message))
                     {
@@ -141,15 +142,12 @@ namespace Fidelizi.Service
                 }
                 else
                 {
-                    var erro = JsonConvert.DeserializeObject<erro>(response.Content);
+                    var erro = JsonConvert.DeserializeObject<erroResult>(response.Content);
                     if (erro.error)
                     {
-                        if (erro.messages.id_cliente.Any())
+                        foreach (var item in erro.messages)
                         {
-                            foreach (var item in erro.messages.id_cliente)
-                            {
-                                result.Message += item;
-                            }
+                            result.Message += item;
                         }
                     }
 
@@ -254,7 +252,7 @@ namespace Fidelizi.Service
             return result;
         }
 
-        public GenericResult<cliente> GetCliente(int id_cliente)
+        public GenericResult<cliente> GetClienteId(int id_cliente)
         {
             var result = new GenericResult<cliente>();
             try

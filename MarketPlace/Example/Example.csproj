@@ -149,6 +149,10 @@
       <Project>{4051bc94-28ac-41c1-8cb9-e254f822a7cc}</Project>
       <Name>DeliveryDireto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DeliveryVip\DeliveryVip.csproj">
+      <Project>{0f81178e-1f94-43e0-b34b-3fdcf6ed1e00}</Project>
+      <Name>DeliveryVip</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epadoca\Epadoca.csproj">
       <Project>{815ac321-6bd3-43c0-be31-0f5564929fff}</Project>
       <Name>Epadoca</Name>

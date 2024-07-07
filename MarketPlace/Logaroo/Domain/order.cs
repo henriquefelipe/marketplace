@@ -78,7 +78,7 @@ namespace Logaroo.Domain
 
     public class order_origin_data
     {
-        public string orogin_id { get; set; }
+        public string origin_id { get; set; }
         public string collect_code { get; set; }
     }
 }

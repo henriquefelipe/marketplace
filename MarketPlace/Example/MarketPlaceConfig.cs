@@ -8,6 +8,7 @@ namespace Example
         public MarketPlaceConfigAtivMob AtivMob { get; set; }
         public MarketPlaceConfigDeliveryApp DeliveryApp { get; set; }
         public MarketPlaceConfigDeliveryDireto DeliveryDireto { get; set; }
+        public MarketPlaceConfigDeliveryDireto DeliveryVip { get; set; }
         public MarketPlaceConfigIfood Ifood { get; set; }
         public MarketPlaceConfigGloriaFood Gloria { get; set; }
         public MarketPlaceConfigGoomer Goomer { get; set; }
