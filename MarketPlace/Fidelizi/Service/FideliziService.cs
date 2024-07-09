@@ -187,7 +187,14 @@ namespace Fidelizi.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<resgate>(response.Content);
-                    result.Success = true;
+                    if (result.Result.success)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
                 }
                 else
                 {
@@ -282,9 +289,9 @@ namespace Fidelizi.Service
             return result;
         }
 
-        public GenericResult<cliente> GetClientePorCPF(string cpf)
+        public GenericResult<clientes> GetClientePorCPF(string cpf)
         {
-            var result = new GenericResult<cliente>();
+            var result = new GenericResult<clientes>();
             try
             {
                 var client = new RestClient(_url + $"v3/estabelecimentos/{_idParceiro}/clientes?cpf={cpf}");
@@ -295,7 +302,7 @@ namespace Fidelizi.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<cliente>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<clientes>(response.Content);
                     result.Success = true;
                 }
                 else

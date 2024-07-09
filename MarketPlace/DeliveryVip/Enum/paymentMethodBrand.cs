@@ -19,9 +19,7 @@ namespace DeliveryVip.Enum
         public const string TICKET = "TICKET";
         public const string GOOD_CARD = "GOOD_CARD";
         public const string BANESCARD = "BANESCARD";
-        public const string GOOD_CARD = "GOOD_CARD";
         public const string SOROCARD = "SOROCARD";
-        public const string GOOD_CARD = "GOOD_CARD";
         public const string POLICARD = "POLICARD";
         public const string VALECARD = "VALECARD";
         public const string AGICARD = "AGICARD";

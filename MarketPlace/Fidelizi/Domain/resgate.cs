@@ -8,7 +8,7 @@ namespace Fidelizi.Domain
     {
         public bool success {  get; set; }
         public string message { get; set; }
-
+        public resgate_data data { get; set; }
     }
 
     public class resgate_data

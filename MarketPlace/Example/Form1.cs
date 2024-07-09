@@ -7968,7 +7968,7 @@ namespace Example
         private void btnFideliziEstornar_Click(object sender, EventArgs e)
         {
             var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
-            var result = service.EstornarPremio(11111, "Estorno realizado para testes");
+            var result = service.EstornarPremio(6102529, "Estorno realizado para testes");
             if (result.Success)
             {
                 MessageBox.Show("OK");
@@ -8256,7 +8256,6 @@ namespace Example
 
 
         #endregion
-
 
         #region Delivery Vip
 

@@ -16,7 +16,7 @@ namespace Plug4Sales.Domain
         public string category { get; set; }
         public string externalCode { get; set; }
         public string unit { get; set; }
-        public int quantity { get; set; }
+        public int quantity { get; set; }        
         public values unitPrice { get; set; }
         public values totalPrice { get; set; }
         public List<option> options { get; set; }

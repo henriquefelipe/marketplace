@@ -54,5 +54,6 @@ namespace Fidelizi.Domain
         public string resgate_mesmo_dia { get; set; }
         public string tipo_beneficio { get; set; }
         public decimal? valor_beneficio { get; set; }
+        public string identificador {  get; set; }
     }
 }
