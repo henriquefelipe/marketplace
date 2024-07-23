@@ -18,5 +18,7 @@ namespace DeliveryVip.Domain
         public string type { get; set; }
         public string method { get; set; }
         public string methodInfo { get; set; }
+        public decimal changeFor { get; set; }
+        public string brand { get; set; }
     }
 }

@@ -68,6 +68,39 @@ namespace DeliveryVip.Service
                 else if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
                     result.Result = new List<eventPooling>();
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericResult<acknowledgmentResult> Acknowledgment(string token, List<acknowledgment> eventIds)
+        {
+            var result = new GenericResult<acknowledgmentResult>();
+            try
+            {
+                var client = new RestClient(_url + $"merchant/v3/events/acknowledgment");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(eventIds);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+                {
+                    result.Result = JsonConvert.DeserializeObject<acknowledgmentResult>(response.Content);
+                    result.Success = true;
                 }
                 else
                 {
@@ -124,7 +157,7 @@ namespace DeliveryVip.Service
                 request.AddHeader("Authorization", "Bearer " + token);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                     result.Success = true;
@@ -154,7 +187,7 @@ namespace DeliveryVip.Service
                 request.AddHeader("Authorization", "Bearer " + token);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                     result.Success = true;
@@ -184,7 +217,7 @@ namespace DeliveryVip.Service
                 request.AddHeader("Authorization", "Bearer " + token);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                     result.Success = true;
@@ -214,7 +247,7 @@ namespace DeliveryVip.Service
                 request.AddHeader("Authorization", "Bearer " + token);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                     result.Success = true;
@@ -244,7 +277,7 @@ namespace DeliveryVip.Service
                 request.AddHeader("Authorization", "Bearer " + token);
 
                 IRestResponse response = client.Execute(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
                     result.Result = JsonConvert.DeserializeObject<order>(response.Content);
                     result.Success = true;

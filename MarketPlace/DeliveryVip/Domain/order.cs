@@ -15,6 +15,7 @@ namespace DeliveryVip.Domain
         public string lastEvent { get; set; }
         public bool sendDelivered { get; set; }
         public bool sendTracking { get; set; }
+        public string extraInfo { get; set; }
         public orderMerchant merchant { get; set; }
         public List<orderItem> items { get; set; }    
         public List<orderOtherFees> otherFees { get; set; }
@@ -22,6 +23,7 @@ namespace DeliveryVip.Domain
         public orderPayments payments { get; set; }
         public orderCustomer customer { get; set; }
         public orderDelivery delivery { get; set; }
-
+        public indoor indoor { get; set; }
+        public orderTakeout orderTakeout { get; set; }
     }
 }

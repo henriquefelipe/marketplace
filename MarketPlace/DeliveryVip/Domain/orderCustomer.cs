@@ -9,7 +9,8 @@ namespace DeliveryVip.Domain
         public string id {  get; set; }
         public string name { get; set; }
         public orderCustomerPhone phone { get; set; }
-
+        public string documentNumber { get; set; }
+        public string email { get; set; }
         public int ordersCountOnMerchant {  get; set; }
     }
 
