@@ -7709,23 +7709,24 @@ namespace Example
             var order = new Agilizone.Domain.order();
             order.address = new Agilizone.Domain.order_address
             {
-                city = "maracanau",
-                complement = "",
-                coordinates = new Agilizone.Domain.order_address_coordinates { latitude = 30, longitude = 30 },
+                city = "Fortaleza",
+                complement = "S/ Complemento",
+                coordinates = new Agilizone.Domain.order_address_coordinates { latitude = 0, longitude = 0 },
                 country = "Brasil",
-                number = "11",
-                state = "Cearaa",
-                street = "Rua 1"
+                number = "665",
+                state = "Ceara",
+                street = "R. Caetano Ximenes Aragão",
+                neighborhood = "Luciano Cavalcante"
             };
             order.client = new Agilizone.Domain.order_client
             {
-                name = "cledson test",
-                email = "cledson@mail.com",
-                phone = "85998408246"
+                name = "Henrique",
+                email = "henrique@izzyway.com.br",
+                phone = "85987704779"
             };
 
             order.details = "Pizza Grande +borda gratis. (1)\n - 1/2 calabresa com bacon (1) \n - 1/2 mussarela e bacon (1)\n- Sem borda (1)";
-            order.number = "12345567";
+            order.number = DateTime.Now.ToString("ddMMyyyyHHmmss");
             order.paymentType = "CREDIT";
             order.deliveryFee = 10;
             order.deliverymanFee = 4;
@@ -7736,7 +7737,88 @@ namespace Example
             var result = service.Order(order, txtAgilizoneToken.Text);
             if (result.Success)
             {
+                txtAgilizoneNumero.Text = result.Result.order.number;
                 MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAgilizoneCancelar_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtAgilizoneNumero.Text))
+            {
+                MessageBox.Show("Digite o numero do pedido");
+                return;
+            }
+
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.CANCELED , "Cancelado pelo usuário");
+            if (result.Success)
+            {                
+                MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAgilizonePreparado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAgilizoneNumero.Text))
+            {
+                MessageBox.Show("Digite o numero do pedido");
+                return;
+            }
+
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.PREPARED);
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAgilizoneFinalizado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAgilizoneNumero.Text))
+            {
+                MessageBox.Show("Digite o numero do pedido");
+                return;
+            }
+
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.COMPLETED);
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnAgilizoneBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAgilizoneNumero.Text))
+            {
+                MessageBox.Show("Digite o numero do pedido");
+                return;
+            }
+
+            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var result = service.Order(txtAgilizoneNumero.Text, txtAgilizoneToken.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("Cancelado com sucesso");
             }
             else
             {
@@ -8429,6 +8511,8 @@ namespace Example
         }
 
         #endregion
+
+        
     }
 }
 

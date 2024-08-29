@@ -63,7 +63,7 @@ namespace Agilizone.Service
             {
                 var data = new
                 {
-                    order = order
+                    order
                 };
 
                 var client = new RestClient(_url + "order");
@@ -75,7 +75,80 @@ namespace Agilizone.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.Created)
                 {
                     result.Result = JsonConvert.DeserializeObject<result_order>(response.Content);
-                    result.Success = true;                                        
+                    if (result.Result.status == null)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericSimpleResult Status(string number, string token, string status, string description = "")
+        {
+            var result = new GenericSimpleResult();
+            try
+            {
+                var data = new
+                {
+                    status,
+                    cancellationDetails = new
+                    {
+                        description
+                    }
+                };
+
+                var client = new RestClient($"{_url}order/{number}");
+                var request = new RestRequest(Method.PATCH);
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {                    
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericResult<result_order> Order(string number, string token)
+        {
+            var result = new GenericResult<result_order>();
+            try
+            {
+                var client = new RestClient($"{_url}order/{number}");
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Authorization", "Bearer " + token);                
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<result_order>(response.Content);
+                    result.Success = true;
                 }
                 else
                 {

@@ -19,6 +19,7 @@ namespace Plug4Sales.Domain
         public string displayId { get; set; }
         public string sourceAppId {  get; set; }
         public string salesChannel { get; set; }
+        public string storeChannel { get; set; }
         public string createdAt { get; set; }
         public string orderTiming { get; set; }
         public string preparationStartDateTime { get; set; }    

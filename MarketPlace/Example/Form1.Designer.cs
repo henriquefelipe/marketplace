@@ -235,6 +235,17 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnDeliveryDiretoParar = new System.Windows.Forms.Button();
             this.btnDeliveryDiretoIniciar = new System.Windows.Forms.Button();
+            this.tabPageDeliveryVip = new System.Windows.Forms.TabPage();
+            this.txtDeliveryVipToken = new System.Windows.Forms.TextBox();
+            this.btnDeliveryVipCancelar = new System.Windows.Forms.Button();
+            this.txtDeliveryVipSecret = new System.Windows.Forms.TextBox();
+            this.txtDeliveryVipClientId = new System.Windows.Forms.TextBox();
+            this.btnDeliveryVipAceitar = new System.Windows.Forms.Button();
+            this.btnDeliveryVipBuscarPedido = new System.Windows.Forms.Button();
+            this.txtDeliveryVipMerchant = new System.Windows.Forms.TextBox();
+            this.gridDeliveryVip = new System.Windows.Forms.DataGridView();
+            this.btnDeliveryVipParar = new System.Windows.Forms.Button();
+            this.btnDeliveryVipIniciar = new System.Windows.Forms.Button();
             this.tabPageEpadoca = new System.Windows.Forms.TabPage();
             this.btnEpadocaConsultarCupom = new System.Windows.Forms.Button();
             this.btnEpadocaUtilizarCupom = new System.Windows.Forms.Button();
@@ -632,17 +643,11 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.tabPageDeliveryVip = new System.Windows.Forms.TabPage();
-            this.btnDeliveryVipCancelar = new System.Windows.Forms.Button();
-            this.txtDeliveryVipSecret = new System.Windows.Forms.TextBox();
-            this.txtDeliveryVipClientId = new System.Windows.Forms.TextBox();
-            this.btnDeliveryVipAceitar = new System.Windows.Forms.Button();
-            this.btnDeliveryVipBuscarPedido = new System.Windows.Forms.Button();
-            this.txtDeliveryVipMerchant = new System.Windows.Forms.TextBox();
-            this.gridDeliveryVip = new System.Windows.Forms.DataGridView();
-            this.btnDeliveryVipParar = new System.Windows.Forms.Button();
-            this.btnDeliveryVipIniciar = new System.Windows.Forms.Button();
-            this.txtDeliveryVipToken = new System.Windows.Forms.TextBox();
+            this.btnAgilizoneCancelar = new System.Windows.Forms.Button();
+            this.btnAgilizonePreparado = new System.Windows.Forms.Button();
+            this.btnAgilizoneFinalizado = new System.Windows.Forms.Button();
+            this.btnAgilizoneBuscarPedido = new System.Windows.Forms.Button();
+            this.txtAgilizoneNumero = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -670,6 +675,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPageDeliveryDireto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).BeginInit();
+            this.tabPageDeliveryVip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryVip)).BeginInit();
             this.tabPageEpadoca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).BeginInit();
             this.tabPageEuFalo.SuspendLayout();
@@ -718,8 +725,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
-            this.tabPageDeliveryVip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryVip)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1365,6 +1370,11 @@
             // 
             // tabAgilizone
             // 
+            this.tabAgilizone.Controls.Add(this.txtAgilizoneNumero);
+            this.tabAgilizone.Controls.Add(this.btnAgilizoneBuscarPedido);
+            this.tabAgilizone.Controls.Add(this.btnAgilizoneFinalizado);
+            this.tabAgilizone.Controls.Add(this.btnAgilizonePreparado);
+            this.tabAgilizone.Controls.Add(this.btnAgilizoneCancelar);
             this.tabAgilizone.Controls.Add(this.txtAgilizoneToken);
             this.tabAgilizone.Controls.Add(this.btnAgilizoneOrder);
             this.tabAgilizone.Controls.Add(this.btnAgilizoneToken);
@@ -3220,6 +3230,136 @@
             this.btnDeliveryDiretoIniciar.Text = "Iniciar";
             this.btnDeliveryDiretoIniciar.UseVisualStyleBackColor = true;
             this.btnDeliveryDiretoIniciar.Click += new System.EventHandler(this.btnDeliveryDiretoIniciar_Click);
+            // 
+            // tabPageDeliveryVip
+            // 
+            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipToken);
+            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipCancelar);
+            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipSecret);
+            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipClientId);
+            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipAceitar);
+            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipBuscarPedido);
+            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipMerchant);
+            this.tabPageDeliveryVip.Controls.Add(this.gridDeliveryVip);
+            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipParar);
+            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipIniciar);
+            this.tabPageDeliveryVip.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDeliveryVip.Name = "tabPageDeliveryVip";
+            this.tabPageDeliveryVip.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageDeliveryVip.TabIndex = 40;
+            this.tabPageDeliveryVip.Text = "Delivery Vip";
+            this.tabPageDeliveryVip.UseVisualStyleBackColor = true;
+            // 
+            // txtDeliveryVipToken
+            // 
+            this.txtDeliveryVipToken.Enabled = false;
+            this.txtDeliveryVipToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryVipToken.Location = new System.Drawing.Point(436, 408);
+            this.txtDeliveryVipToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveryVipToken.Name = "txtDeliveryVipToken";
+            this.txtDeliveryVipToken.Size = new System.Drawing.Size(769, 30);
+            this.txtDeliveryVipToken.TabIndex = 47;
+            // 
+            // btnDeliveryVipCancelar
+            // 
+            this.btnDeliveryVipCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryVipCancelar.Location = new System.Drawing.Point(490, 168);
+            this.btnDeliveryVipCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryVipCancelar.Name = "btnDeliveryVipCancelar";
+            this.btnDeliveryVipCancelar.Size = new System.Drawing.Size(228, 48);
+            this.btnDeliveryVipCancelar.TabIndex = 46;
+            this.btnDeliveryVipCancelar.Text = "Cancelar";
+            this.btnDeliveryVipCancelar.UseVisualStyleBackColor = true;
+            this.btnDeliveryVipCancelar.Click += new System.EventHandler(this.btnDeliveryVipCancelar_Click);
+            // 
+            // txtDeliveryVipSecret
+            // 
+            this.txtDeliveryVipSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryVipSecret.Location = new System.Drawing.Point(169, 30);
+            this.txtDeliveryVipSecret.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveryVipSecret.Name = "txtDeliveryVipSecret";
+            this.txtDeliveryVipSecret.Size = new System.Drawing.Size(313, 30);
+            this.txtDeliveryVipSecret.TabIndex = 45;
+            this.txtDeliveryVipSecret.Text = "secret";
+            // 
+            // txtDeliveryVipClientId
+            // 
+            this.txtDeliveryVipClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryVipClientId.Location = new System.Drawing.Point(615, 29);
+            this.txtDeliveryVipClientId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveryVipClientId.Name = "txtDeliveryVipClientId";
+            this.txtDeliveryVipClientId.Size = new System.Drawing.Size(323, 30);
+            this.txtDeliveryVipClientId.TabIndex = 44;
+            this.txtDeliveryVipClientId.Text = "client id";
+            // 
+            // btnDeliveryVipAceitar
+            // 
+            this.btnDeliveryVipAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryVipAceitar.Location = new System.Drawing.Point(254, 168);
+            this.btnDeliveryVipAceitar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryVipAceitar.Name = "btnDeliveryVipAceitar";
+            this.btnDeliveryVipAceitar.Size = new System.Drawing.Size(228, 48);
+            this.btnDeliveryVipAceitar.TabIndex = 43;
+            this.btnDeliveryVipAceitar.Text = "Aceitar";
+            this.btnDeliveryVipAceitar.UseVisualStyleBackColor = true;
+            this.btnDeliveryVipAceitar.Click += new System.EventHandler(this.btnDeliveryVipAceitar_Click);
+            // 
+            // btnDeliveryVipBuscarPedido
+            // 
+            this.btnDeliveryVipBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryVipBuscarPedido.Location = new System.Drawing.Point(18, 168);
+            this.btnDeliveryVipBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryVipBuscarPedido.Name = "btnDeliveryVipBuscarPedido";
+            this.btnDeliveryVipBuscarPedido.Size = new System.Drawing.Size(228, 48);
+            this.btnDeliveryVipBuscarPedido.TabIndex = 42;
+            this.btnDeliveryVipBuscarPedido.Text = "Buscar Pedido";
+            this.btnDeliveryVipBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnDeliveryVipBuscarPedido.Click += new System.EventHandler(this.btnDeliveryVipBuscarPedido_Click);
+            // 
+            // txtDeliveryVipMerchant
+            // 
+            this.txtDeliveryVipMerchant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeliveryVipMerchant.Location = new System.Drawing.Point(169, 73);
+            this.txtDeliveryVipMerchant.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveryVipMerchant.Name = "txtDeliveryVipMerchant";
+            this.txtDeliveryVipMerchant.Size = new System.Drawing.Size(769, 30);
+            this.txtDeliveryVipMerchant.TabIndex = 41;
+            // 
+            // gridDeliveryVip
+            // 
+            this.gridDeliveryVip.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDeliveryVip.Location = new System.Drawing.Point(14, 231);
+            this.gridDeliveryVip.Margin = new System.Windows.Forms.Padding(4);
+            this.gridDeliveryVip.Name = "gridDeliveryVip";
+            this.gridDeliveryVip.RowHeadersWidth = 51;
+            this.gridDeliveryVip.Size = new System.Drawing.Size(1612, 591);
+            this.gridDeliveryVip.TabIndex = 40;
+            this.gridDeliveryVip.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDeliveryVip_CellClick);
+            // 
+            // btnDeliveryVipParar
+            // 
+            this.btnDeliveryVipParar.Enabled = false;
+            this.btnDeliveryVipParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryVipParar.Location = new System.Drawing.Point(1398, 88);
+            this.btnDeliveryVipParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryVipParar.Name = "btnDeliveryVipParar";
+            this.btnDeliveryVipParar.Size = new System.Drawing.Size(228, 48);
+            this.btnDeliveryVipParar.TabIndex = 39;
+            this.btnDeliveryVipParar.Text = "Parar";
+            this.btnDeliveryVipParar.UseVisualStyleBackColor = true;
+            this.btnDeliveryVipParar.Click += new System.EventHandler(this.btnDeliveryVipParar_Click);
+            // 
+            // btnDeliveryVipIniciar
+            // 
+            this.btnDeliveryVipIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeliveryVipIniciar.Location = new System.Drawing.Point(1398, 25);
+            this.btnDeliveryVipIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryVipIniciar.Name = "btnDeliveryVipIniciar";
+            this.btnDeliveryVipIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnDeliveryVipIniciar.TabIndex = 38;
+            this.btnDeliveryVipIniciar.Text = "Iniciar";
+            this.btnDeliveryVipIniciar.UseVisualStyleBackColor = true;
+            this.btnDeliveryVipIniciar.Click += new System.EventHandler(this.btnDeliveryVipIniciar_Click);
             // 
             // tabPageEpadoca
             // 
@@ -7976,135 +8116,62 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // tabPageDeliveryVip
+            // btnAgilizoneCancelar
             // 
-            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipToken);
-            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipCancelar);
-            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipSecret);
-            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipClientId);
-            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipAceitar);
-            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipBuscarPedido);
-            this.tabPageDeliveryVip.Controls.Add(this.txtDeliveryVipMerchant);
-            this.tabPageDeliveryVip.Controls.Add(this.gridDeliveryVip);
-            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipParar);
-            this.tabPageDeliveryVip.Controls.Add(this.btnDeliveryVipIniciar);
-            this.tabPageDeliveryVip.Location = new System.Drawing.Point(4, 25);
-            this.tabPageDeliveryVip.Name = "tabPageDeliveryVip";
-            this.tabPageDeliveryVip.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageDeliveryVip.TabIndex = 40;
-            this.tabPageDeliveryVip.Text = "Delivery Vip";
-            this.tabPageDeliveryVip.UseVisualStyleBackColor = true;
+            this.btnAgilizoneCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneCancelar.Location = new System.Drawing.Point(1028, 475);
+            this.btnAgilizoneCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneCancelar.Name = "btnAgilizoneCancelar";
+            this.btnAgilizoneCancelar.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneCancelar.TabIndex = 41;
+            this.btnAgilizoneCancelar.Text = "Cancelar";
+            this.btnAgilizoneCancelar.UseVisualStyleBackColor = true;
+            this.btnAgilizoneCancelar.Click += new System.EventHandler(this.btnAgilizoneCancelar_Click);
             // 
-            // btnDeliveryVipCancelar
+            // btnAgilizonePreparado
             // 
-            this.btnDeliveryVipCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryVipCancelar.Location = new System.Drawing.Point(490, 168);
-            this.btnDeliveryVipCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeliveryVipCancelar.Name = "btnDeliveryVipCancelar";
-            this.btnDeliveryVipCancelar.Size = new System.Drawing.Size(228, 48);
-            this.btnDeliveryVipCancelar.TabIndex = 46;
-            this.btnDeliveryVipCancelar.Text = "Cancelar";
-            this.btnDeliveryVipCancelar.UseVisualStyleBackColor = true;
-            this.btnDeliveryVipCancelar.Click += new System.EventHandler(this.btnDeliveryVipCancelar_Click);
+            this.btnAgilizonePreparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizonePreparado.Location = new System.Drawing.Point(601, 524);
+            this.btnAgilizonePreparado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizonePreparado.Name = "btnAgilizonePreparado";
+            this.btnAgilizonePreparado.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizonePreparado.TabIndex = 42;
+            this.btnAgilizonePreparado.Text = "Preparado";
+            this.btnAgilizonePreparado.UseVisualStyleBackColor = true;
+            this.btnAgilizonePreparado.Click += new System.EventHandler(this.btnAgilizonePreparado_Click);
             // 
-            // txtDeliveryVipSecret
+            // btnAgilizoneFinalizado
             // 
-            this.txtDeliveryVipSecret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryVipSecret.Location = new System.Drawing.Point(169, 30);
-            this.txtDeliveryVipSecret.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeliveryVipSecret.Name = "txtDeliveryVipSecret";
-            this.txtDeliveryVipSecret.Size = new System.Drawing.Size(313, 30);
-            this.txtDeliveryVipSecret.TabIndex = 45;
-            this.txtDeliveryVipSecret.Text = "secret";
+            this.btnAgilizoneFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneFinalizado.Location = new System.Drawing.Point(814, 524);
+            this.btnAgilizoneFinalizado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneFinalizado.Name = "btnAgilizoneFinalizado";
+            this.btnAgilizoneFinalizado.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneFinalizado.TabIndex = 43;
+            this.btnAgilizoneFinalizado.Text = "Finalizado";
+            this.btnAgilizoneFinalizado.UseVisualStyleBackColor = true;
+            this.btnAgilizoneFinalizado.Click += new System.EventHandler(this.btnAgilizoneFinalizado_Click);
             // 
-            // txtDeliveryVipClientId
+            // btnAgilizoneBuscarPedido
             // 
-            this.txtDeliveryVipClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryVipClientId.Location = new System.Drawing.Point(615, 29);
-            this.txtDeliveryVipClientId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeliveryVipClientId.Name = "txtDeliveryVipClientId";
-            this.txtDeliveryVipClientId.Size = new System.Drawing.Size(323, 30);
-            this.txtDeliveryVipClientId.TabIndex = 44;
-            this.txtDeliveryVipClientId.Text = "client id";
+            this.btnAgilizoneBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneBuscarPedido.Location = new System.Drawing.Point(1028, 524);
+            this.btnAgilizoneBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneBuscarPedido.Name = "btnAgilizoneBuscarPedido";
+            this.btnAgilizoneBuscarPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneBuscarPedido.TabIndex = 44;
+            this.btnAgilizoneBuscarPedido.Text = "Buscar Pedido";
+            this.btnAgilizoneBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnAgilizoneBuscarPedido.Click += new System.EventHandler(this.btnAgilizoneBuscarPedido_Click);
             // 
-            // btnDeliveryVipAceitar
+            // txtAgilizoneNumero
             // 
-            this.btnDeliveryVipAceitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryVipAceitar.Location = new System.Drawing.Point(254, 168);
-            this.btnDeliveryVipAceitar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeliveryVipAceitar.Name = "btnDeliveryVipAceitar";
-            this.btnDeliveryVipAceitar.Size = new System.Drawing.Size(228, 48);
-            this.btnDeliveryVipAceitar.TabIndex = 43;
-            this.btnDeliveryVipAceitar.Text = "Aceitar";
-            this.btnDeliveryVipAceitar.UseVisualStyleBackColor = true;
-            this.btnDeliveryVipAceitar.Click += new System.EventHandler(this.btnDeliveryVipAceitar_Click);
-            // 
-            // btnDeliveryVipBuscarPedido
-            // 
-            this.btnDeliveryVipBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryVipBuscarPedido.Location = new System.Drawing.Point(18, 168);
-            this.btnDeliveryVipBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeliveryVipBuscarPedido.Name = "btnDeliveryVipBuscarPedido";
-            this.btnDeliveryVipBuscarPedido.Size = new System.Drawing.Size(228, 48);
-            this.btnDeliveryVipBuscarPedido.TabIndex = 42;
-            this.btnDeliveryVipBuscarPedido.Text = "Buscar Pedido";
-            this.btnDeliveryVipBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnDeliveryVipBuscarPedido.Click += new System.EventHandler(this.btnDeliveryVipBuscarPedido_Click);
-            // 
-            // txtDeliveryVipMerchant
-            // 
-            this.txtDeliveryVipMerchant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryVipMerchant.Location = new System.Drawing.Point(169, 73);
-            this.txtDeliveryVipMerchant.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeliveryVipMerchant.Name = "txtDeliveryVipMerchant";
-            this.txtDeliveryVipMerchant.Size = new System.Drawing.Size(769, 30);
-            this.txtDeliveryVipMerchant.TabIndex = 41;
-            // 
-            // gridDeliveryVip
-            // 
-            this.gridDeliveryVip.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDeliveryVip.Location = new System.Drawing.Point(14, 231);
-            this.gridDeliveryVip.Margin = new System.Windows.Forms.Padding(4);
-            this.gridDeliveryVip.Name = "gridDeliveryVip";
-            this.gridDeliveryVip.RowHeadersWidth = 51;
-            this.gridDeliveryVip.Size = new System.Drawing.Size(1612, 591);
-            this.gridDeliveryVip.TabIndex = 40;
-            this.gridDeliveryVip.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDeliveryVip_CellClick);
-            // 
-            // btnDeliveryVipParar
-            // 
-            this.btnDeliveryVipParar.Enabled = false;
-            this.btnDeliveryVipParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryVipParar.Location = new System.Drawing.Point(1398, 88);
-            this.btnDeliveryVipParar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeliveryVipParar.Name = "btnDeliveryVipParar";
-            this.btnDeliveryVipParar.Size = new System.Drawing.Size(228, 48);
-            this.btnDeliveryVipParar.TabIndex = 39;
-            this.btnDeliveryVipParar.Text = "Parar";
-            this.btnDeliveryVipParar.UseVisualStyleBackColor = true;
-            this.btnDeliveryVipParar.Click += new System.EventHandler(this.btnDeliveryVipParar_Click);
-            // 
-            // btnDeliveryVipIniciar
-            // 
-            this.btnDeliveryVipIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeliveryVipIniciar.Location = new System.Drawing.Point(1398, 25);
-            this.btnDeliveryVipIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeliveryVipIniciar.Name = "btnDeliveryVipIniciar";
-            this.btnDeliveryVipIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnDeliveryVipIniciar.TabIndex = 38;
-            this.btnDeliveryVipIniciar.Text = "Iniciar";
-            this.btnDeliveryVipIniciar.UseVisualStyleBackColor = true;
-            this.btnDeliveryVipIniciar.Click += new System.EventHandler(this.btnDeliveryVipIniciar_Click);
-            // 
-            // txtDeliveryVipToken
-            // 
-            this.txtDeliveryVipToken.Enabled = false;
-            this.txtDeliveryVipToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeliveryVipToken.Location = new System.Drawing.Point(436, 408);
-            this.txtDeliveryVipToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDeliveryVipToken.Name = "txtDeliveryVipToken";
-            this.txtDeliveryVipToken.Size = new System.Drawing.Size(769, 30);
-            this.txtDeliveryVipToken.TabIndex = 47;
+            this.txtAgilizoneNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgilizoneNumero.Location = new System.Drawing.Point(703, 592);
+            this.txtAgilizoneNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAgilizoneNumero.Name = "txtAgilizoneNumero";
+            this.txtAgilizoneNumero.Size = new System.Drawing.Size(291, 30);
+            this.txtAgilizoneNumero.TabIndex = 45;
             // 
             // Form1
             // 
@@ -8161,6 +8228,9 @@
             this.tabPageDeliveryDireto.ResumeLayout(false);
             this.tabPageDeliveryDireto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryDireto)).EndInit();
+            this.tabPageDeliveryVip.ResumeLayout(false);
+            this.tabPageDeliveryVip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryVip)).EndInit();
             this.tabPageEpadoca.ResumeLayout(false);
             this.tabPageEpadoca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEpadoca)).EndInit();
@@ -8234,9 +8304,6 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
-            this.tabPageDeliveryVip.ResumeLayout(false);
-            this.tabPageDeliveryVip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryVip)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8857,6 +8924,11 @@
         private System.Windows.Forms.Button btnDeliveryVipParar;
         private System.Windows.Forms.Button btnDeliveryVipIniciar;
         private System.Windows.Forms.TextBox txtDeliveryVipToken;
+        private System.Windows.Forms.Button btnAgilizoneBuscarPedido;
+        private System.Windows.Forms.Button btnAgilizoneFinalizado;
+        private System.Windows.Forms.Button btnAgilizonePreparado;
+        private System.Windows.Forms.Button btnAgilizoneCancelar;
+        private System.Windows.Forms.TextBox txtAgilizoneNumero;
     }
 }
 
