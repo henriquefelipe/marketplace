@@ -4,14 +4,7 @@ using System.Collections.Generic;
 namespace Agilizone.Domain
 {
     public class order
-    {
-        public order()
-        {
-            history = new List<history>();
-        }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string _id {  get; set; }
+    {        
         public order_address address { get; set; }
         public order_client client { get; set; }
         public string details { get; set; }
@@ -24,35 +17,9 @@ namespace Agilizone.Domain
         public string originPlatform { get; set; }
         public string observations { get; set; }                              
         public string externalId { get; set; }
-        public string preparationTime { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string status { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string singleOrderAppliedBonus { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string createdAt { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string detail { get; set; }
-
+        public string preparationTime { get; set; }       
         public string orderTiming { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string orderType { get; set; }
-        
         public string scheduledPreparationTime { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string isMock { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string cardMachineId { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public List<history> history { get; set; }
         public order_paymentExtraInfo paymentExtraInfo { get; set; }
        
     }

@@ -177,6 +177,12 @@ namespace Example
                                 txtAcconRede.Text = marketPlace.Accon.Rede;
                             }
 
+                            if (marketPlace.Agilizone != null)
+                            {
+                                txtAgilizoneClientID.Text = marketPlace.Agilizone.Usuario;
+                                txtAgilizoneClientSecret.Text = marketPlace.Agilizone.Senha;                                
+                            }
+
                             if (marketPlace.Aiqfome != null)
                             {
                                 txtAiqfomeAgente.Text = marketPlace.Aiqfome.MerchantId;
@@ -7692,7 +7698,8 @@ namespace Example
 
         private void btnAgilizoneToken_Click(object sender, EventArgs e)
         {
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Token(txtAgilizoneClientID.Text, txtAgilizoneClientSecret.Text);
             if (result.Success)
             {
@@ -7733,7 +7740,8 @@ namespace Example
             order.amount = 30;
             order.isPrepaid = true;
 
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Order(order, txtAgilizoneToken.Text);
             if (result.Success)
             {
@@ -7754,7 +7762,8 @@ namespace Example
                 return;
             }
 
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.CANCELED , "Cancelado pelo usuário");
             if (result.Success)
             {                
@@ -7774,7 +7783,8 @@ namespace Example
                 return;
             }
 
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.PREPARED);
             if (result.Success)
             {
@@ -7794,7 +7804,8 @@ namespace Example
                 return;
             }
 
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.COMPLETED);
             if (result.Success)
             {
@@ -7814,11 +7825,12 @@ namespace Example
                 return;
             }
 
-            var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
+            var service = new AgilizoneService();
             var result = service.Order(txtAgilizoneNumero.Text, txtAgilizoneToken.Text);
             if (result.Success)
             {
-                MessageBox.Show("Cancelado com sucesso");
+                MessageBox.Show(result.Result.order.status);
             }
             else
             {
@@ -7850,7 +7862,7 @@ namespace Example
         private void btnFixeCRMConsultarSelo_Click(object sender, EventArgs e)
         {
             var service = new FixeCRMService();
-            var result = service.Pointsv2(txtFixeCRMToken.Text, txtFixeCRMIdPassbook.Text, "32979091880");
+            var result = service.Pointsv2(txtFixeCRMToken.Text, txtFixeCRMIdPassbook.Text, txtFixCRMCPF.Text);
             if (result.Success)
             {
                 //txtFixeCRMToken.Text = result.Result.token;

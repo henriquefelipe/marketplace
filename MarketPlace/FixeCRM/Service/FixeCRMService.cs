@@ -3,16 +3,13 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FixeCRM.Service
 {
     public class FixeCRMService
     {
-        private string _url = "https://api-hml.epossible.com.br/v1/";
+        private string _url = "https://api.epossible.com.br/v1/"; //Produção
+        //private string _url = "https://api-hml.epossible.com.br/v1/"; //Teste
 
         public FixeCRMService() { }
 

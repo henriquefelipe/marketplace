@@ -81,6 +81,11 @@
             this.btnPedreiroDigitalParar = new System.Windows.Forms.Button();
             this.btnPedreiroDigitalIniciar = new System.Windows.Forms.Button();
             this.tabAgilizone = new System.Windows.Forms.TabPage();
+            this.txtAgilizoneNumero = new System.Windows.Forms.TextBox();
+            this.btnAgilizoneBuscarPedido = new System.Windows.Forms.Button();
+            this.btnAgilizoneFinalizado = new System.Windows.Forms.Button();
+            this.btnAgilizonePreparado = new System.Windows.Forms.Button();
+            this.btnAgilizoneCancelar = new System.Windows.Forms.Button();
             this.txtAgilizoneToken = new System.Windows.Forms.TextBox();
             this.btnAgilizoneOrder = new System.Windows.Forms.Button();
             this.btnAgilizoneToken = new System.Windows.Forms.Button();
@@ -643,11 +648,7 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.btnAgilizoneCancelar = new System.Windows.Forms.Button();
-            this.btnAgilizonePreparado = new System.Windows.Forms.Button();
-            this.btnAgilizoneFinalizado = new System.Windows.Forms.Button();
-            this.btnAgilizoneBuscarPedido = new System.Windows.Forms.Button();
-            this.txtAgilizoneNumero = new System.Windows.Forms.TextBox();
+            this.txtFixCRMCPF = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -1388,6 +1389,63 @@
             this.tabAgilizone.TabIndex = 34;
             this.tabAgilizone.Text = "Agilizone";
             this.tabAgilizone.UseVisualStyleBackColor = true;
+            // 
+            // txtAgilizoneNumero
+            // 
+            this.txtAgilizoneNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgilizoneNumero.Location = new System.Drawing.Point(703, 592);
+            this.txtAgilizoneNumero.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAgilizoneNumero.Name = "txtAgilizoneNumero";
+            this.txtAgilizoneNumero.Size = new System.Drawing.Size(291, 30);
+            this.txtAgilizoneNumero.TabIndex = 45;
+            // 
+            // btnAgilizoneBuscarPedido
+            // 
+            this.btnAgilizoneBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneBuscarPedido.Location = new System.Drawing.Point(1028, 524);
+            this.btnAgilizoneBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneBuscarPedido.Name = "btnAgilizoneBuscarPedido";
+            this.btnAgilizoneBuscarPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneBuscarPedido.TabIndex = 44;
+            this.btnAgilizoneBuscarPedido.Text = "Buscar Pedido";
+            this.btnAgilizoneBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnAgilizoneBuscarPedido.Click += new System.EventHandler(this.btnAgilizoneBuscarPedido_Click);
+            // 
+            // btnAgilizoneFinalizado
+            // 
+            this.btnAgilizoneFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneFinalizado.Location = new System.Drawing.Point(814, 524);
+            this.btnAgilizoneFinalizado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneFinalizado.Name = "btnAgilizoneFinalizado";
+            this.btnAgilizoneFinalizado.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneFinalizado.TabIndex = 43;
+            this.btnAgilizoneFinalizado.Text = "Finalizado";
+            this.btnAgilizoneFinalizado.UseVisualStyleBackColor = true;
+            this.btnAgilizoneFinalizado.Click += new System.EventHandler(this.btnAgilizoneFinalizado_Click);
+            // 
+            // btnAgilizonePreparado
+            // 
+            this.btnAgilizonePreparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizonePreparado.Location = new System.Drawing.Point(601, 524);
+            this.btnAgilizonePreparado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizonePreparado.Name = "btnAgilizonePreparado";
+            this.btnAgilizonePreparado.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizonePreparado.TabIndex = 42;
+            this.btnAgilizonePreparado.Text = "Preparado";
+            this.btnAgilizonePreparado.UseVisualStyleBackColor = true;
+            this.btnAgilizonePreparado.Click += new System.EventHandler(this.btnAgilizonePreparado_Click);
+            // 
+            // btnAgilizoneCancelar
+            // 
+            this.btnAgilizoneCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgilizoneCancelar.Location = new System.Drawing.Point(1028, 475);
+            this.btnAgilizoneCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgilizoneCancelar.Name = "btnAgilizoneCancelar";
+            this.btnAgilizoneCancelar.Size = new System.Drawing.Size(193, 41);
+            this.btnAgilizoneCancelar.TabIndex = 41;
+            this.btnAgilizoneCancelar.Text = "Cancelar";
+            this.btnAgilizoneCancelar.UseVisualStyleBackColor = true;
+            this.btnAgilizoneCancelar.Click += new System.EventHandler(this.btnAgilizoneCancelar_Click);
             // 
             // txtAgilizoneToken
             // 
@@ -4011,6 +4069,7 @@
             // 
             // tabPageFixeCRM
             // 
+            this.tabPageFixeCRM.Controls.Add(this.txtFixCRMCPF);
             this.tabPageFixeCRM.Controls.Add(this.btnFixeCRMResgatar);
             this.tabPageFixeCRM.Controls.Add(this.btnFixeCRMPontos);
             this.tabPageFixeCRM.Controls.Add(this.txtFixeCRMIdUser);
@@ -8116,62 +8175,15 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // btnAgilizoneCancelar
+            // txtFixCRMCPF
             // 
-            this.btnAgilizoneCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgilizoneCancelar.Location = new System.Drawing.Point(1028, 475);
-            this.btnAgilizoneCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgilizoneCancelar.Name = "btnAgilizoneCancelar";
-            this.btnAgilizoneCancelar.Size = new System.Drawing.Size(193, 41);
-            this.btnAgilizoneCancelar.TabIndex = 41;
-            this.btnAgilizoneCancelar.Text = "Cancelar";
-            this.btnAgilizoneCancelar.UseVisualStyleBackColor = true;
-            this.btnAgilizoneCancelar.Click += new System.EventHandler(this.btnAgilizoneCancelar_Click);
-            // 
-            // btnAgilizonePreparado
-            // 
-            this.btnAgilizonePreparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgilizonePreparado.Location = new System.Drawing.Point(601, 524);
-            this.btnAgilizonePreparado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgilizonePreparado.Name = "btnAgilizonePreparado";
-            this.btnAgilizonePreparado.Size = new System.Drawing.Size(193, 41);
-            this.btnAgilizonePreparado.TabIndex = 42;
-            this.btnAgilizonePreparado.Text = "Preparado";
-            this.btnAgilizonePreparado.UseVisualStyleBackColor = true;
-            this.btnAgilizonePreparado.Click += new System.EventHandler(this.btnAgilizonePreparado_Click);
-            // 
-            // btnAgilizoneFinalizado
-            // 
-            this.btnAgilizoneFinalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgilizoneFinalizado.Location = new System.Drawing.Point(814, 524);
-            this.btnAgilizoneFinalizado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgilizoneFinalizado.Name = "btnAgilizoneFinalizado";
-            this.btnAgilizoneFinalizado.Size = new System.Drawing.Size(193, 41);
-            this.btnAgilizoneFinalizado.TabIndex = 43;
-            this.btnAgilizoneFinalizado.Text = "Finalizado";
-            this.btnAgilizoneFinalizado.UseVisualStyleBackColor = true;
-            this.btnAgilizoneFinalizado.Click += new System.EventHandler(this.btnAgilizoneFinalizado_Click);
-            // 
-            // btnAgilizoneBuscarPedido
-            // 
-            this.btnAgilizoneBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgilizoneBuscarPedido.Location = new System.Drawing.Point(1028, 524);
-            this.btnAgilizoneBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgilizoneBuscarPedido.Name = "btnAgilizoneBuscarPedido";
-            this.btnAgilizoneBuscarPedido.Size = new System.Drawing.Size(193, 41);
-            this.btnAgilizoneBuscarPedido.TabIndex = 44;
-            this.btnAgilizoneBuscarPedido.Text = "Buscar Pedido";
-            this.btnAgilizoneBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnAgilizoneBuscarPedido.Click += new System.EventHandler(this.btnAgilizoneBuscarPedido_Click);
-            // 
-            // txtAgilizoneNumero
-            // 
-            this.txtAgilizoneNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgilizoneNumero.Location = new System.Drawing.Point(703, 592);
-            this.txtAgilizoneNumero.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAgilizoneNumero.Name = "txtAgilizoneNumero";
-            this.txtAgilizoneNumero.Size = new System.Drawing.Size(291, 30);
-            this.txtAgilizoneNumero.TabIndex = 45;
+            this.txtFixCRMCPF.Enabled = false;
+            this.txtFixCRMCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFixCRMCPF.Location = new System.Drawing.Point(528, 394);
+            this.txtFixCRMCPF.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFixCRMCPF.Name = "txtFixCRMCPF";
+            this.txtFixCRMCPF.Size = new System.Drawing.Size(310, 30);
+            this.txtFixCRMCPF.TabIndex = 45;
             // 
             // Form1
             // 
@@ -8929,6 +8941,7 @@
         private System.Windows.Forms.Button btnAgilizonePreparado;
         private System.Windows.Forms.Button btnAgilizoneCancelar;
         private System.Windows.Forms.TextBox txtAgilizoneNumero;
+        private System.Windows.Forms.TextBox txtFixCRMCPF;
     }
 }
 
