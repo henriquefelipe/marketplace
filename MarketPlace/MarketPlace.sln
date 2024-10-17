@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMenu", "SuperMenu\Supe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logaroo", "Logaroo\Logaroo.csproj", "{30012C62-CD02-4F82-8FAE-8125778F786D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedZap", "PedZap\PedZap.csproj", "{9A45D340-8699-4FC2-9264-D5514B6D511D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deeliv", "Deeliv\Deeliv.csproj", "{9A45D340-8699-4FC2-9264-D5514B6D511D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryApp", "DeliveryApp\DeliveryApp.csproj", "{B95F22FB-E688-4A01-946A-5DAF2D5C1457}"
 EndProject
@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simbora", "Simbora\Simbora.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EuFalo", "EuFalo\EuFalo.csproj", "{19FF5CDE-DC28-49E6-864B-C405475E125B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iorion19", "Iorion19\Iorion19.csproj", "{602A6B91-7846-4468-A51E-505B54086A15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DegustaAi", "DegustaAi\DegustaAi.csproj", "{602A6B91-7846-4468-A51E-505B54086A15}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agilizone", "Agilizone\Agilizone.csproj", "{9944EF9F-EDD5-42E0-AA16-F6DE3D99B2B8}"
 EndProject

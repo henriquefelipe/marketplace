@@ -307,6 +307,7 @@
             this.label126 = new System.Windows.Forms.Label();
             this.btnFideliziConfiguracoes = new System.Windows.Forms.Button();
             this.tabPageFixeCRM = new System.Windows.Forms.TabPage();
+            this.txtFixCRMCPF = new System.Windows.Forms.TextBox();
             this.btnFixeCRMResgatar = new System.Windows.Forms.Button();
             this.btnFixeCRMPontos = new System.Windows.Forms.Button();
             this.txtFixeCRMIdUser = new System.Windows.Forms.TextBox();
@@ -404,7 +405,7 @@
             this.label35 = new System.Windows.Forms.Label();
             this.btnIDeliveryParar = new System.Windows.Forms.Button();
             this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
-            this.tabPageIorion19 = new System.Windows.Forms.TabPage();
+            this.tabPageDegustAi = new System.Windows.Forms.TabPage();
             this.btnIorionCancelar = new System.Windows.Forms.Button();
             this.txtIorionURL = new System.Windows.Forms.TextBox();
             this.label117 = new System.Windows.Forms.Label();
@@ -505,7 +506,7 @@
             this.btnOnPedidoIniciar = new System.Windows.Forms.Button();
             this.txtOnPedidoToken = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.tabPagePedZap = new System.Windows.Forms.TabPage();
+            this.tabPageDeeliv = new System.Windows.Forms.TabPage();
             this.btnPedZapDesistencia = new System.Windows.Forms.Button();
             this.btnPedZapPreparado = new System.Windows.Forms.Button();
             this.btnPedZapRejeitado = new System.Windows.Forms.Button();
@@ -648,7 +649,6 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.txtFixCRMCPF = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -695,7 +695,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGoomer)).BeginInit();
             this.tabPageIDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).BeginInit();
-            this.tabPageIorion19.SuspendLayout();
+            this.tabPageDegustAi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).BeginInit();
             this.tabPageJotaJa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridJotaJa)).BeginInit();
@@ -707,7 +707,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).BeginInit();
             this.tabPageOnPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).BeginInit();
-            this.tabPagePedZap.SuspendLayout();
+            this.tabPageDeeliv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPagePixCommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
@@ -743,6 +743,8 @@
             this.tabControl1.Controls.Add(this.tabPageCinddi);
             this.tabControl1.Controls.Add(this.tabPageCresceVendas);
             this.tabControl1.Controls.Add(this.tabPageCRMBonus);
+            this.tabControl1.Controls.Add(this.tabPageDeeliv);
+            this.tabControl1.Controls.Add(this.tabPageDegustAi);
             this.tabControl1.Controls.Add(this.tabPageDeliveryApp);
             this.tabControl1.Controls.Add(this.tabPageDeliveryDireto);
             this.tabControl1.Controls.Add(this.tabPageDeliveryVip);
@@ -754,13 +756,11 @@
             this.tabControl1.Controls.Add(this.tabPageGloriaFood);
             this.tabControl1.Controls.Add(this.tabPageGoomer);
             this.tabControl1.Controls.Add(this.tabPageIDelivery);
-            this.tabControl1.Controls.Add(this.tabPageIorion19);
             this.tabControl1.Controls.Add(this.tabPageJotaJa);
             this.tabControl1.Controls.Add(this.tabPageMeuCardapioAi);
             this.tabControl1.Controls.Add(this.tabPageLogaroo);
             this.tabControl1.Controls.Add(this.tabPageMultiPedido);
             this.tabControl1.Controls.Add(this.tabPageOnPedido);
-            this.tabControl1.Controls.Add(this.tabPagePedZap);
             this.tabControl1.Controls.Add(this.tabPagePixCommerce);
             this.tabControl1.Controls.Add(this.tabPagePlug4Sales);
             this.tabControl1.Controls.Add(this.tabPageQueroDelivery);
@@ -4088,6 +4088,16 @@
             this.tabPageFixeCRM.Text = "Fixe CRM";
             this.tabPageFixeCRM.UseVisualStyleBackColor = true;
             // 
+            // txtFixCRMCPF
+            // 
+            this.txtFixCRMCPF.Enabled = false;
+            this.txtFixCRMCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFixCRMCPF.Location = new System.Drawing.Point(528, 394);
+            this.txtFixCRMCPF.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFixCRMCPF.Name = "txtFixCRMCPF";
+            this.txtFixCRMCPF.Size = new System.Drawing.Size(310, 30);
+            this.txtFixCRMCPF.TabIndex = 45;
+            // 
             // btnFixeCRMResgatar
             // 
             this.btnFixeCRMResgatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5234,23 +5244,23 @@
             this.btnIDeliveryIniciar.UseVisualStyleBackColor = true;
             this.btnIDeliveryIniciar.Click += new System.EventHandler(this.btnIDeliveryIniciar_Click);
             // 
-            // tabPageIorion19
+            // tabPageDegustAi
             // 
-            this.tabPageIorion19.Controls.Add(this.btnIorionCancelar);
-            this.tabPageIorion19.Controls.Add(this.txtIorionURL);
-            this.tabPageIorion19.Controls.Add(this.label117);
-            this.tabPageIorion19.Controls.Add(this.btnIorionStatus);
-            this.tabPageIorion19.Controls.Add(this.gridIorion);
-            this.tabPageIorion19.Controls.Add(this.txtIorionToken);
-            this.tabPageIorion19.Controls.Add(this.label118);
-            this.tabPageIorion19.Controls.Add(this.btnIorion9Parar);
-            this.tabPageIorion19.Controls.Add(this.btnIorionIniciar);
-            this.tabPageIorion19.Location = new System.Drawing.Point(4, 25);
-            this.tabPageIorion19.Name = "tabPageIorion19";
-            this.tabPageIorion19.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageIorion19.TabIndex = 33;
-            this.tabPageIorion19.Text = "Iorion19";
-            this.tabPageIorion19.UseVisualStyleBackColor = true;
+            this.tabPageDegustAi.Controls.Add(this.btnIorionCancelar);
+            this.tabPageDegustAi.Controls.Add(this.txtIorionURL);
+            this.tabPageDegustAi.Controls.Add(this.label117);
+            this.tabPageDegustAi.Controls.Add(this.btnIorionStatus);
+            this.tabPageDegustAi.Controls.Add(this.gridIorion);
+            this.tabPageDegustAi.Controls.Add(this.txtIorionToken);
+            this.tabPageDegustAi.Controls.Add(this.label118);
+            this.tabPageDegustAi.Controls.Add(this.btnIorion9Parar);
+            this.tabPageDegustAi.Controls.Add(this.btnIorionIniciar);
+            this.tabPageDegustAi.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDegustAi.Name = "tabPageDegustAi";
+            this.tabPageDegustAi.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageDegustAi.TabIndex = 33;
+            this.tabPageDegustAi.Text = "DegustAi";
+            this.tabPageDegustAi.UseVisualStyleBackColor = true;
             // 
             // btnIorionCancelar
             // 
@@ -6454,26 +6464,26 @@
             this.label25.TabIndex = 12;
             this.label25.Text = "TOKEN";
             // 
-            // tabPagePedZap
+            // tabPageDeeliv
             // 
-            this.tabPagePedZap.Controls.Add(this.btnPedZapDesistencia);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapPreparado);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapRejeitado);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapEntregue);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapAceito);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapBuscarPedido);
-            this.tabPagePedZap.Controls.Add(this.gridPedZap);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapParar);
-            this.tabPagePedZap.Controls.Add(this.btnPedZapIniciar);
-            this.tabPagePedZap.Controls.Add(this.txtPedZapToken);
-            this.tabPagePedZap.Controls.Add(this.label13);
-            this.tabPagePedZap.Location = new System.Drawing.Point(4, 25);
-            this.tabPagePedZap.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPagePedZap.Name = "tabPagePedZap";
-            this.tabPagePedZap.Size = new System.Drawing.Size(1641, 846);
-            this.tabPagePedZap.TabIndex = 4;
-            this.tabPagePedZap.Text = "PedZap";
-            this.tabPagePedZap.UseVisualStyleBackColor = true;
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapDesistencia);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapPreparado);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapRejeitado);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapEntregue);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapAceito);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapBuscarPedido);
+            this.tabPageDeeliv.Controls.Add(this.gridPedZap);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapParar);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapIniciar);
+            this.tabPageDeeliv.Controls.Add(this.txtPedZapToken);
+            this.tabPageDeeliv.Controls.Add(this.label13);
+            this.tabPageDeeliv.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDeeliv.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageDeeliv.Name = "tabPageDeeliv";
+            this.tabPageDeeliv.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageDeeliv.TabIndex = 4;
+            this.tabPageDeeliv.Text = "Deeliv";
+            this.tabPageDeeliv.UseVisualStyleBackColor = true;
             // 
             // btnPedZapDesistencia
             // 
@@ -8175,16 +8185,6 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
-            // txtFixCRMCPF
-            // 
-            this.txtFixCRMCPF.Enabled = false;
-            this.txtFixCRMCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFixCRMCPF.Location = new System.Drawing.Point(528, 394);
-            this.txtFixCRMCPF.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFixCRMCPF.Name = "txtFixCRMCPF";
-            this.txtFixCRMCPF.Size = new System.Drawing.Size(310, 30);
-            this.txtFixCRMCPF.TabIndex = 45;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -8268,8 +8268,8 @@
             this.tabPageIDelivery.ResumeLayout(false);
             this.tabPageIDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).EndInit();
-            this.tabPageIorion19.ResumeLayout(false);
-            this.tabPageIorion19.PerformLayout();
+            this.tabPageDegustAi.ResumeLayout(false);
+            this.tabPageDegustAi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).EndInit();
             this.tabPageJotaJa.ResumeLayout(false);
             this.tabPageJotaJa.PerformLayout();
@@ -8286,8 +8286,8 @@
             this.tabPageOnPedido.ResumeLayout(false);
             this.tabPageOnPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).EndInit();
-            this.tabPagePedZap.ResumeLayout(false);
-            this.tabPagePedZap.PerformLayout();
+            this.tabPageDeeliv.ResumeLayout(false);
+            this.tabPageDeeliv.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
             this.tabPagePixCommerce.ResumeLayout(false);
             this.tabPagePixCommerce.PerformLayout();
@@ -8369,7 +8369,7 @@
         private System.Windows.Forms.Button btnLogarooLogout;
         private System.Windows.Forms.Button btnLogarooBuscarPedido;
         private System.Windows.Forms.Button btnLogarooEmProducao;
-        private System.Windows.Forms.TabPage tabPagePedZap;
+        private System.Windows.Forms.TabPage tabPageDeeliv;
         private System.Windows.Forms.Button btnPedZapParar;
         private System.Windows.Forms.Button btnPedZapIniciar;
         private System.Windows.Forms.TextBox txtPedZapToken;
@@ -8851,7 +8851,7 @@
         private System.Windows.Forms.Button btnEuFaloCriarPedido;
         private System.Windows.Forms.Label label116;
         private System.Windows.Forms.TextBox txtEuFaloTokenGerado;
-        private System.Windows.Forms.TabPage tabPageIorion19;
+        private System.Windows.Forms.TabPage tabPageDegustAi;
         private System.Windows.Forms.Button btnIorionCancelar;
         private System.Windows.Forms.TextBox txtIorionURL;
         private System.Windows.Forms.Label label117;

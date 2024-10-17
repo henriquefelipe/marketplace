@@ -15,8 +15,8 @@ using MeuCardapioAi.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
-using PedZap.Enum;
-using PedZap.Service;
+using Deeliv.Enum;
+using Deeliv.Service;
 using Rappi.Service;
 using QueroDelivery.Service;
 using System;
@@ -37,7 +37,7 @@ using Simbora.Enum;
 using Simbora.Domain;
 using EuFalo.Service;
 using EuFalo.Domain;
-using Iorion19.Service;
+using DegustaAi.Service;
 using Agilizone.Service;
 using FixeCRM.Domain;
 using SelfBuyMe.Service;
@@ -80,7 +80,7 @@ namespace Example
         private string _superMenuReferenceSelected { get; set; }
 
         private string _pedzap { get; set; }
-        private List<PedZap.Domain.pedido> _pedzapPedidos { get; set; }
+        private List<Deeliv.Domain.pedido> _pedzapPedidos { get; set; }
         private int _pedzapReferenceSelected { get; set; }
 
         private string _rappiToken { get; set; }
@@ -141,7 +141,7 @@ namespace Example
         private List<MultiPedido.Domain.order> _multiPedidoOrders { get; set; }
         private string _multiPedidoId { get; set; }
 
-        private List<Iorion19.Domain.pedido> _iorion9Orders { get; set; }
+        private List<DegustaAi.Domain.pedido> _iorion9Orders { get; set; }
         private string _iorion19Id { get; set; }
 
         private List<CardapioWeb.Domain.responseOrders> _cardapioWebOrders { get; set; }
@@ -373,7 +373,7 @@ namespace Example
             gridSuperMenu.DataSource = _superMenuOrders.ToList();
             gridSuperMenu.Refresh();
 
-            _pedzapPedidos = new List<PedZap.Domain.pedido>();
+            _pedzapPedidos = new List<Deeliv.Domain.pedido>();
 
             _onPedidoPedidos = new List<Id>();
             gridOnPedido.DataSource = _onPedidoPedidos.ToList();
@@ -433,7 +433,7 @@ namespace Example
             gridMultiPedido.DataSource = _multiPedidoOrders.ToList();
             gridMultiPedido.Refresh();
 
-            _iorion9Orders = new List<Iorion19.Domain.pedido>();
+            _iorion9Orders = new List<DegustaAi.Domain.pedido>();
             gridIorion.DataSource = _iorion9Orders.ToList();
             gridIorion.Refresh();
 
@@ -1584,7 +1584,7 @@ namespace Example
 
         private void pedzap()
         {
-            var pedZapService = new PedZapService();
+            var pedZapService = new DeelivService();
 
             try
             {
@@ -1663,7 +1663,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido(_pedzap, _pedzapReferenceSelected);
             if (result.Success)
             {
@@ -1689,7 +1689,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.ACEITO, 1);
             if (result.Success)
             {
@@ -1715,7 +1715,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.REJEITADO, 1);
             if (result.Success)
             {
@@ -1741,7 +1741,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.PREPARADO, 1);
             if (result.Success)
             {
@@ -1767,7 +1767,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.ENTREGUE, 1);
             if (result.Success)
             {
@@ -1793,7 +1793,7 @@ namespace Example
                 return;
             }
 
-            var pedzapService = new PedZap.Service.PedZapService();
+            var pedzapService = new Deeliv.Service.DeelivService();
             var result = pedzapService.Pedido_Status(_pedzap, _pedzapReferenceSelected, PedidoStatus.DESISTENCIA, 1);
             if (result.Success)
             {
@@ -7564,7 +7564,7 @@ namespace Example
 
         private void iorion19()
         {
-            var service = new Iorion19Service(txtIorionURL.Text);
+            var service = new DegustaAiService(txtIorionURL.Text);
 
             try
             {
@@ -7640,7 +7640,7 @@ namespace Example
                 return;
             }
 
-            var service = new Iorion19Service(txtIorionURL.Text);
+            var service = new DegustaAiService(txtIorionURL.Text);
             var result = service.ChangeStatus(txtIorionToken.Text, Convert.ToInt32(_iorion19Id));
             if (result.Success)
             {
@@ -7669,7 +7669,7 @@ namespace Example
                 return;
             }
 
-            var service = new Iorion19Service(txtIorionURL.Text);
+            var service = new DegustaAiService(txtIorionURL.Text);
             var result = service.Cancel(txtIorionToken.Text, Convert.ToInt32(_iorion19Id));
             if (result.Success)
             {
