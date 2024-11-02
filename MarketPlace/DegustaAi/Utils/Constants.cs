@@ -12,5 +12,15 @@ namespace DegustaAi.Utils
         public const string URL_CHANGE_STATUS = "/api/delivery/changestatus";
         public const string URL_CANCELA_PEDIDO = "/api/delivery/cancelaPedido";
         public const string URL_SEND_TO_MOTOBOY_SERVICE = "/api/delivery/sendToMotoboyService";
+
+        public const string URL_REGISTRA_PONTOS = "/api/registraPontos";
+        public const string URL_RESGASTA_PREMIO = "/api/resgataPremio";
+        public const string URL_CRIA_CADASTRO = "/api/criaCadastro";
+        public const string URL_ATUALIZA_CADASTRO = "/api/atualizaCadastro";
+        public const string URL_LISTA_USUARIOS = "/api/listaUsuarios";
+        public const string URL_RESUMO_USUARIO = "/api/resumoUsuario";
+        public const string URL_CONSULTA_PREMIOS = "/api/consultaPremios";
+        public const string URL_TOKEN_INFO = "/api/tokenInfo";
+        public const string URL_AUTH_LOGIN = "/api/auth/login";
     }
 }

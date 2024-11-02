@@ -27,6 +27,7 @@ namespace Example
         public MarketPlaceQueroDelivery QueroDelivery { get; set; }
         public MarketPlaceConfigAtivMob Iorion9 { get; set; }
         public MarketPlaceEpadoca Agilizone { get; set; }
+        public MarketPlaceConfigAtivMob Wedo { get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
@@ -39,6 +40,9 @@ namespace Example
         public string Token { get; set; }
         public string Url { get; set; }
         public string MerchantId { get; set; }
+        public string Usuario { get; set; }
+
+        public string Senha { get; set; }
     }
 
 

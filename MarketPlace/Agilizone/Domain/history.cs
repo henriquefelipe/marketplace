@@ -22,6 +22,6 @@ namespace Agilizone.Domain
     {
         public string id { get; set; }
         public string name { get; set; }        
-        public string pdvId { get; set; }
+        public string deliverymanPdvId { get; set; }
     }
 }

@@ -47,12 +47,16 @@ using CardapioWeb.Service;
 using FixeCRM.Service;
 using Plug4Sales.Domain;
 using DeliveryVip.Service;
+using DegustaAi.Domain;
+using Wedo.Service;
 
 namespace Example
 {
     public partial class Form1 : Form
     {
         #region Variaveis
+
+        private const string TELEFONE = "85987704779";
 
         private List<Accon.Domain.order> _acconOrders { get; set; }
         private string _acconSelected { get; set; }
@@ -149,6 +153,9 @@ namespace Example
 
         private List<DeliveryVip.Domain.eventPooling> _deliveryVipOrders { get; set; }
         private string _deliveryVipId { get; set; }
+
+        private List<Wedo.Domain.responsePoolingData> _WedoOrders { get; set; }
+        private string _wedoId { get; set; }
 
         #endregion
 
@@ -323,6 +330,13 @@ namespace Example
                             {
                                 txtIorionToken.Text = marketPlace.Iorion9.Token;
                                 txtIorionURL.Text = marketPlace.Iorion9.Url;
+                                txtDegustaAiEmail.Text = marketPlace.Iorion9.Usuario;
+                                txtDegustaAiSenha.Text = marketPlace.Iorion9.Senha;
+                            }
+
+                            if (marketPlace.Wedo != null)
+                            {
+                                txtWedoToken.Text = marketPlace.Wedo.Token;                              
                             }
                         }
                     }
@@ -7692,6 +7706,89 @@ namespace Example
             }
         }
 
+        private void btnDegustaAiGerarToken_Click(object sender, EventArgs e)
+        {
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.LoginFidelidade(txtDegustaAiEmail.Text, txtDegustaAiSenha.Text);
+            if (result.Success)
+            {
+                txtIorionToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
+        private void btnDegustaAiRegistraPonto_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            var dados = new registraPontuacaoViewModel();
+            dados.telefone = TELEFONE;
+            dados.pdv = "";
+            decimal total = 10;
+            dados.pontos = Convert.ToInt32(total).ToString();
+            dados.operador = "000";
+
+
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.RegistraPontos(txtIorionToken.Text, dados);
+            if (result.Success)
+            {
+                if (result.Result.code == "200")
+                    MessageBox.Show("OK");
+                else
+                    MessageBox.Show(result.Result.message);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDegustaAiConsultaPremio_Click(object sender, EventArgs e)
+        {
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.ConsultaPremios(txtIorionToken.Text);
+        }
+
+        private void btnDegustaAiRegastaPremio_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            var dados = new regastaPremioViewModel();
+            dados.telefone = TELEFONE;
+            dados.pdv = "";            
+            dados.premio_id = 78912;
+            dados.operador = "000";
+
+
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.ResgataPremio(txtIorionToken.Text, dados);
+            if (result.Success)
+            {
+                if (result.Result.code == "200")
+                    MessageBox.Show("OK");
+                else
+                    MessageBox.Show(result.Result.message);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+
         #endregion
 
         #region Agilizone
@@ -8524,7 +8621,192 @@ namespace Example
 
         #endregion
 
-        
+        #region Wedo
+
+        private async void btnWedoIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDeliveryVipClientId.Text))
+            {
+                MessageBox.Show("Campo ClientId Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryVipSecret.Text))
+            {
+                MessageBox.Show("Campo Secret Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDeliveryVipMerchant.Text))
+            {
+                MessageBox.Show("Campo Merchant Obrigatório");
+                return;
+            }
+
+            txtWedoToken.Enabled = false;
+
+            btnWedoIniciar.Enabled = false;
+            btnWedoParar.Enabled = true;
+            
+            await Task.Run(() => wedo());
+        }
+
+        private void wedo()
+        {
+            try
+            {               
+                var service = new WedoService(txtWedoToken.Text);
+                var orderResult = service.Polling();
+                if (orderResult.Success)
+                {
+                    _WedoOrders = orderResult.Result.data;
+
+                    WriteGridWedo();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private void btnWedoParar_Click(object sender, EventArgs e)
+        {
+            txtWedoToken.Enabled = true;
+
+            btnWedoIniciar.Enabled = true;
+            btnWedoParar.Enabled = false;
+        }
+
+        private void btnWedoPedido_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_wedoId))
+            {
+                var service = new WedoService(txtWedoToken.Text);
+                var result = service.Order(_wedoId);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnWedoIntegrado_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_wedoId))
+            {
+                var service = new WedoService(txtWedoToken.Text);
+                var dados = new List<Wedo.Domain.acknowledgmentOrder>();
+                dados.Add(new Wedo.Domain.acknowledgmentOrder { correlationId = _wedoId, status = Wedo.Enum.OrderStatus.APPROVED });
+
+                var result = service.Status(dados);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnWedoCancelar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_wedoId))
+            {
+                var service = new WedoService(txtWedoToken.Text);
+                var dados = new List<Wedo.Domain.acknowledgmentOrder>();
+                dados.Add(new Wedo.Domain.acknowledgmentOrder { correlationId = _wedoId, status = Wedo.Enum.OrderStatus.CANCELLED });
+
+                var result = service.Status(dados);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione o pedido");
+            }
+        }
+
+        private void btnWedoEvento_Click(object sender, EventArgs e)
+        {
+            
+                var service = new WedoService(txtWedoToken.Text);
+                var dados = new List<Wedo.Domain.acknowledgmentEvent>();
+                dados.Add(new Wedo.Domain.acknowledgmentEvent { event_id = "66d9f88d9fa96f2f1d7107db", integrated = true });
+
+                var result = service.Acknowledgment(dados);
+                if (result.Success)
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            
+        }
+
+
+        private delegate void WritelstGridWedoDelegate();
+        private void WriteGridWedo()
+        {
+            if (gridWedo.InvokeRequired)
+            {
+                var d = new WritelstGridWedoDelegate(WriteGridWedo);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridWedo.DataSource = _WedoOrders.ToList();
+                gridWedo.Refresh();
+            }
+        }
+
+        private void gridWedo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridWedo.Rows.Count)
+            {
+                _wedoId = gridWedo.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+        }
+
+
+
+
+
+        #endregion
+
+       
     }
 }
 

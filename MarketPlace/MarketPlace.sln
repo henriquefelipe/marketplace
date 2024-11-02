@@ -87,7 +87,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plug4Sales", "Plug4Sales\Pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardapioWeb", "CardapioWeb\CardapioWeb.csproj", "{ADFD8890-1D9C-4658-BBBA-F0C1F3239410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryVip", "DeliveryVip\DeliveryVip.csproj", "{0F81178E-1F94-43E0-B34B-3FDCF6ED1E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryVip", "DeliveryVip\DeliveryVip.csproj", "{0F81178E-1F94-43E0-B34B-3FDCF6ED1E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wedo", "Wedo\Wedo.csproj", "{7CFCD6C5-5E80-406A-A95B-F341D2A378C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -267,6 +269,10 @@ Global
 		{0F81178E-1F94-43E0-B34B-3FDCF6ED1E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F81178E-1F94-43E0-B34B-3FDCF6ED1E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F81178E-1F94-43E0-B34B-3FDCF6ED1E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CFCD6C5-5E80-406A-A95B-F341D2A378C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CFCD6C5-5E80-406A-A95B-F341D2A378C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CFCD6C5-5E80-406A-A95B-F341D2A378C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CFCD6C5-5E80-406A-A95B-F341D2A378C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿using DegustaAi.Domain;
+using DegustaAi.Enum;
 using DegustaAi.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
@@ -94,5 +95,162 @@ namespace DegustaAi.Service
             return result;
         }
 
+        #region Fidelidade
+        public GenericResult<responseToken> LoginFidelidade(string email, string password)
+        {
+            var result = new GenericResult<responseToken>();
+            try
+            {
+                var data = new
+                {
+                    email,
+                    password,
+                    remember_me = true
+                };
+
+                var url = $"https://api.{_urlHost}{Constants.URL_AUTH_LOGIN}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseToken>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+
+        public GenericResult<responseRegistraPontuacao> RegistraPontos(string token, registraPontuacaoViewModel data)
+        {
+            var result = new GenericResult<responseRegistraPontuacao>();
+            try
+            {
+                var url = $"https://api.{_urlHost}{Constants.URL_REGISTRA_PONTOS}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseRegistraPontuacao>(response.Content);
+                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericResult<responseResgataPremio> ResgataPremio(string token, regastaPremioViewModel data)
+        {
+            var result = new GenericResult<responseResgataPremio>();
+            try
+            {
+                var url = $"https://api.{_urlHost}{Constants.URL_RESGASTA_PREMIO}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseResgataPremio>(response.Content);
+                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+
+        public GenericResult<responseConsultaPremios> ConsultaPremios(string token)
+        {
+            var result = new GenericResult<responseConsultaPremios>();
+            try
+            {
+                var url = $"https://api.{_urlHost}{Constants.URL_CONSULTA_PREMIOS}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseConsultaPremios>(response.Content);
+                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        #endregion
     }
 }

@@ -210,6 +210,34 @@
             this.label85 = new System.Windows.Forms.Label();
             this.txtCRMBonusAuthorization = new System.Windows.Forms.TextBox();
             this.label84 = new System.Windows.Forms.Label();
+            this.tabPageDeeliv = new System.Windows.Forms.TabPage();
+            this.btnPedZapDesistencia = new System.Windows.Forms.Button();
+            this.btnPedZapPreparado = new System.Windows.Forms.Button();
+            this.btnPedZapRejeitado = new System.Windows.Forms.Button();
+            this.btnPedZapEntregue = new System.Windows.Forms.Button();
+            this.btnPedZapAceito = new System.Windows.Forms.Button();
+            this.btnPedZapBuscarPedido = new System.Windows.Forms.Button();
+            this.gridPedZap = new System.Windows.Forms.DataGridView();
+            this.btnPedZapParar = new System.Windows.Forms.Button();
+            this.btnPedZapIniciar = new System.Windows.Forms.Button();
+            this.txtPedZapToken = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tabPageDegustAi = new System.Windows.Forms.TabPage();
+            this.btnDegustaAiGerarToken = new System.Windows.Forms.Button();
+            this.label132 = new System.Windows.Forms.Label();
+            this.txtDegustaAiSenha = new System.Windows.Forms.TextBox();
+            this.label131 = new System.Windows.Forms.Label();
+            this.txtDegustaAiEmail = new System.Windows.Forms.TextBox();
+            this.btnDegustaAiRegistraPonto = new System.Windows.Forms.Button();
+            this.btnIorionCancelar = new System.Windows.Forms.Button();
+            this.txtIorionURL = new System.Windows.Forms.TextBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.btnIorionStatus = new System.Windows.Forms.Button();
+            this.gridIorion = new System.Windows.Forms.DataGridView();
+            this.txtIorionToken = new System.Windows.Forms.TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.btnIorion9Parar = new System.Windows.Forms.Button();
+            this.btnIorionIniciar = new System.Windows.Forms.Button();
             this.tabPageDeliveryApp = new System.Windows.Forms.TabPage();
             this.btnDeliveryAppCancelar = new System.Windows.Forms.Button();
             this.btnDeliveryAppSaiuParaEntrega = new System.Windows.Forms.Button();
@@ -405,16 +433,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.btnIDeliveryParar = new System.Windows.Forms.Button();
             this.btnIDeliveryIniciar = new System.Windows.Forms.Button();
-            this.tabPageDegustAi = new System.Windows.Forms.TabPage();
-            this.btnIorionCancelar = new System.Windows.Forms.Button();
-            this.txtIorionURL = new System.Windows.Forms.TextBox();
-            this.label117 = new System.Windows.Forms.Label();
-            this.btnIorionStatus = new System.Windows.Forms.Button();
-            this.gridIorion = new System.Windows.Forms.DataGridView();
-            this.txtIorionToken = new System.Windows.Forms.TextBox();
-            this.label118 = new System.Windows.Forms.Label();
-            this.btnIorion9Parar = new System.Windows.Forms.Button();
-            this.btnIorionIniciar = new System.Windows.Forms.Button();
             this.tabPageJotaJa = new System.Windows.Forms.TabPage();
             this.btnJotajaFinalizarPedido = new System.Windows.Forms.Button();
             this.btnJotajaPagamentoPendente = new System.Windows.Forms.Button();
@@ -506,18 +524,6 @@
             this.btnOnPedidoIniciar = new System.Windows.Forms.Button();
             this.txtOnPedidoToken = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.tabPageDeeliv = new System.Windows.Forms.TabPage();
-            this.btnPedZapDesistencia = new System.Windows.Forms.Button();
-            this.btnPedZapPreparado = new System.Windows.Forms.Button();
-            this.btnPedZapRejeitado = new System.Windows.Forms.Button();
-            this.btnPedZapEntregue = new System.Windows.Forms.Button();
-            this.btnPedZapAceito = new System.Windows.Forms.Button();
-            this.btnPedZapBuscarPedido = new System.Windows.Forms.Button();
-            this.gridPedZap = new System.Windows.Forms.DataGridView();
-            this.btnPedZapParar = new System.Windows.Forms.Button();
-            this.btnPedZapIniciar = new System.Windows.Forms.Button();
-            this.txtPedZapToken = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabPagePixCommerce = new System.Windows.Forms.TabPage();
             this.btnPixCommerceCancelado = new System.Windows.Forms.Button();
             this.btnPixCommerceFinalizado = new System.Windows.Forms.Button();
@@ -649,6 +655,18 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
+            this.btnDegustaAiConsultaPremio = new System.Windows.Forms.Button();
+            this.btnDegustaAiRegastaPremio = new System.Windows.Forms.Button();
+            this.tabPageWedo = new System.Windows.Forms.TabPage();
+            this.txtWedoToken = new System.Windows.Forms.TextBox();
+            this.label133 = new System.Windows.Forms.Label();
+            this.btnWedoIntegrado = new System.Windows.Forms.Button();
+            this.gridWedo = new System.Windows.Forms.DataGridView();
+            this.btnWedoParar = new System.Windows.Forms.Button();
+            this.btnWedoIniciar = new System.Windows.Forms.Button();
+            this.btnWedoPedido = new System.Windows.Forms.Button();
+            this.btnWedoCancelar = new System.Windows.Forms.Button();
+            this.btnWedoEvento = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAccon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAccon)).BeginInit();
@@ -672,6 +690,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCinddi)).BeginInit();
             this.tabPageCresceVendas.SuspendLayout();
             this.tabPageCRMBonus.SuspendLayout();
+            this.tabPageDeeliv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
+            this.tabPageDegustAi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).BeginInit();
             this.tabPageDeliveryApp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).BeginInit();
             this.tabPageDeliveryDireto.SuspendLayout();
@@ -695,8 +717,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGoomer)).BeginInit();
             this.tabPageIDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).BeginInit();
-            this.tabPageDegustAi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).BeginInit();
             this.tabPageJotaJa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridJotaJa)).BeginInit();
             this.tabPageMeuCardapioAi.SuspendLayout();
@@ -707,8 +727,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridMultiPedido)).BeginInit();
             this.tabPageOnPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).BeginInit();
-            this.tabPageDeeliv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).BeginInit();
             this.tabPagePixCommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).BeginInit();
             this.tabPagePlug4Sales.SuspendLayout();
@@ -726,10 +744,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUberEats)).BeginInit();
             this.tabPageWoocommerce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
+            this.tabPageWedo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWedo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPageWedo);
             this.tabControl1.Controls.Add(this.tabPageAccon);
             this.tabControl1.Controls.Add(this.tabPageAiqfome);
             this.tabControl1.Controls.Add(this.tabPageAipedi);
@@ -2928,6 +2949,344 @@
             this.label84.Size = new System.Drawing.Size(126, 25);
             this.label84.TabIndex = 27;
             this.label84.Text = "Authorization";
+            // 
+            // tabPageDeeliv
+            // 
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapDesistencia);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapPreparado);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapRejeitado);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapEntregue);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapAceito);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapBuscarPedido);
+            this.tabPageDeeliv.Controls.Add(this.gridPedZap);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapParar);
+            this.tabPageDeeliv.Controls.Add(this.btnPedZapIniciar);
+            this.tabPageDeeliv.Controls.Add(this.txtPedZapToken);
+            this.tabPageDeeliv.Controls.Add(this.label13);
+            this.tabPageDeeliv.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDeeliv.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageDeeliv.Name = "tabPageDeeliv";
+            this.tabPageDeeliv.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageDeeliv.TabIndex = 4;
+            this.tabPageDeeliv.Text = "Deeliv";
+            this.tabPageDeeliv.UseVisualStyleBackColor = true;
+            // 
+            // btnPedZapDesistencia
+            // 
+            this.btnPedZapDesistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapDesistencia.Location = new System.Drawing.Point(620, 91);
+            this.btnPedZapDesistencia.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapDesistencia.Name = "btnPedZapDesistencia";
+            this.btnPedZapDesistencia.Size = new System.Drawing.Size(193, 41);
+            this.btnPedZapDesistencia.TabIndex = 18;
+            this.btnPedZapDesistencia.Text = "Desistência";
+            this.btnPedZapDesistencia.UseVisualStyleBackColor = true;
+            this.btnPedZapDesistencia.Click += new System.EventHandler(this.btnPedZapDesistencia_Click);
+            // 
+            // btnPedZapPreparado
+            // 
+            this.btnPedZapPreparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapPreparado.Location = new System.Drawing.Point(824, 91);
+            this.btnPedZapPreparado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapPreparado.Name = "btnPedZapPreparado";
+            this.btnPedZapPreparado.Size = new System.Drawing.Size(316, 41);
+            this.btnPedZapPreparado.TabIndex = 17;
+            this.btnPedZapPreparado.Text = "Preparado e Saiu para Entrega";
+            this.btnPedZapPreparado.UseVisualStyleBackColor = true;
+            this.btnPedZapPreparado.Click += new System.EventHandler(this.btnPedZapPreparado_Click);
+            // 
+            // btnPedZapRejeitado
+            // 
+            this.btnPedZapRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapRejeitado.Location = new System.Drawing.Point(419, 91);
+            this.btnPedZapRejeitado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapRejeitado.Name = "btnPedZapRejeitado";
+            this.btnPedZapRejeitado.Size = new System.Drawing.Size(193, 41);
+            this.btnPedZapRejeitado.TabIndex = 16;
+            this.btnPedZapRejeitado.Text = "Rejeitado";
+            this.btnPedZapRejeitado.UseVisualStyleBackColor = true;
+            this.btnPedZapRejeitado.Click += new System.EventHandler(this.btnPedZapRejeitado_Click);
+            // 
+            // btnPedZapEntregue
+            // 
+            this.btnPedZapEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapEntregue.Location = new System.Drawing.Point(1148, 91);
+            this.btnPedZapEntregue.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapEntregue.Name = "btnPedZapEntregue";
+            this.btnPedZapEntregue.Size = new System.Drawing.Size(193, 41);
+            this.btnPedZapEntregue.TabIndex = 15;
+            this.btnPedZapEntregue.Text = "Entregue";
+            this.btnPedZapEntregue.UseVisualStyleBackColor = true;
+            this.btnPedZapEntregue.Click += new System.EventHandler(this.btnPedZapEntregue_Click);
+            // 
+            // btnPedZapAceito
+            // 
+            this.btnPedZapAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapAceito.Location = new System.Drawing.Point(217, 91);
+            this.btnPedZapAceito.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapAceito.Name = "btnPedZapAceito";
+            this.btnPedZapAceito.Size = new System.Drawing.Size(193, 41);
+            this.btnPedZapAceito.TabIndex = 14;
+            this.btnPedZapAceito.Text = "Aceito";
+            this.btnPedZapAceito.UseVisualStyleBackColor = true;
+            this.btnPedZapAceito.Click += new System.EventHandler(this.btnPedZapAceito_Click);
+            // 
+            // btnPedZapBuscarPedido
+            // 
+            this.btnPedZapBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapBuscarPedido.Location = new System.Drawing.Point(16, 91);
+            this.btnPedZapBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapBuscarPedido.Name = "btnPedZapBuscarPedido";
+            this.btnPedZapBuscarPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnPedZapBuscarPedido.TabIndex = 13;
+            this.btnPedZapBuscarPedido.Text = "Buscar Pedido";
+            this.btnPedZapBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnPedZapBuscarPedido.Click += new System.EventHandler(this.btnPedZapBuscarPedido_Click);
+            // 
+            // gridPedZap
+            // 
+            this.gridPedZap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPedZap.Location = new System.Drawing.Point(16, 139);
+            this.gridPedZap.Margin = new System.Windows.Forms.Padding(4);
+            this.gridPedZap.Name = "gridPedZap";
+            this.gridPedZap.RowHeadersWidth = 51;
+            this.gridPedZap.Size = new System.Drawing.Size(1612, 678);
+            this.gridPedZap.TabIndex = 12;
+            this.gridPedZap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPedZap_CellClick);
+            // 
+            // btnPedZapParar
+            // 
+            this.btnPedZapParar.Enabled = false;
+            this.btnPedZapParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapParar.Location = new System.Drawing.Point(1400, 84);
+            this.btnPedZapParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapParar.Name = "btnPedZapParar";
+            this.btnPedZapParar.Size = new System.Drawing.Size(228, 48);
+            this.btnPedZapParar.TabIndex = 11;
+            this.btnPedZapParar.Text = "Parar";
+            this.btnPedZapParar.UseVisualStyleBackColor = true;
+            this.btnPedZapParar.Click += new System.EventHandler(this.btnPedZapParar_Click);
+            // 
+            // btnPedZapIniciar
+            // 
+            this.btnPedZapIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedZapIniciar.Location = new System.Drawing.Point(1400, 21);
+            this.btnPedZapIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedZapIniciar.Name = "btnPedZapIniciar";
+            this.btnPedZapIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnPedZapIniciar.TabIndex = 10;
+            this.btnPedZapIniciar.Text = "Iniciar";
+            this.btnPedZapIniciar.UseVisualStyleBackColor = true;
+            this.btnPedZapIniciar.Click += new System.EventHandler(this.btnPedZapIniciar_Click);
+            // 
+            // txtPedZapToken
+            // 
+            this.txtPedZapToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPedZapToken.Location = new System.Drawing.Point(183, 21);
+            this.txtPedZapToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPedZapToken.Name = "txtPedZapToken";
+            this.txtPedZapToken.Size = new System.Drawing.Size(764, 30);
+            this.txtPedZapToken.TabIndex = 9;
+            this.txtPedZapToken.Text = "YR81BXSELT4HRG6T6YRRE6ETJZPE7OCKOM3SHNJP5HVX2Q7UG0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(23, 25);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(82, 25);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "TOKEN";
+            // 
+            // tabPageDegustAi
+            // 
+            this.tabPageDegustAi.Controls.Add(this.btnDegustaAiRegastaPremio);
+            this.tabPageDegustAi.Controls.Add(this.btnDegustaAiConsultaPremio);
+            this.tabPageDegustAi.Controls.Add(this.btnDegustaAiGerarToken);
+            this.tabPageDegustAi.Controls.Add(this.label132);
+            this.tabPageDegustAi.Controls.Add(this.txtDegustaAiSenha);
+            this.tabPageDegustAi.Controls.Add(this.label131);
+            this.tabPageDegustAi.Controls.Add(this.txtDegustaAiEmail);
+            this.tabPageDegustAi.Controls.Add(this.btnDegustaAiRegistraPonto);
+            this.tabPageDegustAi.Controls.Add(this.btnIorionCancelar);
+            this.tabPageDegustAi.Controls.Add(this.txtIorionURL);
+            this.tabPageDegustAi.Controls.Add(this.label117);
+            this.tabPageDegustAi.Controls.Add(this.btnIorionStatus);
+            this.tabPageDegustAi.Controls.Add(this.gridIorion);
+            this.tabPageDegustAi.Controls.Add(this.txtIorionToken);
+            this.tabPageDegustAi.Controls.Add(this.label118);
+            this.tabPageDegustAi.Controls.Add(this.btnIorion9Parar);
+            this.tabPageDegustAi.Controls.Add(this.btnIorionIniciar);
+            this.tabPageDegustAi.Location = new System.Drawing.Point(4, 25);
+            this.tabPageDegustAi.Name = "tabPageDegustAi";
+            this.tabPageDegustAi.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageDegustAi.TabIndex = 33;
+            this.tabPageDegustAi.Text = "DegustAi";
+            this.tabPageDegustAi.UseVisualStyleBackColor = true;
+            // 
+            // btnDegustaAiGerarToken
+            // 
+            this.btnDegustaAiGerarToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiGerarToken.Location = new System.Drawing.Point(976, 481);
+            this.btnDegustaAiGerarToken.Name = "btnDegustaAiGerarToken";
+            this.btnDegustaAiGerarToken.Size = new System.Drawing.Size(207, 48);
+            this.btnDegustaAiGerarToken.TabIndex = 65;
+            this.btnDegustaAiGerarToken.Text = "Gerar Token";
+            this.btnDegustaAiGerarToken.UseVisualStyleBackColor = true;
+            this.btnDegustaAiGerarToken.Click += new System.EventHandler(this.btnDegustaAiGerarToken_Click);
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label132.Location = new System.Drawing.Point(640, 333);
+            this.label132.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(81, 25);
+            this.label132.TabIndex = 64;
+            this.label132.Text = "SENHA";
+            // 
+            // txtDegustaAiSenha
+            // 
+            this.txtDegustaAiSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDegustaAiSenha.Location = new System.Drawing.Point(645, 368);
+            this.txtDegustaAiSenha.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDegustaAiSenha.Name = "txtDegustaAiSenha";
+            this.txtDegustaAiSenha.Size = new System.Drawing.Size(387, 30);
+            this.txtDegustaAiSenha.TabIndex = 63;
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label131.Location = new System.Drawing.Point(640, 249);
+            this.label131.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(72, 25);
+            this.label131.TabIndex = 62;
+            this.label131.Text = "EMAIL";
+            // 
+            // txtDegustaAiEmail
+            // 
+            this.txtDegustaAiEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDegustaAiEmail.Location = new System.Drawing.Point(645, 284);
+            this.txtDegustaAiEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDegustaAiEmail.Name = "txtDegustaAiEmail";
+            this.txtDegustaAiEmail.Size = new System.Drawing.Size(387, 30);
+            this.txtDegustaAiEmail.TabIndex = 61;
+            // 
+            // btnDegustaAiRegistraPonto
+            // 
+            this.btnDegustaAiRegistraPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiRegistraPonto.Location = new System.Drawing.Point(708, 558);
+            this.btnDegustaAiRegistraPonto.Name = "btnDegustaAiRegistraPonto";
+            this.btnDegustaAiRegistraPonto.Size = new System.Drawing.Size(207, 39);
+            this.btnDegustaAiRegistraPonto.TabIndex = 60;
+            this.btnDegustaAiRegistraPonto.Text = "Registrar Ponto";
+            this.btnDegustaAiRegistraPonto.UseVisualStyleBackColor = true;
+            this.btnDegustaAiRegistraPonto.Click += new System.EventHandler(this.btnDegustaAiRegistraPonto_Click);
+            // 
+            // btnIorionCancelar
+            // 
+            this.btnIorionCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionCancelar.Location = new System.Drawing.Point(697, 481);
+            this.btnIorionCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionCancelar.Name = "btnIorionCancelar";
+            this.btnIorionCancelar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionCancelar.TabIndex = 59;
+            this.btnIorionCancelar.Text = "Cancelar";
+            this.btnIorionCancelar.UseVisualStyleBackColor = true;
+            this.btnIorionCancelar.Click += new System.EventHandler(this.btnIorionCancelar_Click);
+            // 
+            // txtIorionURL
+            // 
+            this.txtIorionURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIorionURL.Location = new System.Drawing.Point(859, 25);
+            this.txtIorionURL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIorionURL.Name = "txtIorionURL";
+            this.txtIorionURL.Size = new System.Drawing.Size(387, 30);
+            this.txtIorionURL.TabIndex = 58;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label117.Location = new System.Drawing.Point(703, 29);
+            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(50, 25);
+            this.label117.TabIndex = 57;
+            this.label117.Text = "URL";
+            // 
+            // btnIorionStatus
+            // 
+            this.btnIorionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionStatus.Location = new System.Drawing.Point(19, 123);
+            this.btnIorionStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionStatus.Name = "btnIorionStatus";
+            this.btnIorionStatus.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionStatus.TabIndex = 56;
+            this.btnIorionStatus.Text = "Status";
+            this.btnIorionStatus.UseVisualStyleBackColor = true;
+            this.btnIorionStatus.Click += new System.EventHandler(this.btnIorionStatus_Click);
+            // 
+            // gridIorion
+            // 
+            this.gridIorion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridIorion.Location = new System.Drawing.Point(15, 178);
+            this.gridIorion.Margin = new System.Windows.Forms.Padding(4);
+            this.gridIorion.Name = "gridIorion";
+            this.gridIorion.RowHeadersWidth = 51;
+            this.gridIorion.Size = new System.Drawing.Size(1612, 644);
+            this.gridIorion.TabIndex = 55;
+            this.gridIorion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIorion_CellClick);
+            // 
+            // txtIorionToken
+            // 
+            this.txtIorionToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIorionToken.Location = new System.Drawing.Point(170, 25);
+            this.txtIorionToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIorionToken.Name = "txtIorionToken";
+            this.txtIorionToken.Size = new System.Drawing.Size(387, 30);
+            this.txtIorionToken.TabIndex = 54;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label118.Location = new System.Drawing.Point(14, 29);
+            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(82, 25);
+            this.label118.TabIndex = 53;
+            this.label118.Text = "TOKEN";
+            // 
+            // btnIorion9Parar
+            // 
+            this.btnIorion9Parar.Enabled = false;
+            this.btnIorion9Parar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorion9Parar.Location = new System.Drawing.Point(1399, 88);
+            this.btnIorion9Parar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorion9Parar.Name = "btnIorion9Parar";
+            this.btnIorion9Parar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorion9Parar.TabIndex = 52;
+            this.btnIorion9Parar.Text = "Parar";
+            this.btnIorion9Parar.UseVisualStyleBackColor = true;
+            this.btnIorion9Parar.Click += new System.EventHandler(this.btnIorion9Parar_Click);
+            // 
+            // btnIorionIniciar
+            // 
+            this.btnIorionIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIorionIniciar.Location = new System.Drawing.Point(1399, 25);
+            this.btnIorionIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIorionIniciar.Name = "btnIorionIniciar";
+            this.btnIorionIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnIorionIniciar.TabIndex = 51;
+            this.btnIorionIniciar.Text = "Iniciar";
+            this.btnIorionIniciar.UseVisualStyleBackColor = true;
+            this.btnIorionIniciar.Click += new System.EventHandler(this.btnIorionIniciar_Click);
             // 
             // tabPageDeliveryApp
             // 
@@ -5244,124 +5603,6 @@
             this.btnIDeliveryIniciar.UseVisualStyleBackColor = true;
             this.btnIDeliveryIniciar.Click += new System.EventHandler(this.btnIDeliveryIniciar_Click);
             // 
-            // tabPageDegustAi
-            // 
-            this.tabPageDegustAi.Controls.Add(this.btnIorionCancelar);
-            this.tabPageDegustAi.Controls.Add(this.txtIorionURL);
-            this.tabPageDegustAi.Controls.Add(this.label117);
-            this.tabPageDegustAi.Controls.Add(this.btnIorionStatus);
-            this.tabPageDegustAi.Controls.Add(this.gridIorion);
-            this.tabPageDegustAi.Controls.Add(this.txtIorionToken);
-            this.tabPageDegustAi.Controls.Add(this.label118);
-            this.tabPageDegustAi.Controls.Add(this.btnIorion9Parar);
-            this.tabPageDegustAi.Controls.Add(this.btnIorionIniciar);
-            this.tabPageDegustAi.Location = new System.Drawing.Point(4, 25);
-            this.tabPageDegustAi.Name = "tabPageDegustAi";
-            this.tabPageDegustAi.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageDegustAi.TabIndex = 33;
-            this.tabPageDegustAi.Text = "DegustAi";
-            this.tabPageDegustAi.UseVisualStyleBackColor = true;
-            // 
-            // btnIorionCancelar
-            // 
-            this.btnIorionCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionCancelar.Location = new System.Drawing.Point(706, 399);
-            this.btnIorionCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionCancelar.Name = "btnIorionCancelar";
-            this.btnIorionCancelar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionCancelar.TabIndex = 59;
-            this.btnIorionCancelar.Text = "Cancelar";
-            this.btnIorionCancelar.UseVisualStyleBackColor = true;
-            this.btnIorionCancelar.Click += new System.EventHandler(this.btnIorionCancelar_Click);
-            // 
-            // txtIorionURL
-            // 
-            this.txtIorionURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIorionURL.Location = new System.Drawing.Point(859, 25);
-            this.txtIorionURL.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIorionURL.Name = "txtIorionURL";
-            this.txtIorionURL.Size = new System.Drawing.Size(387, 30);
-            this.txtIorionURL.TabIndex = 58;
-            // 
-            // label117
-            // 
-            this.label117.AutoSize = true;
-            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label117.Location = new System.Drawing.Point(703, 29);
-            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(50, 25);
-            this.label117.TabIndex = 57;
-            this.label117.Text = "URL";
-            // 
-            // btnIorionStatus
-            // 
-            this.btnIorionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionStatus.Location = new System.Drawing.Point(19, 123);
-            this.btnIorionStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionStatus.Name = "btnIorionStatus";
-            this.btnIorionStatus.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionStatus.TabIndex = 56;
-            this.btnIorionStatus.Text = "Status";
-            this.btnIorionStatus.UseVisualStyleBackColor = true;
-            this.btnIorionStatus.Click += new System.EventHandler(this.btnIorionStatus_Click);
-            // 
-            // gridIorion
-            // 
-            this.gridIorion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridIorion.Location = new System.Drawing.Point(15, 178);
-            this.gridIorion.Margin = new System.Windows.Forms.Padding(4);
-            this.gridIorion.Name = "gridIorion";
-            this.gridIorion.RowHeadersWidth = 51;
-            this.gridIorion.Size = new System.Drawing.Size(1612, 644);
-            this.gridIorion.TabIndex = 55;
-            this.gridIorion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIorion_CellClick);
-            // 
-            // txtIorionToken
-            // 
-            this.txtIorionToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIorionToken.Location = new System.Drawing.Point(170, 25);
-            this.txtIorionToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIorionToken.Name = "txtIorionToken";
-            this.txtIorionToken.Size = new System.Drawing.Size(387, 30);
-            this.txtIorionToken.TabIndex = 54;
-            // 
-            // label118
-            // 
-            this.label118.AutoSize = true;
-            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label118.Location = new System.Drawing.Point(14, 29);
-            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(82, 25);
-            this.label118.TabIndex = 53;
-            this.label118.Text = "TOKEN";
-            // 
-            // btnIorion9Parar
-            // 
-            this.btnIorion9Parar.Enabled = false;
-            this.btnIorion9Parar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorion9Parar.Location = new System.Drawing.Point(1399, 88);
-            this.btnIorion9Parar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorion9Parar.Name = "btnIorion9Parar";
-            this.btnIorion9Parar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorion9Parar.TabIndex = 52;
-            this.btnIorion9Parar.Text = "Parar";
-            this.btnIorion9Parar.UseVisualStyleBackColor = true;
-            this.btnIorion9Parar.Click += new System.EventHandler(this.btnIorion9Parar_Click);
-            // 
-            // btnIorionIniciar
-            // 
-            this.btnIorionIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIorionIniciar.Location = new System.Drawing.Point(1399, 25);
-            this.btnIorionIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIorionIniciar.Name = "btnIorionIniciar";
-            this.btnIorionIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnIorionIniciar.TabIndex = 51;
-            this.btnIorionIniciar.Text = "Iniciar";
-            this.btnIorionIniciar.UseVisualStyleBackColor = true;
-            this.btnIorionIniciar.Click += new System.EventHandler(this.btnIorionIniciar_Click);
-            // 
             // tabPageJotaJa
             // 
             this.tabPageJotaJa.Controls.Add(this.btnJotajaFinalizarPedido);
@@ -6463,156 +6704,6 @@
             this.label25.Size = new System.Drawing.Size(82, 25);
             this.label25.TabIndex = 12;
             this.label25.Text = "TOKEN";
-            // 
-            // tabPageDeeliv
-            // 
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapDesistencia);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapPreparado);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapRejeitado);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapEntregue);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapAceito);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapBuscarPedido);
-            this.tabPageDeeliv.Controls.Add(this.gridPedZap);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapParar);
-            this.tabPageDeeliv.Controls.Add(this.btnPedZapIniciar);
-            this.tabPageDeeliv.Controls.Add(this.txtPedZapToken);
-            this.tabPageDeeliv.Controls.Add(this.label13);
-            this.tabPageDeeliv.Location = new System.Drawing.Point(4, 25);
-            this.tabPageDeeliv.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPageDeeliv.Name = "tabPageDeeliv";
-            this.tabPageDeeliv.Size = new System.Drawing.Size(1641, 846);
-            this.tabPageDeeliv.TabIndex = 4;
-            this.tabPageDeeliv.Text = "Deeliv";
-            this.tabPageDeeliv.UseVisualStyleBackColor = true;
-            // 
-            // btnPedZapDesistencia
-            // 
-            this.btnPedZapDesistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapDesistencia.Location = new System.Drawing.Point(620, 91);
-            this.btnPedZapDesistencia.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapDesistencia.Name = "btnPedZapDesistencia";
-            this.btnPedZapDesistencia.Size = new System.Drawing.Size(193, 41);
-            this.btnPedZapDesistencia.TabIndex = 18;
-            this.btnPedZapDesistencia.Text = "Desistência";
-            this.btnPedZapDesistencia.UseVisualStyleBackColor = true;
-            this.btnPedZapDesistencia.Click += new System.EventHandler(this.btnPedZapDesistencia_Click);
-            // 
-            // btnPedZapPreparado
-            // 
-            this.btnPedZapPreparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapPreparado.Location = new System.Drawing.Point(824, 91);
-            this.btnPedZapPreparado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapPreparado.Name = "btnPedZapPreparado";
-            this.btnPedZapPreparado.Size = new System.Drawing.Size(316, 41);
-            this.btnPedZapPreparado.TabIndex = 17;
-            this.btnPedZapPreparado.Text = "Preparado e Saiu para Entrega";
-            this.btnPedZapPreparado.UseVisualStyleBackColor = true;
-            this.btnPedZapPreparado.Click += new System.EventHandler(this.btnPedZapPreparado_Click);
-            // 
-            // btnPedZapRejeitado
-            // 
-            this.btnPedZapRejeitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapRejeitado.Location = new System.Drawing.Point(419, 91);
-            this.btnPedZapRejeitado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapRejeitado.Name = "btnPedZapRejeitado";
-            this.btnPedZapRejeitado.Size = new System.Drawing.Size(193, 41);
-            this.btnPedZapRejeitado.TabIndex = 16;
-            this.btnPedZapRejeitado.Text = "Rejeitado";
-            this.btnPedZapRejeitado.UseVisualStyleBackColor = true;
-            this.btnPedZapRejeitado.Click += new System.EventHandler(this.btnPedZapRejeitado_Click);
-            // 
-            // btnPedZapEntregue
-            // 
-            this.btnPedZapEntregue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapEntregue.Location = new System.Drawing.Point(1148, 91);
-            this.btnPedZapEntregue.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapEntregue.Name = "btnPedZapEntregue";
-            this.btnPedZapEntregue.Size = new System.Drawing.Size(193, 41);
-            this.btnPedZapEntregue.TabIndex = 15;
-            this.btnPedZapEntregue.Text = "Entregue";
-            this.btnPedZapEntregue.UseVisualStyleBackColor = true;
-            this.btnPedZapEntregue.Click += new System.EventHandler(this.btnPedZapEntregue_Click);
-            // 
-            // btnPedZapAceito
-            // 
-            this.btnPedZapAceito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapAceito.Location = new System.Drawing.Point(217, 91);
-            this.btnPedZapAceito.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapAceito.Name = "btnPedZapAceito";
-            this.btnPedZapAceito.Size = new System.Drawing.Size(193, 41);
-            this.btnPedZapAceito.TabIndex = 14;
-            this.btnPedZapAceito.Text = "Aceito";
-            this.btnPedZapAceito.UseVisualStyleBackColor = true;
-            this.btnPedZapAceito.Click += new System.EventHandler(this.btnPedZapAceito_Click);
-            // 
-            // btnPedZapBuscarPedido
-            // 
-            this.btnPedZapBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapBuscarPedido.Location = new System.Drawing.Point(16, 91);
-            this.btnPedZapBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapBuscarPedido.Name = "btnPedZapBuscarPedido";
-            this.btnPedZapBuscarPedido.Size = new System.Drawing.Size(193, 41);
-            this.btnPedZapBuscarPedido.TabIndex = 13;
-            this.btnPedZapBuscarPedido.Text = "Buscar Pedido";
-            this.btnPedZapBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnPedZapBuscarPedido.Click += new System.EventHandler(this.btnPedZapBuscarPedido_Click);
-            // 
-            // gridPedZap
-            // 
-            this.gridPedZap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPedZap.Location = new System.Drawing.Point(16, 139);
-            this.gridPedZap.Margin = new System.Windows.Forms.Padding(4);
-            this.gridPedZap.Name = "gridPedZap";
-            this.gridPedZap.RowHeadersWidth = 51;
-            this.gridPedZap.Size = new System.Drawing.Size(1612, 678);
-            this.gridPedZap.TabIndex = 12;
-            this.gridPedZap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPedZap_CellClick);
-            // 
-            // btnPedZapParar
-            // 
-            this.btnPedZapParar.Enabled = false;
-            this.btnPedZapParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapParar.Location = new System.Drawing.Point(1400, 84);
-            this.btnPedZapParar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapParar.Name = "btnPedZapParar";
-            this.btnPedZapParar.Size = new System.Drawing.Size(228, 48);
-            this.btnPedZapParar.TabIndex = 11;
-            this.btnPedZapParar.Text = "Parar";
-            this.btnPedZapParar.UseVisualStyleBackColor = true;
-            this.btnPedZapParar.Click += new System.EventHandler(this.btnPedZapParar_Click);
-            // 
-            // btnPedZapIniciar
-            // 
-            this.btnPedZapIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedZapIniciar.Location = new System.Drawing.Point(1400, 21);
-            this.btnPedZapIniciar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPedZapIniciar.Name = "btnPedZapIniciar";
-            this.btnPedZapIniciar.Size = new System.Drawing.Size(228, 48);
-            this.btnPedZapIniciar.TabIndex = 10;
-            this.btnPedZapIniciar.Text = "Iniciar";
-            this.btnPedZapIniciar.UseVisualStyleBackColor = true;
-            this.btnPedZapIniciar.Click += new System.EventHandler(this.btnPedZapIniciar_Click);
-            // 
-            // txtPedZapToken
-            // 
-            this.txtPedZapToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPedZapToken.Location = new System.Drawing.Point(183, 21);
-            this.txtPedZapToken.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPedZapToken.Name = "txtPedZapToken";
-            this.txtPedZapToken.Size = new System.Drawing.Size(764, 30);
-            this.txtPedZapToken.TabIndex = 9;
-            this.txtPedZapToken.Text = "YR81BXSELT4HRG6T6YRRE6ETJZPE7OCKOM3SHNJP5HVX2Q7UG0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(23, 25);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 25);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "TOKEN";
             // 
             // tabPagePixCommerce
             // 
@@ -8185,6 +8276,150 @@
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
             // 
+            // btnDegustaAiConsultaPremio
+            // 
+            this.btnDegustaAiConsultaPremio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiConsultaPremio.Location = new System.Drawing.Point(976, 558);
+            this.btnDegustaAiConsultaPremio.Name = "btnDegustaAiConsultaPremio";
+            this.btnDegustaAiConsultaPremio.Size = new System.Drawing.Size(207, 39);
+            this.btnDegustaAiConsultaPremio.TabIndex = 66;
+            this.btnDegustaAiConsultaPremio.Text = "Consulta Prêmio";
+            this.btnDegustaAiConsultaPremio.UseVisualStyleBackColor = true;
+            this.btnDegustaAiConsultaPremio.Click += new System.EventHandler(this.btnDegustaAiConsultaPremio_Click);
+            // 
+            // btnDegustaAiRegastaPremio
+            // 
+            this.btnDegustaAiRegastaPremio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiRegastaPremio.Location = new System.Drawing.Point(708, 626);
+            this.btnDegustaAiRegastaPremio.Name = "btnDegustaAiRegastaPremio";
+            this.btnDegustaAiRegastaPremio.Size = new System.Drawing.Size(207, 39);
+            this.btnDegustaAiRegastaPremio.TabIndex = 67;
+            this.btnDegustaAiRegastaPremio.Text = "Resgata Prêmio";
+            this.btnDegustaAiRegastaPremio.UseVisualStyleBackColor = true;
+            this.btnDegustaAiRegastaPremio.Click += new System.EventHandler(this.btnDegustaAiRegastaPremio_Click);
+            // 
+            // tabPageWedo
+            // 
+            this.tabPageWedo.Controls.Add(this.btnWedoEvento);
+            this.tabPageWedo.Controls.Add(this.btnWedoCancelar);
+            this.tabPageWedo.Controls.Add(this.btnWedoPedido);
+            this.tabPageWedo.Controls.Add(this.txtWedoToken);
+            this.tabPageWedo.Controls.Add(this.label133);
+            this.tabPageWedo.Controls.Add(this.btnWedoIntegrado);
+            this.tabPageWedo.Controls.Add(this.gridWedo);
+            this.tabPageWedo.Controls.Add(this.btnWedoParar);
+            this.tabPageWedo.Controls.Add(this.btnWedoIniciar);
+            this.tabPageWedo.Location = new System.Drawing.Point(4, 25);
+            this.tabPageWedo.Name = "tabPageWedo";
+            this.tabPageWedo.Size = new System.Drawing.Size(1641, 846);
+            this.tabPageWedo.TabIndex = 41;
+            this.tabPageWedo.Text = "Wedo";
+            this.tabPageWedo.UseVisualStyleBackColor = true;
+            // 
+            // txtWedoToken
+            // 
+            this.txtWedoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWedoToken.Location = new System.Drawing.Point(537, 98);
+            this.txtWedoToken.Margin = new System.Windows.Forms.Padding(4);
+            this.txtWedoToken.Name = "txtWedoToken";
+            this.txtWedoToken.Size = new System.Drawing.Size(836, 30);
+            this.txtWedoToken.TabIndex = 43;
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label133.Location = new System.Drawing.Point(449, 98);
+            this.label133.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(68, 25);
+            this.label133.TabIndex = 42;
+            this.label133.Text = "Token";
+            // 
+            // btnWedoIntegrado
+            // 
+            this.btnWedoIntegrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoIntegrado.Location = new System.Drawing.Point(12, 158);
+            this.btnWedoIntegrado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoIntegrado.Name = "btnWedoIntegrado";
+            this.btnWedoIntegrado.Size = new System.Drawing.Size(193, 41);
+            this.btnWedoIntegrado.TabIndex = 41;
+            this.btnWedoIntegrado.Text = "Integrado";
+            this.btnWedoIntegrado.UseVisualStyleBackColor = true;
+            this.btnWedoIntegrado.Click += new System.EventHandler(this.btnWedoIntegrado_Click);
+            // 
+            // gridWedo
+            // 
+            this.gridWedo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridWedo.Location = new System.Drawing.Point(12, 206);
+            this.gridWedo.Margin = new System.Windows.Forms.Padding(4);
+            this.gridWedo.Name = "gridWedo";
+            this.gridWedo.RowHeadersWidth = 51;
+            this.gridWedo.Size = new System.Drawing.Size(1617, 617);
+            this.gridWedo.TabIndex = 40;
+            this.gridWedo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWedo_CellClick);
+            // 
+            // btnWedoParar
+            // 
+            this.btnWedoParar.Enabled = false;
+            this.btnWedoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoParar.Location = new System.Drawing.Point(1401, 87);
+            this.btnWedoParar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoParar.Name = "btnWedoParar";
+            this.btnWedoParar.Size = new System.Drawing.Size(228, 48);
+            this.btnWedoParar.TabIndex = 39;
+            this.btnWedoParar.Text = "Parar";
+            this.btnWedoParar.UseVisualStyleBackColor = true;
+            this.btnWedoParar.Click += new System.EventHandler(this.btnWedoParar_Click);
+            // 
+            // btnWedoIniciar
+            // 
+            this.btnWedoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoIniciar.Location = new System.Drawing.Point(1401, 24);
+            this.btnWedoIniciar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoIniciar.Name = "btnWedoIniciar";
+            this.btnWedoIniciar.Size = new System.Drawing.Size(228, 48);
+            this.btnWedoIniciar.TabIndex = 38;
+            this.btnWedoIniciar.Text = "Iniciar";
+            this.btnWedoIniciar.UseVisualStyleBackColor = true;
+            this.btnWedoIniciar.Click += new System.EventHandler(this.btnWedoIniciar_Click);
+            // 
+            // btnWedoPedido
+            // 
+            this.btnWedoPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoPedido.Location = new System.Drawing.Point(724, 403);
+            this.btnWedoPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoPedido.Name = "btnWedoPedido";
+            this.btnWedoPedido.Size = new System.Drawing.Size(193, 41);
+            this.btnWedoPedido.TabIndex = 44;
+            this.btnWedoPedido.Text = "Pedido";
+            this.btnWedoPedido.UseVisualStyleBackColor = true;
+            this.btnWedoPedido.Click += new System.EventHandler(this.btnWedoPedido_Click);
+            // 
+            // btnWedoCancelar
+            // 
+            this.btnWedoCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoCancelar.Location = new System.Drawing.Point(724, 479);
+            this.btnWedoCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoCancelar.Name = "btnWedoCancelar";
+            this.btnWedoCancelar.Size = new System.Drawing.Size(193, 41);
+            this.btnWedoCancelar.TabIndex = 45;
+            this.btnWedoCancelar.Text = "Cancelar";
+            this.btnWedoCancelar.UseVisualStyleBackColor = true;
+            this.btnWedoCancelar.Click += new System.EventHandler(this.btnWedoCancelar_Click);
+            // 
+            // btnWedoEvento
+            // 
+            this.btnWedoEvento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWedoEvento.Location = new System.Drawing.Point(724, 564);
+            this.btnWedoEvento.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWedoEvento.Name = "btnWedoEvento";
+            this.btnWedoEvento.Size = new System.Drawing.Size(193, 41);
+            this.btnWedoEvento.TabIndex = 46;
+            this.btnWedoEvento.Text = "Integrado Evento";
+            this.btnWedoEvento.UseVisualStyleBackColor = true;
+            this.btnWedoEvento.Click += new System.EventHandler(this.btnWedoEvento_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -8234,6 +8469,12 @@
             this.tabPageCresceVendas.PerformLayout();
             this.tabPageCRMBonus.ResumeLayout(false);
             this.tabPageCRMBonus.PerformLayout();
+            this.tabPageDeeliv.ResumeLayout(false);
+            this.tabPageDeeliv.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
+            this.tabPageDegustAi.ResumeLayout(false);
+            this.tabPageDegustAi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).EndInit();
             this.tabPageDeliveryApp.ResumeLayout(false);
             this.tabPageDeliveryApp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDeliveryApp)).EndInit();
@@ -8268,9 +8509,6 @@
             this.tabPageIDelivery.ResumeLayout(false);
             this.tabPageIDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridiDelivery)).EndInit();
-            this.tabPageDegustAi.ResumeLayout(false);
-            this.tabPageDegustAi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridIorion)).EndInit();
             this.tabPageJotaJa.ResumeLayout(false);
             this.tabPageJotaJa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridJotaJa)).EndInit();
@@ -8286,9 +8524,6 @@
             this.tabPageOnPedido.ResumeLayout(false);
             this.tabPageOnPedido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridOnPedido)).EndInit();
-            this.tabPageDeeliv.ResumeLayout(false);
-            this.tabPageDeeliv.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedZap)).EndInit();
             this.tabPagePixCommerce.ResumeLayout(false);
             this.tabPagePixCommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPixCommerce)).EndInit();
@@ -8316,6 +8551,9 @@
             this.tabPageWoocommerce.ResumeLayout(false);
             this.tabPageWoocommerce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).EndInit();
+            this.tabPageWedo.ResumeLayout(false);
+            this.tabPageWedo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridWedo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8942,6 +9180,24 @@
         private System.Windows.Forms.Button btnAgilizoneCancelar;
         private System.Windows.Forms.TextBox txtAgilizoneNumero;
         private System.Windows.Forms.TextBox txtFixCRMCPF;
+        private System.Windows.Forms.Button btnDegustaAiRegistraPonto;
+        private System.Windows.Forms.Button btnDegustaAiGerarToken;
+        private System.Windows.Forms.Label label132;
+        private System.Windows.Forms.TextBox txtDegustaAiSenha;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.TextBox txtDegustaAiEmail;
+        private System.Windows.Forms.Button btnDegustaAiConsultaPremio;
+        private System.Windows.Forms.Button btnDegustaAiRegastaPremio;
+        private System.Windows.Forms.TabPage tabPageWedo;
+        private System.Windows.Forms.TextBox txtWedoToken;
+        private System.Windows.Forms.Label label133;
+        private System.Windows.Forms.Button btnWedoIntegrado;
+        private System.Windows.Forms.DataGridView gridWedo;
+        private System.Windows.Forms.Button btnWedoParar;
+        private System.Windows.Forms.Button btnWedoIniciar;
+        private System.Windows.Forms.Button btnWedoPedido;
+        private System.Windows.Forms.Button btnWedoCancelar;
+        private System.Windows.Forms.Button btnWedoEvento;
     }
 }
 
