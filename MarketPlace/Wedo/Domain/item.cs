@@ -8,14 +8,14 @@ namespace Wedo.Domain
     {
         public string reference { get; set; }
         public string name { get; set; }
-        public int price { get; set; }
+        public decimal price { get; set; }
         public int quantity { get; set; }
         public string externalCode { get; set; }
-        public int totalPrice { get; set; }
+        public decimal totalPrice { get; set; }
         public string observations { get; set; }
         public List<subItem> subItems { get; set; }
         public List<complementGroup> complementGroups { get; set; }
-        public double unityFraction { get; set; }
+        public decimal unityFraction { get; set; }
     }
 
     public class complementGroup
@@ -31,9 +31,9 @@ namespace Wedo.Domain
         public string reference { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
-        public int price { get; set; }
-        public int totalPrice { get; set; }
-        public double unityFraction { get; set; }
+        public decimal price { get; set; }
+        public decimal totalPrice { get; set; }
+        public decimal unityFraction { get; set; }
         public string externalCode { get; set; }
     }
 

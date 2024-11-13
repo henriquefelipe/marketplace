@@ -10,5 +10,6 @@ namespace Ifood.Enum
     {        
         public const string MERCHANT = "MERCHANT";
         public const string IFOOD = "IFOOD";
+        public const string EXTERNAL = "EXTERNAL";
     }
 }

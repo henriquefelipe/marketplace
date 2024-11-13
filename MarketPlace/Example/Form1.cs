@@ -187,7 +187,7 @@ namespace Example
                             if (marketPlace.Agilizone != null)
                             {
                                 txtAgilizoneClientID.Text = marketPlace.Agilizone.Usuario;
-                                txtAgilizoneClientSecret.Text = marketPlace.Agilizone.Senha;                                
+                                txtAgilizoneClientSecret.Text = marketPlace.Agilizone.Senha;
                             }
 
                             if (marketPlace.Aiqfome != null)
@@ -230,7 +230,7 @@ namespace Example
                             }
 
                             if (marketPlace.DeliveryVip != null)
-                            {                                
+                            {
                                 txtDeliveryVipMerchant.Text = marketPlace.DeliveryVip.MerchantId;
                                 txtDeliveryVipClientId.Text = marketPlace.DeliveryVip.Usuario;
                                 txtDeliveryVipSecret.Text = marketPlace.DeliveryVip.Senha;
@@ -336,7 +336,7 @@ namespace Example
 
                             if (marketPlace.Wedo != null)
                             {
-                                txtWedoToken.Text = marketPlace.Wedo.Token;                              
+                                txtWedoToken.Text = marketPlace.Wedo.Token;
                             }
                         }
                     }
@@ -7768,7 +7768,7 @@ namespace Example
 
             var dados = new regastaPremioViewModel();
             dados.telefone = TELEFONE;
-            dados.pdv = "";            
+            dados.pdv = "";
             dados.premio_id = 78912;
             dados.operador = "000";
 
@@ -7781,6 +7781,26 @@ namespace Example
                     MessageBox.Show("OK");
                 else
                     MessageBox.Show(result.Result.message);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnDegustaAiResumoUsuario_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+            
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.ResumoUsuario(txtIorionToken.Text, TELEFONE);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");               
             }
             else
             {
@@ -7853,7 +7873,7 @@ namespace Example
 
         private void btnAgilizoneCancelar_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txtAgilizoneNumero.Text))
+            if (string.IsNullOrEmpty(txtAgilizoneNumero.Text))
             {
                 MessageBox.Show("Digite o numero do pedido");
                 return;
@@ -7861,9 +7881,9 @@ namespace Example
 
             //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
             var service = new AgilizoneService();
-            var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.CANCELED , "Cancelado pelo usuário");
+            var result = service.Status(txtAgilizoneNumero.Text, txtAgilizoneToken.Text, Agilizone.Enum.OrderStatus.CANCELED, "Cancelado pelo usuário");
             if (result.Success)
-            {                
+            {
                 MessageBox.Show("Cancelado com sucesso");
             }
             else
@@ -8132,7 +8152,7 @@ namespace Example
         {
             var service = new FideliziService(txtFideliziAppTokenn.Text, txtFideliziAccessToken.Text, txtFideliziEstabelecimentoCodigo.Text, FideliziUrlTeste);
             var result = service.Pontuar(1000, DOCUMENTO, FideliziCodigoAtendente);
-            if(result.Success)
+            if (result.Success)
             {
                 MessageBox.Show("OK");
             }
@@ -8421,7 +8441,7 @@ namespace Example
 
         private void btnCardapioWebPedido_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(_cardapioWebId))
+            if (!string.IsNullOrEmpty(_cardapioWebId))
             {
                 var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
                 var result = service.Order(_cardapioWebId);
@@ -8527,7 +8547,7 @@ namespace Example
             {
                 var service = new DeliveryVipService();
                 var result = service.Confirm(txtDeliveryVipToken.Text, _deliveryVipId);
-                if(result.Success)
+                if (result.Success)
                 {
                     MessageBox.Show("OK");
                 }
@@ -8563,6 +8583,7 @@ namespace Example
             }
         }
 
+
         private void gridDeliveryVip_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < gridDeliveryVip.Rows.Count)
@@ -8572,7 +8593,7 @@ namespace Example
         }
 
         private void deliveryVip()
-        {           
+        {
             try
             {
                 //while (btnIorion9Parar.Enabled)
@@ -8647,14 +8668,14 @@ namespace Example
 
             btnWedoIniciar.Enabled = false;
             btnWedoParar.Enabled = true;
-            
+
             await Task.Run(() => wedo());
         }
 
         private void wedo()
         {
             try
-            {               
+            {
                 var service = new WedoService(txtWedoToken.Text);
                 var orderResult = service.Polling();
                 if (orderResult.Success)
@@ -8759,21 +8780,19 @@ namespace Example
 
         private void btnWedoEvento_Click(object sender, EventArgs e)
         {
-            
-                var service = new WedoService(txtWedoToken.Text);
-                var dados = new List<Wedo.Domain.acknowledgmentEvent>();
-                dados.Add(new Wedo.Domain.acknowledgmentEvent { event_id = "66d9f88d9fa96f2f1d7107db", integrated = true });
+            var service = new WedoService(txtWedoToken.Text);
+            var dados = new List<Wedo.Domain.acknowledgmentEvent>();
+            dados.Add(new Wedo.Domain.acknowledgmentEvent { event_id = "66d9f88d9fa96f2f1d7107db", integrated = true });
 
-                var result = service.Acknowledgment(dados);
-                if (result.Success)
-                {
-                    MessageBox.Show("OK");
-                }
-                else
-                {
-                    MessageBox.Show(result.Message);
-                }
-            
+            var result = service.Acknowledgment(dados);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
         }
 
 
@@ -8800,13 +8819,9 @@ namespace Example
             }
         }
 
-
-
-
-
         #endregion
 
-       
+
     }
 }
 

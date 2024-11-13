@@ -7,8 +7,8 @@
     <ProjectGuid>{9A45D340-8699-4FC2-9264-D5514B6D511D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PedZap</RootNamespace>
-    <AssemblyName>PedZap</AssemblyName>
+    <RootNamespace>Deeliv</RootNamespace>
+    <AssemblyName>Deeliv</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

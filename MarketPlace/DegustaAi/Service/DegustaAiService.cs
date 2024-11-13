@@ -133,7 +133,6 @@ namespace DegustaAi.Service
             return result;
         }
 
-
         public GenericResult<responseRegistraPontuacao> RegistraPontos(string token, registraPontuacaoViewModel data)
         {
             var result = new GenericResult<responseRegistraPontuacao>();
@@ -228,6 +227,50 @@ namespace DegustaAi.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<responseConsultaPremios>(response.Content);
+                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public GenericResult<responseRegistraPontuacao> ResumoUsuario(string token, string telefone)
+        {
+            var result = new GenericResult<responseRegistraPontuacao>();
+            try
+            {
+                var data = new
+                {
+                    telefone
+                };
+
+                var url = $"https://api.{_urlHost}{Constants.URL_RESUMO_USUARIO}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");                
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseRegistraPontuacao>(response.Content);
                     if (result.Result.status == FidelidadeStatus.SUCCESS)
                     {
                         result.Success = true;

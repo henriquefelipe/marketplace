@@ -7,7 +7,7 @@ namespace Wedo.Domain
     public class payment
     {
         public string title { get; set; }
-        public int change { get; set; }
+        public decimal change { get; set; }
         public string type { get; set; }
     }
 }

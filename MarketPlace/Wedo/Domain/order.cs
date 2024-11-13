@@ -17,9 +17,12 @@ namespace Wedo.Domain
         public merchant merchant { get; set; }
         public customer customer { get; set; }
         public List<item> items { get; set; }
-        public int changeFor { get; set; }
+        public decimal changeFor { get; set; }
         public payment payment { get; set; }
-        public int subTotal { get; set; }
-        public int orderTotal { get; set; }
+        public decimal subTotal { get; set; }
+        public decimal orderTotal { get; set; }
+        public decimal deliveryFee { get; set; }
+
+        public DeliveryAddress deliveryAddress { get; set; }
     }
 }
