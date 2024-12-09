@@ -14,5 +14,6 @@ namespace DegustaAi.Domain
         public int telefone_codigo_pais { get; set; }
         public string data_nascimento { get; set; }
         public string genero { get; set; }
+        public string nome_completo { get; set; }
     }
 }

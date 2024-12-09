@@ -5,7 +5,6 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Collections.Generic;
 
 namespace DegustaAi.Service
 {
@@ -73,13 +72,13 @@ namespace DegustaAi.Service
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Bearer", token);
-                request.AddHeader("Content-Type", "application/json");                
+                request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<response>(response.Content);
                     result.Success = true;
-                    
+
                 }
                 else
                 {
@@ -114,6 +113,7 @@ namespace DegustaAi.Service
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<responseToken>(response.Content);
@@ -123,8 +123,6 @@ namespace DegustaAi.Service
                 {
                     result.Message = response.Content + " - " + response.StatusDescription;
                 }
-
-                result.Json = response.Content;
             }
             catch (Exception ex)
             {
@@ -146,6 +144,7 @@ namespace DegustaAi.Service
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<responseRegistraPontuacao>(response.Content);
@@ -162,8 +161,6 @@ namespace DegustaAi.Service
                 {
                     result.Message = response.Content + " - " + response.StatusDescription;
                 }
-
-                result.Json = response.Content;
             }
             catch (Exception ex)
             {
@@ -185,24 +182,31 @@ namespace DegustaAi.Service
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<responseResgataPremio>(response.Content);
-                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    if (response.Content.Contains("error"))
                     {
-                        result.Success = true;
+                        var responseErro = JsonConvert.DeserializeObject<responseErro>(response.Content);
+                        result.Message = responseErro.message;
                     }
                     else
                     {
-                        result.Message = result.Result.message;
+                        result.Result = JsonConvert.DeserializeObject<responseResgataPremio>(response.Content);
+                        if (result.Result.status == FidelidadeStatus.SUCCESS)
+                        {
+                            result.Success = true;
+                        }
+                        else
+                        {
+                            result.Message = result.Result.message;
+                        }
                     }
                 }
                 else
                 {
                     result.Message = response.Content + " - " + response.StatusDescription;
                 }
-
-                result.Json = response.Content;
             }
             catch (Exception ex)
             {
@@ -224,6 +228,7 @@ namespace DegustaAi.Service
                 request.AddHeader("Authorization", "Bearer " + token);
                 request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<responseConsultaPremios>(response.Content);
@@ -240,8 +245,6 @@ namespace DegustaAi.Service
                 {
                     result.Message = response.Content + " - " + response.StatusDescription;
                 }
-
-                result.Json = response.Content;
             }
             catch (Exception ex)
             {
@@ -255,19 +258,14 @@ namespace DegustaAi.Service
             var result = new GenericResult<responseRegistraPontuacao>();
             try
             {
-                var data = new
-                {
-                    telefone
-                };
-
-                var url = $"https://api.{_urlHost}{Constants.URL_RESUMO_USUARIO}";
+                var url = $"https://api.{_urlHost}{Constants.URL_RESUMO_USUARIO}?telefone={telefone}";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("X-Requested-With", "XMLHttpRequest");
                 request.AddHeader("Authorization", "Bearer " + token);
-                request.AddHeader("Content-Type", "application/json");                
-                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                request.AddHeader("Content-Type", "application/json");
                 IRestResponse response = client.Execute(request);
+                result.Json = response.Content;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = JsonConvert.DeserializeObject<responseRegistraPontuacao>(response.Content);
@@ -284,8 +282,44 @@ namespace DegustaAi.Service
                 {
                     result.Message = response.Content + " - " + response.StatusDescription;
                 }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
 
+        public GenericResult<responseErro> CriaCadastro(string token, usuario data)
+        {
+            var result = new GenericResult<responseErro>();
+            try
+            {
+                var url = $"https://api.{_urlHost}{Constants.URL_CRIA_CADASTRO}";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("X-Requested-With", "XMLHttpRequest");
+                request.AddHeader("Authorization", "Bearer " + token);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
                 result.Json = response.Content;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<responseErro>(response.Content);
+                    if (result.Result.status == FidelidadeStatus.SUCCESS)
+                    {
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Message = result.Result.message;
+                    }
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
             }
             catch (Exception ex)
             {

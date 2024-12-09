@@ -8,8 +8,8 @@ namespace DegustaAi.Domain
     public class responseResgataPremio : response_base
     {
         public responseResgataPremioData data { get; set; }
-    }  
-    
+    }
+
     public class responseResgataPremioData
     {
         public responseResgataPremioDataPremio premio { get; set; }
@@ -23,7 +23,7 @@ namespace DegustaAi.Domain
     }
 
     public class responseResgataPremioDataResumoUsuario
-    {               
+    {
         public string pontos { get; set; }
         public int visitas { get; set; }
         public int resgates { get; set; }

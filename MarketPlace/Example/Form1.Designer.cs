@@ -233,6 +233,7 @@
             this.txtPedZapToken = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPageDegustAi = new System.Windows.Forms.TabPage();
+            this.btnDegustaAiResumoUsuario = new System.Windows.Forms.Button();
             this.btnDegustaAiRegastaPremio = new System.Windows.Forms.Button();
             this.btnDegustaAiConsultaPremio = new System.Windows.Forms.Button();
             this.btnDegustaAiGerarToken = new System.Windows.Forms.Button();
@@ -667,7 +668,6 @@
             this.label103 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
-            this.btnDegustaAiResumoUsuario = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageWedo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridWedo)).BeginInit();
@@ -751,6 +751,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPageDegustAi);
             this.tabControl1.Controls.Add(this.tabPageWedo);
             this.tabControl1.Controls.Add(this.tabPageAccon);
             this.tabControl1.Controls.Add(this.tabPageAiqfome);
@@ -766,7 +767,6 @@
             this.tabControl1.Controls.Add(this.tabPageCresceVendas);
             this.tabControl1.Controls.Add(this.tabPageCRMBonus);
             this.tabControl1.Controls.Add(this.tabPageDeeliv);
-            this.tabControl1.Controls.Add(this.tabPageDegustAi);
             this.tabControl1.Controls.Add(this.tabPageDeliveryApp);
             this.tabControl1.Controls.Add(this.tabPageDeliveryDireto);
             this.tabControl1.Controls.Add(this.tabPageDeliveryVip);
@@ -3249,6 +3249,17 @@
             this.tabPageDegustAi.TabIndex = 33;
             this.tabPageDegustAi.Text = "DegustAi";
             this.tabPageDegustAi.UseVisualStyleBackColor = true;
+            // 
+            // btnDegustaAiResumoUsuario
+            // 
+            this.btnDegustaAiResumoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiResumoUsuario.Location = new System.Drawing.Point(976, 626);
+            this.btnDegustaAiResumoUsuario.Name = "btnDegustaAiResumoUsuario";
+            this.btnDegustaAiResumoUsuario.Size = new System.Drawing.Size(207, 39);
+            this.btnDegustaAiResumoUsuario.TabIndex = 68;
+            this.btnDegustaAiResumoUsuario.Text = "Resumo usuário";
+            this.btnDegustaAiResumoUsuario.UseVisualStyleBackColor = true;
+            this.btnDegustaAiResumoUsuario.Click += new System.EventHandler(this.btnDegustaAiResumoUsuario_Click);
             // 
             // btnDegustaAiRegastaPremio
             // 
@@ -8421,17 +8432,6 @@
             this.gridWoocommerce.Size = new System.Drawing.Size(1612, 635);
             this.gridWoocommerce.TabIndex = 37;
             this.gridWoocommerce.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridWoocommerce_CellClick);
-            // 
-            // btnDegustaAiResumoUsuario
-            // 
-            this.btnDegustaAiResumoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDegustaAiResumoUsuario.Location = new System.Drawing.Point(976, 626);
-            this.btnDegustaAiResumoUsuario.Name = "btnDegustaAiResumoUsuario";
-            this.btnDegustaAiResumoUsuario.Size = new System.Drawing.Size(207, 39);
-            this.btnDegustaAiResumoUsuario.TabIndex = 68;
-            this.btnDegustaAiResumoUsuario.Text = "Resumo usuário";
-            this.btnDegustaAiResumoUsuario.UseVisualStyleBackColor = true;
-            this.btnDegustaAiResumoUsuario.Click += new System.EventHandler(this.btnDegustaAiResumoUsuario_Click);
             // 
             // Form1
             // 

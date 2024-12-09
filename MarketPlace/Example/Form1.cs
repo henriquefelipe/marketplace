@@ -57,6 +57,7 @@ namespace Example
         #region Variaveis
 
         private const string TELEFONE = "85987704779";
+        private const string CPF = "86162484041";
 
         private List<Accon.Domain.order> _acconOrders { get; set; }
         private string _acconSelected { get; set; }
