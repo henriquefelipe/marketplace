@@ -5,6 +5,7 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
+using System.Net;
 
 namespace DegustaAi.Service
 {
@@ -106,6 +107,8 @@ namespace DegustaAi.Service
                     password,
                     remember_me = true
                 };
+
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var url = $"https://api.{_urlHost}{Constants.URL_AUTH_LOGIN}";
                 var client = new RestClient(url);
@@ -221,6 +224,8 @@ namespace DegustaAi.Service
             var result = new GenericResult<responseConsultaPremios>();
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 var url = $"https://api.{_urlHost}{Constants.URL_CONSULTA_PREMIOS}";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
@@ -258,6 +263,8 @@ namespace DegustaAi.Service
             var result = new GenericResult<responseRegistraPontuacao>();
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 var url = $"https://api.{_urlHost}{Constants.URL_RESUMO_USUARIO}?telefone={telefone}";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
