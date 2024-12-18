@@ -1,24 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using RestSharp;
-using System.Text.RegularExpressions;
 using BigFish.Domain;
-using BigFish.Utils;
 using MarketPlace;
 
 namespace BigFish.Service
 {
     public class BigFishService
     {
-        private string _url_subdomain { get; set; }
-        private string _username { get; set; }
-        private string _password { get; set; }
-        public BigFishService(string url_subdomain, string username, string password)
+        private readonly string _url;
+        private readonly string _username;
+        private readonly string _password;
+
+        public BigFishService(string url, string username, string password)
         {
-            _url_subdomain = url_subdomain;
+            _url = url;
             _username = username;
             _password = password;
+        }
+
+        // Método auxiliar para criar um RestRequest configurado
+        private RestRequest CreateRequest(string xmlData)
+        {
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("xml", xmlData, ParameterType.GetOrPost);
+            return request;
+        }
+
+        // Método auxiliar para executar o cliente
+        private IRestResponse ExecuteRequest(string xmlData)
+        {
+            var client = new RestClient(_url);
+            var request = CreateRequest(xmlData);
+            return client.Execute(request);
+        }
+
+        // Método auxiliar para construir o XML
+        private string BuildXml(string command, Dictionary<string, string> elements)
+        {
+            var xml = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
+                         <request>
+                            <command>{command}</command>
+                            <login>{_username}</login>
+                            <password>{_password}</password>";
+            foreach (var element in elements)
+            {
+                xml += $"<{element.Key}>{element.Value}</{element.Key}>";
+            }
+            xml += "</request>";
+            return xml;
         }
 
         public GenericResult<ResponseOrders> Orders()
@@ -26,18 +57,9 @@ namespace BigFish.Service
             var result = new GenericResult<ResponseOrders>();
             try
             {
-                var url = string.Format("https://{0}.{1}", _url_subdomain, Constants.URL);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                var xmlData = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-                                <request>
-                                    <command>GET_ALL_ORDERS</command>
-                                    <login>{_username}</login>
-                                    <password>{_password}</password>
-                                </request>";
-                request.AddParameter("xml", xmlData, ParameterType.GetOrPost);
-                IRestResponse response = client.Execute(request);
+                var xmlData = BuildXml("GET_ALL_ORDERS", new Dictionary<string, string>());
+                var response = ExecuteRequest(xmlData);
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = response.Content.DeserializeXml<ResponseOrders>();
@@ -61,19 +83,13 @@ namespace BigFish.Service
             var result = new GenericResult<ResponseOrder>();
             try
             {
-                var url = string.Format("https://{0}.{1}", _url_subdomain, Constants.URL);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                var xmlData = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-                                <request>
-                                    <command>GET_ORDER</command>
-                                    <login>{_username}</login>
-                                    <password>{_password}</password>
-                                    <cod_pedido>{codigo_pedido}</cod_pedido>
-                                </request>";
-                request.AddParameter("xml", xmlData, ParameterType.GetOrPost);
-                IRestResponse response = client.Execute(request);
+                var xmlData = BuildXml("GET_ORDER", new Dictionary<string, string>
+                {
+                    { "cod_pedido", codigo_pedido }
+                });
+
+                var response = ExecuteRequest(xmlData);
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     if (response.Content == "<onpedido></onpedido>")
@@ -103,24 +119,13 @@ namespace BigFish.Service
             var result = new GenericSimpleResult();
             try
             {
-                var url = string.Format("https://{0}.{1}", _url_subdomain, Constants.URL);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                var xmlData = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-                                <request>
-                                    <command>SET_ORDERS</command>
-                                    <login>{_username}</login>
-                                    <password>{_password}</password>
-                                    <row>
-                                     <rowpedidos>
-                                     <cod_pedido>{codigo_pedido}</cod_pedido>
-                                     <importado>1</importado>
-                                     </rowpedidos>
-                                    </row>
-                                </request>";
-                request.AddParameter("xml", xmlData, ParameterType.GetOrPost);
-                IRestResponse response = client.Execute(request);
+                var xmlData = BuildXml("SET_ORDERS", new Dictionary<string, string>
+                {
+                    { "row", $@"<rowpedidos><cod_pedido>{codigo_pedido}</cod_pedido><importado>1</importado></rowpedidos>" }
+                });
+
+                var response = ExecuteRequest(xmlData);
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Success = true;
@@ -143,20 +148,14 @@ namespace BigFish.Service
             var result = new GenericSimpleResult();
             try
             {
-                var url = string.Format("https://{0}.{1}", _url_subdomain, Constants.URL);
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                var xmlData = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
-                                <request>
-                                    <command>SET_ORDER_STATUS</command>
-                                    <login>{_username}</login>
-                                    <password>{_password}</password>
-                                    <cod_pedido>{codigo_pedido}</cod_pedido>
-                                    <status>{status}</status>
-                                </request>";
-                request.AddParameter("xml", xmlData, ParameterType.GetOrPost);
-                IRestResponse response = client.Execute(request);
+                var xmlData = BuildXml("SET_ORDER_STATUS", new Dictionary<string, string>
+                {
+                    { "cod_pedido", codigo_pedido },
+                    { "status", status }
+                });
+
+                var response = ExecuteRequest(xmlData);
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Success = true;

@@ -8044,7 +8044,7 @@
             this.txtBigFishURL.Name = "txtBigFishURL";
             this.txtBigFishURL.Size = new System.Drawing.Size(430, 26);
             this.txtBigFishURL.TabIndex = 47;
-            this.txtBigFishURL.Text = "nutribee-izzyway";
+            this.txtBigFishURL.Text = "https://nutribee-izzyway.octoserver.com.br/webservice";
             // 
             // btnBigFishParar
             // 
