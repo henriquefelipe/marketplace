@@ -16,6 +16,7 @@ namespace Wedo.Domain
         public List<subItem> subItems { get; set; }
         public List<complementGroup> complementGroups { get; set; }
         public decimal unityFraction { get; set; }
+        public decimal originalPrice { get; set; }
     }
 
     public class complementGroup
@@ -35,6 +36,7 @@ namespace Wedo.Domain
         public decimal totalPrice { get; set; }
         public decimal unityFraction { get; set; }
         public string externalCode { get; set; }
+        public decimal originalPrice { get; set; }
     }
 
     public class subItem

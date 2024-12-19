@@ -15,7 +15,7 @@ namespace CardapioWeb.Domain
         public string name { get; set; }
         public int order_item_id { get; set; }
         public string status { get; set; }
-        public int item_id { get; set; }
+        public int? item_id { get; set; }
         public decimal quantity { get; set; }
         public decimal unit_price { get; set; }
         public string observation { get; set; }
