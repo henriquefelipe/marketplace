@@ -49,6 +49,7 @@ using Plug4Sales.Domain;
 using DeliveryVip.Service;
 using DegustaAi.Domain;
 using Wedo.Service;
+using BigFish.Service;
 
 namespace Example
 {
@@ -158,6 +159,8 @@ namespace Example
         private List<Wedo.Domain.responsePoolingData> _WedoOrders { get; set; }
         private string _wedoId { get; set; }
 
+        private List<BigFish.Domain.Order> _bigFishOrders { get; set; }
+        private string _bigFishId { get; set; }
         #endregion
 
         public Form1()
@@ -455,6 +458,10 @@ namespace Example
             _deliveryVipOrders = new List<DeliveryVip.Domain.eventPooling>();
             gridDeliveryVip.DataSource = _deliveryVipOrders.ToList();
             gridDeliveryVip.Refresh();
+
+            _bigFishOrders = new List<BigFish.Domain.Order>();
+            gridBigFish.DataSource = _bigFishOrders.ToList();
+            gridBigFish.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -8820,9 +8827,388 @@ namespace Example
             }
         }
 
+
         #endregion
 
+        #region BigFish
+        private void btnBigFishIniciar_Click(object sender, EventArgs e)
+        {
+            bigFishIniciar();
+        }
+        private void btnBigFishParar_Click(object sender, EventArgs e)
+        {
+            txtBigFishURL.Enabled = true;
+            txtBigFishUsuario.Enabled = true;
+            txtBigFishSenha.Enabled = true;
+            btnBigFishIniciar.Enabled = true;
+            btnBigFishParar.Enabled = false;
+            btnBigFishBuscarPedido.Enabled = false;
+            btnBigFishNovo.Enabled = false;
+            btnBigFishPago.Enabled = false;
+            btnBigFishEnviado.Enabled = false;
+            btnBigFishEntregue.Enabled = false;
+            btnBigFishCancelado.Enabled = false;
+            btnBigFishImportado.Enabled = false;
+        }
 
+        public async void bigFishIniciar()
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            txtBigFishURL.Enabled = false;
+            txtBigFishUsuario.Enabled = false;
+            txtBigFishSenha.Enabled = false;
+            btnBigFishIniciar.Enabled = false;
+            btnBigFishParar.Enabled = true;
+            btnBigFishBuscarPedido.Enabled = true;
+            btnBigFishNovo.Enabled = true;
+            btnBigFishPago.Enabled = true;
+            btnBigFishEnviado.Enabled = true;
+            btnBigFishEntregue.Enabled = true;
+            btnBigFishCancelado.Enabled = true;
+            btnBigFishImportado.Enabled = true;
+            await Task.Run(() => bigFish());
+        }
+
+        private void bigFish()
+        {
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+
+            try
+            {
+                //while (btnMultiPedidoParar.Enabled)
+                //{
+                var orderResult = service.Orders();
+                if (orderResult.Success)
+                {
+                    _bigFishOrders = orderResult.Result.orders;
+
+                    WriteGridBigFish();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+                //Thread.Sleep(30000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridBigFishDelegate();
+        private void WriteGridBigFish()
+        {
+            if (gridBigFish.InvokeRequired)
+            {
+                var d = new WritelstGridBigFishDelegate(WriteGridBigFish);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridBigFish.DataSource = _bigFishOrders.ToList();
+                gridBigFish.Refresh();
+            }
+        }
+
+        private void gridBigFish_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridBigFish.Rows.Count)
+            {
+                _bigFishId = gridBigFish.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnBigFishBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Order(_bigFishId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishNovo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Status(_bigFishId, BigFish.Enum.OrderStatus.Novo);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishPago_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Status(_bigFishId, BigFish.Enum.OrderStatus.Pago);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishEnviado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Status(_bigFishId, BigFish.Enum.OrderStatus.Enviado);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishEntregue_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Status(_bigFishId, BigFish.Enum.OrderStatus.Entregue);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishCancelado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Status(_bigFishId, BigFish.Enum.OrderStatus.Cancelado);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnBigFishImportado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBigFishURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishUsuario.Text))
+            {
+                MessageBox.Show("Campo Usuário Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtBigFishSenha.Text))
+            {
+                MessageBox.Show("Campo Senha Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_bigFishId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new BigFishService(txtBigFishURL.Text, txtBigFishUsuario.Text, txtBigFishSenha.Text);
+            var orderResult = service.Acknowledge(_bigFishId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+        #endregion
     }
 }
 
