@@ -42,6 +42,6 @@ namespace Ifood.Domain
         public string title { get; set; }
         public string subtitle { get; set; }
         public string description { get; set; }
-        public int? priority { get; set; }
+        public decimal? priority { get; set; }
     }
 }
