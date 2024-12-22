@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace EuFalo.Service
 {
@@ -25,6 +26,8 @@ namespace EuFalo.Service
                 userID = email,
                 accessKey = token
             };
+
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var url = string.Format("{0}{1}", Constants.URL_BASE, Constants.URL_LOGIN);
             var client = new RestClient(url);

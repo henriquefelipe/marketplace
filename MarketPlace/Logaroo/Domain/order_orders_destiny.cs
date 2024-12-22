@@ -16,7 +16,7 @@ namespace Logaroo.Domain
 
     public class order_orders_destiny_floor
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string name { get; set; }
     }
 }
