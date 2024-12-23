@@ -669,6 +669,7 @@
             this.label102 = new System.Windows.Forms.Label();
             this.gridWoocommerce = new System.Windows.Forms.DataGridView();
             this.tabPageBigFish = new System.Windows.Forms.TabPage();
+            this.btnBigFishObterCliente = new System.Windows.Forms.Button();
             this.btnBigFishImportado = new System.Windows.Forms.Button();
             this.btnBigFishCancelado = new System.Windows.Forms.Button();
             this.btnBigFishEntregue = new System.Windows.Forms.Button();
@@ -7879,6 +7880,7 @@
             // 
             // tabPageBigFish
             // 
+            this.tabPageBigFish.Controls.Add(this.btnBigFishObterCliente);
             this.tabPageBigFish.Controls.Add(this.btnBigFishImportado);
             this.tabPageBigFish.Controls.Add(this.btnBigFishCancelado);
             this.tabPageBigFish.Controls.Add(this.btnBigFishEntregue);
@@ -7901,6 +7903,17 @@
             this.tabPageBigFish.TabIndex = 42;
             this.tabPageBigFish.Text = "BigFish";
             this.tabPageBigFish.UseVisualStyleBackColor = true;
+            // 
+            // btnBigFishObterCliente
+            // 
+            this.btnBigFishObterCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBigFishObterCliente.Location = new System.Drawing.Point(910, 111);
+            this.btnBigFishObterCliente.Name = "btnBigFishObterCliente";
+            this.btnBigFishObterCliente.Size = new System.Drawing.Size(144, 39);
+            this.btnBigFishObterCliente.TabIndex = 61;
+            this.btnBigFishObterCliente.Text = "Obter Cliente";
+            this.btnBigFishObterCliente.UseVisualStyleBackColor = true;
+            this.btnBigFishObterCliente.Click += new System.EventHandler(this.btnBigFishObterCliente_Click);
             // 
             // btnBigFishImportado
             // 
@@ -8866,6 +8879,7 @@
         private System.Windows.Forms.Button btnBigFishCancelado;
         private System.Windows.Forms.Button btnBigFishEntregue;
         private System.Windows.Forms.Button btnBigFishImportado;
+        private System.Windows.Forms.Button btnBigFishObterCliente;
     }
 }
 
