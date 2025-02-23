@@ -172,5 +172,35 @@ namespace BigFish.Service
             }
             return result;
         }
+
+        public GenericResult<ResponseCustomer> GetCustomer(string documento)
+        {
+            var result = new GenericResult<ResponseCustomer>();
+            try
+            {
+                var xmlData = BuildXml("GET_CUSTOMER", new Dictionary<string, string>
+                {
+                    { "documento", documento }
+                });
+
+                var response = ExecuteRequest(xmlData);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    result.Result = response.Content.DeserializeXml<ResponseCustomer>();
+                    result.Success = true;
+                    result.Json = response.Content;
+                }
+                else
+                {
+                    result.Message = response.Content + " - " + response.StatusDescription;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }
