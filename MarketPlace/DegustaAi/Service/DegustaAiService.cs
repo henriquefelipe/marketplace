@@ -336,5 +336,105 @@ namespace DegustaAi.Service
         }
 
         #endregion
+
+        #region Mesa
+
+        public GenericResult<response> OrdersMesa(string token, string parametros)
+        {
+            var result = new GenericResult<response>();
+
+            var url = $"https://api.{_urlHost}{Constants.URL_GET_ORDERS_MESA}?{parametros}";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<response>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<response> ChangeStatusMesa(string token, int pedido_ref)
+        {
+            var result = new GenericResult<response>();
+
+            var url = $"https://api.{_urlHost}{Constants.URL_CHANGE_STATUS_MESA}?pedido_ref={pedido_ref}";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Bearer", token);
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<response>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<notificationResult> NotificationsMesa(string token)
+        {
+            var result = new GenericResult<notificationResult>();
+
+            var url = $"https://api.{_urlHost}{Constants.URL_GET_NOTIFICATIONS_MESA}";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<notificationResult>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<response> NotificationsMesaDismiss(string token, string codigo)
+        {
+            var result = new GenericResult<response>();
+
+            var url = $"https://api.{_urlHost}{Constants.URL_DISMISS_NOTIFICATION_MESA}?cod_notification={codigo}";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Bearer", token);
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<response>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        #endregion
     }
 }

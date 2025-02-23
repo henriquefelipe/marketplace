@@ -12,7 +12,7 @@ namespace Plug4Sales.Service
 {
     public class Plug4SalesService
     {
-        private string _url = "http://api.plug4sales.io/";
+        private string _url = "https://public-api.repediu.com.br/";
         
         public Plug4SalesService() {}
 

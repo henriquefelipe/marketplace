@@ -44,5 +44,6 @@ namespace DegustaAi.Domain
         public List<item> itens { get; set; }
 
         public mensagem_no_cartao mensagem_no_cartao { get; set; }
+        public mesa mesa { get; set; }
     }
 }

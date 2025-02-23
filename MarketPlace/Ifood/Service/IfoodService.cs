@@ -478,7 +478,18 @@ namespace Ifood.Service
             }
             else
             {
-                result.Message = response.StatusDescription;
+                if (!string.IsNullOrEmpty(response.Content))
+                {
+                    try
+                    {
+                        var resultMessage = JsonConvert.DeserializeObject<error_cancel>(response.Content);
+                        result.Message = resultMessage.error.message;
+                    }
+                    catch { }
+                }
+
+                if(string.IsNullOrEmpty(result.Message))
+                    result.Message = response.StatusDescription;
             }
             result.StatusCode = response.StatusCode;
 

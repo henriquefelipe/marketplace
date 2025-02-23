@@ -55,6 +55,7 @@
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\delivery.cs" />
     <Compile Include="Domain\deliveryAddress.cs" />
+    <Compile Include="Domain\error.cs" />
     <Compile Include="Domain\error_return.cs" />
     <Compile Include="Domain\eventAcknowledgment.cs" />
     <Compile Include="Domain\Finance\adjustmentsBenefits.cs" />

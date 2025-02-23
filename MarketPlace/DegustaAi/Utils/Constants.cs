@@ -22,5 +22,10 @@ namespace DegustaAi.Utils
         public const string URL_CONSULTA_PREMIOS = "/api/consultaPremios";
         public const string URL_TOKEN_INFO = "/api/tokenInfo";
         public const string URL_AUTH_LOGIN = "/api/auth/login";
+
+        public const string URL_GET_ORDERS_MESA = "/api/cardapiodigital/getorders";
+        public const string URL_GET_NOTIFICATIONS_MESA = "/api/cardapiodigital/getNotifications";
+        public const string URL_CHANGE_STATUS_MESA = "/api/cardapiodigital/changestatus";
+        public const string URL_DISMISS_NOTIFICATION_MESA = "/api/cardapiodigital/dismissNotification";
     }
 }

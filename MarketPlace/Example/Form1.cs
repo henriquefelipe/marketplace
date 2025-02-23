@@ -50,6 +50,8 @@ using DeliveryVip.Service;
 using DegustaAi.Domain;
 using Wedo.Service;
 using BigFish.Service;
+using VMarket.Service;
+using VMarket.Domain;
 
 namespace Example
 {
@@ -7803,12 +7805,12 @@ namespace Example
                 MessageBox.Show("Campo Token gerado Obrigatório");
                 return;
             }
-            
+
             var service = new DegustaAiService(txtIorionURL.Text);
             var result = service.ResumoUsuario(txtIorionToken.Text, TELEFONE);
             if (result.Success)
             {
-                MessageBox.Show("OK");               
+                MessageBox.Show("OK");
             }
             else
             {
@@ -8384,7 +8386,7 @@ namespace Example
 
         private void cardapioWeb()
         {
-            var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+            var service = new CardapioWebService(txtCardapioWebToken.Text);
 
             try
             {
@@ -8451,7 +8453,7 @@ namespace Example
         {
             if (!string.IsNullOrEmpty(_cardapioWebId))
             {
-                var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+                var service = new CardapioWebService(txtCardapioWebToken.Text);
                 var result = service.Order(_cardapioWebId);
             }
             else
@@ -8464,7 +8466,7 @@ namespace Example
         {
             if (!string.IsNullOrEmpty(_cardapioWebId))
             {
-                var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
+                var service = new CardapioWebService(txtCardapioWebToken.Text);
                 var result = service.Confirm(_cardapioWebId);
             }
             else
@@ -9208,6 +9210,86 @@ namespace Example
                 MessageBox.Show(orderResult.Message);
             }
         }
+        #endregion
+
+        #region VMarket
+
+        public List<pedido_listar> vMarketOrders { get; set; }
+
+        private void btnVMarketGerarToken_Click(object sender, EventArgs e)
+        {
+            var service = new VMarketService();
+            var result = service.Autenticar(txtVMarketEmail.Text, txtVMarketSenha.Text);
+            if (result.Success)
+            {
+                txtVMarketToken.Text = result.Result.token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnVMarketBuscarPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVMarketToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+            }
+            else
+            {
+                vMarketOrders = new List<pedido_listar>();
+
+                var service = new VMarketService();
+                var result = service.PedidoListar(txtVMarketToken.Text,1000000);
+                if (result.Success)
+                {
+                    vMarketOrders.AddRange(result.Result.data);
+                    WriteGridVMarket();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+        }
+
+        private void btnVMarketBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtVMarketToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+            }
+            else
+            {
+                var service = new VMarketService();
+                var result = service.PedidoDetalhe(txtVMarketToken.Text, 1890692);
+                if (result.Success)
+                {
+                    //txtVMarketToken.Text = result.Result.token;
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+        }
+
+        private delegate void WritelstGridVMarketDelegate();
+        private void WriteGridVMarket()
+        {
+            if (gridBigFish.InvokeRequired)
+            {
+                var d = new WritelstGridVMarketDelegate(WriteGridVMarket);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridVMarket.DataSource = vMarketOrders.ToList();
+                gridVMarket.Refresh();
+            }
+        }
+
         #endregion
     }
 }
