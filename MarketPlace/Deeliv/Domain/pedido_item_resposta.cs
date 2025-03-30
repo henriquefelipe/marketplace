@@ -13,7 +13,7 @@ namespace Deeliv.Domain
         public string res_titulo { get; set; }
         public decimal res_preco { get; set; }
         public decimal res_quantidade { get; set; }
-        public decimal res_fatordivisao { get; set; }
+        public decimal? res_fatordivisao { get; set; }
         public int car_res_id { get; set; }
     }
 }
