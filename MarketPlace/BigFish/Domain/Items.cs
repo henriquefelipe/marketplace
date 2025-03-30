@@ -23,9 +23,11 @@ namespace BigFish.Domain
         public decimal valor { get; set; }
         [XmlElement]
         public decimal valor_real { get; set; }
-        [XmlArrayItem("produtos", Type = typeof(Produtos))]
+        [XmlArray("produtos")]
+        [XmlArrayItem("rowprodutos")]
         public Produtos[] produtos { get; set; }
-        [XmlArrayItem("cardapio", Type = typeof(Cardapio))]
+        [XmlArray("cardapio")]
+        [XmlArrayItem("rowprodutos")]
         public Cardapio[] cardapio { get; set; }
     }
 }
