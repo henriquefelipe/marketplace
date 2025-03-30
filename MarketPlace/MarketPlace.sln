@@ -93,7 +93,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wedo", "Wedo\Wedo.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigFish", "BigFish\BigFish.csproj", "{2779F399-8E5C-4569-A74A-2855BAF2B7C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMarket", "VMarket\VMarket.csproj", "{CBD8C92B-AD17-414C-B626-D640A7C77326}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VMarket", "VMarket\VMarket.csproj", "{CBD8C92B-AD17-414C-B626-D640A7C77326}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tray", "Tray\Tray.csproj", "{B8B6D464-A19B-430A-AE2E-421AF220A9A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -285,6 +287,10 @@ Global
 		{CBD8C92B-AD17-414C-B626-D640A7C77326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD8C92B-AD17-414C-B626-D640A7C77326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD8C92B-AD17-414C-B626-D640A7C77326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B6D464-A19B-430A-AE2E-421AF220A9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B6D464-A19B-430A-AE2E-421AF220A9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B6D464-A19B-430A-AE2E-421AF220A9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B6D464-A19B-430A-AE2E-421AF220A9A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

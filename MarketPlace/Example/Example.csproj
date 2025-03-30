@@ -253,6 +253,10 @@
       <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
       <Name>SuperMenu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tray\Tray.csproj">
+      <Project>{b8b6d464-a19b-430a-ae2e-421af220a9a3}</Project>
+      <Name>Tray</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UberEats\UberEats.csproj">
       <Project>{da7501a5-63e5-497d-b643-cc002c4d98fc}</Project>
       <Name>UberEats</Name>

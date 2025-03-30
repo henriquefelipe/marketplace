@@ -52,6 +52,7 @@ using Wedo.Service;
 using BigFish.Service;
 using VMarket.Service;
 using VMarket.Domain;
+using Tray.Service;
 
 namespace Example
 {
@@ -164,6 +165,10 @@ namespace Example
         private List<BigFish.Domain.Order> _bigFishOrders { get; set; }
         private string _bigFishId { get; set; }
         private string _bigFishClientDocument { get; set; }
+
+
+        private List<Tray.Domain.order> _trayOrders { get; set; }
+        private string _trayId { get; set; }
         #endregion
 
         public Form1()
@@ -344,6 +349,14 @@ namespace Example
                             if (marketPlace.Wedo != null)
                             {
                                 txtWedoToken.Text = marketPlace.Wedo.Token;
+                            }
+
+                            if (marketPlace.Tray != null)
+                            {
+                                txtTrayKey.Text = marketPlace.Tray.Client_ID;
+                                txtTraySecret.Text = marketPlace.Tray.Client_SECRET;
+                                txtTrayCode.Text = marketPlace.Tray.MerchantId;
+                                txtTrayURL.Text = marketPlace.Tray.Url;
                             }
                         }
                     }
@@ -9285,7 +9298,7 @@ namespace Example
                 vMarketOrders = new List<pedido_listar>();
 
                 var service = new VMarketService();
-                var result = service.PedidoListar(txtVMarketToken.Text,1000000);
+                var result = service.PedidoListar(txtVMarketToken.Text, 1000000);
                 if (result.Success)
                 {
                     vMarketOrders.AddRange(result.Result.data);
@@ -9335,6 +9348,109 @@ namespace Example
         }
 
         #endregion
+
+        #region Tray
+
+        private void btnTrayGerarToken_Click(object sender, EventArgs e)
+        {
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.Auth(txtTrayKey.Text, txtTraySecret.Text, txtTrayCode.Text);
+            if (result.Success)
+            {
+                txtTrayToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+
+        }
+
+        private void btnTrayPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+            }
+            else
+            {
+                _trayOrders = new List<Tray.Domain.order>();
+
+                var filtros = new Tray.Domain.orderFilters
+                {
+                    //inicio = DateTime.Now,
+                    //fim = DateTime.Now
+                    inicio = Convert.ToDateTime("25/03/2025"),
+                    fim = Convert.ToDateTime("30/03/2025")
+                };
+
+                var service = new TrayService(txtTrayURL.Text);
+                var result = service.Orders(txtTrayToken.Text, filtros);
+                if (result.Success)
+                {
+                    foreach (var item in result.Result.Orders)
+                        _trayOrders.Add(item.Order);
+                    WriteGridTray();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+        }
+
+        private void btnTrayPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_trayId))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.Order(txtTrayToken.Text, _trayId);
+            if (result.Success)
+            {
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+
+        }
+
+        private void gridTray_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridTray.Rows.Count)
+            {
+                _trayId = gridTray.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+        }
+
+        private delegate void WritelstGridTraytDelegate();
+        private void WriteGridTray()
+        {
+            if (gridTray.InvokeRequired)
+            {
+                var d = new WritelstGridTraytDelegate(WriteGridTray);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridTray.DataSource = _trayOrders.ToList();
+                gridTray.Refresh();
+            }
+        }
+
+        #endregion
+
     }
 }
 

@@ -28,6 +28,7 @@ namespace Example
         public MarketPlaceConfigAtivMob Iorion9 { get; set; }
         public MarketPlaceEpadoca Agilizone { get; set; }
         public MarketPlaceConfigAtivMob Wedo { get; set; }
+        public MarketPlaceConfigGoomer Tray {  get; set; }
     }
 
     public class MarketPlaceConfigAnotaAi
