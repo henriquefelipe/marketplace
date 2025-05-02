@@ -70,5 +70,6 @@ namespace Tray.Domain
         public customer Customer { get; set; }
         public orderStatus OrderStatus { get; set; }
         public List<productResult> ProductsSold { get; set; }
+        public List<paymentResult> Payment { get; set; }
     }
 }

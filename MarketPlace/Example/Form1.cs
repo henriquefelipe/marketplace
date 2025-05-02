@@ -42,10 +42,10 @@ using Agilizone.Service;
 using FixeCRM.Domain;
 using SelfBuyMe.Service;
 using Fidelizi.Service;
-using Plug4Sales.Service;
+using Repediu.Service;
 using CardapioWeb.Service;
 using FixeCRM.Service;
-using Plug4Sales.Domain;
+using Repediu.Domain;
 using DeliveryVip.Service;
 using DegustaAi.Domain;
 using Wedo.Service;
@@ -8267,10 +8267,10 @@ namespace Example
 
         #endregion
 
-        #region Plug4Sales
+        #region Repediu
         private void btnPlug4SalesToken_Click(object sender, EventArgs e)
         {
-            var service = new Plug4SalesService();
+            var service = new RepediuService();
             var result = service.Token(txtPlug4SalesClientId.Text, txtPlug4SalesClientSecret.Text);
             if (result.Success)
             {
@@ -8291,28 +8291,28 @@ namespace Example
 
         private void txtPlug4Sales_Click(object sender, EventArgs e)
         {
-            var pedidos = new List<Plug4Sales.Domain.order>();
-            var pedido = new Plug4Sales.Domain.order();
+            var pedidos = new List<Repediu.Domain.order>();
+            var pedido = new Repediu.Domain.order();
             pedido.id = Guid.NewGuid().ToString();
             pedido.displayId = DateTime.Now.ToString("yyyyMMddHHmmss");
             pedido.createdAt = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             pedido.preparationStartDateTime = DateTime.Now.AddMinutes(40).ToString("yyyy-MM-ddTHH:mm:ss");
 
-            pedido.merchant = new Plug4Sales.Domain.merchant();
+            pedido.merchant = new Repediu.Domain.merchant();
             pedido.merchant.id = Guid.NewGuid().ToString();
             pedido.merchant.name = "IzzyWay";
 
-            pedido.customer = new Plug4Sales.Domain.customer();
+            pedido.customer = new Repediu.Domain.customer();
             pedido.customer.id = Guid.NewGuid().ToString();
             pedido.customer.name = "Henrique";
-            pedido.customer.phone = new Plug4Sales.Domain.customer_phone();
+            pedido.customer.phone = new Repediu.Domain.customer_phone();
             pedido.customer.phone.number = "987704779";
             pedido.customer.phone.extension = "85";
             pedido.customer.documentNumber = "00000000000";
 
-            pedido.delivery = new Plug4Sales.Domain.delivery();
+            pedido.delivery = new Repediu.Domain.delivery();
             pedido.delivery.deliveredBy = "MERCHANT";
-            pedido.delivery.deliveryAddress = new Plug4Sales.Domain.deliveryAddress();
+            pedido.delivery.deliveryAddress = new Repediu.Domain.deliveryAddress();
             pedido.delivery.deliveryAddress.state = "SP";
             pedido.delivery.deliveryAddress.city = "São Paulo";
             pedido.delivery.deliveryAddress.district = "Moema";
@@ -8323,42 +8323,42 @@ namespace Example
             pedido.delivery.deliveryAddress.formattedAddress = "Plaza Avenue, 100, BL 02 AP 31, Moema - São Paulo, SP - Brazil";
             pedido.delivery.deliveryAddress.postalCode = "20111-000";
 
-            var item = new Plug4Sales.Domain.item();
+            var item = new Repediu.Domain.item();
             item.id = Guid.NewGuid().ToString();
             item.name = "Calabresa";
             item.category = "Pizza";
             item.externalCode = "1";
             item.unit = "UN";
             item.quantity = 1;
-            item.unitPrice = new Plug4Sales.Domain.values(30);
-            item.totalPrice = new Plug4Sales.Domain.values(30);
+            item.unitPrice = new Repediu.Domain.values(30);
+            item.totalPrice = new Repediu.Domain.values(30);
 
-            var option = new Plug4Sales.Domain.option();
+            var option = new Repediu.Domain.option();
             option.id = Guid.NewGuid().ToString();
             option.name = "Cebola";
             option.unit = "UN";
             option.quantity = 1;
             option.externalCode = "2";
-            option.unitPrice = new Plug4Sales.Domain.values(5);
-            option.totalPrice = new Plug4Sales.Domain.values(5);
+            option.unitPrice = new Repediu.Domain.values(5);
+            option.totalPrice = new Repediu.Domain.values(5);
 
             item.options.Add(option);
 
-            pedido.total = new Plug4Sales.Domain.total();
-            pedido.total.itemsPrice = new Plug4Sales.Domain.values(30);
+            pedido.total = new Repediu.Domain.total();
+            pedido.total.itemsPrice = new Repediu.Domain.values(30);
 
             var frete = new otherFees_price();
             frete.value = 10;
-            pedido.otherFees.Add(new Plug4Sales.Domain.otherFees { price = frete });
+            pedido.otherFees.Add(new Repediu.Domain.otherFees { price = frete });
 
-            pedido.total.otherFees = new Plug4Sales.Domain.values(0);
-            pedido.total.discount = new Plug4Sales.Domain.values(5);
-            pedido.total.orderAmount = new Plug4Sales.Domain.values(35);
+            pedido.total.otherFees = new Repediu.Domain.values(0);
+            pedido.total.discount = new Repediu.Domain.values(5);
+            pedido.total.orderAmount = new Repediu.Domain.values(35);
 
 
             pedidos.Add(pedido);
 
-            var service = new Plug4SalesService();
+            var service = new RepediuService();
             var result = service.Orders(txtPlug4SalesTokenGerado.Text, pedidos);
             if (result.Success)
             {
@@ -8400,13 +8400,13 @@ namespace Example
 
         private void cardapioWeb()
         {
-            var service = new CardapioWebService(txtCardapioWebToken.Text);
+            var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
 
             try
             {
                 //while (btnIorion9Parar.Enabled)
                 //{
-                var orderResult = service.Orders();
+                var orderResult = service.Orders("?status=waiting_confirmation");
                 if (orderResult.Success)
                 {
                     _cardapioWebOrders = orderResult.Result.Where(w => w.status == CardapioWeb.Enum.OrderStatus.WAITING_CONFIRMATION).ToList();
@@ -9449,8 +9449,29 @@ namespace Example
             }
         }
 
-        #endregion
+        
 
+        private void btnTrayFormaPagamento_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+                return;
+            }
+            
+
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.PaymentsMethods(txtTrayToken.Text);
+            if (result.Success)
+            {
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
     }
 }
 

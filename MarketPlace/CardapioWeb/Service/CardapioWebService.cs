@@ -26,12 +26,12 @@ namespace CardapioWeb.Service
             _url = url;
         }
 
-        public GenericResult<List<responseOrders>> Orders()
+        public GenericResult<List<responseOrders>> Orders(string parametros = "")
         {
             var result = new GenericResult<List<responseOrders>>();
             try
             {                
-                var client = new RestClient(_url + "api/partner/v1/orders");
+                var client = new RestClient(_url + $"api/partner/v1/orders{parametros}");
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("X-API-KEY", _token);                
 

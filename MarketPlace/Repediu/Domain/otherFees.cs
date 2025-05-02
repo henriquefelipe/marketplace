@@ -5,7 +5,7 @@ using System.Diagnostics.Contracts;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Plug4Sales.Domain
+namespace Repediu.Domain
 {
     public class otherFees
     {

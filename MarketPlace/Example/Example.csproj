@@ -225,9 +225,9 @@
       <Project>{dacbf174-3fbe-4a18-b22a-15ff999c7807}</Project>
       <Name>PixCommerce</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Plug4Sales\Plug4Sales.csproj">
+    <ProjectReference Include="..\Repediu\Repediu.csproj">
       <Project>{1f723dd4-e55e-4245-b76a-473aa83c443f}</Project>
-      <Name>Plug4Sales</Name>
+      <Name>Repediu</Name>
     </ProjectReference>
     <ProjectReference Include="..\QueroDelivery\QueroDelivery.csproj">
       <Project>{0bd1a203-8f50-4436-9f29-991a2af9dbe9}</Project>

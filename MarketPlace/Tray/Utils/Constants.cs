@@ -10,6 +10,7 @@ namespace Tray.Utils
 
         public const string URL_AUTH = "web_api/auth";
         public const string URL_ORDERS = "web_api/orders/";
-        public const string URL_ORDER_COMPLETE = "/complete/";        
+        public const string URL_ORDER_COMPLETE = "/complete/";
+        public const string URL_PAYMENTS_METHODS_ACTIVE = "web_api/payments/methods/1/active";
     }
 }

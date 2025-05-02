@@ -6,6 +6,11 @@ namespace Tray.Domain
 {
     public class customer
     {
+        public customer()
+        {
+            CustomerAddresses = new List<customerAddressesResult>();
+        }
+
         public string cnpj { get; set; }
         public string newsletter { get; set; }
         public DateTime created { get; set; }
@@ -48,5 +53,7 @@ namespace Tray.Domain
         public string country { get; set; }
         public string modified { get; set; }
         public string count_orders { get; set; }
+
+        public List<customerAddressesResult> CustomerAddresses { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using MarketPlace;
 using Newtonsoft.Json;
-using Plug4Sales.Domain;
+using Repediu.Domain;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plug4Sales.Service
+namespace Repediu.Service
 {
-    public class Plug4SalesService
+    public class RepediuService
     {
         private string _url = "https://public-api.repediu.com.br/";
         
-        public Plug4SalesService() {}
+        public RepediuService() {}
 
         public GenericResult<result_token> Token(string ClientId, string ClientSecret)
         {
