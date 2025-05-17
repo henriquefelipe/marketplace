@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn = new System.Windows.Forms.TabControl();
             this.tabPageTray = new System.Windows.Forms.TabPage();
+            this.btnTrayFormaPagamento = new System.Windows.Forms.Button();
             this.btnTrayGerarToken = new System.Windows.Forms.Button();
             this.label140 = new System.Windows.Forms.Label();
             this.txtTrayCode = new System.Windows.Forms.TextBox();
@@ -711,7 +712,7 @@
             this.txtBigFishURL = new System.Windows.Forms.TextBox();
             this.btnBigFishParar = new System.Windows.Forms.Button();
             this.btnBigFishIniciar = new System.Windows.Forms.Button();
-            this.btnTrayFormaPagamento = new System.Windows.Forms.Button();
+            this.btnDegustaAiFecharMesa = new System.Windows.Forms.Button();
             this.btn.SuspendLayout();
             this.tabPageTray.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTray)).BeginInit();
@@ -877,6 +878,18 @@
             this.tabPageTray.TabIndex = 44;
             this.tabPageTray.Text = "Tray";
             this.tabPageTray.UseVisualStyleBackColor = true;
+            // 
+            // btnTrayFormaPagamento
+            // 
+            this.btnTrayFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrayFormaPagamento.Location = new System.Drawing.Point(968, 307);
+            this.btnTrayFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTrayFormaPagamento.Name = "btnTrayFormaPagamento";
+            this.btnTrayFormaPagamento.Size = new System.Drawing.Size(228, 48);
+            this.btnTrayFormaPagamento.TabIndex = 75;
+            this.btnTrayFormaPagamento.Text = "Forma de Pagamento";
+            this.btnTrayFormaPagamento.UseVisualStyleBackColor = true;
+            this.btnTrayFormaPagamento.Click += new System.EventHandler(this.btnTrayFormaPagamento_Click);
             // 
             // btnTrayGerarToken
             // 
@@ -1143,6 +1156,7 @@
             // 
             // tabPageDegustAi
             // 
+            this.tabPageDegustAi.Controls.Add(this.btnDegustaAiFecharMesa);
             this.tabPageDegustAi.Controls.Add(this.btnDegustaAiResumoUsuario);
             this.tabPageDegustAi.Controls.Add(this.btnDegustaAiRegastaPremio);
             this.tabPageDegustAi.Controls.Add(this.btnDegustaAiConsultaPremio);
@@ -9026,17 +9040,17 @@
             this.btnBigFishIniciar.UseVisualStyleBackColor = true;
             this.btnBigFishIniciar.Click += new System.EventHandler(this.btnBigFishIniciar_Click);
             // 
-            // btnTrayFormaPagamento
+            // btnDegustaAiFecharMesa
             // 
-            this.btnTrayFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrayFormaPagamento.Location = new System.Drawing.Point(968, 307);
-            this.btnTrayFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTrayFormaPagamento.Name = "btnTrayFormaPagamento";
-            this.btnTrayFormaPagamento.Size = new System.Drawing.Size(228, 48);
-            this.btnTrayFormaPagamento.TabIndex = 75;
-            this.btnTrayFormaPagamento.Text = "Forma de Pagamento";
-            this.btnTrayFormaPagamento.UseVisualStyleBackColor = true;
-            this.btnTrayFormaPagamento.Click += new System.EventHandler(this.btnTrayFormaPagamento_Click);
+            this.btnDegustaAiFecharMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDegustaAiFecharMesa.Location = new System.Drawing.Point(708, 698);
+            this.btnDegustaAiFecharMesa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDegustaAiFecharMesa.Name = "btnDegustaAiFecharMesa";
+            this.btnDegustaAiFecharMesa.Size = new System.Drawing.Size(207, 39);
+            this.btnDegustaAiFecharMesa.TabIndex = 69;
+            this.btnDegustaAiFecharMesa.Text = "Fechar Mesa";
+            this.btnDegustaAiFecharMesa.UseVisualStyleBackColor = true;
+            this.btnDegustaAiFecharMesa.Click += new System.EventHandler(this.btnDegustaAiFecharMesa_Click);
             // 
             // Form1
             // 
@@ -9870,6 +9884,7 @@
         private System.Windows.Forms.TextBox txtTrayCode;
         private System.Windows.Forms.Button btnTrayGerarToken;
         private System.Windows.Forms.Button btnTrayFormaPagamento;
+        private System.Windows.Forms.Button btnDegustaAiFecharMesa;
     }
 }
 

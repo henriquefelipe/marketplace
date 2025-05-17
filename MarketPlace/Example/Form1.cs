@@ -7832,6 +7832,18 @@ namespace Example
             }
         }
 
+        private void btnDegustaAiFecharMesa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.FecharMesa(txtIorionToken.Text, "1", "Dinheiro");
+        }
+
 
         #endregion
 
@@ -9297,8 +9309,11 @@ namespace Example
             {
                 vMarketOrders = new List<pedido_listar>();
 
+                var inicio = DateTime.Now.AddMonths(-1);
+                var fim = DateTime.Now;
+
                 var service = new VMarketService();
-                var result = service.PedidoListar(txtVMarketToken.Text, 1000000);
+                var result = service.PedidoListar(txtVMarketToken.Text, inicio, fim, 1000000);
                 if (result.Success)
                 {
                     vMarketOrders.AddRange(result.Result.data);
@@ -9472,6 +9487,8 @@ namespace Example
         }
 
         #endregion
+
+        
     }
 }
 

@@ -12,10 +12,19 @@ namespace DegustaAi.Service
     public class DegustaAiService
     {
         private string _urlHost;
+        private string _tokenSW;
+
         public DegustaAiService(string host)
         {
             _urlHost = host;
         }
+
+        public DegustaAiService(string host, string tokenSW)
+        {
+            _urlHost = host;
+            _tokenSW = tokenSW;
+        }
+
         public GenericResult<response> Orders(string token, string parametros, DateTime dataAtualizacao)
         {
             var result = new GenericResult<response>();
@@ -25,6 +34,11 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
+            if(!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -49,6 +63,11 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.POST);
             request.AddHeader("Bearer", token);
             request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -74,6 +93,10 @@ namespace DegustaAi.Service
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Bearer", token);
                 request.AddHeader("Content-Type", "application/json");
+                if (!string.IsNullOrEmpty(_tokenSW))
+                {
+                    request.AddHeader("integrador-token", _tokenSW);
+                }
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -348,6 +371,10 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -372,10 +399,42 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.POST);
             request.AddHeader("Bearer", token);
             request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<response>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<response_base> FecharMesa(string token, string codigoMesa, string formaPagamento)
+        {
+            var result = new GenericResult<response_base>();
+
+            var url = $"https://api.{_urlHost}{Constants.URL_FECHAR_MESA}?codPdv={codigoMesa}&forma={formaPagamento}";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Bearer", token);
+            request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                result.Result = JsonConvert.DeserializeObject<response_base>(response.Content);
                 result.Success = true;
             }
             else
@@ -396,6 +455,10 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -420,6 +483,10 @@ namespace DegustaAi.Service
             var request = new RestRequest(Method.POST);
             request.AddHeader("Bearer", token);
             request.AddHeader("Content-Type", "application/json");
+            if (!string.IsNullOrEmpty(_tokenSW))
+            {
+                request.AddHeader("integrador-token", _tokenSW);
+            }
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
