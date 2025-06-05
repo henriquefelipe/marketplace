@@ -12,5 +12,7 @@ namespace BigFish.Domain
         public string command { get; set; }
         [XmlElement(Type = typeof(Order))]
         public Order order { get; set; }
+        [XmlElement]
+        public string erro { get; set; }
     }
 }

@@ -63,8 +63,11 @@ namespace BigFish.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     result.Result = response.Content.DeserializeXml<ResponseOrders>();
-                    result.Success = true;
                     result.Json = response.Content;
+
+                    result.Success = string.IsNullOrEmpty(result.Result.erro);
+                    if (!result.Success)
+                        result.Message = result.Result.erro;
                 }
                 else
                 {
@@ -99,8 +102,11 @@ namespace BigFish.Service
                     }
 
                     result.Result = response.Content.DeserializeXml<ResponseOrder>();
-                    result.Success = true;
                     result.Json = response.Content;
+
+                    result.Success = string.IsNullOrEmpty(result.Result.erro);
+                    if (!result.Success)
+                        result.Message = result.Result.erro;
                 }
                 else
                 {
