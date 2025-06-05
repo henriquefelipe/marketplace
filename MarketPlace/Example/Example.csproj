@@ -225,9 +225,9 @@
       <Project>{dacbf174-3fbe-4a18-b22a-15ff999c7807}</Project>
       <Name>PixCommerce</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Plug4Sales\Plug4Sales.csproj">
+    <ProjectReference Include="..\Repediu\Repediu.csproj">
       <Project>{1f723dd4-e55e-4245-b76a-473aa83c443f}</Project>
-      <Name>Plug4Sales</Name>
+      <Name>Repediu</Name>
     </ProjectReference>
     <ProjectReference Include="..\QueroDelivery\QueroDelivery.csproj">
       <Project>{0bd1a203-8f50-4436-9f29-991a2af9dbe9}</Project>
@@ -252,6 +252,10 @@
     <ProjectReference Include="..\SuperMenu\SuperMenu.csproj">
       <Project>{99e71d2d-c46a-475e-aca6-dc7b07e82a65}</Project>
       <Name>SuperMenu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tray\Tray.csproj">
+      <Project>{b8b6d464-a19b-430a-ae2e-421af220a9a3}</Project>
+      <Name>Tray</Name>
     </ProjectReference>
     <ProjectReference Include="..\UberEats\UberEats.csproj">
       <Project>{da7501a5-63e5-497d-b643-cc002c4d98fc}</Project>

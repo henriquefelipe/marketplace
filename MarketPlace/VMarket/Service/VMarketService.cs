@@ -44,11 +44,13 @@ namespace VMarket.Service
             return result;
         }
 
-        public GenericResult<result<List<pedido_listar>>> PedidoListar(string token, int paginacao = 100)
+        public GenericResult<result<List<pedido_listar>>> PedidoListar(string token, DateTime inicio, DateTime fim, int paginacao = 100)
         {
+            var parametros = $"data_inicio={inicio.ToString("yyyy-MM-dd")}&data_fim={fim.ToString("yyyy-MM-dd")}&paginate={paginacao}";
+
             var result = new GenericResult<result<List<pedido_listar>>>();
 
-            var url = string.Format("{0}{1}?paginate={2}", Constants.URL, Constants.URL_PEDIDO_LISTAR, paginacao);
+            var url = string.Format("{0}{1}?{2}", Constants.URL, Constants.URL_PEDIDO_LISTAR, parametros);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
@@ -61,7 +63,17 @@ namespace VMarket.Service
             }
             else
             {
-                result.Message = response.Content;
+                var mensagem = response.Content;
+                if (!string.IsNullOrEmpty(mensagem) && mensagem.Contains("nenhum pedido"))
+                {
+                    result.Result = new result<List<pedido_listar>>();
+                    result.Result.data = new List<pedido_listar>();
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = mensagem;
+                }
             }
 
             result.Json = response.Content;

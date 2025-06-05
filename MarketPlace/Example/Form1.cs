@@ -42,16 +42,17 @@ using Agilizone.Service;
 using FixeCRM.Domain;
 using SelfBuyMe.Service;
 using Fidelizi.Service;
-using Plug4Sales.Service;
+using Repediu.Service;
 using CardapioWeb.Service;
 using FixeCRM.Service;
-using Plug4Sales.Domain;
+using Repediu.Domain;
 using DeliveryVip.Service;
 using DegustaAi.Domain;
 using Wedo.Service;
 using BigFish.Service;
 using VMarket.Service;
 using VMarket.Domain;
+using Tray.Service;
 
 namespace Example
 {
@@ -164,6 +165,10 @@ namespace Example
         private List<BigFish.Domain.Order> _bigFishOrders { get; set; }
         private string _bigFishId { get; set; }
         private string _bigFishClientDocument { get; set; }
+
+
+        private List<Tray.Domain.order> _trayOrders { get; set; }
+        private string _trayId { get; set; }
         #endregion
 
         public Form1()
@@ -344,6 +349,14 @@ namespace Example
                             if (marketPlace.Wedo != null)
                             {
                                 txtWedoToken.Text = marketPlace.Wedo.Token;
+                            }
+
+                            if (marketPlace.Tray != null)
+                            {
+                                txtTrayKey.Text = marketPlace.Tray.Client_ID;
+                                txtTraySecret.Text = marketPlace.Tray.Client_SECRET;
+                                txtTrayCode.Text = marketPlace.Tray.MerchantId;
+                                txtTrayURL.Text = marketPlace.Tray.Url;
                             }
                         }
                     }
@@ -7819,6 +7832,18 @@ namespace Example
             }
         }
 
+        private void btnDegustaAiFecharMesa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtIorionToken.Text))
+            {
+                MessageBox.Show("Campo Token gerado Obrigatório");
+                return;
+            }
+
+            var service = new DegustaAiService(txtIorionURL.Text);
+            var result = service.FecharMesa(txtIorionToken.Text, "1", "Dinheiro");
+        }
+
 
         #endregion
 
@@ -8254,10 +8279,10 @@ namespace Example
 
         #endregion
 
-        #region Plug4Sales
+        #region Repediu
         private void btnPlug4SalesToken_Click(object sender, EventArgs e)
         {
-            var service = new Plug4SalesService();
+            var service = new RepediuService();
             var result = service.Token(txtPlug4SalesClientId.Text, txtPlug4SalesClientSecret.Text);
             if (result.Success)
             {
@@ -8278,28 +8303,28 @@ namespace Example
 
         private void txtPlug4Sales_Click(object sender, EventArgs e)
         {
-            var pedidos = new List<Plug4Sales.Domain.order>();
-            var pedido = new Plug4Sales.Domain.order();
+            var pedidos = new List<Repediu.Domain.order>();
+            var pedido = new Repediu.Domain.order();
             pedido.id = Guid.NewGuid().ToString();
             pedido.displayId = DateTime.Now.ToString("yyyyMMddHHmmss");
             pedido.createdAt = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             pedido.preparationStartDateTime = DateTime.Now.AddMinutes(40).ToString("yyyy-MM-ddTHH:mm:ss");
 
-            pedido.merchant = new Plug4Sales.Domain.merchant();
+            pedido.merchant = new Repediu.Domain.merchant();
             pedido.merchant.id = Guid.NewGuid().ToString();
             pedido.merchant.name = "IzzyWay";
 
-            pedido.customer = new Plug4Sales.Domain.customer();
+            pedido.customer = new Repediu.Domain.customer();
             pedido.customer.id = Guid.NewGuid().ToString();
             pedido.customer.name = "Henrique";
-            pedido.customer.phone = new Plug4Sales.Domain.customer_phone();
+            pedido.customer.phone = new Repediu.Domain.customer_phone();
             pedido.customer.phone.number = "987704779";
             pedido.customer.phone.extension = "85";
             pedido.customer.documentNumber = "00000000000";
 
-            pedido.delivery = new Plug4Sales.Domain.delivery();
+            pedido.delivery = new Repediu.Domain.delivery();
             pedido.delivery.deliveredBy = "MERCHANT";
-            pedido.delivery.deliveryAddress = new Plug4Sales.Domain.deliveryAddress();
+            pedido.delivery.deliveryAddress = new Repediu.Domain.deliveryAddress();
             pedido.delivery.deliveryAddress.state = "SP";
             pedido.delivery.deliveryAddress.city = "São Paulo";
             pedido.delivery.deliveryAddress.district = "Moema";
@@ -8310,42 +8335,42 @@ namespace Example
             pedido.delivery.deliveryAddress.formattedAddress = "Plaza Avenue, 100, BL 02 AP 31, Moema - São Paulo, SP - Brazil";
             pedido.delivery.deliveryAddress.postalCode = "20111-000";
 
-            var item = new Plug4Sales.Domain.item();
+            var item = new Repediu.Domain.item();
             item.id = Guid.NewGuid().ToString();
             item.name = "Calabresa";
             item.category = "Pizza";
             item.externalCode = "1";
             item.unit = "UN";
             item.quantity = 1;
-            item.unitPrice = new Plug4Sales.Domain.values(30);
-            item.totalPrice = new Plug4Sales.Domain.values(30);
+            item.unitPrice = new Repediu.Domain.values(30);
+            item.totalPrice = new Repediu.Domain.values(30);
 
-            var option = new Plug4Sales.Domain.option();
+            var option = new Repediu.Domain.option();
             option.id = Guid.NewGuid().ToString();
             option.name = "Cebola";
             option.unit = "UN";
             option.quantity = 1;
             option.externalCode = "2";
-            option.unitPrice = new Plug4Sales.Domain.values(5);
-            option.totalPrice = new Plug4Sales.Domain.values(5);
+            option.unitPrice = new Repediu.Domain.values(5);
+            option.totalPrice = new Repediu.Domain.values(5);
 
             item.options.Add(option);
 
-            pedido.total = new Plug4Sales.Domain.total();
-            pedido.total.itemsPrice = new Plug4Sales.Domain.values(30);
+            pedido.total = new Repediu.Domain.total();
+            pedido.total.itemsPrice = new Repediu.Domain.values(30);
 
             var frete = new otherFees_price();
             frete.value = 10;
-            pedido.otherFees.Add(new Plug4Sales.Domain.otherFees { price = frete });
+            pedido.otherFees.Add(new Repediu.Domain.otherFees { price = frete });
 
-            pedido.total.otherFees = new Plug4Sales.Domain.values(0);
-            pedido.total.discount = new Plug4Sales.Domain.values(5);
-            pedido.total.orderAmount = new Plug4Sales.Domain.values(35);
+            pedido.total.otherFees = new Repediu.Domain.values(0);
+            pedido.total.discount = new Repediu.Domain.values(5);
+            pedido.total.orderAmount = new Repediu.Domain.values(35);
 
 
             pedidos.Add(pedido);
 
-            var service = new Plug4SalesService();
+            var service = new RepediuService();
             var result = service.Orders(txtPlug4SalesTokenGerado.Text, pedidos);
             if (result.Success)
             {
@@ -8387,13 +8412,13 @@ namespace Example
 
         private void cardapioWeb()
         {
-            var service = new CardapioWebService(txtCardapioWebToken.Text);
+            var service = new CardapioWebService(txtCardapioWebToken.Text, UrlCardapioWebSandBox);
 
             try
             {
                 //while (btnIorion9Parar.Enabled)
                 //{
-                var orderResult = service.Orders();
+                var orderResult = service.Orders("?status=waiting_confirmation");
                 if (orderResult.Success)
                 {
                     _cardapioWebOrders = orderResult.Result.Where(w => w.status == CardapioWeb.Enum.OrderStatus.WAITING_CONFIRMATION).ToList();
@@ -9284,8 +9309,11 @@ namespace Example
             {
                 vMarketOrders = new List<pedido_listar>();
 
+                var inicio = DateTime.Now.AddMonths(-1);
+                var fim = DateTime.Now;
+
                 var service = new VMarketService();
-                var result = service.PedidoListar(txtVMarketToken.Text,1000000);
+                var result = service.PedidoListar(txtVMarketToken.Text, inicio, fim, 1000000);
                 if (result.Success)
                 {
                     vMarketOrders.AddRange(result.Result.data);
@@ -9335,6 +9363,132 @@ namespace Example
         }
 
         #endregion
+
+        #region Tray
+
+        private void btnTrayGerarToken_Click(object sender, EventArgs e)
+        {
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.Auth(txtTrayKey.Text, txtTraySecret.Text, txtTrayCode.Text);
+            if (result.Success)
+            {
+                txtTrayToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+
+        }
+
+        private void btnTrayPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+            }
+            else
+            {
+                _trayOrders = new List<Tray.Domain.order>();
+
+                var filtros = new Tray.Domain.orderFilters
+                {
+                    //inicio = DateTime.Now,
+                    //fim = DateTime.Now
+                    inicio = Convert.ToDateTime("25/03/2025"),
+                    fim = Convert.ToDateTime("30/03/2025")
+                };
+
+                var service = new TrayService(txtTrayURL.Text);
+                var result = service.Orders(txtTrayToken.Text, filtros);
+                if (result.Success)
+                {
+                    foreach (var item in result.Result.Orders)
+                        _trayOrders.Add(item.Order);
+                    WriteGridTray();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
+            }
+        }
+
+        private void btnTrayPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_trayId))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.Order(txtTrayToken.Text, _trayId);
+            if (result.Success)
+            {
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+
+        }
+
+        private void gridTray_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridTray.Rows.Count)
+            {
+                _trayId = gridTray.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+        }
+
+        private delegate void WritelstGridTraytDelegate();
+        private void WriteGridTray()
+        {
+            if (gridTray.InvokeRequired)
+            {
+                var d = new WritelstGridTraytDelegate(WriteGridTray);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridTray.DataSource = _trayOrders.ToList();
+                gridTray.Refresh();
+            }
+        }
+
+        
+
+        private void btnTrayFormaPagamento_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTrayToken.Text))
+            {
+                MessageBox.Show("Gere o token");
+                return;
+            }
+            
+
+            var service = new TrayService(txtTrayURL.Text);
+            var result = service.PaymentsMethods(txtTrayToken.Text);
+            if (result.Success)
+            {
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        
     }
 }
 

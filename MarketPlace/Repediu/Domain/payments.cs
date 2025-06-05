@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plug4Sales.Domain
+namespace Repediu.Domain
 {
     public class payments
     {
