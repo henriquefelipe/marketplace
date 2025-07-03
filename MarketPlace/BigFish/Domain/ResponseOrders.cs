@@ -12,5 +12,7 @@ namespace BigFish.Domain
         [XmlArray("orders")]
         [XmlArrayItem("row")]
         public List<Order> orders { get; set; }
+        [XmlElement]
+        public string erro { get; set; }
     }
 }
