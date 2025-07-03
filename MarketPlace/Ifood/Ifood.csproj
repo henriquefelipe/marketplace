@@ -52,27 +52,25 @@
     <Compile Include="Domain\additionalFees.cs" />
     <Compile Include="Domain\benefit.cs" />
     <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\Catalog\Categories.cs" />
+    <Compile Include="Domain\Catalog\Catalogs.cs" />
+    <Compile Include="Domain\Catalog\UnsellableItems.cs" />
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\delivery.cs" />
     <Compile Include="Domain\deliveryAddress.cs" />
     <Compile Include="Domain\error.cs" />
     <Compile Include="Domain\error_return.cs" />
     <Compile Include="Domain\eventAcknowledgment.cs" />
-    <Compile Include="Domain\Finance\adjustmentsBenefits.cs" />
-    <Compile Include="Domain\Finance\cancellations.cs" />
-    <Compile Include="Domain\Finance\chargeCancellations.cs" />
-    <Compile Include="Domain\Finance\incomeTaxes.cs" />
-    <Compile Include="Domain\Finance\maintenanceFees.cs" />
-    <Compile Include="Domain\Finance\occurences.cs" />
-    <Compile Include="Domain\Finance\paymentDetails.cs" />
-    <Compile Include="Domain\Finance\payments.cs" />
-    <Compile Include="Domain\Finance\period.cs" />
+    <Compile Include="Domain\Finance\settlements.cs" />
     <Compile Include="Domain\Finance\sales.cs" />
-    <Compile Include="Domain\Finance\salesAdjustments.cs" />
-    <Compile Include="Domain\Finance\SalesBenefits.cs" />
+    <Compile Include="Domain\Finance\anticipations.cs" />
+    <Compile Include="Domain\Finance\financialEvents.cs" />
     <Compile Include="Domain\indoor.cs" />
     <Compile Include="Domain\item.cs" />
     <Compile Include="Domain\merchant.cs" />
+    <Compile Include="Domain\Merchant\Merchant.cs" />
+    <Compile Include="Domain\Merchant\MerchantInterruptions.cs" />
+    <Compile Include="Domain\Merchant\MerchantOpeningHours.cs" />
     <Compile Include="Domain\order.cs" />
     <Compile Include="Domain\payment.cs" />
     <Compile Include="Domain\picking.cs" />
@@ -113,6 +111,9 @@
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
       <Name>MarketPlace</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\Inventory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

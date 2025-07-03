@@ -48,7 +48,7 @@ namespace Deeliv.Service
             {
                 if (!string.IsNullOrEmpty(response.Content))
                 {
-                    if (response.Content.Contains("Nenhum registro foi encontrado."))
+                    if (response.Content.Contains("encontrado."))
                     {
                         result.Result = new List<pedido>();
                         result.Success = true;

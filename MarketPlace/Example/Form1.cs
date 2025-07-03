@@ -1,58 +1,61 @@
 ﻿using Accon.Service;
+using Agilizone.Service;
 using Aipedi.Service;
 using Aiqfome.Service;
 using AnotaAi.Service;
+using BigFish.Service;
+using CardapioWeb.Service;
 using Cinddi.Service;
+using Deeliv.Enum;
+using Deeliv.Service;
+using DegustaAi.Domain;
+using DegustaAi.Service;
 using DeliveryApp.Service;
 using DeliveryDireto.Service;
+using DeliveryVip.Service;
+using Epadoca.Domain;
 using Epadoca.Service;
+using EuFalo.Domain;
+using EuFalo.Service;
+using Fidelizi.Service;
+using FixeCRM.Domain;
+using FixeCRM.Service;
+using FoodyDelivery.Service;
 using GloriaFood.Service;
 using Goomer.Service;
 using IDelivery.Service;
 using Ifood.Enum;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
+using MultiPedido.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
-using Deeliv.Enum;
-using Deeliv.Service;
-using Rappi.Service;
+using PixCommerce.Service;
 using QueroDelivery.Service;
+using Rappi.Service;
+using Repediu.Domain;
+using Repediu.Service;
+using SelfBuyMe.Service;
+using Simbora.Domain;
+using Simbora.Enum;
+using Simbora.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Woocommerce.Service;
-using UberEats.Service;
-using PixCommerce.Service;
-using System.Runtime.CompilerServices;
-using MultiPedido.Service;
-using Epadoca.Domain;
-using Simbora.Service;
-using Simbora.Enum;
-using Simbora.Domain;
-using EuFalo.Service;
-using EuFalo.Domain;
-using DegustaAi.Service;
-using Agilizone.Service;
-using FixeCRM.Domain;
-using SelfBuyMe.Service;
-using Fidelizi.Service;
-using Repediu.Service;
-using CardapioWeb.Service;
-using FixeCRM.Service;
-using Repediu.Domain;
-using DeliveryVip.Service;
-using DegustaAi.Domain;
-using Wedo.Service;
-using BigFish.Service;
-using VMarket.Service;
-using VMarket.Domain;
 using Tray.Service;
+using UberEats.Service;
+using VMarket.Domain;
+using VMarket.Service;
+using Wedo.Service;
+using Woocommerce.Service;
 
 namespace Example
 {
@@ -357,6 +360,12 @@ namespace Example
                                 txtTraySecret.Text = marketPlace.Tray.Client_SECRET;
                                 txtTrayCode.Text = marketPlace.Tray.MerchantId;
                                 txtTrayURL.Text = marketPlace.Tray.Url;
+                            }
+
+                            if (marketPlace.FoodyDelivery != null)
+                            {
+                                txtFoodyDeliveryIDPArceiro .Text = marketPlace.FoodyDelivery.MerchantId;
+                                txtFoodyDeliveryToken.Text = marketPlace.FoodyDelivery.Token;                                
                             }
                         }
                     }
@@ -9486,9 +9495,160 @@ namespace Example
             }
         }
 
+
         #endregion
 
-        
+        #region FoodyDelivery
+        private void btnFoodyDeliveryCriarPedido_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtFoodyDeliveryIDPArceiro.Text))
+            {
+                MessageBox.Show("ID parceiro obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryToken.Text))
+            {
+                MessageBox.Show("token obrigatório");
+                return;
+            }
+
+            var model = new FoodyDelivery.Domain.OrderCreate();
+            model.id = DateTime.Now.ToString("HHmmss");
+            model.status = FoodyDelivery.Enum.OrderStatus.OPEN;
+            model.date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss-03:00");
+            model.customer = new FoodyDelivery.Domain.OrderCreateCustomer();
+            model.customer.customerName = "Henrique";
+            model.customer.customerPhone = "85987704779";
+            model.customer.customerEmail = "henrique.felipe85@gmail.com";
+            model.deliveryPoint = new FoodyDelivery.Domain.OrderCreatedeliveryPoint();
+
+            model.deliveryPoint.address = "Rua 1014, 85 Centro, Fortaleza-CE ";
+
+            model.deliveryPoint.houseNumber = "85";
+            model.deliveryPoint.region = "CE";
+            model.deliveryPoint.street = "Fortaleza";
+            model.deliveryPoint.complement = "sala 3";
+            model.deliveryPoint.city = "Fortaleza";
+            model.deliveryPoint.country = "BR";
+            model.deliveryFee = 10;
+            model.orderTotal = 100;
+            model.notes = "";
+
+            model.paymentMethod = "money";
+            
+            StringBuilder sbDetails = new StringBuilder();
+            sbDetails.AppendLine("CocaCola - 10,00 X 9 = 90,00");            
+
+            model.orderDetails = sbDetails.ToString();
+
+            var service = new FoodyDeliveryService(txtFoodyDeliveryIDPArceiro.Text, txtFoodyDeliveryToken.Text);
+            var result = service.CreateOrder(model);
+            if(result.Success)
+            {
+                txtFoodyDeliveryIdPedido.Text = result.Result.uid;
+                MessageBox.Show("Pedido criado com sucesso! ID: " + result.Result.uid);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }        
+
+        private void btnFoodyDeliveryPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFoodyDeliveryIDPArceiro.Text))
+            {
+                MessageBox.Show("ID parceiro obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryToken.Text))
+            {
+                MessageBox.Show("token obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryIdPedido.Text))
+            {
+                MessageBox.Show("Campo id do pedido obrigatório");
+                return;
+            }
+
+            var service = new FoodyDeliveryService(txtFoodyDeliveryIDPArceiro.Text, txtFoodyDeliveryToken.Text);
+            var result = service.UpdateStatus(txtFoodyDeliveryIdPedido.Text, FoodyDelivery.Enum.OrderStatus.CLOSED);
+            if (result.Success)
+            {                
+                MessageBox.Show("Pedido pronto com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFoodyDeliveryBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFoodyDeliveryIDPArceiro.Text))
+            {
+                MessageBox.Show("ID parceiro obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryToken.Text))
+            {
+                MessageBox.Show("token obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryIdPedido.Text))
+            {
+                MessageBox.Show("Campo id do pedido obrigatório");
+                return;
+            }
+
+            var service = new FoodyDeliveryService(txtFoodyDeliveryIDPArceiro.Text, txtFoodyDeliveryToken.Text);
+            var result = service.Order(txtFoodyDeliveryIdPedido.Text);
+            if (result.Success)
+            {
+                MessageBox.Show("Pedido pronto com sucesso! ID: " + result.Result.uid);
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        private void btnFoodyDeliveryBuscarPedidos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFoodyDeliveryIDPArceiro.Text))
+            {
+                MessageBox.Show("ID parceiro obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFoodyDeliveryToken.Text))
+            {
+                MessageBox.Show("token obrigatório");
+                return;
+            }
+            
+            var inicio = DateTime.Now.AddHours(-2);
+            var fim = DateTime.Now.AddHours(2);
+
+            var service = new FoodyDeliveryService(txtFoodyDeliveryIDPArceiro.Text, txtFoodyDeliveryToken.Text);
+            var result = service.Orders(inicio, fim);
+            if (result.Success)
+            {
+                MessageBox.Show("OK");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
     }
 }
 

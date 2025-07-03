@@ -1,4 +1,5 @@
 ﻿using Ifood.Domain;
+using Ifood.Domain.Catalog;
 using Ifood.Domain.Finance;
 using Ifood.Domain.Review;
 using Ifood.Utils;
@@ -558,9 +559,9 @@ namespace Ifood.Service
 
         #region Financeiro
 
-        public GenericResult<List<sales>> Sales(string token, string merchantId, DateTime inicio, DateTime fim)
+        public GenericResult<SalesRoot> Sales(string token, string merchantId, DateTime inicio, DateTime fim, int page)
         {
-            var result = new GenericResult<List<sales>>();
+            var result = new GenericResult<SalesRoot>();
             try
             {
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -572,11 +573,12 @@ namespace Ifood.Service
                 request.AddHeader("Authorization", $"Bearer {token}");
                 request.AddParameter("beginOrderDate", inicio.ToString("yyyy-MM-dd"));
                 request.AddParameter("endOrderDate", fim.ToString("yyyy-MM-dd"));
+                request.AddParameter("page", page);
                 IRestResponse response = client.Execute(request);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<sales>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<SalesRoot>(response.Content);
                     result.Success = true;
                 }
                 else
@@ -594,155 +596,15 @@ namespace Ifood.Service
             return result;
         }
 
-        public GenericResult<List<salesBenefits>> SalesBenefits(string token, string merchantId, DateTime inicio, DateTime fim)
+        public GenericResult<SettlementRoot> Settlements(string token, string merchantId, DateTime inicio, DateTime fim)
         {
-            var result = new GenericResult<List<salesBenefits>>();
+            var result = new GenericResult<SettlementRoot>();
             try
             {
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/salesBenefits");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("beginOrderDate", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("endOrderDate", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<salesBenefits>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<salesAdjustments>> SalesAdjustments(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<salesAdjustments>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/salesAdjustments");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("beginUpdateDate", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("endUpdateDate", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<salesAdjustments>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<adjustmentsBenefits>> AdjustmentsBenefits(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<adjustmentsBenefits>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/adjustmentsBenefits");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("beginOrderDate", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("endOrderDate", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<adjustmentsBenefits>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<payments>> Payments(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<payments>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/payments");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("beginConfirmedPaymentDate", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("endConfirmedPaymentDate", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<payments>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<paymentDetails>> PaymentsDetails(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<paymentDetails>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/paymentDetails");
+                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/settlements");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddHeader("Authorization", $"Bearer {token}");
@@ -751,7 +613,7 @@ namespace Ifood.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<paymentDetails>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<SettlementRoot>(response.Content);
                     result.Success = true;
                 }
                 else
@@ -769,24 +631,24 @@ namespace Ifood.Service
             return result;
         }
 
-        public GenericResult<List<occurences>> Occurrences(string token, string merchantId, DateTime inicio, DateTime fim)
+        public GenericResult<Anticipations> Anticipations(string token, string merchantId, DateTime inicio, DateTime fim)
         {
-            var result = new GenericResult<List<occurences>>();
+            var result = new GenericResult<Anticipations>();
             try
             {
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/occurrences");
+                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/anticipations");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("transactionDateBegin", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("transactionDateEnd", fim.ToString("yyyy-MM-dd"));
+                request.AddParameter("beginAnticipatedPaymentDate", inicio.ToString("yyyy-MM-dd"));
+                request.AddParameter("endAnticipatedPaymentDate", fim.ToString("yyyy-MM-dd"));
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<occurences>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Anticipations>(response.Content);
                     result.Success = true;
                 }
                 else
@@ -804,24 +666,26 @@ namespace Ifood.Service
             return result;
         }
 
-        public GenericResult<List<maintenanceFees>> MaintenanceFees(string token, string merchantId, DateTime inicio, DateTime fim)
+        public GenericResult<FinancialEventsRoots> FinancialEvents(string token, string merchantId, DateTime inicio, DateTime fim, int page, int size)
         {
-            var result = new GenericResult<List<maintenanceFees>>();
+            var result = new GenericResult<FinancialEventsRoots>();
             try
             {
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/maintenanceFees");
+                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/financial-events");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("transactionDateBegin", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("transactionDateEnd", fim.ToString("yyyy-MM-dd"));
+                request.AddParameter("beginOrderDate", inicio.ToString("yyyy-MM-dd"));
+                request.AddParameter("endOrderDate", fim.ToString("yyyy-MM-dd"));
+                request.AddParameter("page", page);
+                request.AddParameter("size", size);
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<maintenanceFees>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<FinancialEventsRoots>(response.Content);
                     result.Success = true;
                 }
                 else
@@ -838,146 +702,7 @@ namespace Ifood.Service
 
             return result;
         }
-
-        public GenericResult<List<incomeTaxes>> IncomeTaxes(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<incomeTaxes>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/incomeTaxes");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("transactionDateBegin", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("transactionDateEnd", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<incomeTaxes>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<chargeCancellations>> ChargeCancellations(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<chargeCancellations>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/chargeCancellations");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("transactionDateBegin", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("transactionDateEnd", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<chargeCancellations>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<cancellations>> Cancellations(string token, string merchantId, DateTime inicio, DateTime fim)
-        {
-            var result = new GenericResult<List<cancellations>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/cancellations");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("beginCancellationDate", inicio.ToString("yyyy-MM-dd"));
-                request.AddParameter("endCancellationDate", fim.ToString("yyyy-MM-dd"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<cancellations>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
-
-        public GenericResult<List<period>> Period(string token, string merchantId, DateTime competencia)
-        {
-            var result = new GenericResult<List<period>>();
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE_FINANCE}merchants/{merchantId}/periods");
-                client.Timeout = -1;
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddHeader("Authorization", $"Bearer {token}");
-                request.AddParameter("merchantId", merchantId);
-                request.AddParameter("competence", competencia.ToString("yyyy-MM"));
-                IRestResponse response = client.Execute(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    result.Result = JsonConvert.DeserializeObject<List<period>>(response.Content);
-                    result.Success = true;
-                }
-                else
-                {
-                    result.Message = response.Content;
-                }
-
-                result.Json = response.Content;
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
-
-            return result;
-        }
+       
 
         #endregion
 
@@ -1089,5 +814,222 @@ namespace Ifood.Service
 
         #endregion
 
+        #region Merchants
+
+        public GenericResult<Ifood.Domain.Merchant.Merchant> Merchants(string token, string merchantId)
+        {
+            var result = new GenericResult<Ifood.Domain.Merchant.Merchant>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<Ifood.Domain.Merchant.Merchant>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<Ifood.Domain.Merchant.MerchantInterruptions> Interruptions(string token, string merchantId)
+        {
+            var result = new GenericResult<Ifood.Domain.Merchant.MerchantInterruptions>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/interruptions");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<Ifood.Domain.Merchant.MerchantInterruptions>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<Ifood.Domain.Merchant.MerchantOpeningHours> OpeningHours(string token, string merchantId)
+        {
+            var result = new GenericResult<Ifood.Domain.Merchant.MerchantOpeningHours>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/opening-hours");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<Ifood.Domain.Merchant.MerchantOpeningHours>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        #endregion
+
+        #region Catalog
+
+        public GenericResult<List<Ifood.Domain.Catalog.Catalogs>> Catalogs(string token, string merchantId)
+        {
+            var result = new GenericResult<List<Ifood.Domain.Catalog.Catalogs>>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<List<Ifood.Domain.Catalog.Catalogs>>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<Categories> Categories(string token, string merchantId, string catalogId)
+        {
+            var result = new GenericResult<Categories>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs/{catalogId}/categories");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<Categories>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<UnsellableItems> UnsellableItems(string token, string merchantId, string catalogId)
+        {
+            var result = new GenericResult<UnsellableItems>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs/{catalogId}/unsellableItems");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<UnsellableItems>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        #endregion
+
+        #region Inventory
+
+
+
+        #endregion
     }
 }

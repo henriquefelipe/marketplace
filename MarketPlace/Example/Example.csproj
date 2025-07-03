@@ -181,6 +181,10 @@
       <Project>{93ad28ed-99ff-4be3-8d4f-81af5306a9d6}</Project>
       <Name>FixeCRM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FoodyDelivery\FoodyDelivery.csproj">
+      <Project>{bee98ba5-2624-4e37-8b88-b6b530af4468}</Project>
+      <Name>FoodyDelivery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GloriaFood\GloriaFood.csproj">
       <Project>{572c537e-0dfb-4b13-9b0d-6918d191c4bc}</Project>
       <Name>GloriaFood</Name>
