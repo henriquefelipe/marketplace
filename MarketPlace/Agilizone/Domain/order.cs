@@ -9,6 +9,7 @@ namespace Agilizone.Domain
         public order_client client { get; set; }
         public string details { get; set; }
         public string number { get; set; }
+        public string identifier { get; set; }        
         public string paymentType { get; set; }
         public decimal deliveryFee { get; set; }
         public decimal deliverymanFee { get; set; }

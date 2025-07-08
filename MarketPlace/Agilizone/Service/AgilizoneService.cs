@@ -12,7 +12,7 @@ namespace Agilizone.Service
 {
     public class AgilizoneService
     {
-        private string _url = "https://api.agilizup.com/agilizone/v1/";
+        private string _url = "https://api.agilizup.com/agilizone/v2/";
 
         public AgilizoneService() { }
 

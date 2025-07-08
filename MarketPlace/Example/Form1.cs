@@ -7901,13 +7901,17 @@ namespace Example
             order.deliverymanFee = 4;
             order.amount = 30;
             order.isPrepaid = true;
+            order.preparationTime = DateTime.Now.ToString("o");
+            order.externalId = Guid.NewGuid().ToString();
+            order.identifier = Guid.NewGuid().ToString();
+            order.orderTiming = Agilizone.Enum.OrderTiming.SCHEDULED;
 
             //var service = new AgilizoneService("https://api.test.agilizup.com/agilizone/v1/");
             var service = new AgilizoneService();
             var result = service.Order(order, txtAgilizoneToken.Text);
             if (result.Success)
             {
-                txtAgilizoneNumero.Text = result.Result.order.number;
+                txtAgilizoneNumero.Text = order.identifier;
                 MessageBox.Show("OK");
             }
             else
