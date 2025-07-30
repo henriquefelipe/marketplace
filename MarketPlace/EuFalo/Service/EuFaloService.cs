@@ -273,13 +273,13 @@ namespace EuFalo.Service
             return result;
         }
 
-        public GenericResult<saldo> ConsultarSaldoInstantaneo(string token, string documento)
+        public GenericResult<saldo> ConsultarSaldoInstantaneo(string token, string documento, decimal valorCompra)
         {
             var result = new GenericResult<saldo>();
             try
             {
 
-                var url = string.Format("{0}{1}?CPF={2}", Constants.URL_BASE, Constants.URL_CONSULTA_SALDO, documento);
+                var url = string.Format("{0}{1}?CPF={2}&valorCompra={3}", Constants.URL_BASE, Constants.URL_CONSULTA_SALDO, documento, valorCompra);
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Authorization", "Bearer " + token);

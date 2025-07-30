@@ -23,5 +23,6 @@ namespace FoodyDelivery.Domain
 
         public OrderCreateCustomer customer { get; set; }
         public string date { get; set; }
+        public string ifoodLocalizer { get; set; }
     }
 }

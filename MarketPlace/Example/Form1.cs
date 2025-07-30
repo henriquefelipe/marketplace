@@ -7535,7 +7535,7 @@ namespace Example
         private void btnEuFaloSaldo_Click(object sender, EventArgs e)
         {
             var service = new EuFaloService();
-            var result = service.ConsultarSaldoInstantaneo(txtEuFaloTokenGerado.Text, DOCUMENTO);
+            var result = service.ConsultarSaldoInstantaneo(txtEuFaloTokenGerado.Text, DOCUMENTO, 10);
             if (result.Success && result.Result.success.Any())
             {
                 var retorno = result.Result.success.FirstOrDefault();
