@@ -57,6 +57,9 @@
             this.label135 = new System.Windows.Forms.Label();
             this.txtVMarketEmail = new System.Windows.Forms.TextBox();
             this.tabPageFoodyDelivery = new System.Windows.Forms.TabPage();
+            this.btnFoodyDeliveryBuscarPedidos = new System.Windows.Forms.Button();
+            this.btnFoodyDeliveryBuscarPedido = new System.Windows.Forms.Button();
+            this.btnFoodyDeliveryPedidoPronto = new System.Windows.Forms.Button();
             this.label143 = new System.Windows.Forms.Label();
             this.txtFoodyDeliveryIdPedido = new System.Windows.Forms.TextBox();
             this.label142 = new System.Windows.Forms.Label();
@@ -721,9 +724,10 @@
             this.txtBigFishURL = new System.Windows.Forms.TextBox();
             this.btnBigFishParar = new System.Windows.Forms.Button();
             this.btnBigFishIniciar = new System.Windows.Forms.Button();
-            this.btnFoodyDeliveryPedidoPronto = new System.Windows.Forms.Button();
-            this.btnFoodyDeliveryBuscarPedido = new System.Windows.Forms.Button();
-            this.btnFoodyDeliveryBuscarPedidos = new System.Windows.Forms.Button();
+            this.tbIzzyGO = new System.Windows.Forms.TabPage();
+            this.btnPedidoSimplesIzzyGO = new System.Windows.Forms.Button();
+            this.lbIzzyGOResults = new System.Windows.Forms.ListBox();
+            this.btnClearResults = new System.Windows.Forms.Button();
             this.btn.SuspendLayout();
             this.tabPageTray.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTray)).BeginInit();
@@ -810,6 +814,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridWoocommerce)).BeginInit();
             this.tabPageBigFish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBigFish)).BeginInit();
+            this.tbIzzyGO.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn
@@ -860,6 +865,7 @@
             this.btn.Controls.Add(this.tabPageUberEats);
             this.btn.Controls.Add(this.tabPageWoocommerce);
             this.btn.Controls.Add(this.tabPageBigFish);
+            this.btn.Controls.Add(this.tbIzzyGO);
             this.btn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn.Location = new System.Drawing.Point(0, 0);
             this.btn.Margin = new System.Windows.Forms.Padding(4);
@@ -1185,6 +1191,42 @@
             this.tabPageFoodyDelivery.TabIndex = 45;
             this.tabPageFoodyDelivery.Text = "Foody Delivery";
             this.tabPageFoodyDelivery.UseVisualStyleBackColor = true;
+            // 
+            // btnFoodyDeliveryBuscarPedidos
+            // 
+            this.btnFoodyDeliveryBuscarPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoodyDeliveryBuscarPedidos.Location = new System.Drawing.Point(555, 620);
+            this.btnFoodyDeliveryBuscarPedidos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFoodyDeliveryBuscarPedidos.Name = "btnFoodyDeliveryBuscarPedidos";
+            this.btnFoodyDeliveryBuscarPedidos.Size = new System.Drawing.Size(228, 48);
+            this.btnFoodyDeliveryBuscarPedidos.TabIndex = 74;
+            this.btnFoodyDeliveryBuscarPedidos.Text = "Buscar Pedidos";
+            this.btnFoodyDeliveryBuscarPedidos.UseVisualStyleBackColor = true;
+            this.btnFoodyDeliveryBuscarPedidos.Click += new System.EventHandler(this.btnFoodyDeliveryBuscarPedidos_Click);
+            // 
+            // btnFoodyDeliveryBuscarPedido
+            // 
+            this.btnFoodyDeliveryBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoodyDeliveryBuscarPedido.Location = new System.Drawing.Point(1060, 554);
+            this.btnFoodyDeliveryBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFoodyDeliveryBuscarPedido.Name = "btnFoodyDeliveryBuscarPedido";
+            this.btnFoodyDeliveryBuscarPedido.Size = new System.Drawing.Size(228, 48);
+            this.btnFoodyDeliveryBuscarPedido.TabIndex = 73;
+            this.btnFoodyDeliveryBuscarPedido.Text = "Buscar Pedido";
+            this.btnFoodyDeliveryBuscarPedido.UseVisualStyleBackColor = true;
+            this.btnFoodyDeliveryBuscarPedido.Click += new System.EventHandler(this.btnFoodyDeliveryBuscarPedido_Click);
+            // 
+            // btnFoodyDeliveryPedidoPronto
+            // 
+            this.btnFoodyDeliveryPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoodyDeliveryPedidoPronto.Location = new System.Drawing.Point(812, 554);
+            this.btnFoodyDeliveryPedidoPronto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFoodyDeliveryPedidoPronto.Name = "btnFoodyDeliveryPedidoPronto";
+            this.btnFoodyDeliveryPedidoPronto.Size = new System.Drawing.Size(228, 48);
+            this.btnFoodyDeliveryPedidoPronto.TabIndex = 72;
+            this.btnFoodyDeliveryPedidoPronto.Text = "Pedido Pronto";
+            this.btnFoodyDeliveryPedidoPronto.UseVisualStyleBackColor = true;
+            this.btnFoodyDeliveryPedidoPronto.Click += new System.EventHandler(this.btnFoodyDeliveryPedidoPronto_Click);
             // 
             // label143
             // 
@@ -9157,41 +9199,51 @@
             this.btnBigFishIniciar.UseVisualStyleBackColor = true;
             this.btnBigFishIniciar.Click += new System.EventHandler(this.btnBigFishIniciar_Click);
             // 
-            // btnFoodyDeliveryPedidoPronto
+            // tbIzzyGO
             // 
-            this.btnFoodyDeliveryPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoodyDeliveryPedidoPronto.Location = new System.Drawing.Point(812, 554);
-            this.btnFoodyDeliveryPedidoPronto.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFoodyDeliveryPedidoPronto.Name = "btnFoodyDeliveryPedidoPronto";
-            this.btnFoodyDeliveryPedidoPronto.Size = new System.Drawing.Size(228, 48);
-            this.btnFoodyDeliveryPedidoPronto.TabIndex = 72;
-            this.btnFoodyDeliveryPedidoPronto.Text = "Pedido Pronto";
-            this.btnFoodyDeliveryPedidoPronto.UseVisualStyleBackColor = true;
-            this.btnFoodyDeliveryPedidoPronto.Click += new System.EventHandler(this.btnFoodyDeliveryPedidoPronto_Click);
+            this.tbIzzyGO.Controls.Add(this.btnClearResults);
+            this.tbIzzyGO.Controls.Add(this.btnPedidoSimplesIzzyGO);
+            this.tbIzzyGO.Controls.Add(this.lbIzzyGOResults);
+            this.tbIzzyGO.Location = new System.Drawing.Point(4, 25);
+            this.tbIzzyGO.Name = "tbIzzyGO";
+            this.tbIzzyGO.Padding = new System.Windows.Forms.Padding(3);
+            this.tbIzzyGO.Size = new System.Drawing.Size(1644, 846);
+            this.tbIzzyGO.TabIndex = 46;
+            this.tbIzzyGO.Text = "IzzyGO";
+            this.tbIzzyGO.UseVisualStyleBackColor = true;
+            this.tbIzzyGO.Click += new System.EventHandler(this.tbIzzyGO_Click);
             // 
-            // btnFoodyDeliveryBuscarPedido
+            // btnPedidoSimplesIzzyGO
             // 
-            this.btnFoodyDeliveryBuscarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoodyDeliveryBuscarPedido.Location = new System.Drawing.Point(1060, 554);
-            this.btnFoodyDeliveryBuscarPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFoodyDeliveryBuscarPedido.Name = "btnFoodyDeliveryBuscarPedido";
-            this.btnFoodyDeliveryBuscarPedido.Size = new System.Drawing.Size(228, 48);
-            this.btnFoodyDeliveryBuscarPedido.TabIndex = 73;
-            this.btnFoodyDeliveryBuscarPedido.Text = "Buscar Pedido";
-            this.btnFoodyDeliveryBuscarPedido.UseVisualStyleBackColor = true;
-            this.btnFoodyDeliveryBuscarPedido.Click += new System.EventHandler(this.btnFoodyDeliveryBuscarPedido_Click);
+            this.btnPedidoSimplesIzzyGO.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPedidoSimplesIzzyGO.Location = new System.Drawing.Point(24, 31);
+            this.btnPedidoSimplesIzzyGO.Name = "btnPedidoSimplesIzzyGO";
+            this.btnPedidoSimplesIzzyGO.Size = new System.Drawing.Size(191, 44);
+            this.btnPedidoSimplesIzzyGO.TabIndex = 1;
+            this.btnPedidoSimplesIzzyGO.Text = "Teste FluxoCompleto";
+            this.btnPedidoSimplesIzzyGO.UseVisualStyleBackColor = false;
+            this.btnPedidoSimplesIzzyGO.Click += new System.EventHandler(this.btnPedidoSimplesIzzyGO_Click);
             // 
-            // btnFoodyDeliveryBuscarPedidos
+            // lbIzzyGOResults
             // 
-            this.btnFoodyDeliveryBuscarPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoodyDeliveryBuscarPedidos.Location = new System.Drawing.Point(555, 620);
-            this.btnFoodyDeliveryBuscarPedidos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFoodyDeliveryBuscarPedidos.Name = "btnFoodyDeliveryBuscarPedidos";
-            this.btnFoodyDeliveryBuscarPedidos.Size = new System.Drawing.Size(228, 48);
-            this.btnFoodyDeliveryBuscarPedidos.TabIndex = 74;
-            this.btnFoodyDeliveryBuscarPedidos.Text = "Buscar Pedidos";
-            this.btnFoodyDeliveryBuscarPedidos.UseVisualStyleBackColor = true;
-            this.btnFoodyDeliveryBuscarPedidos.Click += new System.EventHandler(this.btnFoodyDeliveryBuscarPedidos_Click);
+            this.lbIzzyGOResults.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbIzzyGOResults.FormattingEnabled = true;
+            this.lbIzzyGOResults.ItemHeight = 16;
+            this.lbIzzyGOResults.Location = new System.Drawing.Point(3, 151);
+            this.lbIzzyGOResults.Name = "lbIzzyGOResults";
+            this.lbIzzyGOResults.Size = new System.Drawing.Size(1638, 692);
+            this.lbIzzyGOResults.TabIndex = 0;
+            // 
+            // btnClearResults
+            // 
+            this.btnClearResults.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnClearResults.Location = new System.Drawing.Point(24, 81);
+            this.btnClearResults.Name = "btnClearResults";
+            this.btnClearResults.Size = new System.Drawing.Size(191, 44);
+            this.btnClearResults.TabIndex = 2;
+            this.btnClearResults.Text = "Limpar";
+            this.btnClearResults.UseVisualStyleBackColor = false;
+            this.btnClearResults.Click += new System.EventHandler(this.btnClearResults_Click);
             // 
             // Form1
             // 
@@ -9338,6 +9390,7 @@
             this.tabPageBigFish.ResumeLayout(false);
             this.tabPageBigFish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBigFish)).EndInit();
+            this.tbIzzyGO.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -10039,6 +10092,10 @@
         private System.Windows.Forms.Button btnFoodyDeliveryBuscarPedidos;
         private System.Windows.Forms.Button btnFoodyDeliveryBuscarPedido;
         private System.Windows.Forms.Button btnFoodyDeliveryPedidoPronto;
+        private System.Windows.Forms.TabPage tbIzzyGO;
+        private System.Windows.Forms.ListBox lbIzzyGOResults;
+        private System.Windows.Forms.Button btnPedidoSimplesIzzyGO;
+        private System.Windows.Forms.Button btnClearResults;
     }
 }
 

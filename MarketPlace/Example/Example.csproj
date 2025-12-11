@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IzzyGOServiceExamples.cs" />
     <Compile Include="MarketPlaceConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +201,10 @@
     <ProjectReference Include="..\Ifood\Ifood.csproj">
       <Project>{72ee52a9-3a7a-43a6-b8e6-b8a10b05f05e}</Project>
       <Name>Ifood</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IzzyGO\IzzyGO.csproj">
+      <Project>{7ad5aaba-95d0-497d-bc6a-6ac8a47336b6}</Project>
+      <Name>IzzyGO</Name>
     </ProjectReference>
     <ProjectReference Include="..\JotaJa\JotaJa.csproj">
       <Project>{e50b2095-11b2-4926-bc46-3b0b6bb99899}</Project>
