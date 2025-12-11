@@ -1,39 +1,42 @@
 ﻿using IzzyGO.Enum;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.Json.Serialization;
+
 
 namespace IzzyGO.Domain
 {
     public class DeliveryData
     {
-        [JsonPropertyName("success")]
+        [JsonProperty("success")]
         public bool Success { get; set; }
 
-        [JsonPropertyName("message")]
+        [JsonProperty("message")]
         public string Message { get; set; }
 
-        [JsonPropertyName("deliveryId")]
+        [JsonProperty("deliveryId")]
         public string Id { get; set; }
 
-        [JsonPropertyName("orderId")]
+        [JsonProperty("orderId")]
         public string OrderId { get; set; }
 
-        [JsonPropertyName("status")]
+        [JsonProperty("status")]
         public string Status { get; set; }
 
-        [JsonPropertyName("distance")]
+        [JsonProperty("distance")]
         public double? Distance { get; set; }
 
-        [JsonPropertyName("fee")]
+        [JsonProperty("fee")]
         public decimal? Fee { get; set; }
 
-        [JsonPropertyName("estimatedTime")]
+        [JsonProperty("estimatedTime")]
         public int? EstimatedTime { get; set; }
 
-        [JsonPropertyName("autoAccepted")]
+        [JsonProperty("autoAccepted")]
         public bool AutoAccepted { get; set; }
+
+        [JsonProperty("createdat")]
         public object CreatedAt { get; set; }
     }
 }
