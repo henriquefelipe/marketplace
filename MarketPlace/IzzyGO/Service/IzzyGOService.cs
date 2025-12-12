@@ -6,6 +6,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace IzzyGO.Service
         /// </summary>
         public DeliveryData CreateDelivery(DeliveryRequest request)
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var restRequest = new RestRequest("/logistics/delivery", Method.POST);
             restRequest.AddHeader("X-API-Key", _apiKey);
             restRequest.AddHeader("Content-Type", "application/json");
@@ -62,6 +64,8 @@ namespace IzzyGO.Service
 
             if (string.IsNullOrWhiteSpace(newStatus))
                 throw new ArgumentException("newStatus é obrigatório", nameof(newStatus));
+
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var request = new RestRequest($"/logistics/delivery/{orderId}/status", Method.PATCH);
             request.AddHeader("X-API-Key", _apiKey);
@@ -98,6 +102,8 @@ namespace IzzyGO.Service
 
             if (!string.IsNullOrEmpty(orderId))
                 restRequest.AddQueryParameter("orderId", orderId);
+            
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var response = _client.Execute(restRequest);
 

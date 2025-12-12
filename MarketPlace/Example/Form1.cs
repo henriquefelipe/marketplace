@@ -9660,7 +9660,7 @@ namespace Example
         {
             try
             {
-                var _service = new IzzyGOExamples();
+                var _service = new IzzyGOExamples(txtUrlBaseIzzyGO.Text,txtTokenIzzyGO.Text);
                 lbIzzyGOResults.Items.Clear();
                 lbIzzyGOResults.Refresh();
                 lbIzzyGOResults.Items.AddRange(_service.FluxoCompleto().Data.ToArray());

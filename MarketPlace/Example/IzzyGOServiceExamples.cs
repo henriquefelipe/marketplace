@@ -12,9 +12,9 @@ namespace IzzyGO.OpenDelivery.Examples
 
         private DeliveryResponse _response;
 
-        public IzzyGOExamples()
+        public IzzyGOExamples(string url, string token)
         {
-            _service = new IzzyGOService("https://nptsgzvfhmoorthjicjm.supabase.co/functions/v1/open-delivery", "izzy_9061059ccec04fd2a4e3f4489e2b9033");
+            _service = new IzzyGOService(url, token);
             _response = new DeliveryResponse() { Data = new List<string>() };
         }
 

@@ -725,9 +725,13 @@
             this.btnBigFishParar = new System.Windows.Forms.Button();
             this.btnBigFishIniciar = new System.Windows.Forms.Button();
             this.tbIzzyGO = new System.Windows.Forms.TabPage();
+            this.btnClearResults = new System.Windows.Forms.Button();
             this.btnPedidoSimplesIzzyGO = new System.Windows.Forms.Button();
             this.lbIzzyGOResults = new System.Windows.Forms.ListBox();
-            this.btnClearResults = new System.Windows.Forms.Button();
+            this.txtTokenIzzyGO = new System.Windows.Forms.TextBox();
+            this.txtUrlBaseIzzyGO = new System.Windows.Forms.TextBox();
+            this.label144 = new System.Windows.Forms.Label();
+            this.label145 = new System.Windows.Forms.Label();
             this.btn.SuspendLayout();
             this.tabPageTray.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTray)).BeginInit();
@@ -9201,6 +9205,10 @@
             // 
             // tbIzzyGO
             // 
+            this.tbIzzyGO.Controls.Add(this.label145);
+            this.tbIzzyGO.Controls.Add(this.label144);
+            this.tbIzzyGO.Controls.Add(this.txtUrlBaseIzzyGO);
+            this.tbIzzyGO.Controls.Add(this.txtTokenIzzyGO);
             this.tbIzzyGO.Controls.Add(this.btnClearResults);
             this.tbIzzyGO.Controls.Add(this.btnPedidoSimplesIzzyGO);
             this.tbIzzyGO.Controls.Add(this.lbIzzyGOResults);
@@ -9213,12 +9221,23 @@
             this.tbIzzyGO.UseVisualStyleBackColor = true;
             this.tbIzzyGO.Click += new System.EventHandler(this.tbIzzyGO_Click);
             // 
+            // btnClearResults
+            // 
+            this.btnClearResults.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnClearResults.Location = new System.Drawing.Point(1015, 14);
+            this.btnClearResults.Name = "btnClearResults";
+            this.btnClearResults.Size = new System.Drawing.Size(112, 44);
+            this.btnClearResults.TabIndex = 2;
+            this.btnClearResults.Text = "Limpar";
+            this.btnClearResults.UseVisualStyleBackColor = false;
+            this.btnClearResults.Click += new System.EventHandler(this.btnClearResults_Click);
+            // 
             // btnPedidoSimplesIzzyGO
             // 
             this.btnPedidoSimplesIzzyGO.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnPedidoSimplesIzzyGO.Location = new System.Drawing.Point(24, 31);
+            this.btnPedidoSimplesIzzyGO.Location = new System.Drawing.Point(862, 14);
             this.btnPedidoSimplesIzzyGO.Name = "btnPedidoSimplesIzzyGO";
-            this.btnPedidoSimplesIzzyGO.Size = new System.Drawing.Size(191, 44);
+            this.btnPedidoSimplesIzzyGO.Size = new System.Drawing.Size(147, 44);
             this.btnPedidoSimplesIzzyGO.TabIndex = 1;
             this.btnPedidoSimplesIzzyGO.Text = "Teste FluxoCompleto";
             this.btnPedidoSimplesIzzyGO.UseVisualStyleBackColor = false;
@@ -9234,16 +9253,37 @@
             this.lbIzzyGOResults.Size = new System.Drawing.Size(1638, 692);
             this.lbIzzyGOResults.TabIndex = 0;
             // 
-            // btnClearResults
+            // txtTokenIzzyGO
             // 
-            this.btnClearResults.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnClearResults.Location = new System.Drawing.Point(24, 81);
-            this.btnClearResults.Name = "btnClearResults";
-            this.btnClearResults.Size = new System.Drawing.Size(191, 44);
-            this.btnClearResults.TabIndex = 2;
-            this.btnClearResults.Text = "Limpar";
-            this.btnClearResults.UseVisualStyleBackColor = false;
-            this.btnClearResults.Click += new System.EventHandler(this.btnClearResults_Click);
+            this.txtTokenIzzyGO.Location = new System.Drawing.Point(98, 25);
+            this.txtTokenIzzyGO.Name = "txtTokenIzzyGO";
+            this.txtTokenIzzyGO.Size = new System.Drawing.Size(724, 22);
+            this.txtTokenIzzyGO.TabIndex = 3;
+            // 
+            // txtUrlBaseIzzyGO
+            // 
+            this.txtUrlBaseIzzyGO.Location = new System.Drawing.Point(98, 75);
+            this.txtUrlBaseIzzyGO.Name = "txtUrlBaseIzzyGO";
+            this.txtUrlBaseIzzyGO.Size = new System.Drawing.Size(724, 22);
+            this.txtUrlBaseIzzyGO.TabIndex = 4;
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Location = new System.Drawing.Point(23, 25);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(46, 16);
+            this.label144.TabIndex = 5;
+            this.label144.Text = "Token";
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.Location = new System.Drawing.Point(23, 75);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(69, 16);
+            this.label145.TabIndex = 6;
+            this.label145.Text = "URL Base";
             // 
             // Form1
             // 
@@ -9391,6 +9431,7 @@
             this.tabPageBigFish.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBigFish)).EndInit();
             this.tbIzzyGO.ResumeLayout(false);
+            this.tbIzzyGO.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -10096,6 +10137,10 @@
         private System.Windows.Forms.ListBox lbIzzyGOResults;
         private System.Windows.Forms.Button btnPedidoSimplesIzzyGO;
         private System.Windows.Forms.Button btnClearResults;
+        private System.Windows.Forms.Label label145;
+        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.TextBox txtUrlBaseIzzyGO;
+        private System.Windows.Forms.TextBox txtTokenIzzyGO;
     }
 }
 
