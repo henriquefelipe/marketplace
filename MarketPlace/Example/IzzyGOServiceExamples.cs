@@ -187,11 +187,10 @@ namespace IzzyGO.OpenDelivery.Examples
                 },
 
                 // Rastreamento de origem
-                Source = new SourceTracking
-                {
-                    AppId = "ifood",
-                    OrderId = "IFOOD-ABC123"
-                },
+
+                SourceAppId = "ifood",
+                SourceOrderId = "IFOOD-ABC123",
+
 
                 // Configurações adicionais
                 SpecialInstructions = "Cliente alérgico a amendoim. Não incluir sachês.",
@@ -313,11 +312,9 @@ namespace IzzyGO.OpenDelivery.Examples
                     }
                 },
 
-                Source = new SourceTracking
-                {
-                    AppId = "ifood",
-                    OrderId = "IFOOD-ORIG-789456"
-                },
+
+                SourceAppId = "ifood",
+                SourceOrderId = "IFOOD-ORIG-789456",
 
                 Items = new List<OrderItem>
                 {
@@ -363,7 +360,7 @@ namespace IzzyGO.OpenDelivery.Examples
             if (response.Success)
             {
                 Console.WriteLine($"Entrega iFood criada: {response.Id}");
-                Console.WriteLine($"Origem: {request.Source.AppId} - {request.OrderId}");
+                Console.WriteLine($"Origem: {request.SourceAppId} - {request.OrderId}");
             }
         }
 

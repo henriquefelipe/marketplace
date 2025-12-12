@@ -20,9 +20,10 @@ namespace IzzyGO.Domain
         public OrderPricing Pricing { get; set; }
         public List<PaymentInfo> Payments { get; set; }
         public List<OrderItem> Items { get; set; }
-        public SourceTracking Source { get; set; }
         public string SpecialInstructions { get; set; }
         public DateTime? PreparationStartDatetime { get; set; }
+        public string SourceAppId { get; set; }
+        public string SourceOrderId { get; set; }
         public int? PickupLimit { get; set; }
         public int? DeliveryLimit { get; set; }
         public bool? CanCombine { get; set; }
