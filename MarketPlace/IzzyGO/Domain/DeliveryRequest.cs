@@ -9,6 +9,7 @@ namespace IzzyGO.Domain
     public class DeliveryRequest
     {
         public string OrderId { get; set; }
+        public string OrderDisplayId { get; set; }
         public MerchantInfo Merchant { get; set; }
         public CustomerInfo Customer { get; set; }
         public DeliveryAddress DeliveryAddress { get; set; }
