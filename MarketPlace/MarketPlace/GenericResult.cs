@@ -14,6 +14,7 @@ namespace MarketPlace
         public string Json { get; set; }
         public string Request { get; set; }
         public string Response { get; set; }
+        public string Url { get; set; }
         public HttpStatusCode StatusCode { get; set; }
     }
 

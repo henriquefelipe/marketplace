@@ -33,8 +33,16 @@ namespace Repediu.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<result_token>(response.Content);
-                    result.Success = true;
+                    try
+                    {
+                        result.Result = JsonConvert.DeserializeObject<result_token>(response.Content);
+                        result.Success = true;
+                    }
+                    catch
+                    {
+                        var error = JsonConvert.DeserializeObject<resultError>(response.Content);
+                        result.Message = error.error.message;
+                    }
                 }
                 else
                 {

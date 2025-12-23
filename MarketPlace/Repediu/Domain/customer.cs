@@ -11,6 +11,8 @@ namespace Repediu.Domain
         public int ordersCountOnMerchant { get; set; }
         public string documentNumber { get; set; }
         public customer_phone phone { get; set; }
+
+        public string birthDate { get; set; } // Formato: yyyy-MM-dd
     }
 
     public class customer_phone

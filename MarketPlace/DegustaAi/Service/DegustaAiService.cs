@@ -29,8 +29,14 @@ namespace DegustaAi.Service
         {
             var result = new GenericResult<response>();
 
-            var url = $"https://api.{_urlHost}{Constants.URL_GET_ORDERS}?data_atualizacao={dataAtualizacao.ToString("yyyy-MM-dd")}{parametros}";
-            var client = new RestClient(url);
+            var parametrosDataAtualizacao = "";
+            if(dataAtualizacao != DateTime.MinValue)
+            {
+                parametrosDataAtualizacao = $"data_atualizacao={dataAtualizacao.ToString("yyyy-MM-dd")}";
+            }
+
+            var url = $"https://api.{_urlHost}{Constants.URL_GET_ORDERS}?{parametrosDataAtualizacao}{parametros}";
+            var client = new RestClientBase(url);
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
             request.AddHeader("Content-Type", "application/json");
@@ -39,11 +45,15 @@ namespace DegustaAi.Service
                 request.AddHeader("integrador-token", _tokenSW);
             }
 
+            result.Url = url;
+
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 result.Result = JsonConvert.DeserializeObject<response>(response.Content);
                 result.Success = true;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
             }
             else
             {

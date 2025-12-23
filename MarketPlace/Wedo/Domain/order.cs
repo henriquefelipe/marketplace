@@ -24,5 +24,7 @@ namespace Wedo.Domain
         public decimal deliveryFee { get; set; }
 
         public DeliveryAddress deliveryAddress { get; set; }
+
+        public scheduledOrder scheduledOrder { get; set; }
     }
 }

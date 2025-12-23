@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 
 namespace EuFalo.Service
@@ -279,7 +280,7 @@ namespace EuFalo.Service
             try
             {
 
-                var url = string.Format("{0}{1}?CPF={2}&valorCompra={3}", Constants.URL_BASE, Constants.URL_CONSULTA_SALDO, documento, valorCompra);
+                var url = string.Format("{0}{1}?CPF={2}&valorCompra={3}", Constants.URL_BASE, Constants.URL_CONSULTA_SALDO, documento, valorCompra.ToString(CultureInfo.InvariantCulture));
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Authorization", "Bearer " + token);

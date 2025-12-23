@@ -9,5 +9,6 @@ namespace Wedo.Domain
         public string title { get; set; }
         public decimal change { get; set; }
         public string type { get; set; }
+        public string selectedCardType { get; set; }
     }
 }

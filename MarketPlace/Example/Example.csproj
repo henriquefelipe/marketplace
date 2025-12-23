@@ -229,6 +229,10 @@
       <Project>{dacbf174-3fbe-4a18-b22a-15ff999c7807}</Project>
       <Name>PixCommerce</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PrefiroDelivery\PrefiroDelivery.csproj">
+      <Project>{f5763320-2a53-4342-99de-e5c1f40fa328}</Project>
+      <Name>PrefiroDelivery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repediu\Repediu.csproj">
       <Project>{1f723dd4-e55e-4245-b76a-473aa83c443f}</Project>
       <Name>Repediu</Name>

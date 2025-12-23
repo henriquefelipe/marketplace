@@ -39,6 +39,7 @@ namespace DegustaAi.Enum
         CartaoDebitoOnline = 31,
         DebitoBanricompras = 32,
         Ame = 33,
+        CartaoCreditoOnline2 = 34,
         Pix = 35,
         TransferenciaBancaria = 36,
         Papayas = 37,
