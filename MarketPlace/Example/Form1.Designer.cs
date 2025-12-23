@@ -10282,9 +10282,7 @@
         private System.Windows.Forms.TabPage tbIzzyGO;
         private System.Windows.Forms.ListBox lbIzzyGOResults;
         private System.Windows.Forms.Button btnPedidoSimplesIzzyGO;
-        private System.Windows.Forms.Button btnClearResults;
-        private System.Windows.Forms.Label label145;
-        private System.Windows.Forms.Label label144;
+        private System.Windows.Forms.Button btnClearResults;        
         private System.Windows.Forms.TextBox txtUrlBaseIzzyGO;
         private System.Windows.Forms.TextBox txtTokenIzzyGO;
     }
