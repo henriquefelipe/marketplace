@@ -25,6 +25,7 @@ using GloriaFood.Service;
 using Goomer.Service;
 using IDelivery.Service;
 using Ifood.Enum;
+using IzzyGO.OpenDelivery.Examples;
 using Logaroo.Enum;
 using MeuCardapioAi.Service;
 using MultiPedido.Service;
@@ -49,6 +50,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9774,7 +9776,32 @@ namespace Example
 
         #endregion
 
-        
+        private void btnPedidoSimplesIzzyGO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var _service = new IzzyGOExamples(txtUrlBaseIzzyGO.Text,txtTokenIzzyGO.Text);
+                lbIzzyGOResults.Items.Clear();
+                lbIzzyGOResults.Refresh();
+                lbIzzyGOResults.Items.AddRange(_service.FluxoCompleto().Data.ToArray());
+            }
+            catch (Exception ex)
+            {
+                lbIzzyGOResults.Items.Add(ex.Message);
+            }
+        }
+
+        private void tbIzzyGO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearResults_Click(object sender, EventArgs e)
+        {
+            lbIzzyGOResults.Items.Clear();
+            lbIzzyGOResults.Refresh();
+
+        }
     }
 }
 

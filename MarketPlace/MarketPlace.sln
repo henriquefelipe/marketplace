@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tray", "Tray\Tray.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodyDelivery", "FoodyDelivery\FoodyDelivery.csproj", "{BEE98BA5-2624-4E37-8B88-B6B530AF4468}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzzyGO", "IzzyGO\IzzyGO.csproj", "{7AD5AABA-95D0-497D-BC6A-6AC8A47336B6}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefiroDelivery", "PrefiroDelivery\PrefiroDelivery.csproj", "{F5763320-2A53-4342-99DE-E5C1F40FA328}"
 EndProject
 Global
@@ -303,6 +305,10 @@ Global
 		{F5763320-2A53-4342-99DE-E5C1F40FA328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5763320-2A53-4342-99DE-E5C1F40FA328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5763320-2A53-4342-99DE-E5C1F40FA328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD5AABA-95D0-497D-BC6A-6AC8A47336B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD5AABA-95D0-497D-BC6A-6AC8A47336B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD5AABA-95D0-497D-BC6A-6AC8A47336B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD5AABA-95D0-497D-BC6A-6AC8A47336B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
