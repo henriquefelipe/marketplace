@@ -4,25 +4,26 @@ using System.Collections.Generic;
 namespace Agilizone.Domain
 {
     public class order
-    {        
+    {
         public order_address address { get; set; }
         public order_client client { get; set; }
         public string details { get; set; }
         public string number { get; set; }
-        public string identifier { get; set; }        
+        public string identifier { get; set; }
         public string paymentType { get; set; }
         public decimal deliveryFee { get; set; }
         public decimal deliverymanFee { get; set; }
         public decimal amount { get; set; }
         public bool isPrepaid { get; set; }
         public string originPlatform { get; set; }
-        public string observations { get; set; }                              
+        public string observations { get; set; }
         public string externalId { get; set; }
-        public string preparationTime { get; set; }       
+        public string preparationTime { get; set; }
         public string orderTiming { get; set; }
         public string scheduledPreparationTime { get; set; }
         public order_paymentExtraInfo paymentExtraInfo { get; set; }
-       
+        public order_ifood_data ifoodData { get; set; }
+
     }
 
     public class order_address
@@ -36,7 +37,7 @@ namespace Agilizone.Domain
         public string street { get; set; }
         public string neighborhood { get; set; }
         public string postcode { get; set; }
-        public string reference { get; set; }        
+        public string reference { get; set; }
     }
 
     public class order_address_coordinates
@@ -82,5 +83,18 @@ namespace Agilizone.Domain
     {
         public string sponsor { get; set; }
         public decimal value { get; set; }
+    }
+
+    public class order_ifood_data
+    {
+        public order_ifood_data()
+        {
+            salesChannel = "IFOOD";
+        }
+
+        public string localizer { get; set; }
+        public string salesChannel { get; set; }
+        public string id { get; set; }
+        public string merchantName { get; set; }        
     }
 }

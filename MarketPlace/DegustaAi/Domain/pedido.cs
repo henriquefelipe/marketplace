@@ -45,5 +45,7 @@ namespace DegustaAi.Domain
 
         public mensagem_no_cartao mensagem_no_cartao { get; set; }
         public mesa mesa { get; set; }
+        public meios_de_pagamento meios_de_pagamento { get; set; }
+        //public pagamento pagamento { get; set; }
     }
 }

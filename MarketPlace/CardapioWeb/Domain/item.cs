@@ -29,10 +29,10 @@ namespace CardapioWeb.Domain
     {
         public string name { get; set; }
         public decimal quantity { get; set; }
-        public int option_id { get; set; }
+        public int? option_id { get; set; }
         public decimal unit_price { get; set; }
         public string external_code { get; set; }
-        public int option_group_id { get; set; }
+        public int? option_group_id { get; set; }
         public string option_group_name { get; set; } // Tamanho, Molho
     }
 }

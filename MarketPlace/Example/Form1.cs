@@ -33,6 +33,8 @@ using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
 using PixCommerce.Service;
+using PrefiroDelivery.Domain;
+using PrefiroDelivery.Service;
 using QueroDelivery.Service;
 using Rappi.Service;
 using Repediu.Domain;
@@ -47,6 +49,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -248,6 +251,7 @@ namespace Example
 
                             if (marketPlace.DeliveryVip != null)
                             {
+                                
                                 txtDeliveryVipMerchant.Text = marketPlace.DeliveryVip.MerchantId;
                                 txtDeliveryVipClientId.Text = marketPlace.DeliveryVip.Usuario;
                                 txtDeliveryVipSecret.Text = marketPlace.DeliveryVip.Senha;
@@ -9651,6 +9655,122 @@ namespace Example
             else
             {
                 MessageBox.Show(result.Message);
+            }
+        }
+
+        #endregion
+
+        #region Prefiro Delivery
+
+        public int _prefiroDeliveryId { get; set; }
+        public List<pedidosId> _prefiroDeliveryPedidos { get; set; }
+
+
+        private async void btnPrefiroDeliveryIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPrefiroDeliveryHash.Text))
+            {
+                MessageBox.Show("Campo Hash Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPrefiroDeliveryChave.Text))
+            {
+                MessageBox.Show("Campo Chave Obrigatório");
+                return;
+            }
+
+            txtPrefiroDeliveryHash.Enabled = false;
+            txtPrefiroDeliveryChave.Enabled = false;
+
+            btnPrefiroDeliveryIniciar.Enabled = false;
+            btnPrefiroDeliveryParar.Enabled = true;
+
+            await Task.Run(() => prefiroDelivery());
+        }
+
+        private void btnPrefiroDeliveryParar_Click(object sender, EventArgs e)
+        {
+            txtPrefiroDeliveryHash.Enabled = true;
+            txtPrefiroDeliveryChave.Enabled = true;
+
+            btnPrefiroDeliveryIniciar.Enabled = true;
+            btnPrefiroDeliveryParar.Enabled = false;
+        }
+
+        private  void btnPrefiroDeliveryPedido_Click(object sender, EventArgs e)
+        {
+            if(_prefiroDeliveryId == 0)
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new PrefiroDeliveryService(txtPrefiroDeliveryHash.Text, txtPrefiroDeliveryChave.Text);
+            var orderResult = service.Pedido(_prefiroDeliveryId);
+        }
+
+        private void btnPrefiroDeliveryEmProducao_Click(object sender, EventArgs e)
+        {
+            if (_prefiroDeliveryId == 0)
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new PrefiroDeliveryService(txtPrefiroDeliveryHash.Text, txtPrefiroDeliveryChave.Text);
+            var orderResult = service.Status(_prefiroDeliveryId, (byte)PrefiroDelivery.Enum.PedidoStatus.EmProducao);
+        }
+
+        private void prefiroDelivery()
+        {
+            try
+            {
+                var service = new PrefiroDeliveryService(txtPrefiroDeliveryHash.Text, txtPrefiroDeliveryChave.Text);
+                var orderResult = service.Pedidos();
+                if (orderResult.Success)
+                {
+                    _prefiroDeliveryPedidos = orderResult.Result;
+
+                    WriteGridPrefiroDelivery();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridPrefiroDeliveryoDelegate();
+        private void WriteGridPrefiroDelivery()
+        {
+            if (gridPrefiroDelivery.InvokeRequired)
+            {
+                var d = new WritelstGridPrefiroDeliveryoDelegate(WriteGridPrefiroDelivery);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridPrefiroDelivery.DataSource = _prefiroDeliveryPedidos.ToList();
+                gridPrefiroDelivery.Refresh();
+            }
+        }
+
+        private void gridPrefiroDelivery_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridPrefiroDelivery.Rows.Count)
+            {
+                _prefiroDeliveryId = Convert.ToInt32(gridPrefiroDelivery.Rows[e.RowIndex].Cells[0].Value.ToString());
             }
         }
 
