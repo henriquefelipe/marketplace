@@ -230,6 +230,10 @@
       <Project>{f423ea0e-b5c2-4152-ac20-b2de04b4b1aa}</Project>
       <Name>OnPedido</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenDelivery\OpenDelivery.csproj">
+      <Project>{33839baa-6bec-4462-a0f6-6923efdbb81f}</Project>
+      <Name>OpenDelivery</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PixCommerce\PixCommerce.csproj">
       <Project>{dacbf174-3fbe-4a18-b22a-15ff999c7807}</Project>
       <Name>PixCommerce</Name>

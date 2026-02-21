@@ -61,6 +61,7 @@ using VMarket.Domain;
 using VMarket.Service;
 using Wedo.Service;
 using Woocommerce.Service;
+using OpenDelivery.Service;
 
 namespace Example
 {
@@ -9776,6 +9777,8 @@ namespace Example
 
         #endregion
 
+        #region IzzyGO
+
         private void btnPedidoSimplesIzzyGO_Click(object sender, EventArgs e)
         {
             try
@@ -9802,6 +9805,170 @@ namespace Example
             lbIzzyGOResults.Refresh();
 
         }
+
+        #endregion
+
+        #region 99 Food
+
+        public string _99FoodId { get; set; }
+        public List<OpenDelivery.Domain.poolingEvent> _99FoodPedidos { get; set; }
+
+        private void btn99FoodToken_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt99FoodClient.Text))
+            {
+                MessageBox.Show("Campo Client Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txt99FoodSecret.Text))
+            {
+                MessageBox.Show("Campo Secret Obrigatório");
+                return;
+            }
+
+            var service = new OpenDeliveryService("https://openapi.didi-food.com/v4/opendelivery/");
+            var result = service.OathToken(txt99FoodClient.Text, txt99FoodSecret.Text);
+            if (result.Success)
+            {
+                txt99FoodToken.Text = result.Result.access_token;
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private async void btn99FoodIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt99FoodToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txt99FoodClient.Enabled = false;
+            txt99FoodSecret.Enabled = false;
+
+            btn99FoodIniciar.Enabled = false;
+            btn99FoodParar.Enabled = true;
+
+            await Task.Run(() => _99Food());
+        }
+
+        private void btn99FoodParar_Click(object sender, EventArgs e)
+        {
+            txt99FoodClient.Enabled = true;
+            txt99FoodSecret.Enabled = true;
+
+            btn99FoodIniciar.Enabled = true;
+            btn99FoodParar.Enabled = false;
+        }
+
+        private void btn99FoodBuscarPedido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_99FoodId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new OpenDeliveryService("https://openapi.didi-food.com/v4/opendelivery/");
+            var result = service.Orders(txt99FoodToken.Text, _99FoodId);
+            if (result.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btn99FoodAceitar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_99FoodId))
+            {
+                MessageBox.Show("Selecione o registro");
+                return;
+            }
+
+            var service = new OpenDeliveryService("https://openapi.didi-food.com/v4/opendelivery/");
+            var result = service.OrdersConfirmation(txt99FoodToken.Text, _99FoodId);
+            if (result.Success)
+            {
+                MessageBox.Show("Confirmado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
+
+        private void btn99FoodCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _99Food()
+        {
+            try
+            {
+                var service = new OpenDeliveryService("https://openapi.didi-food.com/v4/opendelivery/");
+                var orderResult = service.EventPolling(txt99FoodToken.Text, txt99FoodMerchantId.Text);
+                if (orderResult.Success)
+                {
+                    _99FoodPedidos = orderResult.Result;
+
+                    WriteGrid99Food();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGrid99FoodDelegate();
+        private void WriteGrid99Food()
+        {
+            if (grid99Food.InvokeRequired)
+            {
+                var d = new WritelstGrid99FoodDelegate(WriteGrid99Food);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                grid99Food.DataSource = _99FoodPedidos.ToList();
+                grid99Food.Refresh();
+            }
+        }
+
+
+        private void grid99Food_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < grid99Food.Rows.Count)
+            {
+                _99FoodId = grid99Food.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+        }
+
+        #endregion
+
+        
     }
 }
 
