@@ -14,8 +14,14 @@ namespace LoopIzy.Domain
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+
         [JsonProperty("customer_id")]
-        public string CustomerId { get; set; } // For Patch
+        public string CustomerId { get; set; } 
     }
 
     public class CustomerResponse
