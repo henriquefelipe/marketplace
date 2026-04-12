@@ -9,15 +9,17 @@ namespace OpenDelivery.Domain
     public class subItem
     {
         public int index { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
         public string externalCode { get; set; }
+        public string unit { get; set; }
+        public string ean { get; set; }
         public decimal quantity { get; set; }
-        public string unit { get; set; }        
+           
         public value_currency unitPrice { get; set; }
+        public value_currency originalPrice { get; set; }
+        public value_currency subtotalPrice { get; set; }
         public value_currency totalPrice { get; set; }
-        //public decimal discount { get; set; }
-        //public decimal addition { get; set; }
-        
-        //public string observations { get; set; }
+        public string specialInstructions { get; set; }
     }
 }

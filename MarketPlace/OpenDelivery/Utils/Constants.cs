@@ -15,8 +15,9 @@ namespace OpenDelivery.Utils
         public const string URL_ORDER_INTEGRATION = "statuses/integration";
         public const string URL_ORDER_CONFIRM = "confirm";
         public const string URL_ORDER_PREPARING = "preparing";
-        public const string URL_ORDER_READY_TO_PICKUP = "readyToPickup";
+        public const string URL_ORDER_READY_FOR_PICKUP = "readyForPickup";
         public const string URL_ORDER_DISPATCH = "dispatch";
+        public const string URL_ORDER_DELIVERED = "delivered";
         public const string URL_ORDER_REJECTION = "rejection";
         public const string URL_ORDER_CANCELATION = "requestCancellation";
         public const string URL_ORDER_CANCELATION_ACCEPTED = "acceptedCancelation";

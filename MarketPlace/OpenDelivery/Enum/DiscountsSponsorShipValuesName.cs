@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OpenDelivery.Enum
 {
-    public class BenefitsName
+    public class DiscountsSponsorShipValuesName
     {        
+        public const string MARKETPLACE = "MARKETPLACE";
         public const string MERCHANT = "MERCHANT";
-        public const string IFOOD = "IFOOD";
-        public const string EXTERNAL = "EXTERNAL";
+        public const string CHAIN = "CHAIN";
     }
 }

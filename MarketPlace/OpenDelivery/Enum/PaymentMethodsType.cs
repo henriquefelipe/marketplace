@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenDelivery.Enum
 {
-    public class DeliveryBy
+    public class PaymentMethodsType
     {
-        public const string MERCHANT = "MERCHANT";
-        public const string MARKETPLACE = "MARKETPLACE";
+        public const string PREPAID = "PREPAID";
+        public const string PENDING = "PENDING";       
     }
 }

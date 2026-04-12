@@ -8,7 +8,7 @@ namespace OpenDelivery.Domain
 {
     public class schedule
     {
-        public string deliveryDateTimeStart { get; set; }
-        public string deliveryDateTimeEnd { get; set; }
+        public string scheduledDateTimeStart { get; set; }
+        public string scheduledDateTimeEnd { get; set; }
     }
 }

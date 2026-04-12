@@ -18,26 +18,17 @@ namespace OpenDelivery.Domain
     {
         public decimal value { get; set; }
         public string currency { get; set; }
-        public string method { get; set; }
         public string type { get; set; }
-        public payment_methods_wallet wallet { get; set; }        
-        public bool prepaid { get; set; }                
-        public payment_methods_cash cash { get; set; }
-        public payment_methods_card card { get; set; }
-    }
-
-    public class payment_methods_wallet
-    {
-        public string name { get; set; }
-    }
-
-    public class payment_methods_cash
-    {
-        public decimal changeFor { get; set; }
-    }
-
-    public class payment_methods_card
-    {
+        public string method { get; set; }
         public string brand { get; set; }
+        public string methodInfo { get; set; }
+        public payment_transaction transaction { get; set; }        
+        public decimal changeFor { get; set; }                       
+    }
+
+    public class payment_transaction
+    {
+        public string authorizationCode { get; set; }
+        public string acquirerDocument { get; set; }
     }
 }

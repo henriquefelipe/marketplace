@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenDelivery.Enum
 {
-    public class BenefitsTarget
+    public class DiscountsTarget
     {
         /// <summary>
         /// desconto no valor somado dos itens;
@@ -22,10 +22,6 @@ namespace OpenDelivery.Enum
         /// desconto em um item do pedido;
         /// </summary>
         public const string ITEM = "ITEM";
-
-        /// <summary>
-        /// desconto progressivo em itens iguais do pedido, formando um combo.
-        /// </summary>
-        public const string PROGRESSIVE_DISCOUNT_ITEM = "PROGRESSIVE_DISCOUNT_ITEM";
+      
     }
 }

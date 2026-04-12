@@ -11,7 +11,6 @@ namespace OpenDelivery.Domain
         public value_currency itemsPrice { get; set; }
         public value_currency otherFees { get; set; }
         public value_currency discount { get; set; }
-        public value_currency orderAmount { get; set; }
-        //public decimal additionalFees { get; set; }
+        public value_currency orderAmount { get; set; }       
     }
 }

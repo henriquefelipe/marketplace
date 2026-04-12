@@ -12,13 +12,13 @@ namespace OpenDelivery.Domain
         public string name { get; set; }
         public string documentNumber { get; set; } //CPF do cliente
         public customer_phone phone { get; set; }
-        public int? ordersCountOnMerchant { get; set; }
+        public string email { get; set; }
+        public decimal? ordersCountOnMerchant { get; set; }
     }
 
     public class customer_phone
     {
         public string number { get; set; }
-        public string localizer { get; set; }
-        public string localizerExpiration { get; set; }
+        public string extension { get; set; }        
     }
 }

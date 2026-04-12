@@ -324,12 +324,36 @@ namespace OpenDelivery.Service
             return result;
         }
 
-        public GenericSimpleResult OrdersReadyToPickup(string token, string reference)
+        public GenericSimpleResult OrdersReadyForPickup(string token, string reference)
         {
             var data = new { };
             var result = new GenericSimpleResult();
 
-            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.URL_ORDER, reference, Constants.URL_ORDER_READY_TO_PICKUP);
+            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.URL_ORDER, reference, Constants.URL_ORDER_READY_FOR_PICKUP);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.Accepted || response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.StatusDescription;
+            }
+            result.StatusCode = response.StatusCode;
+
+            return result;
+        }
+
+        public GenericSimpleResult OrdersDelivered(string token, string reference)
+        {
+            var data = new { };
+            var result = new GenericSimpleResult();
+
+            var url = string.Format("{0}{1}/{2}/{3}", _urlBase, Constants.URL_ORDER, reference, Constants.URL_ORDER_DELIVERED);
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
