@@ -214,6 +214,10 @@
       <Project>{30012c62-cd02-4f82-8fae-8125778f786d}</Project>
       <Name>Logaroo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoopIzy\LoopIzy.csproj">
+      <Project>{5D3D1F2B-D7B2-4C7A-B5E3-A7D6C5B4A3A2}</Project>
+      <Name>LoopIzy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarketPlace\MarketPlace.csproj">
       <Project>{8c099d07-604b-471c-a810-c7581eb78373}</Project>
       <Name>MarketPlace</Name>

@@ -62,6 +62,9 @@ using VMarket.Service;
 using Wedo.Service;
 using Woocommerce.Service;
 using OpenDelivery.Service;
+using LoopIzy.Service;
+using LoopIzy.Domain;
+using MarketPlace;
 
 namespace Example
 {
@@ -98,6 +101,10 @@ namespace Example
         private string _superMenuReferenceSelected { get; set; }
 
         private string _pedzap { get; set; }
+
+        #region LoopIzy
+        private string _loopIzyToken { get; set; } = "999216b72e1ac122e7c0fc4a4017c5d84f43d8182bec82df113743f23ff7804a";
+        #endregion
         private List<Deeliv.Domain.pedido> _pedzapPedidos { get; set; }
         private int _pedzapReferenceSelected { get; set; }
 
@@ -9968,7 +9975,179 @@ namespace Example
 
         #endregion
 
-        
+        #region LoopIzy
+        private void btnLoopIzyTest_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+
+            var customer = !string.IsNullOrEmpty(txtClienteLoopIzy.Text) ? service.GetCustomers(null, txtClienteLoopIzy.Text, null): service.GetCustomers(txtClienteTelefoneLoopIzy.Text, null, null);
+
+            if (customer.Success && customer.Result.Customers.Any())
+            {
+                string customerId = customer.Result.Customers.FirstOrDefault().Id;
+
+                var result = service.GetBalance(customerId);
+
+                if (result.Success)
+                {
+                    txtResultaLoopIzy.Text = $"Sucesso!\nCliente: {result.Result.Name}\nSaldo: {result.Result.PointsBalance}";
+                }
+                else
+                {
+                    txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+                }
+            }
+            // Exemplo de teste: Buscar saldo de um cliente (ID fixo para exemplo)
+          
+        }
+
+        private void btnLoopIzyProcessOrder_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+
+            var order = new OrderRequest
+            {
+                ExternalId = "PED-" + DateTime.Now.Ticks,
+                Phone = txttelefoneClientePedidoLoopIzy.Text,
+                Cpf = txtCPFClientePedidoLoopIzy.Text,
+                Total = 50.00m,
+                CustomerName = txtClientePedidoLoopIzy.Text,
+                Channel = "PDV",
+                Items = new List<OrderItem>
+                {
+                    new OrderItem { sku="1234",  Name = txtDescricaoItemPedidoLoopIzy.Text, Price = 50.00m, Quantity =Convert.ToInt32(numericUpDown1.Value) }
+                }
+            };
+
+            var result = service.ProcessOrder(order);
+
+            if (result.Success)
+            {
+                txtResultaLoopIzy.Text = $"Pedido processado!\nID: {result.Result.OrderId}\nPontos: {result.Result.PointsCredited}";
+            }
+            else
+            {
+                txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+            }
+        }
+
+        private void btnLoopIzyGetCashback_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+            
+            if (!string.IsNullOrEmpty(txtCashbackCodeLoopIzy.Text))
+            {
+                var result = service.GetCashback(null, txtCashbackCodeLoopIzy.Text);
+                if (result.Success)
+                    txtResultaLoopIzy.Text = $"CODE:{result.Result.Code} \n CREDITO:{result.Result.CreditValue} \n ATE:{result.Result.ExpiresAt}";//JsonConvert.SerializeObject(result.Result, Formatting.Indented);
+                else
+                    txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+            }
+            else
+            {
+                var customer = !string.IsNullOrEmpty(txtClienteLoopIzy.Text) ? service.GetCustomers(null, txtClienteLoopIzy.Text, null) : service.GetCustomers(txtClienteTelefoneLoopIzy.Text, null, null);
+
+                if (customer.Success && customer.Result.Customers.Any())
+                {
+                    string customerId = customer.Result.Customers.FirstOrDefault().Id;
+                    var result = service.GetCashback(customerId, null);
+                    if (result.Success)
+                        txtResultaLoopIzy.Text = JsonConvert.SerializeObject(result.Result, Formatting.Indented);
+                    else
+                        txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+                }
+                else
+                {
+                    txtResultaLoopIzy.Text = "Cliente não encontrado para listar cashback.";
+                }
+            }
+        }
+
+        private void btnLoopIzyGenerateCashback_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+            
+            var customer = !string.IsNullOrEmpty(txtClienteTelefoneLoopIzy.Text) ? service.GetCustomers(txtClienteTelefoneLoopIzy.Text, null, null) : service.GetCustomers(null, txtCPFClientePedidoLoopIzy.Text, null);
+
+            if (customer.Success && customer.Result.Customers.Any())
+            {
+                string customerId = customer.Result.Customers.FirstOrDefault().Id;
+                int points = 0;
+                int.TryParse(txtCashbackPointsLoopIzy.Text, out points);
+
+                var request = new CashbackActionRequest
+                {
+                    Action = "generate",
+                    CustomerId = customerId,
+                    Points = points
+                };
+
+                var result = service.CashbackAction(request);
+                if (result.Success)
+                {
+                    txtResultaLoopIzy.Text = $"Cashback Gerado!\nCódigo: {result.Result.Code}\nValor: {result.Result.CreditValue}";
+                    txtCashbackCodeLoopIzy.Text = result.Result.Code;
+
+                }
+                else
+                    txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+            }
+            else
+            {
+                txtResultaLoopIzy.Text = "Cliente não encontrado para gerar cashback.";
+            }
+        }
+
+        private void btnLoopIzyUseCashback_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+
+            var request = new CashbackActionRequest
+            {
+                Action = "use",
+                Code = txtCashbackCodeLoopIzy.Text
+            };
+
+            var result = service.CashbackAction(request);
+            if (result.Success)
+                txtResultaLoopIzy.Text = $"Cashback Utilizado com sucesso!\nValor: {result.Result.CreditValue}";
+            else
+                txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+        }
+
+        private void btnLoopIzyCreateCustomer_Click(object sender, EventArgs e)
+        {
+            var service = new LoopIzyService(_loopIzyToken);
+
+            var request = new CustomerRequest
+            {
+                Name = txtNewClienteNome.Text,
+                Phone = txtNewClienteTelefone.Text,
+                Cpf = txtNewClienteCPF.Text
+            };
+
+            var result = service.CreateCustomer(request);
+
+            if (result.Success)
+            {
+                txtResultaLoopIzy.Text = $"Cliente Criado com sucesso!\nID: {result.Result.Customer.Id}\nNome: {result.Result.Customer.Name}";
+            }
+            else
+            {
+                txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+            }
+        }
+        #endregion
+
+        private void txtCPFClientePedidoLoopIzy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
