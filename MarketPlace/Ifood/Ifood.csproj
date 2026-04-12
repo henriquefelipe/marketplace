@@ -52,9 +52,15 @@
     <Compile Include="Domain\additionalFees.cs" />
     <Compile Include="Domain\benefit.cs" />
     <Compile Include="Domain\address.cs" />
+    <Compile Include="Domain\Catalog\CatalogItem.cs" />
     <Compile Include="Domain\Catalog\Categories.cs" />
     <Compile Include="Domain\Catalog\Catalogs.cs" />
+    <Compile Include="Domain\Catalog\ItemPrice.cs" />
+    <Compile Include="Domain\Catalog\MerchantCatalog.cs" />
+    <Compile Include="Domain\Catalog\Option.cs" />
+    <Compile Include="Domain\Catalog\OptionGroup.cs" />
     <Compile Include="Domain\Catalog\UnsellableItems.cs" />
+    <Compile Include="Domain\Catalog\UpdateStatusRequest.cs" />
     <Compile Include="Domain\customer.cs" />
     <Compile Include="Domain\delivery.cs" />
     <Compile Include="Domain\deliveryAddress.cs" />

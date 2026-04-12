@@ -922,6 +922,83 @@ namespace Ifood.Service
 
         #region Catalog
 
+        public Dictionary<string, string> CatalogProbeEndpoints(string token, string merchantId)
+        {
+            var baseUrl = Constants.URL_BASE_CATALOG;
+            var catalogId = ""; // preenchido abaixo via Catalogs()
+            var resultados = new Dictionary<string, string>();
+
+            var catalogos = Catalogs(token, merchantId);
+            if (catalogos.Success && catalogos.Result.Count > 0)
+                catalogId = catalogos.Result[0].catalogId;
+
+            var candidatos = new List<string>
+            {
+                $"{baseUrl}merchants/{merchantId}/items",
+                $"{baseUrl}merchants/{merchantId}/categories",
+                $"{baseUrl}merchants/{merchantId}/option-groups",
+                $"{baseUrl}merchants/{merchantId}/catalogs/{catalogId}",
+                $"{baseUrl}merchants/{merchantId}/catalogs/{catalogId}/categories",
+                $"{Constants.URL_BASE}catalog/v1.0/merchants/{merchantId}/items",
+                $"{Constants.URL_BASE}catalog/v1.0/merchants/{merchantId}/categories",
+                $"{Constants.URL_BASE}merchant/v1.0/merchants/{merchantId}/catalogs",
+            };
+
+            foreach (var url in candidatos)
+            {
+                try
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    var request = new RestRequest(Method.GET);
+                    var client = new RestClient(url);
+                    client.Timeout = 10000;
+                    request.AddHeader("Content-Type", "application/json");
+                    request.AddHeader("Authorization", $"Bearer {token}");
+                    IRestResponse response = client.Execute(request);
+                    var preview = (response.Content ?? "").Length > 120
+                        ? response.Content.Substring(0, 120)
+                        : response.Content;
+                    resultados[url] = $"HTTP {(int)response.StatusCode} | {preview}";
+                }
+                catch (Exception ex)
+                {
+                    resultados[url] = $"ERRO: {ex.Message}";
+                }
+            }
+
+            return resultados;
+        }
+
+        public GenericResult<string> CatalogRawGet(string token, string url)
+        {
+            var result = new GenericResult<string>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase(url);
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                result.Result = response.Content;
+                result.Json = response.Content;
+                result.StatusCode = response.StatusCode;
+                result.Success = response.StatusCode == HttpStatusCode.OK;
+
+                if (!result.Success)
+                    result.Message = $"HTTP {(int)response.StatusCode}: {response.Content}";
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
         public GenericResult<List<Ifood.Domain.Catalog.Catalogs>> Catalogs(string token, string merchantId)
         {
             var result = new GenericResult<List<Ifood.Domain.Catalog.Catalogs>>();
@@ -930,7 +1007,7 @@ namespace Ifood.Service
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs");
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/catalogs");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Authorization", $"Bearer {token}");
@@ -947,6 +1024,8 @@ namespace Ifood.Service
                 }
 
                 result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
             }
             catch (Exception ex)
             {
@@ -956,7 +1035,43 @@ namespace Ifood.Service
             return result;
         }
 
-        public GenericResult<Categories> Categories(string token, string merchantId, string catalogId)
+        public GenericResult<List<Categories>> Categories(string token, string merchantId, string catalogId)
+        {
+            var result = new GenericResult<List<Categories>>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/catalogs/{catalogId}/categories?includeItems=true");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<List<Categories>>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<Categories> CategoryDetail(string token, string merchantId, string catalogId, string categoryId)
         {
             var result = new GenericResult<Categories>();
             try
@@ -964,7 +1079,7 @@ namespace Ifood.Service
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs/{catalogId}/categories");
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/catalogs/{catalogId}/categories/{categoryId}");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Authorization", $"Bearer {token}");
@@ -981,6 +1096,152 @@ namespace Ifood.Service
                 }
 
                 result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<List<CatalogItem>> CatalogItems(string token, string merchantId, string categoryId)
+        {
+            var result = new GenericResult<List<CatalogItem>>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/categories/{categoryId}/items");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<List<CatalogItem>>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<CatalogItem> CatalogItemDetail(string token, string merchantId, string itemId)
+        {
+            var result = new GenericResult<CatalogItem>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/items/{itemId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<CatalogItem>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<List<OptionGroup>> CatalogOptionGroups(string token, string merchantId, string catalogId)
+        {
+            var result = new GenericResult<List<OptionGroup>>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/catalogs/{catalogId}/option-groups");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<List<OptionGroup>>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<OptionGroup> CatalogOptionGroupDetail(string token, string merchantId, string optionGroupId)
+        {
+            var result = new GenericResult<OptionGroup>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.GET);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/option-groups/{optionGroupId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    result.Result = JsonConvert.DeserializeObject<OptionGroup>(response.Content);
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
             }
             catch (Exception ex)
             {
@@ -998,7 +1259,7 @@ namespace Ifood.Service
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var request = new RestRequest(Method.GET);
-                var client = new RestClient($"{Constants.URL_BASE}merchants/{merchantId}/catalogs/{catalogId}/unsellableItems");
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/catalogs/{catalogId}/unsellableItems");
                 client.Timeout = -1;
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Authorization", $"Bearer {token}");
@@ -1015,6 +1276,229 @@ namespace Ifood.Service
                 }
 
                 result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<bool> UpdateItemStatus(string token, string merchantId, string itemId, string status)
+        {
+            var result = new GenericResult<bool>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.PATCH);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/items/{itemId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                request.AddJsonBody(new UpdateStatusRequest { status = status });
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Accepted)
+                {
+                    result.Result = true;
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<bool> UpdateItemPrice(string token, string merchantId, string itemId, decimal value, decimal originalValue)
+        {
+            var result = new GenericResult<bool>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.PATCH);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/items/{itemId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                request.AddJsonBody(new UpdatePriceRequest { price = new ItemPrice { value = value, originalValue = originalValue } });
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Accepted)
+                {
+                    result.Result = true;
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<bool> UpdateOptionStatus(string token, string merchantId, string optionId, string status)
+        {
+            var result = new GenericResult<bool>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.PATCH);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/options/{optionId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                request.AddJsonBody(new UpdateStatusRequest { status = status });
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Accepted)
+                {
+                    result.Result = true;
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<bool> UpdateOptionPrice(string token, string merchantId, string optionId, decimal value, decimal originalValue)
+        {
+            var result = new GenericResult<bool>();
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                var request = new RestRequest(Method.PATCH);
+                var client = new RestClientBase($"{Constants.URL_BASE_CATALOG}merchants/{merchantId}/options/{optionId}");
+                client.Timeout = -1;
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {token}");
+                request.AddJsonBody(new UpdatePriceRequest { price = new ItemPrice { value = value, originalValue = originalValue } });
+                IRestResponse response = client.Execute(request);
+
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Accepted)
+                {
+                    result.Result = true;
+                    result.Success = true;
+                }
+                else
+                {
+                    result.Message = response.Content;
+                }
+
+                result.Json = response.Content;
+                result.Request = client.requestResult;
+                result.Response = client.responsetResult;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        public GenericResult<MerchantCatalog> ImportarCatalogoCompleto(string token, string merchantId)
+        {
+            var result = new GenericResult<MerchantCatalog>();
+            try
+            {
+                var catalogos = Catalogs(token, merchantId);
+                if (!catalogos.Success)
+                {
+                    result.Message = $"Erro ao buscar catalogos: {catalogos.Message}";
+                    return result;
+                }
+
+                var merchantCatalog = new MerchantCatalog { merchantId = merchantId };
+
+                foreach (var catalogo in catalogos.Result)
+                {
+                    var catalogFull = new CatalogFull { catalog = catalogo };
+
+                    var categorias    = Categories(token, merchantId, catalogo.catalogId);
+                    var optionGroups  = CatalogOptionGroups(token, merchantId, catalogo.catalogId);
+                    var indisponiveis = UnsellableItems(token, merchantId, catalogo.catalogId);
+
+                    if (categorias.Success)
+                    {
+                        catalogFull.groups = categorias.Result;
+
+                        foreach (var categoria in categorias.Result)
+                        {
+                            var itens = CatalogItems(token, merchantId, categoria.id);
+                            if (itens.Success)
+                                catalogFull.items.AddRange(itens.Result);
+                        }
+                    }
+
+                    if (optionGroups.Success)
+                        catalogFull.optionGroups = optionGroups.Result;
+
+                    if (indisponiveis.Success)
+                    {
+                        catalogFull.unsellableItems = indisponiveis.Result;
+
+                        foreach (var item in catalogFull.items)
+                        {
+                            if (indisponiveis.Result.items != null && indisponiveis.Result.items.Contains(item.id))
+                                item.status = "UNAVAILABLE";
+
+                            if (item.optionGroups == null) continue;
+
+                            foreach (var og in item.optionGroups)
+                            {
+                                if (og.options == null) continue;
+
+                                foreach (var opt in og.options)
+                                    if (indisponiveis.Result.options != null && indisponiveis.Result.options.Contains(opt.id))
+                                        opt.status = "UNAVAILABLE";
+                            }
+                        }
+                    }
+
+                    merchantCatalog.catalogs.Add(catalogFull);
+                }
+
+                result.Result = merchantCatalog;
+                result.Success = true;
             }
             catch (Exception ex)
             {
