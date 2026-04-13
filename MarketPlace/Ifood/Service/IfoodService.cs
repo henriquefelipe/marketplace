@@ -1123,7 +1123,8 @@ namespace Ifood.Service
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<CatalogItem>>(response.Content);
+                    var wrapper = JsonConvert.DeserializeObject<CatalogItemsResponse>(response.Content);
+                    result.Result = wrapper?.items ?? new List<CatalogItem>();
                     result.Success = true;
                 }
                 else
@@ -1464,8 +1465,19 @@ namespace Ifood.Service
                         foreach (var categoria in categorias.Result)
                         {
                             var itens = CatalogItems(token, merchantId, categoria.id);
-                            if (itens.Success)
-                                catalogFull.items.AddRange(itens.Result);
+                            if (!itens.Success) continue;
+
+                            foreach (var item in itens.Result)
+                            {
+                                if (string.IsNullOrEmpty(item.imagePath))
+                                {
+                                    var detalhe = CatalogItemDetail(token, merchantId, item.id);
+                                    if (detalhe.Success && detalhe.Result != null)
+                                        item.imagePath = detalhe.Result.imagePath;
+                                }
+
+                                catalogFull.items.Add(item);
+                            }
                         }
                     }
 
