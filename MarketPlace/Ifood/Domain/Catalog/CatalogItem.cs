@@ -2,6 +2,12 @@ using System.Collections.Generic;
 
 namespace Ifood.Domain.Catalog
 {
+    public class CatalogItemsResponse
+    {
+        public string categoryId { get; set; }
+        public List<CatalogItem> items { get; set; }
+    }
+
     public class CatalogItem
     {
         public string id { get; set; }
@@ -12,6 +18,7 @@ namespace Ifood.Domain.Catalog
         public string additionalInformation { get; set; }
         public string logoUrl { get; set; }
         public string imageUrl { get; set; }
+        public string imagePath { get; set; }
         public string unit { get; set; }
         public decimal quantity { get; set; }
         public string serving { get; set; }
