@@ -1469,11 +1469,14 @@ namespace Ifood.Service
 
                             foreach (var item in itens.Result)
                             {
-                                if (string.IsNullOrEmpty(item.imagePath))
+                                var detalhe = CatalogItemDetail(token, merchantId, item.id);
+                                if (detalhe.Success && detalhe.Result != null)
                                 {
-                                    var detalhe = CatalogItemDetail(token, merchantId, item.id);
-                                    if (detalhe.Success && detalhe.Result != null)
+                                    if (string.IsNullOrEmpty(item.imagePath))
                                         item.imagePath = detalhe.Result.imagePath;
+
+                                    if (item.optionGroups == null || item.optionGroups.Count == 0)
+                                        item.optionGroups = detalhe.Result.optionGroups;
                                 }
 
                                 catalogFull.items.Add(item);
