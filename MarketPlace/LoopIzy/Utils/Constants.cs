@@ -14,5 +14,6 @@ namespace LoopIzy.Utils
         public const string URL_BALANCE = "functions/v1/api-balance";
         public const string URL_COUPONS = "functions/v1/api-coupons";
         public const string URL_CASHBACK = "functions/v1/api-cashback";
+        public const string URL_ORDERS = "functions/v1/api-orders";
     }
 }

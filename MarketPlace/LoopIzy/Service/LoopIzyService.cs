@@ -66,6 +66,13 @@ namespace LoopIzy.Service
             return Execute<OrderResponse>(request);
         }
 
+        public GenericResult<ReverseOrderResponse> ReverseOrder(ReverseOrderRequest data)
+        {
+            var request = CreateRequest(Constants.URL_ORDERS, Method.POST);
+            request.AddJsonBody(data);
+            return Execute<ReverseOrderResponse>(request);
+        }
+
         public GenericResult<CustomerResponse> GetCustomers(string phone = null, string cpf = null, string id = null)
         {
             var request = CreateRequest(Constants.URL_CUSTOMERS, Method.GET);
