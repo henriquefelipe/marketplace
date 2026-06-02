@@ -57,7 +57,9 @@ namespace BigFish.Service
             var result = new GenericResult<ResponseOrders>();
             try
             {
-                var xmlData = BuildXml("GET_ALL_ORDERS", new Dictionary<string, string>());
+                var xmlData = BuildXml("GET_ALL_ORDERS", new Dictionary<string, string>{
+                    { "importado", "0" }
+                });
                 var response = ExecuteRequest(xmlData);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
