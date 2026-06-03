@@ -124,19 +124,20 @@ namespace LoopIzy.Service
             return Execute<BalanceAdjustmentResponse>(request);
         }
 
-        public GenericResult<VoucherResponse> GetVouchers(string customerId = null, string status = null, string code = null)
+        public GenericResult<VoucherResponse> GetVouchers(string customerId = null, string status = null, string code = null, int? page = null)
         {
             var request = CreateRequest(Constants.URL_VOUCHERS, Method.GET);
             if (!string.IsNullOrEmpty(customerId)) request.AddQueryParameter("customer_id", customerId);
             if (!string.IsNullOrEmpty(status)) request.AddQueryParameter("status", status);
             if (!string.IsNullOrEmpty(code)) request.AddQueryParameter("code", code);
+            if (page.HasValue) request.AddQueryParameter("page", page.Value.ToString());
             return Execute<VoucherResponse>(request);
         }
 
         public GenericResult<VoucherActionResponse> VoucherAction(VoucherActionRequest data)
         {
             var request = CreateRequest(Constants.URL_VOUCHERS, Method.POST);
-            request.AddJsonBody(data);
+            request.AddParameter("application/json", JsonConvert.SerializeObject(data), ParameterType.RequestBody);
             return Execute<VoucherActionResponse>(request);
         }
 
