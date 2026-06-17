@@ -38,5 +38,11 @@ namespace IzzyGO.Domain
 
         [JsonProperty("createdat")]
         public object CreatedAt { get; set; }
+
+        [JsonProperty("driverName")]
+        public string DriverName { get; set; }
+
+        [JsonProperty("driverPhone")]
+        public string DriverPhone { get; set; }
     }
 }

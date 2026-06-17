@@ -30,6 +30,9 @@ namespace LoopIzy.Domain
         [JsonProperty("status")]
         public string Status { get; set; } // 'active', 'redeemed', 'expired'
 
+        [JsonProperty("credit_value")]
+        public decimal? CreditValue { get; set; }
+
         [JsonProperty("expires_at")]
         public string ExpiresAt { get; set; }
 
@@ -62,6 +65,9 @@ namespace LoopIzy.Domain
 
         [JsonProperty("voucher_id")]
         public string VoucherId { get; set; }
+
+        [JsonProperty("credit_value")]
+        public decimal? CreditValue { get; set; }
 
         [JsonProperty("attendant_name")]
         public string AttendantName { get; set; }

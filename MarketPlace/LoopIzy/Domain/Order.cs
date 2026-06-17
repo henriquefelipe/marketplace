@@ -65,4 +65,43 @@ namespace LoopIzy.Domain
         [JsonProperty("new_balance")]
         public int NewBalance { get; set; }
     }
+
+    public class ReverseOrderRequest
+    {
+        [JsonProperty("action")]
+        public string Action => "reverse";
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+    }
+
+    public class ReverseOrderResponse
+    {
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("points_debited")]
+        public int PointsDebited { get; set; }
+
+        [JsonProperty("new_balance")]
+        public int NewBalance { get; set; }
+
+        [JsonProperty("coupon_released")]
+        public bool CouponReleased { get; set; }
+
+        [JsonProperty("cashback_reversed")]
+        public bool CashbackReversed { get; set; }
+    }
 }

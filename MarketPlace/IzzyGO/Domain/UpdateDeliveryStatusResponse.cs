@@ -29,5 +29,11 @@ namespace IzzyGO.Domain
 
         [JsonProperty("message")]
         public string Message { get; set; }
+
+        [JsonProperty("driverName")]
+        public string DriverName { get; set; }
+
+        [JsonProperty("driverPhone")]
+        public string DriverPhone { get; set; }
     }
 }
