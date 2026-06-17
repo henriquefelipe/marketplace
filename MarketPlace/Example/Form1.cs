@@ -65,6 +65,7 @@ using OpenDelivery.Service;
 using LoopIzy.Service;
 using LoopIzy.Domain;
 using MarketPlace;
+using ADAC.Service;
 
 namespace Example
 {
@@ -9670,7 +9671,7 @@ namespace Example
 
         #region Prefiro Delivery
 
-        public int _prefiroDeliveryId { get; set; }
+        public string _prefiroDeliveryId { get; set; }
         public List<pedidosId> _prefiroDeliveryPedidos { get; set; }
 
 
@@ -9708,7 +9709,7 @@ namespace Example
 
         private  void btnPrefiroDeliveryPedido_Click(object sender, EventArgs e)
         {
-            if(_prefiroDeliveryId == 0)
+            if(string.IsNullOrEmpty(_prefiroDeliveryId))
             {
                 MessageBox.Show("Selecione o pedido");
                 return;
@@ -9720,7 +9721,7 @@ namespace Example
 
         private void btnPrefiroDeliveryEmProducao_Click(object sender, EventArgs e)
         {
-            if (_prefiroDeliveryId == 0)
+            if (string.IsNullOrEmpty(_prefiroDeliveryId))
             {
                 MessageBox.Show("Selecione o pedido");
                 return;
@@ -9778,7 +9779,7 @@ namespace Example
         {
             if (e.RowIndex > -1 && e.RowIndex < gridPrefiroDelivery.Rows.Count)
             {
-                _prefiroDeliveryId = Convert.ToInt32(gridPrefiroDelivery.Rows[e.RowIndex].Cells[0].Value.ToString());
+                _prefiroDeliveryId = gridPrefiroDelivery.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
         }
 
@@ -10139,15 +10140,155 @@ namespace Example
         }
         #endregion
 
-        private void txtCPFClientePedidoLoopIzy_TextChanged(object sender, EventArgs e)
-        {
+        #region ADAC
 
+        public string _adacId { get; set; }
+        public List<ADAC.Domain.order> _adacPedidos { get; set; }
+
+        private async void btnADACIniciar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtADACToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtADACUrl.Text))
+            {
+                MessageBox.Show("Campo Url Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtADACLoja.Text))
+            {
+                MessageBox.Show("Campo Loja Obrigatório");
+                return;
+            }
+
+            txtADACToken.Enabled = false;
+            txtADACUrl.Enabled = false;
+            txtADACLoja.Enabled = false;
+
+            btnADACIniciar.Enabled = false;
+            btnADACParar.Enabled = true;
+
+            await Task.Run(() => adac());
         }
 
-        private void groupBox4_Enter(object sender, EventArgs e)
+        private void btnADACParar_Click(object sender, EventArgs e)
         {
+            txtADACToken.Enabled = true;
+            txtADACUrl.Enabled = true;
+            txtADACLoja.Enabled = true;
 
+            btnADACIniciar.Enabled = true;
+            btnADACParar.Enabled = false;
         }
+
+        private void adac()
+        {
+            try
+            {
+                var service = new ADACService(txtADACUrl.Text, txtADACToken.Text, txtADACLoja.Text);
+                var orderResult = service.Pedidos();
+                if (orderResult.Success)
+                {
+                    _adacPedidos = new List<ADAC.Domain.order>();
+                    foreach (var order in orderResult.Result.orders)
+                    {
+                        _adacPedidos.Add(order.order);
+                    }
+                   
+                    WriteGridADAC();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private void btnADACAceitar_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(_adacId))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new ADACService(txtADACUrl.Text, txtADACToken.Text, txtADACLoja.Text);
+            var orderResult = service.Consume(_adacId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Pedido aceito com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);                
+            }
+        }
+
+        private void btnADACPedidoPronto_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_adacId))
+            {
+                MessageBox.Show("Selecione o pedido");
+                return;
+            }
+
+            var service = new ADACService(txtADACUrl.Text, txtADACToken.Text, txtADACLoja.Text);
+            var orderResult = service.Status(_adacId, ADAC.Enum.PedidoStatus.IN_PREPARATION, "Henrique", "85987704779");
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Pedido pronto com sucesso");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private delegate void WritelstGridADACDelegate();
+        private void WriteGridADAC()
+        {
+            if (gridADAC.InvokeRequired)
+            {
+                var d = new WritelstGridADACDelegate(WriteGridADAC);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridADAC.DataSource = _adacPedidos.ToList();
+                gridADAC.Refresh();
+            }
+        }
+
+
+        private void gridADAC_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridADAC.Rows.Count)
+            {
+                _adacId = gridADAC.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+
+
+
+
+        #endregion
+
+        
     }
 }
 

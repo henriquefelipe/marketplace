@@ -5,6 +5,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,6 +66,8 @@ namespace Agilizone.Service
                 {
                     order
                 };
+
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 var client = new RestClient(_url + "order");
                 var request = new RestRequest(Method.POST);

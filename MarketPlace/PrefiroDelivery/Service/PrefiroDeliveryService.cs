@@ -46,8 +46,22 @@ namespace PrefiroDelivery.Service
                 IRestResponse response = client.Execute(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    result.Result = JsonConvert.DeserializeObject<List<pedidosId>>(response.Content);
-                    result.Success = true;                    
+                    if (!string.IsNullOrEmpty(response.Content))
+                    {
+                        if (response.Content.Contains("Código de acesso inválido"))
+                        {
+                            result.Message = "Código de acesso inválido";
+                        }
+                        else
+                        {
+                            result.Result = JsonConvert.DeserializeObject<List<pedidosId>>(response.Content);
+                            result.Success = true;
+                        }
+                    }
+                    else
+                    {
+                        result.Success = true;
+                    }
                 }
                 else
                 {
@@ -63,7 +77,7 @@ namespace PrefiroDelivery.Service
             return result;
         }
 
-        public GenericResult<result<List<pedido>>> Pedido(int id)
+        public GenericResult<result<List<pedido>>> Pedido(string id)
         {
             var result = new GenericResult<result<List<pedido>>>();
             try
@@ -100,7 +114,7 @@ namespace PrefiroDelivery.Service
             return result;
         }
 
-        public GenericSimpleResult Status(int id, byte status)
+        public GenericSimpleResult Status(string id, byte status)
         {
             var result = new GenericSimpleResult();
             try

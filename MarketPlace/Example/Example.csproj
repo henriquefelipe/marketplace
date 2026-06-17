@@ -94,6 +94,10 @@
       <Project>{77da7553-dd84-43fe-a4c8-c21bc8185a10}</Project>
       <Name>Accon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ADAC\ADAC.csproj">
+      <Project>{7bf50889-46ff-4550-be09-a2e589408c45}</Project>
+      <Name>ADAC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agilizone\Agilizone.csproj">
       <Project>{9944ef9f-edd5-42e0-aa16-f6de3d99b2b8}</Project>
       <Name>Agilizone</Name>
