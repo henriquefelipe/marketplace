@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 18
+VisualStudioVersion = 18.7.11925.98 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace", "MarketPlace\MarketPlace.csproj", "{8C099D07-604B-471C-A810-C7581EB78373}"
 EndProject
@@ -106,6 +106,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenDelivery", "OpenDelivery\OpenDelivery.csproj", "{33839BAA-6BEC-4462-A0F6-6923EFDBB81F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopIzy", "LoopIzy\LoopIzy.csproj", "{2ED5AD63-FA5F-4E99-82C2-E22871A52BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoomerAbrahao", "GoomerAbrahao\GoomerAbrahao.csproj", "{0388BACA-D734-4ADE-941D-0E47B1EE7C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -321,6 +323,10 @@ Global
 		{2ED5AD63-FA5F-4E99-82C2-E22871A52BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED5AD63-FA5F-4E99-82C2-E22871A52BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED5AD63-FA5F-4E99-82C2-E22871A52BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0388BACA-D734-4ADE-941D-0E47B1EE7C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0388BACA-D734-4ADE-941D-0E47B1EE7C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0388BACA-D734-4ADE-941D-0E47B1EE7C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0388BACA-D734-4ADE-941D-0E47B1EE7C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
