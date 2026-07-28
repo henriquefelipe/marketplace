@@ -290,9 +290,9 @@ namespace GoomerAbrahao.Service
         /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
-        public GenericResult<Response<object>> OrderBill(int tableCode, byte type)
+        public GenericResult<Response<ResponseOrderBill>> OrderBill(int tableCode, byte type)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<ResponseOrderBill>>();
 
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_BILL}";
@@ -306,7 +306,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<ResponseOrderBill>>(response.Content);
                 }
 
                 result.Success = true;
@@ -364,9 +364,9 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item novo que será adicionado ao pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados do item adicionado.</returns>
-        public GenericResult<Response<object>> AddItemOrder(int tableCode, byte type, OrderItem item)
+        public GenericResult<Response<OrderItem>> AddItemOrder(int tableCode, byte type, OrderItem item)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<OrderItem>>();
 
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}";
@@ -381,7 +381,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
                 result.Success = true;
@@ -402,9 +402,9 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será alterado no pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados do item alterado.</returns>
-        public GenericResult<Response<object>> UpdateItemOrder(int tableCode, byte type, OrderItem item)
+        public GenericResult<Response<OrderItem>> UpdateItemOrder(int tableCode, byte type, OrderItem item)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<OrderItem>>();
 
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}";
@@ -419,7 +419,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
                 result.Success = true;
@@ -441,9 +441,9 @@ namespace GoomerAbrahao.Service
         /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
         /// <param name="newTableCode">O código da nova mesa ou comanda de destino.</param>
         /// <returns>Um GenericResult contendo o status e os dados do item transferido.</returns>
-        public GenericResult<Response<object>> TransferItemOrder(int tableCode, byte type, OrderItem item, int newTableCode)
+        public GenericResult<Response<ResponseOrderNewItem>> TransferItemOrder(int tableCode, byte type, OrderItem item, int newTableCode)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<ResponseOrderNewItem>>();
             
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}/{Constants.URL_TRANSFER}";
@@ -463,7 +463,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<ResponseOrderNewItem>>(response.Content);
                 }
 
                 result.Success = true;
@@ -484,9 +484,9 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados do item cancelado.</returns>
-        public GenericResult<Response<object>> CancelItemOrder(int tableCode, byte type, OrderItem item)
+        public GenericResult<Response<OrderItem>> CancelItemOrder(int tableCode, byte type, OrderItem item)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<OrderItem>>();
 
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}/{Constants.URL_CANCEL}";
@@ -504,7 +504,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
                 result.Success = true;
@@ -527,9 +527,9 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="paymentRequest">O novo pagamento que será adicionado ao pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados do pagamento adicionado.</returns>
-        public GenericResult<Response<object>> AddPaymentOrder(int tableCode, byte type, OrderPaymentRequest paymentRequest)
+        public GenericResult<Response<OrderPaymentRequest>> AddPaymentOrder(int tableCode, byte type, OrderPaymentRequest paymentRequest)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<OrderPaymentRequest>>();
             
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}";
@@ -544,7 +544,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<OrderPaymentRequest>>(response.Content);
                 }
 
                 result.Success = true;
@@ -565,9 +565,9 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
         /// <returns>Um GenericResult contendo o status e os dados do pagamento cancelado.</returns>
-        public GenericResult<Response<object>> CancelPaymentOrder(int tableCode, byte type, OrderPayment item)
+        public GenericResult<Response<OrderPayment>> CancelPaymentOrder(int tableCode, byte type, OrderPayment item)
         {
-            var result = new GenericResult<Response<object>>();
+            var result = new GenericResult<Response<OrderPayment>>();
 
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}/{item.Id}/{Constants.URL_CANCEL}";
@@ -581,7 +581,7 @@ namespace GoomerAbrahao.Service
             {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
-                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                    result.Result = JsonConvert.DeserializeObject<Response<OrderPayment>>(response.Content);
                 }
 
                 result.Success = true;
