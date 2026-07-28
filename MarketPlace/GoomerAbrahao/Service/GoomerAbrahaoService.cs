@@ -363,7 +363,7 @@ namespace GoomerAbrahao.Service
         /// <param name="tableCode">O código da mesa ou comanda.</param>
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item novo que será adicionado ao pedido (Mesa ou Comanda).</param>
-        /// <returns>Um GenericResult contendo o status e os dados do pedido adicionado.</returns>
+        /// <returns>Um GenericResult contendo o status e os dados do item adicionado.</returns>
         public GenericResult<Response<object>> AddItemOrder(int tableCode, byte type, OrderItem item)
         {
             var result = new GenericResult<Response<object>>();
@@ -396,12 +396,12 @@ namespace GoomerAbrahao.Service
         }
 
         /// <summary>
-        /// Adiciona um item novo a uma mesa ou comanda.
+        /// Altera um item de uma mesa ou comanda.
         /// </summary>
         /// <param name="tableCode">O código da mesa ou comanda.</param>
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será alterado no pedido (Mesa ou Comanda).</param>
-        /// <returns>Um GenericResult contendo o status e os dados do pedido alterado.</returns>
+        /// <returns>Um GenericResult contendo o status e os dados do item alterado.</returns>
         public GenericResult<Response<object>> UpdateItemOrder(int tableCode, byte type, OrderItem item)
         {
             var result = new GenericResult<Response<object>>();
@@ -440,7 +440,7 @@ namespace GoomerAbrahao.Service
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
         /// <param name="newTableCode">O código da nova mesa ou comanda de destino.</param>
-        /// <returns>Um GenericResult contendo o status e os dados do pedido alterado.</returns>
+        /// <returns>Um GenericResult contendo o status e os dados do item transferido.</returns>
         public GenericResult<Response<object>> TransferItemOrder(int tableCode, byte type, OrderItem item, int newTableCode)
         {
             var result = new GenericResult<Response<object>>();
@@ -483,7 +483,7 @@ namespace GoomerAbrahao.Service
         /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
         /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
-        /// <returns>Um GenericResult contendo o status e os dados do pedido alterado.</returns>
+        /// <returns>Um GenericResult contendo o status e os dados do item cancelado.</returns>
         public GenericResult<Response<object>> CancelItemOrder(int tableCode, byte type, OrderItem item)
         {
             var result = new GenericResult<Response<object>>();
@@ -520,7 +520,80 @@ namespace GoomerAbrahao.Service
         #endregion
 
         #region Ações pagamentos mesa/comanda
-        
+        /// <summary>
+        /// Adiciona um novo pagamento a uma mesa ou comanda.
+        /// </summary>
+        /// <param name="tableCode">O código da mesa ou comanda.</param>
+        /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
+        /// <param name="paymentRequest">O novo pagamento que será adicionado ao pedido (Mesa ou Comanda).</param>
+        /// <returns>Um GenericResult contendo o status e os dados do pagamento adicionado.</returns>
+        public GenericResult<Response<object>> AddPaymentOrder(int tableCode, byte type, OrderPaymentRequest paymentRequest)
+        {
+            var result = new GenericResult<Response<object>>();
+            
+            var orderType = GetOrderTypeRoute(type);
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}";
+
+            var request = new RestRequest(resource, Method.Post);
+            request.AddHeader("Accept", "application/json");
+            request.AddJsonBody(paymentRequest);
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        /// <summary>
+        /// Cancela um pagamento de uma mesa ou comanda.
+        /// </summary>
+        /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
+        /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
+        /// <param name="item">O item que será transferido do pedido (Mesa ou Comanda).</param>
+        /// <returns>Um GenericResult contendo o status e os dados do pagamento cancelado.</returns>
+        public GenericResult<Response<object>> CancelPaymentOrder(int tableCode, byte type, OrderPayment item)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = GetOrderTypeRoute(type);
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}/{item.Id}/{Constants.URL_CANCEL}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
         #endregion
 
         #endregion

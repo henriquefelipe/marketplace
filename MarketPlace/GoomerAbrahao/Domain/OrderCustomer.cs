@@ -7,6 +7,8 @@ namespace GoomerAbrahao.Domain
 {
     public class OrderCustomer
     {
+        [JsonProperty("id")]
+        public Guid Id { get; set; }
         [JsonProperty("document")]
         public string Document { get; set; }
         [JsonProperty("name")]
