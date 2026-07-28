@@ -14,5 +14,6 @@ namespace GoomerAbrahao.Utils
         public const string URL_TRANSFER = "transfer";
         public const string URL_CANCEL = "cancel";
         public const string URL_REOPEN = "reopen";
+        public const string URL_ITEM = "item";
     }
 }
