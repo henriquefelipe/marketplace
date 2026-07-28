@@ -1,4 +1,5 @@
 ﻿using GoomerAbrahao.Domain;
+using GoomerAbrahao.Enum;
 using GoomerAbrahao.Utils;
 using MarketPlace;
 using Newtonsoft.Json;
@@ -92,7 +93,131 @@ namespace GoomerAbrahao.Service
 
             if (response.IsSuccessful)
             {
-                // Tenta deserializar. (Veja a observação abaixo)
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<Response<object>> CloseOrder(int tableCode, byte type)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = type == (byte)OrderType.Mesa ? "table" : "card";
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_CLOSE}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<Response<object>> TransferOrder(int tableCode, byte type, int newTableCode)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = type == (byte)OrderType.Mesa ? "table" : "card";
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_TRANSFER}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            object body = type == (byte)OrderType.Mesa
+            ? (object)new { new_table = newTableCode }
+            : (object)new { new_card = newTableCode };
+            request.AddJsonBody(body);
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<Response<object>> CancelOrder(int tableCode, byte type)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = type == (byte)OrderType.Mesa ? "table" : "card";
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_CANCEL}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        public GenericResult<Response<object>> ReopenOrder(int tableCode, byte type)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = type == (byte)OrderType.Mesa ? "table" : "card";
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_REOPEN}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
                 if (!string.IsNullOrWhiteSpace(response.Content))
                 {
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);

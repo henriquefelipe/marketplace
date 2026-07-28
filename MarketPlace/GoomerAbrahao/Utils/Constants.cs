@@ -10,5 +10,9 @@ namespace GoomerAbrahao.Utils
         public const string URL_ORDERS = "orders";
         public const string URL_RECEIVED = "received";
         public const string URL_ERROR = "error";
+        public const string URL_CLOSE = "close";
+        public const string URL_TRANSFER = "transfer";
+        public const string URL_CANCEL = "cancel";
+        public const string URL_REOPEN = "reopen";
     }
 }
