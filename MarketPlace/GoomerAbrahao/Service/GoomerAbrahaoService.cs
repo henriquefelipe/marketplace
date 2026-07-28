@@ -30,6 +30,7 @@ namespace GoomerAbrahao.Service
             return type == (byte)OrderType.Mesa ? "table" : "card";
         }
 
+        #region Listagens pedido (mesa/comanda)
         /// <summary>
         /// Lista os pedidos pendentes.
         /// </summary>
@@ -55,6 +56,35 @@ namespace GoomerAbrahao.Service
             result.Json = response.Content;
             return result;
         }
+
+        /// <summary>
+        /// Listar as comandas/mesas em aberto.
+        /// </summary>
+        /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
+        public GenericResult<ResponseTableCard> OrdersOpen(byte type)
+        {
+            var result = new GenericResult<ResponseTableCard>();
+
+            var orderType = GetOrderTypeRoute(type);
+            var request = new RestRequest($"{orderType}s", Method.Get);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                result.Result = JsonConvert.DeserializeObject<ResponseTableCard>(response.Content);
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+        #endregion
 
         #region Ações pedido (mesa/comanda)
 
