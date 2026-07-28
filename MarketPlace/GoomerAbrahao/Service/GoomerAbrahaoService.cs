@@ -284,6 +284,78 @@ namespace GoomerAbrahao.Service
             return result;
         }
 
+        /// <summary>
+        /// Obter extrato do consumo de uma mesa ou comanda.
+        /// </summary>
+        /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
+        /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
+        /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
+        public GenericResult<Response<object>> OrderBill(int tableCode, byte type)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = GetOrderTypeRoute(type);
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_BILL}";
+
+            var request = new RestRequest(resource, Method.Get);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
+        /// <summary>
+        /// Obter extrato do consumo de uma mesa ou comanda.
+        /// </summary>
+        /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
+        /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
+        /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
+        public GenericResult<Response<object>> OrderRequestBill(int tableCode, byte type)
+        {
+            var result = new GenericResult<Response<object>>();
+
+            var orderType = GetOrderTypeRoute(type);
+            var resource = $"{orderType}/{tableCode}/{Constants.URL_REQUEST_BILL}";
+
+            var request = new RestRequest(resource, Method.Put);
+            request.AddHeader("Accept", "application/json");
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+
         #region Ações itens da mesa/comanda
         /// <summary>
         /// Adiciona um item novo a uma mesa ou comanda.
@@ -445,6 +517,10 @@ namespace GoomerAbrahao.Service
             result.Json = response.Content;
             return result;
         }
+        #endregion
+
+        #region Ações pagamentos mesa/comanda
+        
         #endregion
 
         #endregion

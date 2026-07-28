@@ -15,5 +15,7 @@ namespace GoomerAbrahao.Utils
         public const string URL_CANCEL = "cancel";
         public const string URL_REOPEN = "reopen";
         public const string URL_ITEM = "item";
+        public const string URL_BILL = "bill";
+        public const string URL_REQUEST_BILL = "requestbill";
     }
 }
