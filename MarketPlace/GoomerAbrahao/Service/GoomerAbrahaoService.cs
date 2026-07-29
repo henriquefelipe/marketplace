@@ -40,7 +40,10 @@ namespace GoomerAbrahao.Service
             if (response.IsSuccessful)
             {
                 result.Result = JsonConvert.DeserializeObject<ResponseOrders>(response.Content);
-                result.Success = true;
+
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -68,7 +71,10 @@ namespace GoomerAbrahao.Service
             if (response.IsSuccessful)
             {
                 result.Result = JsonConvert.DeserializeObject<ResponseTableCard>(response.Content);
-                result.Success = true;
+
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -106,7 +112,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -147,7 +155,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -183,7 +193,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -219,7 +231,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -255,7 +269,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -297,7 +313,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -333,7 +351,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<ResponseOrderBill>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -369,7 +389,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -408,7 +430,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -446,7 +470,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -490,7 +516,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<ResponseOrderNewItem>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -531,7 +559,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<OrderItem>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -571,7 +601,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<OrderPaymentRequest>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {
@@ -608,7 +640,9 @@ namespace GoomerAbrahao.Service
                     result.Result = JsonConvert.DeserializeObject<Response<OrderPayment>>(response.Content);
                 }
 
-                result.Success = true;
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
             }
             else
             {

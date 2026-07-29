@@ -11,5 +11,7 @@ namespace GoomerAbrahao.Domain
         public bool Success { get; set; }
         [JsonProperty("data")]
         public T Data { get; set; }
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 }

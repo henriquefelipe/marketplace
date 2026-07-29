@@ -9425,6 +9425,7 @@
             this.btnAbrahaoExtrato.TabIndex = 67;
             this.btnAbrahaoExtrato.Text = "Extrato";
             this.btnAbrahaoExtrato.UseVisualStyleBackColor = true;
+            this.btnAbrahaoExtrato.Click += new System.EventHandler(this.btnAbrahaoExtrato_Click);
             // 
             // btnAbrahaoFechamento
             // 
@@ -9435,6 +9436,7 @@
             this.btnAbrahaoFechamento.TabIndex = 66;
             this.btnAbrahaoFechamento.Text = "Sol. Fechamento";
             this.btnAbrahaoFechamento.UseVisualStyleBackColor = true;
+            this.btnAbrahaoFechamento.Click += new System.EventHandler(this.btnAbrahaoFechamento_Click);
             // 
             // btnAbrahaoReabrir
             // 
@@ -9445,6 +9447,7 @@
             this.btnAbrahaoReabrir.TabIndex = 65;
             this.btnAbrahaoReabrir.Text = "Reabrir";
             this.btnAbrahaoReabrir.UseVisualStyleBackColor = true;
+            this.btnAbrahaoReabrir.Click += new System.EventHandler(this.btnAbrahaoReabrir_Click);
             // 
             // btnAbrahaoFinalizar
             // 
@@ -9455,6 +9458,7 @@
             this.btnAbrahaoFinalizar.TabIndex = 64;
             this.btnAbrahaoFinalizar.Text = "Finalizar";
             this.btnAbrahaoFinalizar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoFinalizar.Click += new System.EventHandler(this.btnAbrahaoFinalizar_Click);
             // 
             // btnAbrahaoCancelar
             // 
@@ -9465,6 +9469,7 @@
             this.btnAbrahaoCancelar.TabIndex = 63;
             this.btnAbrahaoCancelar.Text = "Cancelar";
             this.btnAbrahaoCancelar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoCancelar.Click += new System.EventHandler(this.btnAbrahaoCancelar_Click);
             // 
             // label166
             // 
@@ -9493,6 +9498,7 @@
             this.btnAbrahaoErrado.TabIndex = 60;
             this.btnAbrahaoErrado.Text = "Errado";
             this.btnAbrahaoErrado.UseVisualStyleBackColor = true;
+            this.btnAbrahaoErrado.Click += new System.EventHandler(this.btnAbrahaoErrado_Click);
             // 
             // label165
             // 
@@ -9533,6 +9539,7 @@
             this.btnAbrahaoRecebido.TabIndex = 55;
             this.btnAbrahaoRecebido.Text = "Recebido";
             this.btnAbrahaoRecebido.UseVisualStyleBackColor = true;
+            this.btnAbrahaoRecebido.Click += new System.EventHandler(this.btnAbrahaoRecebido_Click);
             // 
             // gridAbrahaoPendentes
             // 
