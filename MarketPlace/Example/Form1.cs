@@ -65,6 +65,7 @@ using OpenDelivery.Service;
 using LoopIzy.Service;
 using LoopIzy.Domain;
 using MarketPlace;
+using GoomerAbrahao.Service;
 
 namespace Example
 {
@@ -185,6 +186,10 @@ namespace Example
 
         private List<Tray.Domain.order> _trayOrders { get; set; }
         private string _trayId { get; set; }
+
+        private List<GoomerAbrahao.Domain.Order> _abrahaoOrders { get; set; }
+        private string _abrahaoPendenteId { get; set; }
+        private string _abrahaoPedidoId { get; set; }
         #endregion
 
         public Form1()
@@ -10135,6 +10140,115 @@ namespace Example
             else
             {
                 txtResultaLoopIzy.Text = $"Erro: {result.Message}";
+            }
+        }
+        #endregion
+
+        #region Goomer/Abrahão
+        private void btnAbrahaoIniciar_Click(object sender, EventArgs e)
+        {
+            abrahaoIniciar();
+        }
+
+        private void btnAbrahaoParar_Click(object sender, EventArgs e)
+        {
+            txtAbrahaoURL.Enabled = true;
+            txtAbrahaoToken.Enabled = true;
+            txtAbrahaoMsgErrado.Enabled = false;
+            btnAbrahaoIniciar.Enabled = true;
+            btnAbrahaoParar.Enabled = false;
+            btnAbrahaoErrado.Enabled = false;
+            btnAbrahaoRecebido.Enabled = false;
+            btnAbrahaoCancelar.Enabled = false;
+            btnAbrahaoFinalizar.Enabled = false;
+            btnAbrahaoReabrir.Enabled = false;
+            btnAbrahaoFechamento.Enabled = false;
+            btnAbrahaoExtrato.Enabled = false;
+        }
+
+        public async void abrahaoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtAbrahaoURL.Enabled = false;
+            txtAbrahaoToken.Enabled = false;
+            txtAbrahaoMsgErrado.Enabled = true;
+            btnAbrahaoIniciar.Enabled = false;
+            btnAbrahaoParar.Enabled = true;
+            btnAbrahaoErrado.Enabled = true;
+            btnAbrahaoRecebido.Enabled = true;
+            btnAbrahaoCancelar.Enabled = true;
+            btnAbrahaoFinalizar.Enabled = true;
+            btnAbrahaoReabrir.Enabled = true;
+            btnAbrahaoFechamento.Enabled = true;
+            btnAbrahaoExtrato.Enabled = true;
+            await Task.Run(() => abrahao());
+        }
+
+        private void abrahao()
+        {
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+
+            try
+            {
+                //while (btnMultiPedidoParar.Enabled)
+                //{
+                var orderResult = service.Orders();
+                if (orderResult.Success)
+                {
+                    _abrahaoOrders = orderResult.Result.Data;
+
+                    WriteGridBigFish();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
+
+                //Thread.Sleep(30000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridAbrahaoDelegate();
+        private void WriteGridAbrahaoPendentes()
+        {
+            if (gridAbrahaoPendentes.InvokeRequired)
+            {
+                var d = new WritelstGridAbrahaoDelegate(WriteGridAbrahaoPendentes);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAbrahaoPendentes.DataSource = _abrahaoOrders.ToList();
+                gridAbrahaoPendentes.Refresh();
+            }
+        }
+
+        private void gridAbrahaoPendentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAbrahaoPendentes.Rows.Count)
+            {
+                _abrahaoPendenteId = gridAbrahaoPendentes.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
         }
         #endregion

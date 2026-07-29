@@ -190,6 +190,10 @@
       <Project>{572c537e-0dfb-4b13-9b0d-6918d191c4bc}</Project>
       <Name>GloriaFood</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoomerAbrahao\GoomerAbrahao.csproj">
+      <Project>{0388baca-d734-4ade-941d-0e47b1ee7c67}</Project>
+      <Name>GoomerAbrahao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Goomer\Goomer.csproj">
       <Project>{a02cadd0-d127-470b-8eb6-d016bc482ae6}</Project>
       <Name>Goomer</Name>

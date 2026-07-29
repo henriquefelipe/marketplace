@@ -351,7 +351,7 @@ namespace GoomerAbrahao.Service
         }
 
         /// <summary>
-        /// Obter extrato do consumo de uma mesa ou comanda.
+        /// Solicitar o fechamento do consumo de uma mesa ou comanda.
         /// </summary>
         /// <param name="tableCode">O código da mesa ou comanda de origem.</param>
         /// <param name="type">O tipo do pedido (Mesa ou Comanda).</param>
