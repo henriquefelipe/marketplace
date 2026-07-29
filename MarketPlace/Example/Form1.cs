@@ -188,6 +188,7 @@ namespace Example
         private string _trayId { get; set; }
 
         private List<GoomerAbrahao.Domain.Order> _abrahaoOrders { get; set; }
+        private List<GoomerAbrahao.Domain.TableCard> _abrahaoOrdersOpen { get; set; }
         private string _abrahaoPendenteId { get; set; }
         private string _abrahaoPedidoId { get; set; }
         #endregion
@@ -510,6 +511,10 @@ namespace Example
             _abrahaoOrders = new List<GoomerAbrahao.Domain.Order>();
             gridAbrahaoPendentes.DataSource = _abrahaoOrders.ToList();
             gridAbrahaoPendentes.Refresh();
+
+            _abrahaoOrdersOpen = new List<GoomerAbrahao.Domain.TableCard>();
+            gridAbrahaoPedidosAberto.DataSource = _abrahaoOrdersOpen.ToList();
+            gridAbrahaoPedidosAberto.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -10205,14 +10210,12 @@ namespace Example
 
             try
             {
-                //while (btnMultiPedidoParar.Enabled)
-                //{
                 var orderResult = service.Orders();
                 if (orderResult.Success)
                 {
                     _abrahaoOrders = orderResult.Result.Data;
 
-                    WriteGridBigFish();
+                    WriteGridAbrahaoPendentes();
                 }
                 else
                 {
@@ -10220,8 +10223,18 @@ namespace Example
                     return;
                 }
 
-                //Thread.Sleep(30000);
-                //}
+                var openOrdersTableResult = service.OrdersOpen((byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (openOrdersTableResult.Success)
+                {
+                    _abrahaoOrdersOpen = openOrdersTableResult.Result.Data;
+
+                    WriteGridAbrahaoPedidosAberto();
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                    return;
+                }
             }
             catch (Exception ex)
             {
@@ -10233,12 +10246,12 @@ namespace Example
             }
         }
 
-        private delegate void WritelstGridAbrahaoDelegate();
+        private delegate void WritelstGridAbrahaoPendenteDelegate();
         private void WriteGridAbrahaoPendentes()
         {
             if (gridAbrahaoPendentes.InvokeRequired)
             {
-                var d = new WritelstGridAbrahaoDelegate(WriteGridAbrahaoPendentes);
+                var d = new WritelstGridAbrahaoPendenteDelegate(WriteGridAbrahaoPendentes);
                 Invoke(d, new object[] { });
             }
             else
@@ -10253,6 +10266,29 @@ namespace Example
             if (e.RowIndex > -1 && e.RowIndex < gridAbrahaoPendentes.Rows.Count)
             {
                 _abrahaoPendenteId = gridAbrahaoPendentes.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private delegate void WritelstGridAbrahaoDelegate();
+        private void WriteGridAbrahaoPedidosAberto()
+        {
+            if (gridAbrahaoPedidosAberto.InvokeRequired)
+            {
+                var d = new WritelstGridAbrahaoDelegate(WriteGridAbrahaoPedidosAberto);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAbrahaoPedidosAberto.DataSource = _abrahaoOrdersOpen.ToList();
+                gridAbrahaoPedidosAberto.Refresh();
+            }
+        }
+
+        private void gridAbrahaoPedidosAberto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAbrahaoPedidosAberto.Rows.Count)
+            {
+                _abrahaoPedidoId = gridAbrahaoPedidosAberto.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
         }
         #endregion

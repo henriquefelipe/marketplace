@@ -793,6 +793,8 @@
             this.txtClienteLoopIzy = new System.Windows.Forms.TextBox();
             this.label150 = new System.Windows.Forms.Label();
             this.Abrahao = new System.Windows.Forms.TabPage();
+            this.btnAbrahaoExtrato = new System.Windows.Forms.Button();
+            this.btnAbrahaoFechamento = new System.Windows.Forms.Button();
             this.btnAbrahaoReabrir = new System.Windows.Forms.Button();
             this.btnAbrahaoFinalizar = new System.Windows.Forms.Button();
             this.btnAbrahaoCancelar = new System.Windows.Forms.Button();
@@ -810,8 +812,6 @@
             this.txtAbrahaoToken = new System.Windows.Forms.TextBox();
             this.btnAbrahaoParar = new System.Windows.Forms.Button();
             this.btnAbrahaoIniciar = new System.Windows.Forms.Button();
-            this.btnAbrahaoFechamento = new System.Windows.Forms.Button();
-            this.btnAbrahaoExtrato = new System.Windows.Forms.Button();
             this.btn.SuspendLayout();
             this.tabPage99Food.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid99Food)).BeginInit();
@@ -9416,6 +9416,26 @@
             this.Abrahao.Text = "Abrahão";
             this.Abrahao.UseVisualStyleBackColor = true;
             // 
+            // btnAbrahaoExtrato
+            // 
+            this.btnAbrahaoExtrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoExtrato.Location = new System.Drawing.Point(1140, 160);
+            this.btnAbrahaoExtrato.Name = "btnAbrahaoExtrato";
+            this.btnAbrahaoExtrato.Size = new System.Drawing.Size(83, 39);
+            this.btnAbrahaoExtrato.TabIndex = 67;
+            this.btnAbrahaoExtrato.Text = "Extrato";
+            this.btnAbrahaoExtrato.UseVisualStyleBackColor = true;
+            // 
+            // btnAbrahaoFechamento
+            // 
+            this.btnAbrahaoFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoFechamento.Location = new System.Drawing.Point(995, 160);
+            this.btnAbrahaoFechamento.Name = "btnAbrahaoFechamento";
+            this.btnAbrahaoFechamento.Size = new System.Drawing.Size(139, 39);
+            this.btnAbrahaoFechamento.TabIndex = 66;
+            this.btnAbrahaoFechamento.Text = "Sol. Fechamento";
+            this.btnAbrahaoFechamento.UseVisualStyleBackColor = true;
+            // 
             // btnAbrahaoReabrir
             // 
             this.btnAbrahaoReabrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -9502,6 +9522,7 @@
             this.gridAbrahaoPedidosAberto.RowHeadersWidth = 51;
             this.gridAbrahaoPedidosAberto.Size = new System.Drawing.Size(716, 472);
             this.gridAbrahaoPedidosAberto.TabIndex = 56;
+            this.gridAbrahaoPedidosAberto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAbrahaoPedidosAberto_CellClick);
             // 
             // btnAbrahaoRecebido
             // 
@@ -9521,6 +9542,7 @@
             this.gridAbrahaoPendentes.RowHeadersWidth = 51;
             this.gridAbrahaoPendentes.Size = new System.Drawing.Size(485, 472);
             this.gridAbrahaoPendentes.TabIndex = 40;
+            this.gridAbrahaoPendentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAbrahaoPendentes_CellClick);
             // 
             // label163
             // 
@@ -9582,26 +9604,6 @@
             this.btnAbrahaoIniciar.Text = "Iniciar";
             this.btnAbrahaoIniciar.UseVisualStyleBackColor = true;
             this.btnAbrahaoIniciar.Click += new System.EventHandler(this.btnAbrahaoIniciar_Click);
-            // 
-            // btnAbrahaoFechamento
-            // 
-            this.btnAbrahaoFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrahaoFechamento.Location = new System.Drawing.Point(995, 160);
-            this.btnAbrahaoFechamento.Name = "btnAbrahaoFechamento";
-            this.btnAbrahaoFechamento.Size = new System.Drawing.Size(139, 39);
-            this.btnAbrahaoFechamento.TabIndex = 66;
-            this.btnAbrahaoFechamento.Text = "Sol. Fechamento";
-            this.btnAbrahaoFechamento.UseVisualStyleBackColor = true;
-            // 
-            // btnAbrahaoExtrato
-            // 
-            this.btnAbrahaoExtrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrahaoExtrato.Location = new System.Drawing.Point(1140, 160);
-            this.btnAbrahaoExtrato.Name = "btnAbrahaoExtrato";
-            this.btnAbrahaoExtrato.Size = new System.Drawing.Size(83, 39);
-            this.btnAbrahaoExtrato.TabIndex = 67;
-            this.btnAbrahaoExtrato.Text = "Extrato";
-            this.btnAbrahaoExtrato.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

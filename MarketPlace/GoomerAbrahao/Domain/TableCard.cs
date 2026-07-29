@@ -12,7 +12,7 @@ namespace GoomerAbrahao.Domain
         [JsonProperty("code")]
         public int Code { get; set; }
         [JsonProperty("name")]
-        public int Name { get; set; }
+        public string Name { get; set; }
         [JsonProperty("service_percentage")]
         public decimal ServicePercentage { get; set; }
         [JsonProperty("qr_code")]
