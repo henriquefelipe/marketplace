@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using System;
-using RestSharp.Serializers.NewtonsoftJson;
 
 namespace GoomerAbrahao.Service
 {
@@ -15,14 +14,9 @@ namespace GoomerAbrahao.Service
         private readonly RestClient _client;
         public GoomerAbrahaoService(string url, string token)
         {
-            var options = new RestClientOptions(url)
-            {
-                Authenticator = new JwtAuthenticator(token)
-            };
-            _client = new RestClient(
-                options,
-                configureSerialization: s => s.UseNewtonsoftJson()
-            );
+            _client = new RestClient(url);
+
+            _client.Authenticator = new JwtAuthenticator(token);
         }
 
         private string GetOrderTypeRoute(byte type)
@@ -38,7 +32,7 @@ namespace GoomerAbrahao.Service
         public GenericResult<ResponseOrders> Orders()
         {
             var result = new GenericResult<ResponseOrders>();
-            var request = new RestRequest(Constants.URL_ORDERS, Method.Get);
+            var request = new RestRequest(Constants.URL_ORDERS, Method.GET);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -66,7 +60,7 @@ namespace GoomerAbrahao.Service
             var result = new GenericResult<ResponseTableCard>();
 
             var orderType = GetOrderTypeRoute(type);
-            var request = new RestRequest($"{orderType}s", Method.Get);
+            var request = new RestRequest($"{orderType}s", Method.GET);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -99,7 +93,7 @@ namespace GoomerAbrahao.Service
             
             var resource = $"{Constants.URL_ORDERS}/{orderId}/{Constants.URL_RECEIVED}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -135,7 +129,7 @@ namespace GoomerAbrahao.Service
 
             var resource = $"{Constants.URL_ORDERS}/{orderId}/{Constants.URL_ERROR}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             if (!string.IsNullOrWhiteSpace(errorMessage))
@@ -177,7 +171,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_CLOSE}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -213,7 +207,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_CANCEL}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -249,7 +243,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_REOPEN}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -286,7 +280,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_TRANSFER}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             object body = type == (byte)OrderType.Mesa
@@ -327,7 +321,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_BILL}";
 
-            var request = new RestRequest(resource, Method.Get);
+            var request = new RestRequest(resource, Method.GET);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -363,7 +357,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_REQUEST_BILL}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -401,7 +395,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}";
 
-            var request = new RestRequest(resource, Method.Post);
+            var request = new RestRequest(resource, Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(item);
 
@@ -439,7 +433,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(item);
 
@@ -478,7 +472,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}/{Constants.URL_TRANSFER}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             // Código da mesa/comanda e quantidade a ser transferida
@@ -521,7 +515,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_ITEM}/{item.Id}/{Constants.URL_CANCEL}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             // Código da mesa/comanda e quantidade a ser transferida
@@ -564,7 +558,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}";
 
-            var request = new RestRequest(resource, Method.Post);
+            var request = new RestRequest(resource, Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(paymentRequest);
 
@@ -602,7 +596,7 @@ namespace GoomerAbrahao.Service
             var orderType = GetOrderTypeRoute(type);
             var resource = $"{orderType}/{tableCode}/{Constants.URL_PAYMENT}/{item.Id}/{Constants.URL_CANCEL}";
 
-            var request = new RestRequest(resource, Method.Put);
+            var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
