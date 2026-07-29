@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GoomerAbrahao.Domain
@@ -31,5 +32,12 @@ namespace GoomerAbrahao.Domain
 
         [JsonProperty("extra_fields")]
         public JObject ExtraFields { get; set; }
+
+        [JsonIgnore]
+        public decimal Total { get
+            {
+                return (Quantity * Price) + Options.Sum(s => s.Total);
+            }
+        }
     }
 }

@@ -10226,6 +10226,7 @@ namespace Example
                         return;
                     }
 
+                    Thread.Sleep(15000);
                     var openOrdersTableResult = service.OrdersOpen((byte)GoomerAbrahao.Enum.OrderType.Mesa);
                     if (openOrdersTableResult.Success)
                     {
@@ -10239,7 +10240,7 @@ namespace Example
                         return;
                     }
 
-                    Thread.Sleep(30000);
+                    Thread.Sleep(15000);
                 }
             }
             catch (Exception ex)
@@ -10320,21 +10321,14 @@ namespace Example
             }
 
             var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
-            if (Guid.TryParse(_abrahaoPendenteId, out Guid pedidoId))
+            var orderResult = service.OrderError(_abrahaoPendenteId, txtAbrahaoMsgErrado.Text);
+            if (orderResult.Success)
             {
-                var orderResult = service.OrderError(pedidoId, txtAbrahaoMsgErrado.Text);
-                if (orderResult.Success)
-                {
-                    MessageBox.Show("Ok");
-                }
-                else
-                {
-                    MessageBox.Show(orderResult.Message);
-                }
+                MessageBox.Show("Ok");
             }
             else
             {
-                MessageBox.Show("Id do pedido inválido");
+                MessageBox.Show(orderResult.Message);
             }
         }
 
@@ -10359,21 +10353,14 @@ namespace Example
             }
 
             var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
-            if (Guid.TryParse(_abrahaoPendenteId, out Guid pedidoId))
+            var orderResult = service.OrderReceived(_abrahaoPendenteId);
+            if (orderResult.Success)
             {
-                var orderResult = service.OrderReceived(pedidoId);
-                if (orderResult.Success)
-                {
-                    MessageBox.Show("Ok");
-                }
-                else
-                {
-                    MessageBox.Show(orderResult.Message);
-                }
+                MessageBox.Show("Ok");
             }
             else
             {
-                MessageBox.Show("Id do pedido inválido");
+                MessageBox.Show(orderResult.Message);
             }
         }
         #endregion

@@ -32,5 +32,14 @@ namespace GoomerAbrahao.Domain
 
         [JsonProperty("extra_fields")]
         public JObject ExtraFields { get; set; }
+
+        [JsonIgnore]
+        public decimal Total
+        {
+            get
+            {
+                return Quantity * Price;
+            }
+        }
     }
 }

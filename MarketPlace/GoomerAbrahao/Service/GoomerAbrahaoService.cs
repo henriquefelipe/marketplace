@@ -93,7 +93,7 @@ namespace GoomerAbrahao.Service
         /// </summary>
         /// <param name="orderId">O id do pedido que será marcado como recebido.</param>
         /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
-        public GenericResult<Response<object>> OrderReceived(Guid orderId)
+        public GenericResult<Response<object>> OrderReceived(string orderId)
         {
             var result = new GenericResult<Response<object>>();
             
@@ -131,7 +131,7 @@ namespace GoomerAbrahao.Service
         /// <param name="orderId">O id do pedido que será marcado como erro.</param>
         /// <param name="errorMessage">Mensagem do erro retornado pela integração.</param>
         /// <returns>Um GenericResult contendo o status e os dados da resposta da API.</returns>
-        public GenericResult<Response<object>> OrderError(Guid orderId, string errorMessage = null)
+        public GenericResult<Response<object>> OrderError(string orderId, string errorMessage = null)
         {
             var result = new GenericResult<Response<object>>();
 
