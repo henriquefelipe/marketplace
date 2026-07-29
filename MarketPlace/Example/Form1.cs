@@ -506,6 +506,10 @@ namespace Example
             _bigFishOrders = new List<BigFish.Domain.Order>();
             gridBigFish.DataSource = _bigFishOrders.ToList();
             gridBigFish.Refresh();
+
+            _abrahaoOrders = new List<GoomerAbrahao.Domain.Order>();
+            gridAbrahaoPendentes.DataSource = _abrahaoOrders.ToList();
+            gridAbrahaoPendentes.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
