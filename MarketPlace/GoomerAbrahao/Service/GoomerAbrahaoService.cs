@@ -13,9 +13,9 @@ namespace GoomerAbrahao.Service
     public class GoomerAbrahaoService
     {
         private readonly RestClient _client;
-        public GoomerAbrahaoService(string token)
+        public GoomerAbrahaoService(string url, string token)
         {
-            var options = new RestClientOptions(Constants.URL_BASE)
+            var options = new RestClientOptions(url)
             {
                 Authenticator = new JwtAuthenticator(token)
             };
