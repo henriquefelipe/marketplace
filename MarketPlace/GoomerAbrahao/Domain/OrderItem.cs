@@ -9,7 +9,7 @@ namespace GoomerAbrahao.Domain
     public class OrderItem
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }

@@ -8,7 +8,7 @@ namespace GoomerAbrahao.Domain
     public class Order
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("date")]
         public DateTime Date { get; set; }

@@ -32,7 +32,7 @@ namespace GoomerAbrahao.Service
         public GenericResult<ResponseOrders> Orders()
         {
             var result = new GenericResult<ResponseOrders>();
-            var request = new RestRequest(Constants.URL_ORDERS, Method.GET);
+            var request = new RestRequest($"{Constants.URL_ORDER}s", Method.GET);
             request.AddHeader("Accept", "application/json");
 
             var response = _client.Execute(request);
@@ -97,7 +97,7 @@ namespace GoomerAbrahao.Service
         {
             var result = new GenericResult<Response<object>>();
             
-            var resource = $"{Constants.URL_ORDERS}/{orderId}/{Constants.URL_RECEIVED}";
+            var resource = $"{Constants.URL_ORDER}/{orderId}/{Constants.URL_RECEIVED}";
 
             var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
@@ -135,7 +135,7 @@ namespace GoomerAbrahao.Service
         {
             var result = new GenericResult<Response<object>>();
 
-            var resource = $"{Constants.URL_ORDERS}/{orderId}/{Constants.URL_ERROR}";
+            var resource = $"{Constants.URL_ORDER}/{orderId}/{Constants.URL_ERROR}";
 
             var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
