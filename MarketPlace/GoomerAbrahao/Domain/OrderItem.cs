@@ -9,6 +9,11 @@ namespace GoomerAbrahao.Domain
 {
     public class OrderItem
     {
+        public OrderItem ()
+        {
+            Options = new List<OrderOption>();
+        }
+
         [JsonProperty("id")]
         public string Id { get; set; }
 
