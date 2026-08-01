@@ -419,7 +419,13 @@ namespace GoomerAbrahao.Service
 
             var request = new RestRequest(resource, Method.POST);
             request.AddHeader("Accept", "application/json");
-            request.AddJsonBody(item);
+            object body = new {
+                code = item.Code,
+                name = item.Name,
+                quantity = item.Quantity,
+                price = item.Price
+            };
+            request.AddJsonBody(body);
 
             var response = _client.Execute(request);
 
@@ -459,7 +465,12 @@ namespace GoomerAbrahao.Service
 
             var request = new RestRequest(resource, Method.PUT);
             request.AddHeader("Accept", "application/json");
-            request.AddJsonBody(item);
+            object body = new
+            {
+                quantity = item.Quantity,
+                price = item.Price
+            };
+            request.AddJsonBody(body);
 
             var response = _client.Execute(request);
 
