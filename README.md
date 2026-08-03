@@ -4,36 +4,59 @@ Integrações feitas até o momento.
 
 Delivery
 
+  - 99 Food
   - Accon
+  - ADAC
   - Aiqfome
   - Aipedi  
   - Americanas Delivery
   - Anota Ai
   - B2Food
   - Bigdim
+  - BigFish
+  - Cardápio Web
   - Delivery App
   - Delivery Direto
   - Epadoca
   - Gloria Food
-  - GoomerGO
+  - GoomerGO  
   - Ifood
   - JotaJa
   - Meu Cardápio Ai
   - Mercadoo
   - Multi Pedido
   - OnPedido
-  - PedZap
+  - PedZap (Deeliv)
   - PixCommerce
+  - Prefiro Delivery
   - Quero Delivery
   - Rappi
   - Super Menu
   - Uber Eats
+  - Wedo
   - WooCommerce
   
 Cardápio Digital (Mesa)
 
   - Goomer
+  - Goomer/Abrahão
   - Servit
+
+Logistica
+
+  - Agilizone
+  - Foody Delivery
+  - IzzyGO
+
+Cashback/Fidelidade
+
+  - Cresce Vendas
+  - CRM Bônus
+  - Eu Falo
+  - Fidelizi
+  - FixeCRM
+  - LoopzIzy
+  
   
  # Accon
 
