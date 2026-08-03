@@ -764,8 +764,7 @@
             this.txtTokenIzzyGO = new System.Windows.Forms.TextBox();
             this.btnClearResults = new System.Windows.Forms.Button();
             this.btnPedidoSimplesIzzyGO = new System.Windows.Forms.Button();
-            this.lbIzzyGOResults = new System.Windows.Forms.ListBox();
-            this.tabPageLoopIzy = new System.Windows.Forms.TabPage();
+            this.lbIzzyGOResults = new System.Windows.Forms.ListBox();            
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.txtNewClienteTelefone = new System.Windows.Forms.TextBox();
@@ -9149,8 +9148,7 @@
             this.groupBox4.Size = new System.Drawing.Size(450, 183);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Dados Novo Cliente";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            this.groupBox4.Text = "Dados Novo Cliente";            
             // 
             // button5
             // 
@@ -10707,16 +10705,13 @@
         private System.Windows.Forms.Button btnAbrahaoFechamento;
         private System.Windows.Forms.Button btnAbrahaoExtrato;
         private System.Windows.Forms.TabPage tabPageADAC;
-        private System.Windows.Forms.TextBox txtADACUrl;
-        private System.Windows.Forms.Label label163;
-        private System.Windows.Forms.TextBox txtADACToken;
-        private System.Windows.Forms.Label label162;
+        private System.Windows.Forms.TextBox txtADACUrl;        
+        private System.Windows.Forms.TextBox txtADACToken;        
         private System.Windows.Forms.Button btnADACAceitar;
         private System.Windows.Forms.DataGridView gridADAC;
         private System.Windows.Forms.Button btnADACParar;
         private System.Windows.Forms.Button btnADACIniciar;
-        private System.Windows.Forms.TextBox txtADACLoja;
-        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.TextBox txtADACLoja;        
         private System.Windows.Forms.Button btnADACPedidoPronto;
     }
 }
