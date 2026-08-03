@@ -23,15 +23,20 @@ using FixeCRM.Service;
 using FoodyDelivery.Service;
 using GloriaFood.Service;
 using Goomer.Service;
+using GoomerAbrahao.Service;
 using IDelivery.Service;
 using Ifood.Enum;
 using IzzyGO.OpenDelivery.Examples;
 using Logaroo.Enum;
+using LoopIzy.Domain;
+using LoopIzy.Service;
+using MarketPlace;
 using MeuCardapioAi.Service;
 using MultiPedido.Service;
 using Newtonsoft.Json;
 using OnPedido.Domain;
 using OnPedido.Service;
+using OpenDelivery.Service;
 using PixCommerce.Service;
 using PrefiroDelivery.Domain;
 using PrefiroDelivery.Service;
@@ -49,8 +54,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -66,6 +71,7 @@ using LoopIzy.Service;
 using LoopIzy.Domain;
 using MarketPlace;
 using ADAC.Service;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Example
 {
@@ -186,6 +192,11 @@ namespace Example
 
         private List<Tray.Domain.order> _trayOrders { get; set; }
         private string _trayId { get; set; }
+
+        private List<GoomerAbrahao.Domain.Order> _abrahaoOrders { get; set; }
+        private List<GoomerAbrahao.Domain.TableCard> _abrahaoOrdersOpen { get; set; }
+        private string _abrahaoPendenteId { get; set; }
+        private string _abrahaoPedidoId { get; set; }
         #endregion
 
         public Form1()
@@ -502,6 +513,14 @@ namespace Example
             _bigFishOrders = new List<BigFish.Domain.Order>();
             gridBigFish.DataSource = _bigFishOrders.ToList();
             gridBigFish.Refresh();
+
+            _abrahaoOrders = new List<GoomerAbrahao.Domain.Order>();
+            gridAbrahaoPendentes.DataSource = _abrahaoOrders.ToList();
+            gridAbrahaoPendentes.Refresh();
+
+            _abrahaoOrdersOpen = new List<GoomerAbrahao.Domain.TableCard>();
+            gridAbrahaoPedidosAberto.DataSource = _abrahaoOrdersOpen.ToList();
+            gridAbrahaoPedidosAberto.Refresh();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -10138,6 +10157,416 @@ namespace Example
                 txtResultaLoopIzy.Text = $"Erro: {result.Message}";
             }
         }
+        #endregion
+
+        #region Goomer/Abrahão
+        private void btnAbrahaoIniciar_Click(object sender, EventArgs e)
+        {
+            abrahaoIniciar();
+        }
+
+        private void btnAbrahaoParar_Click(object sender, EventArgs e)
+        {
+            txtAbrahaoURL.Enabled = true;
+            txtAbrahaoToken.Enabled = true;
+            txtAbrahaoMsgErrado.Enabled = false;
+            btnAbrahaoIniciar.Enabled = true;
+            btnAbrahaoParar.Enabled = false;
+            btnAbrahaoErrado.Enabled = false;
+            btnAbrahaoRecebido.Enabled = false;
+            btnAbrahaoCancelar.Enabled = false;
+            btnAbrahaoFinalizar.Enabled = false;
+            btnAbrahaoReabrir.Enabled = false;
+            btnAbrahaoFechamento.Enabled = false;
+            btnAbrahaoExtrato.Enabled = false;
+        }
+
+        public async void abrahaoIniciar()
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            txtAbrahaoURL.Enabled = false;
+            txtAbrahaoToken.Enabled = false;
+            txtAbrahaoMsgErrado.Enabled = true;
+            btnAbrahaoIniciar.Enabled = false;
+            btnAbrahaoParar.Enabled = true;
+            btnAbrahaoErrado.Enabled = true;
+            btnAbrahaoRecebido.Enabled = true;
+            btnAbrahaoCancelar.Enabled = true;
+            btnAbrahaoFinalizar.Enabled = true;
+            btnAbrahaoReabrir.Enabled = true;
+            btnAbrahaoFechamento.Enabled = true;
+            btnAbrahaoExtrato.Enabled = true;
+            await Task.Run(() => abrahao());
+        }
+
+        private void abrahao()
+        {
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+
+            try
+            {
+                while (btnAbrahaoParar.Enabled)
+                {
+                    var orderResult = service.Orders();
+                    if (orderResult.Success)
+                    {
+                        _abrahaoOrders = orderResult.Result.Data;
+
+                        WriteGridAbrahaoPendentes();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(15000);
+                    var openOrdersTableResult = service.OrdersOpen((byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                    if (openOrdersTableResult.Success)
+                    {
+                        _abrahaoOrdersOpen = openOrdersTableResult.Result.Data;
+
+                        WriteGridAbrahaoPedidosAberto();
+                    }
+                    else
+                    {
+                        MessageBox.Show(orderResult.Message);
+                        return;
+                    }
+
+                    Thread.Sleep(15000);
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                if (ex.InnerException != null)
+                    message = ex.InnerException.Message;
+
+                MessageBox.Show(message);
+            }
+        }
+
+        private delegate void WritelstGridAbrahaoPendenteDelegate();
+        private void WriteGridAbrahaoPendentes()
+        {
+            if (gridAbrahaoPendentes.InvokeRequired)
+            {
+                var d = new WritelstGridAbrahaoPendenteDelegate(WriteGridAbrahaoPendentes);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAbrahaoPendentes.DataSource = _abrahaoOrders.ToList();
+                gridAbrahaoPendentes.Refresh();
+            }
+        }
+
+        private void gridAbrahaoPendentes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAbrahaoPendentes.Rows.Count)
+            {
+                _abrahaoPendenteId = gridAbrahaoPendentes.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private delegate void WritelstGridAbrahaoDelegate();
+        private void WriteGridAbrahaoPedidosAberto()
+        {
+            if (gridAbrahaoPedidosAberto.InvokeRequired)
+            {
+                var d = new WritelstGridAbrahaoDelegate(WriteGridAbrahaoPedidosAberto);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                gridAbrahaoPedidosAberto.DataSource = _abrahaoOrdersOpen.ToList();
+                gridAbrahaoPedidosAberto.Refresh();
+            }
+        }
+
+        private void gridAbrahaoPedidosAberto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < gridAbrahaoPedidosAberto.Rows.Count)
+            {
+                _abrahaoPedidoId = gridAbrahaoPedidosAberto.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+        }
+
+        #region Ações pedido pendente
+        private void btnAbrahaoErrado_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPendenteId))
+            {
+                MessageBox.Show("Selecione um pedido pendente");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            var orderResult = service.OrderError(_abrahaoPendenteId, txtAbrahaoMsgErrado.Text);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+
+        private void btnAbrahaoRecebido_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPendenteId))
+            {
+                MessageBox.Show("Selecione um pedido pendente");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            var orderResult = service.OrderReceived(_abrahaoPendenteId);
+            if (orderResult.Success)
+            {
+                MessageBox.Show("Ok");
+            }
+            else
+            {
+                MessageBox.Show(orderResult.Message);
+            }
+        }
+        #endregion
+
+        #region Ações mesa/comanda
+        private void btnAbrahaoCancelar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPedidoId))
+            {
+                MessageBox.Show("Selecione uma mesa/comanda");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            if (int.TryParse(_abrahaoPedidoId, out int pedidoId))
+            {
+                var orderResult = service.CancelOrder(pedidoId, (byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (orderResult.Success)
+                {
+                    MessageBox.Show("Ok");
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id do pedido inválido");
+            }
+        }
+
+        private void btnAbrahaoFinalizar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPedidoId))
+            {
+                MessageBox.Show("Selecione uma mesa/comanda");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            if (int.TryParse(_abrahaoPedidoId, out int pedidoId))
+            {
+                var orderResult = service.CloseOrder(pedidoId, (byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (orderResult.Success)
+                {
+                    MessageBox.Show("Ok");
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id do pedido inválido");
+            }
+        }
+
+        private void btnAbrahaoReabrir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPedidoId))
+            {
+                MessageBox.Show("Selecione uma mesa/comanda");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            if (int.TryParse(_abrahaoPedidoId, out int pedidoId))
+            {
+                var orderResult = service.ReopenOrder(pedidoId, (byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (orderResult.Success)
+                {
+                    MessageBox.Show("Ok");
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id do pedido inválido");
+            }
+        }
+
+        private void btnAbrahaoFechamento_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPedidoId))
+            {
+                MessageBox.Show("Selecione uma mesa/comanda");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            if (int.TryParse(_abrahaoPedidoId, out int pedidoId))
+            {
+                var orderResult = service.OrderRequestBill(pedidoId, (byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (orderResult.Success)
+                {
+                    MessageBox.Show("Ok");
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id do pedido inválido");
+            }
+        }
+
+        private void btnAbrahaoExtrato_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAbrahaoURL.Text))
+            {
+                MessageBox.Show("Campo URL Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAbrahaoToken.Text))
+            {
+                MessageBox.Show("Campo Token Obrigatório");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_abrahaoPedidoId))
+            {
+                MessageBox.Show("Selecione uma mesa/comanda");
+                return;
+            }
+
+            var service = new GoomerAbrahaoService(txtAbrahaoURL.Text, txtAbrahaoToken.Text);
+            if (int.TryParse(_abrahaoPedidoId, out int pedidoId))
+            {
+                var orderResult = service.OrderBill(pedidoId, (byte)GoomerAbrahao.Enum.OrderType.Mesa);
+                if (orderResult.Success)
+                {
+                    MessageBox.Show(orderResult.Json);
+                }
+                else
+                {
+                    MessageBox.Show(orderResult.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Id do pedido inválido");
+            }
+        }
+        #endregion
+
         #endregion
 
         #region ADAC

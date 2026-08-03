@@ -801,6 +801,26 @@
             this.btnConsultaClienteLoopIzy = new System.Windows.Forms.Button();
             this.txtClienteLoopIzy = new System.Windows.Forms.TextBox();
             this.label150 = new System.Windows.Forms.Label();
+            this.Abrahao = new System.Windows.Forms.TabPage();
+            this.btnAbrahaoExtrato = new System.Windows.Forms.Button();
+            this.btnAbrahaoFechamento = new System.Windows.Forms.Button();
+            this.btnAbrahaoReabrir = new System.Windows.Forms.Button();
+            this.btnAbrahaoFinalizar = new System.Windows.Forms.Button();
+            this.btnAbrahaoCancelar = new System.Windows.Forms.Button();
+            this.label166 = new System.Windows.Forms.Label();
+            this.txtAbrahaoMsgErrado = new System.Windows.Forms.TextBox();
+            this.btnAbrahaoErrado = new System.Windows.Forms.Button();
+            this.label165 = new System.Windows.Forms.Label();
+            this.label164 = new System.Windows.Forms.Label();
+            this.gridAbrahaoPedidosAberto = new System.Windows.Forms.DataGridView();
+            this.btnAbrahaoRecebido = new System.Windows.Forms.Button();
+            this.gridAbrahaoPendentes = new System.Windows.Forms.DataGridView();
+            this.label163 = new System.Windows.Forms.Label();
+            this.txtAbrahaoURL = new System.Windows.Forms.TextBox();
+            this.label162 = new System.Windows.Forms.Label();
+            this.txtAbrahaoToken = new System.Windows.Forms.TextBox();
+            this.btnAbrahaoParar = new System.Windows.Forms.Button();
+            this.btnAbrahaoIniciar = new System.Windows.Forms.Button();
             this.txtADACLoja = new System.Windows.Forms.TextBox();
             this.label164 = new System.Windows.Forms.Label();
             this.btnADACPedidoPronto = new System.Windows.Forms.Button();
@@ -897,11 +917,14 @@
             this.tabPageBigFish.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBigFish)).BeginInit();
             this.tabPageIzzyGO.SuspendLayout();
-            this.tabPageLoopIzy.SuspendLayout();
+            this.LoopIzzy.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.Abrahao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAbrahaoPedidosAberto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAbrahaoPendentes)).BeginInit();
             this.SuspendLayout();
             // 
             // btn
@@ -956,7 +979,8 @@
             this.btn.Controls.Add(this.tabPageWoocommerce);
             this.btn.Controls.Add(this.tabPageBigFish);
             this.btn.Controls.Add(this.tabPageIzzyGO);
-            this.btn.Controls.Add(this.tabPageLoopIzy);
+            this.btn.Controls.Add(this.LoopIzzy);
+            this.btn.Controls.Add(this.Abrahao);
             this.btn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn.Location = new System.Drawing.Point(0, 0);
             this.btn.Name = "btn";
@@ -9088,26 +9112,26 @@
             this.lbIzzyGOResults.Size = new System.Drawing.Size(1227, 563);
             this.lbIzzyGOResults.TabIndex = 0;
             // 
-            // tabPageLoopIzy
+            // LoopIzzy
             // 
-            this.tabPageLoopIzy.Controls.Add(this.groupBox4);
-            this.tabPageLoopIzy.Controls.Add(this.groupBox3);
-            this.tabPageLoopIzy.Controls.Add(this.groupBox1);
-            this.tabPageLoopIzy.Controls.Add(this.button1);
-            this.tabPageLoopIzy.Controls.Add(this.txtClienteTelefoneLoopIzy);
-            this.tabPageLoopIzy.Controls.Add(this.label151);
-            this.tabPageLoopIzy.Controls.Add(this.txtResultaLoopIzy);
-            this.tabPageLoopIzy.Controls.Add(this.btnConsultaClienteLoopIzy);
-            this.tabPageLoopIzy.Controls.Add(this.txtClienteLoopIzy);
-            this.tabPageLoopIzy.Controls.Add(this.label150);
-            this.tabPageLoopIzy.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLoopIzy.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageLoopIzy.Name = "tabPageLoopIzy";
-            this.tabPageLoopIzy.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageLoopIzy.Size = new System.Drawing.Size(1231, 685);
-            this.tabPageLoopIzy.TabIndex = 48;
-            this.tabPageLoopIzy.Text = "LoopIzy";
-            this.tabPageLoopIzy.UseVisualStyleBackColor = true;
+            this.LoopIzzy.Controls.Add(this.groupBox4);
+            this.LoopIzzy.Controls.Add(this.groupBox3);
+            this.LoopIzzy.Controls.Add(this.groupBox1);
+            this.LoopIzzy.Controls.Add(this.button1);
+            this.LoopIzzy.Controls.Add(this.txtClienteTelefoneLoopIzy);
+            this.LoopIzzy.Controls.Add(this.label151);
+            this.LoopIzzy.Controls.Add(this.txtResultaLoopIzy);
+            this.LoopIzzy.Controls.Add(this.btnConsultaClienteLoopIzy);
+            this.LoopIzzy.Controls.Add(this.txtClienteLoopIzy);
+            this.LoopIzzy.Controls.Add(this.label150);
+            this.LoopIzzy.Location = new System.Drawing.Point(4, 22);
+            this.LoopIzzy.Margin = new System.Windows.Forms.Padding(2);
+            this.LoopIzzy.Name = "LoopIzzy";
+            this.LoopIzzy.Padding = new System.Windows.Forms.Padding(2);
+            this.LoopIzzy.Size = new System.Drawing.Size(1231, 685);
+            this.LoopIzzy.TabIndex = 48;
+            this.LoopIzzy.Text = "LoopIzzy";
+            this.LoopIzzy.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -9126,6 +9150,7 @@
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dados Novo Cliente";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // button5
             // 
@@ -9477,8 +9502,207 @@
             this.label150.TabIndex = 0;
             this.label150.Text = "Cliente por CPF";
             // 
+            // Abrahao
+            // 
+            this.Abrahao.Controls.Add(this.btnAbrahaoExtrato);
+            this.Abrahao.Controls.Add(this.btnAbrahaoFechamento);
+            this.Abrahao.Controls.Add(this.btnAbrahaoReabrir);
+            this.Abrahao.Controls.Add(this.btnAbrahaoFinalizar);
+            this.Abrahao.Controls.Add(this.btnAbrahaoCancelar);
+            this.Abrahao.Controls.Add(this.label166);
+            this.Abrahao.Controls.Add(this.txtAbrahaoMsgErrado);
+            this.Abrahao.Controls.Add(this.btnAbrahaoErrado);
+            this.Abrahao.Controls.Add(this.label165);
+            this.Abrahao.Controls.Add(this.label164);
+            this.Abrahao.Controls.Add(this.gridAbrahaoPedidosAberto);
+            this.Abrahao.Controls.Add(this.btnAbrahaoRecebido);
+            this.Abrahao.Controls.Add(this.gridAbrahaoPendentes);
+            this.Abrahao.Controls.Add(this.label163);
+            this.Abrahao.Controls.Add(this.txtAbrahaoURL);
+            this.Abrahao.Controls.Add(this.label162);
+            this.Abrahao.Controls.Add(this.txtAbrahaoToken);
+            this.Abrahao.Controls.Add(this.btnAbrahaoParar);
+            this.Abrahao.Controls.Add(this.btnAbrahaoIniciar);
+            this.Abrahao.Location = new System.Drawing.Point(4, 22);
+            this.Abrahao.Name = "Abrahao";
+            this.Abrahao.Size = new System.Drawing.Size(1231, 685);
+            this.Abrahao.TabIndex = 49;
+            this.Abrahao.Text = "Abrahão";
+            this.Abrahao.UseVisualStyleBackColor = true;
+            // 
+            // btnAbrahaoExtrato
+            // 
+            this.btnAbrahaoExtrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoExtrato.Location = new System.Drawing.Point(1140, 160);
+            this.btnAbrahaoExtrato.Name = "btnAbrahaoExtrato";
+            this.btnAbrahaoExtrato.Size = new System.Drawing.Size(83, 39);
+            this.btnAbrahaoExtrato.TabIndex = 67;
+            this.btnAbrahaoExtrato.Text = "Extrato";
+            this.btnAbrahaoExtrato.UseVisualStyleBackColor = true;
+            this.btnAbrahaoExtrato.Click += new System.EventHandler(this.btnAbrahaoExtrato_Click);
+            // 
+            // btnAbrahaoFechamento
+            // 
+            this.btnAbrahaoFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoFechamento.Location = new System.Drawing.Point(995, 160);
+            this.btnAbrahaoFechamento.Name = "btnAbrahaoFechamento";
+            this.btnAbrahaoFechamento.Size = new System.Drawing.Size(139, 39);
+            this.btnAbrahaoFechamento.TabIndex = 66;
+            this.btnAbrahaoFechamento.Text = "Sol. Fechamento";
+            this.btnAbrahaoFechamento.UseVisualStyleBackColor = true;
+            this.btnAbrahaoFechamento.Click += new System.EventHandler(this.btnAbrahaoFechamento_Click);
+            // 
+            // btnAbrahaoReabrir
+            // 
+            this.btnAbrahaoReabrir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoReabrir.Location = new System.Drawing.Point(906, 160);
+            this.btnAbrahaoReabrir.Name = "btnAbrahaoReabrir";
+            this.btnAbrahaoReabrir.Size = new System.Drawing.Size(83, 39);
+            this.btnAbrahaoReabrir.TabIndex = 65;
+            this.btnAbrahaoReabrir.Text = "Reabrir";
+            this.btnAbrahaoReabrir.UseVisualStyleBackColor = true;
+            this.btnAbrahaoReabrir.Click += new System.EventHandler(this.btnAbrahaoReabrir_Click);
+            // 
+            // btnAbrahaoFinalizar
+            // 
+            this.btnAbrahaoFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoFinalizar.Location = new System.Drawing.Point(817, 160);
+            this.btnAbrahaoFinalizar.Name = "btnAbrahaoFinalizar";
+            this.btnAbrahaoFinalizar.Size = new System.Drawing.Size(83, 39);
+            this.btnAbrahaoFinalizar.TabIndex = 64;
+            this.btnAbrahaoFinalizar.Text = "Finalizar";
+            this.btnAbrahaoFinalizar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoFinalizar.Click += new System.EventHandler(this.btnAbrahaoFinalizar_Click);
+            // 
+            // btnAbrahaoCancelar
+            // 
+            this.btnAbrahaoCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoCancelar.Location = new System.Drawing.Point(728, 160);
+            this.btnAbrahaoCancelar.Name = "btnAbrahaoCancelar";
+            this.btnAbrahaoCancelar.Size = new System.Drawing.Size(83, 39);
+            this.btnAbrahaoCancelar.TabIndex = 63;
+            this.btnAbrahaoCancelar.Text = "Cancelar";
+            this.btnAbrahaoCancelar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoCancelar.Click += new System.EventHandler(this.btnAbrahaoCancelar_Click);
+            // 
+            // label166
+            // 
+            this.label166.AutoSize = true;
+            this.label166.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label166.Location = new System.Drawing.Point(19, 131);
+            this.label166.Name = "label166";
+            this.label166.Size = new System.Drawing.Size(140, 20);
+            this.label166.TabIndex = 62;
+            this.label166.Text = "Mensagem Errado";
+            // 
+            // txtAbrahaoMsgErrado
+            // 
+            this.txtAbrahaoMsgErrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbrahaoMsgErrado.Location = new System.Drawing.Point(165, 128);
+            this.txtAbrahaoMsgErrado.Name = "txtAbrahaoMsgErrado";
+            this.txtAbrahaoMsgErrado.Size = new System.Drawing.Size(329, 26);
+            this.txtAbrahaoMsgErrado.TabIndex = 61;
+            // 
+            // btnAbrahaoErrado
+            // 
+            this.btnAbrahaoErrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoErrado.Location = new System.Drawing.Point(200, 160);
+            this.btnAbrahaoErrado.Name = "btnAbrahaoErrado";
+            this.btnAbrahaoErrado.Size = new System.Drawing.Size(144, 39);
+            this.btnAbrahaoErrado.TabIndex = 60;
+            this.btnAbrahaoErrado.Text = "Errado";
+            this.btnAbrahaoErrado.UseVisualStyleBackColor = true;
+            this.btnAbrahaoErrado.Click += new System.EventHandler(this.btnAbrahaoErrado_Click);
+            // 
+            // label165
+            // 
+            this.label165.AutoSize = true;
+            this.label165.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label165.Location = new System.Drawing.Point(503, 182);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(195, 20);
+            this.label165.TabIndex = 59;
+            this.label165.Text = "Mesas/Comandas abertas";
+            // 
+            // label164
+            // 
+            this.label164.AutoSize = true;
+            this.label164.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label164.Location = new System.Drawing.Point(8, 182);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(146, 20);
+            this.label164.TabIndex = 58;
+            this.label164.Text = "Pedidos pendentes";
+            // 
+            // gridAbrahaoPedidosAberto
+            // 
+            this.gridAbrahaoPedidosAberto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAbrahaoPedidosAberto.Location = new System.Drawing.Point(507, 205);
+            this.gridAbrahaoPedidosAberto.Name = "gridAbrahaoPedidosAberto";
+            this.gridAbrahaoPedidosAberto.RowHeadersWidth = 51;
+            this.gridAbrahaoPedidosAberto.Size = new System.Drawing.Size(716, 472);
+            this.gridAbrahaoPedidosAberto.TabIndex = 56;
+            this.gridAbrahaoPedidosAberto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAbrahaoPedidosAberto_CellClick);
+            // 
+            // btnAbrahaoRecebido
+            // 
+            this.btnAbrahaoRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoRecebido.Location = new System.Drawing.Point(350, 160);
+            this.btnAbrahaoRecebido.Name = "btnAbrahaoRecebido";
+            this.btnAbrahaoRecebido.Size = new System.Drawing.Size(144, 39);
+            this.btnAbrahaoRecebido.TabIndex = 55;
+            this.btnAbrahaoRecebido.Text = "Recebido";
+            this.btnAbrahaoRecebido.UseVisualStyleBackColor = true;
+            this.btnAbrahaoRecebido.Click += new System.EventHandler(this.btnAbrahaoRecebido_Click);
+            // 
+            // gridAbrahaoPendentes
+            // 
+            this.gridAbrahaoPendentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAbrahaoPendentes.Location = new System.Drawing.Point(9, 205);
+            this.gridAbrahaoPendentes.Name = "gridAbrahaoPendentes";
+            this.gridAbrahaoPendentes.RowHeadersWidth = 51;
+            this.gridAbrahaoPendentes.Size = new System.Drawing.Size(485, 472);
+            this.gridAbrahaoPendentes.TabIndex = 40;
+            this.gridAbrahaoPendentes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAbrahaoPendentes_CellClick);
+            // 
+            // label163
+            // 
+            this.label163.AutoSize = true;
+            this.label163.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label163.Location = new System.Drawing.Point(19, 28);
+            this.label163.Name = "label163";
+            this.label163.Size = new System.Drawing.Size(42, 20);
+            this.label163.TabIndex = 39;
+            this.label163.Text = "URL";
+            // 
+            // txtAbrahaoURL
+            // 
+            this.txtAbrahaoURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbrahaoURL.Location = new System.Drawing.Point(78, 25);
+            this.txtAbrahaoURL.Name = "txtAbrahaoURL";
+            this.txtAbrahaoURL.Size = new System.Drawing.Size(416, 26);
+            this.txtAbrahaoURL.TabIndex = 38;
+            this.txtAbrahaoURL.Text = "https://developers.abrahao.com.br/api/v1";
+            // 
+            // label162
+            // 
+            this.label162.AutoSize = true;
+            this.label162.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label162.Location = new System.Drawing.Point(19, 73);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(53, 20);
+            this.label162.TabIndex = 29;
+            this.label162.Text = "Token";
+            // 
+            // txtAbrahaoToken
             // txtADACLoja
             // 
+            this.txtAbrahaoToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbrahaoToken.Location = new System.Drawing.Point(78, 70);
+            this.txtAbrahaoToken.Name = "txtAbrahaoToken";
+            this.txtAbrahaoToken.Size = new System.Drawing.Size(416, 26);
+            this.txtAbrahaoToken.TabIndex = 28;
+            this.txtAbrahaoToken.Text = "mDspG7Qt04EcT8ipRJJHUY-m3ncBc1za";
             this.txtADACLoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtADACLoja.Location = new System.Drawing.Point(639, 76);
             this.txtADACLoja.Name = "txtADACLoja";
@@ -9486,8 +9710,18 @@
             this.txtADACLoja.TabIndex = 70;
             this.txtADACLoja.Text = "6";
             // 
+            // btnAbrahaoParar
             // label164
             // 
+            this.btnAbrahaoParar.Enabled = false;
+            this.btnAbrahaoParar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoParar.Location = new System.Drawing.Point(1152, 64);
+            this.btnAbrahaoParar.Name = "btnAbrahaoParar";
+            this.btnAbrahaoParar.Size = new System.Drawing.Size(71, 39);
+            this.btnAbrahaoParar.TabIndex = 14;
+            this.btnAbrahaoParar.Text = "Parar";
+            this.btnAbrahaoParar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoParar.Click += new System.EventHandler(this.btnAbrahaoParar_Click);
             this.label164.AutoSize = true;
             this.label164.Location = new System.Drawing.Point(580, 92);
             this.label164.Name = "label164";
@@ -9495,8 +9729,17 @@
             this.label164.TabIndex = 69;
             this.label164.Text = "Loja";
             // 
+            // btnAbrahaoIniciar
             // btnADACPedidoPronto
             // 
+            this.btnAbrahaoIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrahaoIniciar.Location = new System.Drawing.Point(1152, 19);
+            this.btnAbrahaoIniciar.Name = "btnAbrahaoIniciar";
+            this.btnAbrahaoIniciar.Size = new System.Drawing.Size(71, 39);
+            this.btnAbrahaoIniciar.TabIndex = 13;
+            this.btnAbrahaoIniciar.Text = "Iniciar";
+            this.btnAbrahaoIniciar.UseVisualStyleBackColor = true;
+            this.btnAbrahaoIniciar.Click += new System.EventHandler(this.btnAbrahaoIniciar_Click);
             this.btnADACPedidoPronto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADACPedidoPronto.Location = new System.Drawing.Point(188, 141);
             this.btnADACPedidoPronto.Name = "btnADACPedidoPronto";
@@ -9661,8 +9904,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridBigFish)).EndInit();
             this.tabPageIzzyGO.ResumeLayout(false);
             this.tabPageIzzyGO.PerformLayout();
-            this.tabPageLoopIzy.ResumeLayout(false);
-            this.tabPageLoopIzy.PerformLayout();
+            this.LoopIzzy.ResumeLayout(false);
+            this.LoopIzzy.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -9670,6 +9913,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Abrahao.ResumeLayout(false);
+            this.Abrahao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAbrahaoPedidosAberto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAbrahaoPendentes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -10403,7 +10650,7 @@
         private System.Windows.Forms.TextBox txt99FoodToken;
         private System.Windows.Forms.Label label149;
         private System.Windows.Forms.Button btn99FoodToken;
-        private System.Windows.Forms.TabPage tabPageLoopIzy;
+        private System.Windows.Forms.TabPage LoopIzzy;
         private System.Windows.Forms.Label label150;
         private System.Windows.Forms.TextBox txtClienteLoopIzy;
         private System.Windows.Forms.Label txtResultaLoopIzy;
@@ -10439,6 +10686,26 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox txtNewClienteTelefone;
         private System.Windows.Forms.Label label161;
+        private System.Windows.Forms.TabPage Abrahao;
+        private System.Windows.Forms.TextBox txtAbrahaoToken;
+        private System.Windows.Forms.Button btnAbrahaoParar;
+        private System.Windows.Forms.Button btnAbrahaoIniciar;
+        private System.Windows.Forms.Button btnAbrahaoRecebido;
+        private System.Windows.Forms.DataGridView gridAbrahaoPendentes;
+        private System.Windows.Forms.Label label163;
+        private System.Windows.Forms.TextBox txtAbrahaoURL;
+        private System.Windows.Forms.Label label162;
+        private System.Windows.Forms.DataGridView gridAbrahaoPedidosAberto;
+        private System.Windows.Forms.Label label165;
+        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.Label label166;
+        private System.Windows.Forms.TextBox txtAbrahaoMsgErrado;
+        private System.Windows.Forms.Button btnAbrahaoErrado;
+        private System.Windows.Forms.Button btnAbrahaoReabrir;
+        private System.Windows.Forms.Button btnAbrahaoFinalizar;
+        private System.Windows.Forms.Button btnAbrahaoCancelar;
+        private System.Windows.Forms.Button btnAbrahaoFechamento;
+        private System.Windows.Forms.Button btnAbrahaoExtrato;
         private System.Windows.Forms.TabPage tabPageADAC;
         private System.Windows.Forms.TextBox txtADACUrl;
         private System.Windows.Forms.Label label163;
