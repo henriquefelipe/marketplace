@@ -18,5 +18,6 @@ namespace GoomerAbrahao.Utils
         public const string URL_PAYMENT = "payment";
         public const string URL_BILL = "bill";
         public const string URL_REQUEST_BILL = "requestbill";
+        public const string URL_PRODUCT = "product";
     }
 }

@@ -5,7 +5,8 @@ using MarketPlace;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GoomerAbrahao.Service
 {
@@ -23,6 +24,51 @@ namespace GoomerAbrahao.Service
         {
             return type == (byte)OrderType.Mesa ? "table" : "card";
         }
+
+        #region Sincronização Produtos
+        /// <summary>
+        /// Enviar produtos de seu sistema em lote para o abrahão.
+        /// </summary>
+        /// <param name="item">O item novo que será adicionado à plataforma (Mesa ou Comanda).</param>
+        /// <returns>Um GenericResult contendo o status e os dados do item adicionado.</returns>
+        public GenericResult<Response<object>> SendItems(List<OrderItem> items)
+        {
+            var result = new GenericResult<Response<object>>();
+            var resource = $"{Constants.URL_PRODUCT}s";
+
+            var request = new RestRequest(resource, Method.POST);
+            request.AddHeader("Accept", "application/json");
+            var body = items.Select(x => new
+            {
+                code = x.Code,
+                name = x.Name,
+                price = x.Price
+            }).ToList();
+
+            request.AddJsonBody(body);
+
+            var response = _client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                if (!string.IsNullOrWhiteSpace(response.Content))
+                {
+                    result.Result = JsonConvert.DeserializeObject<Response<object>>(response.Content);
+                }
+
+                result.Success = result.Result.Success;
+                if (!result.Success)
+                    result.Message = result.Result.Message;
+            }
+            else
+            {
+                result.Message = response.Content;
+            }
+
+            result.Json = response.Content;
+            return result;
+        }
+        #endregion
 
         #region Listagens pedido (mesa/comanda)
         /// <summary>
