@@ -24,6 +24,7 @@ namespace Ifood.Domain
         public bool prepaid { get; set; }                
         public payment_methods_cash cash { get; set; }
         public payment_methods_card card { get; set; }
+        public payment_methods_transaction transaction { get; set; }
     }
 
     public class payment_methods_wallet
@@ -39,5 +40,11 @@ namespace Ifood.Domain
     public class payment_methods_card
     {
         public string brand { get; set; }
+    }
+
+    public class payment_methods_transaction
+    {
+        public string authorizationCode { get; set; }
+        public string acquirerDocument { get; set; }
     }
 }

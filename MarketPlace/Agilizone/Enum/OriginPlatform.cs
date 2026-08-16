@@ -15,6 +15,8 @@ namespace Agilizone.Enum
         public const string CARDAPIO_WEB = "CARDAPIO_WEB";
         public const string MULTIPEDIDOS = "MULTIPEDIDOS";
         public const string RAPPI = "RAPPI";
-        public const string DEGUSTA_AI = "DEGUSTA_AI";        
+        public const string DEGUSTA_AI = "DEGUSTA_AI";
+        public const string APP_99_FOOD = "APP_99_FOOD";
+        public const string IZZY_WAY = "IZZY_WAY";
     }
 }

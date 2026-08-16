@@ -16,6 +16,6 @@ namespace Bigdim.Domain
         public decimal quantidade { get; set; }
         public decimal valorTotal { get; set; }
         public string observacao { get; set; }
-        public int ordem { get; set; }
+        public int? ordem { get; set; }
     }
 }

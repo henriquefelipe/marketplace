@@ -44,8 +44,12 @@ namespace OpenDelivery.Service
                     result.Result = JsonConvert.DeserializeObject<token>(responseToken.Content);
                     result.Success = true;
                 }
-                else
+                else if(responseToken.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
+                    result.Message = responseToken.Content;
+                }
+                else
+                {                    
                     var error = JsonConvert.DeserializeObject<error_return>(responseToken.Content);
                     result.Message = responseToken.StatusDescription + $" => {error.error.message}";
                 }
@@ -124,7 +128,7 @@ namespace OpenDelivery.Service
             }
             else
             {
-                result.Message = response.StatusDescription;
+                result.Message = response.StatusDescription + "=> " + response.Content;
             }
 
             result.StatusCode = response.StatusCode;

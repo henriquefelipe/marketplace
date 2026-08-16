@@ -6,6 +6,6 @@ namespace PrefiroDelivery.Domain
 {
     public class pedidosId
     {
-        public int id { get; set; }
+        public string id { get; set; }
     }
 }
