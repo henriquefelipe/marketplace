@@ -110,10 +110,11 @@ namespace LoopIzy.Service
             return Execute<RedeemResponse>(request);
         }
 
-        public GenericResult<BalanceResponse> GetBalance(string customerId)
+        public GenericResult<BalanceResponse> GetBalance(string customerId, decimal? orderTotal = null)
         {
             var request = CreateRequest(Constants.URL_BALANCE, Method.GET);
-            request.AddQueryParameter("customer_id", customerId);
+            if (!string.IsNullOrEmpty(customerId)) request.AddQueryParameter("customer_id", customerId);
+            if (orderTotal.HasValue) request.AddQueryParameter("order_total", orderTotal.Value.ToString(System.Globalization.CultureInfo.InvariantCulture));
             return Execute<BalanceResponse>(request);
         }
 

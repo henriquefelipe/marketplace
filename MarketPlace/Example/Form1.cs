@@ -103,7 +103,7 @@ namespace Example
         private string _pedzap { get; set; }
 
         #region LoopIzy
-        private string _loopIzyToken { get; set; } = "999216b72e1ac122e7c0fc4a4017c5d84f43d8182bec82df113743f23ff7804a";
+        private string _loopIzyToken { get; set; } = "c02ce59de1837cdd5ce6ac727069b94834de71119ec8eb8b90e6fa3c58ff146c";
         #endregion
         private List<Deeliv.Domain.pedido> _pedzapPedidos { get; set; }
         private int _pedzapReferenceSelected { get; set; }
@@ -9985,8 +9985,9 @@ namespace Example
             if (customer.Success && customer.Result.Customers.Any())
             {
                 string customerId = customer.Result.Customers.FirstOrDefault().Id;
+                decimal order_total = Convert.ToDecimal("5.5");
 
-                var result = service.GetBalance(customerId);
+                var result = service.GetBalance(customerId, order_total);
 
                 if (result.Success)
                 {

@@ -21,6 +21,15 @@ namespace LoopIzy.Domain
         [JsonProperty("cashback")]
         public CashbackData Cashback { get; set; }
 
+        [JsonProperty("cashback_potencial")]
+        public decimal? CashbackPotencial { get; set; }
+
+        [JsonProperty("for_order")]
+        public ForOrderData ForOrder { get; set; }
+
+        [JsonProperty("blackout")]
+        public BlackoutData Blackout { get; set; }
+
         [JsonProperty("recent_transactions")]
         public List<Transaction> RecentTransactions { get; set; }
     }
@@ -41,10 +50,61 @@ namespace LoopIzy.Domain
 
         [JsonProperty("possible_credit_value")]
         public decimal PossibleCreditValue { get; set; }
+
+        [JsonProperty("pending_credit_value")]
+        public decimal? PendingCreditValue { get; set; }
+
+        [JsonProperty("cashback_potencial")]
+        public decimal? CashbackPotencial { get; set; }
+
+        [JsonProperty("blackout")]
+        public bool? Blackout { get; set; }
+
+        [JsonProperty("for_order")]
+        public ForOrderData ForOrder { get; set; }
+    }
+
+    public class ForOrderData
+    {
+        [JsonProperty("order_total")]
+        public decimal? OrderTotal { get; set; }
+
+        [JsonProperty("allowed")]
+        public bool? Allowed { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("multiplier")]
+        public decimal? Multiplier { get; set; }
+
+        [JsonProperty("max_credit_value_by_rule")]
+        public decimal? MaxCreditValueByRule { get; set; }
+
+        [JsonProperty("usable_credit_value")]
+        public decimal? UsableCreditValue { get; set; }
+
+        [JsonProperty("points_to_use")]
+        public int? PointsToUse { get; set; }
+
+        [JsonProperty("remaining_to_pay")]
+        public decimal? RemainingToPay { get; set; }
+    }
+
+    public class BlackoutData
+    {
+        [JsonProperty("points")]
+        public bool? Points { get; set; }
+
+        [JsonProperty("cashback")]
+        public bool? Cashback { get; set; }
     }
 
     public class Transaction
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -53,6 +113,15 @@ namespace LoopIzy.Domain
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("reference_type")]
+        public string ReferenceType { get; set; }
+
+        [JsonProperty("store_id")]
+        public string StoreId { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
     }
 
     public class BalanceAdjustmentRequest

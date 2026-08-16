@@ -70,5 +70,8 @@ namespace LoopIzy.Domain
 
         [JsonProperty("code")]
         public string Code { get; set; } // for use
+
+        [JsonProperty("order_total")]
+        public decimal? Order_Total { get; set; } // for generate
     }
 }
