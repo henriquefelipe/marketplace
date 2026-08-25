@@ -21,7 +21,10 @@ namespace LoopIzy.Domain
         public string Birthday { get; set; }
 
         [JsonProperty("customer_id")]
-        public string CustomerId { get; set; } 
+        public string CustomerId { get; set; }
+
+        [JsonProperty("seller_name")]
+        public string SellerName { get; set; }
     }
 
     public class CustomerResponse
@@ -58,5 +61,9 @@ namespace LoopIzy.Domain
 
         [JsonProperty("points_balance")]
         public int PointsBalance { get; set; }
+
+        [JsonProperty("seller_name")]
+        public string SellerName { get; set; }
+
     }
 }

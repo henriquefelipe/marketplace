@@ -31,6 +31,9 @@ namespace LoopIzy.Domain
 
         [JsonProperty("merchant")]
         public string Merchant { get; set; }
+
+        [JsonProperty("seller_name")]
+        public string SellerName { get; set; }
     }
 
     public class OrderItem
