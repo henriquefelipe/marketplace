@@ -11,5 +11,7 @@ namespace IzzyGO.Domain
         public string Name { get; set; }
         public string Phone { get; set; }
         public string PhoneLocalizer { get; set; }
+        public string Localizer { get; set; }
+        public string Pin { get; set; }
     }
 }

@@ -77,7 +77,9 @@ namespace IzzyGO.OpenDelivery.Examples
                 {
                     Name = "Maria Santos",
                     Phone = "85988887777",
-                    PhoneLocalizer = "85"
+                    PhoneLocalizer = "85",
+                    Localizer="123456",
+                    Pin="1234"
                 },
 
                 // Endereço de entrega

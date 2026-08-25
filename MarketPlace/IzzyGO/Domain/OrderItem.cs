@@ -13,5 +13,9 @@ namespace IzzyGO.Domain
         public decimal? Price { get; set; }
         public string Unit { get; set; }
         public string ExternalCode { get; set; }
+        public string Printing { get; set; }
+        public string Environment { get; set; }
+        public string Sector { get; set; }
+        public string Category { get; set; }
     }
 }
